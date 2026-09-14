@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,10 +17,18 @@
 
   <link rel="canonical" href="https://shoporamarketstore.store/">
 
-  <!-- Favicon / Brand Icon -->
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="alternate icon" href="favicon.png">
-  <link rel="apple-touch-icon" href="favicon.png">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Shopora Brand Icon -->
+  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
+  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
 
   <!-- Open Graph -->
   <meta property="og:locale" content="en_PK">
@@ -37,22 +46,6 @@
   <meta name="twitter:description" content="Discover fashion, beauty, electronics, home & living and everyday essentials.">
   <meta name="twitter:image" content="https://shoporamarketstore.store/images/shopora-og.jpg">
 
-  <!-- Performance -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
-    rel="stylesheet"
-  >
-
-  <!--
-    SHOPORA BRAND FAVICON
-    This SVG is also used as the temporary browser brand icon.
-    The final exported logo can replace favicon.svg later without changing HTML.
-  -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23111111'/%3E%3Cpath d='M43 18c-3.7-4-10.4-5.4-16-3.2-5.7 2.2-8.7 8.2-5.8 12.6 2.3 3.5 6.8 4.1 11.7 5.2 5.7 1.2 7.4 3.4 6.1 6.2-1.5 3.3-7.7 4.2-12.2 1.3' fill='none' stroke='%23c6a06a' stroke-width='5' stroke-linecap='round'/%3E%3Cpath d='M18 20l4-5h20l4 5' fill='none' stroke='%23c6a06a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
-
   <!-- Structured Data -->
   <script type="application/ld+json">
   {
@@ -65,7 +58,7 @@
         "url": "https://shoporamarketstore.store/",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://shoporamarketstore.store/favicon.png"
+          "url": "https://shoporamarketstore.store/assets/shopora-logo.png"
         },
         "description": "Shopora Market Store is an online shopping destination for fashion, beauty, electronics, home and living, accessories and lifestyle products."
       },
@@ -175,63 +168,18 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 11px;
-      font-weight: 900;
-      letter-spacing: 2px;
-      font-size: 20px;
-      white-space: nowrap;
-    }
-
-    .brand-mark {
-      width: 37px;
-      height: 37px;
-      border-radius: 11px;
-      background: var(--black);
-      position: relative;
-      overflow: hidden;
       flex: 0 0 auto;
-      box-shadow: 0 7px 20px rgba(0,0,0,.13);
+      white-space: nowrap;
+      line-height: 0;
     }
 
-    /* Custom S / shopping-bag inspired mark */
-    .brand-mark::before {
-      content: "";
-      position: absolute;
-      width: 19px;
-      height: 19px;
-      left: 9px;
-      top: 9px;
-      border: 3px solid var(--gold);
-      border-radius: 8px 8px 10px 10px;
-      border-top-color: transparent;
-      transform: rotate(-8deg);
-    }
-
-    .brand-mark::after {
-      content: "S";
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-family: Georgia, serif;
-      font-size: 23px;
-      font-weight: 700;
-      line-height: 1;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .brand-text small {
-      font-size: 6px;
-      letter-spacing: 2.6px;
-      color: var(--gold-dark);
-      margin-top: 5px;
-      font-weight: 800;
+    .brand-logo {
+      display: block;
+      width: 205px;
+      height: auto;
+      max-height: 55px;
+      object-fit: contain;
+      object-position: left center;
     }
 
     /* ================= TOPBAR ================= */
@@ -262,7 +210,7 @@
     }
 
     .nav {
-      height: 78px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -1213,6 +1161,20 @@
       transform: translateY(0);
     }
 
+    /* ================= ACCESSIBILITY ================= */
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
     /* ================= MOBILE ================= */
 
     @media (max-width: 1000px) {
@@ -1292,23 +1254,12 @@
       }
 
       .nav {
-        height: 70px;
+        min-height: 70px;
       }
 
-      .brand {
-        font-size: 17px;
-        gap: 8px;
-      }
-
-      .brand-mark {
-        width: 31px;
-        height: 31px;
-        border-radius: 9px;
-      }
-
-      .brand-text small {
-        font-size: 5px;
-        letter-spacing: 2px;
+      .brand-logo {
+        width: 165px;
+        max-height: 44px;
       }
 
       .nav-actions {
@@ -1497,13 +1448,15 @@
   <header>
     <div class="container nav">
 
+      <!-- REAL SHOPORA LOGO -->
       <a href="index.html" class="brand" aria-label="Shopora Market Store home">
-        <span class="brand-mark" aria-hidden="true"></span>
-
-        <span class="brand-text">
-          SHOPORA
-          <small>MARKET STORE</small>
-        </span>
+        <img
+          class="brand-logo"
+          src="assets/shopora-logo.png"
+          alt="Shopora Market Store"
+          width="205"
+          height="55"
+        >
       </a>
 
       <nav class="nav-links" id="navLinks" aria-label="Main navigation">
@@ -2103,13 +2056,15 @@
 
         <div class="footer-brand">
 
+          <!-- REAL SHOPORA LOGO -->
           <a href="index.html" class="brand" aria-label="Shopora Market Store home">
-            <span class="brand-mark" aria-hidden="true"></span>
-
-            <span class="brand-text">
-              SHOPORA
-              <small>MARKET STORE</small>
-            </span>
+            <img
+              class="brand-logo"
+              src="assets/shopora-logo.png"
+              alt="Shopora Market Store"
+              width="205"
+              height="55"
+            >
           </a>
 
           <p>
@@ -2155,6 +2110,7 @@
           <div class="contact-line">
             💬 WhatsApp: Available
           </div>
+
         </div>
 
       </div>
@@ -2185,23 +2141,9 @@
   <!-- TOAST -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <style>
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0,0,0,0);
-      white-space: nowrap;
-      border: 0;
-    }
-  </style>
-
   <script>
     /* =========================================================
-       SHOPORA — FINAL HOMEPAGE INTERACTIONS
+       SHOPORA — HOMEPAGE INTERACTIONS
        ========================================================= */
 
     let cart = JSON.parse(
@@ -2562,3 +2504,4 @@
 
 </body>
 </html>
+```
