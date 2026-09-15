@@ -1,0 +1,1079 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Shopora Market Store | Your Everyday Marketplace</title>
+
+  <meta name="description" content="Learn about Shopora Market Store, a modern online marketplace bringing fashion, beauty, electronics, home essentials and everyday lifestyle products together.">
+  <meta name="keywords" content="Shopora Market Store, about Shopora, online shopping Pakistan, fashion, beauty, electronics, home living, lifestyle">
+  <meta name="author" content="Shopora Market Store">
+
+  <link rel="canonical" href="https://shoporamarketstore.store/about.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About Shopora Market Store">
+  <meta property="og:description" content="Discover the story and vision behind Shopora Market Store.">
+  <meta property="og:url" content="https://shoporamarketstore.store/about.html">
+  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Shopora Market Store">
+  <meta name="twitter:description" content="Discover the story and vision behind Shopora Market Store.">
+  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
+  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --black:#111111;
+      --ivory:#F7F4EE;
+      --gold:#C6A06A;
+      --white:#ffffff;
+      --muted:#77736d;
+      --border:rgba(17,17,17,.10);
+      --shadow:0 20px 60px rgba(17,17,17,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"DM Sans",sans-serif;
+      color:var(--black);
+      background:var(--ivory);
+      line-height:1.7;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    button,
+    input{
+      font:inherit;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(247,244,238,.94);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      flex:0 0 auto;
+    }
+
+    .brand-logo{
+      width:180px;
+      height:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:28px;
+    }
+
+    .nav-links a{
+      font-size:14px;
+      font-weight:600;
+      position:relative;
+      padding:28px 0;
+      transition:.3s ease;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:20px;
+      width:0;
+      height:2px;
+      background:var(--gold);
+      transition:.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after{
+      width:100%;
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .icon-btn{
+      width:42px;
+      height:42px;
+      border:1px solid var(--border);
+      background:var(--white);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:18px;
+      position:relative;
+      transition:.3s ease;
+    }
+
+    .icon-btn:hover{
+      background:var(--black);
+      color:var(--white);
+      transform:translateY(-2px);
+    }
+
+    .count{
+      position:absolute;
+      top:-4px;
+      right:-3px;
+      min-width:17px;
+      height:17px;
+      padding:0 4px;
+      border-radius:20px;
+      background:var(--gold);
+      color:var(--white);
+      font-size:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+    }
+
+    .menu-btn{
+      display:none;
+    }
+
+    /* HERO */
+
+    .page-hero{
+      padding:110px 0 90px;
+      text-align:center;
+      background:
+        radial-gradient(circle at 15% 20%,rgba(198,160,106,.15),transparent 30%),
+        radial-gradient(circle at 85% 70%,rgba(198,160,106,.10),transparent 30%);
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:"Playfair Display",serif;
+      line-height:1.2;
+    }
+
+    .page-hero h1{
+      font-size:clamp(42px,7vw,76px);
+      margin-bottom:20px;
+    }
+
+    .page-hero p{
+      max-width:700px;
+      margin:auto;
+      color:var(--muted);
+      font-size:17px;
+    }
+
+    /* ABOUT */
+
+    .about-section{
+      padding:100px 0;
+      background:var(--white);
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:70px;
+      align-items:center;
+    }
+
+    .about-content h2{
+      font-size:clamp(34px,5vw,54px);
+      margin-bottom:24px;
+    }
+
+    .about-content p{
+      color:var(--muted);
+      margin-bottom:18px;
+      font-size:16px;
+    }
+
+    .about-image{
+      min-height:460px;
+      border-radius:4px;
+      background:
+        linear-gradient(135deg,rgba(198,160,106,.25),transparent 55%),
+        #eee8dd;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .about-image::before{
+      content:"SHOPORA";
+      font-family:"Playfair Display",serif;
+      font-size:clamp(45px,7vw,90px);
+      letter-spacing:8px;
+      color:rgba(17,17,17,.08);
+      transform:rotate(-12deg);
+    }
+
+    .about-image::after{
+      content:"MARKET STORE";
+      position:absolute;
+      bottom:38px;
+      font-size:11px;
+      letter-spacing:5px;
+      color:var(--gold);
+      font-weight:700;
+    }
+
+    /* VALUES */
+
+    .values{
+      padding:100px 0;
+      background:var(--ivory);
+    }
+
+    .section-heading{
+      text-align:center;
+      max-width:700px;
+      margin:0 auto 55px;
+    }
+
+    .section-heading h2{
+      font-size:clamp(34px,5vw,52px);
+      margin-bottom:15px;
+    }
+
+    .section-heading p{
+      color:var(--muted);
+    }
+
+    .value-grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:24px;
+    }
+
+    .value-card{
+      background:var(--white);
+      padding:38px 30px;
+      border:1px solid var(--border);
+      transition:.35s ease;
+    }
+
+    .value-card:hover{
+      transform:translateY(-8px);
+      box-shadow:var(--shadow);
+    }
+
+    .value-icon{
+      width:55px;
+      height:55px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--black);
+      color:var(--gold);
+      border-radius:50%;
+      font-size:21px;
+      margin-bottom:25px;
+    }
+
+    .value-card h3{
+      font-size:25px;
+      margin-bottom:12px;
+    }
+
+    .value-card p{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* CONTACT INFO */
+
+    .contact-section{
+      padding:100px 0;
+      background:var(--black);
+      color:var(--white);
+    }
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .contact-section .eyebrow{
+      color:var(--gold);
+    }
+
+    .contact-section h2{
+      font-size:clamp(34px,5vw,54px);
+      margin-bottom:20px;
+    }
+
+    .contact-section p{
+      color:rgba(255,255,255,.68);
+      max-width:580px;
+    }
+
+    .contact-details{
+      display:grid;
+      gap:15px;
+    }
+
+    .contact-item{
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      padding:22px 25px;
+      transition:.3s ease;
+    }
+
+    .contact-item:hover{
+      border-color:var(--gold);
+      transform:translateX(5px);
+    }
+
+    .contact-item span{
+      display:block;
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-size:10px;
+      font-weight:700;
+      margin-bottom:5px;
+    }
+
+    .contact-item a{
+      font-size:16px;
+      word-break:break-word;
+    }
+
+    /* CTA */
+
+    .cta{
+      padding:100px 0;
+      text-align:center;
+      background:var(--white);
+    }
+
+    .cta h2{
+      font-size:clamp(35px,5vw,56px);
+      margin-bottom:18px;
+    }
+
+    .cta p{
+      color:var(--muted);
+      max-width:600px;
+      margin:0 auto 30px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:14px 28px;
+      background:var(--black);
+      color:var(--white);
+      border:1px solid var(--black);
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.5px;
+      transition:.3s ease;
+    }
+
+    .btn:hover{
+      background:var(--gold);
+      border-color:var(--gold);
+      transform:translateY(-2px);
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#0b0b0b;
+      color:var(--white);
+      padding:70px 0 25px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr 1fr;
+      gap:45px;
+      padding-bottom:55px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .footer-brand img{
+      width:180px;
+      margin-bottom:20px;
+    }
+
+    .footer-brand p{
+      color:rgba(255,255,255,.55);
+      max-width:330px;
+      font-size:14px;
+    }
+
+    .footer-col h3{
+      font-family:"DM Sans",sans-serif;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:20px;
+      color:var(--gold);
+    }
+
+    .footer-col a{
+      display:block;
+      color:rgba(255,255,255,.60);
+      font-size:13px;
+      margin-bottom:11px;
+      transition:.3s ease;
+    }
+
+    .footer-col a:hover{
+      color:var(--white);
+      padding-left:4px;
+    }
+
+    .footer-bottom{
+      padding-top:25px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      color:rgba(255,255,255,.42);
+      font-size:12px;
+    }
+
+    /* REVEAL */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(25px);
+      transition:.8s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:900px){
+
+      .nav-links{
+        position:absolute;
+        top:82px;
+        left:0;
+        right:0;
+        background:var(--ivory);
+        border-bottom:1px solid var(--border);
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0;
+        padding:15px 4%;
+      }
+
+      .nav-links.open{
+        display:flex;
+      }
+
+      .nav-links a{
+        width:100%;
+        padding:13px 0;
+      }
+
+      .nav-links a::after{
+        bottom:5px;
+      }
+
+      .menu-btn{
+        display:flex;
+      }
+
+      .about-grid,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .value-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+      .about-image{
+        min-height:360px;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:600px){
+
+      .brand-logo{
+        width:145px;
+      }
+
+      .nav{
+        min-height:72px;
+      }
+
+      .nav-links{
+        top:72px;
+      }
+
+      .nav-actions{
+        gap:6px;
+      }
+
+      .icon-btn{
+        width:38px;
+        height:38px;
+      }
+
+      .page-hero{
+        padding:80px 0 65px;
+      }
+
+      .about-section,
+      .values,
+      .contact-section,
+      .cta{
+        padding:70px 0;
+      }
+
+      .value-grid{
+        grid-template-columns:1fr;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:35px;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"AboutPage",
+    "name":"About Shopora Market Store",
+    "url":"https://shoporamarketstore.store/about.html",
+    "description":"Learn about Shopora Market Store and its vision for modern online shopping.",
+    "mainEntity":{
+      "@type":"Organization",
+      "name":"Shopora Market Store",
+      "url":"https://shoporamarketstore.store/",
+      "logo":"https://shoporamarketstore.store/assets/shopora-logo.png",
+      "email":"brandseocompany@gmail.com",
+      "telephone":"+923269547318"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="brand" aria-label="Shopora Market Store home">
+      <img
+        src="assets/shopora-logo.png"
+        alt="Shopora Market Store"
+        class="brand-logo"
+        width="180"
+        height="60"
+      >
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="categories.html">Categories</a>
+      <a href="trending.html">Trending</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="nav-actions">
+
+      <button class="icon-btn" onclick="goToSearch()" aria-label="Search">
+        🔍
+      </button>
+
+      <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+        ♡
+        <span class="count" id="wishlistCount">0</span>
+      </a>
+
+      <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
+        🛒
+        <span class="count" id="cartCount">0</span>
+      </a>
+
+      <button class="icon-btn menu-btn" onclick="toggleMenu()" aria-label="Menu">
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="page-hero reveal">
+    <div class="container">
+      <div class="eyebrow">Our Story</div>
+
+      <h1>About Shopora</h1>
+
+      <p>
+        A modern marketplace created to make everyday online shopping
+        simple, stylish and enjoyable.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ABOUT -->
+
+  <section class="about-section">
+    <div class="container about-grid">
+
+      <div class="about-content reveal">
+
+        <div class="eyebrow">Who We Are</div>
+
+        <h2>Everyday Shopping, Elevated.</h2>
+
+        <p>
+          Shopora Market Store is a modern online marketplace focused on
+          bringing useful, stylish and everyday products together in one
+          convenient destination.
+        </p>
+
+        <p>
+          From fashion and beauty to electronics, accessories, home &
+          living and lifestyle essentials, Shopora is designed around the
+          things people actually use and enjoy in everyday life.
+        </p>
+
+        <p>
+          Our goal is simple: create a clean and comfortable shopping
+          experience where discovering products feels easy, modern and
+          enjoyable.
+        </p>
+
+      </div>
+
+      <div class="about-image reveal" aria-label="Shopora Market Store">
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- VALUES -->
+
+  <section class="values">
+
+    <div class="container">
+
+      <div class="section-heading reveal">
+
+        <div class="eyebrow">Why Shopora</div>
+
+        <h2>Built Around Better Shopping</h2>
+
+        <p>
+          We focus on a simple marketplace experience with carefully
+          organized categories and an easy way to discover everyday
+          products.
+        </p>
+
+      </div>
+
+
+      <div class="value-grid">
+
+        <article class="value-card reveal">
+          <div class="value-icon">✦</div>
+
+          <h3>Curated Selection</h3>
+
+          <p>
+            Discover products across fashion, beauty, electronics,
+            home & living, accessories and lifestyle categories.
+          </p>
+        </article>
+
+
+        <article class="value-card reveal">
+          <div class="value-icon">◇</div>
+
+          <h3>Modern Experience</h3>
+
+          <p>
+            A clean and responsive shopping experience designed for
+            comfortable browsing on desktop and mobile.
+          </p>
+        </article>
+
+
+        <article class="value-card reveal">
+          <div class="value-icon">♡</div>
+
+          <h3>Customer Focused</h3>
+
+          <p>
+            We aim to make product discovery straightforward while
+            keeping the shopping journey simple and convenient.
+          </p>
+        </article>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT INFO -->
+
+  <section class="contact-section">
+
+    <div class="container contact-grid">
+
+      <div class="reveal">
+
+        <div class="eyebrow">Get In Touch</div>
+
+        <h2>We're Here To Help.</h2>
+
+        <p>
+          Have a question about Shopora Market Store? Reach out to us
+          using the contact details below.
+        </p>
+
+      </div>
+
+
+      <div class="contact-details reveal">
+
+        <div class="contact-item">
+          <span>Email</span>
+          <a href="mailto:brandseocompany@gmail.com">
+            brandseocompany@gmail.com
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <span>Phone</span>
+          <a href="tel:+923269547318">
+            +92 326 9547318
+          </a>
+        </div>
+
+        <div class="contact-item">
+          <span>Website</span>
+          <a href="https://shoporamarketstore.store/">
+            shoporamarketstore.store
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="container reveal">
+
+      <div class="eyebrow">Explore Shopora</div>
+
+      <h2>Find Something You'll Love.</h2>
+
+      <p>
+        Explore our collections and discover fashion, beauty, electronics,
+        home essentials, accessories and lifestyle products.
+      </p>
+
+      <a href="shop.html" class="btn">
+        Explore The Shop
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+
+        <a href="index.html">
+          <img
+            src="assets/shopora-logo.png"
+            alt="Shopora Market Store"
+            width="180"
+            height="60"
+          >
+        </a>
+
+        <p>
+          A modern marketplace for fashion, beauty, electronics,
+          home & living, accessories and everyday lifestyle products.
+        </p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>Shop</h3>
+
+        <a href="shop.html">Shop All</a>
+        <a href="categories.html">Categories</a>
+        <a href="trending.html">Trending</a>
+        <a href="cart.html">Cart</a>
+        <a href="wishlist.html">Wishlist</a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>Company</h3>
+
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>Policies</h3>
+
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="return-refund.html">Return & Refund</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <div>
+        © <span id="year"></span> Shopora Market Store. All rights reserved.
+      </div>
+
+      <div>
+        brandseocompany@gmail.com
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  function getCart(){
+    try{
+      return JSON.parse(localStorage.getItem("shoporaCart")) || [];
+    }catch(e){
+      return [];
+    }
+  }
+
+
+  function getWishlist(){
+    try{
+      return JSON.parse(localStorage.getItem("shoporaWishlist")) || [];
+    }catch(e){
+      return [];
+    }
+  }
+
+
+  function updateCounts(){
+
+    const cart = getCart();
+
+    const wishlist = getWishlist();
+
+    const cartCount = cart.reduce(
+      (total,item) => total + Number(item.quantity || 1),
+      0
+    );
+
+    const wishlistCount = wishlist.length;
+
+    const cartEl = document.getElementById("cartCount");
+
+    const wishlistEl = document.getElementById("wishlistCount");
+
+    if(cartEl){
+      cartEl.textContent = cartCount;
+    }
+
+    if(wishlistEl){
+      wishlistEl.textContent = wishlistCount;
+    }
+
+  }
+
+
+  function goToSearch(){
+
+    window.location.href = "shop.html#productSearch";
+
+  }
+
+
+  function toggleMenu(){
+
+    document.getElementById("navLinks").classList.toggle("open");
+
+  }
+
+
+  const observer = new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+
+          entry.target.classList.add("show");
+
+          observer.unobserve(entry.target);
+
+        }
+
+      });
+
+    },
+    {
+      threshold:.12
+    }
+  );
+
+
+  document.querySelectorAll(".reveal").forEach(el => {
+
+    observer.observe(el);
+
+  });
+
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+
+
+  window.addEventListener("storage", updateCounts);
+
+  window.addEventListener("pageshow", updateCounts);
+
+  updateCounts();
+
+</script>
+
+</body>
+</html>
+```
