@@ -1,0 +1,1626 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Wishlist | Shopora Market Store</title>
+
+  <meta name="description" content="View your saved products and wishlist items at Shopora Market Store.">
+  <meta name="keywords" content="Shopora wishlist, saved products, Shopora Market Store, online shopping Pakistan">
+  <meta name="author" content="Shopora Market Store">
+
+  <link rel="canonical" href="https://shoporamarketstore.store/wishlist.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Wishlist | Shopora Market Store">
+  <meta property="og:description" content="View your favorite and saved products at Shopora Market Store.">
+  <meta property="og:url" content="https://shoporamarketstore.store/wishlist.html">
+  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wishlist | Shopora Market Store">
+  <meta name="twitter:description" content="View your favorite and saved products at Shopora Market Store.">
+  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
+  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --black:#111111;
+      --ivory:#F7F4EE;
+      --gold:#C6A06A;
+      --white:#ffffff;
+      --muted:#77736d;
+      --border:rgba(17,17,17,.10);
+      --shadow:0 20px 60px rgba(17,17,17,.08);
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"DM Sans",sans-serif;
+      color:var(--black);
+      background:var(--ivory);
+      line-height:1.7;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button{
+      font:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(247,244,238,.94);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      flex:0 0 auto;
+    }
+
+    .brand-logo{
+      width:180px;
+      height:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:28px;
+    }
+
+    .nav-links a{
+      font-size:14px;
+      font-weight:600;
+      position:relative;
+      padding:28px 0;
+      transition:.3s ease;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:20px;
+      width:0;
+      height:2px;
+      background:var(--gold);
+      transition:.3s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after{
+      width:100%;
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .icon-btn{
+      width:42px;
+      height:42px;
+      border:1px solid var(--border);
+      background:var(--white);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:18px;
+      position:relative;
+      transition:.3s ease;
+    }
+
+    .icon-btn:hover{
+      background:var(--black);
+      color:var(--white);
+      transform:translateY(-2px);
+    }
+
+    .count{
+      position:absolute;
+      top:-4px;
+      right:-3px;
+      min-width:17px;
+      height:17px;
+      padding:0 4px;
+      border-radius:20px;
+      background:var(--gold);
+      color:var(--white);
+      font-size:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+    }
+
+    .menu-btn{
+      display:none;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .page-hero{
+      padding:95px 0 75px;
+      text-align:center;
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(198,160,106,.15),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 70%,
+          rgba(198,160,106,.10),
+          transparent 30%
+        );
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:15px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:"Playfair Display",serif;
+      line-height:1.2;
+    }
+
+    .page-hero h1{
+      font-size:clamp(42px,7vw,70px);
+      margin-bottom:15px;
+    }
+
+    .page-hero p{
+      max-width:650px;
+      margin:auto;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    /* =========================
+       WISHLIST
+    ========================= */
+
+    .wishlist-section{
+      padding:70px 0 110px;
+    }
+
+    .wishlist-top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:30px;
+    }
+
+    .wishlist-count-text{
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .clear-btn{
+      border:1px solid var(--border);
+      background:var(--white);
+      padding:10px 17px;
+      cursor:pointer;
+      font-size:12px;
+      font-weight:700;
+      transition:.3s ease;
+    }
+
+    .clear-btn:hover{
+      background:var(--black);
+      color:var(--white);
+    }
+
+    .wishlist-grid{
+      display:grid;
+      grid-template-columns:
+        repeat(4,minmax(0,1fr));
+      gap:20px;
+    }
+
+    .wishlist-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      position:relative;
+      overflow:hidden;
+      transition:.35s ease;
+    }
+
+    .wishlist-card:hover{
+      transform:translateY(-5px);
+      box-shadow:var(--shadow);
+    }
+
+    .wishlist-image{
+      aspect-ratio:1 / 1;
+      background:var(--ivory);
+      padding:25px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+
+    .wishlist-image img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+      transition:.4s ease;
+    }
+
+    .wishlist-card:hover
+    .wishlist-image img{
+      transform:scale(1.05);
+    }
+
+    .heart-remove{
+      position:absolute;
+      top:13px;
+      right:13px;
+      width:38px;
+      height:38px;
+      border-radius:50%;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.95);
+      cursor:pointer;
+      font-size:19px;
+      color:var(--black);
+      transition:.3s ease;
+      z-index:2;
+    }
+
+    .heart-remove:hover{
+      background:var(--black);
+      color:var(--white);
+    }
+
+    .wishlist-info{
+      padding:20px;
+    }
+
+    .product-category{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:1.5px;
+      font-size:10px;
+      font-weight:700;
+      margin-bottom:7px;
+    }
+
+    .product-name{
+      font-family:"Playfair Display",serif;
+      font-size:21px;
+      line-height:1.3;
+      margin-bottom:9px;
+    }
+
+    .product-price{
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:17px;
+    }
+
+    .product-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
+    }
+
+    .product-btn{
+      min-height:42px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--black);
+      background:var(--black);
+      color:var(--white);
+      font-size:11px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.3s ease;
+    }
+
+    .product-btn:hover{
+      background:var(--gold);
+      border-color:var(--gold);
+    }
+
+    .product-btn.secondary{
+      background:transparent;
+      color:var(--black);
+      border-color:var(--border);
+    }
+
+    .product-btn.secondary:hover{
+      background:var(--ivory);
+      border-color:var(--black);
+    }
+
+    /* =========================
+       EMPTY WISHLIST
+    ========================= */
+
+    .empty-wishlist{
+      background:var(--white);
+      border:1px solid var(--border);
+      padding:75px 30px;
+      text-align:center;
+    }
+
+    .empty-icon{
+      width:75px;
+      height:75px;
+      border-radius:50%;
+      background:var(--ivory);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 25px;
+      font-size:32px;
+    }
+
+    .empty-wishlist h2{
+      font-size:36px;
+      margin-bottom:10px;
+    }
+
+    .empty-wishlist p{
+      color:var(--muted);
+      max-width:500px;
+      margin:0 auto 25px;
+    }
+
+    .shop-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--black);
+      color:var(--white);
+      padding:13px 27px;
+      border:1px solid var(--black);
+      font-size:13px;
+      font-weight:700;
+      transition:.3s ease;
+    }
+
+    .shop-btn:hover{
+      background:var(--gold);
+      border-color:var(--gold);
+    }
+
+    /* =========================
+       TOAST
+    ========================= */
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:25px;
+      transform:translate(-50%,20px);
+      background:var(--black);
+      color:var(--white);
+      padding:13px 20px;
+      font-size:13px;
+      z-index:3000;
+      opacity:0;
+      pointer-events:none;
+      transition:.3s ease;
+    }
+
+    .toast.show{
+      opacity:1;
+      transform:translate(-50%,0);
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer{
+      background:#0b0b0b;
+      color:var(--white);
+      padding:70px 0 25px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr 1fr;
+      gap:45px;
+      padding-bottom:55px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .footer-brand img{
+      width:180px;
+      margin-bottom:20px;
+    }
+
+    .footer-brand p{
+      color:rgba(255,255,255,.55);
+      max-width:330px;
+      font-size:14px;
+    }
+
+    .footer-col h3{
+      font-family:"DM Sans",sans-serif;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:20px;
+      color:var(--gold);
+    }
+
+    .footer-col a{
+      display:block;
+      color:rgba(255,255,255,.60);
+      font-size:13px;
+      margin-bottom:11px;
+      transition:.3s ease;
+    }
+
+    .footer-col a:hover{
+      color:var(--white);
+      padding-left:4px;
+    }
+
+    .footer-bottom{
+      padding-top:25px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      color:rgba(255,255,255,.42);
+      font-size:12px;
+    }
+
+    /* =========================
+       REVEAL
+    ========================= */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:.7s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:1100px){
+
+      .wishlist-grid{
+        grid-template-columns:
+          repeat(3,minmax(0,1fr));
+      }
+
+    }
+
+    @media(max-width:1000px){
+
+      .nav-links{
+        position:absolute;
+        top:82px;
+        left:0;
+        right:0;
+        background:var(--ivory);
+        border-bottom:1px solid var(--border);
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0;
+        padding:15px 4%;
+      }
+
+      .nav-links.open{
+        display:flex;
+      }
+
+      .nav-links a{
+        width:100%;
+        padding:13px 0;
+      }
+
+      .nav-links a::after{
+        bottom:5px;
+      }
+
+      .menu-btn{
+        display:flex;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+
+    }
+
+    @media(max-width:750px){
+
+      .wishlist-grid{
+        grid-template-columns:
+          repeat(2,minmax(0,1fr));
+      }
+
+    }
+
+    @media(max-width:650px){
+
+      .brand-logo{
+        width:145px;
+      }
+
+      .nav{
+        min-height:72px;
+      }
+
+      .nav-links{
+        top:72px;
+      }
+
+      .nav-actions{
+        gap:6px;
+      }
+
+      .icon-btn{
+        width:38px;
+        height:38px;
+      }
+
+      .page-hero{
+        padding:75px 0 60px;
+      }
+
+      .wishlist-section{
+        padding:45px 0 75px;
+      }
+
+      .wishlist-top{
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .wishlist-grid{
+        grid-template-columns:1fr;
+        gap:16px;
+      }
+
+      .wishlist-image{
+        aspect-ratio:1.1 / 1;
+      }
+
+      .empty-wishlist{
+        padding:55px 20px;
+      }
+
+      .empty-wishlist h2{
+        font-size:31px;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:35px;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Wishlist",
+    "url":"https://shoporamarketstore.store/wishlist.html",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Shopora Market Store",
+      "url":"https://shoporamarketstore.store/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+
+  <div class="container nav">
+
+    <a
+      href="index.html"
+      class="brand"
+      aria-label="Shopora Market Store home"
+    >
+
+      <img
+        src="assets/shopora-logo.png"
+        alt="Shopora Market Store"
+        class="brand-logo"
+        width="180"
+        height="60"
+      >
+
+    </a>
+
+
+    <nav
+      class="nav-links"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="shop.html">
+        Shop
+      </a>
+
+      <a href="categories.html">
+        Categories
+      </a>
+
+      <a href="trending.html">
+        Trending
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-btn"
+        onclick="goToSearch()"
+        aria-label="Search"
+      >
+        🔍
+      </button>
+
+
+      <a
+        href="wishlist.html"
+        class="icon-btn"
+        aria-label="Wishlist"
+      >
+        ♡
+
+        <span
+          class="count"
+          id="wishlistCount"
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <a
+        href="cart.html"
+        class="icon-btn"
+        aria-label="Shopping cart"
+      >
+        🛒
+
+        <span
+          class="count"
+          id="cartCount"
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <button
+        class="icon-btn menu-btn"
+        onclick="toggleMenu()"
+        aria-label="Menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="page-hero reveal">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        Saved For Later
+      </div>
+
+      <h1>
+        My Wishlist
+      </h1>
+
+      <p>
+        Keep your favorite Shopora products close and move them
+        to your cart whenever you're ready.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- WISHLIST -->
+
+  <section class="wishlist-section">
+
+    <div class="container">
+
+      <div
+        class="wishlist-top"
+        id="wishlistTop"
+        style="display:none;"
+      >
+
+        <div class="wishlist-count-text">
+
+          <span id="wishlistItemCount">
+            0
+          </span>
+
+          saved item(s)
+
+        </div>
+
+
+        <button
+          type="button"
+          class="clear-btn"
+          onclick="clearWishlist()"
+        >
+          Clear Wishlist
+        </button>
+
+      </div>
+
+
+      <div
+        class="wishlist-grid"
+        id="wishlistGrid"
+      ></div>
+
+
+      <!-- EMPTY -->
+
+      <div
+        class="empty-wishlist"
+        id="emptyWishlist"
+        style="display:none;"
+      >
+
+        <div class="empty-icon">
+          ♡
+        </div>
+
+        <h2>
+          Your Wishlist Is Empty
+        </h2>
+
+        <p>
+          Save products you love and they'll appear here.
+          Start exploring the Shopora collection.
+        </p>
+
+        <a
+          href="shop.html"
+          class="shop-btn"
+        >
+          Explore Products
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+
+        <a href="index.html">
+
+          <img
+            src="assets/shopora-logo.png"
+            alt="Shopora Market Store"
+            width="180"
+            height="60"
+          >
+
+        </a>
+
+        <p>
+          A modern marketplace for fashion, beauty, electronics,
+          home & living, accessories and everyday lifestyle products.
+        </p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>
+          Shop
+        </h3>
+
+        <a href="shop.html">
+          Shop All
+        </a>
+
+        <a href="categories.html">
+          Categories
+        </a>
+
+        <a href="trending.html">
+          Trending
+        </a>
+
+        <a href="cart.html">
+          Cart
+        </a>
+
+        <a href="wishlist.html">
+          Wishlist
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>
+          Company
+        </h3>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>
+          Policies
+        </h3>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms-of-service.html">
+          Terms of Service
+        </a>
+
+        <a href="cookie-policy.html">
+          Cookie Policy
+        </a>
+
+        <a href="return-refund.html">
+          Return & Refund
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <div>
+        © <span id="year"></span>
+        Shopora Market Store. All rights reserved.
+      </div>
+
+      <div>
+        brandseocompany@gmail.com
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<div
+  class="toast"
+  id="toast"
+  role="status"
+  aria-live="polite"
+></div>
+
+
+<script>
+
+  /* =========================
+     STORAGE
+  ========================= */
+
+  function getWishlist(){
+
+    try{
+
+      return JSON.parse(
+        localStorage.getItem("shoporaWishlist")
+      ) || [];
+
+    }catch(error){
+
+      return [];
+
+    }
+
+  }
+
+
+  function saveWishlist(list){
+
+    localStorage.setItem(
+      "shoporaWishlist",
+      JSON.stringify(list)
+    );
+
+  }
+
+
+  function getCart(){
+
+    try{
+
+      return JSON.parse(
+        localStorage.getItem("shoporaCart")
+      ) || [];
+
+    }catch(error){
+
+      return [];
+
+    }
+
+  }
+
+
+  function saveCart(cart){
+
+    localStorage.setItem(
+      "shoporaCart",
+      JSON.stringify(cart)
+    );
+
+  }
+
+
+  /* =========================
+     PRICE
+  ========================= */
+
+  function formatPrice(price){
+
+    return "Rs. " +
+      Number(price).toLocaleString("en-PK");
+
+  }
+
+
+  /* =========================
+     ESCAPE HTML
+  ========================= */
+
+  function escapeHTML(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  /* =========================
+     PRODUCT SLUG
+  ========================= */
+
+  function createSlug(name){
+
+    return String(name || "")
+      .toLowerCase()
+      .trim()
+      .replace(/[^a-z0-9]+/g,"-")
+      .replace(/^-+|-+$/g,"");
+
+  }
+
+
+  /* =========================
+     RENDER WISHLIST
+  ========================= */
+
+  function renderWishlist(){
+
+    const wishlist =
+      getWishlist();
+
+
+    const grid =
+      document.getElementById(
+        "wishlistGrid"
+      );
+
+    const empty =
+      document.getElementById(
+        "emptyWishlist"
+      );
+
+    const top =
+      document.getElementById(
+        "wishlistTop"
+      );
+
+
+    document.getElementById(
+      "wishlistItemCount"
+    ).textContent =
+      wishlist.length;
+
+
+    if(wishlist.length === 0){
+
+      grid.innerHTML = "";
+
+      grid.style.display =
+        "none";
+
+      top.style.display =
+        "none";
+
+      empty.style.display =
+        "block";
+
+      updateCounts();
+
+      return;
+
+    }
+
+
+    grid.style.display =
+      "grid";
+
+    top.style.display =
+      "flex";
+
+    empty.style.display =
+      "none";
+
+
+    grid.innerHTML =
+      wishlist.map(
+        (item,index) => {
+
+          const slug =
+            item.slug ||
+            createSlug(item.name);
+
+
+          return `
+
+            <article
+              class="wishlist-card reveal"
+            >
+
+              <div class="wishlist-image">
+
+                <button
+                  type="button"
+                  class="heart-remove"
+                  onclick="removeFromWishlist(${index})"
+                  aria-label="Remove ${escapeHTML(item.name)} from wishlist"
+                >
+                  ♥
+                </button>
+
+
+                <a
+                  href="product.html?product=${encodeURIComponent(slug)}"
+                  aria-label="${escapeHTML(item.name)}"
+                >
+
+                  <img
+                    src="${escapeHTML(item.image)}"
+                    alt="${escapeHTML(item.name)}"
+                    loading="lazy"
+                  >
+
+                </a>
+
+              </div>
+
+
+              <div class="wishlist-info">
+
+                <div class="product-category">
+                  ${escapeHTML(item.category || "Shopora Product")}
+                </div>
+
+
+                <h2 class="product-name">
+                  ${escapeHTML(item.name)}
+                </h2>
+
+
+                <div class="product-price">
+                  ${formatPrice(item.price)}
+                </div>
+
+
+                <div class="product-actions">
+
+                  <button
+                    type="button"
+                    class="product-btn"
+                    onclick="addWishlistItemToCart(${index})"
+                  >
+                    Add To Cart
+                  </button>
+
+
+                  <a
+                    href="product.html?product=${encodeURIComponent(slug)}"
+                    class="product-btn secondary"
+                  >
+                    View Product
+                  </a>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          `;
+
+        }
+      ).join("");
+
+
+    /* Trigger reveal animation */
+
+    requestAnimationFrame(
+      () => {
+
+        grid
+          .querySelectorAll(".reveal")
+          .forEach(
+            element =>
+              element.classList.add("show")
+          );
+
+      }
+    );
+
+
+    updateCounts();
+
+  }
+
+
+  /* =========================
+     REMOVE ITEM
+  ========================= */
+
+  function removeFromWishlist(index){
+
+    const wishlist =
+      getWishlist();
+
+
+    if(!wishlist[index]){
+      return;
+    }
+
+
+    const name =
+      wishlist[index].name;
+
+
+    wishlist.splice(
+      index,
+      1
+    );
+
+
+    saveWishlist(
+      wishlist
+    );
+
+
+    renderWishlist();
+
+
+    showToast(
+      name +
+      " removed from wishlist"
+    );
+
+  }
+
+
+  /* =========================
+     CLEAR WISHLIST
+  ========================= */
+
+  function clearWishlist(){
+
+    const wishlist =
+      getWishlist();
+
+
+    if(wishlist.length === 0){
+      return;
+    }
+
+
+    const confirmed =
+      confirm(
+        "Are you sure you want to clear your wishlist?"
+      );
+
+
+    if(!confirmed){
+      return;
+    }
+
+
+    saveWishlist([]);
+
+
+    renderWishlist();
+
+
+    showToast(
+      "Wishlist cleared"
+    );
+
+  }
+
+
+  /* =========================
+     ADD TO CART
+  ========================= */
+
+  function addWishlistItemToCart(index){
+
+    const wishlist =
+      getWishlist();
+
+
+    if(!wishlist[index]){
+      return;
+    }
+
+
+    const item =
+      wishlist[index];
+
+
+    const cart =
+      getCart();
+
+
+    const existing =
+      cart.find(
+        cartItem =>
+          cartItem.name === item.name
+      );
+
+
+    if(existing){
+
+      existing.quantity =
+        Number(existing.quantity || 1) + 1;
+
+    }else{
+
+      cart.push({
+
+        name:item.name,
+
+        price:Number(item.price || 0),
+
+        image:item.image,
+
+        quantity:1
+
+      });
+
+    }
+
+
+    saveCart(
+      cart
+    );
+
+
+    showToast(
+      item.name +
+      " added to cart"
+    );
+
+
+    updateCounts();
+
+  }
+
+
+  /* =========================
+     COUNTS
+  ========================= */
+
+  function updateCounts(){
+
+    const wishlist =
+      getWishlist();
+
+    const cart =
+      getCart();
+
+
+    const cartCount =
+      cart.reduce(
+        (total,item) =>
+          total +
+          Number(item.quantity || 1),
+        0
+      );
+
+
+    document.getElementById(
+      "wishlistCount"
+    ).textContent =
+      wishlist.length;
+
+
+    document.getElementById(
+      "cartCount"
+    ).textContent =
+      cartCount;
+
+
+    document.getElementById(
+      "wishlistItemCount"
+    ).textContent =
+      wishlist.length;
+
+  }
+
+
+  /* =========================
+     SEARCH
+  ========================= */
+
+  function goToSearch(){
+
+    window.location.href =
+      "shop.html#productSearch";
+
+  }
+
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  function toggleMenu(){
+
+    document
+      .getElementById("navLinks")
+      .classList.toggle("open");
+
+  }
+
+
+  /* =========================
+     TOAST
+  ========================= */
+
+  let toastTimer;
+
+
+  function showToast(message){
+
+    const toast =
+      document.getElementById(
+        "toast"
+      );
+
+
+    toast.textContent =
+      message;
+
+
+    toast.classList.add(
+      "show"
+    );
+
+
+    clearTimeout(
+      toastTimer
+    );
+
+
+    toastTimer =
+      setTimeout(
+        () => {
+
+          toast.classList.remove(
+            "show"
+          );
+
+        },
+        2500
+      );
+
+  }
+
+
+  /* =========================
+     YEAR
+  ========================= */
+
+  document.getElementById(
+    "year"
+  ).textContent =
+    new Date().getFullYear();
+
+
+  /* =========================
+     STORAGE SYNC
+  ========================= */
+
+  window.addEventListener(
+    "storage",
+    () => {
+
+      renderWishlist();
+
+    }
+  );
+
+
+  window.addEventListener(
+    "pageshow",
+    () => {
+
+      renderWishlist();
+
+    }
+  );
+
+
+  /* =========================
+     START
+  ========================= */
+
+  renderWishlist();
+
+</script>
+
+</body>
+</html>
+```
