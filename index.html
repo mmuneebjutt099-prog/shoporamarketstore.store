@@ -17,6 +17,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap"
     rel="stylesheet"
@@ -93,6 +94,7 @@
   </script>
 
   <style>
+
     :root {
       --black: #111111;
       --dark: #171717;
@@ -525,6 +527,7 @@
       0%,100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-12px);
       }
@@ -756,6 +759,12 @@
       background: #e9e4db;
     }
 
+    .product-image a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
     .product-image img {
       width: 100%;
       height: 100%;
@@ -768,17 +777,27 @@
       transform: scale(1.06);
     }
 
-    .badge {
+    .badge,
+    .trending-badge {
       position: absolute;
       top: 15px;
       left: 15px;
-      background: var(--black);
-      color: #fff;
       border-radius: 50px;
       padding: 7px 11px;
       font-size: 10px;
-      font-weight: 800;
+      font-weight: 900;
       z-index: 2;
+    }
+
+    .badge {
+      background: var(--black);
+      color: #fff;
+    }
+
+    .trending-badge {
+      background: var(--gold);
+      color: #111;
+      letter-spacing: .5px;
     }
 
     .heart {
@@ -816,6 +835,11 @@
       font-size: 15px;
       font-weight: 800;
       margin-bottom: 8px;
+      transition: .2s ease;
+    }
+
+    .product-name:hover {
+      color: var(--gold-dark);
     }
 
     .rating {
@@ -859,6 +883,14 @@
       background: var(--gold);
       color: #111;
       outline: none;
+    }
+
+    .trending-home-cta {
+      margin-top: 35px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     /* ================= PROMO ================= */
@@ -1350,6 +1382,10 @@
         padding: 8px 10px;
       }
 
+      .trending-home-cta {
+        margin-top: 25px;
+      }
+
       .promo-box {
         padding: 35px 25px;
       }
@@ -1410,6 +1446,7 @@
         transform: none;
       }
     }
+
   </style>
 </head>
 
@@ -1417,14 +1454,22 @@
 
   <!-- ANNOUNCEMENT -->
   <div class="topbar">
-    Discover something better at <span>Shopora Market Store</span> — New finds are waiting.
+    Discover something better at
+    <span>Shopora Market Store</span>
+    — New finds are waiting.
   </div>
+
 
   <!-- HEADER -->
   <header>
+
     <div class="container nav">
 
-      <a href="index.html" class="brand" aria-label="Shopora Market Store home">
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="Shopora Market Store home"
+      >
         <img
           class="brand-logo"
           src="assets/shopora-logo.png"
@@ -1434,14 +1479,39 @@
         >
       </a>
 
-      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="categories.html">Categories</a>
-        <a href="trending.html">Trending</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+
+      <nav
+        class="nav-links"
+        id="navLinks"
+        aria-label="Main navigation"
+      >
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="shop.html">
+          Shop
+        </a>
+
+        <a href="categories.html">
+          Categories
+        </a>
+
+        <a href="trending.html">
+          Trending
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
       </nav>
+
 
       <div class="nav-actions">
 
@@ -1449,26 +1519,39 @@
           class="icon-btn"
           type="button"
           aria-label="Search products"
-          onclick="focusSearch()">
+          onclick="focusSearch()"
+        >
           🔍
         </button>
+
 
         <button
           class="icon-btn"
           type="button"
           aria-label="Wishlist"
-          onclick="openWishlist()">
+          onclick="openWishlist()"
+        >
           ♡
         </button>
+
 
         <button
           class="icon-btn"
           type="button"
           aria-label="Shopping cart"
-          onclick="openCart()">
+          onclick="openCart()"
+        >
           🛒
-          <span class="cart-count" id="cartCount">0</span>
+
+          <span
+            class="cart-count"
+            id="cartCount"
+          >
+            0
+          </span>
+
         </button>
+
 
         <button
           class="icon-btn menu-btn"
@@ -1476,18 +1559,24 @@
           type="button"
           aria-label="Open menu"
           aria-expanded="false"
-          onclick="toggleMenu()">
+          onclick="toggleMenu()"
+        >
           ☰
         </button>
 
       </div>
+
     </div>
+
   </header>
+
 
   <main>
 
-    <!-- HERO -->
+    <!-- ================= HERO ================= -->
+
     <section class="hero">
+
       <div class="container hero-grid">
 
         <div class="hero-copy reveal">
@@ -1503,19 +1592,26 @@
           </h1>
 
           <p class="hero-text">
-            Shop fashion, beauty, electronics, home & living, accessories
-            and everyday essentials — carefully brought together for a
-            shopping experience that feels simple, stylish and worth
-            coming back to.
+            Shop fashion, beauty, electronics, home & living,
+            accessories and everyday essentials — carefully brought
+            together for a shopping experience that feels simple,
+            stylish and worth coming back to.
           </p>
+
 
           <div class="hero-buttons">
 
-            <a href="shop.html" class="btn btn-dark">
+            <a
+              href="shop.html"
+              class="btn btn-dark"
+            >
               Shop Now →
             </a>
 
-            <a href="categories.html" class="btn btn-light">
+            <a
+              href="categories.html"
+              class="btn btn-light"
+            >
               Explore Categories
             </a>
 
@@ -1523,13 +1619,24 @@
 
         </div>
 
+
         <div class="hero-visual reveal">
 
-          <div class="orbit" aria-hidden="true"></div>
+          <div
+            class="orbit"
+            aria-hidden="true"
+          ></div>
 
-          <div class="hero-card" aria-label="Shopora featured collection">
+
+          <div
+            class="hero-card"
+            aria-label="Shopora featured collection"
+          >
+
             <div class="hero-product-image"></div>
+
           </div>
+
 
           <div class="floating-tag tag-one">
             ✦ Curated Finds
@@ -1542,20 +1649,39 @@
         </div>
 
       </div>
+
     </section>
 
-    <!-- SEARCH -->
-    <div class="search-section" id="searchArea">
+
+    <!-- ================= SEARCH ================= -->
+
+    <div
+      class="search-section"
+      id="searchArea"
+    >
 
       <div class="container">
 
-        <div class="search-box" role="search">
+        <div
+          class="search-box"
+          role="search"
+        >
 
-          <div class="search-icon" aria-hidden="true">⌕</div>
+          <div
+            class="search-icon"
+            aria-hidden="true"
+          >
+            ⌕
+          </div>
 
-          <label for="productSearch" class="sr-only">
+
+          <label
+            for="productSearch"
+            class="sr-only"
+          >
             Search Shopora products
           </label>
+
 
           <input
             type="search"
@@ -1565,33 +1691,51 @@
             aria-label="Search products"
           >
 
-          <button type="button" onclick="performSearch()">
+
+          <button
+            type="button"
+            onclick="performSearch()"
+          >
             Search
           </button>
 
         </div>
 
+
         <div
           class="search-results"
           id="searchResults"
-          aria-live="polite">
-        </div>
+          aria-live="polite"
+        ></div>
 
       </div>
 
     </div>
 
-    <!-- CATEGORIES -->
-    <section id="categories" class="categories">
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section
+      id="categories"
+      class="categories"
+    >
 
       <div class="container">
 
         <div class="section-head reveal">
 
           <div>
-            <div class="section-label">Shop by category</div>
-            <h2 class="section-title">Find your next favorite.</h2>
+
+            <div class="section-label">
+              Shop by category
+            </div>
+
+            <h2 class="section-title">
+              Find your next favorite.
+            </h2>
+
           </div>
+
 
           <p class="section-description">
             Explore fashion, beauty, electronics, home & living,
@@ -1601,42 +1745,132 @@
 
         </div>
 
+
         <div class="category-grid">
 
-          <a href="shop.html?category=Fashion" class="category-card reveal">
-            <span class="category-icon" aria-hidden="true">✦</span>
-            <h3>Fashion</h3>
-            <span>Explore collection →</span>
+          <a
+            href="shop.html?category=Fashion"
+            class="category-card reveal"
+          >
+            <span
+              class="category-icon"
+              aria-hidden="true"
+            >
+              ✦
+            </span>
+
+            <h3>
+              Fashion
+            </h3>
+
+            <span>
+              Explore collection →
+            </span>
           </a>
 
-          <a href="shop.html?category=Beauty" class="category-card reveal">
-            <span class="category-icon" aria-hidden="true">✧</span>
-            <h3>Beauty</h3>
-            <span>Explore collection →</span>
+
+          <a
+            href="shop.html?category=Beauty"
+            class="category-card reveal"
+          >
+            <span
+              class="category-icon"
+              aria-hidden="true"
+            >
+              ✧
+            </span>
+
+            <h3>
+              Beauty
+            </h3>
+
+            <span>
+              Explore collection →
+            </span>
           </a>
 
-          <a href="shop.html?category=Electronics" class="category-card reveal">
-            <span class="category-icon" aria-hidden="true">⌁</span>
-            <h3>Electronics</h3>
-            <span>Explore collection →</span>
+
+          <a
+            href="shop.html?category=Electronics"
+            class="category-card reveal"
+          >
+            <span
+              class="category-icon"
+              aria-hidden="true"
+            >
+              ⌁
+            </span>
+
+            <h3>
+              Electronics
+            </h3>
+
+            <span>
+              Explore collection →
+            </span>
           </a>
 
-          <a href="shop.html?category=Home%20%26%20Living" class="category-card reveal">
-            <span class="category-icon" aria-hidden="true">⌂</span>
-            <h3>Home &amp; Living</h3>
-            <span>Explore collection →</span>
+
+          <a
+            href="shop.html?category=Home%20%26%20Living"
+            class="category-card reveal"
+          >
+            <span
+              class="category-icon"
+              aria-hidden="true"
+            >
+              ⌂
+            </span>
+
+            <h3>
+              Home &amp; Living
+            </h3>
+
+            <span>
+              Explore collection →
+            </span>
           </a>
 
-          <a href="shop.html?category=Accessories" class="category-card reveal">
-            <span class="category-icon" aria-hidden="true">◇</span>
-            <h3>Accessories</h3>
-            <span>Explore collection →</span>
+
+          <a
+            href="shop.html?category=Accessories"
+            class="category-card reveal"
+          >
+            <span
+              class="category-icon"
+              aria-hidden="true"
+            >
+              ◇
+            </span>
+
+            <h3>
+              Accessories
+            </h3>
+
+            <span>
+              Explore collection →
+            </span>
           </a>
 
-          <a href="shop.html?category=Lifestyle" class="category-card reveal">
-            <span class="category-icon" aria-hidden="true">◌</span>
-            <h3>Lifestyle</h3>
-            <span>Explore collection →</span>
+
+          <a
+            href="shop.html?category=Lifestyle"
+            class="category-card reveal"
+          >
+            <span
+              class="category-icon"
+              aria-hidden="true"
+            >
+              ◌
+            </span>
+
+            <h3>
+              Lifestyle
+            </h3>
+
+            <span>
+              Explore collection →
+            </span>
           </a>
 
         </div>
@@ -1645,34 +1879,54 @@
 
     </section>
 
-    <!-- FEATURED PRODUCTS -->
-    <section id="featured" class="products-section">
+
+    <!-- ================= FEATURED / TRENDING PRODUCTS ================= -->
+
+    <section
+      id="featured"
+      class="products-section"
+    >
 
       <div class="container">
 
         <div class="section-head reveal">
 
           <div>
-            <div class="section-label">Featured selection</div>
-            <h2 class="section-title">Trending right now.</h2>
+
+            <div class="section-label">
+              Featured selection
+            </div>
+
+            <h2 class="section-title">
+              Trending right now.
+            </h2>
+
           </div>
 
-          <a href="trending.html" class="text-link">
-            View trending products →
+
+          <a
+            href="trending.html"
+            class="text-link"
+          >
+            View all trending →
           </a>
 
         </div>
 
+
         <div class="product-grid">
 
+
           <!-- PRODUCT 1 -->
+
           <article class="product-card reveal">
 
             <div class="product-image">
 
               <a
                 href="product.html?product=everyday-premium-essential"
-                aria-label="View Everyday Premium Essential">
+                aria-label="View Everyday Premium Essential"
+              >
 
                 <img
                   src="assets/products/black-shirt.svg"
@@ -1684,43 +1938,71 @@
 
               </a>
 
-              <span class="badge">TRENDING</span>
+
+              <span class="trending-badge">
+                TRENDING
+              </span>
+
 
               <button
                 class="heart"
                 type="button"
                 aria-label="Add Everyday Premium Essential to wishlist"
-                onclick="toggleWishlist(this,'Everyday Premium Essential',2499)">
+                onclick="toggleWishlist(this,'Everyday Premium Essential',2499)"
+              >
                 ♡
               </button>
 
             </div>
 
+
             <div class="product-info">
 
-              <div class="product-category">Lifestyle</div>
+              <div class="product-category">
+                Lifestyle
+              </div>
 
-              <a href="product.html?product=everyday-premium-essential">
+
+              <a
+                href="product.html?product=everyday-premium-essential"
+              >
+
                 <h3 class="product-name">
                   Everyday Premium Essential
                 </h3>
+
               </a>
 
-              <div class="rating" aria-label="Rated 4.9 out of 5">
-                ★★★★★ <span style="color:#999">(4.9)</span>
+
+              <div
+                class="rating"
+                aria-label="Rated 4.9 out of 5"
+              >
+                ★★★★★
+                <span style="color:#999">
+                  (4.9)
+                </span>
               </div>
+
 
               <div class="product-bottom">
 
                 <div class="price">
+
                   Rs. 2,499
-                  <span class="old-price">Rs. 3,299</span>
+
+                  <span class="old-price">
+                    Rs. 3,299
+                  </span>
+
                 </div>
+
 
                 <button
                   class="add-btn"
                   type="button"
-                  onclick="addToCart('Everyday Premium Essential',2499)">
+                  onclick="addToCart('Everyday Premium Essential',2499)"
+                >
                   + Cart
                 </button>
 
@@ -1730,14 +2012,17 @@
 
           </article>
 
+
           <!-- PRODUCT 2 -->
+
           <article class="product-card reveal">
 
             <div class="product-image">
 
               <a
                 href="product.html?product=modern-everyday-collection"
-                aria-label="View Modern Everyday Collection">
+                aria-label="View Modern Everyday Collection"
+              >
 
                 <img
                   src="assets/products/coord-set.svg"
@@ -1749,43 +2034,71 @@
 
               </a>
 
-              <span class="badge">NEW</span>
+
+              <span class="trending-badge">
+                NEW
+              </span>
+
 
               <button
                 class="heart"
                 type="button"
                 aria-label="Add Modern Everyday Collection to wishlist"
-                onclick="toggleWishlist(this,'Modern Everyday Collection',3499)">
+                onclick="toggleWishlist(this,'Modern Everyday Collection',3499)"
+              >
                 ♡
               </button>
 
             </div>
 
+
             <div class="product-info">
 
-              <div class="product-category">Fashion</div>
+              <div class="product-category">
+                Fashion
+              </div>
 
-              <a href="product.html?product=modern-everyday-collection">
+
+              <a
+                href="product.html?product=modern-everyday-collection"
+              >
+
                 <h3 class="product-name">
                   Modern Everyday Collection
                 </h3>
+
               </a>
 
-              <div class="rating" aria-label="Rated 4.8 out of 5">
-                ★★★★★ <span style="color:#999">(4.8)</span>
+
+              <div
+                class="rating"
+                aria-label="Rated 4.8 out of 5"
+              >
+                ★★★★★
+                <span style="color:#999">
+                  (4.8)
+                </span>
               </div>
+
 
               <div class="product-bottom">
 
                 <div class="price">
+
                   Rs. 3,499
-                  <span class="old-price">Rs. 4,299</span>
+
+                  <span class="old-price">
+                    Rs. 4,299
+                  </span>
+
                 </div>
+
 
                 <button
                   class="add-btn"
                   type="button"
-                  onclick="addToCart('Modern Everyday Collection',3499)">
+                  onclick="addToCart('Modern Everyday Collection',3499)"
+                >
                   + Cart
                 </button>
 
@@ -1795,14 +2108,17 @@
 
           </article>
 
+
           <!-- PRODUCT 3 -->
+
           <article class="product-card reveal">
 
             <div class="product-image">
 
               <a
                 href="product.html?product=smart-everyday-device"
-                aria-label="View Smart Everyday Device">
+                aria-label="View Smart Everyday Device"
+              >
 
                 <img
                   src="assets/products/wireless-buds.svg"
@@ -1814,43 +2130,71 @@
 
               </a>
 
-              <span class="badge">POPULAR</span>
+
+              <span class="trending-badge">
+                POPULAR
+              </span>
+
 
               <button
                 class="heart"
                 type="button"
                 aria-label="Add Smart Everyday Device to wishlist"
-                onclick="toggleWishlist(this,'Smart Everyday Device',4999)">
+                onclick="toggleWishlist(this,'Smart Everyday Device',4999)"
+              >
                 ♡
               </button>
 
             </div>
 
+
             <div class="product-info">
 
-              <div class="product-category">Electronics</div>
+              <div class="product-category">
+                Electronics
+              </div>
 
-              <a href="product.html?product=smart-everyday-device">
+
+              <a
+                href="product.html?product=smart-everyday-device"
+              >
+
                 <h3 class="product-name">
                   Smart Everyday Device
                 </h3>
+
               </a>
 
-              <div class="rating" aria-label="Rated 4.7 out of 5">
-                ★★★★★ <span style="color:#999">(4.7)</span>
+
+              <div
+                class="rating"
+                aria-label="Rated 4.7 out of 5"
+              >
+                ★★★★★
+                <span style="color:#999">
+                  (4.7)
+                </span>
               </div>
+
 
               <div class="product-bottom">
 
                 <div class="price">
+
                   Rs. 4,999
-                  <span class="old-price">Rs. 5,999</span>
+
+                  <span class="old-price">
+                    Rs. 5,999
+                  </span>
+
                 </div>
+
 
                 <button
                   class="add-btn"
                   type="button"
-                  onclick="addToCart('Smart Everyday Device',4999)">
+                  onclick="addToCart('Smart Everyday Device',4999)"
+                >
                   + Cart
                 </button>
 
@@ -1860,14 +2204,17 @@
 
           </article>
 
+
           <!-- PRODUCT 4 -->
+
           <article class="product-card reveal">
 
             <div class="product-image">
 
               <a
                 href="product.html?product=minimal-signature-accessory"
-                aria-label="View Minimal Signature Accessory">
+                aria-label="View Minimal Signature Accessory"
+              >
 
                 <img
                   src="assets/products/watch.svg"
@@ -1879,43 +2226,71 @@
 
               </a>
 
-              <span class="badge">SALE</span>
+
+              <span class="trending-badge">
+                SALE
+              </span>
+
 
               <button
                 class="heart"
                 type="button"
                 aria-label="Add Minimal Signature Accessory to wishlist"
-                onclick="toggleWishlist(this,'Minimal Signature Accessory',1899)">
+                onclick="toggleWishlist(this,'Minimal Signature Accessory',1899)"
+              >
                 ♡
               </button>
 
             </div>
 
+
             <div class="product-info">
 
-              <div class="product-category">Accessories</div>
+              <div class="product-category">
+                Accessories
+              </div>
 
-              <a href="product.html?product=minimal-signature-accessory">
+
+              <a
+                href="product.html?product=minimal-signature-accessory"
+              >
+
                 <h3 class="product-name">
                   Minimal Signature Accessory
                 </h3>
+
               </a>
 
-              <div class="rating" aria-label="Rated 4.9 out of 5">
-                ★★★★★ <span style="color:#999">(4.9)</span>
+
+              <div
+                class="rating"
+                aria-label="Rated 4.9 out of 5"
+              >
+                ★★★★★
+                <span style="color:#999">
+                  (4.9)
+                </span>
               </div>
+
 
               <div class="product-bottom">
 
                 <div class="price">
+
                   Rs. 1,899
-                  <span class="old-price">Rs. 2,499</span>
+
+                  <span class="old-price">
+                    Rs. 2,499
+                  </span>
+
                 </div>
+
 
                 <button
                   class="add-btn"
                   type="button"
-                  onclick="addToCart('Minimal Signature Accessory',1899)">
+                  onclick="addToCart('Minimal Signature Accessory',1899)"
+                >
                   + Cart
                 </button>
 
@@ -1927,10 +2302,24 @@
 
         </div>
 
-        <div style="text-align:center;margin-top:35px;">
 
-          <a href="shop.html" class="btn btn-dark">
-            Browse All Products →
+        <!-- TRENDING / SHOP CONNECTION -->
+
+        <div class="trending-home-cta">
+
+          <a
+            href="trending.html"
+            class="btn btn-dark"
+          >
+            Explore All Trending Products →
+          </a>
+
+
+          <a
+            href="shop.html"
+            class="btn btn-light"
+          >
+            Browse Full Shop
           </a>
 
         </div>
@@ -1939,7 +2328,9 @@
 
     </section>
 
-    <!-- PROMOTION -->
+
+    <!-- ================= PROMOTION ================= -->
+
     <section class="promo">
 
       <div class="container">
@@ -1963,7 +2354,10 @@
               arriving at Shopora.
             </p>
 
-            <a href="shop.html" class="btn btn-light">
+            <a
+              href="shop.html"
+              class="btn btn-light"
+            >
               Explore the Store →
             </a>
 
@@ -1975,7 +2369,9 @@
 
     </section>
 
-    <!-- WHY SHOPORA -->
+
+    <!-- ================= WHY SHOPORA ================= -->
+
     <section>
 
       <div class="container">
@@ -1983,48 +2379,91 @@
         <div class="section-head reveal">
 
           <div>
-            <div class="section-label">The Shopora difference</div>
-            <h2 class="section-title">Shopping, made better.</h2>
+
+            <div class="section-label">
+              The Shopora difference
+            </div>
+
+            <h2 class="section-title">
+              Shopping, made better.
+            </h2>
+
           </div>
 
         </div>
 
+
         <div class="why-grid">
 
           <div class="why-card reveal">
-            <div class="why-number">01 —</div>
-            <h3>Curated Products</h3>
+
+            <div class="why-number">
+              01 —
+            </div>
+
+            <h3>
+              Curated Products
+            </h3>
+
             <p>
               Discover useful, interesting and desirable products without
               having to search through endless noise.
             </p>
+
           </div>
 
+
           <div class="why-card reveal">
-            <div class="why-number">02 —</div>
-            <h3>Great Value</h3>
+
+            <div class="why-number">
+              02 —
+            </div>
+
+            <h3>
+              Great Value
+            </h3>
+
             <p>
               Explore attractive products at prices designed to give you
               more value from every purchase.
             </p>
+
           </div>
 
+
           <div class="why-card reveal">
-            <div class="why-number">03 —</div>
-            <h3>Simple Shopping</h3>
+
+            <div class="why-number">
+              03 —
+            </div>
+
+            <h3>
+              Simple Shopping
+            </h3>
+
             <p>
               Search, discover, add products to your cart and continue to
               checkout without unnecessary steps.
             </p>
+
           </div>
 
+
           <div class="why-card reveal">
-            <div class="why-number">04 —</div>
-            <h3>Customer First</h3>
+
+            <div class="why-number">
+              04 —
+            </div>
+
+            <h3>
+              Customer First
+            </h3>
+
             <p>
               Clear information, easy contact and a shopping experience
               built around customer convenience.
             </p>
+
           </div>
 
         </div>
@@ -2033,7 +2472,9 @@
 
     </section>
 
-    <!-- ABOUT -->
+
+    <!-- ================= ABOUT ================= -->
+
     <section class="about">
 
       <div class="container about-grid">
@@ -2041,8 +2482,9 @@
         <div
           class="about-visual reveal"
           role="img"
-          aria-label="Shopora Market Store brand visual">
-        </div>
+          aria-label="Shopora Market Store brand visual"
+        ></div>
+
 
         <div class="about-copy reveal">
 
@@ -2062,12 +2504,15 @@
           </p>
 
           <p>
-            From everyday essentials to products worth discovering, we're
-            creating a modern online shopping destination where quality,
-            value and convenience come together.
+            From everyday essentials to products worth discovering,
+            we're creating a modern online shopping destination where
+            quality, value and convenience come together.
           </p>
 
-          <a href="about.html" class="btn btn-dark">
+          <a
+            href="about.html"
+            class="btn btn-dark"
+          >
             Discover Our Story →
           </a>
 
@@ -2077,7 +2522,9 @@
 
     </section>
 
-    <!-- NEWSLETTER -->
+
+    <!-- ================= NEWSLETTER ================= -->
+
     <section class="newsletter">
 
       <div class="container">
@@ -2095,11 +2542,19 @@
           interesting finds.
         </p>
 
-        <form class="newsletter-form" onsubmit="subscribe(event)">
 
-          <label for="newsletterEmail" class="sr-only">
+        <form
+          class="newsletter-form"
+          onsubmit="subscribe(event)"
+        >
+
+          <label
+            for="newsletterEmail"
+            class="sr-only"
+          >
             Email address
           </label>
+
 
           <input
             type="email"
@@ -2108,6 +2563,7 @@
             autocomplete="email"
             required
           >
+
 
           <button type="submit">
             Subscribe
@@ -2121,16 +2577,24 @@
 
   </main>
 
-  <!-- FOOTER -->
+
+  <!-- ================= FOOTER ================= -->
+
   <footer>
 
     <div class="container">
 
       <div class="footer-grid">
 
+
         <div class="footer-brand">
 
-          <a href="index.html" class="brand" aria-label="Shopora Market Store home">
+          <a
+            href="index.html"
+            class="brand"
+            aria-label="Shopora Market Store home"
+          >
+
             <img
               class="brand-logo"
               src="assets/shopora-logo.png"
@@ -2138,7 +2602,9 @@
               width="205"
               height="55"
             >
+
           </a>
+
 
           <p>
             Discover something better. Shopora brings together fashion,
@@ -2148,66 +2614,122 @@
 
         </div>
 
+
         <div>
 
-          <div class="footer-title">Shop</div>
+          <div class="footer-title">
+            Shop
+          </div>
+
 
           <div class="footer-links">
-            <a href="shop.html">All Products</a>
-            <a href="categories.html">Categories</a>
-            <a href="trending.html">Trending</a>
-            <a href="cart.html">Cart</a>
+
+            <a href="shop.html">
+              All Products
+            </a>
+
+            <a href="categories.html">
+              Categories
+            </a>
+
+            <a href="trending.html">
+              Trending
+            </a>
+
+            <a href="cart.html">
+              Cart
+            </a>
+
           </div>
 
         </div>
 
+
         <div>
 
-          <div class="footer-title">Company</div>
+          <div class="footer-title">
+            Company
+          </div>
+
 
           <div class="footer-links">
-            <a href="about.html">About Shopora</a>
-            <a href="contact.html">Contact</a>
-            <a href="contact.html">Support</a>
+
+            <a href="about.html">
+              About Shopora
+            </a>
+
+            <a href="contact.html">
+              Contact
+            </a>
+
+            <a href="contact.html">
+              Support
+            </a>
+
           </div>
 
         </div>
 
+
         <div>
 
-          <div class="footer-title">Contact</div>
+          <div class="footer-title">
+            Contact
+          </div>
+
 
           <div class="contact-line">
-            📧 Email: hello@shoporamarketstore.store
+            📧 Email:
+            hello@shoporamarketstore.store
           </div>
 
           <div class="contact-line">
-            📞 Phone: +92 XXX XXXXXXX
+            📞 Phone:
+            +92 XXX XXXXXXX
           </div>
 
           <div class="contact-line">
-            💬 WhatsApp: Available
+            💬 WhatsApp:
+            Available
           </div>
 
         </div>
 
       </div>
 
+
       <div class="footer-bottom">
 
         <div>
-          © 2026 Shopora Market Store. All rights reserved.
+          © 2026 Shopora Market Store.
+          All rights reserved.
         </div>
+
 
         <div
           class="footer-links"
-          style="display:flex;gap:18px;flex-wrap:wrap;">
+          style="display:flex;gap:18px;flex-wrap:wrap;"
+        >
 
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms-of-service.html">Terms &amp; Conditions</a>
-          <a href="cookie-policy.html">Cookie Policy</a>
-          <a href="return-refund.html">Return &amp; Refund</a>
-          <a href="contact.html">Contact</a>
+          <a href="privacy-policy.html">
+            Privacy Policy
+          </a>
+
+          <a href="terms-of-service.html">
+            Terms &amp; Conditions
+          </a>
+
+          <a href="cookie-policy.html">
+            Cookie Policy
+          </a>
+
+          <a href="return-refund.html">
+            Return &amp; Refund
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
 
         </div>
 
@@ -2217,25 +2739,42 @@
 
   </footer>
 
+
   <!-- TOAST -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
 
   <script>
+
     /* =========================================================
        SHOPORA MARKET STORE — HOMEPAGE
        ========================================================= */
+
+
+    /* ================= CART ================= */
 
     let cart = JSON.parse(
       localStorage.getItem("shoporaCart") || "[]"
     );
 
+
+    /* ================= WISHLIST ================= */
+
     let wishlist = JSON.parse(
       localStorage.getItem("shoporaWishlist") || "[]"
     );
 
+
     /* ================= PRODUCT DATABASE ================= */
 
     const products = [
+
       {
         name: "Everyday Premium Essential",
         category: "Lifestyle",
@@ -2243,6 +2782,7 @@
         image: "assets/products/black-shirt.svg",
         slug: "everyday-premium-essential"
       },
+
       {
         name: "Modern Everyday Collection",
         category: "Fashion",
@@ -2250,6 +2790,7 @@
         image: "assets/products/coord-set.svg",
         slug: "modern-everyday-collection"
       },
+
       {
         name: "Smart Everyday Device",
         category: "Electronics",
@@ -2257,6 +2798,7 @@
         image: "assets/products/wireless-buds.svg",
         slug: "smart-everyday-device"
       },
+
       {
         name: "Minimal Signature Accessory",
         category: "Accessories",
@@ -2264,6 +2806,7 @@
         image: "assets/products/watch.svg",
         slug: "minimal-signature-accessory"
       },
+
       {
         name: "Daily Beauty Essential",
         category: "Beauty",
@@ -2271,6 +2814,7 @@
         image: "assets/products/beauty-set.svg",
         slug: "daily-beauty-essential"
       },
+
       {
         name: "Modern Home Essential",
         category: "Home & Living",
@@ -2278,6 +2822,7 @@
         image: "assets/products/lamp.svg",
         slug: "modern-home-essential"
       },
+
       {
         name: "Everyday Lifestyle Pick",
         category: "Lifestyle",
@@ -2285,6 +2830,7 @@
         image: "assets/products/bottle.svg",
         slug: "everyday-lifestyle-pick"
       },
+
       {
         name: "Classic Wardrobe Essential",
         category: "Fashion",
@@ -2292,6 +2838,7 @@
         image: "assets/products/trousers.svg",
         slug: "classic-wardrobe-essential"
       },
+
       {
         name: "Signature Beauty Set",
         category: "Beauty",
@@ -2299,6 +2846,7 @@
         image: "assets/products/self-care.svg",
         slug: "signature-beauty-set"
       },
+
       {
         name: "Connected Smart Essential",
         category: "Electronics",
@@ -2306,6 +2854,7 @@
         image: "assets/products/smartwatch.svg",
         slug: "connected-smart-essential"
       },
+
       {
         name: "Everyday Carry Accessory",
         category: "Accessories",
@@ -2313,6 +2862,7 @@
         image: "assets/products/bag.svg",
         slug: "everyday-carry-accessory"
       },
+
       {
         name: "Elevated Living Essential",
         category: "Home & Living",
@@ -2320,30 +2870,40 @@
         image: "assets/products/ceramic-set.svg",
         slug: "elevated-living-essential"
       }
+
     ];
 
-    /* ================= CART ================= */
+
+    /* ================= CART COUNT ================= */
 
     function updateCartCount() {
 
       const count = cart.reduce(
-        (total, item) => total + Number(item.quantity || 0),
+        (total, item) =>
+          total + Number(item.quantity || 0),
         0
       );
+
 
       const cartCount =
         document.getElementById("cartCount");
 
+
       if (cartCount) {
         cartCount.textContent = count;
       }
+
     }
+
+
+    /* ================= ADD TO CART ================= */
 
     function addToCart(name, price) {
 
       const existing = cart.find(
         item => item.name === name
       );
+
 
       if (existing) {
 
@@ -2359,17 +2919,24 @@
 
       }
 
+
       localStorage.setItem(
         "shoporaCart",
         JSON.stringify(cart)
       );
 
+
       updateCartCount();
+
 
       showToast(
         "✓ " + name + " added to your cart"
       );
+
     }
+
+
+    /* ================= OPEN CART ================= */
 
     function openCart() {
 
@@ -2382,27 +2949,47 @@
         return;
       }
 
-      window.location.href = "cart.html";
+
+      window.location.href =
+        "cart.html";
+
     }
+
 
     /* ================= WISHLIST ================= */
 
-    function toggleWishlist(button, name, price) {
+    function toggleWishlist(
+      button,
+      name,
+      price
+    ) {
 
       const existingIndex =
         wishlist.findIndex(
           item => item.name === name
         );
 
+
       if (existingIndex !== -1) {
 
-        wishlist.splice(existingIndex, 1);
+        wishlist.splice(
+          existingIndex,
+          1
+        );
 
-        button.classList.remove("active");
-        button.textContent = "♡";
+
+        button.classList.remove(
+          "active"
+        );
+
+
+        button.textContent =
+          "♡";
+
 
         showToast(
-          name + " removed from wishlist"
+          name +
+          " removed from wishlist"
         );
 
       } else {
@@ -2412,19 +2999,34 @@
           price: Number(price)
         });
 
-        button.classList.add("active");
-        button.textContent = "♥";
+
+        button.classList.add(
+          "active"
+        );
+
+
+        button.textContent =
+          "♥";
+
 
         showToast(
-          "♡ " + name + " added to wishlist"
+          "♡ " +
+          name +
+          " added to wishlist"
         );
+
       }
+
 
       localStorage.setItem(
         "shoporaWishlist",
         JSON.stringify(wishlist)
       );
+
     }
+
+
+    /* ================= OPEN WISHLIST ================= */
 
     function openWishlist() {
 
@@ -2437,72 +3039,111 @@
         return;
       }
 
-      /*
-        The wishlist is stored locally for now.
-        A dedicated wishlist.html page can use
-        shoporaWishlist from localStorage.
-      */
 
       showToast(
         "You have " +
         wishlist.length +
         " item(s) in your wishlist."
       );
+
     }
+
 
     /* ================= SEARCH ================= */
 
     function focusSearch() {
 
       const search =
-        document.getElementById("productSearch");
+        document.getElementById(
+          "productSearch"
+        );
+
 
       const searchArea =
-        document.getElementById("searchArea");
+        document.getElementById(
+          "searchArea"
+        );
 
-      if (!search || !searchArea) return;
+
+      if (!search || !searchArea) {
+        return;
+      }
+
 
       searchArea.scrollIntoView({
         behavior: "smooth",
         block: "center"
       });
 
+
       setTimeout(() => {
+
         search.focus();
+
       }, 450);
+
     }
+
 
     function performSearch() {
 
       const input =
-        document.getElementById("productSearch");
+        document.getElementById(
+          "productSearch"
+        );
+
 
       const results =
-        document.getElementById("searchResults");
+        document.getElementById(
+          "searchResults"
+        );
 
-      if (!input || !results) return;
 
-      const query =
-        input.value.trim().toLowerCase();
-
-      if (!query) {
-
-        results.style.display = "none";
+      if (!input || !results) {
         return;
       }
 
+
+      const query =
+        input.value
+          .trim()
+          .toLowerCase();
+
+
+      if (!query) {
+
+        results.style.display =
+          "none";
+
+        return;
+      }
+
+
       const matches =
         products.filter(product =>
-          product.name.toLowerCase().includes(query) ||
-          product.category.toLowerCase().includes(query)
+
+          product.name
+            .toLowerCase()
+            .includes(query)
+
+          ||
+
+          product.category
+            .toLowerCase()
+            .includes(query)
+
         );
 
+
       results.innerHTML = "";
+
 
       if (matches.length === 0) {
 
         results.innerHTML = `
+
           <div class="search-result-item">
+
             <span>
               No products found for
               "${escapeHtml(input.value)}"
@@ -2511,7 +3152,9 @@
             <strong>
               Try again
             </strong>
+
           </div>
+
         `;
 
       } else {
@@ -2521,11 +3164,15 @@
           const item =
             document.createElement("div");
 
+
           item.className =
             "search-result-item";
 
+
           item.innerHTML = `
+
             <span>
+
               <strong>
                 ${escapeHtml(product.name)}
               </strong>
@@ -2535,38 +3182,74 @@
               <small style="color:#888">
                 ${escapeHtml(product.category)}
               </small>
+
             </span>
+
 
             <strong>
               Rs. ${product.price.toLocaleString()}
             </strong>
+
           `;
+
 
           item.onclick = () => {
 
             window.location.href =
-              "shop.html?search=" +
-              encodeURIComponent(product.name);
+              "product.html?product=" +
+              encodeURIComponent(
+                product.slug
+              );
 
           };
+
 
           results.appendChild(item);
 
         });
+
       }
 
-      results.style.display = "block";
+
+      results.style.display =
+        "block";
+
     }
+
+
+    /* ================= ESCAPE HTML ================= */
 
     function escapeHtml(value) {
 
       return String(value)
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
+
+        .replaceAll(
+          "&",
+          "&amp;"
+        )
+
+        .replaceAll(
+          "<",
+          "&lt;"
+        )
+
+        .replaceAll(
+          ">",
+          "&gt;"
+        )
+
+        .replaceAll(
+          '"',
+          "&quot;"
+        )
+
+        .replaceAll(
+          "'",
+          "&#039;"
+        );
+
     }
+
 
     /* ================= NEWSLETTER ================= */
 
@@ -2574,47 +3257,70 @@
 
       event.preventDefault();
 
+
       const input =
         document.getElementById(
           "newsletterEmail"
         );
 
-      if (!input) return;
+
+      if (!input) {
+        return;
+      }
+
 
       const email =
         input.value.trim();
 
-      if (!email) return;
+
+      if (!email) {
+        return;
+      }
+
 
       showToast(
         "✓ Thanks for joining Shopora!"
       );
 
+
       input.value = "";
+
     }
+
 
     /* ================= MOBILE MENU ================= */
 
     function toggleMenu() {
 
       const nav =
-        document.getElementById("navLinks");
+        document.getElementById(
+          "navLinks"
+        );
+
 
       const button =
-        document.getElementById("menuButton");
+        document.getElementById(
+          "menuButton"
+        );
+
 
       const isOpen =
-        nav.classList.toggle("mobile-open");
+        nav.classList.toggle(
+          "mobile-open"
+        );
+
 
       document.body.classList.toggle(
         "menu-open",
         isOpen
       );
 
+
       button.setAttribute(
         "aria-expanded",
         String(isOpen)
       );
+
 
       button.setAttribute(
         "aria-label",
@@ -2623,9 +3329,14 @@
           : "Open menu"
       );
 
+
       button.textContent =
-        isOpen ? "×" : "☰";
+        isOpen
+          ? "×"
+          : "☰";
+
     }
+
 
     /* ================= CLOSE MOBILE MENU ================= */
 
@@ -2642,10 +3353,12 @@
                 "navLinks"
               );
 
+
             const button =
               document.getElementById(
                 "menuButton"
               );
+
 
             if (
               nav.classList.contains(
@@ -2657,21 +3370,27 @@
                 "mobile-open"
               );
 
+
               document.body.classList.remove(
                 "menu-open"
               );
+
 
               button.setAttribute(
                 "aria-expanded",
                 "false"
               );
 
+
               button.setAttribute(
                 "aria-label",
                 "Open menu"
               );
 
-              button.textContent = "☰";
+
+              button.textContent =
+                "☰";
+
             }
 
           }
@@ -2679,12 +3398,14 @@
 
       });
 
+
     /* ================= ENTER SEARCH ================= */
 
     const searchInput =
       document.getElementById(
         "productSearch"
       );
+
 
     if (searchInput) {
 
@@ -2697,11 +3418,14 @@
             event.preventDefault();
 
             performSearch();
+
           }
 
         }
       );
+
     }
+
 
     /* ================= CLOSE SEARCH ================= */
 
@@ -2714,10 +3438,12 @@
             "searchArea"
           );
 
+
         const results =
           document.getElementById(
             "searchResults"
           );
+
 
         if (
           results &&
@@ -2729,10 +3455,12 @@
 
           results.style.display =
             "none";
+
         }
 
       }
     );
+
 
     /* ================= REVEAL ANIMATION ================= */
 
@@ -2740,6 +3468,7 @@
       document.querySelectorAll(
         ".reveal"
       );
+
 
     if (
       "IntersectionObserver"
@@ -2761,9 +3490,11 @@
                     "visible"
                   );
 
+
                   observer.unobserve(
                     entry.target
                   );
+
                 }
 
               }
@@ -2775,9 +3506,14 @@
           }
         );
 
+
       revealElements.forEach(
         element => {
-          observer.observe(element);
+
+          observer.observe(
+            element
+          );
+
         }
       );
 
@@ -2785,12 +3521,16 @@
 
       revealElements.forEach(
         element => {
+
           element.classList.add(
             "visible"
           );
+
         }
       );
+
     }
+
 
     /* ================= TOAST ================= */
 
@@ -2801,18 +3541,25 @@
           "toast"
         );
 
-      if (!toast) return;
+
+      if (!toast) {
+        return;
+      }
+
 
       toast.textContent =
         message;
+
 
       toast.classList.add(
         "show"
       );
 
+
       clearTimeout(
         window.shoporaToastTimer
       );
+
 
       window.shoporaToastTimer =
         setTimeout(() => {
@@ -2822,7 +3569,9 @@
           );
 
         }, 2600);
+
     }
+
 
     /* ================= INITIALIZE ================= */
 
