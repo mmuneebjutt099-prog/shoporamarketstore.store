@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Shop by Category | Shopora Market Store</title>
+
+  <meta name="description" content="Explore Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle categories at Shopora Market Store.">
+  <meta name="keywords" content="Shopora Market Store, fashion, beauty, electronics, home living, accessories, lifestyle, online shopping">
+  <meta name="author" content="Shopora Market Store">
+
+  <link rel="canonical" href="https://shoporamarketstore.store/categories.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shop by Category | Shopora Market Store">
+  <meta property="og:description" content="Explore all Shopora Market Store categories and discover products curated for everyday living.">
+  <meta property="og:url" content="https://shoporamarketstore.store/categories.html">
+  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+  <meta property="og:site_name" content="Shopora Market Store">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shop by Category | Shopora Market Store">
+  <meta name="twitter:description" content="Explore Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle at Shopora Market Store.">
+  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
+  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --black: #111111;
+      --ivory: #F7F4EE;
+      --gold: #C6A06A;
+      --white: #ffffff;
+      --muted: #77736d;
+      --border: rgba(17, 17, 17, 0.10);
+      --shadow: 0 18px 50px rgba(17, 17, 17, 0.08);
+      --radius: 22px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--black);
+      background: var(--ivory);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(247, 244, 238, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo {
+      width: 180px;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      margin-left: auto;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #3f3d39;
+      position: relative;
+      padding: 7px 0;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--black);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.55);
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .icon-btn:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .icon-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .menu-btn {
+      display: none;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 105px 0 85px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(198,160,106,0.13), transparent 28%),
+        radial-gradient(circle at 80% 60%, rgba(198,160,106,0.09), transparent 30%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before,
+    .eyebrow::after {
+      content: "";
+      width: 25px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(45px, 6vw, 76px);
+      line-height: 1.05;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* CATEGORY SECTION */
+
+    .categories-section {
+      padding: 25px 0 100px;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-heading h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .category-card {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--white);
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 25px rgba(17,17,17,0.04);
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .category-image {
+      height: 255px;
+      overflow: hidden;
+      background: #eeeae3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .category-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(17,17,17,0.12),
+        transparent 45%
+      );
+      pointer-events: none;
+    }
+
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+
+    .category-card:hover .category-image img {
+      transform: scale(1.07);
+    }
+
+    .category-content {
+      padding: 25px 25px 27px;
+      background: var(--white);
+    }
+
+    .category-content h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+
+    .category-content p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 17px;
+    }
+
+    .category-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--black);
+    }
+
+    .category-link span {
+      transition: transform 0.25s ease;
+    }
+
+    .category-card:hover .category-link span {
+      transform: translateX(5px);
+    }
+
+    /* CTA */
+
+    .cta {
+      padding: 0 0 100px;
+    }
+
+    .cta-box {
+      background: var(--black);
+      color: var(--white);
+      border-radius: 28px;
+      padding: 70px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-box::before,
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(198,160,106,0.25);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .cta-box::before {
+      width: 300px;
+      height: 300px;
+      left: -130px;
+      top: -160px;
+    }
+
+    .cta-box::after {
+      width: 360px;
+      height: 360px;
+      right: -170px;
+      bottom: -210px;
+    }
+
+    .cta-box h2 {
+      position: relative;
+      z-index: 1;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(34px, 5vw, 55px);
+      margin-bottom: 14px;
+    }
+
+    .cta-box p {
+      position: relative;
+      z-index: 1;
+      color: rgba(255,255,255,0.7);
+      max-width: 580px;
+      margin: 0 auto 28px;
+    }
+
+    .btn {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 26px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      background: var(--white);
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #0c0c0c;
+      color: var(--white);
+      padding: 65px 0 25px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 45px;
+      padding-bottom: 45px;
+    }
+
+    .footer-brand img {
+      width: 180px;
+      margin-bottom: 18px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.58);
+      max-width: 320px;
+      font-size: 14px;
+    }
+
+    .footer-col h4 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
+      color: var(--gold);
+    }
+
+    .footer-col a {
+      display: block;
+      color: rgba(255,255,255,0.65);
+      font-size: 14px;
+      margin-bottom: 11px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--white);
+    }
+
+    .footer-bottom {
+      padding-top: 23px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255,255,255,0.45);
+      font-size: 12px;
+    }
+
+    /* REVEAL */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 950px) {
+      .nav-links {
+        gap: 17px;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        min-height: 72px;
+      }
+
+      .brand-logo {
+        width: 145px;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background: var(--ivory);
+        border-bottom: 1px solid var(--border);
+        padding: 22px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 13px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links a:last-child {
+        border-bottom: 0;
+      }
+
+      .menu-btn {
+        display: inline-flex;
+      }
+
+      .hero {
+        padding: 75px 0 65px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-card {
+        min-height: auto;
+      }
+
+      .category-image {
+        height: 280px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 28px, 1180px);
+      }
+
+      .nav-actions {
+        gap: 6px;
+      }
+
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero h1 {
+        font-size: 44px;
+      }
+
+      .cta-box {
+        padding: 55px 22px;
+      }
+    }
+  </style>
+
+  <!-- CollectionPage / ItemList Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Shop by Category | Shopora Market Store",
+    "url": "https://shoporamarketstore.store/categories.html",
+    "description": "Explore Shopora Market Store categories including Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Shopora Market Store",
+      "url": "https://shoporamarketstore.store/"
+    },
+    "mainEntity": {
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Fashion",
+          "url": "https://shoporamarketstore.store/shop.html?category=Fashion"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Beauty",
+          "url": "https://shoporamarketstore.store/shop.html?category=Beauty"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Electronics",
+          "url": "https://shoporamarketstore.store/shop.html?category=Electronics"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Home & Living",
+          "url": "https://shoporamarketstore.store/shop.html?category=Home%20%26%20Living"
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "name": "Accessories",
+          "url": "https://shoporamarketstore.store/shop.html?category=Accessories"
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "name": "Lifestyle",
+          "url": "https://shoporamarketstore.store/shop.html?category=Lifestyle"
+        }
+      ]
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="brand" aria-label="Shopora Market Store home">
+        <img
+          src="assets/shopora-logo.png"
+          alt="Shopora Market Store"
+          class="brand-logo"
+          width="180"
+          height="60"
+        >
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html" class="active">Categories</a>
+        <a href="trending.html">Trending</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+
+        <!-- Search -->
+        <a
+          href="shop.html"
+          class="icon-btn"
+          aria-label="Search products"
+          title="Search"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="6.5"></circle>
+            <path d="M16 16L21 21"></path>
+          </svg>
+        </a>
+
+        <!-- Cart -->
+        <a
+          href="cart.html"
+          class="icon-btn"
+          aria-label="Shopping cart"
+          title="Cart"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20 7H6"></path>
+            <circle cx="10" cy="20" r="1"></circle>
+            <circle cx="18" cy="20" r="1"></circle>
+          </svg>
+        </a>
+
+        <!-- Mobile menu -->
+        <button
+          class="icon-btn menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 7h16"></path>
+            <path d="M4 12h16"></path>
+            <path d="M4 17h16"></path>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="eyebrow">Shopora Collection</div>
+
+        <h1>Shop By Category</h1>
+
+        <p>
+          Explore thoughtfully selected categories designed to make
+          everyday shopping simple, stylish and convenient.
+        </p>
+
+      </div>
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="categories-section">
+      <div class="container">
+
+        <div class="section-heading reveal">
+          <h2>Find What Fits Your World</h2>
+          <p>
+            Browse Shopora's main collections and discover products
+            made for everyday needs and modern living.
+          </p>
+        </div>
+
+
+        <div class="category-grid">
+
+          <!-- Fashion -->
+          <a
+            href="shop.html?category=Fashion"
+            class="category-card reveal"
+          >
+            <div class="category-image">
+              <img
+                src="assets/products/coord-set.svg"
+                alt="Fashion collection"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="category-content">
+              <h3>Fashion</h3>
+              <p>Modern wardrobe essentials and everyday style picks.</p>
+
+              <div class="category-link">
+                Explore Fashion
+                <span>→</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- Beauty -->
+          <a
+            href="shop.html?category=Beauty"
+            class="category-card reveal"
+          >
+            <div class="category-image">
+              <img
+                src="assets/products/beauty-set.svg"
+                alt="Beauty collection"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="category-content">
+              <h3>Beauty</h3>
+              <p>Everyday beauty and personal care essentials.</p>
+
+              <div class="category-link">
+                Explore Beauty
+                <span>→</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- Electronics -->
+          <a
+            href="shop.html?category=Electronics"
+            class="category-card reveal"
+          >
+            <div class="category-image">
+              <img
+                src="assets/products/wireless-buds.svg"
+                alt="Electronics collection"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="category-content">
+              <h3>Electronics</h3>
+              <p>Useful technology and smart everyday essentials.</p>
+
+              <div class="category-link">
+                Explore Electronics
+                <span>→</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- Home & Living -->
+          <a
+            href="shop.html?category=Home%20%26%20Living"
+            class="category-card reveal"
+          >
+            <div class="category-image">
+              <img
+                src="assets/products/lamp.svg"
+                alt="Home and Living collection"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="category-content">
+              <h3>Home &amp; Living</h3>
+              <p>Simple pieces designed to elevate everyday spaces.</p>
+
+              <div class="category-link">
+                Explore Home
+                <span>→</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- Accessories -->
+          <a
+            href="shop.html?category=Accessories"
+            class="category-card reveal"
+          >
+            <div class="category-image">
+              <img
+                src="assets/products/bag.svg"
+                alt="Accessories collection"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="category-content">
+              <h3>Accessories</h3>
+              <p>Finishing touches and practical everyday accessories.</p>
+
+              <div class="category-link">
+                Explore Accessories
+                <span>→</span>
+              </div>
+            </div>
+          </a>
+
+
+          <!-- Lifestyle -->
+          <a
+            href="shop.html?category=Lifestyle"
+            class="category-card reveal"
+          >
+            <div class="category-image">
+              <img
+                src="assets/products/bottle.svg"
+                alt="Lifestyle collection"
+                loading="lazy"
+              >
+            </div>
+
+            <div class="category-content">
+              <h3>Lifestyle</h3>
+              <p>Useful finds for a more comfortable everyday routine.</p>
+
+              <div class="category-link">
+                Explore Lifestyle
+                <span>→</span>
+              </div>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- CTA -->
+    <section class="cta">
+      <div class="container">
+
+        <div class="cta-box reveal">
+
+          <h2>Ready To Explore?</h2>
+
+          <p>
+            Browse the complete Shopora collection and discover
+            products across all of our categories.
+          </p>
+
+          <a href="shop.html" class="btn">
+            View All Products
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <a href="index.html">
+            <img
+              src="assets/shopora-logo.png"
+              alt="Shopora Market Store"
+            >
+          </a>
+
+          <p>
+            A modern marketplace bringing together useful,
+            stylish and everyday products in one simple shopping experience.
+          </p>
+        </div>
+
+
+        <div class="footer-col">
+          <h4>Shop</h4>
+
+          <a href="shop.html">Shop All</a>
+          <a href="categories.html">Categories</a>
+          <a href="trending.html">Trending</a>
+          <a href="cart.html">Cart</a>
+        </div>
+
+
+        <div class="footer-col">
+          <h4>Company</h4>
+
+          <a href="about.html">About Us</a>
+          <a href="contact.html">Contact Us</a>
+        </div>
+
+
+        <div class="footer-col">
+          <h4>Policies</h4>
+
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="terms-of-service.html">Terms of Service</a>
+          <a href="cookie-policy.html">Cookie Policy</a>
+          <a href="return-refund.html">Return &amp; Refund</a>
+        </div>
+
+      </div>
+
+
+      <div class="footer-bottom">
+
+        <span>
+          © <span id="year"></span> Shopora Market Store. All rights reserved.
+        </span>
+
+        <span>
+          SHOPORA
+        </span>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <script>
+    // Mobile menu
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", function () {
+      const isOpen = navLinks.classList.toggle("open");
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
+    });
+
+
+    // Close mobile menu after clicking a link
+    document.querySelectorAll(".nav-links a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+
+    // Current year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    // Reveal animation
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver = new IntersectionObserver(
+      function (entries, observer) {
+
+        entries.forEach(function (entry) {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+
+    revealElements.forEach(function (element) {
+      revealObserver.observe(element);
+    });
+  </script>
+
+</body>
+</html>
