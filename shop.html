@@ -2,25 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Shop All Products | Shopora Market Store</title>
+  <title>Shop Online | Fashion, Beauty, Electronics & More | Shopora</title>
 
-  <meta name="description" content="Shop fashion, beauty, electronics, home essentials, accessories and lifestyle products at Shopora Market Store.">
-  <meta name="keywords" content="Shopora Market Store, online shopping, fashion, beauty, electronics, home living, accessories, lifestyle">
+  <meta name="description"
+        content="Shopora Market Store — discover fashion, beauty, electronics, home & living, accessories and lifestyle products for everyday shopping in Pakistan.">
+
+  <meta name="keywords"
+        content="online shopping Pakistan, shop online Pakistan, fashion products, beauty products, electronics, home and living, accessories, lifestyle products, Shopora Market Store">
+
+  <meta name="robots" content="index, follow">
 
   <link rel="canonical" href="https://shoporamarketstore.store/shop.html">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Shop All Products | Shopora Market Store">
-  <meta property="og:description" content="Explore the latest products across fashion, beauty, electronics, home living, accessories and lifestyle.">
+  <meta property="og:title" content="Shop Online | Shopora Market Store">
+  <meta property="og:description"
+        content="Explore fashion, beauty, electronics, home & living, accessories and lifestyle products at Shopora.">
   <meta property="og:url" content="https://shoporamarketstore.store/shop.html">
-  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+  <meta property="og:site_name" content="Shopora Market Store">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shop All Products | Shopora Market Store">
-  <meta name="twitter:description" content="Explore products from Shopora Market Store.">
-  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+  <meta name="twitter:title" content="Shop Online | Shopora Market Store">
+  <meta name="twitter:description"
+        content="Discover everyday products across fashion, beauty, electronics, home & living and more.">
 
   <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
   <link rel="apple-touch-icon" href="assets/shopora-mark.png">
@@ -28,7 +35,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
+    crossorigin="anonymous"></script>
 
   <style>
     :root {
@@ -36,10 +49,11 @@
       --ivory: #f7f4ee;
       --gold: #c6a06a;
       --white: #ffffff;
-      --muted: #77736c;
-      --border: #e8e3da;
-      --soft: #f1eee8;
-      --danger: #a33a3a;
+      --muted: #77716a;
+      --border: #e6e0d6;
+      --soft: #f0ece4;
+      --success: #315d45;
+      --shadow: 0 15px 45px rgba(17,17,17,.07);
     }
 
     * {
@@ -59,6 +73,11 @@
       line-height: 1.6;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -70,9 +89,8 @@
       font: inherit;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
+    button {
+      cursor: pointer;
     }
 
     .container {
@@ -80,25 +98,34 @@
       margin: 0 auto;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
+    /* Announcement */
 
-    header {
+    .announcement {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 9px 15px;
+    }
+
+    /* Header */
+
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(247, 244, 238, 0.96);
-      backdrop-filter: blur(15px);
+      background: rgba(247,244,238,.97);
       border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
     .header-inner {
       min-height: 82px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 25px;
+      gap: 30px;
     }
 
     .brand {
@@ -108,7 +135,7 @@
     }
 
     .brand-logo {
-      width: 180px;
+      width: 205px;
       height: auto;
       display: block;
       object-fit: contain;
@@ -117,31 +144,28 @@
     .main-nav {
       display: flex;
       align-items: center;
-      gap: 28px;
+      justify-content: center;
+      gap: 27px;
+      margin-left: auto;
     }
 
     .main-nav a {
       position: relative;
       font-size: 14px;
       font-weight: 600;
-      color: #36332e;
-      transition: color .25s ease;
+      color: #37332e;
+      padding: 8px 0;
     }
 
     .main-nav a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: -8px;
+      bottom: 1px;
       width: 0;
-      height: 2px;
+      height: 1px;
       background: var(--gold);
       transition: width .25s ease;
-    }
-
-    .main-nav a:hover,
-    .main-nav a.active {
-      color: var(--gold);
     }
 
     .main-nav a:hover::after,
@@ -149,210 +173,196 @@
       width: 100%;
     }
 
-    /* HEADER ICONS */
-
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 8px;
     }
 
-    .icon-link,
-    .icon-btn {
-      position: relative;
+    .icon-link {
       width: 42px;
       height: 42px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      transition: all .25s ease;
-      color: var(--black);
-    }
-
-    .icon-link:hover,
-    .icon-btn:hover {
-      background: var(--black);
-      color: var(--white);
-      border-color: var(--black);
-      transform: translateY(-2px);
-    }
-
-    .icon-symbol {
-      font-size: 20px;
-      line-height: 1;
-    }
-
-    .wishlist-icon {
-      font-size: 21px;
-    }
-
-    .cart-icon {
-      font-size: 18px;
-    }
-
-    .header-count {
-      position: absolute;
-      top: -5px;
-      right: -4px;
-      min-width: 18px;
-      height: 18px;
-      padding: 0 5px;
-      border-radius: 50px;
-      background: var(--gold);
-      color: var(--black);
-      font-size: 10px;
-      font-weight: 700;
-      display: none;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid var(--ivory);
+      border: 1px solid transparent;
+      border-radius: 50%;
+      position: relative;
+      transition: .25s ease;
+      font-size: 20px;
     }
 
-    .header-count.visible {
+    .icon-link:hover {
+      border-color: var(--border);
+      background: var(--white);
+    }
+
+    .count {
+      position: absolute;
+      top: 1px;
+      right: 0;
+      min-width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: var(--black);
+      color: var(--white);
       display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      font-weight: 700;
     }
 
-    .menu-btn {
+    .mobile-toggle {
       display: none;
+      border: 0;
+      background: none;
+      font-size: 25px;
+      width: 42px;
+      height: 42px;
     }
 
-    /* =========================
-       HERO
-    ========================= */
+    /* Page Hero */
 
     .shop-hero {
-      padding: 90px 0 70px;
-      background:
-        radial-gradient(
-          circle at 85% 20%,
-          rgba(198,160,106,.14),
-          transparent 30%
-        ),
-        var(--ivory);
-      text-align: center;
+      padding: 70px 0 48px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .eyebrow {
+    .hero-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
       color: var(--gold);
       font-size: 12px;
       font-weight: 700;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
+    }
+
+    .hero-label::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
     }
 
     .shop-hero h1 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(44px, 7vw, 76px);
-      line-height: 1.05;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.03;
       font-weight: 600;
-      margin-bottom: 20px;
+      max-width: 800px;
+      margin-bottom: 17px;
     }
 
     .shop-hero p {
-      max-width: 650px;
-      margin: auto;
+      max-width: 680px;
       color: var(--muted);
-      font-size: 17px;
+      font-size: 16px;
     }
 
-    /* =========================
-       SHOP CONTROLS
-    ========================= */
+    /* Toolbar */
 
-    .shop-section {
-      padding: 25px 0 100px;
+    .shop-area {
+      padding: 45px 0 90px;
     }
 
     .shop-toolbar {
-      background: var(--white);
-      border: 1px solid var(--border);
-      padding: 18px;
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 14px;
       margin-bottom: 35px;
     }
 
     .search-box {
       position: relative;
-      flex: 1;
-      max-width: 420px;
     }
 
     .search-box input {
       width: 100%;
-      height: 48px;
+      height: 54px;
       border: 1px solid var(--border);
-      background: var(--ivory);
-      border-radius: 10px;
-      padding: 0 18px;
+      background: var(--white);
+      padding: 0 50px 0 18px;
       outline: none;
       color: var(--black);
+      border-radius: 2px;
+      transition: border-color .2s ease, box-shadow .2s ease;
     }
 
     .search-box input:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(198,160,106,.10);
+      box-shadow: 0 0 0 3px rgba(198,160,106,.12);
     }
 
-    .filter-select {
-      height: 48px;
+    .search-symbol {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .category-select {
+      height: 54px;
       border: 1px solid var(--border);
-      background: var(--ivory);
-      border-radius: 10px;
-      padding: 0 42px 0 15px;
+      background: var(--white);
+      padding: 0 15px;
       outline: none;
-      cursor: pointer;
+      color: var(--black);
+      border-radius: 2px;
     }
 
-    .filter-select:focus {
+    .category-select:focus {
       border-color: var(--gold);
     }
 
-    .product-count {
-      color: var(--muted);
-      font-size: 14px;
-      white-space: nowrap;
+    .shop-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
     }
 
-    /* =========================
-       PRODUCTS
-    ========================= */
+    .shop-meta h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      font-weight: 600;
+    }
 
-    .products-grid {
+    #resultCount {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Product Grid */
+
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
+      gap: 22px;
     }
 
     .product-card {
-      position: relative;
       background: var(--white);
       border: 1px solid var(--border);
-      border-radius: 18px;
+      position: relative;
       overflow: hidden;
-      transition:
-        transform .35s ease,
-        box-shadow .35s ease,
-        border-color .35s ease;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
 
     .product-card:hover {
-      transform: translateY(-7px);
-      border-color: #ddd4c5;
-      box-shadow: 0 18px 45px rgba(17,17,17,.09);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
     }
 
     .product-image {
-      height: 290px;
-      background: var(--soft);
       position: relative;
+      aspect-ratio: 1 / 1;
+      background: #f2efe9;
       overflow: hidden;
     }
 
@@ -360,230 +370,290 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .5s ease;
+      transition: transform .4s ease;
     }
 
     .product-card:hover .product-image img {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
-    .product-badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      z-index: 2;
-      padding: 6px 10px;
-      background: var(--black);
-      color: var(--white);
-      border-radius: 30px;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    /* PRODUCT WISHLIST BUTTON */
-
-    .product-wishlist {
+    .wishlist-btn {
       position: absolute;
       top: 13px;
       right: 13px;
-      z-index: 5;
       width: 38px;
       height: 38px;
-      border: 1px solid rgba(17,17,17,.08);
+      border: 0;
       border-radius: 50%;
-      background: rgba(255,255,255,.94);
-      color: var(--black);
-      display: grid;
-      place-items: center;
-      cursor: pointer;
-      font-size: 20px;
-      transition: all .25s ease;
-      box-shadow: 0 8px 20px rgba(17,17,17,.08);
+      background: rgba(255,255,255,.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      z-index: 2;
+      transition: .2s ease;
     }
 
-    .product-wishlist:hover {
+    .wishlist-btn:hover {
       background: var(--black);
       color: var(--white);
-      transform: scale(1.06);
     }
 
-    .product-wishlist.active {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
+    .wishlist-btn.active {
+      background: var(--black);
+      color: var(--white);
     }
 
     .product-info {
-      padding: 20px;
+      padding: 18px 17px 19px;
     }
 
     .product-category {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
       font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--gold);
       font-weight: 700;
-      margin-bottom: 7px;
+      margin-bottom: 6px;
     }
 
-    .product-name {
+    .product-title {
       font-family: "Playfair Display", serif;
-      font-size: 20px;
+      font-size: 19px;
       line-height: 1.25;
-      margin-bottom: 8px;
-    }
-
-    .product-description {
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.5;
-      min-height: 40px;
-      margin-bottom: 15px;
-    }
-
-    .product-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      min-height: 48px;
+      margin-bottom: 9px;
     }
 
     .product-price {
+      font-size: 16px;
       font-weight: 700;
-      font-size: 17px;
+      margin-bottom: 15px;
     }
 
-    .add-btn {
-      border: none;
-      background: var(--black);
-      color: var(--white);
-      padding: 10px 14px;
-      border-radius: 8px;
-      cursor: pointer;
+    .product-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .btn {
+      min-height: 42px;
+      border: 1px solid var(--black);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 10px;
       font-size: 12px;
       font-weight: 700;
-      transition: all .25s ease;
+      transition: .25s ease;
+      text-align: center;
     }
 
-    .add-btn:hover {
-      background: var(--gold);
+    .btn-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn-dark:hover {
+      background: #2b2b2b;
+    }
+
+    .btn-light {
+      background: var(--white);
       color: var(--black);
     }
 
-    .view-btn {
-      display: block;
-      text-align: center;
-      margin-top: 10px;
-      border: 1px solid var(--border);
-      padding: 9px 14px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 700;
-      transition: all .25s ease;
-    }
-
-    .view-btn:hover {
-      border-color: var(--gold);
-      color: var(--gold);
+    .btn-light:hover {
+      background: var(--black);
+      color: var(--white);
     }
 
     .no-results {
       display: none;
-      text-align: center;
       padding: 70px 20px;
-      color: var(--muted);
-      grid-column: 1 / -1;
+      text-align: center;
+      border: 1px solid var(--border);
+      background: var(--white);
     }
 
-    .no-results h2 {
+    .no-results h3 {
       font-family: "Playfair Display", serif;
-      color: var(--black);
-      font-size: 30px;
-      margin-bottom: 10px;
+      font-size: 28px;
+      margin-bottom: 7px;
     }
 
-    /* =========================
-       FOOTER
-    ========================= */
+    .no-results p {
+      color: var(--muted);
+    }
+
+    /* SEO content */
+
+    .seo-section {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 65px 0;
+    }
+
+    .seo-content {
+      max-width: 850px;
+    }
+
+    .seo-content h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      margin-bottom: 17px;
+    }
+
+    .seo-content p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 13px;
+    }
+
+    .seo-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 23px;
+    }
+
+    .seo-links a {
+      border: 1px solid var(--border);
+      padding: 8px 13px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--ivory);
+      transition: .2s ease;
+    }
+
+    .seo-links a:hover {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+
+    /* Newsletter */
+
+    .newsletter {
+      padding: 65px 0;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .newsletter-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .newsletter h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      margin-bottom: 6px;
+    }
+
+    .newsletter p {
+      color: #c8c3bb;
+      font-size: 14px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      min-width: 410px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      height: 48px;
+      border: 0;
+      padding: 0 15px;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      height: 48px;
+      border: 0;
+      background: var(--gold);
+      color: var(--white);
+      padding: 0 20px;
+      font-weight: 700;
+    }
+
+    /* Footer */
 
     footer {
       background: var(--black);
       color: var(--white);
-      padding: 70px 0 25px;
+      border-top: 1px solid #292929;
     }
 
-    .footer-grid {
+    .footer-main {
+      padding: 65px 0 45px;
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 45px;
-      padding-bottom: 50px;
-      border-bottom: 1px solid rgba(255,255,255,.12);
+      gap: 50px;
     }
 
-    .footer-logo {
+    .footer-brand img {
       width: 180px;
-      filter: brightness(0) invert(1);
-      margin-bottom: 20px;
-    }
-
-    .footer-about {
-      color: #aaa;
-      font-size: 14px;
-      max-width: 330px;
-      line-height: 1.8;
-    }
-
-    .footer-column h3 {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
       margin-bottom: 18px;
+    }
+
+    .footer-brand p {
+      max-width: 300px;
+      color: #aaa49c;
+      font-size: 13px;
+    }
+
+    .footer-col h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 17px;
       color: var(--gold);
     }
 
-    .footer-column a {
+    .footer-col a {
       display: block;
-      color: #aaa;
-      font-size: 14px;
-      margin-bottom: 11px;
+      color: #bcb7af;
+      font-size: 13px;
+      margin-bottom: 9px;
       transition: color .2s ease;
     }
 
-    .footer-column a:hover {
+    .footer-col a:hover {
       color: var(--white);
     }
 
     .footer-bottom {
+      border-top: 1px solid #292929;
+      padding: 19px 0;
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      padding-top: 25px;
-      color: #888;
-      font-size: 12px;
+      color: #8f8a84;
+      font-size: 11px;
     }
 
-    /* =========================
-       TOAST
-    ========================= */
+    /* Toast */
 
     .toast {
       position: fixed;
-      right: 25px;
-      bottom: 25px;
+      right: 22px;
+      bottom: 22px;
       z-index: 2000;
       background: var(--black);
       color: var(--white);
-      padding: 15px 20px;
-      border-radius: 10px;
-      box-shadow: 0 15px 40px rgba(0,0,0,.25);
-      transform: translateY(120px);
+      padding: 13px 18px;
+      font-size: 13px;
+      transform: translateY(100px);
       opacity: 0;
       pointer-events: none;
-      transition: all .35s ease;
-      font-size: 14px;
-      max-width: 320px;
+      transition: .3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
     }
 
     .toast.show {
@@ -591,50 +661,45 @@
       opacity: 1;
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
+    /* Responsive */
 
     @media (max-width: 1050px) {
 
-      .products-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .main-nav {
+      .header-inner {
         gap: 18px;
       }
 
+      .main-nav {
+        gap: 17px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-main {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
-    @media (max-width: 800px) {
-
-      .header-inner {
-        min-height: 72px;
-      }
+    @media (max-width: 850px) {
 
       .brand-logo {
-        width: 145px;
-      }
-
-      .menu-btn {
-        display: grid;
+        width: 175px;
       }
 
       .main-nav {
-        position: absolute;
-        top: 72px;
-        left: 20px;
-        right: 20px;
         display: none;
+        position: absolute;
+        top: 82px;
+        left: 0;
+        right: 0;
+        background: var(--ivory);
+        border-bottom: 1px solid var(--border);
+        padding: 20px;
         flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        background: var(--white);
-        border: 1px solid var(--border);
-        border-radius: 15px;
-        padding: 10px;
-        box-shadow: 0 20px 50px rgba(0,0,0,.12);
+        align-items: flex-start;
+        gap: 4px;
       }
 
       .main-nav.open {
@@ -642,96 +707,156 @@
       }
 
       .main-nav a {
-        padding: 13px 12px;
+        width: 100%;
+        padding: 12px 4px;
       }
 
-      .main-nav a::after {
-        display: none;
+      .mobile-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .header-actions {
+        margin-left: auto;
       }
 
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .shop-toolbar {
+        grid-template-columns: 1fr;
       }
 
+      .newsletter-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .newsletter-form {
+        min-width: 0;
+        width: 100%;
+      }
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
 
       .container {
         width: min(100% - 28px, 1180px);
       }
 
-      .header-actions {
-        gap: 6px;
+      .announcement {
+        font-size: 10px;
       }
 
-      .icon-link,
-      .icon-btn {
-        width: 39px;
-        height: 39px;
+      .header-inner {
+        min-height: 72px;
       }
 
-      .search-header {
-        display: none;
+      .brand-logo {
+        width: 150px;
+      }
+
+      .mobile-toggle {
+        order: 3;
       }
 
       .shop-hero {
-        padding: 65px 0 50px;
+        padding: 48px 0 35px;
       }
 
-      .shop-hero h1 {
-        font-size: 46px;
+      .shop-area {
+        padding: 32px 0 60px;
       }
 
-      .shop-hero p {
-        font-size: 15px;
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
       }
 
-      .shop-toolbar {
-        flex-direction: column;
-        align-items: stretch;
+      .product-info {
+        padding: 13px 12px 14px;
       }
 
-      .search-box {
-        max-width: none;
+      .product-title {
+        font-size: 16px;
+        min-height: 41px;
       }
 
-      .product-count {
-        text-align: center;
+      .product-price {
+        font-size: 14px;
       }
 
-      .products-grid {
+      .product-actions {
         grid-template-columns: 1fr;
       }
 
-      .product-image {
-        height: 320px;
+      .btn {
+        min-height: 39px;
       }
 
-      .footer-grid {
+      .seo-section {
+        padding: 45px 0;
+      }
+
+      .seo-content h2 {
+        font-size: 28px;
+      }
+
+      .newsletter {
+        padding: 48px 0;
+      }
+
+      .newsletter h2 {
+        font-size: 29px;
+      }
+
+      .footer-main {
         grid-template-columns: 1fr;
-        gap: 35px;
+        gap: 30px;
+        padding: 48px 0 35px;
       }
 
       .footer-bottom {
         flex-direction: column;
-        text-align: center;
+      }
+    }
+
+    @media (max-width: 400px) {
+
+      .header-actions {
+        gap: 0;
       }
 
+      .icon-link {
+        width: 36px;
+        height: 36px;
+      }
+
+      .brand-logo {
+        width: 140px;
+      }
+
+      .product-grid {
+        gap: 9px;
+      }
+
+      .product-category {
+        font-size: 9px;
+      }
+
+      .product-title {
+        font-size: 15px;
+      }
     }
   </style>
+
+  <!-- Structured Data -->
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    "name": "Shop All Products | Shopora Market Store",
+    "name": "Shopora Market Store Shop",
     "url": "https://shoporamarketstore.store/shop.html",
-    "description": "Shop products across fashion, beauty, electronics, home living, accessories and lifestyle.",
+    "description": "Shop fashion, beauty, electronics, home & living, accessories and lifestyle products at Shopora Market Store.",
     "isPartOf": {
       "@type": "WebSite",
       "name": "Shopora Market Store",
@@ -739,268 +864,198 @@
     }
   }
   </script>
+
 </head>
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
-<header>
-
-  <div class="container header-inner">
-
-    <a
-      href="index.html"
-      class="brand"
-      aria-label="Shopora Market Store home"
-    >
-      <img
-        src="assets/shopora-logo.png"
-        alt="Shopora Market Store"
-        class="brand-logo"
-        width="180"
-        height="60"
-      >
-    </a>
-
-
-    <nav class="main-nav" id="mainNav">
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="shop.html" class="active">
-        Shop
-      </a>
-
-      <a href="categories.html">
-        Categories
-      </a>
-
-      <a href="trending.html">
-        Trending
-      </a>
-
-      <a href="about.html">
-        About
-      </a>
-
-      <a href="contact.html">
-        Contact
-      </a>
-
-    </nav>
-
-
-    <!-- THREE HEADER ICONS -->
-
-    <div class="header-actions">
-
-      <!-- SEARCH -->
-
-      <button
-        class="icon-btn search-header"
-        onclick="focusSearch()"
-        aria-label="Search products"
-        title="Search products"
-        type="button"
-      >
-        <span class="icon-symbol">⌕</span>
-      </button>
-
-
-      <!-- WISHLIST -->
-
-      <a
-        href="wishlist.html"
-        class="icon-link"
-        aria-label="Open wishlist"
-        title="Wishlist"
-      >
-
-        <span class="icon-symbol wishlist-icon">♡</span>
-
-        <span
-          class="header-count"
-          id="wishlistCount"
-          aria-hidden="true"
-        >
-          0
-        </span>
-
-      </a>
-
-
-      <!-- CART -->
-
-      <a
-        href="cart.html"
-        class="icon-link"
-        aria-label="Open cart"
-        title="Cart"
-      >
-
-        <span class="icon-symbol cart-icon">🛒</span>
-
-        <span
-          class="header-count"
-          id="cartCount"
-          aria-hidden="true"
-        >
-          0
-        </span>
-
-      </a>
-
-
-      <!-- MOBILE MENU -->
-
-      <button
-        class="icon-btn menu-btn"
-        onclick="toggleMenu()"
-        aria-label="Open menu"
-        title="Menu"
-        type="button"
-      >
-        ☰
-      </button>
-
-    </div>
-
+  <div class="announcement">
+    SHOPORA — Curated products. Better everyday shopping.
   </div>
 
-</header>
+  <!-- Header -->
 
+  <header class="site-header">
 
-<!-- =========================
-     MAIN
-========================= -->
+    <div class="container header-inner">
 
-<main>
+      <a href="index.html"
+         class="brand"
+         aria-label="Shopora Market Store home">
 
-  <!-- HERO -->
+        <img
+          src="assets/shopora-logo.png"
+          alt="Shopora Market Store"
+          class="brand-logo"
+          width="205"
+          height="52"
+        >
 
-  <section class="shop-hero">
+      </a>
 
-    <div class="container">
+      <nav class="main-nav" id="mainNav">
 
-      <div class="eyebrow">
-        Shop Shopora
+        <a href="index.html">Home</a>
+
+        <a href="shop.html" class="active">Shop</a>
+
+        <a href="categories.html">Categories</a>
+
+        <a href="trending.html">Trending</a>
+
+        <a href="about.html">About</a>
+
+        <a href="contact.html">Contact</a>
+
+      </nav>
+
+      <div class="header-actions">
+
+        <a
+          href="wishlist.html"
+          class="icon-link"
+          aria-label="Wishlist"
+        >
+          ♡
+          <span class="count" id="wishlistCount">0</span>
+        </a>
+
+        <a
+          href="cart.html"
+          class="icon-link"
+          aria-label="Shopping cart"
+        >
+          🛒
+          <span class="count" id="cartCount">0</span>
+        </a>
+
+        <button
+          class="mobile-toggle"
+          id="mobileToggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          ☰
+        </button>
+
       </div>
-
-      <h1>
-        Curated For<br>
-        Everyday Living.
-      </h1>
-
-      <p>
-        Discover thoughtfully selected products across fashion, beauty,
-        electronics, home living, accessories and lifestyle.
-      </p>
 
     </div>
 
-  </section>
+  </header>
 
 
-  <!-- SHOP -->
+  <main>
 
-  <section class="shop-section">
+    <!-- Shop Hero -->
 
-    <div class="container">
+    <section class="shop-hero">
 
+      <div class="container">
 
-      <!-- TOOLBAR -->
-
-      <div class="shop-toolbar">
-
-        <div class="search-box">
-
-          <input
-            type="search"
-            id="productSearch"
-            placeholder="Search products..."
-            aria-label="Search products"
-            oninput="filterProducts()"
-          >
-
+        <div class="hero-label">
+          Shopora Collection
         </div>
 
+        <h1>
+          Shop products made for everyday living.
+        </h1>
 
-        <select
-          class="filter-select"
-          id="categoryFilter"
-          onchange="filterProducts()"
-          aria-label="Filter products by category"
-        >
-
-          <option value="all">
-            All Categories
-          </option>
-
-          <option value="Fashion">
-            Fashion
-          </option>
-
-          <option value="Beauty">
-            Beauty
-          </option>
-
-          <option value="Electronics">
-            Electronics
-          </option>
-
-          <option value="Home & Living">
-            Home & Living
-          </option>
-
-          <option value="Accessories">
-            Accessories
-          </option>
-
-          <option value="Lifestyle">
-            Lifestyle
-          </option>
-
-        </select>
-
-
-        <div
-          class="product-count"
-          id="productCount"
-        >
-          12 products
-        </div>
+        <p>
+          Explore a curated marketplace of fashion, beauty, electronics,
+          home & living, accessories and lifestyle essentials.
+        </p>
 
       </div>
 
-
-      <!-- PRODUCTS GRID -->
-
-      <div
-        class="products-grid"
-        id="productsGrid"
-      >
+    </section>
 
 
-        <!-- PRODUCT 1 -->
+    <!-- Shop -->
 
-        <article
-          class="product-card"
-          data-name="Everyday Premium Essential"
-          data-category="Lifestyle"
-        >
+    <section class="shop-area">
 
-          <div class="product-image">
+      <div class="container">
 
-            <a href="product.html?product=everyday-premium-essential">
+        <div class="shop-toolbar">
 
-              <span class="product-badge">
-                New
-              </span>
+          <div class="search-box">
+
+            <input
+              type="search"
+              id="productSearch"
+              placeholder="Search products, categories..."
+              autocomplete="off"
+            >
+
+            <span class="search-symbol">⌕</span>
+
+          </div>
+
+          <select
+            class="category-select"
+            id="categoryFilter"
+            aria-label="Filter products by category"
+          >
+
+            <option value="all">
+              All Categories
+            </option>
+
+            <option value="Fashion">
+              Fashion
+            </option>
+
+            <option value="Beauty">
+              Beauty
+            </option>
+
+            <option value="Electronics">
+              Electronics
+            </option>
+
+            <option value="Home & Living">
+              Home & Living
+            </option>
+
+            <option value="Accessories">
+              Accessories
+            </option>
+
+            <option value="Lifestyle">
+              Lifestyle
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="shop-meta">
+
+          <h2>
+            All Products
+          </h2>
+
+          <span id="resultCount">
+            12 products
+          </span>
+
+        </div>
+
+
+        <div class="product-grid" id="productGrid">
+
+
+          <!-- Product 1 -->
+
+          <article
+            class="product-card"
+            data-category="Lifestyle"
+            data-search="everyday premium essential lifestyle"
+          >
+
+            <div class="product-image">
 
               <img
                 src="assets/products/black-shirt.svg"
@@ -1008,82 +1063,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="everyday-premium-essential"
+                aria-label="Add Everyday Premium Essential to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Everyday Premium Essential"
-              data-price="2499"
-              data-image="assets/products/black-shirt.svg"
-              aria-label="Add Everyday Premium Essential to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Lifestyle
             </div>
 
-            <h2 class="product-name">
-              Everyday Premium Essential
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A clean everyday essential designed for effortless style and daily use.
-            </p>
+              <div class="product-category">
+                Lifestyle
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Everyday Premium Essential
+              </h3>
 
               <div class="product-price">
                 Rs. 2,499
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Everyday Premium Essential', 2499, 'assets/products/black-shirt.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Everyday Premium Essential"
+                  data-price="2499"
+                  data-image="assets/products/black-shirt.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=everyday-premium-essential"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=everyday-premium-essential"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 2 -->
+          <!-- Product 2 -->
 
-        <article
-          class="product-card"
-          data-name="Modern Everyday Collection"
-          data-category="Fashion"
-        >
+          <article
+            class="product-card"
+            data-category="Fashion"
+            data-search="modern everyday collection fashion"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=modern-everyday-collection">
-
-              <span class="product-badge">
-                Featured
-              </span>
+            <div class="product-image">
 
               <img
                 src="assets/products/coord-set.svg"
@@ -1091,82 +1128,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="modern-everyday-collection"
+                aria-label="Add Modern Everyday Collection to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Modern Everyday Collection"
-              data-price="3499"
-              data-image="assets/products/coord-set.svg"
-              aria-label="Add Modern Everyday Collection to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Fashion
             </div>
 
-            <h2 class="product-name">
-              Modern Everyday Collection
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              Modern wardrobe styling made simple, comfortable and versatile.
-            </p>
+              <div class="product-category">
+                Fashion
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Modern Everyday Collection
+              </h3>
 
               <div class="product-price">
                 Rs. 3,499
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Modern Everyday Collection', 3499, 'assets/products/coord-set.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Modern Everyday Collection"
+                  data-price="3499"
+                  data-image="assets/products/coord-set.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=modern-everyday-collection"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=modern-everyday-collection"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 3 -->
+          <!-- Product 3 -->
 
-        <article
-          class="product-card"
-          data-name="Smart Everyday Device"
-          data-category="Electronics"
-        >
+          <article
+            class="product-card"
+            data-category="Electronics"
+            data-search="smart everyday device wireless earbuds electronics"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=smart-everyday-device">
-
-              <span class="product-badge">
-                New
-              </span>
+            <div class="product-image">
 
               <img
                 src="assets/products/wireless-buds.svg"
@@ -1174,82 +1193,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="smart-everyday-device"
+                aria-label="Add Smart Everyday Device to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Smart Everyday Device"
-              data-price="4999"
-              data-image="assets/products/wireless-buds.svg"
-              aria-label="Add Smart Everyday Device to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Electronics
             </div>
 
-            <h2 class="product-name">
-              Smart Everyday Device
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A practical everyday tech essential for modern connected living.
-            </p>
+              <div class="product-category">
+                Electronics
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Smart Everyday Device
+              </h3>
 
               <div class="product-price">
                 Rs. 4,999
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Smart Everyday Device', 4999, 'assets/products/wireless-buds.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Smart Everyday Device"
+                  data-price="4999"
+                  data-image="assets/products/wireless-buds.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=smart-everyday-device"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=smart-everyday-device"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 4 -->
+          <!-- Product 4 -->
 
-        <article
-          class="product-card"
-          data-name="Minimal Signature Accessory"
-          data-category="Accessories"
-        >
+          <article
+            class="product-card"
+            data-category="Accessories"
+            data-search="minimal signature accessory watch accessories"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=minimal-signature-accessory">
-
-              <span class="product-badge">
-                New
-              </span>
+            <div class="product-image">
 
               <img
                 src="assets/products/watch.svg"
@@ -1257,82 +1258,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="minimal-signature-accessory"
+                aria-label="Add Minimal Signature Accessory to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Minimal Signature Accessory"
-              data-price="1899"
-              data-image="assets/products/watch.svg"
-              aria-label="Add Minimal Signature Accessory to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Accessories
             </div>
 
-            <h2 class="product-name">
-              Minimal Signature Accessory
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A refined accessory designed to complement your everyday look.
-            </p>
+              <div class="product-category">
+                Accessories
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Minimal Signature Accessory
+              </h3>
 
               <div class="product-price">
                 Rs. 1,899
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Minimal Signature Accessory', 1899, 'assets/products/watch.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Minimal Signature Accessory"
+                  data-price="1899"
+                  data-image="assets/products/watch.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=minimal-signature-accessory"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=minimal-signature-accessory"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 5 -->
+          <!-- Product 5 -->
 
-        <article
-          class="product-card"
-          data-name="Daily Beauty Essential"
-          data-category="Beauty"
-        >
+          <article
+            class="product-card"
+            data-category="Beauty"
+            data-search="daily beauty essential beauty skincare"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=daily-beauty-essential">
-
-              <span class="product-badge">
-                Bestseller
-              </span>
+            <div class="product-image">
 
               <img
                 src="assets/products/beauty-set.svg"
@@ -1340,82 +1323,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="daily-beauty-essential"
+                aria-label="Add Daily Beauty Essential to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Daily Beauty Essential"
-              data-price="1599"
-              data-image="assets/products/beauty-set.svg"
-              aria-label="Add Daily Beauty Essential to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Beauty
             </div>
 
-            <h2 class="product-name">
-              Daily Beauty Essential
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A simple beauty essential for an easy everyday self-care routine.
-            </p>
+              <div class="product-category">
+                Beauty
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Daily Beauty Essential
+              </h3>
 
               <div class="product-price">
                 Rs. 1,599
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Daily Beauty Essential', 1599, 'assets/products/beauty-set.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Daily Beauty Essential"
+                  data-price="1599"
+                  data-image="assets/products/beauty-set.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=daily-beauty-essential"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=daily-beauty-essential"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 6 -->
+          <!-- Product 6 -->
 
-        <article
-          class="product-card"
-          data-name="Modern Home Essential"
-          data-category="Home & Living"
-        >
+          <article
+            class="product-card"
+            data-category="Home & Living"
+            data-search="modern home essential home living lamp"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=modern-home-essential">
-
-              <span class="product-badge">
-                New
-              </span>
+            <div class="product-image">
 
               <img
                 src="assets/products/lamp.svg"
@@ -1423,78 +1388,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="modern-home-essential"
+                aria-label="Add Modern Home Essential to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Modern Home Essential"
-              data-price="2299"
-              data-image="assets/products/lamp.svg"
-              aria-label="Add Modern Home Essential to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Home & Living
             </div>
 
-            <h2 class="product-name">
-              Modern Home Essential
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A modern home piece designed to bring simple elegance to your space.
-            </p>
+              <div class="product-category">
+                Home & Living
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Modern Home Essential
+              </h3>
 
               <div class="product-price">
                 Rs. 2,299
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Modern Home Essential', 2299, 'assets/products/lamp.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Modern Home Essential"
+                  data-price="2299"
+                  data-image="assets/products/lamp.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=modern-home-essential"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=modern-home-essential"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 7 -->
+          <!-- Product 7 -->
 
-        <article
-          class="product-card"
-          data-name="Everyday Lifestyle Pick"
-          data-category="Lifestyle"
-        >
+          <article
+            class="product-card"
+            data-category="Lifestyle"
+            data-search="everyday lifestyle pick bottle lifestyle"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=everyday-lifestyle-pick">
+            <div class="product-image">
 
               <img
                 src="assets/products/bottle.svg"
@@ -1502,82 +1453,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="everyday-lifestyle-pick"
+                aria-label="Add Everyday Lifestyle Pick to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Everyday Lifestyle Pick"
-              data-price="1999"
-              data-image="assets/products/bottle.svg"
-              aria-label="Add Everyday Lifestyle Pick to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Lifestyle
             </div>
 
-            <h2 class="product-name">
-              Everyday Lifestyle Pick
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A practical lifestyle item selected for everyday convenience.
-            </p>
+              <div class="product-category">
+                Lifestyle
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Everyday Lifestyle Pick
+              </h3>
 
               <div class="product-price">
                 Rs. 1,999
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Everyday Lifestyle Pick', 1999, 'assets/products/bottle.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Everyday Lifestyle Pick"
+                  data-price="1999"
+                  data-image="assets/products/bottle.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=everyday-lifestyle-pick"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=everyday-lifestyle-pick"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 8 -->
+          <!-- Product 8 -->
 
-        <article
-          class="product-card"
-          data-name="Classic Wardrobe Essential"
-          data-category="Fashion"
-        >
+          <article
+            class="product-card"
+            data-category="Fashion"
+            data-search="classic wardrobe essential trousers fashion"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=classic-wardrobe-essential">
-
-              <span class="product-badge">
-                New
-              </span>
+            <div class="product-image">
 
               <img
                 src="assets/products/trousers.svg"
@@ -1585,78 +1518,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="classic-wardrobe-essential"
+                aria-label="Add Classic Wardrobe Essential to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Classic Wardrobe Essential"
-              data-price="2899"
-              data-image="assets/products/trousers.svg"
-              aria-label="Add Classic Wardrobe Essential to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Fashion
             </div>
 
-            <h2 class="product-name">
-              Classic Wardrobe Essential
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A timeless wardrobe piece designed for effortless everyday outfits.
-            </p>
+              <div class="product-category">
+                Fashion
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Classic Wardrobe Essential
+              </h3>
 
               <div class="product-price">
                 Rs. 2,899
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Classic Wardrobe Essential', 2899, 'assets/products/trousers.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Classic Wardrobe Essential"
+                  data-price="2899"
+                  data-image="assets/products/trousers.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=classic-wardrobe-essential"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=classic-wardrobe-essential"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 9 -->
+          <!-- Product 9 -->
 
-        <article
-          class="product-card"
-          data-name="Signature Beauty Set"
-          data-category="Beauty"
-        >
+          <article
+            class="product-card"
+            data-category="Beauty"
+            data-search="signature beauty set self care beauty"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=signature-beauty-set">
+            <div class="product-image">
 
               <img
                 src="assets/products/self-care.svg"
@@ -1664,82 +1583,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="signature-beauty-set"
+                aria-label="Add Signature Beauty Set to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Signature Beauty Set"
-              data-price="1799"
-              data-image="assets/products/self-care.svg"
-              aria-label="Add Signature Beauty Set to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Beauty
             </div>
 
-            <h2 class="product-name">
-              Signature Beauty Set
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A curated beauty set for a polished and simple self-care routine.
-            </p>
+              <div class="product-category">
+                Beauty
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Signature Beauty Set
+              </h3>
 
               <div class="product-price">
                 Rs. 1,799
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Signature Beauty Set', 1799, 'assets/products/self-care.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Signature Beauty Set"
+                  data-price="1799"
+                  data-image="assets/products/self-care.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=signature-beauty-set"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=signature-beauty-set"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 10 -->
+          <!-- Product 10 -->
 
-        <article
-          class="product-card"
-          data-name="Connected Smart Essential"
-          data-category="Electronics"
-        >
+          <article
+            class="product-card"
+            data-category="Electronics"
+            data-search="connected smart essential smartwatch electronics"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=connected-smart-essential">
-
-              <span class="product-badge">
-                New
-              </span>
+            <div class="product-image">
 
               <img
                 src="assets/products/smartwatch.svg"
@@ -1747,82 +1648,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="connected-smart-essential"
+                aria-label="Add Connected Smart Essential to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Connected Smart Essential"
-              data-price="5999"
-              data-image="assets/products/smartwatch.svg"
-              aria-label="Add Connected Smart Essential to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Electronics
             </div>
 
-            <h2 class="product-name">
-              Connected Smart Essential
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A modern connected device designed for everyday digital life.
-            </p>
+              <div class="product-category">
+                Electronics
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Connected Smart Essential
+              </h3>
 
               <div class="product-price">
                 Rs. 5,999
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Connected Smart Essential', 5999, 'assets/products/smartwatch.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Connected Smart Essential"
+                  data-price="5999"
+                  data-image="assets/products/smartwatch.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=connected-smart-essential"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=connected-smart-essential"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 11 -->
+          <!-- Product 11 -->
 
-        <article
-          class="product-card"
-          data-name="Everyday Carry Accessory"
-          data-category="Accessories"
-        >
+          <article
+            class="product-card"
+            data-category="Accessories"
+            data-search="everyday carry accessory bag accessories"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=everyday-carry-accessory">
-
-              <span class="product-badge">
-                Featured
-              </span>
+            <div class="product-image">
 
               <img
                 src="assets/products/bag.svg"
@@ -1830,78 +1713,64 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="everyday-carry-accessory"
+                aria-label="Add Everyday Carry Accessory to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Everyday Carry Accessory"
-              data-price="1399"
-              data-image="assets/products/bag.svg"
-              aria-label="Add Everyday Carry Accessory to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Accessories
             </div>
 
-            <h2 class="product-name">
-              Everyday Carry Accessory
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A refined everyday accessory with a clean and versatile design.
-            </p>
+              <div class="product-category">
+                Accessories
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Everyday Carry Accessory
+              </h3>
 
               <div class="product-price">
                 Rs. 1,399
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Everyday Carry Accessory', 1399, 'assets/products/bag.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Everyday Carry Accessory"
+                  data-price="1399"
+                  data-image="assets/products/bag.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=everyday-carry-accessory"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=everyday-carry-accessory"
-            >
-              View Product
-            </a>
-
-          </div>
-
-        </article>
+          </article>
 
 
-        <!-- PRODUCT 12 -->
+          <!-- Product 12 -->
 
-        <article
-          class="product-card"
-          data-name="Elevated Living Essential"
-          data-category="Home & Living"
-        >
+          <article
+            class="product-card"
+            data-category="Home & Living"
+            data-search="elevated living essential ceramic home living"
+          >
 
-          <div class="product-image">
-
-            <a href="product.html?product=elevated-living-essential">
+            <div class="product-image">
 
               <img
                 src="assets/products/ceramic-set.svg"
@@ -1909,833 +1778,748 @@
                 loading="lazy"
               >
 
-            </a>
+              <button
+                class="wishlist-btn"
+                data-product="elevated-living-essential"
+                aria-label="Add Elevated Living Essential to wishlist"
+              >
+                ♡
+              </button>
 
-
-            <button
-              class="product-wishlist"
-              type="button"
-              data-name="Elevated Living Essential"
-              data-price="2699"
-              data-image="assets/products/ceramic-set.svg"
-              aria-label="Add Elevated Living Essential to wishlist"
-              title="Add to wishlist"
-              onclick="toggleWishlist(this)"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Home & Living
             </div>
 
-            <h2 class="product-name">
-              Elevated Living Essential
-            </h2>
+            <div class="product-info">
 
-            <p class="product-description">
-              A refined home essential created for simple and elevated living.
-            </p>
+              <div class="product-category">
+                Home & Living
+              </div>
 
-            <div class="product-bottom">
+              <h3 class="product-title">
+                Elevated Living Essential
+              </h3>
 
               <div class="product-price">
                 Rs. 2,699
               </div>
 
-              <button
-                class="add-btn"
-                type="button"
-                onclick="addToCart('Elevated Living Essential', 2699, 'assets/products/ceramic-set.svg')"
-              >
-                Add to Cart
-              </button>
+              <div class="product-actions">
+
+                <button
+                  class="btn btn-dark add-cart"
+                  data-name="Elevated Living Essential"
+                  data-price="2699"
+                  data-image="assets/products/ceramic-set.svg"
+                >
+                  Add to Cart
+                </button>
+
+                <a
+                  class="btn btn-light"
+                  href="product.html?product=elevated-living-essential"
+                >
+                  View Product
+                </a>
+
+              </div>
 
             </div>
 
-            <a
-              class="view-btn"
-              href="product.html?product=elevated-living-essential"
-            >
-              View Product
-            </a>
+          </article>
 
-          </div>
-
-        </article>
+        </div>
 
 
-        <!-- NO RESULTS -->
+        <div class="no-results" id="noResults">
 
-        <div
-          class="no-results"
-          id="noResults"
-        >
-
-          <h2>
+          <h3>
             No products found
-          </h2>
+          </h3>
 
           <p>
-            Try another product name or category.
+            Try another product name or choose a different category.
           </p>
 
         </div>
 
       </div>
 
-    </div>
-
-  </section>
-
-</main>
+    </section>
 
 
-<!-- =========================
-     FOOTER
-========================= -->
+    <!-- SEO Section -->
 
-<footer>
+    <section class="seo-section">
 
-  <div class="container">
+      <div class="container">
 
-    <div class="footer-grid">
+        <div class="seo-content">
 
-      <div>
+          <h2>
+            Online Shopping for Everyday Essentials
+          </h2>
+
+          <p>
+            Shopora Market Store brings together a curated selection of
+            products for modern everyday shopping in Pakistan. Browse
+            fashion products, beauty essentials, electronics, home and
+            living products, accessories and lifestyle picks in one place.
+          </p>
+
+          <p>
+            Whether you are looking for everyday fashion, useful electronics,
+            beauty products, home essentials or accessories, Shopora makes
+            product discovery simple and organized.
+          </p>
+
+          <div class="seo-links">
+
+            <a href="shop.html?category=Fashion">
+              Fashion
+            </a>
+
+            <a href="shop.html?category=Beauty">
+              Beauty
+            </a>
+
+            <a href="shop.html?category=Electronics">
+              Electronics
+            </a>
+
+            <a href="shop.html?category=Home%20%26%20Living">
+              Home & Living
+            </a>
+
+            <a href="shop.html?category=Accessories">
+              Accessories
+            </a>
+
+            <a href="shop.html?category=Lifestyle">
+              Lifestyle
+            </a>
+
+            <a href="trending.html">
+              Trending Products
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Newsletter -->
+
+    <section class="newsletter">
+
+      <div class="container newsletter-inner">
+
+        <div>
+
+          <h2>
+            Stay in the Shopora loop.
+          </h2>
+
+          <p>
+            Get new product picks, shopping inspiration and updates.
+          </p>
+
+        </div>
+
+        <form class="newsletter-form" id="newsletterForm">
+
+          <input
+            type="email"
+            placeholder="Your email address"
+            aria-label="Email address"
+            required
+          >
+
+          <button type="submit">
+            Subscribe
+          </button>
+
+        </form>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- Footer -->
+
+  <footer>
+
+    <div class="container footer-main">
+
+      <div class="footer-brand">
 
         <a href="index.html">
 
           <img
             src="assets/shopora-logo.png"
             alt="Shopora Market Store"
-            class="footer-logo"
+            width="180"
+            height="50"
           >
 
         </a>
 
-        <p class="footer-about">
-          Shopora Market Store brings together carefully selected
-          products across fashion, beauty, technology, home and lifestyle.
+        <p>
+          Shopora Market Store is a modern online marketplace focused on
+          curated everyday products and simple shopping.
         </p>
 
       </div>
 
 
-      <div class="footer-column">
+      <div class="footer-col">
 
-        <h3>
-          Shop
-        </h3>
+        <h3>Shop</h3>
 
-        <a href="shop.html">
-          All Products
-        </a>
+        <a href="shop.html">Shop All</a>
 
-        <a href="categories.html">
-          Categories
-        </a>
+        <a href="categories.html">Categories</a>
 
-        <a href="trending.html">
-          Trending
-        </a>
+        <a href="trending.html">Trending</a>
 
-        <a href="wishlist.html">
-          Wishlist
-        </a>
+        <a href="cart.html">Cart</a>
 
-        <a href="cart.html">
-          Cart
-        </a>
+        <a href="wishlist.html">Wishlist</a>
 
       </div>
 
 
-      <div class="footer-column">
+      <div class="footer-col">
 
-        <h3>
-          Company
-        </h3>
+        <h3>Company</h3>
 
-        <a href="about.html">
-          About Us
-        </a>
+        <a href="about.html">About Shopora</a>
 
-        <a href="contact.html">
-          Contact Us
-        </a>
+        <a href="contact.html">Contact</a>
 
       </div>
 
 
-      <div class="footer-column">
+      <div class="footer-col">
 
-        <h3>
-          Policies
-        </h3>
+        <h3>Policies</h3>
 
-        <a href="privacy-policy.html">
-          Privacy Policy
-        </a>
+        <a href="privacy-policy.html">Privacy Policy</a>
 
-        <a href="terms-of-service.html">
-          Terms of Service
-        </a>
+        <a href="terms-of-service.html">Terms of Service</a>
 
-        <a href="cookie-policy.html">
-          Cookie Policy
-        </a>
+        <a href="cookie-policy.html">Cookie Policy</a>
 
-        <a href="return-refund.html">
-          Return & Refund
-        </a>
+        <a href="return-refund.html">Return & Refund</a>
 
       </div>
 
     </div>
 
 
-    <div class="footer-bottom">
+    <div class="container footer-bottom">
 
       <span>
-        © 2026 Shopora Market Store. All rights reserved.
+        © <span id="year"></span> Shopora Market Store. All rights reserved.
       </span>
 
       <span>
-        Designed for modern everyday shopping.
+        Online Shopping in Pakistan
       </span>
 
     </div>
 
+  </footer>
+
+
+  <div class="toast" id="toast">
+    Product added to cart.
   </div>
 
-</footer>
+
+  <script>
+
+    /* -----------------------------
+       Storage
+    ----------------------------- */
+
+    const CART_KEY = "shoporaCart";
+    const WISHLIST_KEY = "shoporaWishlist";
 
 
-<!-- TOAST -->
+    function getCart() {
 
-<div
-  class="toast"
-  id="toast"
-  role="status"
-  aria-live="polite"
-></div>
-
-
-<script>
-
-  /* =========================
-     MOBILE MENU
-  ========================= */
-
-  function toggleMenu() {
-
-    document
-      .getElementById("mainNav")
-      .classList
-      .toggle("open");
-
-  }
-
-
-  /* =========================
-     SEARCH ICON
-  ========================= */
-
-  function focusSearch() {
-
-    const search =
-      document.getElementById("productSearch");
-
-    search.focus();
-
-    search.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-  }
-
-
-  /* =========================
-     CART
-  ========================= */
-
-  function getCart() {
-
-    try {
-
-      return JSON.parse(
-        localStorage.getItem("shoporaCart")
-      ) || [];
-
-    } catch (error) {
-
-      return [];
-
-    }
-
-  }
-
-
-  function saveCart(cart) {
-
-    localStorage.setItem(
-      "shoporaCart",
-      JSON.stringify(cart)
-    );
-
-  }
-
-
-  function addToCart(name, price, image) {
-
-    const cart = getCart();
-
-    const existingProduct =
-      cart.find(item => item.name === name);
-
-
-    if (existingProduct) {
-
-      existingProduct.quantity =
-        (existingProduct.quantity || 1) + 1;
-
-      if (!existingProduct.image) {
-        existingProduct.image = image;
+      try {
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+      } catch {
+        return [];
       }
 
-    } else {
-
-      cart.push({
-
-        name: name,
-
-        price: price,
-
-        image: image,
-
-        quantity: 1
-
-      });
-
     }
 
 
-    saveCart(cart);
+    function saveCart(cart) {
 
-    updateCartCount();
-
-    showToast(
-      name + " added to cart"
-    );
-
-  }
-
-
-  /* =========================
-     CART COUNT
-  ========================= */
-
-  function updateCartCount() {
-
-    const cart = getCart();
-
-    let count = 0;
-
-    cart.forEach(item => {
-
-      count += Number(
-        item.quantity || 1
-      );
-
-    });
-
-
-    const cartCount =
-      document.getElementById("cartCount");
-
-
-    if (count > 0) {
-
-      cartCount.textContent =
-        count > 99 ? "99+" : count;
-
-      cartCount.classList.add("visible");
-
-    } else {
-
-      cartCount.classList.remove("visible");
-
-    }
-
-  }
-
-
-  /* =========================
-     WISHLIST
-  ========================= */
-
-  function getWishlist() {
-
-    try {
-
-      return JSON.parse(
-        localStorage.getItem("shoporaWishlist")
-      ) || [];
-
-    } catch (error) {
-
-      return [];
-
-    }
-
-  }
-
-
-  function saveWishlist(wishlist) {
-
-    localStorage.setItem(
-      "shoporaWishlist",
-      JSON.stringify(wishlist)
-    );
-
-  }
-
-
-  function toggleWishlist(button) {
-
-    const name =
-      button.dataset.name;
-
-    const price =
-      Number(button.dataset.price);
-
-    const image =
-      button.dataset.image;
-
-
-    let wishlist =
-      getWishlist();
-
-
-    const existingIndex =
-      wishlist.findIndex(
-        item => item.name === name
-      );
-
-
-    if (existingIndex !== -1) {
-
-      wishlist.splice(
-        existingIndex,
-        1
-      );
-
-      button.classList.remove("active");
-
-      button.innerHTML = "♡";
-
-      button.setAttribute(
-        "aria-label",
-        "Add " + name + " to wishlist"
-      );
-
-      button.setAttribute(
-        "title",
-        "Add to wishlist"
-      );
-
-      showToast(
-        name + " removed from wishlist"
-      );
-
-    } else {
-
-      wishlist.push({
-
-        name: name,
-
-        price: price,
-
-        image: image
-
-      });
-
-      button.classList.add("active");
-
-      button.innerHTML = "♥";
-
-      button.setAttribute(
-        "aria-label",
-        "Remove " + name + " from wishlist"
-      );
-
-      button.setAttribute(
-        "title",
-        "Remove from wishlist"
-      );
-
-      showToast(
-        name + " added to wishlist"
+      localStorage.setItem(
+        CART_KEY,
+        JSON.stringify(cart)
       );
 
     }
 
 
-    saveWishlist(wishlist);
+    function getWishlist() {
 
-    updateWishlistCount();
+      try {
+        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+      } catch {
+        return [];
+      }
 
-  }
-
-
-  /* =========================
-     WISHLIST COUNT
-  ========================= */
-
-  function updateWishlistCount() {
-
-    const wishlist =
-      getWishlist();
-
-    const count =
-      wishlist.length;
+    }
 
 
-    const wishlistCount =
-      document.getElementById(
-        "wishlistCount"
-      );
+    function saveWishlist(list) {
 
-
-    if (count > 0) {
-
-      wishlistCount.textContent =
-        count > 99 ? "99+" : count;
-
-      wishlistCount.classList.add(
-        "visible"
-      );
-
-    } else {
-
-      wishlistCount.classList.remove(
-        "visible"
+      localStorage.setItem(
+        WISHLIST_KEY,
+        JSON.stringify(list)
       );
 
     }
 
-  }
+
+    /* -----------------------------
+       Counts
+    ----------------------------- */
+
+    function updateCounts() {
+
+      const cart = getCart();
+
+      const wishlist = getWishlist();
+
+      const cartCount = cart.reduce(
+        (total, item) =>
+          total + Number(item.quantity || 1),
+        0
+      );
+
+      document.getElementById("cartCount").textContent =
+        cartCount;
+
+      document.getElementById("wishlistCount").textContent =
+        wishlist.length;
+
+    }
 
 
-  /* =========================
-     SYNC WISHLIST BUTTONS
-  ========================= */
+    /* -----------------------------
+       Toast
+    ----------------------------- */
 
-  function syncWishlistButtons() {
+    let toastTimer;
 
-    const wishlist =
-      getWishlist();
+    function showToast(message) {
+
+      const toast = document.getElementById("toast");
+
+      toast.textContent = message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer = setTimeout(() => {
+
+        toast.classList.remove("show");
+
+      }, 2200);
+
+    }
 
 
-    document
-      .querySelectorAll(".product-wishlist")
-      .forEach(button => {
+    /* -----------------------------
+       Add to cart
+    ----------------------------- */
+
+    document.querySelectorAll(".add-cart").forEach(button => {
+
+      button.addEventListener("click", () => {
 
         const name =
           button.dataset.name;
 
+        const price =
+          Number(button.dataset.price);
 
-        const isSaved =
-          wishlist.some(
-            item => item.name === name
+        const image =
+          button.dataset.image;
+
+        const cart =
+          getCart();
+
+        const existing =
+          cart.find(item =>
+            item.name === name
           );
 
+        if (existing) {
 
-        if (isSaved) {
-
-          button.classList.add("active");
-
-          button.innerHTML = "♥";
-
-          button.setAttribute(
-            "aria-label",
-            "Remove " + name + " from wishlist"
-          );
-
-          button.setAttribute(
-            "title",
-            "Remove from wishlist"
-          );
+          existing.quantity =
+            Number(existing.quantity || 1) + 1;
 
         } else {
 
-          button.classList.remove("active");
-
-          button.innerHTML = "♡";
-
-          button.setAttribute(
-            "aria-label",
-            "Add " + name + " to wishlist"
-          );
-
-          button.setAttribute(
-            "title",
-            "Add to wishlist"
-          );
+          cart.push({
+            name,
+            price,
+            image,
+            quantity: 1
+          });
 
         }
 
+        saveCart(cart);
+
+        updateCounts();
+
+        showToast(
+          `${name} added to cart.`
+        );
+
       });
-
-  }
-
-
-  /* =========================
-     TOAST
-  ========================= */
-
-  function showToast(message) {
-
-    const toast =
-      document.getElementById("toast");
-
-
-    toast.textContent =
-      message;
-
-    toast.classList.add("show");
-
-
-    clearTimeout(
-      window.shoporaToastTimer
-    );
-
-
-    window.shoporaToastTimer =
-      setTimeout(() => {
-
-        toast.classList.remove(
-          "show"
-        );
-
-      }, 2500);
-
-  }
-
-
-  /* =========================
-     FILTER PRODUCTS
-  ========================= */
-
-  function filterProducts() {
-
-    const searchValue =
-      document
-        .getElementById("productSearch")
-        .value
-        .trim()
-        .toLowerCase();
-
-
-    const categoryValue =
-      document
-        .getElementById("categoryFilter")
-        .value;
-
-
-    const products =
-      document.querySelectorAll(
-        ".product-card"
-      );
-
-
-    let visibleCount = 0;
-
-
-    products.forEach(product => {
-
-      const name =
-        product.dataset.name
-          .toLowerCase();
-
-
-      const category =
-        product.dataset.category;
-
-
-      const matchesSearch =
-        name.includes(
-          searchValue
-        );
-
-
-      const matchesCategory =
-        categoryValue === "all" ||
-        category === categoryValue;
-
-
-      if (
-        matchesSearch &&
-        matchesCategory
-      ) {
-
-        product.style.display = "";
-
-        visibleCount++;
-
-      } else {
-
-        product.style.display =
-          "none";
-
-      }
 
     });
 
 
-    document.getElementById(
-      "productCount"
-    ).textContent =
-      visibleCount +
-      (
-        visibleCount === 1
-          ? " product"
-          : " products"
+    /* -----------------------------
+       Wishlist
+    ----------------------------- */
+
+    function updateWishlistButtons() {
+
+      const wishlist =
+        getWishlist();
+
+      document
+        .querySelectorAll(".wishlist-btn")
+        .forEach(button => {
+
+          const slug =
+            button.dataset.product;
+
+          const active =
+            wishlist.includes(slug);
+
+          button.classList.toggle(
+            "active",
+            active
+          );
+
+          button.textContent =
+            active ? "♥" : "♡";
+
+        });
+
+    }
+
+
+    document
+      .querySelectorAll(".wishlist-btn")
+      .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+          const slug =
+            button.dataset.product;
+
+          let wishlist =
+            getWishlist();
+
+          if (wishlist.includes(slug)) {
+
+            wishlist =
+              wishlist.filter(
+                item => item !== slug
+              );
+
+            showToast(
+              "Removed from wishlist."
+            );
+
+          } else {
+
+            wishlist.push(slug);
+
+            showToast(
+              "Added to wishlist."
+            );
+
+          }
+
+          saveWishlist(wishlist);
+
+          updateCounts();
+
+          updateWishlistButtons();
+
+        });
+
+      });
+
+
+    /* -----------------------------
+       Search + Filter
+    ----------------------------- */
+
+    const searchInput =
+      document.getElementById("productSearch");
+
+    const categoryFilter =
+      document.getElementById("categoryFilter");
+
+    const cards =
+      Array.from(
+        document.querySelectorAll(".product-card")
       );
 
+    const resultCount =
+      document.getElementById("resultCount");
 
-    document.getElementById(
-      "noResults"
-    ).style.display =
-      visibleCount === 0
-        ? "block"
-        : "none";
-
-  }
+    const noResults =
+      document.getElementById("noResults");
 
 
-  /* =========================
-     URL FILTER SUPPORT
-  ========================= */
+    function filterProducts() {
 
-  function loadFiltersFromURL() {
+      const query =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+      const category =
+        categoryFilter.value;
+
+      let visible = 0;
+
+      cards.forEach(card => {
+
+        const text =
+          card.dataset.search.toLowerCase();
+
+        const cardCategory =
+          card.dataset.category;
+
+        const matchesSearch =
+          !query ||
+          text.includes(query);
+
+        const matchesCategory =
+          category === "all" ||
+          cardCategory === category;
+
+        const show =
+          matchesSearch &&
+          matchesCategory;
+
+        card.style.display =
+          show ? "" : "none";
+
+        if (show) {
+          visible++;
+        }
+
+      });
+
+      resultCount.textContent =
+        `${visible} product${visible === 1 ? "" : "s"}`;
+
+      noResults.style.display =
+        visible === 0 ? "block" : "none";
+
+    }
+
+
+    searchInput.addEventListener(
+      "input",
+      filterProducts
+    );
+
+    categoryFilter.addEventListener(
+      "change",
+      filterProducts
+    );
+
+
+    /* -----------------------------
+       URL filters
+    ----------------------------- */
 
     const params =
       new URLSearchParams(
         window.location.search
       );
 
-
-    const category =
+    const urlCategory =
       params.get("category");
 
-
-    const search =
+    const urlSearch =
       params.get("search");
 
 
-    if (category) {
+    if (urlCategory) {
 
-      const categorySelect =
-        document.getElementById(
-          "categoryFilter"
-        );
-
-
-      const optionExists =
+      const option =
         Array.from(
-          categorySelect.options
-        ).some(
+          categoryFilter.options
+        ).find(
           option =>
-            option.value === category
+            option.value === urlCategory
         );
 
+      if (option) {
 
-      if (optionExists) {
-
-        categorySelect.value =
-          category;
+        categoryFilter.value =
+          urlCategory;
 
       }
 
     }
 
 
-    if (search) {
+    if (urlSearch) {
 
-      document.getElementById(
-        "productSearch"
-      ).value =
-        search;
+      searchInput.value =
+        urlSearch;
 
     }
 
 
     filterProducts();
 
-  }
+
+    /* -----------------------------
+       Mobile Menu
+    ----------------------------- */
+
+    const mobileToggle =
+      document.getElementById("mobileToggle");
+
+    const mainNav =
+      document.getElementById("mainNav");
 
 
-  /* =========================
-     CLOSE MOBILE MENU
-  ========================= */
+    mobileToggle.addEventListener(
+      "click",
+      () => {
 
-  document
-    .querySelectorAll(".main-nav a")
-    .forEach(link => {
+        const open =
+          mainNav.classList.toggle("open");
 
-      link.addEventListener(
-        "click",
-        () => {
+        mobileToggle.setAttribute(
+          "aria-expanded",
+          open ? "true" : "false"
+        );
 
-          document
-            .getElementById("mainNav")
-            .classList
-            .remove("open");
+        mobileToggle.textContent =
+          open ? "×" : "☰";
+
+      }
+    );
+
+
+    mainNav
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            mainNav.classList.remove("open");
+
+            mobileToggle.textContent = "☰";
+
+            mobileToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
+
+      });
+
+
+    /* -----------------------------
+       Newsletter
+    ----------------------------- */
+
+    document
+      .getElementById("newsletterForm")
+      .addEventListener(
+        "submit",
+        event => {
+
+          event.preventDefault();
+
+          showToast(
+            "Thanks for subscribing to Shopora."
+          );
+
+          event.target.reset();
 
         }
       );
 
-    });
+
+    /* -----------------------------
+       Year
+    ----------------------------- */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
 
-  /* =========================
-     STORAGE SYNC
-  ========================= */
+    /* -----------------------------
+       Initial state
+    ----------------------------- */
 
-  window.addEventListener(
-    "storage",
-    () => {
+    updateCounts();
 
-      updateCartCount();
-
-      updateWishlistCount();
-
-      syncWishlistButtons();
-
-    }
-  );
+    updateWishlistButtons();
 
 
-  /* =========================
-     START
-  ========================= */
+    window.addEventListener(
+      "storage",
+      () => {
 
-  loadFiltersFromURL();
+        updateCounts();
 
-  updateCartCount();
+        updateWishlistButtons();
 
-  updateWishlistCount();
+      }
+    );
 
-  syncWishlistButtons();
 
-</script>
+    window.addEventListener(
+      "pageshow",
+      () => {
+
+        updateCounts();
+
+        updateWishlistButtons();
+
+      }
+    );
+
+  </script>
 
 </body>
 </html>
