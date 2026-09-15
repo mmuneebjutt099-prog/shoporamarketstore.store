@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Shop All Products | Shopora Market Store</title>
@@ -633,1173 +632,1173 @@
 
 <body>
 
-  <!-- HEADER -->
+<header>
+  <div class="container header-inner">
 
-  <header>
-    <div class="container header-inner">
+    <a href="index.html" class="brand" aria-label="Shopora Market Store home">
+      <img
+        src="assets/shopora-logo.png"
+        alt="Shopora Market Store"
+        class="brand-logo"
+        width="180"
+        height="60"
+      >
+    </a>
 
-      <a href="index.html" class="brand" aria-label="Shopora Market Store home">
-        <img
-          src="assets/shopora-logo.png"
-          alt="Shopora Market Store"
-          class="brand-logo"
-          width="180"
-          height="60"
-        >
-      </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="shop.html" class="active">Shop</a>
+      <a href="categories.html">Categories</a>
+      <a href="trending.html">Trending</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
 
-      <nav class="main-nav" id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="shop.html" class="active">Shop</a>
-        <a href="categories.html">Categories</a>
-        <a href="trending.html">Trending</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+    <div class="header-actions">
 
-      <div class="header-actions">
+      <button
+        class="icon-btn search-header"
+        onclick="focusSearch()"
+        aria-label="Search products"
+        title="Search"
+      >
+        ⌕
+      </button>
 
-        <button
-          class="icon-btn search-header"
-          onclick="document.getElementById('productSearch').focus()"
-          aria-label="Search products"
-          title="Search"
-        >
-          ⌕
-        </button>
+      <button
+        class="icon-btn"
+        onclick="openCart()"
+        aria-label="Open cart"
+        title="Cart"
+      >
+        🛒
+      </button>
 
-        <button
-          class="icon-btn"
-          onclick="openCart()"
-          aria-label="Open cart"
-          title="Cart"
-        >
-          🛒
-        </button>
-
-        <button
-          class="icon-btn menu-btn"
-          onclick="toggleMenu()"
-          aria-label="Open menu"
-          title="Menu"
-        >
-          ☰
-        </button>
-
-      </div>
+      <button
+        class="icon-btn menu-btn"
+        onclick="toggleMenu()"
+        aria-label="Open menu"
+        title="Menu"
+      >
+        ☰
+      </button>
 
     </div>
-  </header>
 
+  </div>
+</header>
 
-  <!-- HERO -->
+<main>
 
-  <main>
+  <section class="shop-hero">
+    <div class="container">
 
-    <section class="shop-hero">
-      <div class="container">
+      <div class="eyebrow">Shop Shopora</div>
 
-        <div class="eyebrow">Shop Shopora</div>
+      <h1>Curated For<br>Everyday Living.</h1>
 
-        <h1>Curated For<br>Everyday Living.</h1>
+      <p>
+        Discover thoughtfully selected products across fashion, beauty,
+        electronics, home living, accessories and lifestyle.
+      </p>
 
-        <p>
-          Discover thoughtfully selected products across fashion, beauty,
-          electronics, home living, accessories and lifestyle.
-        </p>
+    </div>
+  </section>
 
-      </div>
-    </section>
-
-
-    <!-- SHOP -->
-
-    <section class="shop-section">
-
-      <div class="container">
-
-        <div class="shop-toolbar">
-
-          <div class="search-box">
-            <input
-              type="search"
-              id="productSearch"
-              placeholder="Search products..."
-              aria-label="Search products"
-              oninput="filterProducts()"
-            >
-          </div>
-
-          <select
-            class="filter-select"
-            id="categoryFilter"
-            onchange="filterProducts()"
-            aria-label="Filter products by category"
-          >
-            <option value="all">All Categories</option>
-            <option value="Fashion">Fashion</option>
-            <option value="Beauty">Beauty</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Home & Living">Home & Living</option>
-            <option value="Accessories">Accessories</option>
-            <option value="Lifestyle">Lifestyle</option>
-          </select>
-
-          <div class="product-count" id="productCount">
-            12 products
-          </div>
-
-        </div>
-
-
-        <div class="products-grid" id="productsGrid">
-
-          <!-- PRODUCT 1 -->
-
-          <article
-            class="product-card"
-            data-name="Everyday Premium Essential"
-            data-category="Fashion"
-          >
-
-            <a href="product.html?product=everyday-premium-essential">
-
-              <div class="product-image">
-
-                <span class="product-badge">New</span>
-
-                <img
-                  src="assets/products/black-shirt.svg"
-                  alt="Everyday Premium Essential"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Fashion</div>
-
-              <h2 class="product-name">
-                Everyday Premium Essential
-              </h2>
-
-              <p class="product-description">
-                A clean everyday fashion essential designed for effortless style.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 2,499
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Everyday Premium Essential', 2499, 'assets/products/black-shirt.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=everyday-premium-essential"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 2 -->
-
-          <article
-            class="product-card"
-            data-name="Modern Everyday Collection"
-            data-category="Fashion"
-          >
-
-            <a href="product.html?product=modern-everyday-collection">
-
-              <div class="product-image">
-
-                <span class="product-badge">Featured</span>
-
-                <img
-                  src="assets/products/coord-set.svg"
-                  alt="Modern Everyday Collection"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Fashion</div>
-
-              <h2 class="product-name">
-                Modern Everyday Collection
-              </h2>
-
-              <p class="product-description">
-                Modern wardrobe styling made simple, comfortable and versatile.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 3,499
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Modern Everyday Collection', 3499, 'assets/products/coord-set.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=modern-everyday-collection"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 3 -->
-
-          <article
-            class="product-card"
-            data-name="Smart Everyday Device"
-            data-category="Electronics"
-          >
-
-            <a href="product.html?product=smart-everyday-device">
-
-              <div class="product-image">
-
-                <span class="product-badge">New</span>
-
-                <img
-                  src="assets/products/wireless-buds.svg"
-                  alt="Smart Everyday Device"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Electronics</div>
-
-              <h2 class="product-name">
-                Smart Everyday Device
-              </h2>
-
-              <p class="product-description">
-                A practical everyday tech essential for modern connected living.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 4,999
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Smart Everyday Device', 4999, 'assets/products/wireless-buds.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=smart-everyday-device"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 4 -->
-
-          <article
-            class="product-card"
-            data-name="Minimal Signature Accessory"
-            data-category="Accessories"
-          >
-
-            <a href="product.html?product=minimal-signature-accessory">
-
-              <div class="product-image">
-
-                <span class="product-badge">New</span>
-
-                <img
-                  src="assets/products/bag.svg"
-                  alt="Minimal Signature Accessory"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Accessories</div>
-
-              <h2 class="product-name">
-                Minimal Signature Accessory
-              </h2>
-
-              <p class="product-description">
-                A refined accessory designed to complement your everyday look.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 1,899
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Minimal Signature Accessory', 1899, 'assets/products/bag.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=minimal-signature-accessory"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 5 -->
-
-          <article
-            class="product-card"
-            data-name="Daily Beauty Essential"
-            data-category="Beauty"
-          >
-
-            <a href="product.html?product=daily-beauty-essential">
-
-              <div class="product-image">
-
-                <span class="product-badge">Bestseller</span>
-
-                <img
-                  src="assets/products/beauty-set.svg"
-                  alt="Daily Beauty Essential"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Beauty</div>
-
-              <h2 class="product-name">
-                Daily Beauty Essential
-              </h2>
-
-              <p class="product-description">
-                A simple beauty essential for an easy everyday self-care routine.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 1,599
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Daily Beauty Essential', 1599, 'assets/products/beauty-set.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=daily-beauty-essential"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 6 -->
-
-          <article
-            class="product-card"
-            data-name="Modern Home Essential"
-            data-category="Home & Living"
-          >
-
-            <a href="product.html?product=modern-home-essential">
-
-              <div class="product-image">
-
-                <span class="product-badge">New</span>
-
-                <img
-                  src="assets/products/lamp.svg"
-                  alt="Modern Home Essential"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Home & Living</div>
-
-              <h2 class="product-name">
-                Modern Home Essential
-              </h2>
-
-              <p class="product-description">
-                A modern home piece designed to bring simple elegance to your space.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 2,299
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Modern Home Essential', 2299, 'assets/products/lamp.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=modern-home-essential"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 7 -->
-
-          <article
-            class="product-card"
-            data-name="Everyday Lifestyle Pick"
-            data-category="Lifestyle"
-          >
-
-            <a href="product.html?product=everyday-lifestyle-pick">
-
-              <div class="product-image">
-
-                <img
-                  src="assets/products/bottle.svg"
-                  alt="Everyday Lifestyle Pick"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Lifestyle</div>
-
-              <h2 class="product-name">
-                Everyday Lifestyle Pick
-              </h2>
-
-              <p class="product-description">
-                A practical lifestyle item selected for everyday convenience.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 1,999
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Everyday Lifestyle Pick', 1999, 'assets/products/bottle.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=everyday-lifestyle-pick"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 8 -->
-
-          <article
-            class="product-card"
-            data-name="Classic Wardrobe Essential"
-            data-category="Fashion"
-          >
-
-            <a href="product.html?product=classic-wardrobe-essential">
-
-              <div class="product-image">
-
-                <span class="product-badge">New</span>
-
-                <img
-                  src="assets/products/trousers.svg"
-                  alt="Classic Wardrobe Essential"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Fashion</div>
-
-              <h2 class="product-name">
-                Classic Wardrobe Essential
-              </h2>
-
-              <p class="product-description">
-                A timeless wardrobe piece designed for effortless everyday outfits.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 2,899
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Classic Wardrobe Essential', 2899, 'assets/products/trousers.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=classic-wardrobe-essential"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 9 -->
-
-          <article
-            class="product-card"
-            data-name="Signature Beauty Set"
-            data-category="Beauty"
-          >
-
-            <a href="product.html?product=signature-beauty-set">
-
-              <div class="product-image">
-
-                <img
-                  src="assets/products/self-care.svg"
-                  alt="Signature Beauty Set"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Beauty</div>
-
-              <h2 class="product-name">
-                Signature Beauty Set
-              </h2>
-
-              <p class="product-description">
-                A curated beauty set for a polished and simple self-care routine.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 1,799
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Signature Beauty Set', 1799, 'assets/products/self-care.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=signature-beauty-set"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 10 -->
-
-          <article
-            class="product-card"
-            data-name="Connected Smart Essential"
-            data-category="Electronics"
-          >
-
-            <a href="product.html?product=connected-smart-essential">
-
-              <div class="product-image">
-
-                <span class="product-badge">New</span>
-
-                <img
-                  src="assets/products/smartwatch.svg"
-                  alt="Connected Smart Essential"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Electronics</div>
-
-              <h2 class="product-name">
-                Connected Smart Essential
-              </h2>
-
-              <p class="product-description">
-                A modern connected device designed for everyday digital life.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 5,999
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Connected Smart Essential', 5999, 'assets/products/smartwatch.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=connected-smart-essential"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 11 -->
-
-          <article
-            class="product-card"
-            data-name="Everyday Carry Accessory"
-            data-category="Accessories"
-          >
-
-            <a href="product.html?product=everyday-carry-accessory">
-
-              <div class="product-image">
-
-                <span class="product-badge">Featured</span>
-
-                <img
-                  src="assets/products/watch.svg"
-                  alt="Everyday Carry Accessory"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Accessories</div>
-
-              <h2 class="product-name">
-                Everyday Carry Accessory
-              </h2>
-
-              <p class="product-description">
-                A refined everyday accessory with a clean and versatile design.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 1,399
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Everyday Carry Accessory', 1399, 'assets/products/watch.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=everyday-carry-accessory"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 12 -->
-
-          <article
-            class="product-card"
-            data-name="Elevated Living Essential"
-            data-category="Home & Living"
-          >
-
-            <a href="product.html?product=elevated-living-essential">
-
-              <div class="product-image">
-
-                <img
-                  src="assets/products/ceramic-set.svg"
-                  alt="Elevated Living Essential"
-                  loading="lazy"
-                >
-
-              </div>
-
-            </a>
-
-            <div class="product-info">
-
-              <div class="product-category">Home & Living</div>
-
-              <h2 class="product-name">
-                Elevated Living Essential
-              </h2>
-
-              <p class="product-description">
-                A refined home essential created for simple and elevated living.
-              </p>
-
-              <div class="product-bottom">
-
-                <div class="product-price">
-                  Rs. 2,699
-                </div>
-
-                <button
-                  class="add-btn"
-                  onclick="addToCart('Elevated Living Essential', 2699, 'assets/products/ceramic-set.svg')"
-                >
-                  Add to Cart
-                </button>
-
-              </div>
-
-              <a
-                class="view-btn"
-                href="product.html?product=elevated-living-essential"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </article>
-
-
-          <div class="no-results" id="noResults">
-            <h2>No products found</h2>
-            <p>Try another product name or category.</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-  </main>
-
-
-  <!-- FOOTER -->
-
-  <footer>
+  <section class="shop-section">
 
     <div class="container">
 
-      <div class="footer-grid">
+      <div class="shop-toolbar">
 
-        <div>
-          <a href="index.html">
-            <img
-              src="assets/shopora-logo.png"
-              alt="Shopora Market Store"
-              class="footer-logo"
-            >
-          </a>
-
-          <p class="footer-about">
-            Shopora Market Store brings together carefully selected
-            products across fashion, beauty, technology, home and lifestyle.
-          </p>
+        <div class="search-box">
+          <input
+            type="search"
+            id="productSearch"
+            placeholder="Search products..."
+            aria-label="Search products"
+            oninput="filterProducts()"
+          >
         </div>
 
+        <select
+          class="filter-select"
+          id="categoryFilter"
+          onchange="filterProducts()"
+          aria-label="Filter products by category"
+        >
+          <option value="all">All Categories</option>
+          <option value="Fashion">Fashion</option>
+          <option value="Beauty">Beauty</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Home & Living">Home & Living</option>
+          <option value="Accessories">Accessories</option>
+          <option value="Lifestyle">Lifestyle</option>
+        </select>
 
-        <div class="footer-column">
-
-          <h3>Shop</h3>
-
-          <a href="shop.html">All Products</a>
-          <a href="categories.html">Categories</a>
-          <a href="trending.html">Trending</a>
-          <a href="cart.html">Cart</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h3>Company</h3>
-
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact Us</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h3>Policies</h3>
-
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms-of-service.html">Terms of Service</a>
-          <a href="cookie-policy.html">Cookie Policy</a>
-          <a href="return-refund.html">Return & Refund</a>
-
+        <div class="product-count" id="productCount">
+          12 products
         </div>
 
       </div>
 
+      <div class="products-grid" id="productsGrid">
 
-      <div class="footer-bottom">
+        <!-- PRODUCT 1 -->
 
-        <span>
-          © 2026 Shopora Market Store. All rights reserved.
-        </span>
+        <article
+          class="product-card"
+          data-name="Everyday Premium Essential"
+          data-category="Lifestyle"
+        >
 
-        <span>
-          Designed for modern everyday shopping.
-        </span>
+          <a href="product.html?product=everyday-premium-essential">
+
+            <div class="product-image">
+
+              <span class="product-badge">New</span>
+
+              <img
+                src="assets/products/black-shirt.svg"
+                alt="Everyday Premium Essential"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Lifestyle</div>
+
+            <h2 class="product-name">
+              Everyday Premium Essential
+            </h2>
+
+            <p class="product-description">
+              A clean everyday essential designed for effortless style and daily use.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 2,499
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Everyday Premium Essential', 2499, 'assets/products/black-shirt.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=everyday-premium-essential"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 2 -->
+
+        <article
+          class="product-card"
+          data-name="Modern Everyday Collection"
+          data-category="Fashion"
+        >
+
+          <a href="product.html?product=modern-everyday-collection">
+
+            <div class="product-image">
+
+              <span class="product-badge">Featured</span>
+
+              <img
+                src="assets/products/coord-set.svg"
+                alt="Modern Everyday Collection"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Fashion</div>
+
+            <h2 class="product-name">
+              Modern Everyday Collection
+            </h2>
+
+            <p class="product-description">
+              Modern wardrobe styling made simple, comfortable and versatile.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 3,499
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Modern Everyday Collection', 3499, 'assets/products/coord-set.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=modern-everyday-collection"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 3 -->
+
+        <article
+          class="product-card"
+          data-name="Smart Everyday Device"
+          data-category="Electronics"
+        >
+
+          <a href="product.html?product=smart-everyday-device">
+
+            <div class="product-image">
+
+              <span class="product-badge">New</span>
+
+              <img
+                src="assets/products/wireless-buds.svg"
+                alt="Smart Everyday Device"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Electronics</div>
+
+            <h2 class="product-name">
+              Smart Everyday Device
+            </h2>
+
+            <p class="product-description">
+              A practical everyday tech essential for modern connected living.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 4,999
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Smart Everyday Device', 4999, 'assets/products/wireless-buds.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=smart-everyday-device"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 4 -->
+
+        <article
+          class="product-card"
+          data-name="Minimal Signature Accessory"
+          data-category="Accessories"
+        >
+
+          <a href="product.html?product=minimal-signature-accessory">
+
+            <div class="product-image">
+
+              <span class="product-badge">New</span>
+
+              <img
+                src="assets/products/watch.svg"
+                alt="Minimal Signature Accessory"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Accessories</div>
+
+            <h2 class="product-name">
+              Minimal Signature Accessory
+            </h2>
+
+            <p class="product-description">
+              A refined accessory designed to complement your everyday look.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 1,899
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Minimal Signature Accessory', 1899, 'assets/products/watch.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=minimal-signature-accessory"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 5 -->
+
+        <article
+          class="product-card"
+          data-name="Daily Beauty Essential"
+          data-category="Beauty"
+        >
+
+          <a href="product.html?product=daily-beauty-essential">
+
+            <div class="product-image">
+
+              <span class="product-badge">Bestseller</span>
+
+              <img
+                src="assets/products/beauty-set.svg"
+                alt="Daily Beauty Essential"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Beauty</div>
+
+            <h2 class="product-name">
+              Daily Beauty Essential
+            </h2>
+
+            <p class="product-description">
+              A simple beauty essential for an easy everyday self-care routine.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 1,599
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Daily Beauty Essential', 1599, 'assets/products/beauty-set.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=daily-beauty-essential"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 6 -->
+
+        <article
+          class="product-card"
+          data-name="Modern Home Essential"
+          data-category="Home & Living"
+        >
+
+          <a href="product.html?product=modern-home-essential">
+
+            <div class="product-image">
+
+              <span class="product-badge">New</span>
+
+              <img
+                src="assets/products/lamp.svg"
+                alt="Modern Home Essential"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Home & Living</div>
+
+            <h2 class="product-name">
+              Modern Home Essential
+            </h2>
+
+            <p class="product-description">
+              A modern home piece designed to bring simple elegance to your space.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 2,299
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Modern Home Essential', 2299, 'assets/products/lamp.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=modern-home-essential"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 7 -->
+
+        <article
+          class="product-card"
+          data-name="Everyday Lifestyle Pick"
+          data-category="Lifestyle"
+        >
+
+          <a href="product.html?product=everyday-lifestyle-pick">
+
+            <div class="product-image">
+
+              <img
+                src="assets/products/bottle.svg"
+                alt="Everyday Lifestyle Pick"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Lifestyle</div>
+
+            <h2 class="product-name">
+              Everyday Lifestyle Pick
+            </h2>
+
+            <p class="product-description">
+              A practical lifestyle item selected for everyday convenience.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 1,999
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Everyday Lifestyle Pick', 1999, 'assets/products/bottle.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=everyday-lifestyle-pick"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 8 -->
+
+        <article
+          class="product-card"
+          data-name="Classic Wardrobe Essential"
+          data-category="Fashion"
+        >
+
+          <a href="product.html?product=classic-wardrobe-essential">
+
+            <div class="product-image">
+
+              <span class="product-badge">New</span>
+
+              <img
+                src="assets/products/trousers.svg"
+                alt="Classic Wardrobe Essential"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Fashion</div>
+
+            <h2 class="product-name">
+              Classic Wardrobe Essential
+            </h2>
+
+            <p class="product-description">
+              A timeless wardrobe piece designed for effortless everyday outfits.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 2,899
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Classic Wardrobe Essential', 2899, 'assets/products/trousers.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=classic-wardrobe-essential"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 9 -->
+
+        <article
+          class="product-card"
+          data-name="Signature Beauty Set"
+          data-category="Beauty"
+        >
+
+          <a href="product.html?product=signature-beauty-set">
+
+            <div class="product-image">
+
+              <img
+                src="assets/products/self-care.svg"
+                alt="Signature Beauty Set"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Beauty</div>
+
+            <h2 class="product-name">
+              Signature Beauty Set
+            </h2>
+
+            <p class="product-description">
+              A curated beauty set for a polished and simple self-care routine.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 1,799
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Signature Beauty Set', 1799, 'assets/products/self-care.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=signature-beauty-set"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 10 -->
+
+        <article
+          class="product-card"
+          data-name="Connected Smart Essential"
+          data-category="Electronics"
+        >
+
+          <a href="product.html?product=connected-smart-essential">
+
+            <div class="product-image">
+
+              <span class="product-badge">New</span>
+
+              <img
+                src="assets/products/smartwatch.svg"
+                alt="Connected Smart Essential"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Electronics</div>
+
+            <h2 class="product-name">
+              Connected Smart Essential
+            </h2>
+
+            <p class="product-description">
+              A modern connected device designed for everyday digital life.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 5,999
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Connected Smart Essential', 5999, 'assets/products/smartwatch.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=connected-smart-essential"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 11 -->
+
+        <article
+          class="product-card"
+          data-name="Everyday Carry Accessory"
+          data-category="Accessories"
+        >
+
+          <a href="product.html?product=everyday-carry-accessory">
+
+            <div class="product-image">
+
+              <span class="product-badge">Featured</span>
+
+              <img
+                src="assets/products/bag.svg"
+                alt="Everyday Carry Accessory"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Accessories</div>
+
+            <h2 class="product-name">
+              Everyday Carry Accessory
+            </h2>
+
+            <p class="product-description">
+              A refined everyday accessory with a clean and versatile design.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 1,399
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Everyday Carry Accessory', 1399, 'assets/products/bag.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=everyday-carry-accessory"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- PRODUCT 12 -->
+
+        <article
+          class="product-card"
+          data-name="Elevated Living Essential"
+          data-category="Home & Living"
+        >
+
+          <a href="product.html?product=elevated-living-essential">
+
+            <div class="product-image">
+
+              <img
+                src="assets/products/ceramic-set.svg"
+                alt="Elevated Living Essential"
+                loading="lazy"
+              >
+
+            </div>
+
+          </a>
+
+          <div class="product-info">
+
+            <div class="product-category">Home & Living</div>
+
+            <h2 class="product-name">
+              Elevated Living Essential
+            </h2>
+
+            <p class="product-description">
+              A refined home essential created for simple and elevated living.
+            </p>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                Rs. 2,699
+              </div>
+
+              <button
+                class="add-btn"
+                onclick="addToCart('Elevated Living Essential', 2699, 'assets/products/ceramic-set.svg')"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+            <a
+              class="view-btn"
+              href="product.html?product=elevated-living-essential"
+            >
+              View Product
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <div class="no-results" id="noResults">
+          <h2>No products found</h2>
+          <p>Try another product name or category.</p>
+        </div>
 
       </div>
 
     </div>
 
-  </footer>
+  </section>
+
+</main>
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div>
+
+        <a href="index.html">
+          <img
+            src="assets/shopora-logo.png"
+            alt="Shopora Market Store"
+            class="footer-logo"
+          >
+        </a>
+
+        <p class="footer-about">
+          Shopora Market Store brings together carefully selected
+          products across fashion, beauty, technology, home and lifestyle.
+        </p>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h3>Shop</h3>
+
+        <a href="shop.html">All Products</a>
+        <a href="categories.html">Categories</a>
+        <a href="trending.html">Trending</a>
+        <a href="cart.html">Cart</a>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h3>Company</h3>
+
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact Us</a>
+
+      </div>
+
+      <div class="footer-column">
+
+        <h3>Policies</h3>
+
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="return-refund.html">Return & Refund</a>
+
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Shopora Market Store. All rights reserved.
+      </span>
+
+      <span>
+        Designed for modern everyday shopping.
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+
+  /* MOBILE MENU */
+
+  function toggleMenu() {
+    document.getElementById("mainNav").classList.toggle("open");
+  }
 
 
-  <!-- TOAST -->
+  /* HEADER SEARCH */
 
-  <div class="toast" id="toast"></div>
+  function focusSearch() {
+    const search = document.getElementById("productSearch");
+
+    search.focus();
+
+    search.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  }
 
 
-  <script>
+  /* CART */
 
-    /* MOBILE MENU */
-
-    function toggleMenu() {
-      document.getElementById("mainNav").classList.toggle("open");
+  function getCart() {
+    try {
+      return JSON.parse(localStorage.getItem("shoporaCart")) || [];
+    } catch (error) {
+      return [];
     }
+  }
 
 
-    /* CART */
+  function saveCart(cart) {
+    localStorage.setItem("shoporaCart", JSON.stringify(cart));
+  }
 
-    function getCart() {
-      try {
-        return JSON.parse(localStorage.getItem("shoporaCart")) || [];
-      } catch (error) {
-        return [];
+
+  function addToCart(name, price, image) {
+
+    const cart = getCart();
+
+    const existingProduct = cart.find(
+      item => item.name === name
+    );
+
+    if (existingProduct) {
+
+      existingProduct.quantity =
+        (existingProduct.quantity || 1) + 1;
+
+      if (!existingProduct.image) {
+        existingProduct.image = image;
       }
+
+    } else {
+
+      cart.push({
+        name: name,
+        price: price,
+        image: image,
+        quantity: 1
+      });
+
     }
 
+    saveCart(cart);
 
-    function saveCart(cart) {
-      localStorage.setItem("shoporaCart", JSON.stringify(cart));
-    }
+    showToast(name + " added to cart");
+  }
 
 
-    function addToCart(name, price, image) {
+  function openCart() {
+    window.location.href = "cart.html";
+  }
 
-      const cart = getCart();
 
-      const existingProduct = cart.find(
-        item => item.name === name
-      );
+  /* TOAST */
 
-      if (existingProduct) {
+  function showToast(message) {
 
-        existingProduct.quantity =
-          (existingProduct.quantity || 1) + 1;
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(window.shoporaToastTimer);
+
+    window.shoporaToastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2500);
+  }
+
+
+  /* PRODUCT FILTER */
+
+  function filterProducts() {
+
+    const searchValue =
+      document
+        .getElementById("productSearch")
+        .value
+        .trim()
+        .toLowerCase();
+
+    const categoryValue =
+      document
+        .getElementById("categoryFilter")
+        .value;
+
+    const products =
+      document.querySelectorAll(".product-card");
+
+    let visibleCount = 0;
+
+    products.forEach(product => {
+
+      const name =
+        product.dataset.name.toLowerCase();
+
+      const category =
+        product.dataset.category;
+
+      const matchesSearch =
+        name.includes(searchValue);
+
+      const matchesCategory =
+        categoryValue === "all" ||
+        category === categoryValue;
+
+      if (matchesSearch && matchesCategory) {
+
+        product.style.display = "";
+
+        visibleCount++;
 
       } else {
 
-        cart.push({
-          name: name,
-          price: price,
-          image: image,
-          quantity: 1
-        });
+        product.style.display = "none";
 
       }
-
-      saveCart(cart);
-
-      showToast(name + " added to cart");
-    }
-
-
-    function openCart() {
-      window.location.href = "cart.html";
-    }
-
-
-    /* TOAST */
-
-    function showToast(message) {
-
-      const toast = document.getElementById("toast");
-
-      toast.textContent = message;
-      toast.classList.add("show");
-
-      clearTimeout(window.shoporaToastTimer);
-
-      window.shoporaToastTimer = setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2500);
-    }
-
-
-    /* FILTER */
-
-    function filterProducts() {
-
-      const searchValue =
-        document
-          .getElementById("productSearch")
-          .value
-          .trim()
-          .toLowerCase();
-
-      const categoryValue =
-        document
-          .getElementById("categoryFilter")
-          .value;
-
-      const products =
-        document.querySelectorAll(".product-card");
-
-      let visibleCount = 0;
-
-      products.forEach(product => {
-
-        const name =
-          product.dataset.name.toLowerCase();
-
-        const category =
-          product.dataset.category;
-
-        const matchesSearch =
-          name.includes(searchValue);
-
-        const matchesCategory =
-          categoryValue === "all" ||
-          category === categoryValue;
-
-        if (matchesSearch && matchesCategory) {
-
-          product.style.display = "";
-
-          visibleCount++;
-
-        } else {
-
-          product.style.display = "none";
-
-        }
-
-      });
-
-
-      document.getElementById("productCount").textContent =
-        visibleCount +
-        (visibleCount === 1 ? " product" : " products");
-
-
-      document.getElementById("noResults").style.display =
-        visibleCount === 0 ? "block" : "none";
-    }
-
-
-    /* URL CATEGORY SUPPORT */
-
-    function loadCategoryFromURL() {
-
-      const params =
-        new URLSearchParams(window.location.search);
-
-      const category =
-        params.get("category");
-
-      const search =
-        params.get("search");
-
-
-      if (category) {
-
-        const categorySelect =
-          document.getElementById("categoryFilter");
-
-        const optionExists =
-          Array.from(categorySelect.options)
-            .some(option => option.value === category);
-
-        if (optionExists) {
-          categorySelect.value = category;
-        }
-
-      }
-
-
-      if (search) {
-
-        document.getElementById("productSearch").value =
-          search;
-
-      }
-
-
-      filterProducts();
-    }
-
-
-    /* CLOSE MOBILE MENU AFTER CLICK */
-
-    document.querySelectorAll(".main-nav a").forEach(link => {
-
-      link.addEventListener("click", () => {
-
-        document
-          .getElementById("mainNav")
-          .classList.remove("open");
-
-      });
 
     });
 
 
-    /* START */
+    document.getElementById("productCount").textContent =
+      visibleCount +
+      (visibleCount === 1 ? " product" : " products");
 
-    loadCategoryFromURL();
 
-  </script>
+    document.getElementById("noResults").style.display =
+      visibleCount === 0 ? "block" : "none";
+  }
+
+
+  /* URL CATEGORY / SEARCH SUPPORT */
+
+  function loadFiltersFromURL() {
+
+    const params =
+      new URLSearchParams(window.location.search);
+
+    const category =
+      params.get("category");
+
+    const search =
+      params.get("search");
+
+
+    if (category) {
+
+      const categorySelect =
+        document.getElementById("categoryFilter");
+
+      const optionExists =
+        Array.from(categorySelect.options)
+          .some(option => option.value === category);
+
+      if (optionExists) {
+        categorySelect.value = category;
+      }
+
+    }
+
+
+    if (search) {
+
+      document.getElementById("productSearch").value =
+        search;
+
+    }
+
+
+    filterProducts();
+  }
+
+
+  /* CLOSE MOBILE MENU */
+
+  document.querySelectorAll(".main-nav a").forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      document
+        .getElementById("mainNav")
+        .classList.remove("open");
+
+    });
+
+  });
+
+
+  /* START */
+
+  loadFiltersFromURL();
+
+</script>
 
 </body>
 </html>
