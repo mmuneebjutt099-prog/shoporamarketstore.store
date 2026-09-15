@@ -1,0 +1,1987 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Checkout | Shopora Market Store</title>
+
+  <meta name="description" content="Complete your Shopora Market Store order by providing your contact and delivery details.">
+  <meta name="keywords" content="Shopora checkout, Shopora Market Store, online shopping Pakistan, checkout">
+  <meta name="author" content="Shopora Market Store">
+
+  <link rel="canonical" href="https://shoporamarketstore.store/checkout.html">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Checkout | Shopora Market Store">
+  <meta property="og:description" content="Complete your Shopora Market Store order.">
+  <meta property="og:url" content="https://shoporamarketstore.store/checkout.html">
+  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Checkout | Shopora Market Store">
+  <meta name="twitter:description" content="Complete your Shopora Market Store order.">
+  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
+  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+    :root{
+      --black:#111111;
+      --ivory:#F7F4EE;
+      --gold:#C6A06A;
+      --white:#ffffff;
+      --muted:#77736d;
+      --border:rgba(17,17,17,.10);
+      --shadow:0 20px 60px rgba(17,17,17,.08);
+      --success:#397653;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:"DM Sans",sans-serif;
+      color:var(--black);
+      background:var(--ivory);
+      line-height:1.7;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    button,
+    input,
+    textarea,
+    select{
+      font:inherit;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    .container{
+      width:min(1180px,92%);
+      margin:auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(247,244,238,.94);
+      backdrop-filter:blur(16px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav{
+      min-height:82px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:30px;
+    }
+
+    .brand{
+      display:inline-flex;
+      align-items:center;
+      flex:0 0 auto;
+    }
+
+    .brand-logo{
+      width:180px;
+      height:auto;
+      display:block;
+      object-fit:contain;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:28px;
+    }
+
+    .nav-links a{
+      font-size:14px;
+      font-weight:600;
+      position:relative;
+      padding:28px 0;
+      transition:.3s ease;
+    }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute;
+      left:0;
+      bottom:20px;
+      width:0;
+      height:2px;
+      background:var(--gold);
+      transition:.3s ease;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .icon-btn{
+      width:42px;
+      height:42px;
+      border:1px solid var(--border);
+      background:var(--white);
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      font-size:18px;
+      position:relative;
+      transition:.3s ease;
+    }
+
+    .icon-btn:hover{
+      background:var(--black);
+      color:var(--white);
+      transform:translateY(-2px);
+    }
+
+    .count{
+      position:absolute;
+      top:-4px;
+      right:-3px;
+      min-width:17px;
+      height:17px;
+      padding:0 4px;
+      border-radius:20px;
+      background:var(--gold);
+      color:var(--white);
+      font-size:10px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:700;
+    }
+
+    .menu-btn{
+      display:none;
+    }
+
+    /* HERO */
+
+    .page-hero{
+      padding:85px 0 65px;
+      text-align:center;
+      background:
+        radial-gradient(circle at 15% 20%,rgba(198,160,106,.15),transparent 30%),
+        radial-gradient(circle at 85% 70%,rgba(198,160,106,.10),transparent 30%);
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-size:12px;
+      font-weight:700;
+      margin-bottom:15px;
+    }
+
+    h1,
+    h2,
+    h3{
+      font-family:"Playfair Display",serif;
+      line-height:1.2;
+    }
+
+    .page-hero h1{
+      font-size:clamp(42px,7vw,70px);
+      margin-bottom:15px;
+    }
+
+    .page-hero p{
+      max-width:650px;
+      margin:auto;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    /* CHECKOUT */
+
+    .checkout-section{
+      padding:65px 0 110px;
+    }
+
+    .checkout-layout{
+      display:grid;
+      grid-template-columns:1fr 390px;
+      gap:35px;
+      align-items:start;
+    }
+
+    .checkout-card{
+      background:var(--white);
+      border:1px solid var(--border);
+      padding:35px;
+    }
+
+    .section-heading{
+      margin-bottom:28px;
+    }
+
+    .section-heading h2{
+      font-size:30px;
+      margin-bottom:7px;
+    }
+
+    .section-heading p{
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap:7px;
+    }
+
+    .field.full{
+      grid-column:1 / -1;
+    }
+
+    .field label{
+      font-size:12px;
+      font-weight:700;
+      letter-spacing:.4px;
+    }
+
+    .field input,
+    .field textarea,
+    .field select{
+      width:100%;
+      border:1px solid var(--border);
+      background:#fff;
+      padding:13px 14px;
+      outline:none;
+      color:var(--black);
+      transition:.3s ease;
+    }
+
+    .field textarea{
+      min-height:110px;
+      resize:vertical;
+    }
+
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus{
+      border-color:var(--gold);
+      box-shadow:0 0 0 3px rgba(198,160,106,.10);
+    }
+
+    .required{
+      color:var(--gold);
+    }
+
+    .order-note{
+      margin-top:25px;
+      padding:15px;
+      background:var(--ivory);
+      border-left:3px solid var(--gold);
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .submit-btn{
+      width:100%;
+      min-height:54px;
+      margin-top:25px;
+      border:1px solid var(--black);
+      background:var(--black);
+      color:var(--white);
+      cursor:pointer;
+      font-size:13px;
+      font-weight:700;
+      transition:.3s ease;
+    }
+
+    .submit-btn:hover{
+      background:var(--gold);
+      border-color:var(--gold);
+    }
+
+    /* ORDER SUMMARY */
+
+    .order-summary{
+      background:var(--white);
+      border:1px solid var(--border);
+      padding:30px;
+      position:sticky;
+      top:110px;
+    }
+
+    .order-summary h2{
+      font-size:30px;
+      margin-bottom:25px;
+    }
+
+    .summary-products{
+      display:grid;
+      gap:14px;
+      max-height:410px;
+      overflow:auto;
+      padding-right:4px;
+    }
+
+    .summary-product{
+      display:grid;
+      grid-template-columns:62px 1fr auto;
+      gap:12px;
+      align-items:center;
+      padding-bottom:14px;
+      border-bottom:1px solid var(--border);
+    }
+
+    .summary-image{
+      width:62px;
+      height:62px;
+      background:var(--ivory);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:7px;
+    }
+
+    .summary-image img{
+      width:100%;
+      height:100%;
+      object-fit:contain;
+    }
+
+    .summary-product-name{
+      font-size:13px;
+      font-weight:600;
+      line-height:1.35;
+    }
+
+    .summary-product-qty{
+      color:var(--muted);
+      font-size:11px;
+      margin-top:3px;
+    }
+
+    .summary-product-price{
+      font-size:12px;
+      font-weight:700;
+      white-space:nowrap;
+    }
+
+    .summary-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      padding:13px 0;
+      border-bottom:1px solid var(--border);
+      font-size:14px;
+    }
+
+    .summary-row span:first-child{
+      color:var(--muted);
+    }
+
+    .summary-row.total{
+      border-bottom:0;
+      padding-top:20px;
+      font-size:19px;
+      font-weight:700;
+    }
+
+    .shipping-text{
+      color:var(--muted);
+      font-size:11px;
+      text-align:right;
+    }
+
+    .secure-note{
+      margin-top:22px;
+      padding:14px;
+      background:var(--ivory);
+      text-align:center;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.5;
+    }
+
+    /* EMPTY */
+
+    .empty-checkout{
+      display:none;
+      background:var(--white);
+      border:1px solid var(--border);
+      padding:75px 30px;
+      text-align:center;
+    }
+
+    .empty-icon{
+      width:75px;
+      height:75px;
+      border-radius:50%;
+      background:var(--ivory);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 25px;
+      font-size:30px;
+    }
+
+    .empty-checkout h2{
+      font-size:36px;
+      margin-bottom:10px;
+    }
+
+    .empty-checkout p{
+      color:var(--muted);
+      max-width:500px;
+      margin:0 auto 25px;
+    }
+
+    .shop-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--black);
+      color:var(--white);
+      padding:13px 27px;
+      border:1px solid var(--black);
+      font-size:13px;
+      font-weight:700;
+      transition:.3s ease;
+    }
+
+    .shop-btn:hover{
+      background:var(--gold);
+      border-color:var(--gold);
+    }
+
+    /* SUCCESS */
+
+    .success-message{
+      display:none;
+      background:var(--white);
+      border:1px solid var(--border);
+      padding:65px 35px;
+      text-align:center;
+    }
+
+    .success-icon{
+      width:70px;
+      height:70px;
+      margin:0 auto 22px;
+      border-radius:50%;
+      background:rgba(57,118,83,.10);
+      color:var(--success);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:30px;
+    }
+
+    .success-message h2{
+      font-size:38px;
+      margin-bottom:12px;
+    }
+
+    .success-message p{
+      max-width:600px;
+      margin:0 auto 25px;
+      color:var(--muted);
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#0b0b0b;
+      color:var(--white);
+      padding:70px 0 25px;
+    }
+
+    .footer-grid{
+      display:grid;
+      grid-template-columns:1.5fr 1fr 1fr 1fr;
+      gap:45px;
+      padding-bottom:55px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .footer-brand img{
+      width:180px;
+      margin-bottom:20px;
+    }
+
+    .footer-brand p{
+      color:rgba(255,255,255,.55);
+      max-width:330px;
+      font-size:14px;
+    }
+
+    .footer-col h3{
+      font-family:"DM Sans",sans-serif;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      margin-bottom:20px;
+      color:var(--gold);
+    }
+
+    .footer-col a{
+      display:block;
+      color:rgba(255,255,255,.60);
+      font-size:13px;
+      margin-bottom:11px;
+      transition:.3s ease;
+    }
+
+    .footer-col a:hover{
+      color:var(--white);
+      padding-left:4px;
+    }
+
+    .footer-bottom{
+      padding-top:25px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      color:rgba(255,255,255,.42);
+      font-size:12px;
+    }
+
+    /* REVEAL */
+
+    .reveal{
+      opacity:0;
+      transform:translateY(20px);
+      transition:.7s ease;
+    }
+
+    .reveal.show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:1000px){
+
+      .nav-links{
+        position:absolute;
+        top:82px;
+        left:0;
+        right:0;
+        background:var(--ivory);
+        border-bottom:1px solid var(--border);
+        display:none;
+        flex-direction:column;
+        align-items:flex-start;
+        gap:0;
+        padding:15px 4%;
+      }
+
+      .nav-links.open{
+        display:flex;
+      }
+
+      .nav-links a{
+        width:100%;
+        padding:13px 0;
+      }
+
+      .nav-links a::after{
+        bottom:5px;
+      }
+
+      .menu-btn{
+        display:flex;
+      }
+
+      .checkout-layout{
+        grid-template-columns:1fr;
+      }
+
+      .order-summary{
+        position:static;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr 1fr;
+      }
+    }
+
+    @media(max-width:650px){
+
+      .brand-logo{
+        width:145px;
+      }
+
+      .nav{
+        min-height:72px;
+      }
+
+      .nav-links{
+        top:72px;
+      }
+
+      .nav-actions{
+        gap:6px;
+      }
+
+      .icon-btn{
+        width:38px;
+        height:38px;
+      }
+
+      .page-hero{
+        padding:70px 0 55px;
+      }
+
+      .checkout-section{
+        padding:45px 0 75px;
+      }
+
+      .checkout-card{
+        padding:23px 18px;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+      .field.full{
+        grid-column:auto;
+      }
+
+      .order-summary{
+        padding:23px 18px;
+      }
+
+      .footer-grid{
+        grid-template-columns:1fr;
+        gap:35px;
+      }
+
+      .footer-bottom{
+        flex-direction:column;
+        align-items:flex-start;
+      }
+
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebPage",
+    "name":"Checkout",
+    "url":"https://shoporamarketstore.store/checkout.html",
+    "isPartOf":{
+      "@type":"WebSite",
+      "name":"Shopora Market Store",
+      "url":"https://shoporamarketstore.store/"
+    }
+  }
+  </script>
+</head>
+
+<body>
+
+<header>
+
+  <div class="container nav">
+
+    <a
+      href="index.html"
+      class="brand"
+      aria-label="Shopora Market Store home"
+    >
+      <img
+        src="assets/shopora-logo.png"
+        alt="Shopora Market Store"
+        class="brand-logo"
+        width="180"
+        height="60"
+      >
+    </a>
+
+
+    <nav
+      class="nav-links"
+      id="navLinks"
+    >
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="shop.html">
+        Shop
+      </a>
+
+      <a href="categories.html">
+        Categories
+      </a>
+
+      <a href="trending.html">
+        Trending
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
+    </nav>
+
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-btn"
+        onclick="goToSearch()"
+        aria-label="Search"
+      >
+        🔍
+      </button>
+
+
+      <a
+        href="wishlist.html"
+        class="icon-btn"
+        aria-label="Wishlist"
+      >
+        ♡
+        <span
+          class="count"
+          id="wishlistCount"
+        >
+          0
+        </span>
+      </a>
+
+
+      <a
+        href="cart.html"
+        class="icon-btn"
+        aria-label="Shopping cart"
+      >
+        🛒
+        <span
+          class="count"
+          id="cartCount"
+        >
+          0
+        </span>
+      </a>
+
+
+      <button
+        class="icon-btn menu-btn"
+        onclick="toggleMenu()"
+        aria-label="Menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<main>
+
+  <!-- HERO -->
+
+  <section class="page-hero reveal">
+
+    <div class="container">
+
+      <div class="eyebrow">
+        Secure Your Selection
+      </div>
+
+      <h1>
+        Checkout
+      </h1>
+
+      <p>
+        Enter your details below to prepare your Shopora Market Store order.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- EMPTY CART -->
+
+  <section
+    class="checkout-section"
+    id="emptySection"
+    style="display:none;"
+  >
+
+    <div class="container">
+
+      <div class="empty-checkout" style="display:block;">
+
+        <div class="empty-icon">
+          🛒
+        </div>
+
+        <h2>
+          Your Cart Is Empty
+        </h2>
+
+        <p>
+          Add products to your cart before continuing to checkout.
+        </p>
+
+        <a
+          href="shop.html"
+          class="shop-btn"
+        >
+          Browse Products
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CHECKOUT -->
+
+  <section
+    class="checkout-section"
+    id="checkoutSection"
+  >
+
+    <div class="container">
+
+      <div class="checkout-layout">
+
+
+        <!-- CUSTOMER FORM -->
+
+        <div class="checkout-card reveal">
+
+          <div class="section-heading">
+
+            <h2>
+              Delivery Details
+            </h2>
+
+            <p>
+              Please provide accurate contact and delivery information.
+            </p>
+
+          </div>
+
+
+          <form
+            id="checkoutForm"
+            novalidate
+          >
+
+            <div class="form-grid">
+
+              <div class="field">
+
+                <label for="firstName">
+                  First Name <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Your first name"
+                  autocomplete="given-name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="lastName">
+                  Last Name <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Your last name"
+                  autocomplete="family-name"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="email">
+                  Email Address <span class="required">*</span>
+                </label>
+
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="phone">
+                  Phone Number <span class="required">*</span>
+                </label>
+
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  placeholder="+92 300 1234567"
+                  autocomplete="tel"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field full">
+
+                <label for="address">
+                  Street Address <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="House / Street / Area"
+                  autocomplete="street-address"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="city">
+                  City <span class="required">*</span>
+                </label>
+
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  placeholder="Your city"
+                  autocomplete="address-level2"
+                  required
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="province">
+                  Province / Region
+                </label>
+
+                <input
+                  type="text"
+                  id="province"
+                  name="province"
+                  placeholder="Province or region"
+                  autocomplete="address-level1"
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="postalCode">
+                  Postal Code
+                </label>
+
+                <input
+                  type="text"
+                  id="postalCode"
+                  name="postalCode"
+                  placeholder="Postal code"
+                  autocomplete="postal-code"
+                >
+
+              </div>
+
+
+              <div class="field">
+
+                <label for="payment">
+                  Preferred Payment Method
+                </label>
+
+                <select
+                  id="payment"
+                  name="payment"
+                >
+
+                  <option value="Cash on Delivery">
+                    Cash on Delivery
+                  </option>
+
+                  <option value="Bank Transfer">
+                    Bank Transfer
+                  </option>
+
+                  <option value="Payment instructions needed">
+                    Payment instructions needed
+                  </option>
+
+                </select>
+
+              </div>
+
+
+              <div class="field full">
+
+                <label for="notes">
+                  Order Notes
+                </label>
+
+                <textarea
+                  id="notes"
+                  name="notes"
+                  placeholder="Optional delivery instructions..."
+                ></textarea>
+
+              </div>
+
+            </div>
+
+
+            <div class="order-note">
+
+              <strong>Important:</strong>
+              This GitHub Pages checkout does not process online payments
+              directly. Your order details will be prepared and sent to
+              Shopora Market Store through your email application.
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="submit-btn"
+            >
+              Place Order Request
+            </button>
+
+          </form>
+
+        </div>
+
+
+        <!-- ORDER SUMMARY -->
+
+        <aside class="order-summary reveal">
+
+          <h2>
+            Your Order
+          </h2>
+
+
+          <div
+            class="summary-products"
+            id="summaryProducts"
+          ></div>
+
+
+          <div class="summary-row">
+
+            <span>
+              Items
+            </span>
+
+            <strong id="summaryItems">
+              0
+            </strong>
+
+          </div>
+
+
+          <div class="summary-row">
+
+            <span>
+              Subtotal
+            </span>
+
+            <strong id="summarySubtotal">
+              Rs. 0
+            </strong>
+
+          </div>
+
+
+          <div class="summary-row">
+
+            <span>
+              Shipping
+            </span>
+
+            <span class="shipping-text">
+              Confirmed with order
+            </span>
+
+          </div>
+
+
+          <div class="summary-row total">
+
+            <span>
+              Total
+            </span>
+
+            <strong id="summaryTotal">
+              Rs. 0
+            </strong>
+
+          </div>
+
+
+          <div class="secure-note">
+
+            🔒 Your details are used only to prepare your order request.
+            No card information is collected on this static page.
+
+          </div>
+
+        </aside>
+
+      </div>
+
+
+      <!-- SUCCESS MESSAGE -->
+
+      <div
+        class="success-message"
+        id="successMessage"
+      >
+
+        <div class="success-icon">
+          ✓
+        </div>
+
+        <h2>
+          Order Request Prepared
+        </h2>
+
+        <p>
+          Your email application should now open with your order details.
+          Please review the message and send it to Shopora Market Store.
+        </p>
+
+        <a
+          href="shop.html"
+          class="shop-btn"
+        >
+          Continue Shopping
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+
+        <a href="index.html">
+
+          <img
+            src="assets/shopora-logo.png"
+            alt="Shopora Market Store"
+            width="180"
+            height="60"
+          >
+
+        </a>
+
+        <p>
+          A modern marketplace for fashion, beauty, electronics,
+          home & living, accessories and everyday lifestyle products.
+        </p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>
+          Shop
+        </h3>
+
+        <a href="shop.html">
+          Shop All
+        </a>
+
+        <a href="categories.html">
+          Categories
+        </a>
+
+        <a href="trending.html">
+          Trending
+        </a>
+
+        <a href="cart.html">
+          Cart
+        </a>
+
+        <a href="wishlist.html">
+          Wishlist
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>
+          Company
+        </h3>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>
+          Policies
+        </h3>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms-of-service.html">
+          Terms of Service
+        </a>
+
+        <a href="cookie-policy.html">
+          Cookie Policy
+        </a>
+
+        <a href="return-refund.html">
+          Return & Refund
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <div>
+        © <span id="year"></span>
+        Shopora Market Store. All rights reserved.
+      </div>
+
+      <div>
+        brandseocompany@gmail.com
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  /* =========================
+     STORAGE
+  ========================= */
+
+  function getCart(){
+
+    try{
+
+      return JSON.parse(
+        localStorage.getItem("shoporaCart")
+      ) || [];
+
+    }catch(error){
+
+      return [];
+
+    }
+
+  }
+
+
+  function getWishlist(){
+
+    try{
+
+      return JSON.parse(
+        localStorage.getItem("shoporaWishlist")
+      ) || [];
+
+    }catch(error){
+
+      return [];
+
+    }
+
+  }
+
+
+  /* =========================
+     PRICE
+  ========================= */
+
+  function formatPrice(price){
+
+    return "Rs. " +
+      Number(price).toLocaleString("en-PK");
+
+  }
+
+
+  /* =========================
+     ESCAPE HTML
+  ========================= */
+
+  function escapeHTML(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  /* =========================
+     RENDER ORDER
+  ========================= */
+
+  function renderOrder(){
+
+    const cart =
+      getCart();
+
+
+    const checkoutSection =
+      document.getElementById(
+        "checkoutSection"
+      );
+
+    const emptySection =
+      document.getElementById(
+        "emptySection"
+      );
+
+
+    if(cart.length === 0){
+
+      checkoutSection.style.display =
+        "none";
+
+      emptySection.style.display =
+        "block";
+
+      updateCounts();
+
+      return;
+
+    }
+
+
+    checkoutSection.style.display =
+      "block";
+
+    emptySection.style.display =
+      "none";
+
+
+    const summaryProducts =
+      document.getElementById(
+        "summaryProducts"
+      );
+
+
+    summaryProducts.innerHTML =
+      cart.map(
+        item => `
+
+          <div class="summary-product">
+
+            <div class="summary-image">
+
+              <img
+                src="${escapeHTML(item.image)}"
+                alt="${escapeHTML(item.name)}"
+              >
+
+            </div>
+
+
+            <div>
+
+              <div class="summary-product-name">
+                ${escapeHTML(item.name)}
+              </div>
+
+              <div class="summary-product-qty">
+                Qty: ${Number(item.quantity || 1)}
+              </div>
+
+            </div>
+
+
+            <div class="summary-product-price">
+
+              ${formatPrice(
+                Number(item.price || 0) *
+                Number(item.quantity || 1)
+              )}
+
+            </div>
+
+          </div>
+
+        `
+      ).join("");
+
+
+    const itemCount =
+      cart.reduce(
+        (total,item) =>
+          total +
+          Number(item.quantity || 1),
+        0
+      );
+
+
+    const subtotal =
+      cart.reduce(
+        (total,item) =>
+          total +
+          Number(item.price || 0) *
+          Number(item.quantity || 1),
+        0
+      );
+
+
+    document.getElementById(
+      "summaryItems"
+    ).textContent =
+      itemCount;
+
+
+    document.getElementById(
+      "summarySubtotal"
+    ).textContent =
+      formatPrice(subtotal);
+
+
+    document.getElementById(
+      "summaryTotal"
+    ).textContent =
+      formatPrice(subtotal);
+
+
+    updateCounts();
+
+  }
+
+
+  /* =========================
+     COUNTS
+  ========================= */
+
+  function updateCounts(){
+
+    const cart =
+      getCart();
+
+    const wishlist =
+      getWishlist();
+
+
+    const cartCount =
+      cart.reduce(
+        (total,item) =>
+          total +
+          Number(item.quantity || 1),
+        0
+      );
+
+
+    document.getElementById(
+      "cartCount"
+    ).textContent =
+      cartCount;
+
+
+    document.getElementById(
+      "wishlistCount"
+    ).textContent =
+      wishlist.length;
+
+  }
+
+
+  /* =========================
+     FORM SUBMISSION
+  ========================= */
+
+  document
+    .getElementById("checkoutForm")
+    .addEventListener(
+      "submit",
+      function(event){
+
+        event.preventDefault();
+
+
+        const form =
+          event.target;
+
+
+        if(!form.checkValidity()){
+
+          form.reportValidity();
+
+          return;
+
+        }
+
+
+        const cart =
+          getCart();
+
+
+        if(cart.length === 0){
+
+          alert(
+            "Your cart is empty."
+          );
+
+          return;
+
+        }
+
+
+        const firstName =
+          document.getElementById(
+            "firstName"
+          ).value.trim();
+
+
+        const lastName =
+          document.getElementById(
+            "lastName"
+          ).value.trim();
+
+
+        const email =
+          document.getElementById(
+            "email"
+          ).value.trim();
+
+
+        const phone =
+          document.getElementById(
+            "phone"
+          ).value.trim();
+
+
+        const address =
+          document.getElementById(
+            "address"
+          ).value.trim();
+
+
+        const city =
+          document.getElementById(
+            "city"
+          ).value.trim();
+
+
+        const province =
+          document.getElementById(
+            "province"
+          ).value.trim();
+
+
+        const postalCode =
+          document.getElementById(
+            "postalCode"
+          ).value.trim();
+
+
+        const payment =
+          document.getElementById(
+            "payment"
+          ).value;
+
+
+        const notes =
+          document.getElementById(
+            "notes"
+          ).value.trim();
+
+
+        const subtotal =
+          cart.reduce(
+            (total,item) =>
+              total +
+              Number(item.price || 0) *
+              Number(item.quantity || 1),
+            0
+          );
+
+
+        const orderNumber =
+          "SHOP-" +
+          Date.now().toString().slice(-8);
+
+
+        let productLines = "";
+
+
+        cart.forEach(
+          item => {
+
+            const quantity =
+              Number(item.quantity || 1);
+
+            const lineTotal =
+              Number(item.price || 0) *
+              quantity;
+
+
+            productLines +=
+              "- " +
+              item.name +
+              " | Qty: " +
+              quantity +
+              " | " +
+              formatPrice(lineTotal) +
+              "%0D%0A";
+
+          }
+        );
+
+
+        const subject =
+          encodeURIComponent(
+            "New Shopora Order Request - " +
+            orderNumber
+          );
+
+
+        const body =
+          "SHOPORA MARKET STORE ORDER REQUEST" +
+          "%0D%0A%0D%0A" +
+
+          "Order Number: " +
+          encodeURIComponent(orderNumber) +
+          "%0D%0A%0D%0A" +
+
+          "CUSTOMER DETAILS" +
+          "%0D%0A" +
+
+          "Name: " +
+          encodeURIComponent(
+            firstName + " " + lastName
+          ) +
+          "%0D%0A" +
+
+          "Email: " +
+          encodeURIComponent(email) +
+          "%0D%0A" +
+
+          "Phone: " +
+          encodeURIComponent(phone) +
+          "%0D%0A%0D%0A" +
+
+          "DELIVERY ADDRESS" +
+          "%0D%0A" +
+
+          "Address: " +
+          encodeURIComponent(address) +
+          "%0D%0A" +
+
+          "City: " +
+          encodeURIComponent(city) +
+          "%0D%0A" +
+
+          "Province: " +
+          encodeURIComponent(province) +
+          "%0D%0A" +
+
+          "Postal Code: " +
+          encodeURIComponent(postalCode || "Not provided") +
+          "%0D%0A%0D%0A" +
+
+          "ORDER ITEMS" +
+          "%0D%0A" +
+
+          productLines +
+
+          "%0D%0A" +
+
+          "Subtotal: " +
+          encodeURIComponent(
+            formatPrice(subtotal)
+          ) +
+          "%0D%0A" +
+
+          "Shipping: To be confirmed" +
+          "%0D%0A" +
+
+          "Total: " +
+          encodeURIComponent(
+            formatPrice(subtotal)
+          ) +
+          "%0D%0A%0D%0A" +
+
+          "Preferred Payment: " +
+          encodeURIComponent(payment) +
+          "%0D%0A%0D%0A" +
+
+          "Order Notes: " +
+          encodeURIComponent(
+            notes || "None"
+          );
+
+
+        const mailto =
+          "mailto:brandseocompany@gmail.com" +
+          "?subject=" +
+          subject +
+          "&body=" +
+          body;
+
+
+        /*
+          Open customer's email application.
+          No fake payment or backend is claimed.
+        */
+
+        window.location.href =
+          mailto;
+
+
+        document
+          .getElementById("checkoutSection")
+          .querySelector(".checkout-layout")
+          .style.display =
+          "none";
+
+
+        document
+          .getElementById("successMessage")
+          .style.display =
+          "block";
+
+
+        window.scrollTo({
+          top:0,
+          behavior:"smooth"
+        });
+
+      }
+    );
+
+
+  /* =========================
+     SEARCH
+  ========================= */
+
+  function goToSearch(){
+
+    window.location.href =
+      "shop.html#productSearch";
+
+  }
+
+
+  /* =========================
+     MOBILE MENU
+  ========================= */
+
+  function toggleMenu(){
+
+    document
+      .getElementById("navLinks")
+      .classList.toggle("open");
+
+  }
+
+
+  /* =========================
+     YEAR
+  ========================= */
+
+  document.getElementById(
+    "year"
+  ).textContent =
+    new Date().getFullYear();
+
+
+  /* =========================
+     REVEAL
+  ========================= */
+
+  const observer =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(
+          entry => {
+
+            if(entry.isIntersecting){
+
+              entry.target.classList.add(
+                "show"
+              );
+
+              observer.unobserve(
+                entry.target
+              );
+
+            }
+
+          }
+        );
+
+      },
+      {
+        threshold:.1
+      }
+    );
+
+
+  document
+    .querySelectorAll(".reveal")
+    .forEach(
+      element =>
+        observer.observe(element)
+    );
+
+
+  /* =========================
+     STORAGE SYNC
+  ========================= */
+
+  window.addEventListener(
+    "storage",
+    renderOrder
+  );
+
+
+  window.addEventListener(
+    "pageshow",
+    renderOrder
+  );
+
+
+  /* =========================
+     START
+  ========================= */
+
+  renderOrder();
+
+</script>
+
+</body>
+</html>
+```
