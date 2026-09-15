@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,6 +40,7 @@
       --muted: #77736c;
       --border: #e8e3da;
       --soft: #f1eee8;
+      --danger: #a33a3a;
     }
 
     * {
@@ -79,7 +81,9 @@
       margin: 0 auto;
     }
 
-    /* HEADER */
+    /* =========================
+       HEADER
+    ========================= */
 
     header {
       position: sticky;
@@ -146,13 +150,17 @@
       width: 100%;
     }
 
+    /* HEADER ICONS */
+
     .header-actions {
       display: flex;
       align-items: center;
       gap: 9px;
     }
 
+    .icon-link,
     .icon-btn {
+      position: relative;
       width: 42px;
       height: 42px;
       border: 1px solid var(--border);
@@ -165,6 +173,7 @@
       color: var(--black);
     }
 
+    .icon-link:hover,
     .icon-btn:hover {
       background: var(--black);
       color: var(--white);
@@ -172,16 +181,57 @@
       transform: translateY(-2px);
     }
 
+    .icon-symbol {
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .wishlist-icon {
+      font-size: 21px;
+    }
+
+    .cart-icon {
+      font-size: 18px;
+    }
+
+    .header-count {
+      position: absolute;
+      top: -5px;
+      right: -4px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 50px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 700;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--ivory);
+    }
+
+    .header-count.visible {
+      display: flex;
+    }
+
     .menu-btn {
       display: none;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================= */
 
     .shop-hero {
       padding: 90px 0 70px;
       background:
-        radial-gradient(circle at 85% 20%, rgba(198,160,106,.14), transparent 30%),
+        radial-gradient(
+          circle at 85% 20%,
+          rgba(198,160,106,.14),
+          transparent 30%
+        ),
         var(--ivory);
       text-align: center;
     }
@@ -210,7 +260,9 @@
       font-size: 17px;
     }
 
-    /* SHOP CONTROLS */
+    /* =========================
+       SHOP CONTROLS
+    ========================= */
 
     .shop-section {
       padding: 25px 0 100px;
@@ -247,6 +299,7 @@
 
     .search-box input:focus {
       border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(198,160,106,.10);
     }
 
     .filter-select {
@@ -269,7 +322,9 @@
       white-space: nowrap;
     }
 
-    /* PRODUCTS */
+    /* =========================
+       PRODUCTS
+    ========================= */
 
     .products-grid {
       display: grid;
@@ -278,6 +333,7 @@
     }
 
     .product-card {
+      position: relative;
       background: var(--white);
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -325,6 +381,39 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
+    }
+
+    /* PRODUCT WISHLIST BUTTON */
+
+    .product-wishlist {
+      position: absolute;
+      top: 13px;
+      right: 13px;
+      z-index: 5;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(17,17,17,.08);
+      border-radius: 50%;
+      background: rgba(255,255,255,.94);
+      color: var(--black);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 20px;
+      transition: all .25s ease;
+      box-shadow: 0 8px 20px rgba(17,17,17,.08);
+    }
+
+    .product-wishlist:hover {
+      background: var(--black);
+      color: var(--white);
+      transform: scale(1.06);
+    }
+
+    .product-wishlist.active {
+      background: var(--gold);
+      color: var(--black);
+      border-color: var(--gold);
     }
 
     .product-info {
@@ -416,7 +505,9 @@
       margin-bottom: 10px;
     }
 
-    /* FOOTER */
+    /* =========================
+       FOOTER
+    ========================= */
 
     footer {
       background: var(--black);
@@ -474,7 +565,9 @@
       font-size: 12px;
     }
 
-    /* TOAST */
+    /* =========================
+       TOAST
+    ========================= */
 
     .toast {
       position: fixed;
@@ -491,6 +584,7 @@
       pointer-events: none;
       transition: all .35s ease;
       font-size: 14px;
+      max-width: 320px;
     }
 
     .toast.show {
@@ -498,9 +592,12 @@
       opacity: 1;
     }
 
-    /* MOBILE */
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media (max-width: 1050px) {
+
       .products-grid {
         grid-template-columns: repeat(3, 1fr);
       }
@@ -508,9 +605,11 @@
       .main-nav {
         gap: 18px;
       }
+
     }
 
     @media (max-width: 800px) {
+
       .header-inner {
         min-height: 72px;
       }
@@ -558,14 +657,26 @@
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
     @media (max-width: 600px) {
+
       .container {
         width: min(100% - 28px, 1180px);
       }
 
-      .header-actions .search-header {
+      .header-actions {
+        gap: 6px;
+      }
+
+      .icon-link,
+      .icon-btn {
+        width: 39px;
+        height: 39px;
+      }
+
+      .search-header {
         display: none;
       }
 
@@ -611,6 +722,7 @@
         flex-direction: column;
         text-align: center;
       }
+
     }
   </style>
 
@@ -632,10 +744,19 @@
 
 <body>
 
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
+
   <div class="container header-inner">
 
-    <a href="index.html" class="brand" aria-label="Shopora Market Store home">
+    <a
+      href="index.html"
+      class="brand"
+      aria-label="Shopora Market Store home"
+    >
       <img
         src="assets/shopora-logo.png"
         alt="Shopora Market Store"
@@ -645,40 +766,105 @@
       >
     </a>
 
+
     <nav class="main-nav" id="mainNav">
-      <a href="index.html">Home</a>
-      <a href="shop.html" class="active">Shop</a>
-      <a href="categories.html">Categories</a>
-      <a href="trending.html">Trending</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="shop.html" class="active">
+        Shop
+      </a>
+
+      <a href="categories.html">
+        Categories
+      </a>
+
+      <a href="trending.html">
+        Trending
+      </a>
+
+      <a href="about.html">
+        About
+      </a>
+
+      <a href="contact.html">
+        Contact
+      </a>
+
     </nav>
 
+
+    <!-- THREE HEADER ICONS -->
+
     <div class="header-actions">
+
+      <!-- SEARCH -->
 
       <button
         class="icon-btn search-header"
         onclick="focusSearch()"
         aria-label="Search products"
-        title="Search"
+        title="Search products"
+        type="button"
       >
-        ⌕
+        <span class="icon-symbol">⌕</span>
       </button>
 
-      <button
-        class="icon-btn"
-        onclick="openCart()"
+
+      <!-- WISHLIST -->
+
+      <a
+        href="wishlist.html"
+        class="icon-link"
+        aria-label="Open wishlist"
+        title="Wishlist"
+      >
+
+        <span class="icon-symbol wishlist-icon">♡</span>
+
+        <span
+          class="header-count"
+          id="wishlistCount"
+          aria-hidden="true"
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <!-- CART -->
+
+      <a
+        href="cart.html"
+        class="icon-link"
         aria-label="Open cart"
         title="Cart"
       >
-        🛒
-      </button>
+
+        <span class="icon-symbol cart-icon">🛒</span>
+
+        <span
+          class="header-count"
+          id="cartCount"
+          aria-hidden="true"
+        >
+          0
+        </span>
+
+      </a>
+
+
+      <!-- MOBILE MENU -->
 
       <button
         class="icon-btn menu-btn"
         onclick="toggleMenu()"
         aria-label="Open menu"
         title="Menu"
+        type="button"
       >
         ☰
       </button>
@@ -686,16 +872,30 @@
     </div>
 
   </div>
+
 </header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
 
 <main>
 
+  <!-- HERO -->
+
   <section class="shop-hero">
+
     <div class="container">
 
-      <div class="eyebrow">Shop Shopora</div>
+      <div class="eyebrow">
+        Shop Shopora
+      </div>
 
-      <h1>Curated For<br>Everyday Living.</h1>
+      <h1>
+        Curated For<br>
+        Everyday Living.
+      </h1>
 
       <p>
         Discover thoughtfully selected products across fashion, beauty,
@@ -703,15 +903,23 @@
       </p>
 
     </div>
+
   </section>
+
+
+  <!-- SHOP -->
 
   <section class="shop-section">
 
     <div class="container">
 
+
+      <!-- TOOLBAR -->
+
       <div class="shop-toolbar">
 
         <div class="search-box">
+
           <input
             type="search"
             id="productSearch"
@@ -719,7 +927,9 @@
             aria-label="Search products"
             oninput="filterProducts()"
           >
+
         </div>
+
 
         <select
           class="filter-select"
@@ -727,22 +937,55 @@
           onchange="filterProducts()"
           aria-label="Filter products by category"
         >
-          <option value="all">All Categories</option>
-          <option value="Fashion">Fashion</option>
-          <option value="Beauty">Beauty</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Home & Living">Home & Living</option>
-          <option value="Accessories">Accessories</option>
-          <option value="Lifestyle">Lifestyle</option>
+
+          <option value="all">
+            All Categories
+          </option>
+
+          <option value="Fashion">
+            Fashion
+          </option>
+
+          <option value="Beauty">
+            Beauty
+          </option>
+
+          <option value="Electronics">
+            Electronics
+          </option>
+
+          <option value="Home & Living">
+            Home & Living
+          </option>
+
+          <option value="Accessories">
+            Accessories
+          </option>
+
+          <option value="Lifestyle">
+            Lifestyle
+          </option>
+
         </select>
 
-        <div class="product-count" id="productCount">
+
+        <div
+          class="product-count"
+          id="productCount"
+        >
           12 products
         </div>
 
       </div>
 
-      <div class="products-grid" id="productsGrid">
+
+      <!-- PRODUCTS GRID -->
+
+      <div
+        class="products-grid"
+        id="productsGrid"
+      >
+
 
         <!-- PRODUCT 1 -->
 
@@ -752,11 +995,13 @@
           data-category="Lifestyle"
         >
 
-          <a href="product.html?product=everyday-premium-essential">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=everyday-premium-essential">
 
-              <span class="product-badge">New</span>
+              <span class="product-badge">
+                New
+              </span>
 
               <img
                 src="assets/products/black-shirt.svg"
@@ -764,13 +1009,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Everyday Premium Essential"
+              data-price="2499"
+              data-image="assets/products/black-shirt.svg"
+              aria-label="Add Everyday Premium Essential to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Lifestyle</div>
+            <div class="product-category">
+              Lifestyle
+            </div>
 
             <h2 class="product-name">
               Everyday Premium Essential
@@ -788,6 +1050,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Everyday Premium Essential', 2499, 'assets/products/black-shirt.svg')"
               >
                 Add to Cart
@@ -815,11 +1078,13 @@
           data-category="Fashion"
         >
 
-          <a href="product.html?product=modern-everyday-collection">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=modern-everyday-collection">
 
-              <span class="product-badge">Featured</span>
+              <span class="product-badge">
+                Featured
+              </span>
 
               <img
                 src="assets/products/coord-set.svg"
@@ -827,13 +1092,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Modern Everyday Collection"
+              data-price="3499"
+              data-image="assets/products/coord-set.svg"
+              aria-label="Add Modern Everyday Collection to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Fashion</div>
+            <div class="product-category">
+              Fashion
+            </div>
 
             <h2 class="product-name">
               Modern Everyday Collection
@@ -851,6 +1133,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Modern Everyday Collection', 3499, 'assets/products/coord-set.svg')"
               >
                 Add to Cart
@@ -878,11 +1161,13 @@
           data-category="Electronics"
         >
 
-          <a href="product.html?product=smart-everyday-device">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=smart-everyday-device">
 
-              <span class="product-badge">New</span>
+              <span class="product-badge">
+                New
+              </span>
 
               <img
                 src="assets/products/wireless-buds.svg"
@@ -890,13 +1175,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Smart Everyday Device"
+              data-price="4999"
+              data-image="assets/products/wireless-buds.svg"
+              aria-label="Add Smart Everyday Device to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Electronics</div>
+            <div class="product-category">
+              Electronics
+            </div>
 
             <h2 class="product-name">
               Smart Everyday Device
@@ -914,6 +1216,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Smart Everyday Device', 4999, 'assets/products/wireless-buds.svg')"
               >
                 Add to Cart
@@ -941,11 +1244,13 @@
           data-category="Accessories"
         >
 
-          <a href="product.html?product=minimal-signature-accessory">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=minimal-signature-accessory">
 
-              <span class="product-badge">New</span>
+              <span class="product-badge">
+                New
+              </span>
 
               <img
                 src="assets/products/watch.svg"
@@ -953,13 +1258,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Minimal Signature Accessory"
+              data-price="1899"
+              data-image="assets/products/watch.svg"
+              aria-label="Add Minimal Signature Accessory to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Accessories</div>
+            <div class="product-category">
+              Accessories
+            </div>
 
             <h2 class="product-name">
               Minimal Signature Accessory
@@ -977,6 +1299,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Minimal Signature Accessory', 1899, 'assets/products/watch.svg')"
               >
                 Add to Cart
@@ -1004,11 +1327,13 @@
           data-category="Beauty"
         >
 
-          <a href="product.html?product=daily-beauty-essential">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=daily-beauty-essential">
 
-              <span class="product-badge">Bestseller</span>
+              <span class="product-badge">
+                Bestseller
+              </span>
 
               <img
                 src="assets/products/beauty-set.svg"
@@ -1016,13 +1341,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Daily Beauty Essential"
+              data-price="1599"
+              data-image="assets/products/beauty-set.svg"
+              aria-label="Add Daily Beauty Essential to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Beauty</div>
+            <div class="product-category">
+              Beauty
+            </div>
 
             <h2 class="product-name">
               Daily Beauty Essential
@@ -1040,6 +1382,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Daily Beauty Essential', 1599, 'assets/products/beauty-set.svg')"
               >
                 Add to Cart
@@ -1067,11 +1410,13 @@
           data-category="Home & Living"
         >
 
-          <a href="product.html?product=modern-home-essential">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=modern-home-essential">
 
-              <span class="product-badge">New</span>
+              <span class="product-badge">
+                New
+              </span>
 
               <img
                 src="assets/products/lamp.svg"
@@ -1079,13 +1424,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Modern Home Essential"
+              data-price="2299"
+              data-image="assets/products/lamp.svg"
+              aria-label="Add Modern Home Essential to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Home & Living</div>
+            <div class="product-category">
+              Home & Living
+            </div>
 
             <h2 class="product-name">
               Modern Home Essential
@@ -1103,6 +1465,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Modern Home Essential', 2299, 'assets/products/lamp.svg')"
               >
                 Add to Cart
@@ -1130,9 +1493,9 @@
           data-category="Lifestyle"
         >
 
-          <a href="product.html?product=everyday-lifestyle-pick">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=everyday-lifestyle-pick">
 
               <img
                 src="assets/products/bottle.svg"
@@ -1140,13 +1503,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Everyday Lifestyle Pick"
+              data-price="1999"
+              data-image="assets/products/bottle.svg"
+              aria-label="Add Everyday Lifestyle Pick to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Lifestyle</div>
+            <div class="product-category">
+              Lifestyle
+            </div>
 
             <h2 class="product-name">
               Everyday Lifestyle Pick
@@ -1164,6 +1544,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Everyday Lifestyle Pick', 1999, 'assets/products/bottle.svg')"
               >
                 Add to Cart
@@ -1191,11 +1572,13 @@
           data-category="Fashion"
         >
 
-          <a href="product.html?product=classic-wardrobe-essential">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=classic-wardrobe-essential">
 
-              <span class="product-badge">New</span>
+              <span class="product-badge">
+                New
+              </span>
 
               <img
                 src="assets/products/trousers.svg"
@@ -1203,13 +1586,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Classic Wardrobe Essential"
+              data-price="2899"
+              data-image="assets/products/trousers.svg"
+              aria-label="Add Classic Wardrobe Essential to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Fashion</div>
+            <div class="product-category">
+              Fashion
+            </div>
 
             <h2 class="product-name">
               Classic Wardrobe Essential
@@ -1227,6 +1627,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Classic Wardrobe Essential', 2899, 'assets/products/trousers.svg')"
               >
                 Add to Cart
@@ -1254,9 +1655,9 @@
           data-category="Beauty"
         >
 
-          <a href="product.html?product=signature-beauty-set">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=signature-beauty-set">
 
               <img
                 src="assets/products/self-care.svg"
@@ -1264,13 +1665,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Signature Beauty Set"
+              data-price="1799"
+              data-image="assets/products/self-care.svg"
+              aria-label="Add Signature Beauty Set to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Beauty</div>
+            <div class="product-category">
+              Beauty
+            </div>
 
             <h2 class="product-name">
               Signature Beauty Set
@@ -1288,6 +1706,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Signature Beauty Set', 1799, 'assets/products/self-care.svg')"
               >
                 Add to Cart
@@ -1315,11 +1734,13 @@
           data-category="Electronics"
         >
 
-          <a href="product.html?product=connected-smart-essential">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=connected-smart-essential">
 
-              <span class="product-badge">New</span>
+              <span class="product-badge">
+                New
+              </span>
 
               <img
                 src="assets/products/smartwatch.svg"
@@ -1327,13 +1748,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Connected Smart Essential"
+              data-price="5999"
+              data-image="assets/products/smartwatch.svg"
+              aria-label="Add Connected Smart Essential to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Electronics</div>
+            <div class="product-category">
+              Electronics
+            </div>
 
             <h2 class="product-name">
               Connected Smart Essential
@@ -1351,6 +1789,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Connected Smart Essential', 5999, 'assets/products/smartwatch.svg')"
               >
                 Add to Cart
@@ -1378,11 +1817,13 @@
           data-category="Accessories"
         >
 
-          <a href="product.html?product=everyday-carry-accessory">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=everyday-carry-accessory">
 
-              <span class="product-badge">Featured</span>
+              <span class="product-badge">
+                Featured
+              </span>
 
               <img
                 src="assets/products/bag.svg"
@@ -1390,13 +1831,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Everyday Carry Accessory"
+              data-price="1399"
+              data-image="assets/products/bag.svg"
+              aria-label="Add Everyday Carry Accessory to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Accessories</div>
+            <div class="product-category">
+              Accessories
+            </div>
 
             <h2 class="product-name">
               Everyday Carry Accessory
@@ -1414,6 +1872,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Everyday Carry Accessory', 1399, 'assets/products/bag.svg')"
               >
                 Add to Cart
@@ -1441,9 +1900,9 @@
           data-category="Home & Living"
         >
 
-          <a href="product.html?product=elevated-living-essential">
+          <div class="product-image">
 
-            <div class="product-image">
+            <a href="product.html?product=elevated-living-essential">
 
               <img
                 src="assets/products/ceramic-set.svg"
@@ -1451,13 +1910,30 @@
                 loading="lazy"
               >
 
-            </div>
+            </a>
 
-          </a>
+
+            <button
+              class="product-wishlist"
+              type="button"
+              data-name="Elevated Living Essential"
+              data-price="2699"
+              data-image="assets/products/ceramic-set.svg"
+              aria-label="Add Elevated Living Essential to wishlist"
+              title="Add to wishlist"
+              onclick="toggleWishlist(this)"
+            >
+              ♡
+            </button>
+
+          </div>
+
 
           <div class="product-info">
 
-            <div class="product-category">Home & Living</div>
+            <div class="product-category">
+              Home & Living
+            </div>
 
             <h2 class="product-name">
               Elevated Living Essential
@@ -1475,6 +1951,7 @@
 
               <button
                 class="add-btn"
+                type="button"
                 onclick="addToCart('Elevated Living Essential', 2699, 'assets/products/ceramic-set.svg')"
               >
                 Add to Cart
@@ -1494,9 +1971,21 @@
         </article>
 
 
-        <div class="no-results" id="noResults">
-          <h2>No products found</h2>
-          <p>Try another product name or category.</p>
+        <!-- NO RESULTS -->
+
+        <div
+          class="no-results"
+          id="noResults"
+        >
+
+          <h2>
+            No products found
+          </h2>
+
+          <p>
+            Try another product name or category.
+          </p>
+
         </div>
 
       </div>
@@ -1507,6 +1996,11 @@
 
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
   <div class="container">
@@ -1516,11 +2010,13 @@
       <div>
 
         <a href="index.html">
+
           <img
             src="assets/shopora-logo.png"
             alt="Shopora Market Store"
             class="footer-logo"
           >
+
         </a>
 
         <p class="footer-about">
@@ -1530,38 +2026,79 @@
 
       </div>
 
+
       <div class="footer-column">
 
-        <h3>Shop</h3>
+        <h3>
+          Shop
+        </h3>
 
-        <a href="shop.html">All Products</a>
-        <a href="categories.html">Categories</a>
-        <a href="trending.html">Trending</a>
-        <a href="cart.html">Cart</a>
+        <a href="shop.html">
+          All Products
+        </a>
+
+        <a href="categories.html">
+          Categories
+        </a>
+
+        <a href="trending.html">
+          Trending
+        </a>
+
+        <a href="wishlist.html">
+          Wishlist
+        </a>
+
+        <a href="cart.html">
+          Cart
+        </a>
 
       </div>
 
+
       <div class="footer-column">
 
-        <h3>Company</h3>
+        <h3>
+          Company
+        </h3>
 
-        <a href="about.html">About Us</a>
-        <a href="contact.html">Contact Us</a>
+        <a href="about.html">
+          About Us
+        </a>
+
+        <a href="contact.html">
+          Contact Us
+        </a>
 
       </div>
 
+
       <div class="footer-column">
 
-        <h3>Policies</h3>
+        <h3>
+          Policies
+        </h3>
 
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-service.html">Terms of Service</a>
-        <a href="cookie-policy.html">Cookie Policy</a>
-        <a href="return-refund.html">Return & Refund</a>
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms-of-service.html">
+          Terms of Service
+        </a>
+
+        <a href="cookie-policy.html">
+          Cookie Policy
+        </a>
+
+        <a href="return-refund.html">
+          Return & Refund
+        </a>
 
       </div>
 
     </div>
+
 
     <div class="footer-bottom">
 
@@ -1579,21 +2116,41 @@
 
 </footer>
 
-<div class="toast" id="toast"></div>
+
+<!-- TOAST -->
+
+<div
+  class="toast"
+  id="toast"
+  role="status"
+  aria-live="polite"
+></div>
+
 
 <script>
 
-  /* MOBILE MENU */
+  /* =========================
+     MOBILE MENU
+  ========================= */
 
   function toggleMenu() {
-    document.getElementById("mainNav").classList.toggle("open");
+
+    document
+      .getElementById("mainNav")
+      .classList
+      .toggle("open");
+
   }
 
 
-  /* HEADER SEARCH */
+  /* =========================
+     SEARCH ICON
+  ========================= */
 
   function focusSearch() {
-    const search = document.getElementById("productSearch");
+
+    const search =
+      document.getElementById("productSearch");
 
     search.focus();
 
@@ -1601,22 +2158,38 @@
       behavior: "smooth",
       block: "center"
     });
+
   }
 
 
-  /* CART */
+  /* =========================
+     CART
+  ========================= */
 
   function getCart() {
+
     try {
-      return JSON.parse(localStorage.getItem("shoporaCart")) || [];
+
+      return JSON.parse(
+        localStorage.getItem("shoporaCart")
+      ) || [];
+
     } catch (error) {
+
       return [];
+
     }
+
   }
 
 
   function saveCart(cart) {
-    localStorage.setItem("shoporaCart", JSON.stringify(cart));
+
+    localStorage.setItem(
+      "shoporaCart",
+      JSON.stringify(cart)
+    );
+
   }
 
 
@@ -1624,9 +2197,9 @@
 
     const cart = getCart();
 
-    const existingProduct = cart.find(
-      item => item.name === name
-    );
+    const existingProduct =
+      cart.find(item => item.name === name);
+
 
     if (existingProduct) {
 
@@ -1640,43 +2213,326 @@
     } else {
 
       cart.push({
+
         name: name,
+
         price: price,
+
         image: image,
+
         quantity: 1
+
       });
 
     }
 
+
     saveCart(cart);
 
-    showToast(name + " added to cart");
+    updateCartCount();
+
+    showToast(
+      name + " added to cart"
+    );
+
   }
 
 
-  function openCart() {
-    window.location.href = "cart.html";
+  /* =========================
+     CART COUNT
+  ========================= */
+
+  function updateCartCount() {
+
+    const cart = getCart();
+
+    let count = 0;
+
+    cart.forEach(item => {
+
+      count += Number(
+        item.quantity || 1
+      );
+
+    });
+
+
+    const cartCount =
+      document.getElementById("cartCount");
+
+
+    if (count > 0) {
+
+      cartCount.textContent =
+        count > 99 ? "99+" : count;
+
+      cartCount.classList.add("visible");
+
+    } else {
+
+      cartCount.classList.remove("visible");
+
+    }
+
   }
 
 
-  /* TOAST */
+  /* =========================
+     WISHLIST
+  ========================= */
+
+  function getWishlist() {
+
+    try {
+
+      return JSON.parse(
+        localStorage.getItem("shoporaWishlist")
+      ) || [];
+
+    } catch (error) {
+
+      return [];
+
+    }
+
+  }
+
+
+  function saveWishlist(wishlist) {
+
+    localStorage.setItem(
+      "shoporaWishlist",
+      JSON.stringify(wishlist)
+    );
+
+  }
+
+
+  function toggleWishlist(button) {
+
+    const name =
+      button.dataset.name;
+
+    const price =
+      Number(button.dataset.price);
+
+    const image =
+      button.dataset.image;
+
+
+    let wishlist =
+      getWishlist();
+
+
+    const existingIndex =
+      wishlist.findIndex(
+        item => item.name === name
+      );
+
+
+    if (existingIndex !== -1) {
+
+      wishlist.splice(
+        existingIndex,
+        1
+      );
+
+      button.classList.remove("active");
+
+      button.innerHTML = "♡";
+
+      button.setAttribute(
+        "aria-label",
+        "Add " + name + " to wishlist"
+      );
+
+      button.setAttribute(
+        "title",
+        "Add to wishlist"
+      );
+
+      showToast(
+        name + " removed from wishlist"
+      );
+
+    } else {
+
+      wishlist.push({
+
+        name: name,
+
+        price: price,
+
+        image: image
+
+      });
+
+      button.classList.add("active");
+
+      button.innerHTML = "♥";
+
+      button.setAttribute(
+        "aria-label",
+        "Remove " + name + " from wishlist"
+      );
+
+      button.setAttribute(
+        "title",
+        "Remove from wishlist"
+      );
+
+      showToast(
+        name + " added to wishlist"
+      );
+
+    }
+
+
+    saveWishlist(wishlist);
+
+    updateWishlistCount();
+
+  }
+
+
+  /* =========================
+     WISHLIST COUNT
+  ========================= */
+
+  function updateWishlistCount() {
+
+    const wishlist =
+      getWishlist();
+
+    const count =
+      wishlist.length;
+
+
+    const wishlistCount =
+      document.getElementById(
+        "wishlistCount"
+      );
+
+
+    if (count > 0) {
+
+      wishlistCount.textContent =
+        count > 99 ? "99+" : count;
+
+      wishlistCount.classList.add(
+        "visible"
+      );
+
+    } else {
+
+      wishlistCount.classList.remove(
+        "visible"
+      );
+
+    }
+
+  }
+
+
+  /* =========================
+     SYNC WISHLIST BUTTONS
+  ========================= */
+
+  function syncWishlistButtons() {
+
+    const wishlist =
+      getWishlist();
+
+
+    document
+      .querySelectorAll(".product-wishlist")
+      .forEach(button => {
+
+        const name =
+          button.dataset.name;
+
+
+        const isSaved =
+          wishlist.some(
+            item => item.name === name
+          );
+
+
+        if (isSaved) {
+
+          button.classList.add("active");
+
+          button.innerHTML = "♥";
+
+          button.setAttribute(
+            "aria-label",
+            "Remove " + name + " from wishlist"
+          );
+
+          button.setAttribute(
+            "title",
+            "Remove from wishlist"
+          );
+
+        } else {
+
+          button.classList.remove("active");
+
+          button.innerHTML = "♡";
+
+          button.setAttribute(
+            "aria-label",
+            "Add " + name + " to wishlist"
+          );
+
+          button.setAttribute(
+            "title",
+            "Add to wishlist"
+          );
+
+        }
+
+      });
+
+  }
+
+
+  /* =========================
+     TOAST
+  ========================= */
 
   function showToast(message) {
 
-    const toast = document.getElementById("toast");
+    const toast =
+      document.getElementById("toast");
 
-    toast.textContent = message;
+
+    toast.textContent =
+      message;
+
     toast.classList.add("show");
 
-    clearTimeout(window.shoporaToastTimer);
 
-    window.shoporaToastTimer = setTimeout(() => {
-      toast.classList.remove("show");
-    }, 2500);
+    clearTimeout(
+      window.shoporaToastTimer
+    );
+
+
+    window.shoporaToastTimer =
+      setTimeout(() => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      }, 2500);
+
   }
 
 
-  /* PRODUCT FILTER */
+  /* =========================
+     FILTER PRODUCTS
+  ========================= */
 
   function filterProducts() {
 
@@ -1687,32 +2543,48 @@
         .trim()
         .toLowerCase();
 
+
     const categoryValue =
       document
         .getElementById("categoryFilter")
         .value;
 
+
     const products =
-      document.querySelectorAll(".product-card");
+      document.querySelectorAll(
+        ".product-card"
+      );
+
 
     let visibleCount = 0;
+
 
     products.forEach(product => {
 
       const name =
-        product.dataset.name.toLowerCase();
+        product.dataset.name
+          .toLowerCase();
+
 
       const category =
         product.dataset.category;
 
+
       const matchesSearch =
-        name.includes(searchValue);
+        name.includes(
+          searchValue
+        );
+
 
       const matchesCategory =
         categoryValue === "all" ||
         category === categoryValue;
 
-      if (matchesSearch && matchesCategory) {
+
+      if (
+        matchesSearch &&
+        matchesCategory
+      ) {
 
         product.style.display = "";
 
@@ -1720,32 +2592,50 @@
 
       } else {
 
-        product.style.display = "none";
+        product.style.display =
+          "none";
 
       }
 
     });
 
 
-    document.getElementById("productCount").textContent =
+    document.getElementById(
+      "productCount"
+    ).textContent =
       visibleCount +
-      (visibleCount === 1 ? " product" : " products");
+      (
+        visibleCount === 1
+          ? " product"
+          : " products"
+      );
 
 
-    document.getElementById("noResults").style.display =
-      visibleCount === 0 ? "block" : "none";
+    document.getElementById(
+      "noResults"
+    ).style.display =
+      visibleCount === 0
+        ? "block"
+        : "none";
+
   }
 
 
-  /* URL CATEGORY / SEARCH SUPPORT */
+  /* =========================
+     URL FILTER SUPPORT
+  ========================= */
 
   function loadFiltersFromURL() {
 
     const params =
-      new URLSearchParams(window.location.search);
+      new URLSearchParams(
+        window.location.search
+      );
+
 
     const category =
       params.get("category");
+
 
     const search =
       params.get("search");
@@ -1754,14 +2644,25 @@
     if (category) {
 
       const categorySelect =
-        document.getElementById("categoryFilter");
+        document.getElementById(
+          "categoryFilter"
+        );
+
 
       const optionExists =
-        Array.from(categorySelect.options)
-          .some(option => option.value === category);
+        Array.from(
+          categorySelect.options
+        ).some(
+          option =>
+            option.value === category
+        );
+
 
       if (optionExists) {
-        categorySelect.value = category;
+
+        categorySelect.value =
+          category;
+
       }
 
     }
@@ -1769,36 +2670,74 @@
 
     if (search) {
 
-      document.getElementById("productSearch").value =
+      document.getElementById(
+        "productSearch"
+      ).value =
         search;
 
     }
 
 
     filterProducts();
+
   }
 
 
-  /* CLOSE MOBILE MENU */
+  /* =========================
+     CLOSE MOBILE MENU
+  ========================= */
 
-  document.querySelectorAll(".main-nav a").forEach(link => {
+  document
+    .querySelectorAll(".main-nav a")
+    .forEach(link => {
 
-    link.addEventListener("click", () => {
+      link.addEventListener(
+        "click",
+        () => {
 
-      document
-        .getElementById("mainNav")
-        .classList.remove("open");
+          document
+            .getElementById("mainNav")
+            .classList
+            .remove("open");
+
+        }
+      );
 
     });
 
-  });
+
+  /* =========================
+     STORAGE SYNC
+  ========================= */
+
+  window.addEventListener(
+    "storage",
+    () => {
+
+      updateCartCount();
+
+      updateWishlistCount();
+
+      syncWishlistButtons();
+
+    }
+  );
 
 
-  /* START */
+  /* =========================
+     START
+  ========================= */
 
   loadFiltersFromURL();
+
+  updateCartCount();
+
+  updateWishlistCount();
+
+  syncWishlistButtons();
 
 </script>
 
 </body>
 </html>
+```
