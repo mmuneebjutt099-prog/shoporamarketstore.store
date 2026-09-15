@@ -2,46 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Shop by Category | Shopora Market Store</title>
+  <title>Shop Categories | Fashion, Beauty, Electronics & More | Shopora</title>
 
-  <meta name="description" content="Explore Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle categories at Shopora Market Store.">
-  <meta name="keywords" content="Shopora Market Store, fashion, beauty, electronics, home living, accessories, lifestyle, online shopping">
-  <meta name="author" content="Shopora Market Store">
+  <meta name="description" content="Browse Shopora Market Store categories including Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle. Find everyday products in one organized online shopping destination.">
+
+  <meta name="keywords" content="Shopora categories, online shopping categories Pakistan, fashion products, beauty products, electronics Pakistan, home and living products, accessories, lifestyle products">
+
+  <meta name="robots" content="index, follow">
 
   <link rel="canonical" href="https://shoporamarketstore.store/categories.html">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Shop by Category | Shopora Market Store">
-  <meta property="og:description" content="Explore all Shopora Market Store categories and discover products curated for everyday living.">
+  <meta property="og:title" content="Shop Categories | Shopora Market Store">
+  <meta property="og:description" content="Explore Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle categories at Shopora.">
   <meta property="og:url" content="https://shoporamarketstore.store/categories.html">
-  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
   <meta property="og:site_name" content="Shopora Market Store">
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shop by Category | Shopora Market Store">
-  <meta name="twitter:description" content="Explore Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle at Shopora Market Store.">
-  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+  <meta name="twitter:title" content="Shop Categories | Shopora Market Store">
+  <meta name="twitter:description" content="Explore Shopora's curated product categories for modern everyday shopping.">
 
   <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
   <link rel="apple-touch-icon" href="assets/shopora-mark.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
+  <!-- Google AdSense -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
+    crossorigin="anonymous"></script>
+
+
+  <!-- Structured Data -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Shopora Market Store Categories",
+    "url": "https://shoporamarketstore.store/categories.html",
+    "description": "Browse Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle categories at Shopora Market Store.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Shopora Market Store",
+      "url": "https://shoporamarketstore.store/"
+    }
+  }
+  </script>
+
+
   <style>
+
     :root {
       --black: #111111;
-      --ivory: #F7F4EE;
-      --gold: #C6A06A;
+      --ivory: #f7f4ee;
+      --gold: #c6a06a;
       --white: #ffffff;
-      --muted: #77736d;
-      --border: rgba(17, 17, 17, 0.10);
-      --shadow: 0 18px 50px rgba(17, 17, 17, 0.08);
-      --radius: 22px;
+      --muted: #77716a;
+      --border: #e6e0d6;
+      --soft: #f0ece4;
+      --shadow: 0 16px 45px rgba(17,17,17,.07);
     }
 
     * {
@@ -56,9 +81,14 @@
 
     body {
       font-family: "DM Sans", sans-serif;
-      color: var(--black);
       background: var(--ivory);
+      color: var(--black);
       line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     a {
@@ -66,14 +96,13 @@
       text-decoration: none;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
     button,
     input {
       font: inherit;
+    }
+
+    button {
+      cursor: pointer;
     }
 
     .container {
@@ -81,22 +110,36 @@
       margin: 0 auto;
     }
 
-    /* HEADER */
 
-    header {
+    /* Announcement */
+
+    .announcement {
+      background: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+
+    /* Header */
+
+    .site-header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(247, 244, 238, 0.95);
-      backdrop-filter: blur(16px);
+      background: rgba(247,244,238,.97);
       border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
     }
 
-    .nav {
+    .header-inner {
       min-height: 82px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
       gap: 25px;
     }
 
@@ -107,385 +150,402 @@
     }
 
     .brand-logo {
-      width: 180px;
+      width: 205px;
       height: auto;
       display: block;
       object-fit: contain;
     }
 
-    .nav-links {
+    .main-nav {
       display: flex;
       align-items: center;
       gap: 27px;
       margin-left: auto;
     }
 
-    .nav-links a {
+    .main-nav a {
+      position: relative;
+      padding: 8px 0;
+      color: #37332e;
       font-size: 14px;
       font-weight: 600;
-      color: #3f3d39;
-      position: relative;
-      padding: 7px 0;
-      transition: color 0.25s ease;
     }
 
-    .nav-links a::after {
+    .main-nav a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: 0;
+      bottom: 1px;
       width: 0;
-      height: 1.5px;
+      height: 1px;
       background: var(--gold);
-      transition: width 0.25s ease;
+      transition: width .25s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--black);
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a.active::after {
+    .main-nav a:hover::after,
+    .main-nav a.active::after {
       width: 100%;
     }
 
-    .nav-actions {
+    .header-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
     }
 
-    .icon-btn {
+    .icon-link {
       width: 42px;
       height: 42px;
-      border: 1px solid var(--border);
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.55);
-      transition: all 0.25s ease;
-      cursor: pointer;
       position: relative;
+      font-size: 20px;
+      border: 1px solid transparent;
+      transition: .25s ease;
     }
 
-    .icon-btn:hover {
-      background: var(--black);
-      color: var(--white);
-      transform: translateY(-2px);
+    .icon-link:hover {
+      background: var(--white);
+      border-color: var(--border);
     }
 
-    .icon-btn svg {
-      width: 18px;
-      height: 18px;
-    }
-
-    /* COUNT BADGES */
-
-    .count-badge {
+    .count {
       position: absolute;
-      top: -5px;
-      right: -4px;
-      min-width: 18px;
-      height: 18px;
+      right: 0;
+      top: 1px;
+      min-width: 17px;
+      height: 17px;
       padding: 0 4px;
       border-radius: 50%;
-      background: var(--gold);
+      background: var(--black);
       color: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
-      line-height: 1;
+      font-size: 9px;
       font-weight: 700;
-      border: 2px solid var(--ivory);
     }
 
-    .menu-btn {
+    .mobile-toggle {
       display: none;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      background: transparent;
+      font-size: 25px;
     }
 
-    /* HERO */
 
-    .hero {
-      padding: 105px 0 85px;
-      text-align: center;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(198,160,106,0.13), transparent 28%),
-        radial-gradient(circle at 80% 60%, rgba(198,160,106,0.09), transparent 30%);
+    /* Hero */
+
+    .category-hero {
+      padding: 72px 0 55px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .eyebrow {
+    .hero-label {
       display: inline-flex;
       align-items: center;
       gap: 9px;
       color: var(--gold);
       font-size: 12px;
       font-weight: 700;
+      letter-spacing: .16em;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 18px;
+      margin-bottom: 15px;
     }
 
-    .eyebrow::before,
-    .eyebrow::after {
+    .hero-label::before {
       content: "";
-      width: 25px;
+      width: 28px;
       height: 1px;
       background: var(--gold);
     }
 
-    .hero h1 {
+    .category-hero h1 {
+      max-width: 850px;
       font-family: "Playfair Display", serif;
-      font-size: clamp(45px, 6vw, 76px);
-      line-height: 1.05;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.04;
       font-weight: 600;
-      margin-bottom: 20px;
+      margin-bottom: 17px;
     }
 
-    .hero p {
-      max-width: 650px;
-      margin: 0 auto;
+    .category-hero p {
+      max-width: 700px;
       color: var(--muted);
-      font-size: 17px;
+      font-size: 16px;
     }
 
-    /* CATEGORY SECTION */
+
+    /* Categories */
 
     .categories-section {
-      padding: 25px 0 100px;
+      padding: 55px 0 90px;
     }
 
     .section-heading {
-      text-align: center;
-      margin-bottom: 45px;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 25px;
+      margin-bottom: 25px;
     }
 
     .section-heading h2 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(32px, 4vw, 48px);
+      font-size: 32px;
       font-weight: 600;
-      margin-bottom: 10px;
     }
 
     .section-heading p {
       color: var(--muted);
-      max-width: 600px;
-      margin: 0 auto;
+      font-size: 13px;
     }
 
     .category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 20px;
     }
 
     .category-card {
       position: relative;
-      min-height: 390px;
+      min-height: 330px;
       overflow: hidden;
-      border-radius: var(--radius);
       background: var(--white);
       border: 1px solid var(--border);
-      box-shadow: 0 8px 25px rgba(17,17,17,0.04);
-      transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
 
     .category-card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-5px);
       box-shadow: var(--shadow);
     }
 
     .category-image {
-      height: 255px;
-      overflow: hidden;
-      background: #eeeae3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    .category-image::after {
-      content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        to top,
-        rgba(17,17,17,0.12),
-        transparent 45%
-      );
-      pointer-events: none;
+      background: var(--soft);
     }
 
     .category-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.55s ease;
+      transition: transform .5s ease;
     }
 
     .category-card:hover .category-image img {
-      transform: scale(1.07);
+      transform: scale(1.05);
+    }
+
+    .category-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(17,17,17,.86) 0%,
+        rgba(17,17,17,.28) 48%,
+        rgba(17,17,17,0) 72%
+      );
     }
 
     .category-content {
-      padding: 25px 25px 27px;
-      background: var(--white);
+      position: absolute;
+      left: 23px;
+      right: 23px;
+      bottom: 22px;
+      color: var(--white);
+      z-index: 2;
+    }
+
+    .category-number {
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      margin-bottom: 4px;
     }
 
     .category-content h3 {
       font-family: "Playfair Display", serif;
-      font-size: 27px;
-      font-weight: 600;
-      margin-bottom: 7px;
+      font-size: 28px;
+      line-height: 1.1;
+      margin-bottom: 5px;
     }
 
     .category-content p {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 17px;
+      color: rgba(255,255,255,.78);
+      font-size: 12px;
+      margin-bottom: 14px;
     }
 
     .category-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 13px;
+      gap: 7px;
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      color: var(--black);
+      letter-spacing: .08em;
     }
 
     .category-link span {
-      transition: transform 0.25s ease;
+      transition: transform .2s ease;
     }
 
     .category-card:hover .category-link span {
-      transform: translateX(5px);
+      transform: translateX(4px);
     }
 
-    /* CTA */
 
-    .cta {
-      padding: 0 0 100px;
+    /* Category Guide */
+
+    .category-guide {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 70px 0;
     }
 
-    .cta-box {
-      background: var(--black);
-      color: var(--white);
-      border-radius: 28px;
-      padding: 70px 40px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+    .guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 70px;
+      align-items: start;
     }
 
-    .cta-box::before,
-    .cta-box::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(198,160,106,0.25);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .cta-box::before {
-      width: 300px;
-      height: 300px;
-      left: -130px;
-      top: -160px;
-    }
-
-    .cta-box::after {
-      width: 360px;
-      height: 360px;
-      right: -170px;
-      bottom: -210px;
-    }
-
-    .cta-box h2 {
-      position: relative;
-      z-index: 1;
+    .guide-heading h2 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(34px, 5vw, 55px);
+      font-size: 38px;
+      line-height: 1.15;
+      font-weight: 600;
+    }
+
+    .guide-copy p {
+      color: var(--muted);
+      font-size: 15px;
       margin-bottom: 14px;
     }
 
-    .cta-box p {
-      position: relative;
-      z-index: 1;
-      color: rgba(255,255,255,0.7);
-      max-width: 580px;
-      margin: 0 auto 28px;
+    .guide-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 22px;
     }
 
-    .btn {
-      position: relative;
-      z-index: 1;
-      display: inline-flex;
+    .guide-links a {
+      padding: 8px 13px;
+      background: var(--ivory);
+      border: 1px solid var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      transition: .2s ease;
+    }
+
+    .guide-links a:hover {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+
+
+    /* Newsletter */
+
+    .newsletter {
+      padding: 65px 0;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .newsletter-inner {
+      display: flex;
       align-items: center;
-      justify-content: center;
-      min-height: 50px;
-      padding: 0 26px;
-      border-radius: 999px;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .newsletter h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      line-height: 1.2;
+      margin-bottom: 7px;
+    }
+
+    .newsletter p {
+      color: #c8c3bb;
+      font-size: 14px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      width: 430px;
+      max-width: 100%;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      height: 48px;
+      border: 0;
+      outline: none;
+      padding: 0 15px;
+    }
+
+    .newsletter-form button {
+      height: 48px;
+      border: 0;
       background: var(--gold);
-      color: var(--black);
-      font-size: 13px;
+      color: var(--white);
+      padding: 0 20px;
       font-weight: 700;
-      transition: all 0.25s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-3px);
-      background: var(--white);
-    }
 
-    /* FOOTER */
+    /* Footer */
 
     footer {
-      background: #0c0c0c;
+      background: var(--black);
       color: var(--white);
-      padding: 65px 0 25px;
+      border-top: 1px solid #292929;
     }
 
-    .footer-grid {
+    .footer-main {
+      padding: 65px 0 45px;
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
-      gap: 45px;
-      padding-bottom: 45px;
+      gap: 50px;
     }
 
     .footer-brand img {
       width: 180px;
       margin-bottom: 18px;
-      filter: brightness(0) invert(1);
     }
 
     .footer-brand p {
-      color: rgba(255,255,255,0.58);
-      max-width: 320px;
-      font-size: 14px;
+      max-width: 310px;
+      color: #aaa49c;
+      font-size: 13px;
     }
 
-    .footer-col h4 {
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 18px;
+    .footer-col h3 {
       color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      margin-bottom: 17px;
     }
 
     .footer-col a {
       display: block;
-      color: rgba(255,255,255,0.65);
-      font-size: 14px;
-      margin-bottom: 11px;
-      transition: color 0.2s ease;
+      color: #bcb7af;
+      font-size: 13px;
+      margin-bottom: 9px;
+      transition: color .2s ease;
     }
 
     .footer-col a:hover {
@@ -493,33 +553,45 @@
     }
 
     .footer-bottom {
-      padding-top: 23px;
-      border-top: 1px solid rgba(255,255,255,0.1);
+      border-top: 1px solid #292929;
+      padding: 19px 0;
       display: flex;
-      align-items: center;
       justify-content: space-between;
       gap: 20px;
-      color: rgba(255,255,255,0.45);
-      font-size: 12px;
+      color: #8f8a84;
+      font-size: 11px;
     }
 
-    /* REVEAL */
 
-    .reveal {
+    /* Toast */
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+      background: var(--black);
+      color: var(--white);
+      padding: 13px 18px;
+      font-size: 13px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      transform: translateY(100px);
       opacity: 0;
-      transform: translateY(25px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      pointer-events: none;
+      transition: .3s ease;
     }
 
-    .reveal.visible {
-      opacity: 1;
+    .toast.show {
       transform: translateY(0);
+      opacity: 1;
     }
 
-    /* MOBILE */
 
-    @media (max-width: 950px) {
-      .nav-links {
+    /* Responsive */
+
+    @media (max-width: 1050px) {
+
+      .main-nav {
         gap: 17px;
       }
 
@@ -527,689 +599,1060 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
+      .footer-main {
+        grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
-    @media (max-width: 760px) {
-      .nav {
-        min-height: 72px;
-      }
+
+    @media (max-width: 850px) {
 
       .brand-logo {
-        width: 145px;
+        width: 175px;
       }
 
-      .nav-links {
+      .main-nav {
         display: none;
         position: absolute;
-        top: 72px;
+        top: 82px;
         left: 0;
         right: 0;
         background: var(--ivory);
         border-bottom: 1px solid var(--border);
-        padding: 22px 20px;
+        padding: 20px;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0;
+        gap: 3px;
       }
 
-      .nav-links.open {
+      .main-nav.open {
         display: flex;
       }
 
-      .nav-links a {
+      .main-nav a {
         width: 100%;
-        padding: 13px 0;
-        border-bottom: 1px solid var(--border);
+        padding: 12px 4px;
       }
 
-      .nav-links a:last-child {
-        border-bottom: 0;
-      }
-
-      .menu-btn {
+      .mobile-toggle {
         display: inline-flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .hero {
-        padding: 75px 0 65px;
+      .header-actions {
+        margin-left: auto;
       }
 
-      .hero p {
-        font-size: 15px;
-      }
-
-      .category-grid {
+      .guide-grid {
         grid-template-columns: 1fr;
+        gap: 25px;
       }
 
-      .category-card {
-        min-height: auto;
-      }
-
-      .category-image {
-        height: 280px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
-
-      .footer-bottom {
+      .newsletter-inner {
         flex-direction: column;
         align-items: flex-start;
       }
+
     }
 
-    @media (max-width: 480px) {
+
+    @media (max-width: 640px) {
+
       .container {
         width: min(100% - 28px, 1180px);
       }
 
-      .nav-actions {
-        gap: 6px;
+      .announcement {
+        font-size: 9px;
       }
 
-      .icon-btn {
-        width: 38px;
-        height: 38px;
+      .header-inner {
+        min-height: 72px;
       }
 
-      .hero h1 {
-        font-size: 44px;
+      .brand-logo {
+        width: 150px;
       }
 
-      .cta-box {
-        padding: 55px 22px;
+      .category-hero {
+        padding: 48px 0 36px;
       }
+
+      .categories-section {
+        padding: 38px 0 60px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+      }
+
+      .category-card {
+        min-height: 300px;
+      }
+
+      .section-heading {
+        display: block;
+      }
+
+      .section-heading h2 {
+        margin-bottom: 5px;
+      }
+
+      .category-guide {
+        padding: 48px 0;
+      }
+
+      .guide-heading h2 {
+        font-size: 30px;
+      }
+
+      .newsletter {
+        padding: 48px 0;
+      }
+
+      .newsletter h2 {
+        font-size: 29px;
+      }
+
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 48px 0 35px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
     }
+
+
+    @media (max-width: 400px) {
+
+      .brand-logo {
+        width: 140px;
+      }
+
+      .icon-link {
+        width: 36px;
+        height: 36px;
+      }
+
+      .category-content h3 {
+        font-size: 25px;
+      }
+
+    }
+
   </style>
 
-  <!-- CollectionPage / ItemList Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "name": "Shop by Category | Shopora Market Store",
-    "url": "https://shoporamarketstore.store/categories.html",
-    "description": "Explore Shopora Market Store categories including Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle.",
-    "isPartOf": {
-      "@type": "WebSite",
-      "name": "Shopora Market Store",
-      "url": "https://shoporamarketstore.store/"
-    },
-    "mainEntity": {
-      "@type": "ItemList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Fashion",
-          "url": "https://shoporamarketstore.store/shop.html?category=Fashion"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Beauty",
-          "url": "https://shoporamarketstore.store/shop.html?category=Beauty"
-        },
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "name": "Electronics",
-          "url": "https://shoporamarketstore.store/shop.html?category=Electronics"
-        },
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "name": "Home & Living",
-          "url": "https://shoporamarketstore.store/shop.html?category=Home%20%26%20Living"
-        },
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "name": "Accessories",
-          "url": "https://shoporamarketstore.store/shop.html?category=Accessories"
-        },
-        {
-          "@type": "ListItem",
-          "position": 6,
-          "name": "Lifestyle",
-          "url": "https://shoporamarketstore.store/shop.html?category=Lifestyle"
-        }
-      ]
-    }
-  }
-  </script>
 </head>
+
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="container nav">
 
-      <a href="index.html" class="brand" aria-label="Shopora Market Store home">
+  <!-- Announcement -->
+
+  <div class="announcement">
+    SHOPORA — Explore categories. Discover better products.
+  </div>
+
+
+  <!-- Header -->
+
+  <header class="site-header">
+
+    <div class="container header-inner">
+
+
+      <a
+        href="index.html"
+        class="brand"
+        aria-label="Shopora Market Store home"
+      >
+
         <img
           src="assets/shopora-logo.png"
           alt="Shopora Market Store"
           class="brand-logo"
-          width="180"
-          height="60"
+          width="205"
+          height="52"
         >
+
       </a>
 
-      <nav class="nav-links" id="navLinks">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="categories.html" class="active">Categories</a>
-        <a href="trending.html">Trending</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+
+      <nav class="main-nav" id="mainNav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="shop.html">
+          Shop
+        </a>
+
+        <a href="categories.html" class="active">
+          Categories
+        </a>
+
+        <a href="trending.html">
+          Trending
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
       </nav>
 
-      <div class="nav-actions">
 
-        <!-- SEARCH -->
-        <a
-          href="shop.html#productSearch"
-          class="icon-btn"
-          aria-label="Search products"
-          title="Search"
-        >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <circle cx="11" cy="11" r="6.5"></circle>
-            <path d="M16 16L21 21"></path>
-          </svg>
-        </a>
+      <div class="header-actions">
 
-        <!-- WISHLIST -->
+
         <a
           href="wishlist.html"
-          class="icon-btn"
+          class="icon-link"
           aria-label="Wishlist"
-          title="Wishlist"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 8 4c1.7 0 3.2.9 4 2.2C12.8 4.9 14.3 4 16 4a4.7 4.7 0 0 1 4.8 4.7Z"></path>
-          </svg>
 
-          <span class="count-badge" id="wishlistCount">0</span>
+          ♡
+
+          <span
+            class="count"
+            id="wishlistCount"
+          >
+            0
+          </span>
+
         </a>
 
-        <!-- CART -->
+
         <a
           href="cart.html"
-          class="icon-btn"
+          class="icon-link"
           aria-label="Shopping cart"
-          title="Cart"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M3 4h2l2.1 10.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 2-1.6L20 7H6"></path>
-            <circle cx="10" cy="20" r="1"></circle>
-            <circle cx="18" cy="20" r="1"></circle>
-          </svg>
 
-          <span class="count-badge" id="cartCount">0</span>
+          🛒
+
+          <span
+            class="count"
+            id="cartCount"
+          >
+            0
+          </span>
+
         </a>
 
-        <!-- MOBILE MENU -->
+
         <button
-          class="icon-btn menu-btn"
-          id="menuBtn"
+          class="mobile-toggle"
+          id="mobileToggle"
           aria-label="Open menu"
           aria-expanded="false"
-          type="button"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-            <path d="M4 7h16"></path>
-            <path d="M4 12h16"></path>
-            <path d="M4 17h16"></path>
-          </svg>
+          ☰
         </button>
 
+
       </div>
+
     </div>
+
   </header>
 
 
-  <!-- HERO -->
   <main>
 
-    <section class="hero">
+
+    <!-- Hero -->
+
+    <section class="category-hero">
+
       <div class="container">
 
-        <div class="eyebrow">Shopora Collection</div>
+        <div class="hero-label">
+          Shopora Categories
+        </div>
 
-        <h1>Shop By Category</h1>
+        <h1>
+          Find your category. Find what fits your everyday.
+        </h1>
 
         <p>
-          Explore thoughtfully selected categories designed to make
-          everyday shopping simple, stylish and convenient.
+          Browse Shopora's curated categories and discover products across
+          fashion, beauty, electronics, home & living, accessories and
+          lifestyle.
         </p>
 
       </div>
+
     </section>
 
 
-    <!-- CATEGORIES -->
+    <!-- Category Grid -->
+
     <section class="categories-section">
+
       <div class="container">
 
-        <div class="section-heading reveal">
-          <h2>Find What Fits Your World</h2>
 
-          <p>
-            Browse Shopora's main collections and discover products
-            made for everyday needs and modern living.
-          </p>
+        <div class="section-heading">
+
+          <div>
+
+            <h2>
+              Shop by Category
+            </h2>
+
+            <p>
+              Explore our main product collections.
+            </p>
+
+          </div>
+
         </div>
 
 
         <div class="category-grid">
 
-          <!-- FASHION -->
+
+          <!-- Fashion -->
+
           <a
             href="shop.html?category=Fashion"
-            class="category-card reveal"
+            class="category-card"
+            aria-label="Shop Fashion products"
           >
+
             <div class="category-image">
+
               <img
                 src="assets/products/coord-set.svg"
-                alt="Fashion collection"
+                alt="Fashion products"
                 loading="lazy"
               >
+
             </div>
+
+            <div class="category-overlay"></div>
 
             <div class="category-content">
-              <h3>Fashion</h3>
+
+              <div class="category-number">
+                01 / CATEGORY
+              </div>
+
+              <h3>
+                Fashion
+              </h3>
 
               <p>
-                Modern wardrobe essentials and everyday style picks.
+                Everyday clothing and modern wardrobe essentials.
               </p>
 
-              <div class="category-link">
-                Explore Fashion
+              <span class="category-link">
+                Shop Fashion
                 <span>→</span>
-              </div>
+              </span>
+
             </div>
+
           </a>
 
 
-          <!-- BEAUTY -->
+          <!-- Beauty -->
+
           <a
             href="shop.html?category=Beauty"
-            class="category-card reveal"
+            class="category-card"
+            aria-label="Shop Beauty products"
           >
+
             <div class="category-image">
+
               <img
                 src="assets/products/beauty-set.svg"
-                alt="Beauty collection"
+                alt="Beauty products"
                 loading="lazy"
               >
+
             </div>
+
+            <div class="category-overlay"></div>
 
             <div class="category-content">
-              <h3>Beauty</h3>
+
+              <div class="category-number">
+                02 / CATEGORY
+              </div>
+
+              <h3>
+                Beauty
+              </h3>
 
               <p>
-                Everyday beauty and personal care essentials.
+                Beauty essentials and everyday self-care picks.
               </p>
 
-              <div class="category-link">
-                Explore Beauty
+              <span class="category-link">
+                Shop Beauty
                 <span>→</span>
-              </div>
+              </span>
+
             </div>
+
           </a>
 
 
-          <!-- ELECTRONICS -->
+          <!-- Electronics -->
+
           <a
             href="shop.html?category=Electronics"
-            class="category-card reveal"
+            class="category-card"
+            aria-label="Shop Electronics products"
           >
+
             <div class="category-image">
+
               <img
                 src="assets/products/wireless-buds.svg"
-                alt="Electronics collection"
+                alt="Electronics products"
                 loading="lazy"
               >
+
             </div>
+
+            <div class="category-overlay"></div>
 
             <div class="category-content">
-              <h3>Electronics</h3>
+
+              <div class="category-number">
+                03 / CATEGORY
+              </div>
+
+              <h3>
+                Electronics
+              </h3>
 
               <p>
-                Useful technology and smart everyday essentials.
+                Smart everyday devices and useful technology.
               </p>
 
-              <div class="category-link">
-                Explore Electronics
+              <span class="category-link">
+                Shop Electronics
                 <span>→</span>
-              </div>
+              </span>
+
             </div>
+
           </a>
 
 
-          <!-- HOME & LIVING -->
+          <!-- Home & Living -->
+
           <a
             href="shop.html?category=Home%20%26%20Living"
-            class="category-card reveal"
+            class="category-card"
+            aria-label="Shop Home and Living products"
           >
+
             <div class="category-image">
+
               <img
                 src="assets/products/lamp.svg"
-                alt="Home and Living collection"
+                alt="Home and Living products"
                 loading="lazy"
               >
+
             </div>
+
+            <div class="category-overlay"></div>
 
             <div class="category-content">
-              <h3>Home &amp; Living</h3>
+
+              <div class="category-number">
+                04 / CATEGORY
+              </div>
+
+              <h3>
+                Home & Living
+              </h3>
 
               <p>
-                Simple pieces designed to elevate everyday spaces.
+                Modern essentials for comfortable everyday spaces.
               </p>
 
-              <div class="category-link">
-                Explore Home
+              <span class="category-link">
+                Shop Home & Living
                 <span>→</span>
-              </div>
+              </span>
+
             </div>
+
           </a>
 
 
-          <!-- ACCESSORIES -->
+          <!-- Accessories -->
+
           <a
             href="shop.html?category=Accessories"
-            class="category-card reveal"
+            class="category-card"
+            aria-label="Shop Accessories products"
           >
+
             <div class="category-image">
+
               <img
                 src="assets/products/bag.svg"
-                alt="Accessories collection"
+                alt="Accessories products"
                 loading="lazy"
               >
+
             </div>
+
+            <div class="category-overlay"></div>
 
             <div class="category-content">
-              <h3>Accessories</h3>
+
+              <div class="category-number">
+                05 / CATEGORY
+              </div>
+
+              <h3>
+                Accessories
+              </h3>
 
               <p>
-                Finishing touches and practical everyday accessories.
+                Signature accessories designed for everyday carry.
               </p>
 
-              <div class="category-link">
-                Explore Accessories
+              <span class="category-link">
+                Shop Accessories
                 <span>→</span>
-              </div>
+              </span>
+
             </div>
+
           </a>
 
 
-          <!-- LIFESTYLE -->
+          <!-- Lifestyle -->
+
           <a
             href="shop.html?category=Lifestyle"
-            class="category-card reveal"
+            class="category-card"
+            aria-label="Shop Lifestyle products"
           >
+
             <div class="category-image">
+
               <img
                 src="assets/products/bottle.svg"
-                alt="Lifestyle collection"
+                alt="Lifestyle products"
                 loading="lazy"
               >
+
             </div>
+
+            <div class="category-overlay"></div>
 
             <div class="category-content">
-              <h3>Lifestyle</h3>
+
+              <div class="category-number">
+                06 / CATEGORY
+              </div>
+
+              <h3>
+                Lifestyle
+              </h3>
 
               <p>
-                Useful finds for a more comfortable everyday routine.
+                Practical products selected for modern daily life.
               </p>
 
-              <div class="category-link">
-                Explore Lifestyle
+              <span class="category-link">
+                Shop Lifestyle
                 <span>→</span>
-              </div>
+              </span>
+
             </div>
+
           </a>
+
 
         </div>
 
       </div>
+
     </section>
 
 
-    <!-- CTA -->
-    <section class="cta">
+    <!-- Category Guide / SEO -->
+
+    <section class="category-guide">
+
       <div class="container">
 
-        <div class="cta-box reveal">
+        <div class="guide-grid">
 
-          <h2>Ready To Explore?</h2>
 
-          <p>
-            Browse the complete Shopora collection and discover
-            products across all of our categories.
-          </p>
+          <div class="guide-heading">
 
-          <a href="shop.html" class="btn">
-            View All Products
-          </a>
+            <h2>
+              A simpler way to discover products online.
+            </h2>
+
+          </div>
+
+
+          <div class="guide-copy">
+
+            <p>
+              Shopora Market Store organizes everyday products into clear,
+              useful categories so you can find what you need without
+              unnecessary browsing.
+            </p>
+
+            <p>
+              Explore fashion and wardrobe essentials, beauty products,
+              electronics, home & living items, accessories and lifestyle
+              products in one modern online shopping destination.
+            </p>
+
+            <p>
+              Choose a category below to start shopping.
+            </p>
+
+
+            <div class="guide-links">
+
+              <a href="shop.html?category=Fashion">
+                Fashion
+              </a>
+
+              <a href="shop.html?category=Beauty">
+                Beauty
+              </a>
+
+              <a href="shop.html?category=Electronics">
+                Electronics
+              </a>
+
+              <a href="shop.html?category=Home%20%26%20Living">
+                Home & Living
+              </a>
+
+              <a href="shop.html?category=Accessories">
+                Accessories
+              </a>
+
+              <a href="shop.html?category=Lifestyle">
+                Lifestyle
+              </a>
+
+              <a href="shop.html">
+                Shop All
+              </a>
+
+            </div>
+
+          </div>
+
 
         </div>
 
       </div>
+
     </section>
+
+
+    <!-- Newsletter -->
+
+    <section class="newsletter">
+
+      <div class="container newsletter-inner">
+
+
+        <div>
+
+          <h2>
+            Stay in the Shopora loop.
+          </h2>
+
+          <p>
+            Get new product picks, shopping inspiration and updates.
+          </p>
+
+        </div>
+
+
+        <form
+          class="newsletter-form"
+          id="newsletterForm"
+        >
+
+          <input
+            type="email"
+            placeholder="Your email address"
+            aria-label="Email address"
+            required
+          >
+
+          <button type="submit">
+            Subscribe
+          </button>
+
+        </form>
+
+
+      </div>
+
+    </section>
+
 
   </main>
 
 
-  <!-- FOOTER -->
+  <!-- Footer -->
+
   <footer>
 
-    <div class="container">
-
-      <div class="footer-grid">
-
-        <div class="footer-brand">
-
-          <a href="index.html">
-            <img
-              src="assets/shopora-logo.png"
-              alt="Shopora Market Store"
-            >
-          </a>
-
-          <p>
-            A modern marketplace bringing together useful,
-            stylish and everyday products in one simple shopping experience.
-          </p>
-
-        </div>
+    <div class="container footer-main">
 
 
-        <div class="footer-col">
+      <div class="footer-brand">
 
-          <h4>Shop</h4>
+        <a href="index.html">
 
-          <a href="shop.html">Shop All</a>
-          <a href="categories.html">Categories</a>
-          <a href="trending.html">Trending</a>
-          <a href="wishlist.html">Wishlist</a>
-          <a href="cart.html">Cart</a>
+          <img
+            src="assets/shopora-logo.png"
+            alt="Shopora Market Store"
+            width="180"
+            height="50"
+          >
 
-        </div>
+        </a>
 
-
-        <div class="footer-col">
-
-          <h4>Company</h4>
-
-          <a href="about.html">About Us</a>
-          <a href="contact.html">Contact Us</a>
-
-        </div>
-
-
-        <div class="footer-col">
-
-          <h4>Policies</h4>
-
-          <a href="privacy-policy.html">Privacy Policy</a>
-          <a href="terms-of-service.html">Terms of Service</a>
-          <a href="cookie-policy.html">Cookie Policy</a>
-          <a href="return-refund.html">Return &amp; Refund</a>
-
-        </div>
+        <p>
+          Shopora Market Store is a modern online marketplace focused on
+          curated everyday products and simple shopping.
+        </p>
 
       </div>
 
 
-      <div class="footer-bottom">
+      <div class="footer-col">
 
-        <span>
-          © <span id="year"></span> Shopora Market Store. All rights reserved.
-        </span>
+        <h3>
+          Shop
+        </h3>
 
-        <span>
-          SHOPORA
-        </span>
+        <a href="shop.html">
+          Shop All
+        </a>
+
+        <a href="categories.html">
+          Categories
+        </a>
+
+        <a href="trending.html">
+          Trending
+        </a>
+
+        <a href="cart.html">
+          Cart
+        </a>
+
+        <a href="wishlist.html">
+          Wishlist
+        </a>
 
       </div>
+
+
+      <div class="footer-col">
+
+        <h3>
+          Company
+        </h3>
+
+        <a href="about.html">
+          About Shopora
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h3>
+          Policies
+        </h3>
+
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms-of-service.html">
+          Terms of Service
+        </a>
+
+        <a href="cookie-policy.html">
+          Cookie Policy
+        </a>
+
+        <a href="return-refund.html">
+          Return & Refund
+        </a>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <span>
+        © <span id="year"></span>
+        Shopora Market Store. All rights reserved.
+      </span>
+
+      <span>
+        Online Shopping Categories in Pakistan
+      </span>
 
     </div>
 
   </footer>
 
 
+  <!-- Toast -->
+
+  <div
+    class="toast"
+    id="toast"
+  >
+    Thanks for subscribing to Shopora.
+  </div>
+
+
   <script>
 
-    /* MOBILE MENU */
+    /* ============================
+       Cart / Wishlist Counts
+    ============================ */
 
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+    const CART_KEY = "shoporaCart";
+    const WISHLIST_KEY = "shoporaWishlist";
 
-    menuBtn.addEventListener("click", function () {
 
-      const isOpen =
-        navLinks.classList.toggle("open");
+    function getCart() {
 
-      menuBtn.setAttribute(
-        "aria-expanded",
-        isOpen ? "true" : "false"
+      try {
+
+        return JSON.parse(
+          localStorage.getItem(CART_KEY)
+        ) || [];
+
+      } catch {
+
+        return [];
+
+      }
+
+    }
+
+
+    function getWishlist() {
+
+      try {
+
+        return JSON.parse(
+          localStorage.getItem(WISHLIST_KEY)
+        ) || [];
+
+      } catch {
+
+        return [];
+
+      }
+
+    }
+
+
+    function updateCounts() {
+
+      const cart =
+        getCart();
+
+      const wishlist =
+        getWishlist();
+
+
+      const cartCount =
+        cart.reduce(
+          (total, item) =>
+            total + Number(item.quantity || 1),
+          0
+        );
+
+
+      document.getElementById(
+        "cartCount"
+      ).textContent =
+        cartCount;
+
+
+      document.getElementById(
+        "wishlistCount"
+      ).textContent =
+        wishlist.length;
+
+    }
+
+
+    /* ============================
+       Mobile Menu
+    ============================ */
+
+    const mobileToggle =
+      document.getElementById(
+        "mobileToggle"
       );
 
-    });
+
+    const mainNav =
+      document.getElementById(
+        "mainNav"
+      );
 
 
-    /* CLOSE MOBILE MENU */
+    mobileToggle.addEventListener(
+      "click",
+      () => {
 
-    document
-      .querySelectorAll(".nav-links a")
-      .forEach(function (link) {
-
-        link.addEventListener("click", function () {
-
-          navLinks.classList.remove("open");
-
-          menuBtn.setAttribute(
-            "aria-expanded",
-            "false"
+        const isOpen =
+          mainNav.classList.toggle(
+            "open"
           );
 
-        });
+
+        mobileToggle.setAttribute(
+          "aria-expanded",
+          isOpen ? "true" : "false"
+        );
+
+
+        mobileToggle.textContent =
+          isOpen ? "×" : "☰";
+
+      }
+    );
+
+
+    mainNav
+      .querySelectorAll("a")
+      .forEach(link => {
+
+        link.addEventListener(
+          "click",
+          () => {
+
+            mainNav.classList.remove(
+              "open"
+            );
+
+
+            mobileToggle.textContent =
+              "☰";
+
+
+            mobileToggle.setAttribute(
+              "aria-expanded",
+              "false"
+            );
+
+          }
+        );
 
       });
 
 
-    /* CURRENT YEAR */
+    /* ============================
+       Newsletter
+    ============================ */
 
-    document.getElementById("year").textContent =
+    const newsletterForm =
+      document.getElementById(
+        "newsletterForm"
+      );
+
+
+    const toast =
+      document.getElementById(
+        "toast"
+      );
+
+
+    newsletterForm.addEventListener(
+      "submit",
+      event => {
+
+        event.preventDefault();
+
+
+        toast.classList.add(
+          "show"
+        );
+
+
+        newsletterForm.reset();
+
+
+        setTimeout(
+          () => {
+            toast.classList.remove(
+              "show"
+            );
+          },
+          2200
+        );
+
+      }
+    );
+
+
+    /* ============================
+       Current Year
+    ============================ */
+
+    document.getElementById(
+      "year"
+    ).textContent =
       new Date().getFullYear();
 
 
-    /* CART COUNT */
+    /* ============================
+       Initial Counts
+    ============================ */
 
-    function updateCartCount() {
+    updateCounts();
 
-      let cart = [];
-
-      try {
-
-        cart = JSON.parse(
-          localStorage.getItem("shoporaCart") || "[]"
-        );
-
-      } catch (error) {
-
-        cart = [];
-
-      }
-
-      const count = cart.reduce(
-        function (total, item) {
-
-          return total +
-            Number(item.quantity || 1);
-
-        },
-        0
-      );
-
-      const element =
-        document.getElementById("cartCount");
-
-      if (element) {
-        element.textContent = count;
-      }
-
-    }
-
-
-    /* WISHLIST COUNT */
-
-    function updateWishlistCount() {
-
-      let wishlist = [];
-
-      try {
-
-        wishlist = JSON.parse(
-          localStorage.getItem("shoporaWishlist") || "[]"
-        );
-
-      } catch (error) {
-
-        wishlist = [];
-
-      }
-
-      const element =
-        document.getElementById("wishlistCount");
-
-      if (element) {
-        element.textContent = wishlist.length;
-      }
-
-    }
-
-
-    /* UPDATE COUNTS */
-
-    function updateCounts() {
-
-      updateCartCount();
-      updateWishlistCount();
-
-    }
-
-
-    /* STORAGE EVENT */
 
     window.addEventListener(
       "storage",
@@ -1217,52 +1660,10 @@
     );
 
 
-    /* PAGE SHOW */
-
     window.addEventListener(
       "pageshow",
       updateCounts
     );
-
-
-    /* INITIAL */
-
-    updateCounts();
-
-
-    /* REVEAL ANIMATION */
-
-    const revealElements =
-      document.querySelectorAll(".reveal");
-
-    const revealObserver =
-      new IntersectionObserver(
-        function (entries, observer) {
-
-          entries.forEach(function (entry) {
-
-            if (entry.isIntersecting) {
-
-              entry.target.classList.add("visible");
-
-              observer.unobserve(entry.target);
-
-            }
-
-          });
-
-        },
-        {
-          threshold: 0.12
-        }
-      );
-
-
-    revealElements.forEach(function (element) {
-
-      revealObserver.observe(element);
-
-    });
 
   </script>
 
