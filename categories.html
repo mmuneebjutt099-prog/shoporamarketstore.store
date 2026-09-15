@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,6 +168,7 @@
       background: rgba(255,255,255,0.55);
       transition: all 0.25s ease;
       cursor: pointer;
+      position: relative;
     }
 
     .icon-btn:hover {
@@ -178,6 +180,27 @@
     .icon-btn svg {
       width: 18px;
       height: 18px;
+    }
+
+    /* COUNT BADGES */
+
+    .count-badge {
+      position: absolute;
+      top: -5px;
+      right: -4px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      line-height: 1;
+      font-weight: 700;
+      border: 2px solid var(--ivory);
     }
 
     .menu-btn {
@@ -691,9 +714,9 @@
 
       <div class="nav-actions">
 
-        <!-- Search -->
+        <!-- SEARCH -->
         <a
-          href="shop.html"
+          href="shop.html#productSearch"
           class="icon-btn"
           aria-label="Search products"
           title="Search"
@@ -704,7 +727,21 @@
           </svg>
         </a>
 
-        <!-- Cart -->
+        <!-- WISHLIST -->
+        <a
+          href="wishlist.html"
+          class="icon-btn"
+          aria-label="Wishlist"
+          title="Wishlist"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 8 4c1.7 0 3.2.9 4 2.2C12.8 4.9 14.3 4 16 4a4.7 4.7 0 0 1 4.8 4.7Z"></path>
+          </svg>
+
+          <span class="count-badge" id="wishlistCount">0</span>
+        </a>
+
+        <!-- CART -->
         <a
           href="cart.html"
           class="icon-btn"
@@ -716,14 +753,17 @@
             <circle cx="10" cy="20" r="1"></circle>
             <circle cx="18" cy="20" r="1"></circle>
           </svg>
+
+          <span class="count-badge" id="cartCount">0</span>
         </a>
 
-        <!-- Mobile menu -->
+        <!-- MOBILE MENU -->
         <button
           class="icon-btn menu-btn"
           id="menuBtn"
           aria-label="Open menu"
           aria-expanded="false"
+          type="button"
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M4 7h16"></path>
@@ -762,6 +802,7 @@
 
         <div class="section-heading reveal">
           <h2>Find What Fits Your World</h2>
+
           <p>
             Browse Shopora's main collections and discover products
             made for everyday needs and modern living.
@@ -771,7 +812,7 @@
 
         <div class="category-grid">
 
-          <!-- Fashion -->
+          <!-- FASHION -->
           <a
             href="shop.html?category=Fashion"
             class="category-card reveal"
@@ -786,7 +827,10 @@
 
             <div class="category-content">
               <h3>Fashion</h3>
-              <p>Modern wardrobe essentials and everyday style picks.</p>
+
+              <p>
+                Modern wardrobe essentials and everyday style picks.
+              </p>
 
               <div class="category-link">
                 Explore Fashion
@@ -796,7 +840,7 @@
           </a>
 
 
-          <!-- Beauty -->
+          <!-- BEAUTY -->
           <a
             href="shop.html?category=Beauty"
             class="category-card reveal"
@@ -811,7 +855,10 @@
 
             <div class="category-content">
               <h3>Beauty</h3>
-              <p>Everyday beauty and personal care essentials.</p>
+
+              <p>
+                Everyday beauty and personal care essentials.
+              </p>
 
               <div class="category-link">
                 Explore Beauty
@@ -821,7 +868,7 @@
           </a>
 
 
-          <!-- Electronics -->
+          <!-- ELECTRONICS -->
           <a
             href="shop.html?category=Electronics"
             class="category-card reveal"
@@ -836,7 +883,10 @@
 
             <div class="category-content">
               <h3>Electronics</h3>
-              <p>Useful technology and smart everyday essentials.</p>
+
+              <p>
+                Useful technology and smart everyday essentials.
+              </p>
 
               <div class="category-link">
                 Explore Electronics
@@ -846,7 +896,7 @@
           </a>
 
 
-          <!-- Home & Living -->
+          <!-- HOME & LIVING -->
           <a
             href="shop.html?category=Home%20%26%20Living"
             class="category-card reveal"
@@ -861,7 +911,10 @@
 
             <div class="category-content">
               <h3>Home &amp; Living</h3>
-              <p>Simple pieces designed to elevate everyday spaces.</p>
+
+              <p>
+                Simple pieces designed to elevate everyday spaces.
+              </p>
 
               <div class="category-link">
                 Explore Home
@@ -871,7 +924,7 @@
           </a>
 
 
-          <!-- Accessories -->
+          <!-- ACCESSORIES -->
           <a
             href="shop.html?category=Accessories"
             class="category-card reveal"
@@ -886,7 +939,10 @@
 
             <div class="category-content">
               <h3>Accessories</h3>
-              <p>Finishing touches and practical everyday accessories.</p>
+
+              <p>
+                Finishing touches and practical everyday accessories.
+              </p>
 
               <div class="category-link">
                 Explore Accessories
@@ -896,7 +952,7 @@
           </a>
 
 
-          <!-- Lifestyle -->
+          <!-- LIFESTYLE -->
           <a
             href="shop.html?category=Lifestyle"
             class="category-card reveal"
@@ -911,7 +967,10 @@
 
             <div class="category-content">
               <h3>Lifestyle</h3>
-              <p>Useful finds for a more comfortable everyday routine.</p>
+
+              <p>
+                Useful finds for a more comfortable everyday routine.
+              </p>
 
               <div class="category-link">
                 Explore Lifestyle
@@ -959,6 +1018,7 @@
       <div class="footer-grid">
 
         <div class="footer-brand">
+
           <a href="index.html">
             <img
               src="assets/shopora-logo.png"
@@ -970,34 +1030,42 @@
             A modern marketplace bringing together useful,
             stylish and everyday products in one simple shopping experience.
           </p>
+
         </div>
 
 
         <div class="footer-col">
+
           <h4>Shop</h4>
 
           <a href="shop.html">Shop All</a>
           <a href="categories.html">Categories</a>
           <a href="trending.html">Trending</a>
+          <a href="wishlist.html">Wishlist</a>
           <a href="cart.html">Cart</a>
+
         </div>
 
 
         <div class="footer-col">
+
           <h4>Company</h4>
 
           <a href="about.html">About Us</a>
           <a href="contact.html">Contact Us</a>
+
         </div>
 
 
         <div class="footer-col">
+
           <h4>Policies</h4>
 
           <a href="privacy-policy.html">Privacy Policy</a>
           <a href="terms-of-service.html">Terms of Service</a>
           <a href="cookie-policy.html">Cookie Policy</a>
           <a href="return-refund.html">Return &amp; Refund</a>
+
         </div>
 
       </div>
@@ -1021,64 +1089,184 @@
 
 
   <script>
-    // Mobile menu
+
+    /* MOBILE MENU */
+
     const menuBtn = document.getElementById("menuBtn");
     const navLinks = document.getElementById("navLinks");
 
     menuBtn.addEventListener("click", function () {
-      const isOpen = navLinks.classList.toggle("open");
+
+      const isOpen =
+        navLinks.classList.toggle("open");
 
       menuBtn.setAttribute(
         "aria-expanded",
         isOpen ? "true" : "false"
       );
+
     });
 
 
-    // Close mobile menu after clicking a link
-    document.querySelectorAll(".nav-links a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        navLinks.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
+    /* CLOSE MOBILE MENU */
+
+    document
+      .querySelectorAll(".nav-links a")
+      .forEach(function (link) {
+
+        link.addEventListener("click", function () {
+
+          navLinks.classList.remove("open");
+
+          menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        });
+
       });
-    });
 
 
-    // Current year
+    /* CURRENT YEAR */
+
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
 
-    // Reveal animation
-    const revealElements =
-      document.querySelectorAll(".reveal");
+    /* CART COUNT */
 
-    const revealObserver = new IntersectionObserver(
-      function (entries, observer) {
+    function updateCartCount() {
 
-        entries.forEach(function (entry) {
+      let cart = [];
 
-          if (entry.isIntersecting) {
+      try {
 
-            entry.target.classList.add("visible");
+        cart = JSON.parse(
+          localStorage.getItem("shoporaCart") || "[]"
+        );
 
-            observer.unobserve(entry.target);
+      } catch (error) {
 
-          }
+        cart = [];
 
-        });
-
-      },
-      {
-        threshold: 0.12
       }
+
+      const count = cart.reduce(
+        function (total, item) {
+
+          return total +
+            Number(item.quantity || 1);
+
+        },
+        0
+      );
+
+      const element =
+        document.getElementById("cartCount");
+
+      if (element) {
+        element.textContent = count;
+      }
+
+    }
+
+
+    /* WISHLIST COUNT */
+
+    function updateWishlistCount() {
+
+      let wishlist = [];
+
+      try {
+
+        wishlist = JSON.parse(
+          localStorage.getItem("shoporaWishlist") || "[]"
+        );
+
+      } catch (error) {
+
+        wishlist = [];
+
+      }
+
+      const element =
+        document.getElementById("wishlistCount");
+
+      if (element) {
+        element.textContent = wishlist.length;
+      }
+
+    }
+
+
+    /* UPDATE COUNTS */
+
+    function updateCounts() {
+
+      updateCartCount();
+      updateWishlistCount();
+
+    }
+
+
+    /* STORAGE EVENT */
+
+    window.addEventListener(
+      "storage",
+      updateCounts
     );
 
 
+    /* PAGE SHOW */
+
+    window.addEventListener(
+      "pageshow",
+      updateCounts
+    );
+
+
+    /* INITIAL */
+
+    updateCounts();
+
+
+    /* REVEAL ANIMATION */
+
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    const revealObserver =
+      new IntersectionObserver(
+        function (entries, observer) {
+
+          entries.forEach(function (entry) {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+        {
+          threshold: 0.12
+        }
+      );
+
+
     revealElements.forEach(function (element) {
+
       revealObserver.observe(element);
+
     });
+
   </script>
 
 </body>
 </html>
+```
