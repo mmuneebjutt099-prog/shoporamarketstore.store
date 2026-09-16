@@ -30,16 +30,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <!-- Google AdSense -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
     crossorigin="anonymous"></script>
 
-
   <!-- Structured Data -->
-
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -54,7 +55,6 @@
     }
   }
   </script>
-
 
   <style>
 
@@ -111,7 +111,9 @@
     }
 
 
-    /* Announcement */
+    /* =========================
+       Announcement
+    ========================= */
 
     .announcement {
       background: var(--black);
@@ -125,7 +127,9 @@
     }
 
 
-    /* Header */
+    /* =========================
+       Header
+    ========================= */
 
     .site-header {
       position: sticky;
@@ -238,11 +242,20 @@
     }
 
 
-    /* Hero */
+    /* =========================
+       Hero
+    ========================= */
 
     .category-hero {
-      padding: 72px 0 55px;
+      padding: 48px 0 45px;
       border-bottom: 1px solid var(--border);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      align-items: center;
+      gap: 55px;
     }
 
     .hero-label {
@@ -250,59 +263,72 @@
       align-items: center;
       gap: 9px;
       color: var(--gold);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: .16em;
       text-transform: uppercase;
-      margin-bottom: 15px;
+      margin-bottom: 13px;
     }
 
     .hero-label::before {
       content: "";
-      width: 28px;
+      width: 25px;
       height: 1px;
       background: var(--gold);
     }
 
     .category-hero h1 {
-      max-width: 850px;
+      max-width: 520px;
       font-family: "Playfair Display", serif;
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.04;
+      font-size: clamp(34px, 4vw, 50px);
+      line-height: 1.08;
       font-weight: 600;
-      margin-bottom: 17px;
+      margin-bottom: 13px;
     }
 
     .category-hero p {
-      max-width: 700px;
+      max-width: 520px;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 15px;
+    }
+
+    .hero-image {
+      height: 330px;
+      overflow: hidden;
+      background: var(--soft);
+      border: 1px solid var(--border);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
 
-    /* Categories */
+    /* =========================
+       Categories
+    ========================= */
 
     .categories-section {
-      padding: 55px 0 90px;
+      padding: 55px 0 85px;
     }
 
     .section-heading {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 25px;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
     }
 
     .section-heading h2 {
       font-family: "Playfair Display", serif;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 600;
+      line-height: 1.2;
     }
 
     .section-heading p {
       color: var(--muted);
       font-size: 13px;
+      margin-top: 3px;
     }
 
     .category-grid {
@@ -372,7 +398,7 @@
 
     .category-content h3 {
       font-family: "Playfair Display", serif;
-      font-size: 28px;
+      font-size: 27px;
       line-height: 1.1;
       margin-bottom: 5px;
     }
@@ -402,25 +428,27 @@
     }
 
 
-    /* Category Guide */
+    /* =========================
+       Category Guide
+    ========================= */
 
     .category-guide {
       background: var(--white);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
-      padding: 70px 0;
+      padding: 65px 0;
     }
 
     .guide-grid {
       display: grid;
       grid-template-columns: 1fr 1.4fr;
-      gap: 70px;
+      gap: 65px;
       align-items: start;
     }
 
     .guide-heading h2 {
       font-family: "Playfair Display", serif;
-      font-size: 38px;
+      font-size: 35px;
       line-height: 1.15;
       font-weight: 600;
     }
@@ -454,10 +482,12 @@
     }
 
 
-    /* Newsletter */
+    /* =========================
+       Newsletter
+    ========================= */
 
     .newsletter {
-      padding: 65px 0;
+      padding: 60px 0;
       background: var(--black);
       color: var(--white);
     }
@@ -471,7 +501,7 @@
 
     .newsletter h2 {
       font-family: "Playfair Display", serif;
-      font-size: 34px;
+      font-size: 32px;
       line-height: 1.2;
       margin-bottom: 7px;
     }
@@ -505,7 +535,9 @@
     }
 
 
-    /* Footer */
+    /* =========================
+       Footer
+    ========================= */
 
     footer {
       background: var(--black);
@@ -563,7 +595,9 @@
     }
 
 
-    /* Toast */
+    /* =========================
+       Toast
+    ========================= */
 
     .toast {
       position: fixed;
@@ -587,12 +621,18 @@
     }
 
 
-    /* Responsive */
+    /* =========================
+       Responsive
+    ========================= */
 
     @media (max-width: 1050px) {
 
       .main-nav {
         gap: 17px;
+      }
+
+      .hero-grid {
+        gap: 35px;
       }
 
       .category-grid {
@@ -645,6 +685,15 @@
         margin-left: auto;
       }
 
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-image {
+        height: 300px;
+      }
+
       .guide-grid {
         grid-template-columns: 1fr;
         gap: 25px;
@@ -676,8 +725,24 @@
         width: 150px;
       }
 
+      .main-nav {
+        top: 72px;
+      }
+
       .category-hero {
-        padding: 48px 0 36px;
+        padding: 38px 0 35px;
+      }
+
+      .category-hero h1 {
+        font-size: 34px;
+      }
+
+      .category-hero p {
+        font-size: 14px;
+      }
+
+      .hero-image {
+        height: 230px;
       }
 
       .categories-section {
@@ -693,12 +758,8 @@
         min-height: 300px;
       }
 
-      .section-heading {
-        display: block;
-      }
-
       .section-heading h2 {
-        margin-bottom: 5px;
+        font-size: 27px;
       }
 
       .category-guide {
@@ -768,7 +829,6 @@
 
     <div class="container header-inner">
 
-
       <a
         href="index.html"
         class="brand"
@@ -817,22 +877,13 @@
 
       <div class="header-actions">
 
-
         <a
           href="wishlist.html"
           class="icon-link"
           aria-label="Wishlist"
         >
-
           ♡
-
-          <span
-            class="count"
-            id="wishlistCount"
-          >
-            0
-          </span>
-
+          <span class="count" id="wishlistCount">0</span>
         </a>
 
 
@@ -841,16 +892,8 @@
           class="icon-link"
           aria-label="Shopping cart"
         >
-
           🛒
-
-          <span
-            class="count"
-            id="cartCount"
-          >
-            0
-          </span>
-
+          <span class="count" id="cartCount">0</span>
         </a>
 
 
@@ -863,7 +906,6 @@
           ☰
         </button>
 
-
       </div>
 
     </div>
@@ -874,51 +916,71 @@
   <main>
 
 
-    <!-- Hero -->
+    <!-- =========================
+         Hero
+    ========================= -->
 
     <section class="category-hero">
 
       <div class="container">
 
-        <div class="hero-label">
-          Shopora Categories
+        <div class="hero-grid">
+
+          <div class="hero-copy">
+
+            <div class="hero-label">
+              Shopora Categories
+            </div>
+
+            <h1>
+              Find your category.
+            </h1>
+
+            <p>
+              Browse Shopora's curated categories and discover products across
+              fashion, beauty, electronics, home & living, accessories and
+              lifestyle.
+            </p>
+
+          </div>
+
+
+          <div class="hero-image">
+
+            <img
+              src="assets/categories/categories-hero.png"
+              alt="Shopora product categories"
+              width="900"
+              height="600"
+              fetchpriority="high"
+            >
+
+          </div>
+
         </div>
-
-        <h1>
-          Find your category.
-        </h1>
-
-        <p>
-          Browse Shopora's curated categories and discover products across
-          fashion, beauty, electronics, home & living, accessories and
-          lifestyle.
-        </p>
 
       </div>
 
     </section>
 
 
-    <!-- Category Grid -->
+    <!-- =========================
+         Category Grid
+    ========================= -->
 
     <section class="categories-section">
 
       <div class="container">
 
-
         <div class="section-heading">
 
-          <div>
+          <h2>
+            Shop by Category
+          </h2>
 
-            <h2>
-              Shop by Category
-            </h2>
-
-            <p>
-              Explore our main product collections.
-            </p>
-
-          </div>
+          <p>
+            Explore our main product collections.
+          </p>
 
         </div>
 
@@ -937,9 +999,11 @@
             <div class="category-image">
 
               <img
-                src="assets/products/coord-set.svg"
+                src="assets/categories/fashion.png"
                 alt="Fashion products"
                 loading="lazy"
+                width="800"
+                height="600"
               >
 
             </div>
@@ -981,9 +1045,11 @@
             <div class="category-image">
 
               <img
-                src="assets/products/beauty-set.svg"
+                src="assets/categories/beauty.png"
                 alt="Beauty products"
                 loading="lazy"
+                width="800"
+                height="600"
               >
 
             </div>
@@ -1025,9 +1091,11 @@
             <div class="category-image">
 
               <img
-                src="assets/products/wireless-buds.svg"
+                src="assets/categories/electronics.png"
                 alt="Electronics products"
                 loading="lazy"
+                width="800"
+                height="600"
               >
 
             </div>
@@ -1069,9 +1137,11 @@
             <div class="category-image">
 
               <img
-                src="assets/products/lamp.svg"
+                src="assets/categories/home-living.png"
                 alt="Home and Living products"
                 loading="lazy"
+                width="800"
+                height="600"
               >
 
             </div>
@@ -1113,9 +1183,11 @@
             <div class="category-image">
 
               <img
-                src="assets/products/bag.svg"
+                src="assets/categories/accessories.png"
                 alt="Accessories products"
                 loading="lazy"
+                width="800"
+                height="600"
               >
 
             </div>
@@ -1157,9 +1229,11 @@
             <div class="category-image">
 
               <img
-                src="assets/products/bottle.svg"
+                src="assets/categories/lifestyle.png"
                 alt="Lifestyle products"
                 loading="lazy"
+                width="800"
+                height="600"
               >
 
             </div>
@@ -1197,14 +1271,15 @@
     </section>
 
 
-    <!-- Category Guide / SEO -->
+    <!-- =========================
+         Category Guide
+    ========================= -->
 
     <section class="category-guide">
 
       <div class="container">
 
         <div class="guide-grid">
-
 
           <div class="guide-heading">
 
@@ -1268,7 +1343,6 @@
 
           </div>
 
-
         </div>
 
       </div>
@@ -1276,12 +1350,13 @@
     </section>
 
 
-    <!-- Newsletter -->
+    <!-- =========================
+         Newsletter
+    ========================= -->
 
     <section class="newsletter">
 
       <div class="container newsletter-inner">
-
 
         <div>
 
@@ -1314,7 +1389,6 @@
 
         </form>
 
-
       </div>
 
     </section>
@@ -1323,7 +1397,9 @@
   </main>
 
 
-  <!-- Footer -->
+  <!-- =========================
+       Footer
+  ========================= -->
 
   <footer>
 
@@ -1497,11 +1573,8 @@
 
     function updateCounts() {
 
-      const cart =
-        getCart();
-
-      const wishlist =
-        getWishlist();
+      const cart = getCart();
+      const wishlist = getWishlist();
 
 
       const cartCount =
@@ -1514,14 +1587,12 @@
 
       document.getElementById(
         "cartCount"
-      ).textContent =
-        cartCount;
+      ).textContent = cartCount;
 
 
       document.getElementById(
         "wishlistCount"
-      ).textContent =
-        wishlist.length;
+      ).textContent = wishlist.length;
 
     }
 
@@ -1626,9 +1697,11 @@
 
         setTimeout(
           () => {
+
             toast.classList.remove(
               "show"
             );
+
           },
           2200
         );
