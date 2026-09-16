@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,11 +32,6 @@
   <meta name="twitter:title" content="Shopora Market Store | Online Shopping">
   <meta name="twitter:description" content="Modern online shopping for fashion, beauty, electronics, accessories, home and lifestyle products.">
   <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
-
-  <!-- Google AdSense -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
-    crossorigin="anonymous"></script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -593,6 +589,8 @@
       background: #fff;
       border-radius: 7px;
       transition: .25s ease;
+      display: grid;
+      place-items: center;
     }
 
     .quick-view:hover {
@@ -652,7 +650,7 @@
     }
 
     /* =========================
-       EDITORIAL
+       SHOPORA EDIT
     ========================= */
 
     .edit-grid {
@@ -1367,18 +1365,14 @@
 
 <body>
 
-  <!-- =========================
-       TOP BAR
-  ========================= -->
+  <!-- TOP BAR -->
 
   <div class="topbar">
     Curated products. Simple shopping. Everyday style.
   </div>
 
 
-  <!-- =========================
-       HEADER
-  ========================= -->
+  <!-- HEADER -->
 
   <header class="site-header">
 
@@ -1403,15 +1397,10 @@
       <nav class="main-nav" id="mainNav">
 
         <a href="index.html">Home</a>
-
         <a href="shop.html">Shop</a>
-
         <a href="categories.html">Categories</a>
-
         <a href="trending.html">Trending</a>
-
         <a href="about.html">About</a>
-
         <a href="contact.html">Contact</a>
 
       </nav>
@@ -1454,9 +1443,7 @@
   </header>
 
 
-  <!-- =========================
-       FLOATING SEARCH
-  ========================= -->
+  <!-- FLOATING SEARCH -->
 
   <div class="floating-search-wrap" id="floatingSearchWrap">
 
@@ -1478,9 +1465,7 @@
   </div>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
+  <!-- HERO -->
 
   <main>
 
@@ -1494,10 +1479,12 @@
         playsinline
         preload="metadata"
       >
+
         <source
           src="assets/video/shopora-hero-video.mp4"
           type="video/mp4"
         >
+
       </video>
 
 
@@ -1525,8 +1512,6 @@
             all in one modern marketplace.
           </p>
 
-
-          <!-- SEARCH STAYS OVER VIDEO -->
 
           <form
             class="hero-search"
@@ -1570,9 +1555,7 @@
     </section>
 
 
-    <!-- =========================
-         FEATURED PRODUCTS
-    ========================= -->
+    <!-- FEATURED PRODUCTS -->
 
     <section class="section">
 
@@ -1908,14 +1891,11 @@
     </section>
 
 
-    <!-- =========================
-         TRUST BAR
-    ========================= -->
+    <!-- TRUST BAR -->
 
     <section class="trust-section">
 
       <div class="container trust-grid">
-
 
         <div class="trust-item">
 
@@ -1979,15 +1959,12 @@
 
         </div>
 
-
       </div>
 
     </section>
 
 
-    <!-- =========================
-         CATEGORIES
-    ========================= -->
+    <!-- CATEGORIES -->
 
     <section class="section categories-section">
 
@@ -2018,6 +1995,8 @@
         <div class="category-grid">
 
 
+          <!-- FASHION -->
+
           <a
             href="shop.html?category=Fashion"
             class="category-card"
@@ -2035,6 +2014,8 @@
 
           </a>
 
+
+          <!-- BEAUTY -->
 
           <a
             href="shop.html?category=Beauty"
@@ -2054,6 +2035,8 @@
           </a>
 
 
+          <!-- ELECTRONICS -->
+
           <a
             href="shop.html?category=Electronics"
             class="category-card"
@@ -2071,6 +2054,8 @@
 
           </a>
 
+
+          <!-- HOME & LIVING -->
 
           <a
             href="shop.html?category=Home%20%26%20Living"
@@ -2090,6 +2075,8 @@
           </a>
 
 
+          <!-- ACCESSORIES -->
+
           <a
             href="shop.html?category=Accessories"
             class="category-card"
@@ -2107,6 +2094,8 @@
 
           </a>
 
+
+          <!-- LIFESTYLE -->
 
           <a
             href="shop.html?category=Lifestyle"
@@ -2133,9 +2122,7 @@
     </section>
 
 
-    <!-- =========================
-         SHOPORA EDIT
-    ========================= -->
+    <!-- SHOPORA EDIT -->
 
     <section class="section">
 
@@ -2145,9 +2132,10 @@
 
           <div class="edit-image">
 
+            <!-- SHOPORA EDIT IMAGE -->
             <img
               src="assets/shopora-edit.png"
-              alt="The Shopora Edit"
+              alt="Shopora modern everyday products collection"
               loading="lazy"
             >
 
@@ -2187,9 +2175,7 @@
     </section>
 
 
-    <!-- =========================
-         TRENDING
-    ========================= -->
+    <!-- TRENDING -->
 
     <section class="section trending-section">
 
@@ -2353,9 +2339,7 @@
     </section>
 
 
-    <!-- =========================
-         ABOUT / SEO
-    ========================= -->
+    <!-- ABOUT / SEO -->
 
     <section class="section about-section">
 
@@ -2387,9 +2371,7 @@
     </section>
 
 
-    <!-- =========================
-         NEWSLETTER
-    ========================= -->
+    <!-- NEWSLETTER -->
 
     <section class="newsletter">
 
@@ -2437,9 +2419,7 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================= -->
+  <!-- FOOTER -->
 
   <footer>
 
@@ -2585,15 +2565,9 @@
   ></div>
 
 
-  <!-- =========================
-       JAVASCRIPT
-  ========================= -->
+  <!-- JAVASCRIPT -->
 
   <script>
-
-    /* =========================
-       STORAGE
-    ========================= */
 
     const CART_KEY = "shoporaCart";
     const WISHLIST_KEY = "shoporaWishlist";
@@ -2653,16 +2627,13 @@
     }
 
 
-    /* =========================
-       TOAST
-    ========================= */
-
     let toastTimer;
 
 
     function showToast(message) {
 
-      const toast = document.getElementById("toast");
+      const toast =
+        document.getElementById("toast");
 
       toast.textContent = message;
 
@@ -2679,34 +2650,27 @@
     }
 
 
-    /* =========================
-       COUNTS
-    ========================= */
-
     function updateCounts() {
 
       const cart = getCart();
 
       const wishlist = getWishlist();
 
-      const cartCount = cart.reduce(
-        (total, item) =>
-          total + Number(item.quantity || 1),
-        0
-      );
+      const cartCount =
+        cart.reduce(
+          (total, item) =>
+            total + Number(item.quantity || 1),
+          0
+        );
 
-      document.getElementById("cartCount").textContent =
-        cartCount;
+      document.getElementById("cartCount")
+        .textContent = cartCount;
 
-      document.getElementById("wishlistCount").textContent =
-        wishlist.length;
+      document.getElementById("wishlistCount")
+        .textContent = wishlist.length;
 
     }
 
-
-    /* =========================
-       ADD TO CART
-    ========================= */
 
     function addToCart(card) {
 
@@ -2722,7 +2686,8 @@
       const image =
         card.dataset.productImage;
 
-      const cart = getCart();
+      const cart =
+        getCart();
 
       const existing =
         cart.find(item => item.id === id);
@@ -2773,10 +2738,6 @@
 
       });
 
-
-    /* =========================
-       WISHLIST
-    ========================= */
 
     function updateWishlistButtons() {
 
@@ -2851,10 +2812,6 @@
       });
 
 
-    /* =========================
-       SEARCH
-    ========================= */
-
     function performSearch(value) {
 
       const query =
@@ -2906,10 +2863,6 @@
       });
 
 
-    /* =========================
-       FLOATING SEARCH ON SCROLL
-    ========================= */
-
     const floatingSearchWrap =
       document.getElementById(
         "floatingSearchWrap"
@@ -2938,10 +2891,6 @@
       { passive: true }
     );
 
-
-    /* =========================
-       MOBILE MENU
-    ========================= */
 
     const menuBtn =
       document.getElementById("menuBtn");
@@ -2986,10 +2935,6 @@
       });
 
 
-    /* =========================
-       NEWSLETTER
-    ========================= */
-
     document.getElementById("newsletterForm")
       .addEventListener("submit", event => {
 
@@ -3018,27 +2963,15 @@
       });
 
 
-    /* =========================
-       YEAR
-    ========================= */
-
     document.getElementById("year")
       .textContent =
       new Date().getFullYear();
 
 
-    /* =========================
-       INITIAL LOAD
-    ========================= */
-
     updateCounts();
 
     updateWishlistButtons();
 
-
-    /* =========================
-       UPDATE IF STORAGE CHANGES
-    ========================= */
 
     window.addEventListener(
       "storage",
@@ -3067,3 +3000,4 @@
 
 </body>
 </html>
+```
