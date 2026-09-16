@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,41 +7,52 @@
 
   <title>Shopora Market Store | Online Shopping for Fashion, Beauty, Electronics & More</title>
 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
-     crossorigin="anonymous"></script>
-
+  <!-- Google AdSense -->
   <meta name="google-adsense-account" content="ca-pub-4557042213123629">
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
+    crossorigin="anonymous"></script>
 
-  <meta name="description" content="Shopora Market Store is a modern online shopping marketplace for fashion, beauty, electronics, accessories, home & living and lifestyle products.">
-  <meta name="keywords" content="Shopora Market Store, Shopora, online shopping, Pakistan, fashion, beauty, electronics, accessories, home living, lifestyle products">
+  <meta name="description"
+        content="Shopora Market Store is a modern online marketplace for fashion, beauty, electronics, accessories, home & living and everyday lifestyle products.">
+
+  <meta name="keywords"
+        content="Shopora Market Store, online shopping, fashion, beauty, electronics, accessories, home living, lifestyle products">
+
   <meta name="author" content="Shopora Market Store">
 
   <link rel="canonical" href="https://shoporamarketstore.store/">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Shopora Market Store | Online Shopping">
-  <meta property="og:description" content="Discover fashion, beauty, electronics, accessories, home & living and lifestyle products at Shopora Market Store.">
+  <meta property="og:title"
+        content="Shopora Market Store | Online Shopping for Fashion, Beauty, Electronics & More">
+  <meta property="og:description"
+        content="Discover fashion, beauty, electronics, accessories, home & living and everyday essentials at Shopora Market Store.">
   <meta property="og:url" content="https://shoporamarketstore.store/">
-  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
-  <meta property="og:site_name" content="Shopora Market Store">
+  <meta property="og:image"
+        content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shopora Market Store | Online Shopping">
-  <meta name="twitter:description" content="Modern online shopping for fashion, beauty, electronics, accessories, home and lifestyle products.">
-  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+  <meta name="twitter:title"
+        content="Shopora Market Store | Online Shopping">
+  <meta name="twitter:description"
+        content="Discover modern products for everyday life at Shopora Market Store.">
+  <meta name="twitter:image"
+        content="https://shoporamarketstore.store/assets/shopora-logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
-
-  <!-- Structured Data -->
+  <!-- Organization Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -55,6 +65,7 @@
   }
   </script>
 
+  <!-- Website Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -70,7 +81,6 @@
   </script>
 
   <style>
-
     :root {
       --black: #111111;
       --black-soft: #191816;
@@ -84,13 +94,13 @@
       --soft: #efebe3;
       --container: 1240px;
       --radius: 18px;
-      --shadow: 0 18px 55px rgba(20, 17, 13, .09);
+      --shadow: 0 18px 55px rgba(20,17,13,.09);
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
     }
 
     html {
@@ -106,8 +116,8 @@
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     a {
@@ -120,168 +130,130 @@
       font: inherit;
     }
 
-    button {
-      cursor: pointer;
-    }
-
     .container {
-      width: min(calc(100% - 40px), var(--container));
+      width: min(var(--container), calc(100% - 40px));
       margin: auto;
     }
 
-    /* =========================
-       TOP BAR
-    ========================= */
-
+    /* TOP BAR */
     .topbar {
       background: var(--black);
       color: #fff;
       text-align: center;
-      font-size: 12px;
-      letter-spacing: .08em;
-      text-transform: uppercase;
       padding: 9px 15px;
+      font-size: 12px;
+      letter-spacing: .04em;
     }
 
-    /* =========================
-       HEADER
-    ========================= */
-
-    .site-header {
+    /* HEADER */
+    .header {
       position: sticky;
       top: 0;
       z-index: 1000;
       background: rgba(255,255,255,.96);
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(231,224,214,.8);
+      border-bottom: 1px solid var(--border);
     }
 
     .header-inner {
-      min-height: 82px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
+      gap: 25px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 11px;
       flex-shrink: 0;
     }
 
-    .brand-mark {
-      width: 44px;
-      height: 44px;
+    .brand img {
+      width: 43px;
+      height: 43px;
       object-fit: contain;
     }
 
-    .brand-copy {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .brand-name {
+    .brand-text {
+      font-family: "Playfair Display", serif;
       font-size: 23px;
-      font-weight: 700;
-      letter-spacing: .14em;
+      font-weight: 600;
+      letter-spacing: -.02em;
     }
 
-    .brand-sub {
-      margin-top: 5px;
-      font-size: 9px;
-      letter-spacing: .23em;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .main-nav {
+    .nav {
       display: flex;
       align-items: center;
-      gap: 29px;
-      margin-left: auto;
-    }
-
-    .main-nav a {
-      position: relative;
+      gap: 28px;
       font-size: 14px;
       font-weight: 500;
-      color: #34302c;
-      padding: 30px 0;
-      transition: .25s ease;
     }
 
-    .main-nav a::after {
+    .nav a {
+      position: relative;
+      padding: 28px 0;
+    }
+
+    .nav a::after {
       content: "";
       position: absolute;
       left: 0;
-      bottom: 22px;
+      bottom: 20px;
       width: 0;
       height: 1px;
-      background: var(--gold-dark);
-      transition: .25s ease;
+      background: var(--black);
+      transition: .25s;
     }
 
-    .main-nav a:hover {
-      color: var(--gold-dark);
-    }
-
-    .main-nav a:hover::after {
+    .nav a:hover::after {
       width: 100%;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 15px;
     }
 
     .icon-btn {
-      position: relative;
-      width: 42px;
-      height: 42px;
-      border: 1px solid transparent;
+      border: 0;
       background: transparent;
-      border-radius: 50%;
+      cursor: pointer;
+      position: relative;
+      width: 38px;
+      height: 38px;
       display: grid;
       place-items: center;
-      font-size: 18px;
-      transition: .25s ease;
-    }
-
-    .icon-btn:hover {
-      background: var(--cream);
-      border-color: var(--border);
+      font-size: 19px;
     }
 
     .count {
       position: absolute;
-      right: 1px;
       top: 0;
+      right: -1px;
       min-width: 17px;
       height: 17px;
-      border-radius: 50%;
+      padding: 0 4px;
       background: var(--black);
-      color: #fff;
+      color: white;
+      border-radius: 50px;
       font-size: 9px;
       display: grid;
       place-items: center;
-      padding: 0 4px;
     }
 
-    .menu-btn {
+    .mobile-menu {
       display: none;
     }
 
-    /* =========================
-       HERO
-    ========================= */
-
+    /* HERO */
     .hero {
       position: relative;
-      min-height: 650px;
+      min-height: 680px;
+      height: calc(100vh - 120px);
+      max-height: 820px;
       overflow: hidden;
       background: #111;
     }
@@ -292,183 +264,220 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
     }
 
-    .hero-overlay {
+    .hero::after {
+      content: "";
       position: absolute;
       inset: 0;
       background:
         linear-gradient(
           90deg,
-          rgba(0,0,0,.58) 0%,
-          rgba(0,0,0,.30) 48%,
-          rgba(0,0,0,.20) 100%
+          rgba(0,0,0,.52),
+          rgba(0,0,0,.12) 60%,
+          rgba(0,0,0,.28)
         );
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      min-height: 650px;
+      height: 100%;
+      min-height: 680px;
       display: flex;
       align-items: center;
     }
 
     .hero-copy {
-      width: min(650px, 100%);
-      color: #fff;
-      padding: 80px 0;
+      max-width: 670px;
+      color: white;
     }
 
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 12px;
-      letter-spacing: .2em;
+    .eyebrow {
       text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 11px;
+      font-weight: 600;
       margin-bottom: 18px;
     }
 
-    .hero-eyebrow::before {
-      content: "";
-      width: 35px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .hero-title {
+    .hero h1 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(45px, 6vw, 76px);
+      font-size: clamp(46px, 6vw, 78px);
       line-height: 1.02;
       font-weight: 600;
-      max-width: 700px;
-      margin-bottom: 20px;
+      letter-spacing: -.035em;
+      margin-bottom: 22px;
     }
 
-    .hero-title em {
-      color: #e3c79d;
-      font-style: italic;
-    }
-
-    .hero-text {
+    .hero-copy p {
       max-width: 560px;
-      color: rgba(255,255,255,.82);
-      font-size: 16px;
-      margin-bottom: 32px;
+      font-size: 17px;
+      color: rgba(255,255,255,.9);
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 23px;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .25s;
+    }
+
+    .btn-dark {
+      background: white;
+      color: var(--black);
+    }
+
+    .btn-dark:hover {
+      background: var(--cream);
+    }
+
+    .btn-outline-light {
+      color: white;
+      border-color: rgba(255,255,255,.7);
+    }
+
+    .btn-outline-light:hover {
+      background: white;
+      color: var(--black);
+    }
+
+    /* HERO SEARCH */
+    .hero-search-wrap {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 42px;
+      transform: translateX(-50%);
+      width: min(720px, calc(100% - 40px));
     }
 
     .hero-search {
-      width: min(650px, 100%);
-      background: #fff;
-      border-radius: 999px;
+      height: 68px;
+      background: white;
+      border-radius: 50px;
       padding: 7px;
       display: flex;
-      box-shadow: 0 15px 50px rgba(0,0,0,.22);
+      box-shadow: 0 15px 45px rgba(0,0,0,.22);
     }
 
     .hero-search input {
+      flex: 1;
       min-width: 0;
+      border: 0;
+      outline: 0;
+      padding: 0 20px;
+      font-size: 14px;
+      color: var(--text);
+      background: transparent;
+    }
+
+    .hero-search button {
+      width: 54px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--black);
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    /* FLOATING SEARCH */
+    .floating-search {
+      position: fixed;
+      z-index: 2000;
+      top: 15px;
+      left: 50%;
+      width: min(560px, calc(100% - 120px));
+      transform: translate(-50%, -130px);
+      transition: transform .3s ease;
+    }
+
+    body.search-stuck .floating-search {
+      transform: translate(-50%, 0);
+    }
+
+    .floating-search form {
+      height: 48px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      box-shadow: 0 12px 35px rgba(0,0,0,.12);
+      display: flex;
+      overflow: hidden;
+    }
+
+    .floating-search input {
       flex: 1;
       border: 0;
-      outline: none;
-      padding: 15px 20px;
-      background: transparent;
-      color: var(--text);
+      outline: 0;
+      padding: 0 18px;
+      min-width: 0;
+      font-size: 13px;
     }
 
-    .hero-search input::placeholder {
-      color: #8d8881;
-    }
-
-    .search-submit {
+    .floating-search button {
+      width: 48px;
       border: 0;
       background: var(--black);
-      color: #fff;
-      border-radius: 999px;
-      min-width: 125px;
-      padding: 0 24px;
-      font-weight: 600;
-      transition: .25s ease;
+      color: white;
+      cursor: pointer;
     }
 
-    .search-submit:hover {
-      background: var(--gold-dark);
-    }
-
-    .hero-bottom {
-      position: absolute;
-      z-index: 3;
-      left: 0;
-      right: 0;
-      bottom: 25px;
-      color: rgba(255,255,255,.8);
-      font-size: 11px;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .hero-bottom-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    /* =========================
-       SECTION HEAD
-    ========================= */
-
+    /* SECTION */
     .section {
       padding: 90px 0;
     }
 
     .section-head {
       display: flex;
-      align-items: flex-end;
       justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 38px;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 35px;
     }
 
-    .section-kicker {
+    .section-label {
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .18em;
-      color: var(--gold-dark);
+      letter-spacing: .16em;
       font-weight: 700;
+      color: var(--muted);
       margin-bottom: 8px;
     }
 
     .section-title {
       font-family: "Playfair Display", serif;
-      font-size: clamp(30px, 4vw, 46px);
+      font-size: clamp(30px, 4vw, 45px);
       line-height: 1.1;
       font-weight: 600;
+      letter-spacing: -.025em;
     }
 
-    .section-description {
-      max-width: 480px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .view-link {
-      white-space: nowrap;
+    .view-all {
       font-size: 13px;
-      font-weight: 700;
-      border-bottom: 1px solid var(--text);
-      padding-bottom: 5px;
+      font-weight: 600;
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 3px;
+      white-space: nowrap;
     }
 
-    .view-link:hover {
-      color: var(--gold-dark);
-      border-color: var(--gold-dark);
-    }
-
-    /* =========================
-       FEATURED PRODUCTS
-    ========================= */
-
+    /* PRODUCTS */
     .products-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -482,432 +491,313 @@
 
     .product-image {
       position: relative;
-      aspect-ratio: 1 / 1.12;
       overflow: hidden;
+      aspect-ratio: 1 / 1.05;
       background: var(--cream);
       border-radius: var(--radius);
+      margin-bottom: 15px;
     }
 
     .product-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .65s cubic-bezier(.2,.7,.2,1);
+      transition: transform .45s ease;
     }
 
     .product-card:hover .product-image img {
-      transform: scale(1.055);
+      transform: scale(1.035);
     }
 
     .product-tag {
       position: absolute;
-      left: 13px;
       top: 13px;
+      left: 13px;
       z-index: 2;
-      background: #fff;
-      color: var(--text);
+      background: white;
       padding: 6px 10px;
-      border-radius: 5px;
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      letter-spacing: .07em;
+      border-radius: 3px;
     }
 
-    .wishlist-btn {
+    .wishlist {
       position: absolute;
       right: 13px;
       top: 13px;
       z-index: 2;
-      width: 38px;
-      height: 38px;
+      width: 36px;
+      height: 36px;
       border: 0;
       border-radius: 50%;
-      background: rgba(255,255,255,.94);
-      display: grid;
-      place-items: center;
-      font-size: 18px;
-      transition: .25s ease;
-    }
-
-    .wishlist-btn:hover,
-    .wishlist-btn.active {
-      background: var(--black);
-      color: #fff;
-    }
-
-    .product-info {
-      padding: 17px 3px 0;
+      background: white;
+      cursor: pointer;
+      font-size: 17px;
     }
 
     .product-category {
       color: var(--muted);
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .1em;
-      font-size: 10px;
-      font-weight: 700;
-      margin-bottom: 5px;
+      letter-spacing: .08em;
+      margin-bottom: 4px;
     }
 
     .product-name {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 7px;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
     }
 
     .product-price {
-      font-size: 15px;
       font-weight: 700;
-    }
-
-    .product-actions {
-      margin-top: 14px;
-      display: flex;
-      gap: 8px;
+      font-size: 14px;
     }
 
     .add-cart {
-      flex: 1;
-      border: 1px solid var(--black);
+      border: 0;
       background: var(--black);
-      color: #fff;
-      padding: 11px 13px;
-      border-radius: 7px;
-      font-size: 12px;
-      font-weight: 700;
-      transition: .25s ease;
-    }
-
-    .add-cart:hover {
-      background: var(--gold-dark);
-      border-color: var(--gold-dark);
-    }
-
-    .quick-view {
-      width: 42px;
-      border: 1px solid var(--border);
-      background: #fff;
-      border-radius: 7px;
-      transition: .25s ease;
-      display: grid;
-      place-items: center;
-    }
-
-    .quick-view:hover {
-      border-color: var(--black);
-    }
-
-    /* =========================
-       CATEGORY SECTION
-    ========================= */
-
-    .categories-section {
-      background: var(--cream);
-    }
-
-    .category-grid {
-      display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 14px;
-    }
-
-    .category-card {
-      position: relative;
-      min-height: 185px;
-      border-radius: 14px;
-      overflow: hidden;
-      background: #ddd;
-    }
-
-    .category-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,.05));
-      z-index: 1;
-    }
-
-    .category-card img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .5s ease;
-    }
-
-    .category-card:hover img {
-      transform: scale(1.07);
-    }
-
-    .category-name {
-      position: absolute;
-      z-index: 2;
-      bottom: 17px;
-      left: 17px;
-      right: 10px;
-      color: #fff;
-      font-family: "Playfair Display", serif;
-      font-size: 21px;
-    }
-
-    /* =========================
-       SHOPORA EDIT
-    ========================= */
-
-    .edit-grid {
-      display: grid;
-      grid-template-columns: 1.25fr .9fr;
-      min-height: 520px;
-      background: var(--black-soft);
-      color: #fff;
-      overflow: hidden;
-      border-radius: 22px;
-    }
-
-    .edit-image {
-      min-height: 520px;
-      overflow: hidden;
-    }
-
-    .edit-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .8s ease;
-    }
-
-    .edit-grid:hover .edit-image img {
-      transform: scale(1.025);
-    }
-
-    .edit-content {
-      padding: 65px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .edit-kicker {
-      color: #d7b98a;
-      text-transform: uppercase;
-      letter-spacing: .17em;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 4px;
       font-size: 11px;
-      font-weight: 700;
-      margin-bottom: 15px;
+      cursor: pointer;
     }
 
-    .edit-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(36px, 4vw, 55px);
-      line-height: 1.05;
-      margin-bottom: 20px;
-    }
-
-    .edit-text {
-      color: rgba(255,255,255,.68);
-      max-width: 450px;
-      font-size: 15px;
-      margin-bottom: 28px;
-    }
-
-    .light-button {
-      align-self: flex-start;
-      padding: 13px 22px;
-      background: #fff;
-      color: var(--black);
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      transition: .25s ease;
-    }
-
-    .light-button:hover {
-      background: var(--gold);
-    }
-
-    /* =========================
-       TRENDING
-    ========================= */
-
-    .trending-section {
-      background: #fff;
-    }
-
-    .mini-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .mini-card {
-      border-top: 1px solid var(--border);
-      padding-top: 20px;
-      display: grid;
-      grid-template-columns: 95px 1fr;
-      gap: 17px;
-      align-items: center;
-    }
-
-    .mini-image {
-      width: 95px;
-      height: 110px;
-      border-radius: 10px;
-      overflow: hidden;
-      background: var(--cream);
-    }
-
-    .mini-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .mini-category {
-      font-size: 9px;
-      color: var(--gold-dark);
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-
-    .mini-name {
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1.35;
-      margin-bottom: 6px;
-    }
-
-    .mini-price {
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    /* =========================
-       TRUST
-    ========================= */
-
-    .trust-section {
-      padding: 30px 0;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    /* TRUST */
+    .trust {
+      background: var(--black);
+      color: white;
+      padding: 25px 0;
     }
 
     .trust-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-    }
-
-    .trust-item {
-      display: flex;
-      align-items: center;
-      gap: 17px;
-      padding: 17px 30px;
-      border-right: 1px solid var(--border);
-    }
-
-    .trust-item:first-child {
-      padding-left: 0;
-    }
-
-    .trust-item:last-child {
-      border-right: 0;
-    }
-
-    .trust-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: var(--cream);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-    }
-
-    .trust-title {
-      font-weight: 700;
-      font-size: 13px;
-    }
-
-    .trust-text {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about-section {
-      background: var(--cream);
+      gap: 20px;
       text-align: center;
     }
 
-    .about-inner {
-      max-width: 850px;
-      margin: auto;
+    .trust-item {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .03em;
     }
 
-    .about-title {
+    .trust-item span {
+      display: block;
+      color: #aaa;
+      font-size: 11px;
+      font-weight: 400;
+      margin-top: 3px;
+    }
+
+    /* CATEGORIES */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .category-card {
+      position: relative;
+      min-height: 290px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: #ddd;
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+      transition: transform .45s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .category-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.04) 65%
+      );
+    }
+
+    .category-content {
+      position: absolute;
+      z-index: 2;
+      left: 23px;
+      right: 23px;
+      bottom: 22px;
+      color: white;
+    }
+
+    .category-content h3 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.1;
-      margin-bottom: 20px;
+      font-size: 27px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .category-content span {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    /* SHOPORA EDIT */
+    .edit-section {
+      background: var(--cream);
+    }
+
+    .edit-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .edit-copy {
+      max-width: 480px;
+    }
+
+    .edit-copy p {
+      color: var(--muted);
+      font-size: 15px;
+      margin: 20px 0 27px;
+    }
+
+    .dark-btn {
+      background: var(--black);
+      color: white;
+    }
+
+    .dark-btn:hover {
+      background: #292725;
+    }
+
+    .edit-image {
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #ddd;
+    }
+
+    .edit-image img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    /* TRENDING */
+    .trending-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .trend-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .trend-card img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+    }
+
+    .trend-info {
+      padding: 17px;
+      background: white;
+    }
+
+    .trend-info h3 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .trend-info p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* ABOUT */
+    .about {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      align-items: start;
     }
 
     .about-text {
-      color: var(--muted);
-      font-size: 15px;
       max-width: 720px;
-      margin: auto;
     }
 
-    /* =========================
-       NEWSLETTER
-    ========================= */
+    .about-text p {
+      color: var(--muted);
+      margin-top: 18px;
+      font-size: 15px;
+    }
 
+    /* NEWSLETTER */
     .newsletter {
-      padding: 75px 0;
       background: var(--black);
-      color: #fff;
+      color: white;
+      text-align: center;
     }
 
     .newsletter-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 40px;
+      max-width: 700px;
+      margin: auto;
     }
 
-    .newsletter-copy {
-      max-width: 500px;
+    .newsletter .section-label {
+      color: #aaa;
     }
 
-    .newsletter-kicker {
-      color: #d7b98a;
-      text-transform: uppercase;
-      font-size: 10px;
-      letter-spacing: .17em;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .newsletter-title {
+    .newsletter h2 {
       font-family: "Playfair Display", serif;
-      font-size: 39px;
-      line-height: 1.1;
-      margin-bottom: 9px;
+      font-size: clamp(31px, 4vw, 45px);
+      line-height: 1.15;
+      margin-bottom: 12px;
     }
 
-    .newsletter-text {
-      color: rgba(255,255,255,.62);
-      font-size: 13px;
+    .newsletter p {
+      color: #aaa;
+      font-size: 14px;
+      margin-bottom: 25px;
     }
 
     .newsletter-form {
-      width: min(500px, 100%);
       display: flex;
-      border-bottom: 1px solid rgba(255,255,255,.45);
+      max-width: 520px;
+      margin: auto;
+      background: white;
+      border-radius: 4px;
+      padding: 5px;
     }
 
     .newsletter-form input {
@@ -915,193 +805,114 @@
       min-width: 0;
       border: 0;
       outline: 0;
-      background: transparent;
-      color: #fff;
-      padding: 15px 0;
-    }
-
-    .newsletter-form input::placeholder {
-      color: rgba(255,255,255,.48);
+      padding: 0 15px;
     }
 
     .newsletter-form button {
       border: 0;
-      background: transparent;
-      color: #fff;
-      font-weight: 700;
-      padding: 0 0 0 20px;
+      background: var(--black);
+      color: white;
+      padding: 12px 19px;
+      cursor: pointer;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
     }
 
-    .newsletter-form button:hover {
-      color: var(--gold);
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
-
+    /* FOOTER */
     footer {
-      background: #0c0c0b;
-      color: #fff;
+      background: var(--black-soft);
+      color: white;
       padding: 65px 0 25px;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.6fr 1fr 1fr 1fr;
-      gap: 50px;
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 40px;
       padding-bottom: 50px;
-      border-bottom: 1px solid rgba(255,255,255,.1);
     }
 
     .footer-brand {
-      max-width: 340px;
+      max-width: 330px;
     }
 
-    .footer-brand-name {
-      font-size: 23px;
-      letter-spacing: .13em;
-      font-weight: 700;
+    .footer-brand .brand {
       margin-bottom: 15px;
     }
 
-    .footer-brand-text {
-      color: rgba(255,255,255,.55);
+    .footer-brand .brand-text {
+      color: white;
+    }
+
+    .footer-brand p {
+      color: #aaa;
       font-size: 13px;
     }
 
-    .footer-heading {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .16em;
-      margin-bottom: 17px;
-      color: #d6c4a6;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
-    .footer-links a {
-      color: rgba(255,255,255,.58);
+    .footer-col h4 {
       font-size: 12px;
-      transition: .2s ease;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      margin-bottom: 17px;
     }
 
-    .footer-links a:hover {
-      color: #fff;
+    .footer-col a {
+      display: block;
+      color: #aaa;
+      font-size: 13px;
+      margin-bottom: 9px;
+    }
+
+    .footer-col a:hover {
+      color: white;
+    }
+
+    .footer-contact {
+      color: #aaa;
+      font-size: 13px;
+      line-height: 1.8;
     }
 
     .footer-bottom {
-      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.1);
+      padding-top: 20px;
       display: flex;
       justify-content: space-between;
       gap: 20px;
-      color: rgba(255,255,255,.4);
+      color: #888;
       font-size: 11px;
     }
 
-    /* =========================
-       FLOATING SEARCH
-    ========================= */
-
-    .floating-search-wrap {
-      position: fixed;
-      z-index: 900;
-      top: 92px;
-      left: 50%;
-      transform: translate(-50%, -20px);
-      width: min(600px, calc(100% - 30px));
-      opacity: 0;
-      pointer-events: none;
-      transition: .3s ease;
-    }
-
-    .floating-search-wrap.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translate(-50%, 0);
-    }
-
-    .floating-search {
-      background: #fff;
-      padding: 6px;
-      border-radius: 999px;
-      box-shadow: 0 15px 50px rgba(0,0,0,.15);
-      border: 1px solid var(--border);
-      display: flex;
-    }
-
-    .floating-search input {
-      flex: 1;
-      min-width: 0;
-      border: 0;
-      outline: 0;
-      padding: 12px 18px;
-    }
-
-    .floating-search button {
-      border: 0;
-      background: var(--black);
-      color: #fff;
-      border-radius: 999px;
-      padding: 0 21px;
-      font-weight: 700;
-    }
-
-    /* =========================
-       TOAST
-    ========================= */
-
+    /* TOAST */
     .toast {
       position: fixed;
+      z-index: 3000;
       left: 50%;
       bottom: 25px;
-      z-index: 2000;
-      transform: translate(-50%, 100px);
+      transform: translate(-50%, 90px);
       background: var(--black);
-      color: #fff;
-      padding: 13px 19px;
-      border-radius: 8px;
-      font-size: 12px;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 13px;
       box-shadow: var(--shadow);
-      opacity: 0;
-      transition: .3s ease;
-      pointer-events: none;
+      transition: .3s;
     }
 
     .toast.show {
-      opacity: 1;
       transform: translate(-50%, 0);
     }
 
-    /* =========================
-       RESPONSIVE
-    ========================= */
-
+    /* RESPONSIVE */
     @media (max-width: 1050px) {
-
-      .main-nav {
+      .nav {
         gap: 17px;
       }
 
       .products-grid,
-      .mini-grid {
+      .trending-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .edit-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .edit-image {
-        min-height: 400px;
       }
 
       .footer-grid {
@@ -1109,140 +920,77 @@
       }
     }
 
-    @media (max-width: 820px) {
-
-      .header-inner {
-        min-height: 70px;
+    @media (max-width: 800px) {
+      .container {
+        width: min(var(--container), calc(100% - 28px));
       }
 
-      .main-nav {
+      .nav {
+        display: none;
         position: absolute;
-        top: 100%;
+        top: 78px;
         left: 0;
         right: 0;
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        background: #fff;
+        background: white;
         border-bottom: 1px solid var(--border);
-        padding: 10px 20px 18px;
-        box-shadow: 0 15px 30px rgba(0,0,0,.06);
+        padding: 10px 20px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
       }
 
-      .main-nav.open {
+      .nav.open {
         display: flex;
       }
 
-      .main-nav a {
-        padding: 13px 0;
+      .nav a {
+        padding: 12px 0;
+        width: 100%;
       }
 
-      .main-nav a::after {
+      .nav a::after {
         display: none;
       }
 
-      .menu-btn {
+      .mobile-menu {
         display: grid;
       }
 
-      .hero,
+      .brand-text {
+        font-size: 20px;
+      }
+
+      .hero {
+        min-height: 650px;
+        height: 760px;
+      }
+
       .hero-content {
-        min-height: 590px;
-      }
-
-      .hero-copy {
-        padding: 60px 0;
-      }
-
-      .hero-title {
-        font-size: clamp(42px, 10vw, 65px);
-      }
-
-      .trust-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .trust-item,
-      .trust-item:first-child {
-        border-right: 0;
-        border-bottom: 1px solid var(--border);
-        padding: 16px 0;
-      }
-
-      .trust-item:last-child {
-        border-bottom: 0;
-      }
-
-      .newsletter-inner {
-        flex-direction: column;
+        min-height: 650px;
         align-items: flex-start;
-      }
-    }
-
-    @media (max-width: 600px) {
-
-      .container {
-        width: min(calc(100% - 28px), var(--container));
+        padding-top: 90px;
       }
 
-      .topbar {
-        font-size: 9px;
-        letter-spacing: .05em;
+      .hero h1 {
+        font-size: 47px;
       }
 
-      .brand-sub {
-        display: none;
+      .hero-copy p {
+        font-size: 15px;
       }
 
-      .brand-name {
-        font-size: 18px;
-      }
-
-      .brand-mark {
-        width: 37px;
-        height: 37px;
-      }
-
-      .header-actions {
-        gap: 0;
-      }
-
-      .icon-btn {
-        width: 37px;
-        height: 37px;
-      }
-
-      .hero,
-      .hero-content {
-        min-height: 560px;
-      }
-
-      .hero-copy {
-        padding-top: 70px;
-      }
-
-      .hero-text {
-        font-size: 14px;
+      .hero-search-wrap {
+        bottom: 25px;
+        width: calc(100% - 28px);
       }
 
       .hero-search {
-        padding: 5px;
+        height: 60px;
       }
 
-      .hero-search input {
-        padding: 12px 14px;
-        font-size: 13px;
-      }
-
-      .search-submit {
-        min-width: 90px;
-        padding: 0 13px;
-        font-size: 12px;
-      }
-
-      .hero-bottom {
-        display: none;
+      .floating-search {
+        width: calc(100% - 100px);
+        top: 13px;
       }
 
       .section {
@@ -1251,1294 +999,805 @@
 
       .section-head {
         align-items: flex-start;
-        flex-direction: column;
-        gap: 14px;
-        margin-bottom: 27px;
       }
 
-      .section-title {
-        font-size: 33px;
-      }
-
-      .products-grid,
-      .mini-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 13px;
-      }
-
-      .product-image {
-        border-radius: 12px;
-      }
-
-      .product-name {
-        font-size: 14px;
-      }
-
-      .product-price {
-        font-size: 13px;
-      }
-
-      .product-actions {
-        margin-top: 10px;
-      }
-
-      .add-cart {
-        padding: 9px 7px;
-        font-size: 10px;
-      }
-
-      .quick-view {
-        width: 36px;
-      }
-
-      .category-grid {
-        grid-template-columns: repeat(2, 1fr);
+      .categories-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
       .category-card {
-        min-height: 150px;
+        min-height: 240px;
       }
 
-      .category-name {
+      .edit-grid,
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 17px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .brand img {
+        width: 38px;
+        height: 38px;
+      }
+
+      .brand-text {
         font-size: 18px;
       }
 
-      .edit-grid {
-        border-radius: 14px;
+      .header-actions {
+        gap: 3px;
       }
 
-      .edit-image {
-        min-height: 290px;
+      .hero {
+        height: 730px;
       }
 
-      .edit-content {
-        padding: 35px 25px;
+      .hero-content {
+        padding-top: 65px;
       }
 
-      .edit-title {
-        font-size: 38px;
+      .hero h1 {
+        font-size: 42px;
       }
 
-      .mini-card {
-        grid-template-columns: 70px 1fr;
-        gap: 10px;
+      .hero-buttons .btn {
+        width: 100%;
       }
 
-      .mini-image {
-        width: 70px;
-        height: 82px;
+      .products-grid,
+      .trending-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
       }
 
-      .mini-name {
-        font-size: 12px;
+      .categories-grid {
+        grid-template-columns: 1fr;
       }
 
-      .mini-price {
-        font-size: 11px;
+      .category-card {
+        min-height: 250px;
       }
 
-      .newsletter {
-        padding: 55px 0;
+      .product-image {
+        border-radius: 13px;
       }
 
-      .newsletter-title {
-        font-size: 34px;
+      .product-name {
+        font-size: 13px;
+      }
+
+      .add-cart {
+        font-size: 10px;
+        padding: 7px 8px;
       }
 
       .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 35px 20px;
-      }
-
-      .footer-brand {
-        grid-column: 1 / -1;
+        grid-template-columns: 1fr;
       }
 
       .footer-bottom {
         flex-direction: column;
-        gap: 7px;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+        background: transparent;
+        gap: 8px;
+      }
+
+      .newsletter-form input,
+      .newsletter-form button {
+        min-height: 48px;
+        border-radius: 3px;
       }
     }
-
   </style>
 </head>
 
 <body>
 
   <!-- TOP BAR -->
-
   <div class="topbar">
-    Curated products. Simple shopping. Everyday style.
+    Discover fashion, beauty, electronics & everyday essentials at Shopora Market Store.
   </div>
 
-
   <!-- HEADER -->
-
-  <header class="site-header">
-
+  <header class="header">
     <div class="container header-inner">
 
       <a href="index.html" class="brand">
-
-        <img
-          src="assets/shopora-mark.png"
-          alt="Shopora Market Store logo"
-          class="brand-mark"
-        >
-
-        <span class="brand-copy">
-          <span class="brand-name">SHOPORA</span>
-          <span class="brand-sub">Market Store</span>
-        </span>
-
+        <img src="assets/shopora-mark.png" alt="Shopora Market Store logo">
+        <span class="brand-text">Shopora</span>
       </a>
 
-
-      <nav class="main-nav" id="mainNav">
-
+      <nav class="nav" id="mainNav">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="categories.html">Categories</a>
         <a href="trending.html">Trending</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
-
 
       <div class="header-actions">
 
-        <a
-          href="wishlist.html"
-          class="icon-btn"
-          aria-label="Wishlist"
-        >
+        <button class="icon-btn" onclick="location.href='wishlist.html'" aria-label="Wishlist">
           ♡
           <span class="count" id="wishlistCount">0</span>
-        </a>
+        </button>
 
-
-        <a
-          href="cart.html"
-          class="icon-btn"
-          aria-label="Shopping cart"
-        >
+        <button class="icon-btn" onclick="location.href='cart.html'" aria-label="Cart">
           🛒
           <span class="count" id="cartCount">0</span>
-        </a>
+        </button>
 
-
-        <button
-          class="icon-btn menu-btn"
-          id="menuBtn"
-          aria-label="Open menu"
-        >
+        <button class="icon-btn mobile-menu"
+                id="menuBtn"
+                aria-label="Open menu">
           ☰
         </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- FLOATING SEARCH -->
+  <div class="floating-search">
+    <form id="floatingSearchForm">
+      <input
+        type="search"
+        id="floatingSearchInput"
+        placeholder="Search products..."
+        autocomplete="off">
+      <button type="submit">⌕</button>
+    </form>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <video
+      class="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto">
+      <source src="assets/video/shopora-hero-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="hero-content container">
+      <div class="hero-copy">
+
+        <div class="eyebrow">Modern online marketplace</div>
+
+        <h1>Better products.<br>Better everyday.</h1>
+
+        <p>
+          Discover thoughtfully selected fashion, beauty, electronics,
+          accessories, home & living and lifestyle products in one modern store.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="shop.html" class="btn btn-dark">Shop All Products</a>
+          <a href="categories.html" class="btn btn-outline-light">
+            Explore Categories
+          </a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CENTERED HERO SEARCH -->
+    <div class="hero-search-wrap">
+
+      <form class="hero-search" id="heroSearchForm">
+
+        <input
+          type="search"
+          id="heroSearchInput"
+          placeholder="What are you looking for?"
+          autocomplete="off">
+
+        <button type="submit" aria-label="Search">
+          ⌕
+        </button>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <!-- FEATURED PRODUCTS -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <div class="section-label">Selected for you</div>
+          <h2 class="section-title">Featured products</h2>
+        </div>
+
+        <a href="shop.html" class="view-all">View all</a>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- PRODUCT 1 -->
+        <article class="product-card"
+                 data-id="everyday-premium-essential"
+                 data-name="Everyday Premium Essential"
+                 data-price="2499"
+                 data-category="Lifestyle">
+
+          <div class="product-image">
+
+            <span class="product-tag">Essential</span>
+
+            <button class="wishlist"
+                    onclick="toggleWishlist(this)"
+                    aria-label="Add to wishlist">
+              ♡
+            </button>
+
+            <img
+              src="assets/products/everyday-premium-essential.png"
+              alt="Everyday Premium Essential"
+              loading="lazy">
+
+          </div>
+
+          <div class="product-category">Lifestyle</div>
+
+          <div class="product-name">
+            Everyday Premium Essential
+          </div>
+
+          <div class="product-bottom">
+            <div class="product-price">PKR 2,499</div>
+
+            <button class="add-cart"
+                    onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+
+        </article>
+
+        <!-- PRODUCT 2 -->
+        <article class="product-card"
+                 data-id="modern-everyday-collection"
+                 data-name="Modern Everyday Collection"
+                 data-price="3499"
+                 data-category="Fashion">
+
+          <div class="product-image">
+
+            <span class="product-tag">New</span>
+
+            <button class="wishlist"
+                    onclick="toggleWishlist(this)"
+                    aria-label="Add to wishlist">
+              ♡
+            </button>
+
+            <img
+              src="assets/products/modern-everyday-collection.png"
+              alt="Modern Everyday Collection"
+              loading="lazy">
+
+          </div>
+
+          <div class="product-category">Fashion</div>
+
+          <div class="product-name">
+            Modern Everyday Collection
+          </div>
+
+          <div class="product-bottom">
+            <div class="product-price">PKR 3,499</div>
+
+            <button class="add-cart"
+                    onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+
+        </article>
+
+        <!-- PRODUCT 3 -->
+        <article class="product-card"
+                 data-id="smart-everyday-device"
+                 data-name="Smart Everyday Device"
+                 data-price="4999"
+                 data-category="Electronics">
+
+          <div class="product-image">
+
+            <span class="product-tag">Smart Pick</span>
+
+            <button class="wishlist"
+                    onclick="toggleWishlist(this)"
+                    aria-label="Add to wishlist">
+              ♡
+            </button>
+
+            <img
+              src="assets/products/smart-everyday-device.png"
+              alt="Smart Everyday Device"
+              loading="lazy">
+
+          </div>
+
+          <div class="product-category">Electronics</div>
+
+          <div class="product-name">
+            Smart Everyday Device
+          </div>
+
+          <div class="product-bottom">
+            <div class="product-price">PKR 4,999</div>
+
+            <button class="add-cart"
+                    onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+
+        </article>
+
+        <!-- PRODUCT 4 -->
+        <article class="product-card"
+                 data-id="minimal-signature-accessory"
+                 data-name="Minimal Signature Accessory"
+                 data-price="1899"
+                 data-category="Accessories">
+
+          <div class="product-image">
+
+            <span class="product-tag">Signature</span>
+
+            <button class="wishlist"
+                    onclick="toggleWishlist(this)"
+                    aria-label="Add to wishlist">
+              ♡
+            </button>
+
+            <img
+              src="assets/products/minimal-signature-accessory.png"
+              alt="Minimal Signature Accessory"
+              loading="lazy">
+
+          </div>
+
+          <div class="product-category">Accessories</div>
+
+          <div class="product-name">
+            Minimal Signature Accessory
+          </div>
+
+          <div class="product-bottom">
+            <div class="product-price">PKR 1,899</div>
+
+            <button class="add-cart"
+                    onclick="addToCart(this)">
+              Add to Cart
+            </button>
+          </div>
+
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="container trust-grid">
+
+      <div class="trust-item">
+        Curated Selection
+        <span>Products selected for everyday value</span>
+      </div>
+
+      <div class="trust-item">
+        Simple Shopping
+        <span>Easy browsing and straightforward checkout</span>
+      </div>
+
+      <div class="trust-item">
+        Everyday Essentials
+        <span>Useful products across multiple categories</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section">
+    <div class="container">
+
+      <div class="section-head">
+        <div>
+          <div class="section-label">Explore the store</div>
+          <h2 class="section-title">Shop by category</h2>
+        </div>
+
+        <a href="categories.html" class="view-all">All categories</a>
+      </div>
+
+      <div class="categories-grid">
+
+        <!-- SAME IMAGES AS categories.html -->
+
+        <a class="category-card"
+           href="shop.html?category=fashion">
+
+          <img
+            src="assets/categories/fashion.png"
+            alt="Fashion"
+            loading="lazy">
+
+          <div class="category-content">
+            <h3>Fashion</h3>
+            <span>Explore fashion</span>
+          </div>
+
+        </a>
+
+        <a class="category-card"
+           href="shop.html?category=beauty">
+
+          <img
+            src="assets/categories/beauty.png"
+            alt="Beauty"
+            loading="lazy">
+
+          <div class="category-content">
+            <h3>Beauty</h3>
+            <span>Explore beauty</span>
+          </div>
+
+        </a>
+
+        <a class="category-card"
+           href="shop.html?category=electronics">
+
+          <img
+            src="assets/categories/electronics.png"
+            alt="Electronics"
+            loading="lazy">
+
+          <div class="category-content">
+            <h3>Electronics</h3>
+            <span>Explore electronics</span>
+          </div>
+
+        </a>
+
+        <a class="category-card"
+           href="shop.html?category=home-living">
+
+          <img
+            src="assets/categories/home-living.png"
+            alt="Home and Living"
+            loading="lazy">
+
+          <div class="category-content">
+            <h3>Home & Living</h3>
+            <span>Explore home</span>
+          </div>
+
+        </a>
+
+        <a class="category-card"
+           href="shop.html?category=accessories">
+
+          <img
+            src="assets/categories/accessories.png"
+            alt="Accessories"
+            loading="lazy">
+
+          <div class="category-content">
+            <h3>Accessories</h3>
+            <span>Explore accessories</span>
+          </div>
+
+        </a>
+
+        <a class="category-card"
+           href="shop.html?category=lifestyle">
+
+          <img
+            src="assets/categories/lifestyle.png"
+            alt="Lifestyle"
+            loading="lazy">
+
+          <div class="category-content">
+            <h3>Lifestyle</h3>
+            <span>Explore lifestyle</span>
+          </div>
+
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOPORA EDIT -->
+  <section class="section edit-section">
+
+    <div class="container edit-grid">
+
+      <div class="edit-copy">
+
+        <div class="section-label">The Shopora Edit</div>
+
+        <h2 class="section-title">
+          Everyday style,
+          thoughtfully selected.
+        </h2>
+
+        <p>
+          From fashion and accessories to beauty, technology and home
+          essentials, discover a curated mix of products designed to fit
+          modern everyday life.
+        </p>
+
+        <a href="shop.html" class="btn dark-btn">
+          Discover the collection
+        </a>
+
+      </div>
+
+      <div class="edit-image">
+
+        <!-- FASHION EDIT PNG -->
+        <img
+          src="assets/shopora-edit.png"
+          alt="Shopora fashion and lifestyle edit"
+          loading="lazy">
 
       </div>
 
     </div>
 
-  </header>
+  </section>
 
+  <!-- TRENDING -->
+  <section class="section">
 
-  <!-- FLOATING SEARCH -->
+    <div class="container">
 
-  <div class="floating-search-wrap" id="floatingSearchWrap">
+      <div class="section-head">
 
-    <form class="floating-search" id="floatingSearchForm">
-
-      <input
-        type="search"
-        id="floatingSearchInput"
-        placeholder="Search products..."
-        autocomplete="off"
-      >
-
-      <button type="submit">
-        Search
-      </button>
-
-    </form>
-
-  </div>
-
-
-  <!-- HERO -->
-
-  <main>
-
-    <section class="hero">
-
-      <video
-        class="hero-video"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-      >
-
-        <source
-          src="assets/video/shopora-hero-video.mp4"
-          type="video/mp4"
-        >
-
-      </video>
-
-
-      <div class="hero-overlay"></div>
-
-
-      <div class="container hero-content">
-
-        <div class="hero-copy">
-
-          <div class="hero-eyebrow">
-            The Shopora Edit
-          </div>
-
-
-          <h1 class="hero-title">
-            Discover what makes
-            everyday life <em>better.</em>
-          </h1>
-
-
-          <p class="hero-text">
-            Explore a curated mix of fashion, beauty, electronics,
-            accessories, home essentials and lifestyle products —
-            all in one modern marketplace.
-          </p>
-
-
-          <form
-            class="hero-search"
-            id="heroSearchForm"
-          >
-
-            <input
-              type="search"
-              id="heroSearchInput"
-              placeholder="What are you looking for?"
-              autocomplete="off"
-              aria-label="Search products"
-            >
-
-            <button
-              type="submit"
-              class="search-submit"
-            >
-              Search
-            </button>
-
-          </form>
-
+        <div>
+          <div class="section-label">Popular now</div>
+          <h2 class="section-title">Trending picks</h2>
         </div>
+
+        <a href="trending.html" class="view-all">
+          See trending
+        </a>
 
       </div>
 
+      <div class="trending-grid">
 
-      <div class="hero-bottom">
+        <a href="shop.html?search=Everyday%20Premium%20Essential"
+           class="trend-card">
 
-        <div class="container hero-bottom-inner">
+          <img
+            src="assets/products/everyday-premium-essential.png"
+            alt="Everyday Premium Essential"
+            loading="lazy">
 
-          <span>Shopora Market Store</span>
+          <div class="trend-info">
+            <h3>Everyday Premium Essential</h3>
+            <p>Everyday lifestyle pick</p>
+          </div>
 
-          <span>Explore • Discover • Shop</span>
+        </a>
 
-        </div>
+        <a href="shop.html?search=Modern%20Everyday%20Collection"
+           class="trend-card">
+
+          <img
+            src="assets/products/modern-everyday-collection.png"
+            alt="Modern Everyday Collection"
+            loading="lazy">
+
+          <div class="trend-info">
+            <h3>Modern Everyday Collection</h3>
+            <p>Modern fashion selection</p>
+          </div>
+
+        </a>
+
+        <a href="shop.html?search=Smart%20Everyday%20Device"
+           class="trend-card">
+
+          <img
+            src="assets/products/smart-everyday-device.png"
+            alt="Smart Everyday Device"
+            loading="lazy">
+
+          <div class="trend-info">
+            <h3>Smart Everyday Device</h3>
+            <p>Smart technology pick</p>
+          </div>
+
+        </a>
+
+        <a href="shop.html?search=Minimal%20Signature%20Accessory"
+           class="trend-card">
+
+          <img
+            src="assets/products/minimal-signature-accessory.png"
+            alt="Minimal Signature Accessory"
+            loading="lazy">
+
+          <div class="trend-info">
+            <h3>Minimal Signature Accessory</h3>
+            <p>Refined everyday accessory</p>
+          </div>
+
+        </a>
 
       </div>
 
-    </section>
+    </div>
 
+  </section>
 
-    <!-- FEATURED PRODUCTS -->
+  <!-- ABOUT / SEO -->
+  <section class="section about" id="about">
 
-    <section class="section">
+    <div class="container about-grid">
 
-      <div class="container">
+      <div>
+        <div class="section-label">About Shopora</div>
 
-        <div class="section-head">
+        <h2 class="section-title">
+          A simpler way to discover what you need.
+        </h2>
+      </div>
 
-          <div>
+      <div class="about-text">
 
-            <div class="section-kicker">
-              Shopora Selection
-            </div>
+        <p>
+          Shopora Market Store is a modern online marketplace created to make
+          everyday shopping easier and more enjoyable. Instead of focusing on
+          only one type of product, Shopora brings together fashion, beauty,
+          electronics, accessories, home & living and lifestyle essentials.
+        </p>
 
-            <h2 class="section-title">
-              Featured products
-            </h2>
-
-          </div>
-
-          <div>
-
-            <p class="section-description">
-              A carefully selected starting point for discovering
-              useful, stylish and modern products.
-            </p>
-
-          </div>
-
-          <a
-            href="shop.html"
-            class="view-link"
-          >
-            View all products →
-          </a>
-
-        </div>
-
-
-        <div class="products-grid">
-
-
-          <!-- PRODUCT 1 -->
-
-          <article
-            class="product-card"
-            data-product-id="everyday-premium-essential"
-            data-product-name="Everyday Premium Essential"
-            data-product-price="2499"
-            data-product-image="assets/products/everyday-premium-essential.png"
-          >
-
-            <div class="product-image">
-
-              <span class="product-tag">
-                Essential
-              </span>
-
-              <button
-                class="wishlist-btn"
-                data-wishlist="everyday-premium-essential"
-                aria-label="Add to wishlist"
-              >
-                ♡
-              </button>
-
-              <img
-                src="assets/products/everyday-premium-essential.png"
-                alt="Everyday Premium Essential"
-                loading="lazy"
-              >
-
-            </div>
-
-
-            <div class="product-info">
-
-              <div class="product-category">
-                Lifestyle
-              </div>
-
-              <h3 class="product-name">
-                Everyday Premium Essential
-              </h3>
-
-              <div class="product-price">
-                Rs. 2,499
-              </div>
-
-
-              <div class="product-actions">
-
-                <button
-                  class="add-cart"
-                  data-add-cart
-                >
-                  Add to Cart
-                </button>
-
-                <a
-                  href="shop.html"
-                  class="quick-view"
-                  aria-label="View product"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 2 -->
-
-          <article
-            class="product-card"
-            data-product-id="modern-everyday-collection"
-            data-product-name="Modern Everyday Collection"
-            data-product-price="3499"
-            data-product-image="assets/products/modern-everyday-collection.png"
-          >
-
-            <div class="product-image">
-
-              <span class="product-tag">
-                New
-              </span>
-
-              <button
-                class="wishlist-btn"
-                data-wishlist="modern-everyday-collection"
-                aria-label="Add to wishlist"
-              >
-                ♡
-              </button>
-
-              <img
-                src="assets/products/modern-everyday-collection.png"
-                alt="Modern Everyday Collection"
-                loading="lazy"
-              >
-
-            </div>
-
-
-            <div class="product-info">
-
-              <div class="product-category">
-                Fashion
-              </div>
-
-              <h3 class="product-name">
-                Modern Everyday Collection
-              </h3>
-
-              <div class="product-price">
-                Rs. 3,499
-              </div>
-
-
-              <div class="product-actions">
-
-                <button
-                  class="add-cart"
-                  data-add-cart
-                >
-                  Add to Cart
-                </button>
-
-                <a
-                  href="shop.html"
-                  class="quick-view"
-                  aria-label="View product"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 3 -->
-
-          <article
-            class="product-card"
-            data-product-id="smart-everyday-device"
-            data-product-name="Smart Everyday Device"
-            data-product-price="4999"
-            data-product-image="assets/products/smart-everyday-device.png"
-          >
-
-            <div class="product-image">
-
-              <span class="product-tag">
-                Smart Pick
-              </span>
-
-              <button
-                class="wishlist-btn"
-                data-wishlist="smart-everyday-device"
-                aria-label="Add to wishlist"
-              >
-                ♡
-              </button>
-
-              <img
-                src="assets/products/smart-everyday-device.png"
-                alt="Smart Everyday Device"
-                loading="lazy"
-              >
-
-            </div>
-
-
-            <div class="product-info">
-
-              <div class="product-category">
-                Electronics
-              </div>
-
-              <h3 class="product-name">
-                Smart Everyday Device
-              </h3>
-
-              <div class="product-price">
-                Rs. 4,999
-              </div>
-
-
-              <div class="product-actions">
-
-                <button
-                  class="add-cart"
-                  data-add-cart
-                >
-                  Add to Cart
-                </button>
-
-                <a
-                  href="shop.html"
-                  class="quick-view"
-                  aria-label="View product"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <!-- PRODUCT 4 -->
-
-          <article
-            class="product-card"
-            data-product-id="minimal-signature-accessory"
-            data-product-name="Minimal Signature Accessory"
-            data-product-price="1899"
-            data-product-image="assets/products/minimal-signature-accessory.png"
-          >
-
-            <div class="product-image">
-
-              <span class="product-tag">
-                Signature
-              </span>
-
-              <button
-                class="wishlist-btn"
-                data-wishlist="minimal-signature-accessory"
-                aria-label="Add to wishlist"
-              >
-                ♡
-              </button>
-
-              <img
-                src="assets/products/minimal-signature-accessory.png"
-                alt="Minimal Signature Accessory"
-                loading="lazy"
-              >
-
-            </div>
-
-
-            <div class="product-info">
-
-              <div class="product-category">
-                Accessories
-              </div>
-
-              <h3 class="product-name">
-                Minimal Signature Accessory
-              </h3>
-
-              <div class="product-price">
-                Rs. 1,899
-              </div>
-
-
-              <div class="product-actions">
-
-                <button
-                  class="add-cart"
-                  data-add-cart
-                >
-                  Add to Cart
-                </button>
-
-                <a
-                  href="shop.html"
-                  class="quick-view"
-                  aria-label="View product"
-                >
-                  ↗
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
+        <p>
+          Our goal is to create a clean shopping experience where customers
+          can discover useful products without unnecessary complexity.
+          Browse categories, explore featured products and find everyday
+          items from one convenient online destination.
+        </p>
 
       </div>
 
-    </section>
+    </div>
 
+  </section>
 
-    <!-- TRUST BAR -->
+  <!-- NEWSLETTER -->
+  <section class="section newsletter">
 
-    <section class="trust-section">
+    <div class="container newsletter-inner">
 
-      <div class="container trust-grid">
+      <div class="section-label">Stay connected</div>
 
-        <div class="trust-item">
+      <h2>Discover what's new at Shopora.</h2>
 
-          <div class="trust-icon">
-            ✦
-          </div>
+      <p>
+        Get updates about new products, collections and everyday shopping picks.
+      </p>
 
-          <div>
+      <form class="newsletter-form" id="newsletterForm">
 
-            <div class="trust-title">
-              Curated Selection
-            </div>
+        <input
+          type="email"
+          id="newsletterEmail"
+          placeholder="Your email address"
+          required>
 
-            <div class="trust-text">
-              Products selected with purpose.
-            </div>
+        <button type="submit">
+          Subscribe
+        </button>
 
-          </div>
+      </form>
 
-        </div>
+    </div>
 
-
-        <div class="trust-item">
-
-          <div class="trust-icon">
-            ✓
-          </div>
-
-          <div>
-
-            <div class="trust-title">
-              Simple Shopping
-            </div>
-
-            <div class="trust-text">
-              Easy browsing and checkout.
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="trust-item">
-
-          <div class="trust-icon">
-            ◆
-          </div>
-
-          <div>
-
-            <div class="trust-title">
-              Everyday Essentials
-            </div>
-
-            <div class="trust-text">
-              Useful products for modern life.
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- CATEGORIES -->
-
-    <section class="section categories-section">
-
-      <div class="container">
-
-        <div class="section-head">
-
-          <div>
-
-            <div class="section-kicker">
-              Browse the collection
-            </div>
-
-            <h2 class="section-title">
-              Shop by category
-            </h2>
-
-          </div>
-
-          <p class="section-description">
-            Explore Shopora's main collections and find products
-            that fit your everyday needs.
-          </p>
-
-        </div>
-
-
-        <div class="category-grid">
-
-
-          <!-- FASHION -->
-
-          <a
-            href="shop.html?category=Fashion"
-            class="category-card"
-          >
-
-            <img
-              src="assets/categories/fashion.jpg"
-              alt="Fashion"
-              loading="lazy"
-            >
-
-            <span class="category-name">
-              Fashion
-            </span>
-
-          </a>
-
-
-          <!-- BEAUTY -->
-
-          <a
-            href="shop.html?category=Beauty"
-            class="category-card"
-          >
-
-            <img
-              src="assets/categories/beauty.jpg"
-              alt="Beauty"
-              loading="lazy"
-            >
-
-            <span class="category-name">
-              Beauty
-            </span>
-
-          </a>
-
-
-          <!-- ELECTRONICS -->
-
-          <a
-            href="shop.html?category=Electronics"
-            class="category-card"
-          >
-
-            <img
-              src="assets/categories/electronics.jpg"
-              alt="Electronics"
-              loading="lazy"
-            >
-
-            <span class="category-name">
-              Electronics
-            </span>
-
-          </a>
-
-
-          <!-- HOME & LIVING -->
-
-          <a
-            href="shop.html?category=Home%20%26%20Living"
-            class="category-card"
-          >
-
-            <img
-              src="assets/categories/home-living.jpg"
-              alt="Home and Living"
-              loading="lazy"
-            >
-
-            <span class="category-name">
-              Home & Living
-            </span>
-
-          </a>
-
-
-          <!-- ACCESSORIES -->
-
-          <a
-            href="shop.html?category=Accessories"
-            class="category-card"
-          >
-
-            <img
-              src="assets/categories/accessories.jpg"
-              alt="Accessories"
-              loading="lazy"
-            >
-
-            <span class="category-name">
-              Accessories
-            </span>
-
-          </a>
-
-
-          <!-- LIFESTYLE -->
-
-          <a
-            href="shop.html?category=Lifestyle"
-            class="category-card"
-          >
-
-            <img
-              src="assets/categories/lifestyle.jpg"
-              alt="Lifestyle"
-              loading="lazy"
-            >
-
-            <span class="category-name">
-              Lifestyle
-            </span>
-
-          </a>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SHOPORA EDIT -->
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="edit-grid">
-
-          <div class="edit-image">
-
-            <!-- SHOPORA EDIT IMAGE -->
-            <img
-              src="assets/shopora-edit.png"
-              alt="Shopora modern everyday products collection"
-              loading="lazy"
-            >
-
-          </div>
-
-
-          <div class="edit-content">
-
-            <div class="edit-kicker">
-              The Shopora Edit
-            </div>
-
-            <h2 class="edit-title">
-              Thoughtful products for modern everyday life.
-            </h2>
-
-            <p class="edit-text">
-              From fashion and beauty to electronics, accessories,
-              home essentials and lifestyle products, Shopora brings
-              different categories together in one clean shopping
-              experience.
-            </p>
-
-            <a
-              href="shop.html"
-              class="light-button"
-            >
-              Explore the Shop
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- TRENDING -->
-
-    <section class="section trending-section">
-
-      <div class="container">
-
-        <div class="section-head">
-
-          <div>
-
-            <div class="section-kicker">
-              What's getting attention
-            </div>
-
-            <h2 class="section-title">
-              Trending now
-            </h2>
-
-          </div>
-
-          <a
-            href="trending.html"
-            class="view-link"
-          >
-            Explore trending →
-          </a>
-
-        </div>
-
-
-        <div class="mini-grid">
-
-
-          <article class="mini-card">
-
-            <div class="mini-image">
-
-              <img
-                src="assets/products/modern-everyday-collection.png"
-                alt="Modern Everyday Collection"
-                loading="lazy"
-              >
-
-            </div>
-
-            <div>
-
-              <div class="mini-category">
-                Fashion
-              </div>
-
-              <div class="mini-name">
-                Modern Everyday Collection
-              </div>
-
-              <div class="mini-price">
-                Rs. 3,499
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="mini-card">
-
-            <div class="mini-image">
-
-              <img
-                src="assets/products/smart-everyday-device.png"
-                alt="Smart Everyday Device"
-                loading="lazy"
-              >
-
-            </div>
-
-            <div>
-
-              <div class="mini-category">
-                Electronics
-              </div>
-
-              <div class="mini-name">
-                Smart Everyday Device
-              </div>
-
-              <div class="mini-price">
-                Rs. 4,999
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="mini-card">
-
-            <div class="mini-image">
-
-              <img
-                src="assets/products/minimal-signature-accessory.png"
-                alt="Minimal Signature Accessory"
-                loading="lazy"
-              >
-
-            </div>
-
-            <div>
-
-              <div class="mini-category">
-                Accessories
-              </div>
-
-              <div class="mini-name">
-                Minimal Signature Accessory
-              </div>
-
-              <div class="mini-price">
-                Rs. 1,899
-              </div>
-
-            </div>
-
-          </article>
-
-
-          <article class="mini-card">
-
-            <div class="mini-image">
-
-              <img
-                src="assets/products/everyday-premium-essential.png"
-                alt="Everyday Premium Essential"
-                loading="lazy"
-              >
-
-            </div>
-
-            <div>
-
-              <div class="mini-category">
-                Lifestyle
-              </div>
-
-              <div class="mini-name">
-                Everyday Premium Essential
-              </div>
-
-              <div class="mini-price">
-                Rs. 2,499
-              </div>
-
-            </div>
-
-          </article>
-
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- ABOUT / SEO -->
-
-    <section class="section about-section">
-
-      <div class="container">
-
-        <div class="about-inner">
-
-          <div class="section-kicker">
-            About Shopora
-          </div>
-
-          <h2 class="about-title">
-            A simpler way to discover what you need.
-          </h2>
-
-          <p class="about-text">
-            Shopora Market Store is a modern online shopping marketplace
-            created to make product discovery simple, stylish and useful.
-            Browse fashion, beauty, electronics, accessories, home &
-            living and lifestyle products in one convenient destination.
-            Our goal is to bring together products worth discovering
-            without making online shopping feel complicated.
-          </p>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- NEWSLETTER -->
-
-    <section class="newsletter">
-
-      <div class="container newsletter-inner">
-
-        <div class="newsletter-copy">
-
-          <div class="newsletter-kicker">
-            Shopora Updates
-          </div>
-
-          <h2 class="newsletter-title">
-            Stay in the loop.
-          </h2>
-
-          <p class="newsletter-text">
-            Get product updates, new arrivals and Shopora picks.
-          </p>
-
-        </div>
-
-
-        <form
-          class="newsletter-form"
-          id="newsletterForm"
-        >
-
-          <input
-            type="email"
-            id="newsletterEmail"
-            placeholder="Your email address"
-            required
-          >
-
-          <button type="submit">
-            Subscribe →
-          </button>
-
-        </form>
-
-      </div>
-
-    </section>
-
-  </main>
-
+  </section>
 
   <!-- FOOTER -->
-
-  <footer>
+  <footer id="contact">
 
     <div class="container">
 
       <div class="footer-grid">
 
-
         <div class="footer-brand">
 
-          <div class="footer-brand-name">
-            SHOPORA
-          </div>
+          <a href="index.html" class="brand">
 
-          <p class="footer-brand-text">
+            <img
+              src="assets/shopora-mark.png"
+              alt="Shopora Market Store">
+
+            <span class="brand-text">Shopora</span>
+
+          </a>
+
+          <p>
             A modern marketplace for fashion, beauty, electronics,
-            accessories, home & living and lifestyle products.
+            accessories, home & living and everyday lifestyle products.
           </p>
 
         </div>
 
+        <div class="footer-col">
 
-        <div>
+          <h4>Shop</h4>
 
-          <div class="footer-heading">
-            Shop
-          </div>
-
-          <div class="footer-links">
-
-            <a href="shop.html">
-              All Products
-            </a>
-
-            <a href="categories.html">
-              Categories
-            </a>
-
-            <a href="trending.html">
-              Trending
-            </a>
-
-            <a href="wishlist.html">
-              Wishlist
-            </a>
-
-            <a href="cart.html">
-              Cart
-            </a>
-
-          </div>
+          <a href="shop.html">All Products</a>
+          <a href="categories.html">Categories</a>
+          <a href="trending.html">Trending</a>
+          <a href="cart.html">Cart</a>
 
         </div>
 
+        <div class="footer-col">
 
-        <div>
+          <h4>Company</h4>
 
-          <div class="footer-heading">
-            Company
-          </div>
-
-          <div class="footer-links">
-
-            <a href="about.html">
-              About
-            </a>
-
-            <a href="contact.html">
-              Contact
-            </a>
-
-            <a href="privacy-policy.html">
-              Privacy Policy
-            </a>
-
-            <a href="terms-of-service.html">
-              Terms of Service
-            </a>
-
-            <a href="cookie-policy.html">
-              Cookie Policy
-            </a>
-
-          </div>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="policy.html">Policy</a>
 
         </div>
 
+        <div class="footer-col">
 
-        <div>
+          <h4>Contact</h4>
 
-          <div class="footer-heading">
-            Help
-          </div>
-
-          <div class="footer-links">
-
-            <a href="contact.html">
-              Contact Support
+          <div class="footer-contact">
+            Email:
+            <a href="mailto:brandseocompany@gmail.com">
+              brandseocompany@gmail.com
             </a>
 
-            <a href="shipping.html">
-              Shipping
+            Phone:
+            <a href="tel:+923269547318">
+              +92 326 9547318
             </a>
 
-            <a href="returns.html">
-              Returns
-            </a>
-
-            <a href="faq.html">
-              FAQ
-            </a>
-
+            <a href="returns.html">Return / Refunds</a>
           </div>
 
         </div>
-
 
       </div>
-
 
       <div class="footer-bottom">
 
@@ -2547,7 +1806,7 @@
         </span>
 
         <span>
-          Designed for modern shopping.
+          Modern shopping for everyday life.
         </span>
 
       </div>
@@ -2556,341 +1815,246 @@
 
   </footer>
 
-
   <!-- TOAST -->
-
-  <div
-    class="toast"
-    id="toast"
-  ></div>
-
-
-  <!-- JAVASCRIPT -->
+  <div class="toast" id="toast"></div>
 
   <script>
+
+    /* =========================
+       STORAGE
+    ========================= */
 
     const CART_KEY = "shoporaCart";
     const WISHLIST_KEY = "shoporaWishlist";
 
-
     function getCart() {
-
       try {
-
-        return JSON.parse(
-          localStorage.getItem(CART_KEY)
-        ) || [];
-
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
       } catch {
-
         return [];
-
       }
-
     }
-
 
     function getWishlist() {
-
       try {
-
-        return JSON.parse(
-          localStorage.getItem(WISHLIST_KEY)
-        ) || [];
-
+        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
       } catch {
-
         return [];
-
       }
-
     }
-
 
     function saveCart(cart) {
-
-      localStorage.setItem(
-        CART_KEY,
-        JSON.stringify(cart)
-      );
-
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-
-    function saveWishlist(wishlist) {
-
-      localStorage.setItem(
-        WISHLIST_KEY,
-        JSON.stringify(wishlist)
-      );
-
+    function saveWishlist(list) {
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
     }
 
+    /* =========================
+       COUNTS
+    ========================= */
+
+    function updateCounts() {
+
+      const cart = getCart();
+      const wishlist = getWishlist();
+
+      const cartCount = document.getElementById("cartCount");
+      const wishlistCount = document.getElementById("wishlistCount");
+
+      if (cartCount) {
+        cartCount.textContent = cart.reduce(
+          (total, item) => total + (Number(item.quantity) || 1),
+          0
+        );
+      }
+
+      if (wishlistCount) {
+        wishlistCount.textContent = wishlist.length;
+      }
+
+      updateWishlistButtons();
+    }
+
+    /* =========================
+       TOAST
+    ========================= */
 
     let toastTimer;
 
-
     function showToast(message) {
 
-      const toast =
-        document.getElementById("toast");
+      const toast = document.getElementById("toast");
 
       toast.textContent = message;
-
       toast.classList.add("show");
 
       clearTimeout(toastTimer);
 
       toastTimer = setTimeout(() => {
-
         toast.classList.remove("show");
-
-      }, 2400);
-
+      }, 2200);
     }
 
+    /* =========================
+       ADD TO CART
+    ========================= */
 
-    function updateCounts() {
+    function addToCart(button) {
+
+      const card = button.closest(".product-card");
+
+      if (!card) return;
+
+      const product = {
+        id: card.dataset.id,
+        name: card.dataset.name,
+        price: Number(card.dataset.price),
+        category: card.dataset.category,
+        image: card.querySelector("img")?.getAttribute("src") || "",
+        quantity: 1
+      };
 
       const cart = getCart();
 
-      const wishlist = getWishlist();
-
-      const cartCount =
-        cart.reduce(
-          (total, item) =>
-            total + Number(item.quantity || 1),
-          0
-        );
-
-      document.getElementById("cartCount")
-        .textContent = cartCount;
-
-      document.getElementById("wishlistCount")
-        .textContent = wishlist.length;
-
-    }
-
-
-    function addToCart(card) {
-
-      const id =
-        card.dataset.productId;
-
-      const name =
-        card.dataset.productName;
-
-      const price =
-        Number(card.dataset.productPrice);
-
-      const image =
-        card.dataset.productImage;
-
-      const cart =
-        getCart();
-
-      const existing =
-        cart.find(item => item.id === id);
-
+      const existing = cart.find(item => item.id === product.id);
 
       if (existing) {
+        existing.quantity = (Number(existing.quantity) || 1) + 1;
+      } else {
+        cart.push(product);
+      }
 
-        existing.quantity =
-          Number(existing.quantity || 1) + 1;
+      saveCart(cart);
+      updateCounts();
+
+      showToast("Added to cart");
+    }
+
+    /* =========================
+       WISHLIST
+    ========================= */
+
+    function toggleWishlist(button) {
+
+      const card = button.closest(".product-card");
+
+      if (!card) return;
+
+      const id = card.dataset.id;
+      const wishlist = getWishlist();
+
+      const index = wishlist.indexOf(id);
+
+      if (index >= 0) {
+
+        wishlist.splice(index, 1);
+
+        button.textContent = "♡";
+
+        showToast("Removed from wishlist");
 
       } else {
 
-        cart.push({
+        wishlist.push(id);
 
-          id,
-          name,
-          price,
-          image,
-          quantity: 1
+        button.textContent = "♥";
 
-        });
-
+        showToast("Added to wishlist");
       }
 
-
-      saveCart(cart);
-
+      saveWishlist(wishlist);
       updateCounts();
-
-      showToast(
-        `${name} added to cart`
-      );
-
     }
-
-
-    document.querySelectorAll("[data-add-cart]")
-      .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-          const card =
-            button.closest(".product-card");
-
-          addToCart(card);
-
-        });
-
-      });
-
 
     function updateWishlistButtons() {
 
-      const wishlist =
-        getWishlist();
+      const wishlist = getWishlist();
 
+      document.querySelectorAll(".product-card").forEach(card => {
 
-      document.querySelectorAll("[data-wishlist]")
-        .forEach(button => {
+        const button = card.querySelector(".wishlist");
 
-          const id =
-            button.dataset.wishlist;
+        if (!button) return;
 
-          const active =
-            wishlist.includes(id);
-
-          button.classList.toggle(
-            "active",
-            active
-          );
-
-          button.textContent =
-            active ? "♥" : "♡";
-
-        });
-
-    }
-
-
-    document.querySelectorAll("[data-wishlist]")
-      .forEach(button => {
-
-        button.addEventListener("click", () => {
-
-          const id =
-            button.dataset.wishlist;
-
-          let wishlist =
-            getWishlist();
-
-
-          if (wishlist.includes(id)) {
-
-            wishlist =
-              wishlist.filter(
-                item => item !== id
-              );
-
-            showToast(
-              "Removed from wishlist"
-            );
-
-          } else {
-
-            wishlist.push(id);
-
-            showToast(
-              "Added to wishlist"
-            );
-
-          }
-
-
-          saveWishlist(wishlist);
-
-          updateCounts();
-
-          updateWishlistButtons();
-
-        });
+        button.textContent =
+          wishlist.includes(card.dataset.id) ? "♥" : "♡";
 
       });
+    }
 
+    /* =========================
+       SEARCH
+    ========================= */
 
-    function performSearch(value) {
+    function performSearch(input) {
 
-      const query =
-        value.trim();
+      const value = input.trim();
 
-      if (!query) {
+      if (!value) return;
 
-        showToast(
-          "Please enter a product to search"
+      location.href =
+        "shop.html?search=" + encodeURIComponent(value);
+    }
+
+    const heroSearchForm =
+      document.getElementById("heroSearchForm");
+
+    if (heroSearchForm) {
+
+      heroSearchForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        performSearch(
+          document.getElementById("heroSearchInput").value
         );
 
-        return;
+      });
+    }
 
+    const floatingSearchForm =
+      document.getElementById("floatingSearchForm");
+
+    if (floatingSearchForm) {
+
+      floatingSearchForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        performSearch(
+          document.getElementById("floatingSearchInput").value
+        );
+
+      });
+    }
+
+    /* =========================
+       STICKY SEARCH
+    ========================= */
+
+    function handleScroll() {
+
+      if (window.scrollY > 650) {
+        document.body.classList.add("search-stuck");
+      } else {
+        document.body.classList.remove("search-stuck");
       }
 
-
-      window.location.href =
-        "shop.html?search=" +
-        encodeURIComponent(query);
-
     }
-
-
-    document.getElementById("heroSearchForm")
-      .addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        performSearch(
-          document.getElementById(
-            "heroSearchInput"
-          ).value
-        );
-
-      });
-
-
-    document.getElementById("floatingSearchForm")
-      .addEventListener("submit", event => {
-
-        event.preventDefault();
-
-        performSearch(
-          document.getElementById(
-            "floatingSearchInput"
-          ).value
-        );
-
-      });
-
-
-    const floatingSearchWrap =
-      document.getElementById(
-        "floatingSearchWrap"
-      );
-
 
     window.addEventListener(
       "scroll",
-      () => {
-
-        if (window.scrollY > 650) {
-
-          floatingSearchWrap.classList.add(
-            "show"
-          );
-
-        } else {
-
-          floatingSearchWrap.classList.remove(
-            "show"
-          );
-
-        }
-
-      },
+      handleScroll,
       { passive: true }
     );
 
+    handleScroll();
+
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
     const menuBtn =
       document.getElementById("menuBtn");
@@ -2898,106 +2062,64 @@
     const mainNav =
       document.getElementById("mainNav");
 
+    if (menuBtn && mainNav) {
 
-    menuBtn.addEventListener(
-      "click",
-      () => {
+      menuBtn.addEventListener("click", function() {
+        mainNav.classList.toggle("open");
+      });
 
-        mainNav.classList.toggle(
-          "open"
-        );
+      mainNav.querySelectorAll("a").forEach(link => {
 
-        menuBtn.textContent =
-          mainNav.classList.contains("open")
-            ? "×"
-            : "☰";
-
-      }
-    );
-
-
-    document.querySelectorAll(".main-nav a")
-      .forEach(link => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            mainNav.classList.remove(
-              "open"
-            );
-
-            menuBtn.textContent = "☰";
-
-          }
-        );
+        link.addEventListener("click", function() {
+          mainNav.classList.remove("open");
+        });
 
       });
 
+    }
 
-    document.getElementById("newsletterForm")
-      .addEventListener("submit", event => {
+    /* =========================
+       NEWSLETTER
+    ========================= */
+
+    const newsletterForm =
+      document.getElementById("newsletterForm");
+
+    if (newsletterForm) {
+
+      newsletterForm.addEventListener("submit", function(event) {
 
         event.preventDefault();
 
         const email =
-          document.getElementById(
-            "newsletterEmail"
-          ).value.trim();
+          document.getElementById("newsletterEmail").value.trim();
 
+        if (!email) return;
 
-        if (!email) {
+        showToast("Thanks for subscribing!");
 
-          return;
-
-        }
-
-
-        showToast(
-          "Thanks for subscribing to Shopora!"
-        );
-
-
-        event.target.reset();
+        newsletterForm.reset();
 
       });
 
+    }
 
-    document.getElementById("year")
-      .textContent =
+    /* =========================
+       YEAR
+    ========================= */
+
+    document.getElementById("year").textContent =
       new Date().getFullYear();
 
+    /* =========================
+       INITIALIZE
+    ========================= */
 
     updateCounts();
 
-    updateWishlistButtons();
-
-
-    window.addEventListener(
-      "storage",
-      () => {
-
-        updateCounts();
-
-        updateWishlistButtons();
-
-      }
-    );
-
-
-    window.addEventListener(
-      "pageshow",
-      () => {
-
-        updateCounts();
-
-        updateWishlistButtons();
-
-      }
-    );
+    window.addEventListener("pageshow", updateCounts);
 
   </script>
 
 </body>
 </html>
-```
