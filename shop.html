@@ -1,8 +1,8 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Shop Online | Fashion, Beauty, Electronics & More | Shopora</title>
@@ -11,7 +11,7 @@
         content="Shopora Market Store — discover fashion, beauty, electronics, home & living, accessories and lifestyle products for everyday shopping in Pakistan.">
 
   <meta name="keywords"
-        content="online shopping Pakistan, fashion products, beauty products, electronics, home and living, accessories, lifestyle products, Shopora Market Store">
+        content="online shopping Pakistan, shop online Pakistan, fashion products, beauty products, electronics, home and living, accessories, lifestyle products, Shopora Market Store">
 
   <meta name="robots" content="index, follow">
 
@@ -52,7 +52,9 @@
       --white: #ffffff;
       --muted: #77716a;
       --border: #e6e0d6;
-      --shadow: 0 12px 35px rgba(17,17,17,.07);
+      --soft: #f0ece4;
+      --success: #315d45;
+      --shadow: 0 15px 45px rgba(17,17,17,.07);
     }
 
     * {
@@ -82,8 +84,13 @@
       text-decoration: none;
     }
 
-    button {
+    button,
+    input,
+    select {
       font: inherit;
+    }
+
+    button {
       cursor: pointer;
     }
 
@@ -101,7 +108,7 @@
       background: var(--black);
       color: var(--white);
       text-align: center;
-      font-size: 11px;
+      font-size: 12px;
       letter-spacing: .08em;
       text-transform: uppercase;
       padding: 9px 15px;
@@ -224,42 +231,98 @@
 
 
     /* =========================
-       Simple Shop Heading
+       Simple Shop Hero
     ========================= */
 
-    .shop-heading {
-      padding: 55px 0 35px;
-      text-align: center;
+    .shop-hero {
+      padding: 48px 0 35px;
+      border-bottom: 1px solid var(--border);
     }
 
-    .shop-heading h1 {
+    .shop-hero h1 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(32px, 4vw, 48px);
+      font-size: 42px;
       line-height: 1.15;
       font-weight: 600;
-    }
-
-    .shop-heading p {
-      max-width: 600px;
-      margin: 12px auto 0;
-      color: var(--muted);
-      font-size: 15px;
+      text-align: center;
+      margin: 0;
     }
 
 
     /* =========================
-       Products
+       Shop Area
     ========================= */
 
     .shop-area {
-      padding: 5px 0 90px;
+      padding: 45px 0 90px;
     }
+
+
+    /* =========================
+       Search + Category
+    ========================= */
+
+    .shop-toolbar {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 14px;
+      margin-bottom: 35px;
+    }
+
+    .search-box {
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      height: 54px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 0 50px 0 18px;
+      outline: none;
+      color: var(--black);
+      border-radius: 2px;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .search-box input:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(198,160,106,.12);
+    }
+
+    .search-symbol {
+      position: absolute;
+      right: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .category-select {
+      height: 54px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 0 15px;
+      outline: none;
+      color: var(--black);
+      border-radius: 2px;
+    }
+
+    .category-select:focus {
+      border-color: var(--gold);
+    }
+
+
+    /* =========================
+       Shop Meta
+    ========================= */
 
     .shop-meta {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      margin-bottom: 22px;
+      justify-content: space-between;
+      margin-bottom: 20px;
     }
 
     .shop-meta h2 {
@@ -273,6 +336,11 @@
       font-size: 13px;
     }
 
+
+    /* =========================
+       Product Grid
+    ========================= */
+
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -284,7 +352,7 @@
       border: 1px solid var(--border);
       position: relative;
       overflow: hidden;
-      transition: transform .25s ease, box-shadow .25s ease;
+      transition: transform .3s ease, box-shadow .3s ease;
     }
 
     .product-card:hover {
@@ -327,14 +395,18 @@
       transition: .2s ease;
     }
 
-    .wishlist-btn:hover,
+    .wishlist-btn:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
     .wishlist-btn.active {
       background: var(--black);
       color: var(--white);
     }
 
     .product-info {
-      padding: 17px 16px 18px;
+      padding: 18px 17px 19px;
     }
 
     .product-category {
@@ -348,16 +420,16 @@
 
     .product-title {
       font-family: "Playfair Display", serif;
-      font-size: 18px;
+      font-size: 19px;
       line-height: 1.25;
-      min-height: 45px;
-      margin-bottom: 8px;
+      min-height: 48px;
+      margin-bottom: 9px;
     }
 
     .product-price {
       font-size: 16px;
       font-weight: 700;
-      margin-bottom: 14px;
+      margin-bottom: 15px;
     }
 
     .product-actions {
@@ -367,7 +439,7 @@
     }
 
     .btn {
-      min-height: 41px;
+      min-height: 42px;
       border: 1px solid var(--black);
       display: inline-flex;
       align-items: center;
@@ -385,7 +457,7 @@
     }
 
     .btn-dark:hover {
-      background: #292929;
+      background: #2b2b2b;
     }
 
     .btn-light {
@@ -396,6 +468,125 @@
     .btn-light:hover {
       background: var(--black);
       color: var(--white);
+    }
+
+    .no-results {
+      display: none;
+      padding: 70px 20px;
+      text-align: center;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .no-results h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      margin-bottom: 7px;
+    }
+
+    .no-results p {
+      color: var(--muted);
+    }
+
+
+    /* =========================
+       SEO Section
+    ========================= */
+
+    .seo-section {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 65px 0;
+    }
+
+    .seo-content {
+      max-width: 850px;
+    }
+
+    .seo-content h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      margin-bottom: 17px;
+    }
+
+    .seo-content p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 13px;
+    }
+
+    .seo-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 23px;
+    }
+
+    .seo-links a {
+      border: 1px solid var(--border);
+      padding: 8px 13px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--ivory);
+      transition: .2s ease;
+    }
+
+    .seo-links a:hover {
+      background: var(--black);
+      color: var(--white);
+      border-color: var(--black);
+    }
+
+
+    /* =========================
+       Newsletter
+    ========================= */
+
+    .newsletter {
+      padding: 65px 0;
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .newsletter-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
+
+    .newsletter h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      margin-bottom: 6px;
+    }
+
+    .newsletter p {
+      color: #c8c3bb;
+      font-size: 14px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      min-width: 410px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      height: 48px;
+      border: 0;
+      padding: 0 15px;
+      outline: none;
+    }
+
+    .newsletter-form button {
+      height: 48px;
+      border: 0;
+      background: var(--gold);
+      color: var(--white);
+      padding: 0 20px;
+      font-weight: 700;
     }
 
 
@@ -410,7 +601,7 @@
     }
 
     .footer-main {
-      padding: 60px 0 42px;
+      padding: 65px 0 45px;
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
       gap: 50px;
@@ -505,6 +696,7 @@
       .footer-main {
         grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
 
@@ -547,6 +739,20 @@
         margin-left: auto;
       }
 
+      .shop-toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .newsletter-form {
+        min-width: 0;
+        width: 100%;
+      }
+
     }
 
 
@@ -557,7 +763,7 @@
       }
 
       .announcement {
-        font-size: 9px;
+        font-size: 10px;
       }
 
       .header-inner {
@@ -568,33 +774,21 @@
         width: 150px;
       }
 
-      .shop-heading {
-        padding: 42px 0 28px;
+      .shop-hero {
+        padding: 38px 0 28px;
       }
 
-      .shop-heading h1 {
+      .shop-hero h1 {
         font-size: 34px;
       }
 
-      .shop-heading p {
-        font-size: 14px;
-      }
-
       .shop-area {
-        padding: 0 0 60px;
+        padding: 32px 0 60px;
       }
 
       .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
-      }
-
-      .shop-meta {
-        margin-bottom: 16px;
-      }
-
-      .shop-meta h2 {
-        font-size: 22px;
       }
 
       .product-info {
@@ -618,6 +812,22 @@
         min-height: 39px;
       }
 
+      .seo-section {
+        padding: 45px 0;
+      }
+
+      .seo-content h2 {
+        font-size: 28px;
+      }
+
+      .newsletter {
+        padding: 48px 0;
+      }
+
+      .newsletter h2 {
+        font-size: 29px;
+      }
+
       .footer-main {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -632,6 +842,10 @@
 
 
     @media (max-width: 400px) {
+
+      .header-actions {
+        gap: 0;
+      }
 
       .icon-link {
         width: 36px;
@@ -766,9 +980,9 @@
   <main>
 
 
-    <!-- Simple Heading -->
+    <!-- Simple Shop Heading -->
 
-    <section class="shop-heading">
+    <section class="shop-hero">
 
       <div class="container">
 
@@ -776,20 +990,76 @@
           Shop
         </h1>
 
-        <p>
-          Discover fashion, beauty, electronics, home essentials and more.
-        </p>
-
       </div>
 
     </section>
 
 
-    <!-- Products -->
+    <!-- Shop -->
 
     <section class="shop-area">
 
       <div class="container">
+
+
+        <!-- Search + Category -->
+
+        <div class="shop-toolbar">
+
+          <div class="search-box">
+
+            <input
+              type="search"
+              id="productSearch"
+              placeholder="Search products, categories..."
+              autocomplete="off"
+            >
+
+            <span class="search-symbol">
+              ⌕
+            </span>
+
+          </div>
+
+
+          <select
+            class="category-select"
+            id="categoryFilter"
+            aria-label="Filter products by category"
+          >
+
+            <option value="all">
+              All Categories
+            </option>
+
+            <option value="Fashion">
+              Fashion
+            </option>
+
+            <option value="Beauty">
+              Beauty
+            </option>
+
+            <option value="Electronics">
+              Electronics
+            </option>
+
+            <option value="Home & Living">
+              Home & Living
+            </option>
+
+            <option value="Accessories">
+              Accessories
+            </option>
+
+            <option value="Lifestyle">
+              Lifestyle
+            </option>
+
+          </select>
+
+        </div>
+
 
         <div class="shop-meta">
 
@@ -804,12 +1074,16 @@
         </div>
 
 
-        <div class="product-grid">
+        <div class="product-grid" id="productGrid">
 
 
           <!-- Product 1 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Lifestyle"
+            data-search="everyday premium essential lifestyle"
+          >
 
             <div class="product-image">
 
@@ -872,7 +1146,11 @@
 
           <!-- Product 2 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Fashion"
+            data-search="modern everyday collection fashion"
+          >
 
             <div class="product-image">
 
@@ -935,7 +1213,11 @@
 
           <!-- Product 3 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Electronics"
+            data-search="smart everyday device wireless earbuds electronics"
+          >
 
             <div class="product-image">
 
@@ -998,7 +1280,11 @@
 
           <!-- Product 4 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Accessories"
+            data-search="minimal signature accessory watch accessories"
+          >
 
             <div class="product-image">
 
@@ -1061,7 +1347,11 @@
 
           <!-- Product 5 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Beauty"
+            data-search="daily beauty essential beauty skincare"
+          >
 
             <div class="product-image">
 
@@ -1124,7 +1414,11 @@
 
           <!-- Product 6 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Home & Living"
+            data-search="modern home essential home living lamp"
+          >
 
             <div class="product-image">
 
@@ -1187,7 +1481,11 @@
 
           <!-- Product 7 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Lifestyle"
+            data-search="everyday lifestyle pick bottle lifestyle"
+          >
 
             <div class="product-image">
 
@@ -1250,7 +1548,11 @@
 
           <!-- Product 8 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Fashion"
+            data-search="classic wardrobe essential trousers fashion"
+          >
 
             <div class="product-image">
 
@@ -1313,7 +1615,11 @@
 
           <!-- Product 9 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Beauty"
+            data-search="signature beauty set self care beauty"
+          >
 
             <div class="product-image">
 
@@ -1376,7 +1682,11 @@
 
           <!-- Product 10 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Electronics"
+            data-search="connected smart essential smartwatch electronics"
+          >
 
             <div class="product-image">
 
@@ -1439,7 +1749,11 @@
 
           <!-- Product 11 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Accessories"
+            data-search="everyday carry accessory bag accessories"
+          >
 
             <div class="product-image">
 
@@ -1502,7 +1816,11 @@
 
           <!-- Product 12 -->
 
-          <article class="product-card">
+          <article
+            class="product-card"
+            data-category="Home & Living"
+            data-search="elevated living essential ceramic home living"
+          >
 
             <div class="product-image">
 
@@ -1565,6 +1883,122 @@
 
         </div>
 
+
+        <div class="no-results" id="noResults">
+
+          <h3>
+            No products found
+          </h3>
+
+          <p>
+            Try another product name or choose a different category.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- SEO Section -->
+
+    <section class="seo-section">
+
+      <div class="container">
+
+        <div class="seo-content">
+
+          <h2>
+            Online Shopping for Everyday Essentials
+          </h2>
+
+          <p>
+            Shopora Market Store brings together a curated selection of
+            products for modern everyday shopping in Pakistan. Browse
+            fashion products, beauty essentials, electronics, home and
+            living products, accessories and lifestyle picks in one place.
+          </p>
+
+          <p>
+            Whether you are looking for everyday fashion, useful electronics,
+            beauty products, home essentials or accessories, Shopora makes
+            product discovery simple and organized.
+          </p>
+
+          <div class="seo-links">
+
+            <a href="shop.html?category=Fashion">
+              Fashion
+            </a>
+
+            <a href="shop.html?category=Beauty">
+              Beauty
+            </a>
+
+            <a href="shop.html?category=Electronics">
+              Electronics
+            </a>
+
+            <a href="shop.html?category=Home%20%26%20Living">
+              Home & Living
+            </a>
+
+            <a href="shop.html?category=Accessories">
+              Accessories
+            </a>
+
+            <a href="shop.html?category=Lifestyle">
+              Lifestyle
+            </a>
+
+            <a href="trending.html">
+              Trending Products
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- Newsletter -->
+
+    <section class="newsletter">
+
+      <div class="container newsletter-inner">
+
+        <div>
+
+          <h2>
+            Stay in the Shopora loop.
+          </h2>
+
+          <p>
+            Get new product picks, shopping inspiration and updates.
+          </p>
+
+        </div>
+
+
+        <form class="newsletter-form" id="newsletterForm">
+
+          <input
+            type="email"
+            placeholder="Your email address"
+            aria-label="Email address"
+            required
+          >
+
+          <button type="submit">
+            Subscribe
+          </button>
+
+        </form>
+
       </div>
 
     </section>
@@ -1577,7 +2011,6 @@
   <footer>
 
     <div class="container footer-main">
-
 
       <div class="footer-brand">
 
@@ -1678,6 +2111,7 @@
     function getCart() {
 
       try {
+
         return JSON.parse(
           localStorage.getItem(CART_KEY)
         ) || [];
@@ -1704,6 +2138,7 @@
     function getWishlist() {
 
       try {
+
         return JSON.parse(
           localStorage.getItem(WISHLIST_KEY)
         ) || [];
@@ -1728,12 +2163,13 @@
 
 
     /* =========================
-       Header Counts
+       Counts
     ========================= */
 
     function updateCounts() {
 
       const cart = getCart();
+
       const wishlist = getWishlist();
 
       const cartCount = cart.reduce(
@@ -1758,6 +2194,7 @@
     ========================= */
 
     let toastTimer;
+
 
     function showToast(message) {
 
@@ -1922,13 +2359,151 @@
 
 
     /* =========================
-       Product Count
+       Search + Category Filter
     ========================= */
 
-    document.getElementById(
-      "resultCount"
-    ).textContent =
-      `${document.querySelectorAll(".product-card").length} products`;
+    const searchInput =
+      document.getElementById(
+        "productSearch"
+      );
+
+    const categoryFilter =
+      document.getElementById(
+        "categoryFilter"
+      );
+
+    const cards =
+      Array.from(
+        document.querySelectorAll(
+          ".product-card"
+        )
+      );
+
+    const resultCount =
+      document.getElementById(
+        "resultCount"
+      );
+
+    const noResults =
+      document.getElementById(
+        "noResults"
+      );
+
+
+    function filterProducts() {
+
+      const query =
+        searchInput.value
+          .trim()
+          .toLowerCase();
+
+      const category =
+        categoryFilter.value;
+
+      let visible = 0;
+
+
+      cards.forEach(card => {
+
+        const text =
+          card.dataset.search.toLowerCase();
+
+        const cardCategory =
+          card.dataset.category;
+
+        const matchesSearch =
+          !query ||
+          text.includes(query);
+
+        const matchesCategory =
+          category === "all" ||
+          cardCategory === category;
+
+        const show =
+          matchesSearch &&
+          matchesCategory;
+
+
+        card.style.display =
+          show ? "" : "none";
+
+
+        if (show) {
+          visible++;
+        }
+
+      });
+
+
+      resultCount.textContent =
+        `${visible} product${visible === 1 ? "" : "s"}`;
+
+
+      noResults.style.display =
+        visible === 0
+          ? "block"
+          : "none";
+
+    }
+
+
+    searchInput.addEventListener(
+      "input",
+      filterProducts
+    );
+
+
+    categoryFilter.addEventListener(
+      "change",
+      filterProducts
+    );
+
+
+    /* =========================
+       URL Filters
+    ========================= */
+
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    const urlCategory =
+      params.get("category");
+
+    const urlSearch =
+      params.get("search");
+
+
+    if (urlCategory) {
+
+      const option =
+        Array.from(
+          categoryFilter.options
+        ).find(
+          option =>
+            option.value === urlCategory
+        );
+
+      if (option) {
+
+        categoryFilter.value =
+          urlCategory;
+
+      }
+
+    }
+
+
+    if (urlSearch) {
+
+      searchInput.value =
+        urlSearch;
+
+    }
+
+
+    filterProducts();
 
 
     /* =========================
@@ -1994,6 +2569,30 @@
 
 
     /* =========================
+       Newsletter
+    ========================= */
+
+    document
+      .getElementById(
+        "newsletterForm"
+      )
+      .addEventListener(
+        "submit",
+        event => {
+
+          event.preventDefault();
+
+          showToast(
+            "Thanks for subscribing to Shopora."
+          );
+
+          event.target.reset();
+
+        }
+      );
+
+
+    /* =========================
        Year
     ========================= */
 
@@ -2039,5 +2638,3 @@
 
 </body>
 </html>
-```
-v
