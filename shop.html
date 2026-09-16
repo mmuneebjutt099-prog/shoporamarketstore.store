@@ -1,8 +1,8 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Shop Online | Fashion, Beauty, Electronics & More | Shopora</title>
@@ -11,7 +11,7 @@
         content="Shopora Market Store — discover fashion, beauty, electronics, home & living, accessories and lifestyle products for everyday shopping in Pakistan.">
 
   <meta name="keywords"
-        content="online shopping Pakistan, shop online Pakistan, fashion products, beauty products, electronics, home and living, accessories, lifestyle products, Shopora Market Store">
+        content="online shopping Pakistan, fashion products, beauty products, electronics, home and living, accessories, lifestyle products, Shopora Market Store">
 
   <meta name="robots" content="index, follow">
 
@@ -44,6 +44,7 @@
     crossorigin="anonymous"></script>
 
   <style>
+
     :root {
       --black: #111111;
       --ivory: #f7f4ee;
@@ -51,9 +52,7 @@
       --white: #ffffff;
       --muted: #77716a;
       --border: #e6e0d6;
-      --soft: #f0ece4;
-      --success: #315d45;
-      --shadow: 0 15px 45px rgba(17,17,17,.07);
+      --shadow: 0 12px 35px rgba(17,17,17,.07);
     }
 
     * {
@@ -83,13 +82,8 @@
       text-decoration: none;
     }
 
-    button,
-    input,
-    select {
-      font: inherit;
-    }
-
     button {
+      font: inherit;
       cursor: pointer;
     }
 
@@ -98,19 +92,25 @@
       margin: 0 auto;
     }
 
-    /* Announcement */
+
+    /* =========================
+       Announcement
+    ========================= */
 
     .announcement {
       background: var(--black);
       color: var(--white);
       text-align: center;
-      font-size: 12px;
+      font-size: 11px;
       letter-spacing: .08em;
       text-transform: uppercase;
       padding: 9px 15px;
     }
 
-    /* Header */
+
+    /* =========================
+       Header
+    ========================= */
 
     .site-header {
       position: sticky;
@@ -222,109 +222,44 @@
       height: 42px;
     }
 
-    /* Page Hero */
 
-    .shop-hero {
-      padding: 70px 0 48px;
-      border-bottom: 1px solid var(--border);
+    /* =========================
+       Simple Shop Heading
+    ========================= */
+
+    .shop-heading {
+      padding: 55px 0 35px;
+      text-align: center;
     }
 
-    .hero-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: var(--gold);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-    }
-
-    .hero-label::before {
-      content: "";
-      width: 28px;
-      height: 1px;
-      background: var(--gold);
-    }
-
-    .shop-hero h1 {
+    .shop-heading h1 {
       font-family: "Playfair Display", serif;
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.03;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.15;
       font-weight: 600;
-      max-width: 800px;
-      margin-bottom: 17px;
     }
 
-    .shop-hero p {
-      max-width: 680px;
+    .shop-heading p {
+      max-width: 600px;
+      margin: 12px auto 0;
       color: var(--muted);
-      font-size: 16px;
+      font-size: 15px;
     }
 
-    /* Toolbar */
+
+    /* =========================
+       Products
+    ========================= */
 
     .shop-area {
-      padding: 45px 0 90px;
-    }
-
-    .shop-toolbar {
-      display: grid;
-      grid-template-columns: 1fr 220px;
-      gap: 14px;
-      margin-bottom: 35px;
-    }
-
-    .search-box {
-      position: relative;
-    }
-
-    .search-box input {
-      width: 100%;
-      height: 54px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      padding: 0 50px 0 18px;
-      outline: none;
-      color: var(--black);
-      border-radius: 2px;
-      transition: border-color .2s ease, box-shadow .2s ease;
-    }
-
-    .search-box input:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(198,160,106,.12);
-    }
-
-    .search-symbol {
-      position: absolute;
-      right: 18px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--muted);
-      font-size: 19px;
-    }
-
-    .category-select {
-      height: 54px;
-      border: 1px solid var(--border);
-      background: var(--white);
-      padding: 0 15px;
-      outline: none;
-      color: var(--black);
-      border-radius: 2px;
-    }
-
-    .category-select:focus {
-      border-color: var(--gold);
+      padding: 5px 0 90px;
     }
 
     .shop-meta {
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      align-items: center;
+      margin-bottom: 22px;
     }
 
     .shop-meta h2 {
@@ -338,8 +273,6 @@
       font-size: 13px;
     }
 
-    /* Product Grid */
-
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -351,7 +284,7 @@
       border: 1px solid var(--border);
       position: relative;
       overflow: hidden;
-      transition: transform .3s ease, box-shadow .3s ease;
+      transition: transform .25s ease, box-shadow .25s ease;
     }
 
     .product-card:hover {
@@ -394,18 +327,14 @@
       transition: .2s ease;
     }
 
-    .wishlist-btn:hover {
-      background: var(--black);
-      color: var(--white);
-    }
-
+    .wishlist-btn:hover,
     .wishlist-btn.active {
       background: var(--black);
       color: var(--white);
     }
 
     .product-info {
-      padding: 18px 17px 19px;
+      padding: 17px 16px 18px;
     }
 
     .product-category {
@@ -419,16 +348,16 @@
 
     .product-title {
       font-family: "Playfair Display", serif;
-      font-size: 19px;
+      font-size: 18px;
       line-height: 1.25;
-      min-height: 48px;
-      margin-bottom: 9px;
+      min-height: 45px;
+      margin-bottom: 8px;
     }
 
     .product-price {
       font-size: 16px;
       font-weight: 700;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
     }
 
     .product-actions {
@@ -438,7 +367,7 @@
     }
 
     .btn {
-      min-height: 42px;
+      min-height: 41px;
       border: 1px solid var(--black);
       display: inline-flex;
       align-items: center;
@@ -456,7 +385,7 @@
     }
 
     .btn-dark:hover {
-      background: #2b2b2b;
+      background: #292929;
     }
 
     .btn-light {
@@ -469,120 +398,10 @@
       color: var(--white);
     }
 
-    .no-results {
-      display: none;
-      padding: 70px 20px;
-      text-align: center;
-      border: 1px solid var(--border);
-      background: var(--white);
-    }
 
-    .no-results h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 28px;
-      margin-bottom: 7px;
-    }
-
-    .no-results p {
-      color: var(--muted);
-    }
-
-    /* SEO content */
-
-    .seo-section {
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 65px 0;
-    }
-
-    .seo-content {
-      max-width: 850px;
-    }
-
-    .seo-content h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 34px;
-      margin-bottom: 17px;
-    }
-
-    .seo-content p {
-      color: var(--muted);
-      font-size: 15px;
-      margin-bottom: 13px;
-    }
-
-    .seo-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 23px;
-    }
-
-    .seo-links a {
-      border: 1px solid var(--border);
-      padding: 8px 13px;
-      font-size: 12px;
-      font-weight: 600;
-      background: var(--ivory);
-      transition: .2s ease;
-    }
-
-    .seo-links a:hover {
-      background: var(--black);
-      color: var(--white);
-      border-color: var(--black);
-    }
-
-    /* Newsletter */
-
-    .newsletter {
-      padding: 65px 0;
-      background: var(--black);
-      color: var(--white);
-    }
-
-    .newsletter-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 35px;
-    }
-
-    .newsletter h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 34px;
-      margin-bottom: 6px;
-    }
-
-    .newsletter p {
-      color: #c8c3bb;
-      font-size: 14px;
-    }
-
-    .newsletter-form {
-      display: flex;
-      min-width: 410px;
-    }
-
-    .newsletter-form input {
-      flex: 1;
-      height: 48px;
-      border: 0;
-      padding: 0 15px;
-      outline: none;
-    }
-
-    .newsletter-form button {
-      height: 48px;
-      border: 0;
-      background: var(--gold);
-      color: var(--white);
-      padding: 0 20px;
-      font-weight: 700;
-    }
-
-    /* Footer */
+    /* =========================
+       Footer
+    ========================= */
 
     footer {
       background: var(--black);
@@ -591,7 +410,7 @@
     }
 
     .footer-main {
-      padding: 65px 0 45px;
+      padding: 60px 0 42px;
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr;
       gap: 50px;
@@ -638,7 +457,10 @@
       font-size: 11px;
     }
 
-    /* Toast */
+
+    /* =========================
+       Toast
+    ========================= */
 
     .toast {
       position: fixed;
@@ -661,7 +483,10 @@
       opacity: 1;
     }
 
-    /* Responsive */
+
+    /* =========================
+       Responsive
+    ========================= */
 
     @media (max-width: 1050px) {
 
@@ -681,6 +506,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
     }
+
 
     @media (max-width: 850px) {
 
@@ -721,20 +547,8 @@
         margin-left: auto;
       }
 
-      .shop-toolbar {
-        grid-template-columns: 1fr;
-      }
-
-      .newsletter-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .newsletter-form {
-        min-width: 0;
-        width: 100%;
-      }
     }
+
 
     @media (max-width: 640px) {
 
@@ -743,7 +557,7 @@
       }
 
       .announcement {
-        font-size: 10px;
+        font-size: 9px;
       }
 
       .header-inner {
@@ -754,21 +568,33 @@
         width: 150px;
       }
 
-      .mobile-toggle {
-        order: 3;
+      .shop-heading {
+        padding: 42px 0 28px;
       }
 
-      .shop-hero {
-        padding: 48px 0 35px;
+      .shop-heading h1 {
+        font-size: 34px;
+      }
+
+      .shop-heading p {
+        font-size: 14px;
       }
 
       .shop-area {
-        padding: 32px 0 60px;
+        padding: 0 0 60px;
       }
 
       .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 12px;
+      }
+
+      .shop-meta {
+        margin-bottom: 16px;
+      }
+
+      .shop-meta h2 {
+        font-size: 22px;
       }
 
       .product-info {
@@ -792,22 +618,6 @@
         min-height: 39px;
       }
 
-      .seo-section {
-        padding: 45px 0;
-      }
-
-      .seo-content h2 {
-        font-size: 28px;
-      }
-
-      .newsletter {
-        padding: 48px 0;
-      }
-
-      .newsletter h2 {
-        font-size: 29px;
-      }
-
       .footer-main {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -817,13 +627,11 @@
       .footer-bottom {
         flex-direction: column;
       }
+
     }
 
-    @media (max-width: 400px) {
 
-      .header-actions {
-        gap: 0;
-      }
+    @media (max-width: 400px) {
 
       .icon-link {
         width: 36px;
@@ -845,8 +653,11 @@
       .product-title {
         font-size: 15px;
       }
+
     }
+
   </style>
+
 
   <!-- Structured Data -->
 
@@ -867,11 +678,14 @@
 
 </head>
 
+
 <body>
+
 
   <div class="announcement">
     SHOPORA — Curated products. Better everyday shopping.
   </div>
+
 
   <!-- Header -->
 
@@ -893,6 +707,7 @@
 
       </a>
 
+
       <nav class="main-nav" id="mainNav">
 
         <a href="index.html">Home</a>
@@ -909,6 +724,7 @@
 
       </nav>
 
+
       <div class="header-actions">
 
         <a
@@ -920,6 +736,7 @@
           <span class="count" id="wishlistCount">0</span>
         </a>
 
+
         <a
           href="cart.html"
           class="icon-link"
@@ -928,6 +745,7 @@
           🛒
           <span class="count" id="cartCount">0</span>
         </a>
+
 
         <button
           class="mobile-toggle"
@@ -947,23 +765,19 @@
 
   <main>
 
-    <!-- Shop Hero -->
 
-    <section class="shop-hero">
+    <!-- Simple Heading -->
+
+    <section class="shop-heading">
 
       <div class="container">
 
-        <div class="hero-label">
-          Shopora Collection
-        </div>
-
         <h1>
-          Shop products made for everyday living.
+          Shop
         </h1>
 
         <p>
-          Explore a curated marketplace of fashion, beauty, electronics,
-          home & living, accessories and lifestyle essentials.
+          Discover fashion, beauty, electronics, home essentials and more.
         </p>
 
       </div>
@@ -971,65 +785,11 @@
     </section>
 
 
-    <!-- Shop -->
+    <!-- Products -->
 
     <section class="shop-area">
 
       <div class="container">
-
-        <div class="shop-toolbar">
-
-          <div class="search-box">
-
-            <input
-              type="search"
-              id="productSearch"
-              placeholder="Search products, categories..."
-              autocomplete="off"
-            >
-
-            <span class="search-symbol">⌕</span>
-
-          </div>
-
-          <select
-            class="category-select"
-            id="categoryFilter"
-            aria-label="Filter products by category"
-          >
-
-            <option value="all">
-              All Categories
-            </option>
-
-            <option value="Fashion">
-              Fashion
-            </option>
-
-            <option value="Beauty">
-              Beauty
-            </option>
-
-            <option value="Electronics">
-              Electronics
-            </option>
-
-            <option value="Home & Living">
-              Home & Living
-            </option>
-
-            <option value="Accessories">
-              Accessories
-            </option>
-
-            <option value="Lifestyle">
-              Lifestyle
-            </option>
-
-          </select>
-
-        </div>
-
 
         <div class="shop-meta">
 
@@ -1044,16 +804,12 @@
         </div>
 
 
-        <div class="product-grid" id="productGrid">
+        <div class="product-grid">
 
 
           <!-- Product 1 -->
 
-          <article
-            class="product-card"
-            data-category="Lifestyle"
-            data-search="everyday premium essential lifestyle"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1073,6 +829,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1086,6 +843,7 @@
               <div class="product-price">
                 Rs. 2,499
               </div>
+
 
               <div class="product-actions">
 
@@ -1114,11 +872,7 @@
 
           <!-- Product 2 -->
 
-          <article
-            class="product-card"
-            data-category="Fashion"
-            data-search="modern everyday collection fashion"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1138,6 +892,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1151,6 +906,7 @@
               <div class="product-price">
                 Rs. 3,499
               </div>
+
 
               <div class="product-actions">
 
@@ -1179,11 +935,7 @@
 
           <!-- Product 3 -->
 
-          <article
-            class="product-card"
-            data-category="Electronics"
-            data-search="smart everyday device wireless earbuds electronics"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1203,6 +955,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1216,6 +969,7 @@
               <div class="product-price">
                 Rs. 4,999
               </div>
+
 
               <div class="product-actions">
 
@@ -1244,11 +998,7 @@
 
           <!-- Product 4 -->
 
-          <article
-            class="product-card"
-            data-category="Accessories"
-            data-search="minimal signature accessory watch accessories"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1268,6 +1018,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1281,6 +1032,7 @@
               <div class="product-price">
                 Rs. 1,899
               </div>
+
 
               <div class="product-actions">
 
@@ -1309,11 +1061,7 @@
 
           <!-- Product 5 -->
 
-          <article
-            class="product-card"
-            data-category="Beauty"
-            data-search="daily beauty essential beauty skincare"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1333,6 +1081,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1346,6 +1095,7 @@
               <div class="product-price">
                 Rs. 1,599
               </div>
+
 
               <div class="product-actions">
 
@@ -1374,11 +1124,7 @@
 
           <!-- Product 6 -->
 
-          <article
-            class="product-card"
-            data-category="Home & Living"
-            data-search="modern home essential home living lamp"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1398,6 +1144,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1411,6 +1158,7 @@
               <div class="product-price">
                 Rs. 2,299
               </div>
+
 
               <div class="product-actions">
 
@@ -1439,11 +1187,7 @@
 
           <!-- Product 7 -->
 
-          <article
-            class="product-card"
-            data-category="Lifestyle"
-            data-search="everyday lifestyle pick bottle lifestyle"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1463,6 +1207,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1476,6 +1221,7 @@
               <div class="product-price">
                 Rs. 1,999
               </div>
+
 
               <div class="product-actions">
 
@@ -1504,11 +1250,7 @@
 
           <!-- Product 8 -->
 
-          <article
-            class="product-card"
-            data-category="Fashion"
-            data-search="classic wardrobe essential trousers fashion"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1528,6 +1270,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1541,6 +1284,7 @@
               <div class="product-price">
                 Rs. 2,899
               </div>
+
 
               <div class="product-actions">
 
@@ -1569,11 +1313,7 @@
 
           <!-- Product 9 -->
 
-          <article
-            class="product-card"
-            data-category="Beauty"
-            data-search="signature beauty set self care beauty"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1593,6 +1333,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1606,6 +1347,7 @@
               <div class="product-price">
                 Rs. 1,799
               </div>
+
 
               <div class="product-actions">
 
@@ -1634,11 +1376,7 @@
 
           <!-- Product 10 -->
 
-          <article
-            class="product-card"
-            data-category="Electronics"
-            data-search="connected smart essential smartwatch electronics"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1658,6 +1396,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1671,6 +1410,7 @@
               <div class="product-price">
                 Rs. 5,999
               </div>
+
 
               <div class="product-actions">
 
@@ -1699,11 +1439,7 @@
 
           <!-- Product 11 -->
 
-          <article
-            class="product-card"
-            data-category="Accessories"
-            data-search="everyday carry accessory bag accessories"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1723,6 +1459,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1736,6 +1473,7 @@
               <div class="product-price">
                 Rs. 1,399
               </div>
+
 
               <div class="product-actions">
 
@@ -1764,11 +1502,7 @@
 
           <!-- Product 12 -->
 
-          <article
-            class="product-card"
-            data-category="Home & Living"
-            data-search="elevated living essential ceramic home living"
-          >
+          <article class="product-card">
 
             <div class="product-image">
 
@@ -1788,6 +1522,7 @@
 
             </div>
 
+
             <div class="product-info">
 
               <div class="product-category">
@@ -1801,6 +1536,7 @@
               <div class="product-price">
                 Rs. 2,699
               </div>
+
 
               <div class="product-actions">
 
@@ -1826,122 +1562,8 @@
 
           </article>
 
-        </div>
-
-
-        <div class="no-results" id="noResults">
-
-          <h3>
-            No products found
-          </h3>
-
-          <p>
-            Try another product name or choose a different category.
-          </p>
 
         </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- SEO Section -->
-
-    <section class="seo-section">
-
-      <div class="container">
-
-        <div class="seo-content">
-
-          <h2>
-            Online Shopping for Everyday Essentials
-          </h2>
-
-          <p>
-            Shopora Market Store brings together a curated selection of
-            products for modern everyday shopping in Pakistan. Browse
-            fashion products, beauty essentials, electronics, home and
-            living products, accessories and lifestyle picks in one place.
-          </p>
-
-          <p>
-            Whether you are looking for everyday fashion, useful electronics,
-            beauty products, home essentials or accessories, Shopora makes
-            product discovery simple and organized.
-          </p>
-
-          <div class="seo-links">
-
-            <a href="shop.html?category=Fashion">
-              Fashion
-            </a>
-
-            <a href="shop.html?category=Beauty">
-              Beauty
-            </a>
-
-            <a href="shop.html?category=Electronics">
-              Electronics
-            </a>
-
-            <a href="shop.html?category=Home%20%26%20Living">
-              Home & Living
-            </a>
-
-            <a href="shop.html?category=Accessories">
-              Accessories
-            </a>
-
-            <a href="shop.html?category=Lifestyle">
-              Lifestyle
-            </a>
-
-            <a href="trending.html">
-              Trending Products
-            </a>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- Newsletter -->
-
-    <section class="newsletter">
-
-      <div class="container newsletter-inner">
-
-        <div>
-
-          <h2>
-            Stay in the Shopora loop.
-          </h2>
-
-          <p>
-            Get new product picks, shopping inspiration and updates.
-          </p>
-
-        </div>
-
-        <form class="newsletter-form" id="newsletterForm">
-
-          <input
-            type="email"
-            placeholder="Your email address"
-            aria-label="Email address"
-            required
-          >
-
-          <button type="submit">
-            Subscribe
-          </button>
-
-        </form>
 
       </div>
 
@@ -1955,6 +1577,7 @@
   <footer>
 
     <div class="container footer-main">
+
 
       <div class="footer-brand">
 
@@ -2044,9 +1667,9 @@
 
   <script>
 
-    /* -----------------------------
+    /* =========================
        Storage
-    ----------------------------- */
+    ========================= */
 
     const CART_KEY = "shoporaCart";
     const WISHLIST_KEY = "shoporaWishlist";
@@ -2055,9 +1678,14 @@
     function getCart() {
 
       try {
-        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+        return JSON.parse(
+          localStorage.getItem(CART_KEY)
+        ) || [];
+
       } catch {
+
         return [];
+
       }
 
     }
@@ -2076,9 +1704,14 @@
     function getWishlist() {
 
       try {
-        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+        return JSON.parse(
+          localStorage.getItem(WISHLIST_KEY)
+        ) || [];
+
       } catch {
+
         return [];
+
       }
 
     }
@@ -2094,14 +1727,13 @@
     }
 
 
-    /* -----------------------------
-       Counts
-    ----------------------------- */
+    /* =========================
+       Header Counts
+    ========================= */
 
     function updateCounts() {
 
       const cart = getCart();
-
       const wishlist = getWishlist();
 
       const cartCount = cart.reduce(
@@ -2110,24 +1742,27 @@
         0
       );
 
-      document.getElementById("cartCount").textContent =
-        cartCount;
+      document.getElementById(
+        "cartCount"
+      ).textContent = cartCount;
 
-      document.getElementById("wishlistCount").textContent =
-        wishlist.length;
+      document.getElementById(
+        "wishlistCount"
+      ).textContent = wishlist.length;
 
     }
 
 
-    /* -----------------------------
+    /* =========================
        Toast
-    ----------------------------- */
+    ========================= */
 
     let toastTimer;
 
     function showToast(message) {
 
-      const toast = document.getElementById("toast");
+      const toast =
+        document.getElementById("toast");
 
       toast.textContent = message;
 
@@ -2144,63 +1779,70 @@
     }
 
 
-    /* -----------------------------
-       Add to cart
-    ----------------------------- */
+    /* =========================
+       Add To Cart
+    ========================= */
 
-    document.querySelectorAll(".add-cart").forEach(button => {
+    document
+      .querySelectorAll(".add-cart")
+      .forEach(button => {
 
-      button.addEventListener("click", () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-        const name =
-          button.dataset.name;
+            const name =
+              button.dataset.name;
 
-        const price =
-          Number(button.dataset.price);
+            const price =
+              Number(button.dataset.price);
 
-        const image =
-          button.dataset.image;
+            const image =
+              button.dataset.image;
 
-        const cart =
-          getCart();
+            const cart =
+              getCart();
 
-        const existing =
-          cart.find(item =>
-            item.name === name
-          );
+            const existing =
+              cart.find(
+                item => item.name === name
+              );
 
-        if (existing) {
 
-          existing.quantity =
-            Number(existing.quantity || 1) + 1;
+            if (existing) {
 
-        } else {
+              existing.quantity =
+                Number(existing.quantity || 1) + 1;
 
-          cart.push({
-            name,
-            price,
-            image,
-            quantity: 1
-          });
+            } else {
 
-        }
+              cart.push({
+                name,
+                price,
+                image,
+                quantity: 1
+              });
 
-        saveCart(cart);
+            }
 
-        updateCounts();
 
-        showToast(
-          `${name} added to cart.`
+            saveCart(cart);
+
+            updateCounts();
+
+            showToast(
+              `${name} added to cart.`
+            );
+
+          }
         );
 
       });
 
-    });
 
-
-    /* -----------------------------
+    /* =========================
        Wishlist
-    ----------------------------- */
+    ========================= */
 
     function updateWishlistButtons() {
 
@@ -2234,185 +1876,74 @@
       .querySelectorAll(".wishlist-btn")
       .forEach(button => {
 
-        button.addEventListener("click", () => {
+        button.addEventListener(
+          "click",
+          () => {
 
-          const slug =
-            button.dataset.product;
+            const slug =
+              button.dataset.product;
 
-          let wishlist =
-            getWishlist();
+            let wishlist =
+              getWishlist();
 
-          if (wishlist.includes(slug)) {
 
-            wishlist =
-              wishlist.filter(
-                item => item !== slug
+            if (wishlist.includes(slug)) {
+
+              wishlist =
+                wishlist.filter(
+                  item => item !== slug
+                );
+
+              showToast(
+                "Removed from wishlist."
               );
 
-            showToast(
-              "Removed from wishlist."
-            );
+            } else {
 
-          } else {
+              wishlist.push(slug);
 
-            wishlist.push(slug);
+              showToast(
+                "Added to wishlist."
+              );
 
-            showToast(
-              "Added to wishlist."
-            );
+            }
+
+
+            saveWishlist(wishlist);
+
+            updateCounts();
+
+            updateWishlistButtons();
 
           }
-
-          saveWishlist(wishlist);
-
-          updateCounts();
-
-          updateWishlistButtons();
-
-        });
-
-      });
-
-
-    /* -----------------------------
-       Search + Filter
-    ----------------------------- */
-
-    const searchInput =
-      document.getElementById("productSearch");
-
-    const categoryFilter =
-      document.getElementById("categoryFilter");
-
-    const cards =
-      Array.from(
-        document.querySelectorAll(".product-card")
-      );
-
-    const resultCount =
-      document.getElementById("resultCount");
-
-    const noResults =
-      document.getElementById("noResults");
-
-
-    function filterProducts() {
-
-      const query =
-        searchInput.value
-          .trim()
-          .toLowerCase();
-
-      const category =
-        categoryFilter.value;
-
-      let visible = 0;
-
-      cards.forEach(card => {
-
-        const text =
-          card.dataset.search.toLowerCase();
-
-        const cardCategory =
-          card.dataset.category;
-
-        const matchesSearch =
-          !query ||
-          text.includes(query);
-
-        const matchesCategory =
-          category === "all" ||
-          cardCategory === category;
-
-        const show =
-          matchesSearch &&
-          matchesCategory;
-
-        card.style.display =
-          show ? "" : "none";
-
-        if (show) {
-          visible++;
-        }
-
-      });
-
-      resultCount.textContent =
-        `${visible} product${visible === 1 ? "" : "s"}`;
-
-      noResults.style.display =
-        visible === 0 ? "block" : "none";
-
-    }
-
-
-    searchInput.addEventListener(
-      "input",
-      filterProducts
-    );
-
-    categoryFilter.addEventListener(
-      "change",
-      filterProducts
-    );
-
-
-    /* -----------------------------
-       URL filters
-    ----------------------------- */
-
-    const params =
-      new URLSearchParams(
-        window.location.search
-      );
-
-    const urlCategory =
-      params.get("category");
-
-    const urlSearch =
-      params.get("search");
-
-
-    if (urlCategory) {
-
-      const option =
-        Array.from(
-          categoryFilter.options
-        ).find(
-          option =>
-            option.value === urlCategory
         );
 
-      if (option) {
-
-        categoryFilter.value =
-          urlCategory;
-
-      }
-
-    }
+      });
 
 
-    if (urlSearch) {
+    /* =========================
+       Product Count
+    ========================= */
 
-      searchInput.value =
-        urlSearch;
-
-    }
-
-
-    filterProducts();
+    document.getElementById(
+      "resultCount"
+    ).textContent =
+      `${document.querySelectorAll(".product-card").length} products`;
 
 
-    /* -----------------------------
+    /* =========================
        Mobile Menu
-    ----------------------------- */
+    ========================= */
 
     const mobileToggle =
-      document.getElementById("mobileToggle");
+      document.getElementById(
+        "mobileToggle"
+      );
 
     const mainNav =
-      document.getElementById("mainNav");
+      document.getElementById(
+        "mainNav"
+      );
 
 
     mobileToggle.addEventListener(
@@ -2420,7 +1951,9 @@
       () => {
 
         const open =
-          mainNav.classList.toggle("open");
+          mainNav.classList.toggle(
+            "open"
+          );
 
         mobileToggle.setAttribute(
           "aria-expanded",
@@ -2442,9 +1975,12 @@
           "click",
           () => {
 
-            mainNav.classList.remove("open");
+            mainNav.classList.remove(
+              "open"
+            );
 
-            mobileToggle.textContent = "☰";
+            mobileToggle.textContent =
+              "☰";
 
             mobileToggle.setAttribute(
               "aria-expanded",
@@ -2457,39 +1993,19 @@
       });
 
 
-    /* -----------------------------
-       Newsletter
-    ----------------------------- */
-
-    document
-      .getElementById("newsletterForm")
-      .addEventListener(
-        "submit",
-        event => {
-
-          event.preventDefault();
-
-          showToast(
-            "Thanks for subscribing to Shopora."
-          );
-
-          event.target.reset();
-
-        }
-      );
-
-
-    /* -----------------------------
+    /* =========================
        Year
-    ----------------------------- */
+    ========================= */
 
-    document.getElementById("year").textContent =
+    document.getElementById(
+      "year"
+    ).textContent =
       new Date().getFullYear();
 
 
-    /* -----------------------------
-       Initial state
-    ----------------------------- */
+    /* =========================
+       Initial State
+    ========================= */
 
     updateCounts();
 
@@ -2523,3 +2039,5 @@
 
 </body>
 </html>
+```
+v
