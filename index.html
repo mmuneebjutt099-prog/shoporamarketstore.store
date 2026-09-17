@@ -2,55 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Shopora Market Store | Online Shopping for Fashion, Beauty, Electronics & More</title>
 
-  <!-- Google AdSense -->
-  <meta name="google-adsense-account" content="ca-pub-4557042213123629">
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
-    crossorigin="anonymous"></script>
+  <meta name="description" content="Shopora Market Store is a modern online marketplace for fashion, beauty, electronics, accessories, home & living and lifestyle products.">
 
-  <meta name="description"
-        content="Shopora Market Store is a modern online marketplace for fashion, beauty, electronics, accessories, home & living and everyday lifestyle products.">
-
-  <meta name="keywords"
-        content="Shopora Market Store, online shopping, fashion, beauty, electronics, accessories, home living, lifestyle products">
-
-  <meta name="author" content="Shopora Market Store">
+  <meta name="robots" content="index, follow">
 
   <link rel="canonical" href="https://shoporamarketstore.store/">
 
+  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
+
   <!-- Open Graph -->
+  <meta property="og:title" content="Shopora Market Store">
+  <meta property="og:description" content="Discover fashion, beauty, electronics, accessories, home & living and lifestyle products.">
   <meta property="og:type" content="website">
-  <meta property="og:title"
-        content="Shopora Market Store | Online Shopping for Fashion, Beauty, Electronics & More">
-  <meta property="og:description"
-        content="Discover fashion, beauty, electronics, accessories, home & living and everyday essentials at Shopora Market Store.">
   <meta property="og:url" content="https://shoporamarketstore.store/">
-  <meta property="og:image"
-        content="https://shoporamarketstore.store/assets/shopora-logo.png">
+  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title"
-        content="Shopora Market Store | Online Shopping">
-  <meta name="twitter:description"
-        content="Discover modern products for everyday life at Shopora Market Store.">
-  <meta name="twitter:image"
-        content="https://shoporamarketstore.store/assets/shopora-logo.png">
+  <meta name="twitter:title" content="Shopora Market Store">
+  <meta name="twitter:description" content="A modern online marketplace for everyday products.">
+  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
+  <!-- Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-4557042213123629">
+
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
+    crossorigin="anonymous">
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-        rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 
   <!-- Organization Schema -->
   <script type="application/ld+json">
@@ -81,20 +70,18 @@
   </script>
 
   <style>
+
     :root {
       --black: #111111;
-      --black-soft: #191816;
-      --cream: #f7f4ee;
+      --black-soft: #191919;
+      --ivory: #f7f4ee;
       --white: #ffffff;
       --gold: #c6a06a;
       --gold-dark: #9c753e;
-      --text: #24211e;
-      --muted: #77716a;
-      --border: #e7e0d6;
-      --soft: #efebe3;
-      --container: 1240px;
-      --radius: 18px;
-      --shadow: 0 18px 55px rgba(20,17,13,.09);
+      --text: #202020;
+      --muted: #777777;
+      --border: #e5e0d7;
+      --light: #efebe3;
     }
 
     * {
@@ -108,51 +95,62 @@
     }
 
     body {
-      font-family: "DM Sans", sans-serif;
+      font-family: "DM Sans", Arial, sans-serif;
+      background: var(--ivory);
       color: var(--text);
-      background: var(--white);
       line-height: 1.6;
-      overflow-x: hidden;
     }
 
-    img {
-      display: block;
-      max-width: 100%;
+    body.no-scroll {
+      overflow: hidden;
     }
 
     a {
-      color: inherit;
       text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
     }
 
     button,
-    input {
+    input,
+    textarea,
+    select {
       font: inherit;
     }
 
     .container {
-      width: min(var(--container), calc(100% - 40px));
+      width: min(1180px, calc(100% - 40px));
       margin: auto;
     }
 
-    /* TOP BAR */
+    /* =====================================================
+       TOP BAR
+    ===================================================== */
+
     .topbar {
       background: var(--black);
       color: #fff;
       text-align: center;
       padding: 9px 15px;
       font-size: 12px;
-      letter-spacing: .04em;
+      letter-spacing: .3px;
     }
 
-    /* HEADER */
-    .header {
+    /* =====================================================
+       HEADER
+    ===================================================== */
+
+    header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,.96);
-      backdrop-filter: blur(14px);
+      background: rgba(247,244,238,.97);
       border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
     }
 
     .header-inner {
@@ -166,96 +164,112 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 11px;
+      gap: 10px;
       flex-shrink: 0;
     }
 
     .brand img {
-      width: 43px;
-      height: 43px;
+      width: 44px;
+      height: 44px;
       object-fit: contain;
     }
 
-    .brand-text {
-      font-family: "Playfair Display", serif;
-      font-size: 23px;
-      font-weight: 600;
-      letter-spacing: -.02em;
+    .brand-name {
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: .4px;
     }
 
-    .nav {
+    .desktop-nav {
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 24px;
+    }
+
+    .desktop-nav a {
       font-size: 14px;
-      font-weight: 500;
+      font-weight: 600;
+      transition: color .2s ease;
     }
 
-    .nav a {
-      position: relative;
-      padding: 28px 0;
-    }
-
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 20px;
-      width: 0;
-      height: 1px;
-      background: var(--black);
-      transition: .25s;
-    }
-
-    .nav a:hover::after {
-      width: 100%;
+    .desktop-nav a:hover {
+      color: var(--gold-dark);
     }
 
     .header-actions {
       display: flex;
       align-items: center;
       gap: 15px;
+      white-space: nowrap;
     }
 
-    .icon-btn {
+    .header-actions a {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .menu-button {
+      display: none;
       border: 0;
       background: transparent;
+      font-size: 27px;
       cursor: pointer;
-      position: relative;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      font-size: 19px;
     }
 
-    .count {
-      position: absolute;
-      top: 0;
-      right: -1px;
-      min-width: 17px;
-      height: 17px;
-      padding: 0 4px;
-      background: var(--black);
-      color: white;
-      border-radius: 50px;
-      font-size: 9px;
-      display: grid;
-      place-items: center;
-    }
+    /* =====================================================
+       MOBILE MENU
+    ===================================================== */
 
     .mobile-menu {
       display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: var(--ivory);
+      padding: 25px;
     }
 
-    /* HERO */
+    .mobile-menu.open {
+      display: block;
+    }
+
+    .mobile-menu-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 45px;
+    }
+
+    .mobile-close {
+      border: 0;
+      background: transparent;
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    .mobile-links {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+    }
+
+    .mobile-links a {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 30px;
+    }
+
+    /* =====================================================
+       HERO
+    ===================================================== */
+
     .hero {
       position: relative;
       min-height: 680px;
-      height: calc(100vh - 120px);
-      max-height: 820px;
       overflow: hidden;
       background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .hero-video {
@@ -264,116 +278,65 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
+      z-index: 0;
     }
 
-    .hero::after {
-      content: "";
+    .hero-overlay {
       position: absolute;
       inset: 0;
       background:
         linear-gradient(
-          90deg,
-          rgba(0,0,0,.52),
-          rgba(0,0,0,.12) 60%,
-          rgba(0,0,0,.28)
+          180deg,
+          rgba(0,0,0,.25),
+          rgba(0,0,0,.55)
         );
+      z-index: 1;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      height: 100%;
-      min-height: 680px;
-      display: flex;
-      align-items: center;
+      width: min(920px, calc(100% - 30px));
+      text-align: center;
+      color: #fff;
+      padding-top: 40px;
     }
 
-    .hero-copy {
-      max-width: 670px;
-      color: white;
-    }
-
-    .eyebrow {
+    .hero-eyebrow {
       text-transform: uppercase;
-      letter-spacing: .18em;
-      font-size: 11px;
-      font-weight: 600;
-      margin-bottom: 18px;
+      letter-spacing: 3px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #e7d4b5;
+      margin-bottom: 15px;
     }
 
     .hero h1 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(46px, 6vw, 78px);
-      line-height: 1.02;
-      font-weight: 600;
-      letter-spacing: -.035em;
-      margin-bottom: 22px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(42px, 6vw, 72px);
+      line-height: 1.05;
+      font-weight: 500;
+      margin-bottom: 18px;
     }
 
-    .hero-copy p {
-      max-width: 560px;
-      font-size: 17px;
-      color: rgba(255,255,255,.9);
-      margin-bottom: 30px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 23px;
-      border-radius: 5px;
-      border: 1px solid transparent;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: .25s;
-    }
-
-    .btn-dark {
-      background: white;
-      color: var(--black);
-    }
-
-    .btn-dark:hover {
-      background: var(--cream);
-    }
-
-    .btn-outline-light {
-      color: white;
-      border-color: rgba(255,255,255,.7);
-    }
-
-    .btn-outline-light:hover {
-      background: white;
-      color: var(--black);
+    .hero-text {
+      max-width: 650px;
+      margin: 0 auto 30px;
+      color: rgba(255,255,255,.88);
+      font-size: 16px;
     }
 
     /* HERO SEARCH */
-    .hero-search-wrap {
-      position: absolute;
-      z-index: 5;
-      left: 50%;
-      bottom: 42px;
-      transform: translateX(-50%);
-      width: min(720px, calc(100% - 40px));
-    }
 
     .hero-search {
-      height: 68px;
-      background: white;
-      border-radius: 50px;
-      padding: 7px;
+      width: min(720px, 100%);
+      height: 66px;
+      margin: 0 auto;
       display: flex;
-      box-shadow: 0 15px 45px rgba(0,0,0,.22);
+      background: #fff;
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,.25);
     }
 
     .hero-search input {
@@ -381,65 +344,74 @@
       min-width: 0;
       border: 0;
       outline: 0;
-      padding: 0 20px;
-      font-size: 14px;
-      color: var(--text);
-      background: transparent;
+      padding: 0 22px;
+      font-size: 16px;
+      color: #222;
+      background: #fff;
     }
 
     .hero-search button {
-      width: 54px;
+      width: 145px;
       border: 0;
-      border-radius: 50%;
       background: var(--black);
-      color: white;
+      color: #fff;
       cursor: pointer;
-      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .hero-search button:hover {
+      background: var(--gold-dark);
     }
 
     /* FLOATING SEARCH */
+
     .floating-search {
       position: fixed;
-      z-index: 2000;
-      top: 15px;
+      top: 90px;
       left: 50%;
-      width: min(560px, calc(100% - 120px));
-      transform: translate(-50%, -130px);
-      transition: transform .3s ease;
+      transform: translate(-50%, -20px);
+      width: min(680px, calc(100% - 30px));
+      height: 52px;
+      display: flex;
+      background: #fff;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 35px rgba(0,0,0,.15);
+      z-index: 950;
+      opacity: 0;
+      visibility: hidden;
+      transition: .25s ease;
     }
 
     body.search-stuck .floating-search {
+      opacity: 1;
+      visibility: visible;
       transform: translate(-50%, 0);
-    }
-
-    .floating-search form {
-      height: 48px;
-      background: white;
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      box-shadow: 0 12px 35px rgba(0,0,0,.12);
-      display: flex;
-      overflow: hidden;
     }
 
     .floating-search input {
       flex: 1;
       border: 0;
       outline: 0;
-      padding: 0 18px;
-      min-width: 0;
-      font-size: 13px;
+      padding: 0 17px;
     }
 
     .floating-search button {
-      width: 48px;
+      width: 100px;
       border: 0;
       background: var(--black);
-      color: white;
+      color: #fff;
       cursor: pointer;
+      font-weight: 700;
     }
 
-    /* SECTION */
+    /* =====================================================
+       GENERAL SECTION
+    ===================================================== */
+
+    section {
+      scroll-margin-top: 100px;
+    }
+
     .section {
       padding: 90px 0;
     }
@@ -448,161 +420,175 @@
       display: flex;
       justify-content: space-between;
       align-items: end;
-      gap: 20px;
-      margin-bottom: 35px;
+      gap: 25px;
+      margin-bottom: 32px;
     }
 
-    .section-label {
-      font-size: 11px;
+    .section-kicker {
+      color: var(--gold-dark);
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: .16em;
+      letter-spacing: 2px;
       font-weight: 700;
-      color: var(--muted);
-      margin-bottom: 8px;
+      margin-bottom: 7px;
     }
 
     .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(30px, 4vw, 45px);
-      line-height: 1.1;
-      font-weight: 600;
-      letter-spacing: -.025em;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 500;
+      line-height: 1.15;
     }
 
-    .view-all {
-      font-size: 13px;
-      font-weight: 600;
+    .section-link {
+      font-size: 14px;
+      font-weight: 700;
       border-bottom: 1px solid var(--black);
       padding-bottom: 3px;
-      white-space: nowrap;
     }
 
-    /* PRODUCTS */
-    .products-grid {
+    /* =====================================================
+       PRODUCTS
+    ===================================================== */
+
+    .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
 
     .product-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      overflow: hidden;
       position: relative;
-      min-width: 0;
     }
 
     .product-image {
-      position: relative;
+      aspect-ratio: 1 / 1;
       overflow: hidden;
-      aspect-ratio: 1 / 1.05;
-      background: var(--cream);
-      border-radius: var(--radius);
-      margin-bottom: 15px;
+      background: var(--light);
+      position: relative;
     }
 
     .product-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .45s ease;
+      transition: transform .4s ease;
     }
 
     .product-card:hover .product-image img {
-      transform: scale(1.035);
+      transform: scale(1.04);
     }
 
     .product-tag {
       position: absolute;
-      top: 13px;
-      left: 13px;
-      z-index: 2;
-      background: white;
-      padding: 6px 10px;
+      top: 12px;
+      left: 12px;
+      background: var(--black);
+      color: #fff;
+      padding: 5px 9px;
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: .07em;
-      border-radius: 3px;
+      letter-spacing: .7px;
     }
 
-    .wishlist {
+    .wishlist-btn {
       position: absolute;
-      right: 13px;
-      top: 13px;
-      z-index: 2;
+      top: 10px;
+      right: 10px;
       width: 36px;
       height: 36px;
       border: 0;
       border-radius: 50%;
-      background: white;
+      background: rgba(255,255,255,.92);
       cursor: pointer;
-      font-size: 17px;
+      font-size: 18px;
+    }
+
+    .wishlist-btn.active {
+      color: var(--gold-dark);
+    }
+
+    .product-info {
+      padding: 18px;
     }
 
     .product-category {
-      color: var(--muted);
       font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 4px;
+      letter-spacing: 1px;
+      color: var(--muted);
+      margin-bottom: 6px;
     }
 
     .product-name {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 7px;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 9px;
     }
 
     .product-bottom {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 10px;
     }
 
     .product-price {
       font-weight: 700;
-      font-size: 14px;
+      color: var(--gold-dark);
     }
 
     .add-cart {
       border: 0;
       background: var(--black);
-      color: white;
-      padding: 8px 12px;
-      border-radius: 4px;
-      font-size: 11px;
+      color: #fff;
+      padding: 9px 12px;
       cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
     }
 
-    /* TRUST */
-    .trust {
+    .add-cart:hover {
+      background: var(--gold-dark);
+    }
+
+    /* =====================================================
+       TRUST BAR
+    ===================================================== */
+
+    .trust-bar {
       background: var(--black);
-      color: white;
-      padding: 25px 0;
+      color: #fff;
+      padding: 30px 0;
     }
 
     .trust-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 30px;
       text-align: center;
     }
 
-    .trust-item {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: .03em;
+    .trust-item strong {
+      display: block;
+      color: #fff;
+      margin-bottom: 4px;
     }
 
     .trust-item span {
-      display: block;
       color: #aaa;
-      font-size: 11px;
-      font-weight: 400;
-      margin-top: 3px;
+      font-size: 13px;
     }
 
-    /* CATEGORIES */
-    .categories-grid {
+    /* =====================================================
+       CATEGORIES
+    ===================================================== */
+
+    .category-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -610,194 +596,320 @@
 
     .category-card {
       position: relative;
-      min-height: 290px;
+      min-height: 280px;
       overflow: hidden;
-      border-radius: var(--radius);
-      background: #ddd;
+      background: #222;
     }
 
     .category-card img {
-      width: 100%;
-      height: 100%;
       position: absolute;
       inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
-      transition: transform .45s ease;
+      transition: transform .4s ease;
     }
 
     .category-card:hover img {
       transform: scale(1.04);
     }
 
-    .category-card::after {
-      content: "";
+    .category-overlay {
       position: absolute;
       inset: 0;
       background: linear-gradient(
-        to top,
-        rgba(0,0,0,.65),
-        rgba(0,0,0,.04) 65%
+        180deg,
+        transparent 35%,
+        rgba(0,0,0,.75)
       );
     }
 
     .category-content {
       position: absolute;
-      z-index: 2;
-      left: 23px;
-      right: 23px;
-      bottom: 22px;
-      color: white;
+      left: 22px;
+      right: 22px;
+      bottom: 20px;
+      color: #fff;
     }
 
     .category-content h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 27px;
-      font-weight: 600;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 28px;
+      font-weight: 500;
       margin-bottom: 3px;
     }
 
     .category-content span {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
+      font-size: 13px;
+      color: #ddd;
     }
 
-    /* SHOPORA EDIT */
-    .edit-section {
-      background: var(--cream);
-    }
+    /* =====================================================
+       SHOPORA EDIT
+    ===================================================== */
 
     .edit-grid {
       display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 55px;
-      align-items: center;
-    }
-
-    .edit-copy {
-      max-width: 480px;
-    }
-
-    .edit-copy p {
-      color: var(--muted);
-      font-size: 15px;
-      margin: 20px 0 27px;
-    }
-
-    .dark-btn {
-      background: var(--black);
-      color: white;
-    }
-
-    .dark-btn:hover {
-      background: #292725;
+      grid-template-columns: 1.05fr .95fr;
+      min-height: 450px;
+      background: #e8e1d5;
     }
 
     .edit-image {
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: #ddd;
+      min-height: 450px;
     }
 
     .edit-image img {
       width: 100%;
-      aspect-ratio: 16 / 10;
+      height: 100%;
       object-fit: cover;
     }
 
-    /* TRENDING */
-    .trending-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+    .edit-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 55px;
     }
 
-    .trend-card {
-      background: var(--cream);
-      border-radius: var(--radius);
-      overflow: hidden;
+    .edit-content h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(34px, 4vw, 52px);
+      line-height: 1.1;
+      font-weight: 500;
+      margin-bottom: 18px;
     }
 
-    .trend-card img {
-      width: 100%;
-      aspect-ratio: 1;
-      object-fit: cover;
+    .edit-content p {
+      color: #666;
+      max-width: 480px;
+      margin-bottom: 25px;
     }
 
-    .trend-info {
-      padding: 17px;
-      background: white;
+    .dark-button {
+      width: fit-content;
+      background: var(--black);
+      color: #fff;
+      padding: 13px 22px;
+      font-weight: 700;
+      font-size: 13px;
     }
 
-    .trend-info h3 {
-      font-size: 14px;
-      margin-bottom: 4px;
+    .dark-button:hover {
+      background: var(--gold-dark);
     }
 
-    .trend-info p {
-      color: var(--muted);
-      font-size: 12px;
-    }
+    /* =====================================================
+       ABOUT
+    ===================================================== */
 
-    /* ABOUT */
-    .about {
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    .about-section {
+      background: #fff;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: .8fr 1.2fr;
       gap: 70px;
-      align-items: start;
+      align-items: center;
     }
 
-    .about-text {
-      max-width: 720px;
+    .about-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 350px;
+      background: var(--black);
     }
 
-    .about-text p {
+    .about-mark img {
+      width: 150px;
+      height: 150px;
+      object-fit: contain;
+    }
+
+    .about-content h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(34px, 4vw, 50px);
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+
+    .about-content p {
       color: var(--muted);
-      margin-top: 18px;
-      font-size: 15px;
+      margin-bottom: 15px;
+      max-width: 650px;
     }
 
-    /* NEWSLETTER */
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 25px;
+      margin-top: 25px;
+    }
+
+    .about-points div {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* =====================================================
+       CONTACT
+    ===================================================== */
+
+    .contact-section {
+      background: var(--ivory);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 45px;
+    }
+
+    .contact-info,
+    .contact-form-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 38px;
+    }
+
+    .contact-info h2,
+    .contact-form-box h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 35px;
+      font-weight: 500;
+      margin-bottom: 13px;
+    }
+
+    .contact-info > p,
+    .contact-form-box > p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    .contact-item {
+      border-top: 1px solid var(--border);
+      padding: 17px 0;
+    }
+
+    .contact-item strong {
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+
+    .contact-item a,
+    .contact-item span {
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .contact-form-group {
+      margin-bottom: 16px;
+    }
+
+    .contact-form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .contact-form-group input,
+    .contact-form-group textarea,
+    .contact-form-group select {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #fff;
+      padding: 13px 14px;
+      outline: none;
+    }
+
+    .contact-form-group input:focus,
+    .contact-form-group textarea:focus,
+    .contact-form-group select:focus {
+      border-color: var(--gold);
+    }
+
+    .contact-form-group textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    .contact-submit {
+      width: 100%;
+      border: 0;
+      background: var(--black);
+      color: #fff;
+      padding: 14px 18px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .contact-submit:hover {
+      background: var(--gold-dark);
+    }
+
+    .contact-submit:disabled {
+      opacity: .6;
+      cursor: not-allowed;
+    }
+
+    #contactResult {
+      display: none;
+      margin-top: 13px;
+      padding: 12px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    #contactResult.success {
+      display: block;
+      background: #edf8ef;
+      color: #256b32;
+      border: 1px solid #cce8d0;
+    }
+
+    #contactResult.error {
+      display: block;
+      background: #fff0f0;
+      color: #9b2d2d;
+      border: 1px solid #f0cccc;
+    }
+
+    /* =====================================================
+       NEWSLETTER
+    ===================================================== */
+
     .newsletter {
       background: var(--black);
-      color: white;
+      color: #fff;
+      padding: 70px 20px;
       text-align: center;
     }
 
-    .newsletter-inner {
-      max-width: 700px;
-      margin: auto;
-    }
-
-    .newsletter .section-label {
-      color: #aaa;
-    }
-
     .newsletter h2 {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(31px, 4vw, 45px);
-      line-height: 1.15;
-      margin-bottom: 12px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 40px;
+      font-weight: 500;
+      margin-bottom: 10px;
     }
 
     .newsletter p {
       color: #aaa;
-      font-size: 14px;
-      margin-bottom: 25px;
+      max-width: 560px;
+      margin: 0 auto 25px;
     }
 
     .newsletter-form {
-      display: flex;
-      max-width: 520px;
+      width: min(520px, 100%);
       margin: auto;
-      background: white;
-      border-radius: 4px;
-      padding: 5px;
+      display: flex;
+      background: #fff;
     }
 
     .newsletter-form input {
@@ -805,192 +917,155 @@
       min-width: 0;
       border: 0;
       outline: 0;
-      padding: 0 15px;
+      padding: 14px;
     }
 
     .newsletter-form button {
       border: 0;
-      background: var(--black);
-      color: white;
-      padding: 12px 19px;
+      background: var(--gold-dark);
+      color: #fff;
+      padding: 0 20px;
+      font-weight: 700;
       cursor: pointer;
-      border-radius: 3px;
-      font-size: 12px;
-      font-weight: 600;
     }
 
-    /* FOOTER */
+    /* =====================================================
+       FOOTER
+    ===================================================== */
+
     footer {
-      background: var(--black-soft);
-      color: white;
-      padding: 65px 0 25px;
+      background: #0c0c0c;
+      color: #fff;
+      padding: 55px 0 25px;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.4fr repeat(3, 1fr);
-      gap: 40px;
-      padding-bottom: 50px;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 50px;
     }
 
-    .footer-brand {
-      max-width: 330px;
-    }
-
-    .footer-brand .brand {
+    footer h3 {
+      font-size: 17px;
       margin-bottom: 15px;
     }
 
-    .footer-brand .brand-text {
-      color: white;
+    footer p,
+    footer a {
+      color: #999;
+      font-size: 14px;
     }
 
-    .footer-brand p {
-      color: #aaa;
-      font-size: 13px;
+    footer a:hover {
+      color: var(--gold);
     }
 
-    .footer-col h4 {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: .1em;
-      margin-bottom: 17px;
-    }
-
-    .footer-col a {
-      display: block;
-      color: #aaa;
-      font-size: 13px;
-      margin-bottom: 9px;
-    }
-
-    .footer-col a:hover {
-      color: white;
-    }
-
-    .footer-contact {
-      color: #aaa;
-      font-size: 13px;
-      line-height: 1.8;
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
     }
 
     .footer-bottom {
-      border-top: 1px solid rgba(255,255,255,.1);
+      border-top: 1px solid #292929;
+      margin-top: 35px;
       padding-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      color: #888;
-      font-size: 11px;
+      color: #777;
+      font-size: 12px;
     }
 
-    /* TOAST */
+    /* =====================================================
+       TOAST
+    ===================================================== */
+
     .toast {
       position: fixed;
+      right: 20px;
+      bottom: 20px;
       z-index: 3000;
-      left: 50%;
-      bottom: 25px;
-      transform: translate(-50%, 90px);
       background: var(--black);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 5px;
+      color: #fff;
+      padding: 13px 18px;
       font-size: 13px;
-      box-shadow: var(--shadow);
-      transition: .3s;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(15px);
+      transition: .25s ease;
     }
 
     .toast.show {
-      transform: translate(-50%, 0);
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
-    /* RESPONSIVE */
-    @media (max-width: 1050px) {
-      .nav {
-        gap: 17px;
+    /* =====================================================
+       RESPONSIVE
+    ===================================================== */
+
+    @media (max-width: 1000px) {
+
+      .desktop-nav {
+        gap: 14px;
       }
 
-      .products-grid,
-      .trending-grid {
+      .desktop-nav a {
+        font-size: 13px;
+      }
+
+      .product-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .footer-grid {
+      .category-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
+      .about-grid,
+      .contact-grid,
+      .edit-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .edit-image {
+        min-height: 350px;
+      }
+
+      .trust-grid {
+        grid-template-columns: 1fr;
+      }
+
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 760px) {
+
       .container {
-        width: min(var(--container), calc(100% - 28px));
+        width: min(100% - 30px, 1180px);
       }
 
-      .nav {
-        display: none;
-        position: absolute;
-        top: 78px;
-        left: 0;
-        right: 0;
-        background: white;
-        border-bottom: 1px solid var(--border);
-        padding: 10px 20px 20px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0;
-      }
-
-      .nav.open {
-        display: flex;
-      }
-
-      .nav a {
-        padding: 12px 0;
-        width: 100%;
-      }
-
-      .nav a::after {
+      .desktop-nav,
+      .header-actions {
         display: none;
       }
 
-      .mobile-menu {
-        display: grid;
-      }
-
-      .brand-text {
-        font-size: 20px;
+      .menu-button {
+        display: block;
       }
 
       .hero {
-        min-height: 650px;
-        height: 760px;
-      }
-
-      .hero-content {
-        min-height: 650px;
-        align-items: flex-start;
-        padding-top: 90px;
+        min-height: 610px;
       }
 
       .hero h1 {
-        font-size: 47px;
-      }
-
-      .hero-copy p {
-        font-size: 15px;
-      }
-
-      .hero-search-wrap {
-        bottom: 25px;
-        width: calc(100% - 28px);
+        font-size: 44px;
       }
 
       .hero-search {
-        height: 60px;
+        height: 58px;
       }
 
-      .floating-search {
-        width: calc(100% - 100px);
-        top: 13px;
+      .hero-search button {
+        width: 105px;
       }
 
       .section {
@@ -998,173 +1073,263 @@
       }
 
       .section-head {
-        align-items: flex-start;
+        align-items: start;
+        flex-direction: column;
       }
 
-      .categories-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .category-card {
-        min-height: 240px;
-      }
-
-      .edit-grid,
-      .about-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .trust-grid {
-        grid-template-columns: 1fr;
-        gap: 17px;
-      }
-    }
-
-    @media (max-width: 520px) {
-      .header-inner {
-        min-height: 68px;
-      }
-
-      .brand img {
-        width: 38px;
-        height: 38px;
-      }
-
-      .brand-text {
-        font-size: 18px;
-      }
-
-      .header-actions {
-        gap: 3px;
-      }
-
-      .hero {
-        height: 730px;
-      }
-
-      .hero-content {
-        padding-top: 65px;
-      }
-
-      .hero h1 {
-        font-size: 42px;
-      }
-
-      .hero-buttons .btn {
-        width: 100%;
-      }
-
-      .products-grid,
-      .trending-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
-      }
-
-      .categories-grid {
+      .category-grid {
         grid-template-columns: 1fr;
       }
 
-      .category-card {
-        min-height: 250px;
+      .about-mark {
+        min-height: 280px;
       }
 
-      .product-image {
-        border-radius: 13px;
+      .about-points {
+        grid-template-columns: 1fr;
       }
 
-      .product-name {
-        font-size: 13px;
+      .contact-grid {
+        gap: 20px;
       }
 
-      .add-cart {
-        font-size: 10px;
-        padding: 7px 8px;
+      .contact-info,
+      .contact-form-box {
+        padding: 25px;
+      }
+
+      .newsletter h2 {
+        font-size: 34px;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
       }
 
-      .footer-bottom {
-        flex-direction: column;
+    }
+
+    @media (max-width: 500px) {
+
+      .brand-name {
+        font-size: 18px;
+      }
+
+      .brand img {
+        width: 40px;
+        height: 40px;
+      }
+
+      .hero-content {
+        width: calc(100% - 24px);
+      }
+
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .hero-text {
+        font-size: 14px;
+      }
+
+      .hero-search {
+        flex-direction: row;
+        height: 55px;
+      }
+
+      .hero-search input {
+        padding: 0 13px;
+        font-size: 14px;
+      }
+
+      .hero-search button {
+        width: 88px;
+        font-size: 12px;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-bottom {
+        align-items: center;
       }
 
       .newsletter-form {
         flex-direction: column;
         background: transparent;
-        gap: 8px;
+        gap: 10px;
       }
 
-      .newsletter-form input,
-      .newsletter-form button {
-        min-height: 48px;
-        border-radius: 3px;
+      .newsletter-form input {
+        min-height: 50px;
       }
+
+      .newsletter-form button {
+        min-height: 50px;
+      }
+
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- TOP BAR -->
+  <!-- =====================================================
+       TOP BAR
+  ====================================================== -->
+
   <div class="topbar">
-    Discover fashion, beauty, electronics & everyday essentials at Shopora Market Store.
+    Welcome to Shopora Market Store — Discover something better.
   </div>
 
-  <!-- HEADER -->
-  <header class="header">
+
+  <!-- =====================================================
+       HEADER
+  ====================================================== -->
+
+  <header>
+
     <div class="container header-inner">
 
       <a href="index.html" class="brand">
-        <img src="assets/shopora-mark.png" alt="Shopora Market Store logo">
-        <span class="brand-text">Shopora</span>
+
+        <img
+          src="assets/shopora-mark.png"
+          alt="Shopora Market Store logo"
+        >
+
+        <span class="brand-name">
+          Shopora
+        </span>
+
       </a>
 
-      <nav class="nav" id="mainNav">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="categories.html">Categories</a>
-        <a href="trending.html">Trending</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+
+      <nav class="desktop-nav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="shop.html">
+          Shop
+        </a>
+
+        <a href="categories.html">
+          Categories
+        </a>
+
+        <a href="#trending">
+          Trending
+        </a>
+
+        <a href="#about">
+          About
+        </a>
+
+        <a href="#contact">
+          Contact
+        </a>
+
       </nav>
+
 
       <div class="header-actions">
 
-        <button class="icon-btn" onclick="location.href='wishlist.html'" aria-label="Wishlist">
-          ♡
-          <span class="count" id="wishlistCount">0</span>
-        </button>
-
-        <button class="icon-btn" onclick="location.href='cart.html'" aria-label="Cart">
-          🛒
-          <span class="count" id="cartCount">0</span>
-        </button>
-
-        <button class="icon-btn mobile-menu"
-                id="menuBtn"
-                aria-label="Open menu">
-          ☰
-        </button>
+        <a href="cart.html">
+          Cart (<span id="cartCount">0</span>)
+        </a>
 
       </div>
+
+
+      <button
+        class="menu-button"
+        id="menuButton"
+        type="button"
+        aria-label="Open menu"
+      >
+        ☰
+      </button>
+
     </div>
+
   </header>
 
-  <!-- FLOATING SEARCH -->
-  <div class="floating-search">
-    <form id="floatingSearchForm">
-      <input
-        type="search"
-        id="floatingSearchInput"
-        placeholder="Search products..."
-        autocomplete="off">
-      <button type="submit">⌕</button>
-    </form>
+
+  <!-- =====================================================
+       MOBILE MENU
+  ====================================================== -->
+
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-top">
+
+      <a href="index.html" class="brand">
+
+        <img
+          src="assets/shopora-mark.png"
+          alt="Shopora"
+        >
+
+        <span class="brand-name">
+          Shopora
+        </span>
+
+      </a>
+
+      <button
+        class="mobile-close"
+        id="mobileClose"
+        type="button"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="mobile-links">
+
+      <a href="index.html">
+        Home
+      </a>
+
+      <a href="shop.html">
+        Shop
+      </a>
+
+      <a href="categories.html">
+        Categories
+      </a>
+
+      <a href="#trending">
+        Trending
+      </a>
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
+      <a href="cart.html">
+        Cart (<span id="mobileCartCount">0</span>)
+      </a>
+
+    </div>
+
   </div>
 
-  <!-- HERO -->
+
+  <!-- =====================================================
+       HERO
+  ====================================================== -->
+
   <section class="hero">
 
     <video
@@ -1173,46 +1338,55 @@
       muted
       loop
       playsinline
-      preload="auto">
-      <source src="assets/video/shopora-hero-video.mp4" type="video/mp4">
+      preload="auto"
+    >
+
+      <source
+        src="assets/video/shopora-hero-video.mp4"
+        type="video/mp4"
+      >
+
       Your browser does not support the video tag.
+
     </video>
 
-    <div class="hero-content container">
-      <div class="hero-copy">
 
-        <div class="eyebrow">Modern online marketplace</div>
+    <div class="hero-overlay"></div>
 
-        <h1>Better products.<br>Better everyday.</h1>
 
-        <p>
-          Discover thoughtfully selected fashion, beauty, electronics,
-          accessories, home & living and lifestyle products in one modern store.
-        </p>
+    <div class="hero-content">
 
-        <div class="hero-buttons">
-          <a href="shop.html" class="btn btn-dark">Shop All Products</a>
-          <a href="categories.html" class="btn btn-outline-light">
-            Explore Categories
-          </a>
-        </div>
-
+      <div class="hero-eyebrow">
+        Modern online marketplace
       </div>
-    </div>
 
-    <!-- CENTERED HERO SEARCH -->
-    <div class="hero-search-wrap">
+      <h1>
+        Better products.<br>
+        Better everyday.
+      </h1>
 
-      <form class="hero-search" id="heroSearchForm">
+      <p class="hero-text">
+        Explore fashion, beauty, electronics, accessories,
+        home & living and lifestyle products from one modern marketplace.
+      </p>
+
+
+      <!-- HERO SEARCH -->
+
+      <form
+        class="hero-search"
+        id="heroSearchForm"
+      >
 
         <input
           type="search"
           id="heroSearchInput"
           placeholder="What are you looking for?"
-          autocomplete="off">
+          aria-label="Search products"
+        >
 
-        <button type="submit" aria-label="Search">
-          ⌕
+        <button type="submit">
+          Search
         </button>
 
       </form>
@@ -1221,441 +1395,917 @@
 
   </section>
 
-  <!-- FEATURED PRODUCTS -->
-  <section class="section">
+
+  <!-- =====================================================
+       FLOATING SEARCH
+  ====================================================== -->
+
+  <form
+    class="floating-search"
+    id="floatingSearchForm"
+  >
+
+    <input
+      type="search"
+      id="floatingSearchInput"
+      placeholder="Search products..."
+      aria-label="Search products"
+    >
+
+    <button type="submit">
+      Search
+    </button>
+
+  </form>
+
+
+  <!-- =====================================================
+       FEATURED PRODUCTS
+  ====================================================== -->
+
+  <section class="section" id="featured">
+
     <div class="container">
 
       <div class="section-head">
+
         <div>
-          <div class="section-label">Selected for you</div>
-          <h2 class="section-title">Featured products</h2>
+
+          <div class="section-kicker">
+            Shopora Selection
+          </div>
+
+          <h2 class="section-title">
+            Featured products
+          </h2>
+
         </div>
 
-        <a href="shop.html" class="view-all">View all</a>
+        <a
+          href="shop.html"
+          class="section-link"
+        >
+          View all products
+        </a>
+
       </div>
 
-      <div class="products-grid">
+
+      <div class="product-grid">
+
 
         <!-- PRODUCT 1 -->
-        <article class="product-card"
-                 data-id="everyday-premium-essential"
-                 data-name="Everyday Premium Essential"
-                 data-price="2499"
-                 data-category="Lifestyle">
+
+        <article
+          class="product-card"
+          data-id="everyday-premium-essential"
+          data-name="Everyday Premium Essential"
+          data-price="2499"
+          data-category="Lifestyle"
+          data-image="assets/products/everyday-premium-essential.png"
+        >
 
           <div class="product-image">
-
-            <span class="product-tag">Essential</span>
-
-            <button class="wishlist"
-                    onclick="toggleWishlist(this)"
-                    aria-label="Add to wishlist">
-              ♡
-            </button>
 
             <img
               src="assets/products/everyday-premium-essential.png"
               alt="Everyday Premium Essential"
-              loading="lazy">
+              loading="lazy"
+            >
 
-          </div>
+            <span class="product-tag">
+              Essential
+            </span>
 
-          <div class="product-category">Lifestyle</div>
-
-          <div class="product-name">
-            Everyday Premium Essential
-          </div>
-
-          <div class="product-bottom">
-            <div class="product-price">PKR 2,499</div>
-
-            <button class="add-cart"
-                    onclick="addToCart(this)">
-              Add to Cart
+            <button
+              class="wishlist-btn"
+              type="button"
+              aria-label="Add to wishlist"
+            >
+              ♡
             </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Lifestyle
+            </div>
+
+            <div class="product-name">
+              Everyday Premium Essential
+            </div>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                PKR 2,499
+              </div>
+
+              <button
+                class="add-cart"
+                type="button"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
           </div>
 
         </article>
 
+
         <!-- PRODUCT 2 -->
-        <article class="product-card"
-                 data-id="modern-everyday-collection"
-                 data-name="Modern Everyday Collection"
-                 data-price="3499"
-                 data-category="Fashion">
+
+        <article
+          class="product-card"
+          data-id="modern-everyday-collection"
+          data-name="Modern Everyday Collection"
+          data-price="3499"
+          data-category="Fashion"
+          data-image="assets/products/modern-everyday-collection.png"
+        >
 
           <div class="product-image">
-
-            <span class="product-tag">New</span>
-
-            <button class="wishlist"
-                    onclick="toggleWishlist(this)"
-                    aria-label="Add to wishlist">
-              ♡
-            </button>
 
             <img
               src="assets/products/modern-everyday-collection.png"
               alt="Modern Everyday Collection"
-              loading="lazy">
+              loading="lazy"
+            >
 
-          </div>
+            <span class="product-tag">
+              New
+            </span>
 
-          <div class="product-category">Fashion</div>
-
-          <div class="product-name">
-            Modern Everyday Collection
-          </div>
-
-          <div class="product-bottom">
-            <div class="product-price">PKR 3,499</div>
-
-            <button class="add-cart"
-                    onclick="addToCart(this)">
-              Add to Cart
+            <button
+              class="wishlist-btn"
+              type="button"
+              aria-label="Add to wishlist"
+            >
+              ♡
             </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Fashion
+            </div>
+
+            <div class="product-name">
+              Modern Everyday Collection
+            </div>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                PKR 3,499
+              </div>
+
+              <button
+                class="add-cart"
+                type="button"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
           </div>
 
         </article>
 
+
         <!-- PRODUCT 3 -->
-        <article class="product-card"
-                 data-id="smart-everyday-device"
-                 data-name="Smart Everyday Device"
-                 data-price="4999"
-                 data-category="Electronics">
+
+        <article
+          class="product-card"
+          data-id="smart-everyday-device"
+          data-name="Smart Everyday Device"
+          data-price="4999"
+          data-category="Electronics"
+          data-image="assets/products/smart-everyday-device.png"
+        >
 
           <div class="product-image">
-
-            <span class="product-tag">Smart Pick</span>
-
-            <button class="wishlist"
-                    onclick="toggleWishlist(this)"
-                    aria-label="Add to wishlist">
-              ♡
-            </button>
 
             <img
               src="assets/products/smart-everyday-device.png"
               alt="Smart Everyday Device"
-              loading="lazy">
+              loading="lazy"
+            >
 
-          </div>
+            <span class="product-tag">
+              Smart Pick
+            </span>
 
-          <div class="product-category">Electronics</div>
-
-          <div class="product-name">
-            Smart Everyday Device
-          </div>
-
-          <div class="product-bottom">
-            <div class="product-price">PKR 4,999</div>
-
-            <button class="add-cart"
-                    onclick="addToCart(this)">
-              Add to Cart
+            <button
+              class="wishlist-btn"
+              type="button"
+              aria-label="Add to wishlist"
+            >
+              ♡
             </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Electronics
+            </div>
+
+            <div class="product-name">
+              Smart Everyday Device
+            </div>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                PKR 4,999
+              </div>
+
+              <button
+                class="add-cart"
+                type="button"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
           </div>
 
         </article>
 
+
         <!-- PRODUCT 4 -->
-        <article class="product-card"
-                 data-id="minimal-signature-accessory"
-                 data-name="Minimal Signature Accessory"
-                 data-price="1899"
-                 data-category="Accessories">
+
+        <article
+          class="product-card"
+          data-id="minimal-signature-accessory"
+          data-name="Minimal Signature Accessory"
+          data-price="1899"
+          data-category="Accessories"
+          data-image="assets/products/minimal-signature-accessory.png"
+        >
 
           <div class="product-image">
-
-            <span class="product-tag">Signature</span>
-
-            <button class="wishlist"
-                    onclick="toggleWishlist(this)"
-                    aria-label="Add to wishlist">
-              ♡
-            </button>
 
             <img
               src="assets/products/minimal-signature-accessory.png"
               alt="Minimal Signature Accessory"
-              loading="lazy">
+              loading="lazy"
+            >
 
-          </div>
+            <span class="product-tag">
+              Signature
+            </span>
 
-          <div class="product-category">Accessories</div>
-
-          <div class="product-name">
-            Minimal Signature Accessory
-          </div>
-
-          <div class="product-bottom">
-            <div class="product-price">PKR 1,899</div>
-
-            <button class="add-cart"
-                    onclick="addToCart(this)">
-              Add to Cart
+            <button
+              class="wishlist-btn"
+              type="button"
+              aria-label="Add to wishlist"
+            >
+              ♡
             </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Accessories
+            </div>
+
+            <div class="product-name">
+              Minimal Signature Accessory
+            </div>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                PKR 1,899
+              </div>
+
+              <button
+                class="add-cart"
+                type="button"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
           </div>
 
         </article>
 
       </div>
+
     </div>
+
   </section>
 
-  <!-- TRUST -->
-  <section class="trust">
+
+  <!-- =====================================================
+       TRUST BAR
+  ====================================================== -->
+
+  <section class="trust-bar">
+
     <div class="container trust-grid">
 
       <div class="trust-item">
-        Curated Selection
-        <span>Products selected for everyday value</span>
+
+        <strong>
+          Curated Marketplace
+        </strong>
+
+        <span>
+          Products across everyday categories
+        </span>
+
       </div>
 
-      <div class="trust-item">
-        Simple Shopping
-        <span>Easy browsing and straightforward checkout</span>
-      </div>
 
       <div class="trust-item">
-        Everyday Essentials
-        <span>Useful products across multiple categories</span>
+
+        <strong>
+          Easy Shopping
+        </strong>
+
+        <span>
+          Simple browsing and checkout experience
+        </span>
+
+      </div>
+
+
+      <div class="trust-item">
+
+        <strong>
+          Customer Support
+        </strong>
+
+        <span>
+          We're here when you need us
+        </span>
+
       </div>
 
     </div>
+
   </section>
 
-  <!-- CATEGORIES -->
-  <section class="section">
+
+  <!-- =====================================================
+       CATEGORIES
+  ====================================================== -->
+
+  <section class="section" id="categories">
+
     <div class="container">
 
       <div class="section-head">
+
         <div>
-          <div class="section-label">Explore the store</div>
-          <h2 class="section-title">Shop by category</h2>
+
+          <div class="section-kicker">
+            Explore
+          </div>
+
+          <h2 class="section-title">
+            Shop by category
+          </h2>
+
         </div>
 
-        <a href="categories.html" class="view-all">All categories</a>
+        <a
+          href="categories.html"
+          class="section-link"
+        >
+          All categories
+        </a>
+
       </div>
 
-      <div class="categories-grid">
 
-        <!-- SAME IMAGES AS categories.html -->
+      <div class="category-grid">
 
-        <a class="category-card"
-           href="shop.html?category=fashion">
+
+        <a
+          href="shop.html?category=Fashion"
+          class="category-card"
+        >
 
           <img
             src="assets/categories/fashion.png"
             alt="Fashion"
-            loading="lazy">
+            loading="lazy"
+          >
+
+          <div class="category-overlay"></div>
 
           <div class="category-content">
-            <h3>Fashion</h3>
-            <span>Explore fashion</span>
+
+            <h3>
+              Fashion
+            </h3>
+
+            <span>
+              Everyday style
+            </span>
+
           </div>
 
         </a>
 
-        <a class="category-card"
-           href="shop.html?category=beauty">
+
+        <a
+          href="shop.html?category=Beauty"
+          class="category-card"
+        >
 
           <img
             src="assets/categories/beauty.png"
             alt="Beauty"
-            loading="lazy">
+            loading="lazy"
+          >
+
+          <div class="category-overlay"></div>
 
           <div class="category-content">
-            <h3>Beauty</h3>
-            <span>Explore beauty</span>
+
+            <h3>
+              Beauty
+            </h3>
+
+            <span>
+              Personal care
+            </span>
+
           </div>
 
         </a>
 
-        <a class="category-card"
-           href="shop.html?category=electronics">
+
+        <a
+          href="shop.html?category=Electronics"
+          class="category-card"
+        >
 
           <img
             src="assets/categories/electronics.png"
             alt="Electronics"
-            loading="lazy">
+            loading="lazy"
+          >
+
+          <div class="category-overlay"></div>
 
           <div class="category-content">
-            <h3>Electronics</h3>
-            <span>Explore electronics</span>
+
+            <h3>
+              Electronics
+            </h3>
+
+            <span>
+              Smart everyday tech
+            </span>
+
           </div>
 
         </a>
 
-        <a class="category-card"
-           href="shop.html?category=home-living">
+
+        <a
+          href="shop.html?category=Home%20%26%20Living"
+          class="category-card"
+        >
 
           <img
             src="assets/categories/home-living.png"
             alt="Home and Living"
-            loading="lazy">
+            loading="lazy"
+          >
+
+          <div class="category-overlay"></div>
 
           <div class="category-content">
-            <h3>Home & Living</h3>
-            <span>Explore home</span>
+
+            <h3>
+              Home & Living
+            </h3>
+
+            <span>
+              Better spaces
+            </span>
+
           </div>
 
         </a>
 
-        <a class="category-card"
-           href="shop.html?category=accessories">
+
+        <a
+          href="shop.html?category=Accessories"
+          class="category-card"
+        >
 
           <img
             src="assets/categories/accessories.png"
             alt="Accessories"
-            loading="lazy">
+            loading="lazy"
+          >
+
+          <div class="category-overlay"></div>
 
           <div class="category-content">
-            <h3>Accessories</h3>
-            <span>Explore accessories</span>
+
+            <h3>
+              Accessories
+            </h3>
+
+            <span>
+              Finishing touches
+            </span>
+
           </div>
 
         </a>
 
-        <a class="category-card"
-           href="shop.html?category=lifestyle">
+
+        <a
+          href="shop.html?category=Lifestyle"
+          class="category-card"
+        >
 
           <img
             src="assets/categories/lifestyle.png"
             alt="Lifestyle"
-            loading="lazy">
+            loading="lazy"
+          >
+
+          <div class="category-overlay"></div>
 
           <div class="category-content">
-            <h3>Lifestyle</h3>
-            <span>Explore lifestyle</span>
+
+            <h3>
+              Lifestyle
+            </h3>
+
+            <span>
+              Made for everyday life
+            </span>
+
           </div>
 
         </a>
 
       </div>
-    </div>
-  </section>
-
-  <!-- SHOPORA EDIT -->
-  <section class="section edit-section">
-
-    <div class="container edit-grid">
-
-      <div class="edit-copy">
-
-        <div class="section-label">The Shopora Edit</div>
-
-        <h2 class="section-title">
-          Everyday style,
-          thoughtfully selected.
-        </h2>
-
-        <p>
-          From fashion and accessories to beauty, technology and home
-          essentials, discover a curated mix of products designed to fit
-          modern everyday life.
-        </p>
-
-        <a href="shop.html" class="btn dark-btn">
-          Discover the collection
-        </a>
-
-      </div>
-
-      <div class="edit-image">
-
-        <!-- FASHION EDIT PNG -->
-        <img
-          src="assets/shopora-edit.png"
-          alt="Shopora fashion and lifestyle edit"
-          loading="lazy">
-
-      </div>
 
     </div>
 
   </section>
 
-  <!-- TRENDING -->
+
+  <!-- =====================================================
+       SHOPORA EDIT
+  ====================================================== -->
+
   <section class="section">
+
+    <div class="container">
+
+      <div class="edit-grid">
+
+        <div class="edit-image">
+
+          <img
+            src="assets/shopora-edit.png"
+            alt="The Shopora Edit"
+            loading="lazy"
+          >
+
+        </div>
+
+
+        <div class="edit-content">
+
+          <div class="section-kicker">
+            The Shopora Edit
+          </div>
+
+          <h2>
+            Everyday pieces,
+            thoughtfully chosen.
+          </h2>
+
+          <p>
+            Explore a growing selection of products designed to
+            bring style, usefulness and value into everyday life.
+          </p>
+
+          <a
+            href="shop.html"
+            class="dark-button"
+          >
+            Explore the Shop
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       TRENDING
+  ====================================================== -->
+
+  <section class="section" id="trending">
 
     <div class="container">
 
       <div class="section-head">
 
         <div>
-          <div class="section-label">Popular now</div>
-          <h2 class="section-title">Trending picks</h2>
+
+          <div class="section-kicker">
+            What's happening
+          </div>
+
+          <h2 class="section-title">
+            Trending now
+          </h2>
+
         </div>
 
-        <a href="trending.html" class="view-all">
-          See trending
+        <a
+          href="shop.html"
+          class="section-link"
+        >
+          Shop everything
         </a>
 
       </div>
 
-      <div class="trending-grid">
 
-        <a href="shop.html?search=Everyday%20Premium%20Essential"
-           class="trend-card">
+      <div class="product-grid">
 
-          <img
-            src="assets/products/everyday-premium-essential.png"
-            alt="Everyday Premium Essential"
-            loading="lazy">
 
-          <div class="trend-info">
-            <h3>Everyday Premium Essential</h3>
-            <p>Everyday lifestyle pick</p>
+        <article
+          class="product-card"
+          data-id="trending-fashion"
+          data-name="Trending Fashion Pick"
+          data-price="2999"
+          data-category="Fashion"
+          data-image="assets/products/modern-everyday-collection.png"
+        >
+
+          <div class="product-image">
+
+            <img
+              src="assets/products/modern-everyday-collection.png"
+              alt="Trending Fashion Pick"
+              loading="lazy"
+            >
+
+            <span class="product-tag">
+              Trending
+            </span>
+
+            <button
+              class="wishlist-btn"
+              type="button"
+            >
+              ♡
+            </button>
+
           </div>
 
-        </a>
 
-        <a href="shop.html?search=Modern%20Everyday%20Collection"
-           class="trend-card">
+          <div class="product-info">
 
-          <img
-            src="assets/products/modern-everyday-collection.png"
-            alt="Modern Everyday Collection"
-            loading="lazy">
+            <div class="product-category">
+              Fashion
+            </div>
 
-          <div class="trend-info">
-            <h3>Modern Everyday Collection</h3>
-            <p>Modern fashion selection</p>
+            <div class="product-name">
+              Trending Fashion Pick
+            </div>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                PKR 2,999
+              </div>
+
+              <button
+                class="add-cart"
+                type="button"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
           </div>
 
-        </a>
+        </article>
 
-        <a href="shop.html?search=Smart%20Everyday%20Device"
-           class="trend-card">
 
-          <img
-            src="assets/products/smart-everyday-device.png"
-            alt="Smart Everyday Device"
-            loading="lazy">
+        <article
+          class="product-card"
+          data-id="trending-electronics"
+          data-name="Smart Tech Pick"
+          data-price="5499"
+          data-category="Electronics"
+          data-image="assets/products/smart-everyday-device.png"
+        >
 
-          <div class="trend-info">
-            <h3>Smart Everyday Device</h3>
-            <p>Smart technology pick</p>
+          <div class="product-image">
+
+            <img
+              src="assets/products/smart-everyday-device.png"
+              alt="Smart Tech Pick"
+              loading="lazy"
+            >
+
+            <span class="product-tag">
+              Popular
+            </span>
+
+            <button
+              class="wishlist-btn"
+              type="button"
+            >
+              ♡
+            </button>
+
           </div>
 
-        </a>
 
-        <a href="shop.html?search=Minimal%20Signature%20Accessory"
-           class="trend-card">
+          <div class="product-info">
 
-          <img
-            src="assets/products/minimal-signature-accessory.png"
-            alt="Minimal Signature Accessory"
-            loading="lazy">
+            <div class="product-category">
+              Electronics
+            </div>
 
-          <div class="trend-info">
-            <h3>Minimal Signature Accessory</h3>
-            <p>Refined everyday accessory</p>
+            <div class="product-name">
+              Smart Tech Pick
+            </div>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                PKR 5,499
+              </div>
+
+              <button
+                class="add-cart"
+                type="button"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
           </div>
 
-        </a>
+        </article>
+
+
+        <article
+          class="product-card"
+          data-id="trending-accessory"
+          data-name="Signature Accessory"
+          data-price="2199"
+          data-category="Accessories"
+          data-image="assets/products/minimal-signature-accessory.png"
+        >
+
+          <div class="product-image">
+
+            <img
+              src="assets/products/minimal-signature-accessory.png"
+              alt="Signature Accessory"
+              loading="lazy"
+            >
+
+            <span class="product-tag">
+              New
+            </span>
+
+            <button
+              class="wishlist-btn"
+              type="button"
+            >
+              ♡
+            </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Accessories
+            </div>
+
+            <div class="product-name">
+              Signature Accessory
+            </div>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                PKR 2,199
+              </div>
+
+              <button
+                class="add-cart"
+                type="button"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <article
+          class="product-card"
+          data-id="trending-lifestyle"
+          data-name="Premium Lifestyle Essential"
+          data-price="2699"
+          data-category="Lifestyle"
+          data-image="assets/products/everyday-premium-essential.png"
+        >
+
+          <div class="product-image">
+
+            <img
+              src="assets/products/everyday-premium-essential.png"
+              alt="Premium Lifestyle Essential"
+              loading="lazy"
+            >
+
+            <span class="product-tag">
+              Essential
+            </span>
+
+            <button
+              class="wishlist-btn"
+              type="button"
+            >
+              ♡
+            </button>
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div class="product-category">
+              Lifestyle
+            </div>
+
+            <div class="product-name">
+              Premium Lifestyle Essential
+            </div>
+
+            <div class="product-bottom">
+
+              <div class="product-price">
+                PKR 2,699
+              </div>
+
+              <button
+                class="add-cart"
+                type="button"
+              >
+                Add to Cart
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
 
       </div>
 
@@ -1663,34 +2313,72 @@
 
   </section>
 
-  <!-- ABOUT / SEO -->
-  <section class="section about" id="about">
+
+  <!-- =====================================================
+       ABOUT
+  ====================================================== -->
+
+  <section
+    class="section about-section"
+    id="about"
+  >
 
     <div class="container about-grid">
 
-      <div>
-        <div class="section-label">About Shopora</div>
 
-        <h2 class="section-title">
-          A simpler way to discover what you need.
-        </h2>
+      <div class="about-mark">
+
+        <img
+          src="assets/shopora-mark.png"
+          alt="Shopora"
+        >
+
       </div>
 
-      <div class="about-text">
+
+      <div class="about-content">
+
+        <div class="section-kicker">
+          About Shopora
+        </div>
+
+        <h2>
+          A marketplace built for everyday shopping.
+        </h2>
 
         <p>
-          Shopora Market Store is a modern online marketplace created to make
-          everyday shopping easier and more enjoyable. Instead of focusing on
-          only one type of product, Shopora brings together fashion, beauty,
-          electronics, accessories, home & living and lifestyle essentials.
+          Shopora Market Store is being built as a modern online
+          marketplace where customers can discover products across
+          fashion, beauty, electronics, accessories, home & living
+          and lifestyle categories.
         </p>
 
         <p>
-          Our goal is to create a clean shopping experience where customers
-          can discover useful products without unnecessary complexity.
-          Browse categories, explore featured products and find everyday
-          items from one convenient online destination.
+          Our goal is to make online shopping simple, clear and
+          convenient while bringing different sellers and products
+          together in one place.
         </p>
+
+
+        <div class="about-points">
+
+          <div>
+            ✓ Multiple product categories
+          </div>
+
+          <div>
+            ✓ Simple shopping experience
+          </div>
+
+          <div>
+            ✓ Growing seller marketplace
+          </div>
+
+          <div>
+            ✓ Customer-focused support
+          </div>
+
+        </div>
 
       </div>
 
@@ -1698,26 +2386,297 @@
 
   </section>
 
-  <!-- NEWSLETTER -->
-  <section class="section newsletter">
 
-    <div class="container newsletter-inner">
+  <!-- =====================================================
+       CONTACT
+  ====================================================== -->
 
-      <div class="section-label">Stay connected</div>
+  <section
+    class="section contact-section"
+    id="contact"
+  >
 
-      <h2>Discover what's new at Shopora.</h2>
+    <div class="container">
+
+      <div class="section-head">
+
+        <div>
+
+          <div class="section-kicker">
+            Need help?
+          </div>
+
+          <h2 class="section-title">
+            Contact Shopora
+          </h2>
+
+        </div>
+
+        <a
+          href="contact.html"
+          class="section-link"
+        >
+          Open contact page
+        </a>
+
+      </div>
+
+
+      <div class="contact-grid">
+
+
+        <!-- CONTACT INFO -->
+
+        <div class="contact-info">
+
+          <h2>
+            Get in touch
+          </h2>
+
+          <p>
+            Have a question about a product, order or seller
+            partnership? Send us a message.
+          </p>
+
+
+          <div class="contact-item">
+
+            <strong>
+              Email
+            </strong>
+
+            <a href="mailto:brandseocompany@gmail.com">
+              brandseocompany@gmail.com
+            </a>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <strong>
+              Website
+            </strong>
+
+            <a href="https://shoporamarketstore.store/">
+              shoporamarketstore.store
+            </a>
+
+          </div>
+
+
+          <div class="contact-item">
+
+            <strong>
+              Support
+            </strong>
+
+            <span>
+              Product questions, orders and seller inquiries
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- CONTACT FORM -->
+
+        <div class="contact-form-box">
+
+          <h2>
+            Send a message
+          </h2>
+
+          <p>
+            Fill out the form and your message will be sent
+            directly to the Shopora team.
+          </p>
+
+
+          <form id="homepageContactForm">
+
+
+            <!-- WEB3FORMS ACCESS KEY -->
+
+            <input
+              type="hidden"
+              name="access_key"
+              value="c9102ca8-2613-41e2-95f7-2ec7fa1122fa"
+            >
+
+
+            <!-- EMAIL SUBJECT -->
+
+            <input
+              type="hidden"
+              name="subject"
+              value="New Contact Message - Shopora Market Store"
+            >
+
+
+            <!-- EMAIL SENDER NAME -->
+
+            <input
+              type="hidden"
+              name="from_name"
+              value="Shopora Market Store Website"
+            >
+
+
+            <!-- SPAM PROTECTION -->
+
+            <input
+              type="checkbox"
+              name="botcheck"
+              style="display:none"
+              tabindex="-1"
+              autocomplete="off"
+            >
+
+
+            <div class="contact-form-group">
+
+              <label for="contactName">
+                Full Name
+              </label>
+
+              <input
+                type="text"
+                id="contactName"
+                name="name"
+                placeholder="Your full name"
+                required
+              >
+
+            </div>
+
+
+            <div class="contact-form-group">
+
+              <label for="contactEmail">
+                Your Email
+              </label>
+
+              <input
+                type="email"
+                id="contactEmail"
+                name="email"
+                placeholder="you@example.com"
+                required
+              >
+
+            </div>
+
+
+            <div class="contact-form-group">
+
+              <label for="contactType">
+                Message Type
+              </label>
+
+              <select
+                id="contactType"
+                name="message_type"
+                required
+              >
+
+                <option value="">
+                  Select one
+                </option>
+
+                <option value="General Question">
+                  General Question
+                </option>
+
+                <option value="Product Inquiry">
+                  Product Inquiry
+                </option>
+
+                <option value="Order Question">
+                  Order Question
+                </option>
+
+                <option value="Seller Inquiry">
+                  Seller Inquiry
+                </option>
+
+                <option value="Other">
+                  Other
+                </option>
+
+              </select>
+
+            </div>
+
+
+            <div class="contact-form-group">
+
+              <label for="contactMessage">
+                Message
+              </label>
+
+              <textarea
+                id="contactMessage"
+                name="message"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+
+            </div>
+
+
+            <button
+              type="submit"
+              class="contact-submit"
+              id="contactSubmit"
+            >
+              Send Message
+            </button>
+
+
+            <div id="contactResult"></div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =====================================================
+       NEWSLETTER
+  ====================================================== -->
+
+  <section class="newsletter">
+
+    <div class="container">
+
+      <h2>
+        Stay in the know.
+      </h2>
 
       <p>
-        Get updates about new products, collections and everyday shopping picks.
+        Get updates about new products, categories and
+        what's coming to Shopora.
       </p>
 
-      <form class="newsletter-form" id="newsletterForm">
+
+      <form
+        class="newsletter-form"
+        id="newsletterForm"
+      >
 
         <input
           type="email"
           id="newsletterEmail"
           placeholder="Your email address"
-          required>
+          required
+        >
 
         <button type="submit">
           Subscribe
@@ -1729,395 +2688,659 @@
 
   </section>
 
-  <!-- FOOTER -->
-  <footer id="contact">
 
-    <div class="container">
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
-      <div class="footer-grid">
+  <footer>
 
-        <div class="footer-brand">
+    <div class="container footer-grid">
 
-          <a href="index.html" class="brand">
 
-            <img
-              src="assets/shopora-mark.png"
-              alt="Shopora Market Store">
+      <div>
 
-            <span class="brand-text">Shopora</span>
+        <h3>
+          Shopora Market Store
+        </h3>
 
+        <p>
+          A modern online marketplace for fashion, beauty,
+          electronics, accessories, home & living and
+          lifestyle products.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <h3>
+          Quick Links
+        </h3>
+
+        <div class="footer-links">
+
+          <a href="index.html">
+            Home
           </a>
 
-          <p>
-            A modern marketplace for fashion, beauty, electronics,
-            accessories, home & living and everyday lifestyle products.
-          </p>
+          <a href="shop.html">
+            Shop
+          </a>
 
-        </div>
+          <a href="categories.html">
+            Categories
+          </a>
 
-        <div class="footer-col">
+          <a href="#about">
+            About
+          </a>
 
-          <h4>Shop</h4>
-
-          <a href="shop.html">All Products</a>
-          <a href="categories.html">Categories</a>
-          <a href="trending.html">Trending</a>
-          <a href="cart.html">Cart</a>
-
-        </div>
-
-        <div class="footer-col">
-
-          <h4>Company</h4>
-
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
-          <a href="privacy.html">Privacy</a>
-          <a href="policy.html">Policy</a>
-
-        </div>
-
-        <div class="footer-col">
-
-          <h4>Contact</h4>
-
-          <div class="footer-contact">
-            Email:
-            <a href="mailto:brandseocompany@gmail.com">
-              brandseocompany@gmail.com
-            </a>
-
-            Phone:
-            <a href="tel:+923269547318">
-              +92 326 9547318
-            </a>
-
-            <a href="returns.html">Return / Refunds</a>
-          </div>
+          <a href="#contact">
+            Contact
+          </a>
 
         </div>
 
       </div>
 
-      <div class="footer-bottom">
 
-        <span>
-          © <span id="year"></span> Shopora Market Store. All rights reserved.
-        </span>
+      <div>
 
-        <span>
-          Modern shopping for everyday life.
-        </span>
+        <h3>
+          Information
+        </h3>
+
+        <div class="footer-links">
+
+          <a href="about.html">
+            About
+          </a>
+
+          <a href="contact.html">
+            Contact
+          </a>
+
+          <a href="privacy-policy.html">
+            Privacy Policy
+          </a>
+
+          <a href="cookie-policy.html">
+            Cookie Policy
+          </a>
+
+          <a href="return-refund.html">
+            Returns & Refunds
+          </a>
+
+          <a href="mailto:brandseocompany@gmail.com">
+            brandseocompany@gmail.com
+          </a>
+
+        </div>
 
       </div>
 
     </div>
 
+
+    <div class="container footer-bottom">
+
+      © <span id="year"></span>
+      Shopora Market Store. All rights reserved.
+
+    </div>
+
   </footer>
 
+
   <!-- TOAST -->
-  <div class="toast" id="toast"></div>
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
 
   <script>
 
-    /* =========================
-       STORAGE
-    ========================= */
-
-    const CART_KEY = "shoporaCart";
-    const WISHLIST_KEY = "shoporaWishlist";
+    /* =====================================================
+       CART
+    ====================================================== */
 
     function getCart() {
+
       try {
-        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
-      } catch {
+
+        return JSON.parse(
+          localStorage.getItem("shoporaCart") || "[]"
+        );
+
+      } catch (error) {
+
         return [];
+
       }
+
     }
 
-    function getWishlist() {
-      try {
-        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
-      } catch {
-        return [];
-      }
-    }
 
     function saveCart(cart) {
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+      localStorage.setItem(
+        "shoporaCart",
+        JSON.stringify(cart)
+      );
+
     }
 
-    function saveWishlist(list) {
-      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
-    }
 
-    /* =========================
-       COUNTS
-    ========================= */
-
-    function updateCounts() {
+    function updateCartCount() {
 
       const cart = getCart();
-      const wishlist = getWishlist();
 
-      const cartCount = document.getElementById("cartCount");
-      const wishlistCount = document.getElementById("wishlistCount");
+      const count = cart.reduce(
+        (total, item) =>
+          total + (item.quantity || 1),
+        0
+      );
 
-      if (cartCount) {
-        cartCount.textContent = cart.reduce(
-          (total, item) => total + (Number(item.quantity) || 1),
-          0
-        );
-      }
+      document.getElementById("cartCount")
+        .textContent = count;
 
-      if (wishlistCount) {
-        wishlistCount.textContent = wishlist.length;
-      }
+      document.getElementById("mobileCartCount")
+        .textContent = count;
 
-      updateWishlistButtons();
     }
 
-    /* =========================
-       TOAST
-    ========================= */
 
-    let toastTimer;
+    updateCartCount();
+
+
+    /* =====================================================
+       TOAST
+    ====================================================== */
 
     function showToast(message) {
 
-      const toast = document.getElementById("toast");
+      const toast =
+        document.getElementById("toast");
 
       toast.textContent = message;
+
       toast.classList.add("show");
 
-      clearTimeout(toastTimer);
+      setTimeout(function() {
 
-      toastTimer = setTimeout(() => {
         toast.classList.remove("show");
-      }, 2200);
+
+      }, 2500);
+
     }
 
-    /* =========================
+
+    /* =====================================================
        ADD TO CART
-    ========================= */
+    ====================================================== */
 
-    function addToCart(button) {
+    document.querySelectorAll(".add-cart")
+      .forEach(function(button) {
 
-      const card = button.closest(".product-card");
+        button.addEventListener(
+          "click",
+          function() {
 
-      if (!card) return;
+            const card =
+              button.closest(".product-card");
 
-      const product = {
-        id: card.dataset.id,
-        name: card.dataset.name,
-        price: Number(card.dataset.price),
-        category: card.dataset.category,
-        image: card.querySelector("img")?.getAttribute("src") || "",
-        quantity: 1
-      };
+            const product = {
 
-      const cart = getCart();
+              id: card.dataset.id,
 
-      const existing = cart.find(item => item.id === product.id);
+              name: card.dataset.name,
 
-      if (existing) {
-        existing.quantity = (Number(existing.quantity) || 1) + 1;
-      } else {
-        cart.push(product);
-      }
+              price: Number(
+                card.dataset.price
+              ),
 
-      saveCart(cart);
-      updateCounts();
+              category:
+                card.dataset.category,
 
-      showToast("Added to cart");
-    }
+              image:
+                card.dataset.image,
 
-    /* =========================
+              quantity: 1
+
+            };
+
+
+            const cart = getCart();
+
+            const existing =
+              cart.find(
+                item =>
+                  item.id === product.id
+              );
+
+
+            if (existing) {
+
+              existing.quantity =
+                (existing.quantity || 1) + 1;
+
+            } else {
+
+              cart.push(product);
+
+            }
+
+
+            saveCart(cart);
+
+            updateCartCount();
+
+            showToast(
+              "Product added to cart."
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
        WISHLIST
-    ========================= */
+    ====================================================== */
 
-    function toggleWishlist(button) {
+    function getWishlist() {
 
-      const card = button.closest(".product-card");
+      try {
 
-      if (!card) return;
+        return JSON.parse(
+          localStorage.getItem("shoporaWishlist") || "[]"
+        );
 
-      const id = card.dataset.id;
-      const wishlist = getWishlist();
+      } catch (error) {
 
-      const index = wishlist.indexOf(id);
+        return [];
 
-      if (index >= 0) {
-
-        wishlist.splice(index, 1);
-
-        button.textContent = "♡";
-
-        showToast("Removed from wishlist");
-
-      } else {
-
-        wishlist.push(id);
-
-        button.textContent = "♥";
-
-        showToast("Added to wishlist");
       }
 
-      saveWishlist(wishlist);
-      updateCounts();
     }
 
-    function updateWishlistButtons() {
 
-      const wishlist = getWishlist();
+    function saveWishlist(list) {
 
-      document.querySelectorAll(".product-card").forEach(card => {
+      localStorage.setItem(
+        "shoporaWishlist",
+        JSON.stringify(list)
+      );
 
-        const button = card.querySelector(".wishlist");
+    }
 
-        if (!button) return;
 
-        button.textContent =
-          wishlist.includes(card.dataset.id) ? "♥" : "♡";
+    document.querySelectorAll(".wishlist-btn")
+      .forEach(function(button) {
+
+        const card =
+          button.closest(".product-card");
+
+        const id =
+          card.dataset.id;
+
+        const wishlist =
+          getWishlist();
+
+        if (wishlist.includes(id)) {
+
+          button.classList.add("active");
+          button.textContent = "♥";
+
+        }
+
+
+        button.addEventListener(
+          "click",
+          function() {
+
+            let list =
+              getWishlist();
+
+            if (list.includes(id)) {
+
+              list =
+                list.filter(
+                  item => item !== id
+                );
+
+              button.classList.remove("active");
+              button.textContent = "♡";
+
+              showToast(
+                "Removed from wishlist."
+              );
+
+            } else {
+
+              list.push(id);
+
+              button.classList.add("active");
+              button.textContent = "♥";
+
+              showToast(
+                "Added to wishlist."
+              );
+
+            }
+
+            saveWishlist(list);
+
+          }
+        );
 
       });
-    }
 
-    /* =========================
+
+    /* =====================================================
        SEARCH
-    ========================= */
+    ====================================================== */
 
-    function performSearch(input) {
+    function performSearch(value) {
 
-      const value = input.trim();
+      const query =
+        value.trim();
 
-      if (!value) return;
+      if (!query) {
 
-      location.href =
-        "shop.html?search=" + encodeURIComponent(value);
-    }
+        window.location.href =
+          "shop.html";
 
-    const heroSearchForm =
-      document.getElementById("heroSearchForm");
+        return;
 
-    if (heroSearchForm) {
-
-      heroSearchForm.addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        performSearch(
-          document.getElementById("heroSearchInput").value
-        );
-
-      });
-    }
-
-    const floatingSearchForm =
-      document.getElementById("floatingSearchForm");
-
-    if (floatingSearchForm) {
-
-      floatingSearchForm.addEventListener("submit", function(event) {
-
-        event.preventDefault();
-
-        performSearch(
-          document.getElementById("floatingSearchInput").value
-        );
-
-      });
-    }
-
-    /* =========================
-       STICKY SEARCH
-    ========================= */
-
-    function handleScroll() {
-
-      if (window.scrollY > 650) {
-        document.body.classList.add("search-stuck");
-      } else {
-        document.body.classList.remove("search-stuck");
       }
 
+      window.location.href =
+        "shop.html?search=" +
+        encodeURIComponent(query);
+
     }
+
+
+    document.getElementById(
+      "heroSearchForm"
+    ).addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+        performSearch(
+          document.getElementById(
+            "heroSearchInput"
+          ).value
+        );
+
+      }
+    );
+
+
+    document.getElementById(
+      "floatingSearchForm"
+    ).addEventListener(
+      "submit",
+      function(event) {
+
+        event.preventDefault();
+
+        performSearch(
+          document.getElementById(
+            "floatingSearchInput"
+          ).value
+        );
+
+      }
+    );
+
+
+    /* =====================================================
+       STICKY SEARCH ON SCROLL
+    ====================================================== */
 
     window.addEventListener(
       "scroll",
-      handleScroll,
-      { passive: true }
+      function() {
+
+        if (window.scrollY > 650) {
+
+          document.body.classList.add(
+            "search-stuck"
+          );
+
+        } else {
+
+          document.body.classList.remove(
+            "search-stuck"
+          );
+
+        }
+
+      }
     );
 
-    handleScroll();
 
-    /* =========================
+    /* =====================================================
        MOBILE MENU
-    ========================= */
+    ====================================================== */
 
-    const menuBtn =
-      document.getElementById("menuBtn");
+    const mobileMenu =
+      document.getElementById(
+        "mobileMenu"
+      );
 
-    const mainNav =
-      document.getElementById("mainNav");
+    document.getElementById(
+      "menuButton"
+    ).addEventListener(
+      "click",
+      function() {
 
-    if (menuBtn && mainNav) {
+        mobileMenu.classList.add("open");
 
-      menuBtn.addEventListener("click", function() {
-        mainNav.classList.toggle("open");
-      });
+        document.body.classList.add(
+          "no-scroll"
+        );
 
-      mainNav.querySelectorAll("a").forEach(link => {
+      }
+    );
 
-        link.addEventListener("click", function() {
-          mainNav.classList.remove("open");
-        });
 
-      });
+    document.getElementById(
+      "mobileClose"
+    ).addEventListener(
+      "click",
+      function() {
 
-    }
+        mobileMenu.classList.remove("open");
 
-    /* =========================
+        document.body.classList.remove(
+          "no-scroll"
+        );
+
+      }
+    );
+
+
+    document.querySelectorAll(
+      ".mobile-links a"
+    ).forEach(function(link) {
+
+      link.addEventListener(
+        "click",
+        function() {
+
+          mobileMenu.classList.remove(
+            "open"
+          );
+
+          document.body.classList.remove(
+            "no-scroll"
+          );
+
+        }
+      );
+
+    });
+
+
+    /* =====================================================
+       HOMEPAGE CONTACT FORM
+       ====================================================== */
+
+    const homepageContactForm =
+      document.getElementById(
+        "homepageContactForm"
+      );
+
+    const contactSubmit =
+      document.getElementById(
+        "contactSubmit"
+      );
+
+    const contactResult =
+      document.getElementById(
+        "contactResult"
+      );
+
+
+    homepageContactForm.addEventListener(
+      "submit",
+      async function(event) {
+
+        event.preventDefault();
+
+
+        contactResult.className = "";
+
+        contactResult.style.display =
+          "block";
+
+        contactResult.textContent =
+          "Sending your message...";
+
+
+        contactSubmit.disabled = true;
+
+        contactSubmit.textContent =
+          "Sending...";
+
+
+        const formData =
+          new FormData(
+            homepageContactForm
+          );
+
+
+        try {
+
+          const response =
+            await fetch(
+              "https://api.web3forms.com/submit",
+              {
+                method: "POST",
+                body: formData
+              }
+            );
+
+
+          const data =
+            await response.json();
+
+
+          if (data.success) {
+
+            contactResult.className =
+              "success";
+
+            contactResult.textContent =
+              "Message sent successfully. Thank you for contacting Shopora!";
+
+            homepageContactForm.reset();
+
+          } else {
+
+            contactResult.className =
+              "error";
+
+            contactResult.textContent =
+              data.message ||
+              "Something went wrong. Please try again.";
+
+          }
+
+
+        } catch (error) {
+
+          contactResult.className =
+            "error";
+
+          contactResult.textContent =
+            "Unable to send your message right now. Please try again.";
+
+        }
+
+
+        contactSubmit.disabled =
+          false;
+
+        contactSubmit.textContent =
+          "Send Message";
+
+      }
+    );
+
+
+    /* =====================================================
        NEWSLETTER
-    ========================= */
+       ====================================================== */
 
-    const newsletterForm =
-      document.getElementById("newsletterForm");
-
-    if (newsletterForm) {
-
-      newsletterForm.addEventListener("submit", function(event) {
+    document.getElementById(
+      "newsletterForm"
+    ).addEventListener(
+      "submit",
+      function(event) {
 
         event.preventDefault();
 
         const email =
-          document.getElementById("newsletterEmail").value.trim();
+          document.getElementById(
+            "newsletterEmail"
+          ).value.trim();
 
         if (!email) return;
 
-        showToast("Thanks for subscribing!");
+        showToast(
+          "Thank you for subscribing!"
+        );
 
-        newsletterForm.reset();
+        event.target.reset();
 
-      });
+      }
+    );
 
-    }
 
-    /* =========================
+    /* =====================================================
        YEAR
-    ========================= */
+    ====================================================== */
 
-    document.getElementById("year").textContent =
+    document.getElementById(
+      "year"
+    ).textContent =
       new Date().getFullYear();
-
-    /* =========================
-       INITIALIZE
-    ========================= */
-
-    updateCounts();
-
-    window.addEventListener("pageshow", updateCounts);
 
   </script>
 
