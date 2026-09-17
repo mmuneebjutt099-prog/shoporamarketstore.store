@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Product | Shopora Market Store</title>
@@ -132,7 +131,6 @@
     }
 
     .nav-links a{
-      position:relative;
       transition:.2s ease;
     }
 
@@ -201,6 +199,7 @@
       color:var(--muted);
       font-size:13px;
       margin-bottom:35px;
+      flex-wrap:wrap;
     }
 
     .breadcrumbs a:hover{
@@ -283,10 +282,11 @@
 
     .meta{
       display:flex;
-      gap:25px;
+      gap:30px;
       padding:22px 0;
       border-bottom:1px solid var(--border);
       font-size:13px;
+      flex-wrap:wrap;
     }
 
     .meta strong{
@@ -320,6 +320,10 @@
       background:transparent;
       cursor:pointer;
       font-size:20px;
+    }
+
+    .quantity button:hover{
+      background:#f5f2eb;
     }
 
     .quantity span{
@@ -461,10 +465,42 @@
       font-size:14px;
     }
 
+    .related-actions{
+      display:flex;
+      gap:8px;
+      margin-top:12px;
+    }
+
+    .related-actions a,
+    .related-actions button{
+      flex:1;
+      min-height:38px;
+      border:1px solid var(--border);
+      background:#fff;
+      cursor:pointer;
+      font-size:11px;
+      font-weight:700;
+    }
+
+    .related-actions a{
+      display:grid;
+      place-items:center;
+    }
+
+    .related-actions button{
+      background:var(--black);
+      color:#fff;
+      border-color:var(--black);
+    }
+
+    .related-actions button:hover{
+      background:var(--gold-dark);
+      border-color:var(--gold-dark);
+    }
+
     footer{
       background:var(--black);
       color:#fff;
-      margin-top:0;
     }
 
     .footer-inner{
@@ -542,7 +578,18 @@
       opacity:1;
     }
 
+    .loading-message,
+    .error-message{
+      width:100%;
+      padding:40px 20px;
+      text-align:center;
+      color:var(--muted);
+      background:#fff;
+      border:1px solid var(--border);
+    }
+
     @media(max-width:900px){
+
       .nav-links{
         display:none;
       }
@@ -575,9 +622,11 @@
       .footer-grid{
         grid-template-columns:repeat(2,1fr);
       }
+
     }
 
     @media(max-width:600px){
+
       .page{
         padding:42px 16px 65px;
       }
@@ -651,6 +700,10 @@
         font-size:13px;
       }
 
+      .related-actions{
+        flex-direction:column;
+      }
+
       .footer-grid{
         grid-template-columns:1fr;
         gap:30px;
@@ -659,6 +712,7 @@
       .footer-bottom{
         flex-direction:column;
       }
+
     }
   </style>
 </head>
@@ -670,6 +724,7 @@
   </div>
 
   <header>
+
     <nav class="nav">
 
       <a href="index.html" class="brand">
@@ -688,30 +743,48 @@
 
       <div class="nav-actions">
 
-        <button class="nav-btn search-btn" onclick="goToSearch()" aria-label="Search">
+        <button
+          class="nav-btn search-btn"
+          onclick="goToSearch()"
+          aria-label="Search"
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <circle cx="11" cy="11" r="7"></circle>
             <path d="m20 20-4-4"></path>
           </svg>
         </button>
 
-        <button class="nav-btn" onclick="goToWishlist()" aria-label="Wishlist">
+        <button
+          class="nav-btn"
+          onclick="goToWishlist()"
+          aria-label="Wishlist"
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"></path>
           </svg>
+
           <span class="count" id="wishlistCount">0</span>
         </button>
 
-        <button class="nav-btn" onclick="goToCart()" aria-label="Cart">
+        <button
+          class="nav-btn"
+          onclick="goToCart()"
+          aria-label="Cart"
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H6"></path>
             <circle cx="10" cy="20" r="1"></circle>
             <circle cx="18" cy="20" r="1"></circle>
           </svg>
+
           <span class="count" id="cartCount">0</span>
         </button>
 
-        <button class="nav-btn mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
+        <button
+          class="nav-btn mobile-toggle"
+          onclick="toggleMobileMenu()"
+          aria-label="Menu"
+        >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
             <path d="M4 7h16M4 12h16M4 17h16"></path>
           </svg>
@@ -721,93 +794,183 @@
 
     </nav>
 
-    <div id="mobileMenu" style="
-      display:none;
-      padding:18px 24px 25px;
-      border-top:1px solid var(--border);
-      background:var(--ivory);
-    ">
-      <div style="display:flex;flex-direction:column;gap:15px;font-size:14px;font-weight:600;">
+    <div
+      id="mobileMenu"
+      style="
+        display:none;
+        padding:18px 24px 25px;
+        border-top:1px solid var(--border);
+        background:var(--ivory);
+      "
+    >
+
+      <div
+        style="
+          display:flex;
+          flex-direction:column;
+          gap:15px;
+          font-size:14px;
+          font-weight:600;
+        "
+      >
+
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="categories.html">Categories</a>
         <a href="trending.html">Trending</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+
       </div>
+
     </div>
+
   </header>
+
 
   <main class="page">
 
     <div class="breadcrumbs">
+
       <a href="index.html">Home</a>
+
       <span>/</span>
+
       <a href="shop.html">Shop</a>
+
       <span>/</span>
+
       <span id="breadcrumbName">Product</span>
+
     </div>
+
 
     <section class="product-layout">
 
       <div class="product-visual">
+
         <img
           id="productImage"
           src="assets/products/everyday-premium-essential.png"
           alt="Shopora product"
         >
+
       </div>
+
 
       <div class="product-info">
 
-        <div class="product-category" id="productCategory">
+        <div
+          class="product-category"
+          id="productCategory"
+        >
           Lifestyle
         </div>
+
 
         <h1 id="productName">
           Everyday Premium Essential
         </h1>
 
-        <div class="price" id="productPrice">
+
+        <div
+          class="price"
+          id="productPrice"
+        >
           PKR 2,499
         </div>
 
-        <p class="description" id="productDescription">
+
+        <p
+          class="description"
+          id="productDescription"
+        >
           A carefully selected everyday essential from Shopora Market Store,
           designed to bring practical style and modern comfort into your daily routine.
         </p>
 
+
         <div class="meta">
 
           <div>
+
             <strong>Category</strong>
-            <span id="metaCategory">Lifestyle</span>
+
+            <span id="metaCategory">
+              Lifestyle
+            </span>
+
           </div>
 
+
           <div>
+
             <strong>Availability</strong>
-            <span>Available</span>
+
+            <span id="productAvailability">
+              Available
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <strong>Seller</strong>
+
+            <span id="productSeller">
+              Shopora Market Store
+            </span>
+
           </div>
 
         </div>
 
+
         <div class="buy-row">
 
           <div class="quantity">
-            <button type="button" onclick="changeQuantity(-1)">−</button>
-            <span id="quantity">1</span>
-            <button type="button" onclick="changeQuantity(1)">+</button>
+
+            <button
+              type="button"
+              id="decreaseQuantity"
+              aria-label="Decrease quantity"
+            >
+              −
+            </button>
+
+            <span id="quantityValue">1</span>
+
+            <button
+              type="button"
+              id="increaseQuantity"
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+
           </div>
 
-          <button class="add-cart" onclick="addCurrentProductToCart()">
+
+          <button
+            class="add-cart"
+            id="addToCart"
+            type="button"
+          >
             Add To Cart
           </button>
 
         </div>
 
-        <button class="wishlist" id="wishlistButton" onclick="toggleCurrentWishlist()">
+
+        <button
+          class="wishlist"
+          id="wishlistButton"
+          type="button"
+        >
           ♡ Add to Wishlist
         </button>
+
 
         <div class="product-note">
 
@@ -832,24 +995,47 @@
 
     </section>
 
+
     <section class="related">
 
       <div class="section-head">
+
         <div>
+
           <h2>You may also like</h2>
-          <p>Explore more from Shopora Market Store.</p>
+
+          <p>
+            Explore more from Shopora Market Store.
+          </p>
+
         </div>
 
-        <a href="shop.html" style="font-size:13px;font-weight:700;">
+
+        <a
+          href="shop.html"
+          style="font-size:13px;font-weight:700;"
+        >
           View All →
         </a>
+
       </div>
 
-      <div class="related-grid" id="relatedProducts"></div>
+
+      <div
+        class="related-grid"
+        id="relatedProducts"
+      >
+
+        <div class="loading-message">
+          Loading products...
+        </div>
+
+      </div>
 
     </section>
 
   </main>
+
 
   <footer class="footer">
 
@@ -858,726 +1044,134 @@
       <div class="footer-grid">
 
         <div>
-          <div class="footer-brand">Shopora Market Store</div>
+
+          <div class="footer-brand">
+            Shopora Market Store
+          </div>
+
           <p>
             A modern online marketplace bringing fashion, beauty,
             electronics, accessories, home and lifestyle products together.
           </p>
+
         </div>
 
+
         <div>
+
           <h4>Shop</h4>
 
           <div class="footer-links">
-            <a href="shop.html">All Products</a>
-            <a href="categories.html">Categories</a>
-            <a href="trending.html">Trending</a>
-            <a href="cart.html">Cart</a>
+
+            <a href="shop.html">
+              All Products
+            </a>
+
+            <a href="categories.html">
+              Categories
+            </a>
+
+            <a href="trending.html">
+              Trending
+            </a>
+
+            <a href="cart.html">
+              Cart
+            </a>
+
           </div>
+
         </div>
 
+
         <div>
+
           <h4>Company</h4>
 
           <div class="footer-links">
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy-policy.html">Privacy Policy</a>
-            <a href="cookie-policy.html">Cookie Policy</a>
+
+            <a href="about.html">
+              About
+            </a>
+
+            <a href="contact.html">
+              Contact
+            </a>
+
+            <a href="privacy-policy.html">
+              Privacy Policy
+            </a>
+
+            <a href="cookie-policy.html">
+              Cookie Policy
+            </a>
+
           </div>
+
         </div>
 
+
         <div>
+
           <h4>Help</h4>
 
           <div class="footer-links">
-            <a href="return-refund.html">Return & Refund</a>
-            <a href="checkout.html">Checkout</a>
-            <a href="contact.html">Customer Support</a>
+
+            <a href="return-refund.html">
+              Return & Refund
+            </a>
+
+            <a href="checkout.html">
+              Checkout
+            </a>
+
+            <a href="contact.html">
+              Customer Support
+            </a>
+
             <a href="mailto:brandseocompany@gmail.com">
               brandseocompany@gmail.com
             </a>
+
           </div>
+
         </div>
 
       </div>
 
+
       <div class="footer-bottom">
-        <span>© 2026 Shopora Market Store. All rights reserved.</span>
-        <span>Built for modern everyday shopping.</span>
+
+        <span>
+          © 2026 Shopora Market Store. All rights reserved.
+        </span>
+
+        <span>
+          Built for modern everyday shopping.
+        </span>
+
       </div>
 
     </div>
 
   </footer>
 
-  <div class="toast" id="toast"></div>
 
-  <script>
+  <div
+    class="toast"
+    id="toast"
+  ></div>
 
-    /* =========================================================
-       SHOPORA — ALL 12 PRODUCTS
-       ========================================================= */
 
-    const products = {
+  <!-- =========================================================
+       SHOPORA PRODUCT SYSTEM
+       IMPORTANT:
+       products.js MUST COME FIRST
+       product.js MUST COME SECOND
+       ========================================================= -->
 
-      "everyday-premium-essential": {
-        name: "Everyday Premium Essential",
-        category: "Lifestyle",
-        price: 2499,
-        image: "assets/products/everyday-premium-essential.png",
-        description:
-          "A carefully selected everyday essential from Shopora Market Store, designed to bring practical style and modern comfort into your daily routine."
-      },
-
-      "modern-everyday-collection": {
-        name: "Modern Everyday Collection",
-        category: "Fashion",
-        price: 3499,
-        image: "assets/products/modern-everyday-collection.png",
-        description:
-          "A modern fashion essential selected for versatile everyday styling and a clean contemporary look."
-      },
-
-      "smart-everyday-device": {
-        name: "Smart Everyday Device",
-        category: "Electronics",
-        price: 4999,
-        image: "assets/products/smart-everyday-device.png",
-        description:
-          "A practical everyday technology pick designed for modern routines, entertainment and connected living."
-      },
-
-      "minimal-signature-accessory": {
-        name: "Minimal Signature Accessory",
-        category: "Accessories",
-        price: 1899,
-        image: "assets/products/minimal-signature-accessory.png",
-        description:
-          "A refined accessory with a minimal aesthetic, selected to complement everyday outfits and personal style."
-      },
-
-      "daily-beauty-essential": {
-        name: "Daily Beauty Essential",
-        category: "Beauty",
-        price: 1599,
-        image: "assets/products/daily-beauty-essential.png",
-        description:
-          "An everyday beauty selection designed for simple, practical and modern personal-care routines."
-      },
-
-      "modern-home-essential": {
-        name: "Modern Home Essential",
-        category: "Home & Living",
-        price: 2299,
-        image: "assets/products/modern-home-essential.png",
-        description:
-          "A modern home essential selected to add practical function and a refined touch to everyday spaces."
-      },
-
-      "everyday-lifestyle-pick": {
-        name: "Everyday Lifestyle Pick",
-        category: "Lifestyle",
-        price: 1999,
-        image: "assets/products/everyday-lifestyle-pick.png",
-        description:
-          "A practical lifestyle product selected for everyday use, convenience and modern living."
-      },
-
-      "classic-wardrobe-essential": {
-        name: "Classic Wardrobe Essential",
-        category: "Fashion",
-        price: 2899,
-        image: "assets/products/classic-wardrobe-essential.png",
-        description:
-          "A classic wardrobe essential designed to fit effortlessly into a versatile everyday fashion collection."
-      },
-
-      "signature-beauty-set": {
-        name: "Signature Beauty Set",
-        category: "Beauty",
-        price: 1799,
-        image: "assets/products/signature-beauty-set.png",
-        description:
-          "A curated beauty set selected for convenient everyday self-care and personal routines."
-      },
-
-      "connected-smart-essential": {
-        name: "Connected Smart Essential",
-        category: "Electronics",
-        price: 5999,
-        image: "assets/products/connected-smart-essential.png",
-        description:
-          "A connected everyday technology essential designed for modern routines and smart lifestyle use."
-      },
-
-      "everyday-carry-accessory": {
-        name: "Everyday Carry Accessory",
-        category: "Accessories",
-        price: 1399,
-        image: "assets/products/everyday-carry-accessory.png",
-        description:
-          "A practical everyday carry accessory selected for convenient organization and modern personal style."
-      },
-
-      "elevated-living-essential": {
-        name: "Elevated Living Essential",
-        category: "Home & Living",
-        price: 2699,
-        image: "assets/products/elevated-living-essential.png",
-        description:
-          "An elevated home essential selected to bring a clean and refined feel to everyday living spaces."
-      }
-
-    };
-
-
-    /* =========================================================
-       GET PRODUCT FROM URL
-       Example:
-       product.html?product=smart-everyday-device
-       ========================================================= */
-
-    function getProductSlug(){
-      const params = new URLSearchParams(window.location.search);
-      return params.get("product");
-    }
-
-
-    let currentSlug = getProductSlug();
-
-    let currentProduct =
-      products[currentSlug] ||
-      products["everyday-premium-essential"];
-
-    let quantity = 1;
-
-
-    /* =========================================================
-       FORMAT PRICE
-       ========================================================= */
-
-    function formatPrice(price){
-      return "PKR " + Number(price).toLocaleString("en-PK");
-    }
-
-
-    /* =========================================================
-       LOAD CURRENT PRODUCT
-       ========================================================= */
-
-    function loadProduct(){
-
-      document.title =
-        currentProduct.name + " | Shopora Market Store";
-
-      const image =
-        document.getElementById("productImage");
-
-      const name =
-        document.getElementById("productName");
-
-      const category =
-        document.getElementById("productCategory");
-
-      const price =
-        document.getElementById("productPrice");
-
-      const description =
-        document.getElementById("productDescription");
-
-      const metaCategory =
-        document.getElementById("metaCategory");
-
-      const breadcrumb =
-        document.getElementById("breadcrumbName");
-
-      image.src = currentProduct.image;
-      image.alt = currentProduct.name;
-
-      name.textContent = currentProduct.name;
-
-      category.textContent =
-        currentProduct.category;
-
-      price.textContent =
-        formatPrice(currentProduct.price);
-
-      description.textContent =
-        currentProduct.description;
-
-      metaCategory.textContent =
-        currentProduct.category;
-
-      breadcrumb.textContent =
-        currentProduct.name;
-
-      quantity = 1;
-      document.getElementById("quantity").textContent = quantity;
-
-      updateWishlistButton();
-
-      renderRelatedProducts();
-
-      updateCounts();
-
-    }
-
-
-    /* =========================================================
-       QUANTITY
-       ========================================================= */
-
-    function changeQuantity(amount){
-
-      quantity += amount;
-
-      if(quantity < 1){
-        quantity = 1;
-      }
-
-      if(quantity > 99){
-        quantity = 99;
-      }
-
-      document.getElementById("quantity").textContent =
-        quantity;
-    }
-
-
-    /* =========================================================
-       CART
-       ========================================================= */
-
-    function getCart(){
-
-      try{
-        return JSON.parse(
-          localStorage.getItem("shoporaCart")
-        ) || [];
-      }catch(error){
-        return [];
-      }
-
-    }
-
-
-    function saveCart(cart){
-
-      localStorage.setItem(
-        "shoporaCart",
-        JSON.stringify(cart)
-      );
-
-    }
-
-
-    function addCurrentProductToCart(){
-
-      const cart = getCart();
-
-      const existing =
-        cart.find(
-          item => item.name === currentProduct.name
-        );
-
-      if(existing){
-
-        existing.quantity =
-          Number(existing.quantity || 0) + quantity;
-
-      }else{
-
-        cart.push({
-
-          name: currentProduct.name,
-
-          price: currentProduct.price,
-
-          image: currentProduct.image,
-
-          quantity: quantity
-
-        });
-
-      }
-
-      saveCart(cart);
-
-      updateCounts();
-
-      showToast(
-        currentProduct.name +
-        " added to cart."
-      );
-
-    }
-
-
-    /* =========================================================
-       WISHLIST
-       ========================================================= */
-
-    function getWishlist(){
-
-      try{
-
-        return JSON.parse(
-          localStorage.getItem("shoporaWishlist")
-        ) || [];
-
-      }catch(error){
-
-        return [];
-
-      }
-
-    }
-
-
-    function saveWishlist(list){
-
-      localStorage.setItem(
-        "shoporaWishlist",
-        JSON.stringify(list)
-      );
-
-    }
-
-
-    function toggleCurrentWishlist(){
-
-      let wishlist = getWishlist();
-
-      const exists =
-        wishlist.includes(currentSlug);
-
-      if(exists){
-
-        wishlist =
-          wishlist.filter(
-            slug => slug !== currentSlug
-          );
-
-        showToast("Removed from wishlist.");
-
-      }else{
-
-        wishlist.push(currentSlug);
-
-        showToast("Added to wishlist.");
-
-      }
-
-      saveWishlist(wishlist);
-
-      updateWishlistButton();
-
-      updateCounts();
-
-    }
-
-
-    function updateWishlistButton(){
-
-      const button =
-        document.getElementById("wishlistButton");
-
-      if(!button) return;
-
-      const wishlist = getWishlist();
-
-      if(wishlist.includes(currentSlug)){
-
-        button.textContent =
-          "♥ Added to Wishlist";
-
-      }else{
-
-        button.textContent =
-          "♡ Add to Wishlist";
-
-      }
-
-    }
-
-
-    /* =========================================================
-       RELATED PRODUCTS
-       ========================================================= */
-
-    function renderRelatedProducts(){
-
-      const container =
-        document.getElementById("relatedProducts");
-
-      if(!container) return;
-
-      container.innerHTML = "";
-
-      const related =
-        Object.entries(products)
-          .filter(([slug]) => slug !== currentSlug)
-          .slice(0,4);
-
-      related.forEach(([slug, product]) => {
-
-        const card =
-          document.createElement("a");
-
-        card.className =
-          "related-card";
-
-        card.href =
-          "product.html?product=" +
-          encodeURIComponent(slug);
-
-        card.innerHTML = `
-
-          <div class="related-image">
-
-            <img
-              src="${product.image}"
-              alt="${product.name}"
-              loading="lazy"
-            >
-
-          </div>
-
-          <div class="related-info">
-
-            <div class="related-category">
-              ${product.category}
-            </div>
-
-            <h3>
-              ${product.name}
-            </h3>
-
-            <div class="related-price">
-              ${formatPrice(product.price)}
-            </div>
-
-          </div>
-
-        `;
-
-        container.appendChild(card);
-
-      });
-
-    }
-
-
-    /* =========================================================
-       COUNTS
-       ========================================================= */
-
-    function updateCounts(){
-
-      const cart =
-        getCart();
-
-      const wishlist =
-        getWishlist();
-
-      const cartCount =
-        cart.reduce(
-          (total,item) =>
-            total + Number(item.quantity || 0),
-          0
-        );
-
-      const wishlistCount =
-        wishlist.length;
-
-      const cartElement =
-        document.getElementById("cartCount");
-
-      const wishlistElement =
-        document.getElementById("wishlistCount");
-
-      if(cartElement){
-        cartElement.textContent =
-          cartCount;
-      }
-
-      if(wishlistElement){
-        wishlistElement.textContent =
-          wishlistCount;
-      }
-
-    }
-
-
-    /* =========================================================
-       NAVIGATION
-       ========================================================= */
-
-    function goToCart(){
-
-      window.location.href =
-        "cart.html";
-
-    }
-
-
-    function goToWishlist(){
-
-      window.location.href =
-        "shop.html#wishlist";
-
-    }
-
-
-    function goToSearch(){
-
-      window.location.href =
-        "shop.html#productSearch";
-
-    }
-
-
-    /* =========================================================
-       MOBILE MENU
-       ========================================================= */
-
-    function toggleMobileMenu(){
-
-      const menu =
-        document.getElementById("mobileMenu");
-
-      if(menu.style.display === "none" || !menu.style.display){
-
-        menu.style.display = "block";
-
-      }else{
-
-        menu.style.display = "none";
-
-      }
-
-    }
-
-
-    /* =========================================================
-       TOAST
-       ========================================================= */
-
-    let toastTimer;
-
-    function showToast(message){
-
-      const toast =
-        document.getElementById("toast");
-
-      toast.textContent =
-        message;
-
-      toast.classList.add("show");
-
-      clearTimeout(toastTimer);
-
-      toastTimer =
-        setTimeout(() => {
-
-          toast.classList.remove("show");
-
-        }, 2400);
-
-    }
-
-
-    /* =========================================================
-       PRODUCT STRUCTURED DATA
-       ========================================================= */
-
-    function addProductSchema(){
-
-      const existing =
-        document.getElementById("productSchema");
-
-      if(existing){
-        existing.remove();
-      }
-
-      const schema =
-        document.createElement("script");
-
-      schema.type =
-        "application/ld+json";
-
-      schema.id =
-        "productSchema";
-
-      schema.textContent =
-        JSON.stringify({
-
-          "@context":"https://schema.org",
-
-          "@type":"Product",
-
-          "name":currentProduct.name,
-
-          "image":[
-            "https://shoporamarketstore.store/" +
-            currentProduct.image
-          ],
-
-          "description":
-            currentProduct.description,
-
-          "category":
-            currentProduct.category,
-
-          "brand":{
-            "@type":"Brand",
-            "name":"Shopora Market Store"
-          },
-
-          "offers":{
-
-            "@type":"Offer",
-
-            "url":
-              "https://shoporamarketstore.store/product.html?product=" +
-              encodeURIComponent(currentSlug),
-
-            "priceCurrency":"PKR",
-
-            "price":
-              currentProduct.price,
-
-            "availability":
-              "https://schema.org/InStock"
-
-          }
-
-        });
-
-      document.head.appendChild(schema);
-
-    }
-
-
-    /* =========================================================
-       INIT
-       ========================================================= */
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      function(){
-
-        loadProduct();
-
-        addProductSchema();
-
-        updateCounts();
-
-      }
-    );
-
-  </script>
+  <script src="products.js"></script>
+  <script src="product.js"></script>
 
 </body>
 </html>
