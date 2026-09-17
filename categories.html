@@ -19,10 +19,12 @@
   <meta property="og:description" content="Explore Fashion, Beauty, Electronics, Home & Living, Accessories and Lifestyle categories at Shopora.">
   <meta property="og:url" content="https://shoporamarketstore.store/categories.html">
   <meta property="og:site_name" content="Shopora Market Store">
+  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Shop Categories | Shopora Market Store">
   <meta name="twitter:description" content="Explore Shopora's curated product categories for modern everyday shopping.">
+  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
   <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
   <link rel="apple-touch-icon" href="assets/shopora-mark.png">
@@ -36,9 +38,14 @@
   >
 
   <!-- Google AdSense -->
-  <script async
+  <script
+    async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous">
+  </script>
+
+  <!-- Central Product Database -->
+  <script src="products.js"></script>
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -902,6 +909,7 @@
           id="mobileToggle"
           aria-label="Open menu"
           aria-expanded="false"
+          type="button"
         >
           ☰
         </button>
@@ -1155,7 +1163,7 @@
               </div>
 
               <h3>
-                Home & Living
+                Home &amp; Living
               </h3>
 
               <p>
@@ -1163,7 +1171,7 @@
               </p>
 
               <span class="category-link">
-                Shop Home & Living
+                Shop Home &amp; Living
                 <span>→</span>
               </span>
 
@@ -1324,7 +1332,7 @@
               </a>
 
               <a href="shop.html?category=Home%20%26%20Living">
-                Home & Living
+                Home &amp; Living
               </a>
 
               <a href="shop.html?category=Accessories">
@@ -1378,6 +1386,7 @@
 
           <input
             type="email"
+            name="email"
             placeholder="Your email address"
             aria-label="Email address"
             required
@@ -1492,7 +1501,7 @@
         </a>
 
         <a href="return-refund.html">
-          Return & Refund
+          Return &amp; Refund
         </a>
 
       </div>
@@ -1522,6 +1531,8 @@
   <div
     class="toast"
     id="toast"
+    role="status"
+    aria-live="polite"
   >
     Thanks for subscribing to Shopora.
   </div>
@@ -1530,22 +1541,31 @@
   <script>
 
     /* ============================
-       Cart / Wishlist Counts
+       Storage Keys
     ============================ */
 
     const CART_KEY = "shoporaCart";
     const WISHLIST_KEY = "shoporaWishlist";
 
 
+    /* ============================
+       Safe Storage Helpers
+    ============================ */
+
     function getCart() {
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(CART_KEY)
-        ) || [];
+        const data =
+          JSON.parse(
+            localStorage.getItem(CART_KEY)
+          );
 
-      } catch {
+        return Array.isArray(data)
+          ? data
+          : [];
+
+      } catch (error) {
 
         return [];
 
@@ -1558,11 +1578,16 @@
 
       try {
 
-        return JSON.parse(
-          localStorage.getItem(WISHLIST_KEY)
-        ) || [];
+        const data =
+          JSON.parse(
+            localStorage.getItem(WISHLIST_KEY)
+          );
 
-      } catch {
+        return Array.isArray(data)
+          ? data
+          : [];
+
+      } catch (error) {
 
         return [];
 
@@ -1570,6 +1595,10 @@
 
     }
 
+
+    /* ============================
+       Cart / Wishlist Counts
+    ============================ */
 
     function updateCounts() {
 
@@ -1585,14 +1614,28 @@
         );
 
 
-      document.getElementById(
-        "cartCount"
-      ).textContent = cartCount;
+      const cartCountElement =
+        document.getElementById("cartCount");
 
 
-      document.getElementById(
-        "wishlistCount"
-      ).textContent = wishlist.length;
+      const wishlistCountElement =
+        document.getElementById("wishlistCount");
+
+
+      if (cartCountElement) {
+
+        cartCountElement.textContent =
+          cartCount;
+
+      }
+
+
+      if (wishlistCountElement) {
+
+        wishlistCountElement.textContent =
+          wishlist.length;
+
+      }
 
     }
 
@@ -1602,66 +1645,80 @@
     ============================ */
 
     const mobileToggle =
-      document.getElementById(
-        "mobileToggle"
-      );
+      document.getElementById("mobileToggle");
 
 
     const mainNav =
-      document.getElementById(
-        "mainNav"
-      );
+      document.getElementById("mainNav");
 
 
-    mobileToggle.addEventListener(
-      "click",
-      () => {
+    if (mobileToggle && mainNav) {
 
-        const isOpen =
-          mainNav.classList.toggle(
-            "open"
+      mobileToggle.addEventListener(
+        "click",
+        () => {
+
+          const isOpen =
+            mainNav.classList.toggle("open");
+
+
+          mobileToggle.setAttribute(
+            "aria-expanded",
+            isOpen ? "true" : "false"
           );
 
 
-        mobileToggle.setAttribute(
-          "aria-expanded",
-          isOpen ? "true" : "false"
-        );
+          mobileToggle.setAttribute(
+            "aria-label",
+            isOpen
+              ? "Close menu"
+              : "Open menu"
+          );
 
 
-        mobileToggle.textContent =
-          isOpen ? "×" : "☰";
+          mobileToggle.textContent =
+            isOpen
+              ? "×"
+              : "☰";
 
-      }
-    );
-
-
-    mainNav
-      .querySelectorAll("a")
-      .forEach(link => {
-
-        link.addEventListener(
-          "click",
-          () => {
-
-            mainNav.classList.remove(
-              "open"
-            );
+        }
+      );
 
 
-            mobileToggle.textContent =
-              "☰";
+      mainNav
+        .querySelectorAll("a")
+        .forEach(link => {
+
+          link.addEventListener(
+            "click",
+            () => {
+
+              mainNav.classList.remove(
+                "open"
+              );
 
 
-            mobileToggle.setAttribute(
-              "aria-expanded",
-              "false"
-            );
+              mobileToggle.textContent =
+                "☰";
 
-          }
-        );
 
-      });
+              mobileToggle.setAttribute(
+                "aria-expanded",
+                "false"
+              );
+
+
+              mobileToggle.setAttribute(
+                "aria-label",
+                "Open menu"
+              );
+
+            }
+          );
+
+        });
+
+    }
 
 
     /* ============================
@@ -1675,49 +1732,55 @@
 
 
     const toast =
-      document.getElementById(
-        "toast"
+      document.getElementById("toast");
+
+
+    if (newsletterForm && toast) {
+
+      newsletterForm.addEventListener(
+        "submit",
+        event => {
+
+          event.preventDefault();
+
+
+          toast.classList.add("show");
+
+
+          newsletterForm.reset();
+
+
+          setTimeout(
+            () => {
+
+              toast.classList.remove(
+                "show"
+              );
+
+            },
+            2200
+          );
+
+        }
       );
 
-
-    newsletterForm.addEventListener(
-      "submit",
-      event => {
-
-        event.preventDefault();
-
-
-        toast.classList.add(
-          "show"
-        );
-
-
-        newsletterForm.reset();
-
-
-        setTimeout(
-          () => {
-
-            toast.classList.remove(
-              "show"
-            );
-
-          },
-          2200
-        );
-
-      }
-    );
+    }
 
 
     /* ============================
        Current Year
     ============================ */
 
-    document.getElementById(
-      "year"
-    ).textContent =
-      new Date().getFullYear();
+    const yearElement =
+      document.getElementById("year");
+
+
+    if (yearElement) {
+
+      yearElement.textContent =
+        new Date().getFullYear();
+
+    }
 
 
     /* ============================
@@ -1727,6 +1790,11 @@
     updateCounts();
 
 
+    /* ============================
+       Update After Cart/Wishlist
+       Changes From Other Pages
+    ============================ */
+
     window.addEventListener(
       "storage",
       updateCounts
@@ -1735,6 +1803,12 @@
 
     window.addEventListener(
       "pageshow",
+      updateCounts
+    );
+
+
+    window.addEventListener(
+      "focus",
       updateCounts
     );
 
