@@ -24,6 +24,22 @@
       status: "active"
     },
 
+"premium-wireless-headphones": {
+  id: "premium-wireless-headphones",
+  name: "Premium Wireless Headphones",
+  category: "Electronics",
+  price: 7499,
+  image: "assets/products/premium-wireless-headphones.png",
+  description:
+    "Premium wireless headphones designed for immersive everyday listening, modern comfort and a refined connected lifestyle.",
+  badge: "Premium",
+  buyable: true,
+  stock: 10,
+  sku: "PWH-001",
+  seller: "Shopora Market Store",
+  status: "active"
+}
+     
     "everyday-premium-essential": {
       id: "everyday-premium-essential",
       name: "Everyday Premium Essential",
