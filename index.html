@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Shopora Market Store | Online Shopping for Fashion, Beauty, Electronics & More</title>
@@ -12,13 +13,13 @@
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
     crossorigin="anonymous"></script>
 
-  <meta name="description" content="Shopora Market Store is a modern online marketplace for fashion, beauty, electronics, accessories, home & living and lifestyle products.">
+  <!-- SEO -->
+  <meta name="description" content="Shopora Market Store is a modern online marketplace for fashion, beauty, electronics, accessories, home & living, and lifestyle products.">
+  <meta name="keywords" content="Shopora Market Store, online shopping, ecommerce, fashion, beauty, electronics, accessories, home living, lifestyle products">
+  <meta name="author" content="Shopora Market Store">
 
-  <meta name="robots" content="index, follow">
-
+  <!-- Canonical -->
   <link rel="canonical" href="https://shoporamarketstore.store/">
-
-  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Shopora Market Store">
@@ -33,19 +34,16 @@
   <meta name="twitter:description" content="A modern online marketplace for everyday products.">
   <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
-  <!-- Google AdSense -->
-  <meta name="google-adsense-account" content="ca-pub-4557042213123629">
-
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4557042213123629"
-    crossorigin="anonymous">
-  </script>
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <!-- Organization Schema -->
   <script type="application/ld+json">
@@ -76,18 +74,20 @@
   </script>
 
   <style>
-
     :root {
       --black: #111111;
-      --black-soft: #191919;
+      --black-soft: #1b1b1b;
       --ivory: #f7f4ee;
       --white: #ffffff;
+      --cream: #eee9df;
       --gold: #c6a06a;
       --gold-dark: #9c753e;
-      --text: #202020;
-      --muted: #777777;
-      --border: #e5e0d7;
-      --light: #efebe3;
+      --text: #191919;
+      --muted: #77736c;
+      --border: rgba(17, 17, 17, 0.10);
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.08);
+      --radius: 18px;
+      --max: 1240px;
     }
 
     * {
@@ -101,19 +101,11 @@
     }
 
     body {
-      font-family: "DM Sans", Arial, sans-serif;
-      background: var(--ivory);
+      font-family: "DM Sans", sans-serif;
       color: var(--text);
+      background: var(--ivory);
       line-height: 1.6;
-    }
-
-    body.no-scroll {
-      overflow: hidden;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
+      overflow-x: hidden;
     }
 
     img {
@@ -121,21 +113,24 @@
       display: block;
     }
 
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
     button,
-    input,
-    textarea,
-    select {
+    input {
       font: inherit;
     }
 
     .container {
-      width: min(1180px, calc(100% - 40px));
-      margin: auto;
+      width: min(100% - 40px, var(--max));
+      margin: 0 auto;
     }
 
-    /* =====================================================
+    /* =========================
        TOP BAR
-    ===================================================== */
+    ========================= */
 
     .topbar {
       background: var(--black);
@@ -143,20 +138,20 @@
       text-align: center;
       padding: 9px 15px;
       font-size: 12px;
-      letter-spacing: .3px;
+      letter-spacing: 0.4px;
     }
 
-    /* =====================================================
+    /* =========================
        HEADER
-    ===================================================== */
+    ========================= */
 
-    header {
+    .header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(247,244,238,.97);
+      background: rgba(247, 244, 238, 0.96);
+      backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--border);
-      backdrop-filter: blur(10px);
     }
 
     .header-inner {
@@ -164,118 +159,119 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 25px;
+      gap: 30px;
     }
 
     .brand {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
     }
 
-    .brand img {
-      width: 44px;
-      height: 44px;
+    .brand-mark {
+      width: 40px;
+      height: 40px;
       object-fit: contain;
     }
 
     .brand-name {
-      font-size: 21px;
+      font-family: "Playfair Display", serif;
+      font-size: 24px;
       font-weight: 700;
-      letter-spacing: .4px;
+      letter-spacing: -0.4px;
     }
 
-    .desktop-nav {
+    .nav {
       display: flex;
       align-items: center;
-      gap: 24px;
+      justify-content: center;
+      gap: 28px;
+      flex: 1;
     }
 
-    .desktop-nav a {
+    .nav a {
       font-size: 14px;
       font-weight: 600;
-      transition: color .2s ease;
+      transition: color 0.2s ease;
+      position: relative;
     }
 
-    .desktop-nav a:hover {
+    .nav a:hover {
       color: var(--gold-dark);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 1px;
+      background: var(--gold-dark);
+      transition: width 0.2s ease;
+    }
+
+    .nav a:hover::after {
+      width: 100%;
     }
 
     .header-actions {
       display: flex;
       align-items: center;
-      gap: 15px;
-      white-space: nowrap;
+      gap: 10px;
     }
 
-    .header-actions a {
-      font-size: 13px;
+    .icon-btn {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--border);
+      background: transparent;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      background: var(--black);
+      color: #fff;
+      border-color: var(--black);
+    }
+
+    .count {
+      position: absolute;
+      top: -4px;
+      right: -2px;
+      min-width: 17px;
+      height: 17px;
+      padding: 0 4px;
+      background: var(--gold);
+      color: #111;
+      border-radius: 20px;
+      font-size: 10px;
       font-weight: 700;
+      display: grid;
+      place-items: center;
     }
 
-    .menu-button {
+    .menu-btn {
       display: none;
-      border: 0;
-      background: transparent;
-      font-size: 27px;
-      cursor: pointer;
     }
 
-    /* =====================================================
-       MOBILE MENU
-    ===================================================== */
-
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      background: var(--ivory);
-      padding: 25px;
-    }
-
-    .mobile-menu.open {
-      display: block;
-    }
-
-    .mobile-menu-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 45px;
-    }
-
-    .mobile-close {
-      border: 0;
-      background: transparent;
-      font-size: 32px;
-      cursor: pointer;
-    }
-
-    .mobile-links {
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-
-    .mobile-links a {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 30px;
-    }
-
-    /* =====================================================
+    /* =========================
        HERO
-    ===================================================== */
+    ========================= */
 
     .hero {
       position: relative;
-      min-height: 680px;
+      min-height: 690px;
+      height: calc(100vh - 128px);
+      max-height: 850px;
       overflow: hidden;
       background: #111;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .hero-video {
@@ -284,7 +280,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      z-index: 0;
+      object-position: center;
     }
 
     .hero-overlay {
@@ -292,100 +288,157 @@
       inset: 0;
       background:
         linear-gradient(
-          180deg,
-          rgba(0,0,0,.25),
-          rgba(0,0,0,.55)
+          90deg,
+          rgba(0, 0, 0, 0.68) 0%,
+          rgba(0, 0, 0, 0.34) 48%,
+          rgba(0, 0, 0, 0.18) 100%
         );
-      z-index: 1;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      width: min(920px, calc(100% - 30px));
-      text-align: center;
+      height: 100%;
+      max-width: var(--max);
+      margin: auto;
+      padding: 80px 20px 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       color: #fff;
-      padding-top: 40px;
     }
 
-    .hero-eyebrow {
+    .eyebrow {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 18px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 50px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-      font-weight: 700;
-      color: #e7d4b5;
-      margin-bottom: 15px;
+      letter-spacing: 1.5px;
     }
 
     .hero h1 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(42px, 6vw, 72px);
-      line-height: 1.05;
-      font-weight: 500;
-      margin-bottom: 18px;
+      max-width: 680px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(46px, 6vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
     }
 
-    .hero-text {
-      max-width: 650px;
-      margin: 0 auto 30px;
-      color: rgba(255,255,255,.88);
+    .hero-description {
+      max-width: 600px;
+      color: rgba(255,255,255,0.85);
       font-size: 16px;
+      margin-bottom: 30px;
     }
 
-    /* HERO SEARCH */
+    .hero-buttons {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 5px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-dark {
+      background: #fff;
+      color: #111;
+    }
+
+    .btn-dark:hover {
+      background: var(--gold);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.55);
+      color: #fff;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    /* =========================
+       HERO SEARCH
+    ========================= */
+
+    .hero-search-wrap {
+      position: absolute;
+      z-index: 5;
+      left: 50%;
+      bottom: 38px;
+      transform: translateX(-50%);
+      width: min(720px, calc(100% - 40px));
+    }
 
     .hero-search {
-      width: min(720px, 100%);
+      width: 100%;
       height: 66px;
-      margin: 0 auto;
       display: flex;
-      background: #fff;
-      border-radius: 4px;
-      overflow: hidden;
-      box-shadow: 0 18px 50px rgba(0,0,0,.25);
+      align-items: center;
+      padding: 6px;
+      border-radius: 40px;
+      background: rgba(255,255,255,0.96);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.25);
     }
 
     .hero-search input {
       flex: 1;
-      min-width: 0;
+      height: 100%;
       border: 0;
       outline: 0;
       padding: 0 22px;
-      font-size: 16px;
-      color: #222;
-      background: #fff;
+      background: transparent;
+      color: #111;
+      font-size: 15px;
     }
 
     .hero-search button {
-      width: 145px;
+      width: 52px;
+      height: 52px;
       border: 0;
+      border-radius: 50%;
       background: var(--black);
       color: #fff;
       cursor: pointer;
-      font-weight: 700;
+      font-size: 19px;
+      transition: 0.2s ease;
     }
 
     .hero-search button:hover {
       background: var(--gold-dark);
     }
 
-    /* FLOATING SEARCH */
+    /* Sticky Search */
 
     .floating-search {
       position: fixed;
-      top: 90px;
+      top: 88px;
       left: 50%;
       transform: translate(-50%, -20px);
-      width: min(680px, calc(100% - 30px));
-      height: 52px;
-      display: flex;
-      background: #fff;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 35px rgba(0,0,0,.15);
+      width: min(620px, calc(100% - 40px));
       z-index: 950;
       opacity: 0;
       visibility: hidden;
-      transition: .25s ease;
+      transition: 0.25s ease;
     }
 
     body.search-stuck .floating-search {
@@ -394,29 +447,40 @@
       transform: translate(-50%, 0);
     }
 
+    .floating-search form {
+      height: 52px;
+      background: #fff;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      padding: 4px;
+    }
+
     .floating-search input {
       flex: 1;
+      height: 100%;
       border: 0;
       outline: 0;
-      padding: 0 17px;
+      padding: 0 18px;
+      background: transparent;
+      font-size: 14px;
     }
 
     .floating-search button {
-      width: 100px;
+      width: 42px;
+      height: 42px;
       border: 0;
+      border-radius: 50%;
       background: var(--black);
       color: #fff;
       cursor: pointer;
-      font-weight: 700;
     }
 
-    /* =====================================================
-       GENERAL SECTION
-    ===================================================== */
-
-    section {
-      scroll-margin-top: 100px;
-    }
+    /* =========================
+       SECTIONS
+    ========================= */
 
     .section {
       padding: 90px 0;
@@ -424,64 +488,63 @@
 
     .section-head {
       display: flex;
-      justify-content: space-between;
       align-items: end;
+      justify-content: space-between;
       gap: 25px;
       margin-bottom: 32px;
     }
 
     .section-kicker {
       color: var(--gold-dark);
-      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
+      font-size: 11px;
       font-weight: 700;
       margin-bottom: 7px;
     }
 
     .section-title {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(32px, 4vw, 48px);
-      font-weight: 500;
-      line-height: 1.15;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -1px;
     }
 
     .section-link {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 700;
       border-bottom: 1px solid var(--black);
-      padding-bottom: 3px;
+      padding-bottom: 4px;
     }
 
-    /* =====================================================
+    /* =========================
        PRODUCTS
-    ===================================================== */
+    ========================= */
 
-    .product-grid {
+    .products-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
     }
 
     .product-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      overflow: hidden;
       position: relative;
+      min-width: 0;
     }
 
     .product-image {
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      background: var(--light);
       position: relative;
+      overflow: hidden;
+      background: #ebe7df;
+      border-radius: 12px;
+      aspect-ratio: 1 / 1.08;
     }
 
     .product-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform .4s ease;
+      transition: transform 0.45s ease;
     }
 
     .product-card:hover .product-image img {
@@ -490,81 +553,80 @@
 
     .product-tag {
       position: absolute;
-      top: 12px;
       left: 12px;
-      background: var(--black);
-      color: #fff;
+      top: 12px;
+      background: #fff;
+      color: #111;
       padding: 5px 9px;
+      border-radius: 20px;
       font-size: 10px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: .7px;
+      letter-spacing: 0.5px;
     }
 
     .wishlist-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 36px;
-      height: 36px;
+      top: 11px;
+      right: 11px;
+      width: 37px;
+      height: 37px;
       border: 0;
       border-radius: 50%;
-      background: rgba(255,255,255,.92);
+      background: rgba(255,255,255,0.94);
       cursor: pointer;
-      font-size: 18px;
-    }
-
-    .wishlist-btn.active {
-      color: var(--gold-dark);
+      font-size: 17px;
     }
 
     .product-info {
-      padding: 18px;
+      padding: 14px 2px 0;
     }
 
     .product-category {
+      color: var(--muted);
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .product-name {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
-      margin-bottom: 9px;
-    }
-
-    .product-bottom {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
+      margin-bottom: 5px;
     }
 
     .product-price {
+      font-size: 14px;
       font-weight: 700;
-      color: var(--gold-dark);
     }
 
-    .add-cart {
-      border: 0;
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .small-btn {
+      flex: 1;
+      min-height: 40px;
+      border: 1px solid var(--black);
+      background: transparent;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .small-btn:hover {
       background: var(--black);
       color: #fff;
-      padding: 9px 12px;
-      cursor: pointer;
-      font-size: 12px;
-      font-weight: 700;
     }
 
-    .add-cart:hover {
-      background: var(--gold-dark);
-    }
-
-    /* =====================================================
+    /* =========================
        TRUST BAR
-    ===================================================== */
+    ========================= */
 
     .trust-bar {
       background: var(--black);
@@ -576,25 +638,40 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 30px;
-      text-align: center;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .trust-icon {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
     }
 
     .trust-item strong {
       display: block;
-      color: #fff;
-      margin-bottom: 4px;
+      font-size: 13px;
+      margin-bottom: 2px;
     }
 
     .trust-item span {
-      color: #aaa;
-      font-size: 13px;
+      color: rgba(255,255,255,0.62);
+      font-size: 11px;
     }
 
-    /* =====================================================
+    /* =========================
        CATEGORIES
-    ===================================================== */
+    ========================= */
 
-    .category-grid {
+    .categories-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
@@ -602,18 +679,18 @@
 
     .category-card {
       position: relative;
-      min-height: 280px;
       overflow: hidden;
-      background: #222;
+      min-height: 260px;
+      border-radius: 12px;
+      background: #ddd;
     }
 
     .category-card img {
-      position: absolute;
-      inset: 0;
       width: 100%;
       height: 100%;
+      min-height: 260px;
       object-fit: cover;
-      transition: transform .4s ease;
+      transition: transform 0.45s ease;
     }
 
     .category-card:hover img {
@@ -622,47 +699,40 @@
 
     .category-overlay {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        180deg,
-        transparent 35%,
-        rgba(0,0,0,.75)
-      );
-    }
-
-    .category-content {
-      position: absolute;
-      left: 22px;
-      right: 22px;
-      bottom: 20px;
+      inset: auto 0 0;
+      padding: 60px 22px 22px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.75));
       color: #fff;
     }
 
-    .category-content h3 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 28px;
-      font-weight: 500;
-      margin-bottom: 3px;
+    .category-overlay h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      margin-bottom: 4px;
     }
 
-    .category-content span {
-      font-size: 13px;
-      color: #ddd;
+    .category-overlay span {
+      font-size: 12px;
+      color: rgba(255,255,255,0.8);
     }
 
-    /* =====================================================
+    /* =========================
        SHOPORA EDIT
-    ===================================================== */
+    ========================= */
+
+    .edit-section {
+      background: #e9e4da;
+    }
 
     .edit-grid {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      min-height: 450px;
-      background: #e8e1d5;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
     }
 
     .edit-image {
-      min-height: 450px;
+      min-height: 480px;
+      overflow: hidden;
     }
 
     .edit-image img {
@@ -672,250 +742,74 @@
     }
 
     .edit-content {
+      padding: 65px;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 55px;
     }
 
     .edit-content h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(34px, 4vw, 52px);
-      line-height: 1.1;
-      font-weight: 500;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(36px, 4vw, 56px);
+      line-height: 1.05;
       margin-bottom: 18px;
     }
 
     .edit-content p {
-      color: #666;
+      color: var(--muted);
       max-width: 480px;
-      margin-bottom: 25px;
+      margin-bottom: 26px;
     }
 
     .dark-button {
       width: fit-content;
+      padding: 13px 22px;
       background: var(--black);
       color: #fff;
-      padding: 13px 22px;
+      border: 0;
+      border-radius: 4px;
+      font-size: 12px;
       font-weight: 700;
-      font-size: 13px;
     }
 
     .dark-button:hover {
       background: var(--gold-dark);
     }
 
-    /* =====================================================
-       ABOUT
-    ===================================================== */
-
-    .about-section {
-      background: #fff;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .about-mark {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 350px;
-      background: var(--black);
-    }
-
-    .about-mark img {
-      width: 150px;
-      height: 150px;
-      object-fit: contain;
-    }
-
-    .about-content h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(34px, 4vw, 50px);
-      font-weight: 500;
-      line-height: 1.1;
-      margin-bottom: 18px;
-    }
-
-    .about-content p {
-      color: var(--muted);
-      margin-bottom: 15px;
-      max-width: 650px;
-    }
-
-    .about-points {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px 25px;
-      margin-top: 25px;
-    }
-
-    .about-points div {
-      font-size: 14px;
-      font-weight: 600;
-    }
-
-    /* =====================================================
-       CONTACT
-    ===================================================== */
-
-    .contact-section {
-      background: var(--ivory);
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 45px;
-    }
-
-    .contact-info,
-    .contact-form-box {
-      background: #fff;
-      border: 1px solid var(--border);
-      padding: 38px;
-    }
-
-    .contact-info h2,
-    .contact-form-box h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 35px;
-      font-weight: 500;
-      margin-bottom: 13px;
-    }
-
-    .contact-info > p,
-    .contact-form-box > p {
-      color: var(--muted);
-      margin-bottom: 25px;
-    }
-
-    .contact-item {
-      border-top: 1px solid var(--border);
-      padding: 17px 0;
-    }
-
-    .contact-item strong {
-      display: block;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 4px;
-    }
-
-    .contact-item a,
-    .contact-item span {
-      color: var(--muted);
-      word-break: break-word;
-    }
-
-    .contact-form-group {
-      margin-bottom: 16px;
-    }
-
-    .contact-form-group label {
-      display: block;
-      font-size: 13px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .contact-form-group input,
-    .contact-form-group textarea,
-    .contact-form-group select {
-      width: 100%;
-      border: 1px solid var(--border);
-      background: #fff;
-      padding: 13px 14px;
-      outline: none;
-    }
-
-    .contact-form-group input:focus,
-    .contact-form-group textarea:focus,
-    .contact-form-group select:focus {
-      border-color: var(--gold);
-    }
-
-    .contact-form-group textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    .contact-submit {
-      width: 100%;
-      border: 0;
-      background: var(--black);
-      color: #fff;
-      padding: 14px 18px;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .contact-submit:hover {
-      background: var(--gold-dark);
-    }
-
-    .contact-submit:disabled {
-      opacity: .6;
-      cursor: not-allowed;
-    }
-
-    #contactResult {
-      display: none;
-      margin-top: 13px;
-      padding: 12px;
-      text-align: center;
-      font-size: 13px;
-    }
-
-    #contactResult.success {
-      display: block;
-      background: #edf8ef;
-      color: #256b32;
-      border: 1px solid #cce8d0;
-    }
-
-    #contactResult.error {
-      display: block;
-      background: #fff0f0;
-      color: #9b2d2d;
-      border: 1px solid #f0cccc;
-    }
-
-    /* =====================================================
+    /* =========================
        NEWSLETTER
-    ===================================================== */
+    ========================= */
 
     .newsletter {
-      background: var(--black);
-      color: #fff;
-      padding: 70px 20px;
+      background: var(--cream);
+      padding: 75px 0;
+    }
+
+    .newsletter-inner {
+      max-width: 760px;
+      margin: auto;
       text-align: center;
     }
 
     .newsletter h2 {
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 40px;
-      font-weight: 500;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(32px, 4vw, 45px);
       margin-bottom: 10px;
     }
 
     .newsletter p {
-      color: #aaa;
-      max-width: 560px;
-      margin: 0 auto 25px;
+      color: var(--muted);
+      margin-bottom: 25px;
     }
 
     .newsletter-form {
-      width: min(520px, 100%);
+      max-width: 600px;
       margin: auto;
       display: flex;
       background: #fff;
+      border: 1px solid var(--border);
+      padding: 5px;
+      border-radius: 5px;
     }
 
     .newsletter-form input {
@@ -923,155 +817,227 @@
       min-width: 0;
       border: 0;
       outline: 0;
-      padding: 14px;
+      padding: 13px 15px;
+      background: transparent;
+      font-size: 13px;
     }
 
     .newsletter-form button {
       border: 0;
-      background: var(--gold-dark);
+      background: var(--black);
       color: #fff;
-      padding: 0 20px;
+      padding: 0 22px;
+      border-radius: 4px;
       font-weight: 700;
       cursor: pointer;
+      font-size: 12px;
     }
 
-    /* =====================================================
+    /* =========================
        FOOTER
-    ===================================================== */
+    ========================= */
 
-    footer {
-      background: #0c0c0c;
+    .footer {
+      background: var(--black);
       color: #fff;
-      padding: 55px 0 25px;
+      padding: 70px 0 25px;
     }
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
       gap: 50px;
+      padding-bottom: 50px;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
     }
 
-    footer h3 {
-      font-size: 17px;
-      margin-bottom: 15px;
+    .footer-brand {
+      max-width: 310px;
     }
 
-    footer p,
-    footer a {
-      color: #999;
-      font-size: 14px;
+    .footer-brand .brand {
+      margin-bottom: 18px;
     }
 
-    footer a:hover {
-      color: var(--gold);
+    .footer-brand .brand-name {
+      color: #fff;
+    }
+
+    .footer-brand p {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+    }
+
+    .footer h3 {
+      font-size: 13px;
+      margin-bottom: 17px;
     }
 
     .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.62);
+      font-size: 12px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-contact {
+      display: grid;
+      gap: 11px;
+    }
+
+    .footer-contact a {
+      color: rgba(255,255,255,0.65);
+      font-size: 12px;
+      word-break: break-word;
+    }
+
+    .footer-contact a:hover {
+      color: var(--gold);
     }
 
     .footer-bottom {
-      border-top: 1px solid #292929;
-      margin-top: 35px;
-      padding-top: 20px;
-      color: #777;
-      font-size: 12px;
+      padding-top: 23px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: rgba(255,255,255,0.45);
+      font-size: 11px;
     }
 
-    /* =====================================================
+    /* =========================
        TOAST
-    ===================================================== */
+    ========================= */
 
     .toast {
       position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 3000;
+      left: 50%;
+      bottom: 25px;
+      transform: translate(-50%, 20px);
+      z-index: 2000;
       background: var(--black);
       color: #fff;
-      padding: 13px 18px;
-      font-size: 13px;
+      padding: 12px 20px;
+      border-radius: 5px;
+      font-size: 12px;
       opacity: 0;
       visibility: hidden;
-      transform: translateY(15px);
-      transition: .25s ease;
+      transition: 0.25s ease;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
     }
 
     .toast.show {
       opacity: 1;
       visibility: visible;
-      transform: translateY(0);
+      transform: translate(-50%, 0);
     }
 
-    /* =====================================================
+    /* =========================
        RESPONSIVE
-    ===================================================== */
+    ========================= */
 
     @media (max-width: 1000px) {
-
-      .desktop-nav {
-        gap: 14px;
+      .nav {
+        gap: 18px;
       }
 
-      .desktop-nav a {
-        font-size: 13px;
-      }
-
-      .product-grid {
+      .products-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .category-grid {
+      .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-
-      .about-grid,
-      .contact-grid,
-      .edit-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .edit-image {
-        min-height: 350px;
-      }
-
-      .trust-grid {
-        grid-template-columns: 1fr;
-      }
-
     }
 
     @media (max-width: 760px) {
-
       .container {
-        width: min(100% - 30px, 1180px);
+        width: min(100% - 28px, var(--max));
       }
 
-      .desktop-nav,
-      .header-actions {
+      .topbar {
+        font-size: 10px;
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .nav {
+        position: fixed;
+        top: 68px;
+        left: 0;
+        right: 0;
+        background: var(--ivory);
+        border-bottom: 1px solid var(--border);
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 20px 20px;
+      }
+
+      .nav.open {
+        display: flex;
+      }
+
+      .nav a {
+        padding: 13px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav a::after {
         display: none;
       }
 
-      .menu-button {
-        display: block;
+      .menu-btn {
+        display: grid;
       }
 
       .hero {
-        min-height: 610px;
+        min-height: 700px;
+        height: 760px;
+      }
+
+      .hero-content {
+        padding: 60px 20px 150px;
+        justify-content: center;
       }
 
       .hero h1 {
-        font-size: 44px;
+        font-size: clamp(42px, 12vw, 62px);
+        letter-spacing: -1.5px;
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero-search-wrap {
+        bottom: 24px;
+        width: calc(100% - 28px);
       }
 
       .hero-search {
-        height: 58px;
+        height: 60px;
       }
 
       .hero-search button {
-        width: 105px;
+        width: 48px;
+        height: 48px;
+      }
+
+      .floating-search {
+        top: 78px;
+        width: calc(100% - 28px);
       }
 
       .section {
@@ -1079,263 +1045,194 @@
       }
 
       .section-head {
-        align-items: start;
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+      }
+
+      .product-actions {
         flex-direction: column;
       }
 
-      .category-grid {
+      .trust-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+
+      .categories-grid {
         grid-template-columns: 1fr;
       }
 
-      .about-mark {
-        min-height: 280px;
+      .category-card,
+      .category-card img {
+        min-height: 240px;
       }
 
-      .about-points {
+      .edit-grid {
         grid-template-columns: 1fr;
       }
 
-      .contact-grid {
-        gap: 20px;
+      .edit-image {
+        min-height: 330px;
       }
 
-      .contact-info,
-      .contact-form-box {
-        padding: 25px;
+      .edit-content {
+        padding: 45px 25px;
       }
 
-      .newsletter h2 {
-        font-size: 34px;
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px 25px;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .brand-name {
+        font-size: 21px;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+      }
+
+      .header-actions {
+        gap: 6px;
+      }
+
+      .icon-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .hero {
+        height: 720px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+        align-items: stretch;
+        max-width: 250px;
+      }
+
+      .products-grid {
+        gap: 12px;
+      }
+
+      .product-name {
+        font-size: 13px;
+      }
+
+      .product-price {
+        font-size: 13px;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
       }
 
-    }
-
-    @media (max-width: 500px) {
-
-      .brand-name {
-        font-size: 18px;
-      }
-
-      .brand img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .hero-content {
-        width: calc(100% - 24px);
-      }
-
-      .hero h1 {
-        font-size: 39px;
-      }
-
-      .hero-text {
-        font-size: 14px;
-      }
-
-      .hero-search {
-        flex-direction: row;
-        height: 55px;
-      }
-
-      .hero-search input {
-        padding: 0 13px;
-        font-size: 14px;
-      }
-
-      .hero-search button {
-        width: 88px;
-        font-size: 12px;
-      }
-
-      .product-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .product-bottom {
-        align-items: center;
+      .footer-brand {
+        grid-column: auto;
       }
 
       .newsletter-form {
         flex-direction: column;
+        gap: 5px;
         background: transparent;
-        gap: 10px;
+        border: 0;
       }
 
       .newsletter-form input {
-        min-height: 50px;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        min-height: 48px;
       }
 
       .newsletter-form button {
-        min-height: 50px;
+        min-height: 48px;
       }
-
     }
-
   </style>
 </head>
 
 <body>
 
-  <!-- =====================================================
-       TOP BAR
-  ====================================================== -->
-
+  <!-- TOP BAR -->
   <div class="topbar">
-    Welcome to Shopora Market Store — Discover something better.
+    Shopora Market Store — Discover something better for everyday life.
   </div>
 
-
-  <!-- =====================================================
-       HEADER
-  ====================================================== -->
-
-  <header>
-
+  <!-- HEADER -->
+  <header class="header">
     <div class="container header-inner">
 
-      <a href="index.html" class="brand">
-
+      <a href="index.html" class="brand" aria-label="Shopora Market Store Home">
         <img
           src="assets/shopora-mark.png"
-          alt="Shopora Market Store logo"
+          alt="Shopora Market Store"
+          class="brand-mark"
         >
-
-        <span class="brand-name">
-          Shopora
-        </span>
-
+        <span class="brand-name">Shopora</span>
       </a>
 
-
-      <nav class="desktop-nav">
-
-        <a href="index.html">
-          Home
-        </a>
-
-        <a href="shop.html">
-          Shop
-        </a>
-
-        <a href="categories.html">
-          Categories
-        </a>
-
-        <a href="#trending">
-          Trending
-        </a>
-
-        <a href="#about">
-          About
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
+      <nav class="nav" id="mainNav">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="trending.html">Trending</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
-
 
       <div class="header-actions">
 
-        <a href="cart.html">
-          Cart (<span id="cartCount">0</span>)
+        <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+          ♡
+          <span class="count" id="wishlistCount">0</span>
         </a>
+
+        <a href="cart.html" class="icon-btn" aria-label="Shopping Cart">
+          🛒
+          <span class="count" id="cartCount">0</span>
+        </a>
+
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open Menu">
+          ☰
+        </button>
 
       </div>
 
-
-      <button
-        class="menu-button"
-        id="menuButton"
-        type="button"
-        aria-label="Open menu"
-      >
-        ☰
-      </button>
-
     </div>
-
   </header>
 
-
-  <!-- =====================================================
-       MOBILE MENU
-  ====================================================== -->
-
-  <div class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-menu-top">
-
-      <a href="index.html" class="brand">
-
-        <img
-          src="assets/shopora-mark.png"
-          alt="Shopora"
-        >
-
-        <span class="brand-name">
-          Shopora
-        </span>
-
-      </a>
-
-      <button
-        class="mobile-close"
-        id="mobileClose"
-        type="button"
+  <!-- FLOATING SEARCH -->
+  <div class="floating-search" id="floatingSearch">
+    <form id="floatingSearchForm">
+      <input
+        type="search"
+        id="floatingSearchInput"
+        placeholder="Search products, categories..."
+        autocomplete="off"
       >
-        ×
-      </button>
-
-    </div>
-
-
-    <div class="mobile-links">
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="shop.html">
-        Shop
-      </a>
-
-      <a href="categories.html">
-        Categories
-      </a>
-
-      <a href="#trending">
-        Trending
-      </a>
-
-      <a href="#about">
-        About
-      </a>
-
-      <a href="#contact">
-        Contact
-      </a>
-
-      <a href="cart.html">
-        Cart (<span id="mobileCartCount">0</span>)
-      </a>
-
-    </div>
-
+      <button type="submit" aria-label="Search">⌕</button>
+    </form>
   </div>
 
-
-  <!-- =====================================================
-       HERO
-  ====================================================== -->
-
+  <!-- HERO -->
   <section class="hero">
 
     <video
@@ -1346,23 +1243,15 @@
       playsinline
       preload="auto"
     >
-
-      <source
-        src="assets/video/shopora-hero-video.mp4"
-        type="video/mp4"
-      >
-
+      <source src="assets/video/shopora-hero-video.mp4" type="video/mp4">
       Your browser does not support the video tag.
-
     </video>
-
 
     <div class="hero-overlay"></div>
 
-
     <div class="hero-content">
 
-      <div class="hero-eyebrow">
+      <div class="eyebrow">
         Modern online marketplace
       </div>
 
@@ -1371,105 +1260,62 @@
         Better everyday.
       </h1>
 
-      <p class="hero-text">
-        Explore fashion, beauty, electronics, accessories,
-        home & living and lifestyle products from one modern marketplace.
+      <p class="hero-description">
+        Discover fashion, beauty, electronics, accessories,
+        home & living and lifestyle products in one modern marketplace.
       </p>
 
+      <div class="hero-buttons">
+        <a href="shop.html" class="btn btn-dark">
+          Shop All Products
+        </a>
 
-      <!-- HERO SEARCH -->
+        <a href="categories.html" class="btn btn-outline">
+          Explore Categories
+        </a>
+      </div>
 
-      <form
-        class="hero-search"
-        id="heroSearchForm"
-      >
+    </div>
+
+    <!-- CENTER HERO SEARCH -->
+    <div class="hero-search-wrap">
+      <form class="hero-search" id="heroSearchForm">
 
         <input
           type="search"
           id="heroSearchInput"
           placeholder="What are you looking for?"
-          aria-label="Search products"
+          autocomplete="off"
         >
 
-        <button type="submit">
-          Search
+        <button type="submit" aria-label="Search">
+          ⌕
         </button>
 
       </form>
-
     </div>
 
   </section>
 
-
-  <!-- =====================================================
-       FLOATING SEARCH
-  ====================================================== -->
-
-  <form
-    class="floating-search"
-    id="floatingSearchForm"
-  >
-
-    <input
-      type="search"
-      id="floatingSearchInput"
-      placeholder="Search products..."
-      aria-label="Search products"
-    >
-
-    <button type="submit">
-      Search
-    </button>
-
-  </form>
-
-
-  <!-- =====================================================
-       FEATURED PRODUCTS
-  ====================================================== -->
-
-  <section class="section" id="featured">
-
+  <!-- FEATURED PRODUCTS -->
+  <section class="section">
     <div class="container">
 
       <div class="section-head">
-
         <div>
-
-          <div class="section-kicker">
-            Shopora Selection
-          </div>
-
-          <h2 class="section-title">
-            Featured products
-          </h2>
-
+          <div class="section-kicker">Featured</div>
+          <h2 class="section-title">Selected for everyday</h2>
         </div>
 
-        <a
-          href="shop.html"
-          class="section-link"
-        >
+        <a href="shop.html" class="section-link">
           View all products
         </a>
-
       </div>
 
-
-      <div class="product-grid">
-
+      <div class="products-grid">
 
         <!-- PRODUCT 1 -->
-
-        <article
-          class="product-card"
-          data-id="everyday-premium-essential"
-          data-name="Everyday Premium Essential"
-          data-price="2499"
-          data-category="Lifestyle"
-          data-image="assets/products/everyday-premium-essential.png"
-        >
+        <article class="product-card">
 
           <div class="product-image">
 
@@ -1479,20 +1325,17 @@
               loading="lazy"
             >
 
-            <span class="product-tag">
-              Essential
-            </span>
+            <span class="product-tag">Essential</span>
 
             <button
               class="wishlist-btn"
-              type="button"
+              onclick="toggleWishlist('everyday-premium-essential')"
               aria-label="Add to wishlist"
             >
               ♡
             </button>
 
           </div>
-
 
           <div class="product-info">
 
@@ -1504,36 +1347,34 @@
               Everyday Premium Essential
             </div>
 
-            <div class="product-bottom">
+            <div class="product-price">
+              PKR 2,499
+            </div>
 
-              <div class="product-price">
-                PKR 2,499
-              </div>
-
+            <div class="product-actions">
               <button
-                class="add-cart"
-                type="button"
+                class="small-btn"
+                onclick="addToCart(
+                  'everyday-premium-essential',
+                  'Everyday Premium Essential',
+                  2499,
+                  'assets/products/everyday-premium-essential.png'
+                )"
               >
                 Add to Cart
               </button>
 
+              <a href="product.html?id=everyday-premium-essential" class="small-btn" style="display:grid;place-items:center;">
+                View
+              </a>
             </div>
 
           </div>
-
         </article>
 
 
         <!-- PRODUCT 2 -->
-
-        <article
-          class="product-card"
-          data-id="modern-everyday-collection"
-          data-name="Modern Everyday Collection"
-          data-price="3499"
-          data-category="Fashion"
-          data-image="assets/products/modern-everyday-collection.png"
-        >
+        <article class="product-card">
 
           <div class="product-image">
 
@@ -1543,20 +1384,17 @@
               loading="lazy"
             >
 
-            <span class="product-tag">
-              New
-            </span>
+            <span class="product-tag">New</span>
 
             <button
               class="wishlist-btn"
-              type="button"
+              onclick="toggleWishlist('modern-everyday-collection')"
               aria-label="Add to wishlist"
             >
               ♡
             </button>
 
           </div>
-
 
           <div class="product-info">
 
@@ -1568,36 +1406,34 @@
               Modern Everyday Collection
             </div>
 
-            <div class="product-bottom">
+            <div class="product-price">
+              PKR 3,499
+            </div>
 
-              <div class="product-price">
-                PKR 3,499
-              </div>
-
+            <div class="product-actions">
               <button
-                class="add-cart"
-                type="button"
+                class="small-btn"
+                onclick="addToCart(
+                  'modern-everyday-collection',
+                  'Modern Everyday Collection',
+                  3499,
+                  'assets/products/modern-everyday-collection.png'
+                )"
               >
                 Add to Cart
               </button>
 
+              <a href="product.html?id=modern-everyday-collection" class="small-btn" style="display:grid;place-items:center;">
+                View
+              </a>
             </div>
 
           </div>
-
         </article>
 
 
         <!-- PRODUCT 3 -->
-
-        <article
-          class="product-card"
-          data-id="smart-everyday-device"
-          data-name="Smart Everyday Device"
-          data-price="4999"
-          data-category="Electronics"
-          data-image="assets/products/smart-everyday-device.png"
-        >
+        <article class="product-card">
 
           <div class="product-image">
 
@@ -1607,20 +1443,17 @@
               loading="lazy"
             >
 
-            <span class="product-tag">
-              Smart Pick
-            </span>
+            <span class="product-tag">Smart Pick</span>
 
             <button
               class="wishlist-btn"
-              type="button"
+              onclick="toggleWishlist('smart-everyday-device')"
               aria-label="Add to wishlist"
             >
               ♡
             </button>
 
           </div>
-
 
           <div class="product-info">
 
@@ -1632,36 +1465,34 @@
               Smart Everyday Device
             </div>
 
-            <div class="product-bottom">
+            <div class="product-price">
+              PKR 4,999
+            </div>
 
-              <div class="product-price">
-                PKR 4,999
-              </div>
-
+            <div class="product-actions">
               <button
-                class="add-cart"
-                type="button"
+                class="small-btn"
+                onclick="addToCart(
+                  'smart-everyday-device',
+                  'Smart Everyday Device',
+                  4999,
+                  'assets/products/smart-everyday-device.png'
+                )"
               >
                 Add to Cart
               </button>
 
+              <a href="product.html?id=smart-everyday-device" class="small-btn" style="display:grid;place-items:center;">
+                View
+              </a>
             </div>
 
           </div>
-
         </article>
 
 
         <!-- PRODUCT 4 -->
-
-        <article
-          class="product-card"
-          data-id="minimal-signature-accessory"
-          data-name="Minimal Signature Accessory"
-          data-price="1899"
-          data-category="Accessories"
-          data-image="assets/products/minimal-signature-accessory.png"
-        >
+        <article class="product-card">
 
           <div class="product-image">
 
@@ -1671,20 +1502,17 @@
               loading="lazy"
             >
 
-            <span class="product-tag">
-              Signature
-            </span>
+            <span class="product-tag">Signature</span>
 
             <button
               class="wishlist-btn"
-              type="button"
+              onclick="toggleWishlist('minimal-signature-accessory')"
               aria-label="Add to wishlist"
             >
               ♡
             </button>
 
           </div>
-
 
           <div class="product-info">
 
@@ -1696,333 +1524,201 @@
               Minimal Signature Accessory
             </div>
 
-            <div class="product-bottom">
+            <div class="product-price">
+              PKR 1,899
+            </div>
 
-              <div class="product-price">
-                PKR 1,899
-              </div>
-
+            <div class="product-actions">
               <button
-                class="add-cart"
-                type="button"
+                class="small-btn"
+                onclick="addToCart(
+                  'minimal-signature-accessory',
+                  'Minimal Signature Accessory',
+                  1899,
+                  'assets/products/minimal-signature-accessory.png'
+                )"
               >
                 Add to Cart
               </button>
 
+              <a href="product.html?id=minimal-signature-accessory" class="small-btn" style="display:grid;place-items:center;">
+                View
+              </a>
             </div>
 
           </div>
-
         </article>
 
       </div>
 
     </div>
-
   </section>
 
 
-  <!-- =====================================================
-       TRUST BAR
-  ====================================================== -->
-
+  <!-- TRUST BAR -->
   <section class="trust-bar">
+    <div class="container">
 
-    <div class="container trust-grid">
+      <div class="trust-grid">
 
-      <div class="trust-item">
+        <div class="trust-item">
+          <div class="trust-icon">✓</div>
+          <div>
+            <strong>Curated marketplace</strong>
+            <span>Products across multiple categories</span>
+          </div>
+        </div>
 
-        <strong>
-          Curated Marketplace
-        </strong>
+        <div class="trust-item">
+          <div class="trust-icon">◇</div>
+          <div>
+            <strong>Simple shopping</strong>
+            <span>Browse, discover and add to cart</span>
+          </div>
+        </div>
 
-        <span>
-          Products across everyday categories
-        </span>
-
-      </div>
-
-
-      <div class="trust-item">
-
-        <strong>
-          Easy Shopping
-        </strong>
-
-        <span>
-          Simple browsing and checkout experience
-        </span>
-
-      </div>
-
-
-      <div class="trust-item">
-
-        <strong>
-          Customer Support
-        </strong>
-
-        <span>
-          We're here when you need us
-        </span>
+        <div class="trust-item">
+          <div class="trust-icon">↗</div>
+          <div>
+            <strong>Growing selection</strong>
+            <span>New products and sellers can join</span>
+          </div>
+        </div>
 
       </div>
 
     </div>
-
   </section>
 
 
-  <!-- =====================================================
-       CATEGORIES
-  ====================================================== -->
-
-  <section class="section" id="categories">
-
+  <!-- CATEGORIES -->
+  <section class="section">
     <div class="container">
 
       <div class="section-head">
-
         <div>
-
-          <div class="section-kicker">
-            Explore
-          </div>
-
-          <h2 class="section-title">
-            Shop by category
-          </h2>
-
+          <div class="section-kicker">Explore</div>
+          <h2 class="section-title">Shop by category</h2>
         </div>
 
-        <a
-          href="categories.html"
-          class="section-link"
-        >
+        <a href="categories.html" class="section-link">
           All categories
         </a>
-
       </div>
 
+      <div class="categories-grid">
 
-      <div class="category-grid">
-
-
-        <a
-          href="shop.html?category=Fashion"
-          class="category-card"
-        >
-
+        <a href="shop.html?category=Fashion" class="category-card">
           <img
             src="assets/categories/fashion.png"
             alt="Fashion"
             loading="lazy"
           >
-
-          <div class="category-overlay"></div>
-
-          <div class="category-content">
-
-            <h3>
-              Fashion
-            </h3>
-
-            <span>
-              Everyday style
-            </span>
-
+          <div class="category-overlay">
+            <h3>Fashion</h3>
+            <span>Explore fashion products</span>
           </div>
-
         </a>
 
-
-        <a
-          href="shop.html?category=Beauty"
-          class="category-card"
-        >
-
+        <a href="shop.html?category=Beauty" class="category-card">
           <img
             src="assets/categories/beauty.png"
             alt="Beauty"
             loading="lazy"
           >
-
-          <div class="category-overlay"></div>
-
-          <div class="category-content">
-
-            <h3>
-              Beauty
-            </h3>
-
-            <span>
-              Personal care
-            </span>
-
+          <div class="category-overlay">
+            <h3>Beauty</h3>
+            <span>Explore beauty products</span>
           </div>
-
         </a>
 
-
-        <a
-          href="shop.html?category=Electronics"
-          class="category-card"
-        >
-
+        <a href="shop.html?category=Electronics" class="category-card">
           <img
             src="assets/categories/electronics.png"
             alt="Electronics"
             loading="lazy"
           >
-
-          <div class="category-overlay"></div>
-
-          <div class="category-content">
-
-            <h3>
-              Electronics
-            </h3>
-
-            <span>
-              Smart everyday tech
-            </span>
-
+          <div class="category-overlay">
+            <h3>Electronics</h3>
+            <span>Explore electronics</span>
           </div>
-
         </a>
 
-
-        <a
-          href="shop.html?category=Home%20%26%20Living"
-          class="category-card"
-        >
-
+        <a href="shop.html?category=Home%20%26%20Living" class="category-card">
           <img
             src="assets/categories/home-living.png"
             alt="Home and Living"
             loading="lazy"
           >
-
-          <div class="category-overlay"></div>
-
-          <div class="category-content">
-
-            <h3>
-              Home & Living
-            </h3>
-
-            <span>
-              Better spaces
-            </span>
-
+          <div class="category-overlay">
+            <h3>Home & Living</h3>
+            <span>Explore home products</span>
           </div>
-
         </a>
 
-
-        <a
-          href="shop.html?category=Accessories"
-          class="category-card"
-        >
-
+        <a href="shop.html?category=Accessories" class="category-card">
           <img
             src="assets/categories/accessories.png"
             alt="Accessories"
             loading="lazy"
           >
-
-          <div class="category-overlay"></div>
-
-          <div class="category-content">
-
-            <h3>
-              Accessories
-            </h3>
-
-            <span>
-              Finishing touches
-            </span>
-
+          <div class="category-overlay">
+            <h3>Accessories</h3>
+            <span>Explore accessories</span>
           </div>
-
         </a>
 
-
-        <a
-          href="shop.html?category=Lifestyle"
-          class="category-card"
-        >
-
+        <a href="shop.html?category=Lifestyle" class="category-card">
           <img
             src="assets/categories/lifestyle.png"
             alt="Lifestyle"
             loading="lazy"
           >
-
-          <div class="category-overlay"></div>
-
-          <div class="category-content">
-
-            <h3>
-              Lifestyle
-            </h3>
-
-            <span>
-              Made for everyday life
-            </span>
-
+          <div class="category-overlay">
+            <h3>Lifestyle</h3>
+            <span>Explore lifestyle products</span>
           </div>
-
         </a>
 
       </div>
 
     </div>
-
   </section>
 
 
-  <!-- =====================================================
-       SHOPORA EDIT
-  ====================================================== -->
-
-  <section class="section">
+  <!-- SHOPORA EDIT -->
+  <section class="section edit-section">
 
     <div class="container">
 
       <div class="edit-grid">
 
         <div class="edit-image">
-
           <img
             src="assets/shopora-edit.png"
-            alt="The Shopora Edit"
+            alt="Shopora Edit"
             loading="lazy"
           >
-
         </div>
-
 
         <div class="edit-content">
 
           <div class="section-kicker">
-            The Shopora Edit
+            Shopora Edit
           </div>
 
           <h2>
-            Everyday pieces,
-            thoughtfully chosen.
+            Everyday finds,
+            thoughtfully selected.
           </h2>
 
           <p>
-            Explore a growing selection of products designed to
-            bring style, usefulness and value into everyday life.
+            Discover products chosen for modern everyday living,
+            from useful essentials to distinctive pieces across
+            fashion, beauty, technology, home and lifestyle.
           </p>
 
-          <a
-            href="shop.html"
-            class="dark-button"
-          >
+          <a href="shop.html" class="dark-button">
             Explore the Shop
           </a>
 
@@ -2035,283 +1731,99 @@
   </section>
 
 
-  <!-- =====================================================
-       TRENDING
-  ====================================================== -->
-
-  <section class="section" id="trending">
+  <!-- TRENDING -->
+  <section class="section">
 
     <div class="container">
 
       <div class="section-head">
-
         <div>
-
-          <div class="section-kicker">
-            What's happening
-          </div>
-
-          <h2 class="section-title">
-            Trending now
-          </h2>
-
+          <div class="section-kicker">Trending</div>
+          <h2 class="section-title">What people are exploring</h2>
         </div>
 
-        <a
-          href="shop.html"
-          class="section-link"
-        >
-          Shop everything
+        <a href="trending.html" class="section-link">
+          See trending
         </a>
-
       </div>
 
 
-      <div class="product-grid">
+      <div class="products-grid">
 
-
-        <article
-          class="product-card"
-          data-id="trending-fashion"
-          data-name="Trending Fashion Pick"
-          data-price="2999"
-          data-category="Fashion"
-          data-image="assets/products/modern-everyday-collection.png"
-        >
+        <a href="shop.html?search=everyday" class="product-card">
 
           <div class="product-image">
-
-            <img
-              src="assets/products/modern-everyday-collection.png"
-              alt="Trending Fashion Pick"
-              loading="lazy"
-            >
-
-            <span class="product-tag">
-              Trending
-            </span>
-
-            <button
-              class="wishlist-btn"
-              type="button"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Fashion
-            </div>
-
-            <div class="product-name">
-              Trending Fashion Pick
-            </div>
-
-            <div class="product-bottom">
-
-              <div class="product-price">
-                PKR 2,999
-              </div>
-
-              <button
-                class="add-cart"
-                type="button"
-              >
-                Add to Cart
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="product-card"
-          data-id="trending-electronics"
-          data-name="Smart Tech Pick"
-          data-price="5499"
-          data-category="Electronics"
-          data-image="assets/products/smart-everyday-device.png"
-        >
-
-          <div class="product-image">
-
-            <img
-              src="assets/products/smart-everyday-device.png"
-              alt="Smart Tech Pick"
-              loading="lazy"
-            >
-
-            <span class="product-tag">
-              Popular
-            </span>
-
-            <button
-              class="wishlist-btn"
-              type="button"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Electronics
-            </div>
-
-            <div class="product-name">
-              Smart Tech Pick
-            </div>
-
-            <div class="product-bottom">
-
-              <div class="product-price">
-                PKR 5,499
-              </div>
-
-              <button
-                class="add-cart"
-                type="button"
-              >
-                Add to Cart
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="product-card"
-          data-id="trending-accessory"
-          data-name="Signature Accessory"
-          data-price="2199"
-          data-category="Accessories"
-          data-image="assets/products/minimal-signature-accessory.png"
-        >
-
-          <div class="product-image">
-
-            <img
-              src="assets/products/minimal-signature-accessory.png"
-              alt="Signature Accessory"
-              loading="lazy"
-            >
-
-            <span class="product-tag">
-              New
-            </span>
-
-            <button
-              class="wishlist-btn"
-              type="button"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Accessories
-            </div>
-
-            <div class="product-name">
-              Signature Accessory
-            </div>
-
-            <div class="product-bottom">
-
-              <div class="product-price">
-                PKR 2,199
-              </div>
-
-              <button
-                class="add-cart"
-                type="button"
-              >
-                Add to Cart
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <article
-          class="product-card"
-          data-id="trending-lifestyle"
-          data-name="Premium Lifestyle Essential"
-          data-price="2699"
-          data-category="Lifestyle"
-          data-image="assets/products/everyday-premium-essential.png"
-        >
-
-          <div class="product-image">
-
             <img
               src="assets/products/everyday-premium-essential.png"
-              alt="Premium Lifestyle Essential"
+              alt="Everyday Premium Essential"
               loading="lazy"
             >
-
-            <span class="product-tag">
-              Essential
-            </span>
-
-            <button
-              class="wishlist-btn"
-              type="button"
-            >
-              ♡
-            </button>
-
           </div>
-
 
           <div class="product-info">
-
-            <div class="product-category">
-              Lifestyle
-            </div>
-
-            <div class="product-name">
-              Premium Lifestyle Essential
-            </div>
-
-            <div class="product-bottom">
-
-              <div class="product-price">
-                PKR 2,699
-              </div>
-
-              <button
-                class="add-cart"
-                type="button"
-              >
-                Add to Cart
-              </button>
-
-            </div>
-
+            <div class="product-category">Lifestyle</div>
+            <div class="product-name">Everyday Premium Essential</div>
+            <div class="product-price">PKR 2,499</div>
           </div>
 
-        </article>
+        </a>
+
+
+        <a href="shop.html?search=modern" class="product-card">
+
+          <div class="product-image">
+            <img
+              src="assets/products/modern-everyday-collection.png"
+              alt="Modern Everyday Collection"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Fashion</div>
+            <div class="product-name">Modern Everyday Collection</div>
+            <div class="product-price">PKR 3,499</div>
+          </div>
+
+        </a>
+
+
+        <a href="shop.html?search=smart" class="product-card">
+
+          <div class="product-image">
+            <img
+              src="assets/products/smart-everyday-device.png"
+              alt="Smart Everyday Device"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Electronics</div>
+            <div class="product-name">Smart Everyday Device</div>
+            <div class="product-price">PKR 4,999</div>
+          </div>
+
+        </a>
+
+
+        <a href="shop.html?search=accessory" class="product-card">
+
+          <div class="product-image">
+            <img
+              src="assets/products/minimal-signature-accessory.png"
+              alt="Minimal Signature Accessory"
+              loading="lazy"
+            >
+          </div>
+
+          <div class="product-info">
+            <div class="product-category">Accessories</div>
+            <div class="product-name">Minimal Signature Accessory</div>
+            <div class="product-price">PKR 1,899</div>
+          </div>
+
+        </a>
 
       </div>
 
@@ -2320,71 +1832,40 @@
   </section>
 
 
-  <!-- =====================================================
-       ABOUT
-  ====================================================== -->
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
 
-  <section
-    class="section about-section"
-    id="about"
-  >
+    <div class="container">
 
-    <div class="container about-grid">
-
-
-      <div class="about-mark">
-
-        <img
-          src="assets/shopora-mark.png"
-          alt="Shopora"
-        >
-
-      </div>
-
-
-      <div class="about-content">
+      <div class="newsletter-inner">
 
         <div class="section-kicker">
-          About Shopora
+          Stay connected
         </div>
 
         <h2>
-          A marketplace built for everyday shopping.
+          Get the latest from Shopora
         </h2>
 
         <p>
-          Shopora Market Store is being built as a modern online
-          marketplace where customers can discover products across
-          fashion, beauty, electronics, accessories, home & living
-          and lifestyle categories.
+          New products, collections and marketplace updates,
+          delivered without the noise.
         </p>
 
-        <p>
-          Our goal is to make online shopping simple, clear and
-          convenient while bringing different sellers and products
-          together in one place.
-        </p>
+        <form class="newsletter-form" id="newsletterForm">
 
+          <input
+            type="email"
+            id="newsletterEmail"
+            placeholder="Enter your email address"
+            required
+          >
 
-        <div class="about-points">
+          <button type="submit">
+            Subscribe
+          </button>
 
-          <div>
-            ✓ Multiple product categories
-          </div>
-
-          <div>
-            ✓ Simple shopping experience
-          </div>
-
-          <div>
-            ✓ Growing seller marketplace
-          </div>
-
-          <div>
-            ✓ Customer-focused support
-          </div>
-
-        </div>
+        </form>
 
       </div>
 
@@ -2393,408 +1874,140 @@
   </section>
 
 
-  <!-- =====================================================
-       CONTACT
-  ====================================================== -->
-
-  <section
-    class="section contact-section"
-    id="contact"
-  >
+  <!-- FOOTER -->
+  <footer class="footer">
 
     <div class="container">
 
-      <div class="section-head">
+      <div class="footer-grid">
 
-        <div>
+        <!-- BRAND -->
+        <div class="footer-brand">
 
-          <div class="section-kicker">
-            Need help?
-          </div>
+          <a href="index.html" class="brand">
 
-          <h2 class="section-title">
-            Contact Shopora
-          </h2>
+            <img
+              src="assets/shopora-mark.png"
+              alt="Shopora Market Store"
+              class="brand-mark"
+            >
+
+            <span class="brand-name">
+              Shopora
+            </span>
+
+          </a>
+
+          <p>
+            Shopora Market Store is a modern online marketplace
+            bringing fashion, beauty, electronics, accessories,
+            home & living and lifestyle products together.
+          </p>
 
         </div>
 
-        <a
-          href="contact.html"
-          class="section-link"
-        >
-          Open contact page
-        </a>
 
-      </div>
+        <!-- COMPANY -->
+        <div>
+
+          <h3>Company</h3>
+
+          <ul class="footer-links">
+
+            <li>
+              <a href="about.html">About</a>
+            </li>
+
+            <li>
+              <a href="contact.html">Contact</a>
+            </li>
+
+            <li>
+              <a href="categories.html">Categories</a>
+            </li>
+
+            <li>
+              <a href="trending.html">Trending</a>
+            </li>
+
+          </ul>
+
+        </div>
 
 
-      <div class="contact-grid">
+        <!-- SHOP -->
+        <div>
+
+          <h3>Shop</h3>
+
+          <ul class="footer-links">
+
+            <li>
+              <a href="shop.html">All Products</a>
+            </li>
+
+            <li>
+              <a href="categories.html">Shop Categories</a>
+            </li>
+
+            <li>
+              <a href="cart.html">Cart</a>
+            </li>
+
+            <li>
+              <a href="checkout.html">Checkout</a>
+            </li>
+
+          </ul>
+
+        </div>
 
 
-        <!-- CONTACT INFO -->
+        <!-- CONTACT / LEGAL -->
+        <div>
 
-        <div class="contact-info">
+          <h3>Contact</h3>
 
-          <h2>
-            Get in touch
-          </h2>
-
-          <p>
-            Have a question about a product, order or seller
-            partnership? Send us a message.
-          </p>
-
-
-          <div class="contact-item">
-
-            <strong>
-              Email
-            </strong>
+          <div class="footer-contact">
 
             <a href="mailto:brandseocompany@gmail.com">
               brandseocompany@gmail.com
             </a>
 
-          </div>
+            <a href="tel:+923269547318">
+              +92 326 9547318
+            </a>
 
+            <a href="privacy-policy.html">
+              Privacy Policy
+            </a>
 
-          <div class="contact-item">
+            <a href="cookie-policy.html">
+              Cookie Policy
+            </a>
 
-            <strong>
-              Website
-            </strong>
-
-            <a href="https://shoporamarketstore.store/">
-              shoporamarketstore.store
+            <a href="return-refund.html">
+              Return / Refunds
             </a>
 
           </div>
 
-
-          <div class="contact-item">
-
-            <strong>
-              Support
-            </strong>
-
-            <span>
-              Product questions, orders and seller inquiries
-            </span>
-
-          </div>
-
-        </div>
-
-
-        <!-- CONTACT FORM -->
-
-        <div class="contact-form-box">
-
-          <h2>
-            Send a message
-          </h2>
-
-          <p>
-            Fill out the form and your message will be sent
-            directly to the Shopora team.
-          </p>
-
-
-          <form id="homepageContactForm">
-
-
-            <!-- WEB3FORMS ACCESS KEY -->
-
-            <input
-              type="hidden"
-              name="access_key"
-              value="c9102ca8-2613-41e2-95f7-2ec7fa1122fa"
-            >
-
-
-            <!-- EMAIL SUBJECT -->
-
-            <input
-              type="hidden"
-              name="subject"
-              value="New Contact Message - Shopora Market Store"
-            >
-
-
-            <!-- EMAIL SENDER NAME -->
-
-            <input
-              type="hidden"
-              name="from_name"
-              value="Shopora Market Store Website"
-            >
-
-
-            <!-- SPAM PROTECTION -->
-
-            <input
-              type="checkbox"
-              name="botcheck"
-              style="display:none"
-              tabindex="-1"
-              autocomplete="off"
-            >
-
-
-            <div class="contact-form-group">
-
-              <label for="contactName">
-                Full Name
-              </label>
-
-              <input
-                type="text"
-                id="contactName"
-                name="name"
-                placeholder="Your full name"
-                required
-              >
-
-            </div>
-
-
-            <div class="contact-form-group">
-
-              <label for="contactEmail">
-                Your Email
-              </label>
-
-              <input
-                type="email"
-                id="contactEmail"
-                name="email"
-                placeholder="you@example.com"
-                required
-              >
-
-            </div>
-
-
-            <div class="contact-form-group">
-
-              <label for="contactType">
-                Message Type
-              </label>
-
-              <select
-                id="contactType"
-                name="message_type"
-                required
-              >
-
-                <option value="">
-                  Select one
-                </option>
-
-                <option value="General Question">
-                  General Question
-                </option>
-
-                <option value="Product Inquiry">
-                  Product Inquiry
-                </option>
-
-                <option value="Order Question">
-                  Order Question
-                </option>
-
-                <option value="Seller Inquiry">
-                  Seller Inquiry
-                </option>
-
-                <option value="Other">
-                  Other
-                </option>
-
-              </select>
-
-            </div>
-
-
-            <div class="contact-form-group">
-
-              <label for="contactMessage">
-                Message
-              </label>
-
-              <textarea
-                id="contactMessage"
-                name="message"
-                placeholder="Write your message here..."
-                required
-              ></textarea>
-
-            </div>
-
-
-            <button
-              type="submit"
-              class="contact-submit"
-              id="contactSubmit"
-            >
-              Send Message
-            </button>
-
-
-            <div id="contactResult"></div>
-
-          </form>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       NEWSLETTER
-  ====================================================== -->
-
-  <section class="newsletter">
-
-    <div class="container">
-
-      <h2>
-        Stay in the know.
-      </h2>
-
-      <p>
-        Get updates about new products, categories and
-        what's coming to Shopora.
-      </p>
-
-
-      <form
-        class="newsletter-form"
-        id="newsletterForm"
-      >
-
-        <input
-          type="email"
-          id="newsletterEmail"
-          placeholder="Your email address"
-          required
-        >
-
-        <button type="submit">
-          Subscribe
-        </button>
-
-      </form>
-
-    </div>
-
-  </section>
-
-
-  <!-- =====================================================
-       FOOTER
-  ====================================================== -->
-
-  <footer>
-
-    <div class="container footer-grid">
-
-
-      <div>
-
-        <h3>
-          Shopora Market Store
-        </h3>
-
-        <p>
-          A modern online marketplace for fashion, beauty,
-          electronics, accessories, home & living and
-          lifestyle products.
-        </p>
-
-      </div>
-
-
-      <div>
-
-        <h3>
-          Quick Links
-        </h3>
-
-        <div class="footer-links">
-
-          <a href="index.html">
-            Home
-          </a>
-
-          <a href="shop.html">
-            Shop
-          </a>
-
-          <a href="categories.html">
-            Categories
-          </a>
-
-          <a href="#about">
-            About
-          </a>
-
-          <a href="#contact">
-            Contact
-          </a>
-
         </div>
 
       </div>
 
 
-      <div>
+      <div class="footer-bottom">
 
-        <h3>
-          Information
-        </h3>
+        <div>
+          © <span id="year"></span> Shopora Market Store. All rights reserved.
+        </div>
 
-        <div class="footer-links">
-
-          <a href="about.html">
-            About
-          </a>
-
-          <a href="contact.html">
-            Contact
-          </a>
-
-          <a href="privacy-policy.html">
-            Privacy Policy
-          </a>
-
-          <a href="cookie-policy.html">
-            Cookie Policy
-          </a>
-
-          <a href="return-refund.html">
-            Returns & Refunds
-          </a>
-
-          <a href="mailto:brandseocompany@gmail.com">
-            brandseocompany@gmail.com
-          </a>
-
+        <div>
+          Online Marketplace
         </div>
 
       </div>
-
-    </div>
-
-
-    <div class="container footer-bottom">
-
-      © <span id="year"></span>
-      Shopora Market Store. All rights reserved.
 
     </div>
 
@@ -2802,552 +2015,311 @@
 
 
   <!-- TOAST -->
+  <div class="toast" id="toast"></div>
 
-  <div
-    class="toast"
-    id="toast"
-  ></div>
-
-
-  <!-- =====================================================
-       JAVASCRIPT
-  ====================================================== -->
 
   <script>
+    /* =========================
+       STORAGE
+    ========================= */
 
-    /* =====================================================
-       CART
-    ====================================================== */
+    const CART_KEY = "shoporaCart";
+    const WISHLIST_KEY = "shoporaWishlist";
+
 
     function getCart() {
-
       try {
-
-        return JSON.parse(
-          localStorage.getItem("shoporaCart") || "[]"
-        );
-
+        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
       } catch (error) {
-
         return [];
-
       }
-
     }
 
 
     function saveCart(cart) {
-
-      localStorage.setItem(
-        "shoporaCart",
-        JSON.stringify(cart)
-      );
-
+      localStorage.setItem(CART_KEY, JSON.stringify(cart));
     }
 
-
-    function updateCartCount() {
-
-      const cart = getCart();
-
-      const count = cart.reduce(
-        (total, item) =>
-          total + (item.quantity || 1),
-        0
-      );
-
-      document.getElementById("cartCount")
-        .textContent = count;
-
-      document.getElementById("mobileCartCount")
-        .textContent = count;
-
-    }
-
-
-    updateCartCount();
-
-
-    /* =====================================================
-       TOAST
-    ====================================================== */
-
-    function showToast(message) {
-
-      const toast =
-        document.getElementById("toast");
-
-      toast.textContent = message;
-
-      toast.classList.add("show");
-
-      setTimeout(function() {
-
-        toast.classList.remove("show");
-
-      }, 2500);
-
-    }
-
-
-    /* =====================================================
-       ADD TO CART
-    ====================================================== */
-
-    document.querySelectorAll(".add-cart")
-      .forEach(function(button) {
-
-        button.addEventListener(
-          "click",
-          function() {
-
-            const card =
-              button.closest(".product-card");
-
-            const product = {
-
-              id: card.dataset.id,
-
-              name: card.dataset.name,
-
-              price: Number(
-                card.dataset.price
-              ),
-
-              category:
-                card.dataset.category,
-
-              image:
-                card.dataset.image,
-
-              quantity: 1
-
-            };
-
-
-            const cart = getCart();
-
-            const existing =
-              cart.find(
-                item =>
-                  item.id === product.id
-              );
-
-
-            if (existing) {
-
-              existing.quantity =
-                (existing.quantity || 1) + 1;
-
-            } else {
-
-              cart.push(product);
-
-            }
-
-
-            saveCart(cart);
-
-            updateCartCount();
-
-            showToast(
-              "Product added to cart."
-            );
-
-          }
-        );
-
-      });
-
-
-    /* =====================================================
-       WISHLIST
-    ====================================================== */
 
     function getWishlist() {
-
       try {
-
-        return JSON.parse(
-          localStorage.getItem("shoporaWishlist") || "[]"
-        );
-
+        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
       } catch (error) {
-
         return [];
-
       }
-
     }
 
 
     function saveWishlist(list) {
+      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+    }
 
-      localStorage.setItem(
-        "shoporaWishlist",
-        JSON.stringify(list)
-      );
+
+    /* =========================
+       COUNTS
+    ========================= */
+
+    function updateCounts() {
+
+      const cart = getCart();
+      const wishlist = getWishlist();
+
+      const cartCount = document.getElementById("cartCount");
+      const wishlistCount = document.getElementById("wishlistCount");
+
+      if (cartCount) {
+        cartCount.textContent = cart.reduce(
+          (total, item) => total + Number(item.quantity || 1),
+          0
+        );
+      }
+
+      if (wishlistCount) {
+        wishlistCount.textContent = wishlist.length;
+      }
+    }
+
+
+    /* =========================
+       TOAST
+    ========================= */
+
+    let toastTimer;
+
+    function showToast(message) {
+
+      const toast = document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2200);
+    }
+
+
+    /* =========================
+       ADD TO CART
+    ========================= */
+
+    function addToCart(id, name, price, image) {
+
+      const cart = getCart();
+
+      const existing = cart.find(item => item.id === id);
+
+      if (existing) {
+        existing.quantity = Number(existing.quantity || 1) + 1;
+      } else {
+
+        cart.push({
+          id: id,
+          name: name,
+          price: Number(price),
+          image: image,
+          quantity: 1
+        });
+
+      }
+
+      saveCart(cart);
+      updateCounts();
+
+      showToast("Added to cart");
+    }
+
+
+    /* =========================
+       WISHLIST
+    ========================= */
+
+    function toggleWishlist(id) {
+
+      let wishlist = getWishlist();
+
+      if (wishlist.includes(id)) {
+
+        wishlist = wishlist.filter(item => item !== id);
+
+        showToast("Removed from wishlist");
+
+      } else {
+
+        wishlist.push(id);
+
+        showToast("Added to wishlist");
+
+      }
+
+      saveWishlist(wishlist);
+      updateCounts();
+    }
+
+
+    /* =========================
+       SEARCH
+    ========================= */
+
+    function performSearch(input) {
+
+      const query = input.trim();
+
+      if (!query) {
+        showToast("Please enter a search");
+        return;
+      }
+
+      window.location.href =
+        "shop.html?search=" + encodeURIComponent(query);
+    }
+
+
+    const heroSearchForm =
+      document.getElementById("heroSearchForm");
+
+    if (heroSearchForm) {
+
+      heroSearchForm.addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const input =
+          document.getElementById("heroSearchInput");
+
+        performSearch(input.value);
+
+      });
 
     }
 
 
-    document.querySelectorAll(".wishlist-btn")
-      .forEach(function(button) {
+    const floatingSearchForm =
+      document.getElementById("floatingSearchForm");
 
-        const card =
-          button.closest(".product-card");
+    if (floatingSearchForm) {
 
-        const id =
-          card.dataset.id;
+      floatingSearchForm.addEventListener("submit", function(event) {
 
-        const wishlist =
-          getWishlist();
+        event.preventDefault();
 
-        if (wishlist.includes(id)) {
+        const input =
+          document.getElementById("floatingSearchInput");
 
-          button.classList.add("active");
-          button.textContent = "♥";
+        performSearch(input.value);
 
-        }
+      });
+
+    }
 
 
-        button.addEventListener(
-          "click",
-          function() {
+    /* =========================
+       STICKY SEARCH
+    ========================= */
 
-            let list =
-              getWishlist();
+    function handleStickySearch() {
 
-            if (list.includes(id)) {
+      if (window.scrollY > 650) {
+        document.body.classList.add("search-stuck");
+      } else {
+        document.body.classList.remove("search-stuck");
+      }
 
-              list =
-                list.filter(
-                  item => item !== id
-                );
+    }
 
-              button.classList.remove("active");
-              button.textContent = "♡";
+    window.addEventListener(
+      "scroll",
+      handleStickySearch,
+      { passive: true }
+    );
 
-              showToast(
-                "Removed from wishlist."
-              );
 
-            } else {
+    /* =========================
+       MOBILE MENU
+    ========================= */
 
-              list.push(id);
+    const menuBtn =
+      document.getElementById("menuBtn");
 
-              button.classList.add("active");
-              button.textContent = "♥";
+    const mainNav =
+      document.getElementById("mainNav");
 
-              showToast(
-                "Added to wishlist."
-              );
 
-            }
+    if (menuBtn && mainNav) {
 
-            saveWishlist(list);
+      menuBtn.addEventListener("click", function() {
 
-          }
-        );
+        mainNav.classList.toggle("open");
+
+        menuBtn.textContent =
+          mainNav.classList.contains("open")
+            ? "×"
+            : "☰";
 
       });
 
 
-    /* =====================================================
-       SEARCH
-    ====================================================== */
+      mainNav.querySelectorAll("a").forEach(link => {
 
-    function performSearch(value) {
+        link.addEventListener("click", function() {
 
-      const query =
-        value.trim();
+          mainNav.classList.remove("open");
 
-      if (!query) {
+          menuBtn.textContent = "☰";
 
-        window.location.href =
-          "shop.html";
+        });
 
-        return;
-
-      }
-
-      window.location.href =
-        "shop.html?search=" +
-        encodeURIComponent(query);
+      });
 
     }
 
 
-    document.getElementById(
-      "heroSearchForm"
-    ).addEventListener(
-      "submit",
-      function(event) {
-
-        event.preventDefault();
-
-        performSearch(
-          document.getElementById(
-            "heroSearchInput"
-          ).value
-        );
-
-      }
-    );
-
-
-    document.getElementById(
-      "floatingSearchForm"
-    ).addEventListener(
-      "submit",
-      function(event) {
-
-        event.preventDefault();
-
-        performSearch(
-          document.getElementById(
-            "floatingSearchInput"
-          ).value
-        );
-
-      }
-    );
-
-
-    /* =====================================================
-       STICKY SEARCH ON SCROLL
-    ====================================================== */
-
-    window.addEventListener(
-      "scroll",
-      function() {
-
-        if (window.scrollY > 650) {
-
-          document.body.classList.add(
-            "search-stuck"
-          );
-
-        } else {
-
-          document.body.classList.remove(
-            "search-stuck"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =====================================================
-       MOBILE MENU
-    ====================================================== */
-
-    const mobileMenu =
-      document.getElementById(
-        "mobileMenu"
-      );
-
-    document.getElementById(
-      "menuButton"
-    ).addEventListener(
-      "click",
-      function() {
-
-        mobileMenu.classList.add("open");
-
-        document.body.classList.add(
-          "no-scroll"
-        );
-
-      }
-    );
-
-
-    document.getElementById(
-      "mobileClose"
-    ).addEventListener(
-      "click",
-      function() {
-
-        mobileMenu.classList.remove("open");
-
-        document.body.classList.remove(
-          "no-scroll"
-        );
-
-      }
-    );
-
-
-    document.querySelectorAll(
-      ".mobile-links a"
-    ).forEach(function(link) {
-
-      link.addEventListener(
-        "click",
-        function() {
-
-          mobileMenu.classList.remove(
-            "open"
-          );
-
-          document.body.classList.remove(
-            "no-scroll"
-          );
-
-        }
-      );
-
-    });
-
-
-    /* =====================================================
-       HOMEPAGE CONTACT FORM
-       ====================================================== */
-
-    const homepageContactForm =
-      document.getElementById(
-        "homepageContactForm"
-      );
-
-    const contactSubmit =
-      document.getElementById(
-        "contactSubmit"
-      );
-
-    const contactResult =
-      document.getElementById(
-        "contactResult"
-      );
-
-
-    homepageContactForm.addEventListener(
-      "submit",
-      async function(event) {
-
-        event.preventDefault();
-
-
-        contactResult.className = "";
-
-        contactResult.style.display =
-          "block";
-
-        contactResult.textContent =
-          "Sending your message...";
-
-
-        contactSubmit.disabled = true;
-
-        contactSubmit.textContent =
-          "Sending...";
-
-
-        const formData =
-          new FormData(
-            homepageContactForm
-          );
-
-
-        try {
-
-          const response =
-            await fetch(
-              "https://api.web3forms.com/submit",
-              {
-                method: "POST",
-                body: formData
-              }
-            );
-
-
-          const data =
-            await response.json();
-
-
-          if (data.success) {
-
-            contactResult.className =
-              "success";
-
-            contactResult.textContent =
-              "Message sent successfully. Thank you for contacting Shopora!";
-
-            homepageContactForm.reset();
-
-          } else {
-
-            contactResult.className =
-              "error";
-
-            contactResult.textContent =
-              data.message ||
-              "Something went wrong. Please try again.";
-
-          }
-
-
-        } catch (error) {
-
-          contactResult.className =
-            "error";
-
-          contactResult.textContent =
-            "Unable to send your message right now. Please try again.";
-
-        }
-
-
-        contactSubmit.disabled =
-          false;
-
-        contactSubmit.textContent =
-          "Send Message";
-
-      }
-    );
-
-
-    /* =====================================================
+    /* =========================
        NEWSLETTER
-       ====================================================== */
+    ========================= */
 
-    document.getElementById(
-      "newsletterForm"
-    ).addEventListener(
-      "submit",
-      function(event) {
+    const newsletterForm =
+      document.getElementById("newsletterForm");
+
+
+    if (newsletterForm) {
+
+      newsletterForm.addEventListener("submit", function(event) {
 
         event.preventDefault();
 
         const email =
-          document.getElementById(
-            "newsletterEmail"
-          ).value.trim();
+          document.getElementById("newsletterEmail").value.trim();
 
-        if (!email) return;
+        if (!email) {
+          return;
+        }
 
-        showToast(
-          "Thank you for subscribing!"
-        );
+        showToast("Thanks for subscribing!");
 
-        event.target.reset();
+        newsletterForm.reset();
 
-      }
-    );
+      });
+
+    }
 
 
-    /* =====================================================
+    /* =========================
        YEAR
-    ====================================================== */
+    ========================= */
 
-    document.getElementById(
-      "year"
-    ).textContent =
+    document.getElementById("year").textContent =
       new Date().getFullYear();
 
+
+    /* =========================
+       INITIAL LOAD
+    ========================= */
+
+    updateCounts();
+    handleStickySearch();
   </script>
 
 </body>
