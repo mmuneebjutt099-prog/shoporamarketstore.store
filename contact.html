@@ -2,1178 +2,1047 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Contact Shopora Market Store | Get In Touch</title>
+  <title>Contact Us | Shopora Market Store</title>
 
-  <meta name="description" content="Contact Shopora Market Store for questions, shopping support and general inquiries. Reach us by email or phone.">
-  <meta name="keywords" content="Contact Shopora Market Store, Shopora contact, online shopping support, Shopora customer support">
-  <meta name="author" content="Shopora Market Store">
+  <meta name="description" content="Contact Shopora Market Store for questions, product inquiries, orders, seller inquiries and support.">
 
   <link rel="canonical" href="https://shoporamarketstore.store/contact.html">
 
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Contact Shopora Market Store">
-  <meta property="og:description" content="Get in touch with Shopora Market Store for questions and general inquiries.">
-  <meta property="og:url" content="https://shoporamarketstore.store/contact.html">
-  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact Shopora Market Store">
-  <meta name="twitter:description" content="Get in touch with Shopora Market Store.">
-  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
-
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
-  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
 
   <style>
-    :root{
-      --black:#111111;
-      --ivory:#F7F4EE;
-      --gold:#C6A06A;
-      --white:#ffffff;
-      --muted:#77736d;
-      --border:rgba(17,17,17,.10);
-      --shadow:0 20px 60px rgba(17,17,17,.08);
+    :root {
+      --black: #111111;
+      --ivory: #f7f4ee;
+      --white: #ffffff;
+      --gold: #c6a06a;
+      --gold-dark: #9c753e;
+      --text: #222222;
+      --muted: #777777;
+      --border: #e5e0d7;
+      --success-bg: #edf8ef;
+      --success-text: #256b32;
+      --error-bg: #fff0f0;
+      --error-text: #9b2d2d;
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html{
-      scroll-behavior:smooth;
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--ivory);
+      color: var(--text);
+      line-height: 1.6;
     }
 
-    body{
-      font-family:"DM Sans",sans-serif;
-      color:var(--black);
-      background:var(--ivory);
-      line-height:1.7;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    button,
-    input,
-    textarea{
-      font:inherit;
-    }
-
-    .container{
-      width:min(1180px,92%);
-      margin:auto;
+    /* TOP BAR */
+    .topbar {
+      background: var(--black);
+      color: #fff;
+      text-align: center;
+      padding: 9px 15px;
+      font-size: 13px;
+      letter-spacing: .3px;
     }
 
     /* HEADER */
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(247,244,238,.94);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid var(--border);
+    header {
+      background: rgba(247, 244, 238, .98);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    .nav{
-      min-height:82px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:30px;
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      min-height: 78px;
+      padding: 0 24px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
     }
 
-    .brand{
-      display:inline-flex;
-      align-items:center;
-      flex:0 0 auto;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      flex-shrink: 0;
     }
 
-    .brand-logo{
-      width:180px;
-      height:auto;
-      display:block;
-      object-fit:contain;
+    .brand img {
+      width: 43px;
+      height: 43px;
+      object-fit: contain;
     }
 
-    .nav-links{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:28px;
+    .brand span {
+      font-size: 21px;
     }
 
-    .nav-links a{
-      font-size:14px;
-      font-weight:600;
-      position:relative;
-      padding:28px 0;
-      transition:.3s ease;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
 
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:20px;
-      width:0;
-      height:2px;
-      background:var(--gold);
-      transition:.3s ease;
+    nav a {
+      font-size: 14px;
+      font-weight: 600;
+      transition: .2s ease;
     }
 
-    .nav-links a:hover::after,
-    .nav-links a.active::after{
-      width:100%;
+    nav a:hover,
+    nav a.active {
+      color: var(--gold-dark);
     }
 
-    .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      white-space: nowrap;
     }
 
-    .icon-btn{
-      width:42px;
-      height:42px;
-      border:1px solid var(--border);
-      background:var(--white);
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      font-size:18px;
-      position:relative;
-      transition:.3s ease;
+    .nav-icons a {
+      font-size: 14px;
+      font-weight: 700;
     }
 
-    .icon-btn:hover{
-      background:var(--black);
-      color:var(--white);
-      transform:translateY(-2px);
-    }
-
-    .count{
-      position:absolute;
-      top:-4px;
-      right:-3px;
-      min-width:17px;
-      height:17px;
-      padding:0 4px;
-      border-radius:20px;
-      background:var(--gold);
-      color:var(--white);
-      font-size:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
-    }
-
-    .menu-btn{
-      display:none;
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      font-size: 26px;
+      cursor: pointer;
+      color: var(--black);
     }
 
     /* HERO */
-
-    .page-hero{
-      padding:105px 0 85px;
-      text-align:center;
-      background:
-        radial-gradient(circle at 15% 20%,rgba(198,160,106,.15),transparent 30%),
-        radial-gradient(circle at 85% 70%,rgba(198,160,106,.10),transparent 30%);
+    .hero {
+      background: var(--black);
+      color: white;
+      text-align: center;
+      padding: 85px 20px;
     }
 
-    .eyebrow{
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:12px;
-      font-weight:700;
-      margin-bottom:18px;
+    .hero small {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
     }
 
-    h1,
-    h2,
-    h3{
-      font-family:"Playfair Display",serif;
-      line-height:1.2;
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 6vw, 68px);
+      line-height: 1.1;
+      font-weight: 500;
+      margin: 15px 0;
     }
 
-    .page-hero h1{
-      font-size:clamp(42px,7vw,76px);
-      margin-bottom:20px;
+    .hero p {
+      max-width: 680px;
+      margin: auto;
+      color: #d5d5d5;
+      font-size: 17px;
     }
 
-    .page-hero p{
-      max-width:680px;
-      margin:auto;
-      color:var(--muted);
-      font-size:17px;
+    /* CONTACT AREA */
+    .contact-wrap {
+      max-width: 1150px;
+      margin: 70px auto;
+      padding: 0 20px;
+
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
     }
 
-    /* CONTACT */
-
-    .contact-section{
-      padding:95px 0;
-      background:var(--white);
+    .info-card,
+    .form-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 38px;
     }
 
-    .contact-grid{
-      display:grid;
-      grid-template-columns:.85fr 1.15fr;
-      gap:65px;
-      align-items:start;
+    .info-card h2,
+    .form-card h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 32px;
+      font-weight: 500;
+      margin-bottom: 15px;
     }
 
-    .contact-intro h2{
-      font-size:clamp(36px,5vw,55px);
-      margin-bottom:20px;
+    .info-card > p,
+    .form-card > p {
+      color: var(--muted);
     }
 
-    .contact-intro > p{
-      color:var(--muted);
-      margin-bottom:35px;
-      max-width:500px;
+    .info-card > p {
+      margin-bottom: 28px;
     }
 
-    .contact-details{
-      display:grid;
-      gap:15px;
+    .info-item {
+      padding: 18px 0;
+      border-top: 1px solid var(--border);
     }
 
-    .contact-item{
-      display:flex;
-      align-items:flex-start;
-      gap:16px;
-      padding:20px;
-      border:1px solid var(--border);
-      background:var(--ivory);
-      transition:.3s ease;
+    .info-item strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .contact-item:hover{
-      transform:translateX(5px);
-      box-shadow:var(--shadow);
+    .info-item a,
+    .info-item span {
+      color: var(--muted);
+      word-break: break-word;
     }
 
-    .contact-icon{
-      width:45px;
-      height:45px;
-      flex:0 0 45px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--black);
-      color:var(--gold);
-      border-radius:50%;
-      font-size:18px;
+    .info-item a:hover {
+      color: var(--gold-dark);
     }
 
-    .contact-item span{
-      display:block;
-      color:var(--gold);
-      font-size:10px;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      font-weight:700;
-      margin-bottom:3px;
-    }
-
-    .contact-item a{
-      font-size:14px;
-      font-weight:600;
-      word-break:break-word;
+    .form-card > p {
+      margin-bottom: 25px;
     }
 
     /* FORM */
-
-    .contact-form{
-      background:var(--ivory);
-      padding:40px;
-      border:1px solid var(--border);
+    .form-group {
+      margin-bottom: 18px;
     }
 
-    .contact-form h2{
-      font-size:34px;
-      margin-bottom:8px;
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 7px;
     }
 
-    .form-note{
-      color:var(--muted);
-      font-size:13px;
-      margin-bottom:28px;
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px 15px;
+
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+
+      font: inherit;
+      outline: none;
+
+      transition: border-color .2s ease;
     }
 
-    .form-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:18px;
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--gold);
     }
 
-    .form-group{
-      display:flex;
-      flex-direction:column;
-      gap:7px;
+    textarea {
+      min-height: 160px;
+      resize: vertical;
     }
 
-    .form-group.full{
-      grid-column:1 / -1;
+    .submit-btn {
+      width: 100%;
+      border: 0;
+
+      background: var(--black);
+      color: white;
+
+      padding: 15px 20px;
+
+      font-size: 15px;
+      font-weight: 700;
+
+      cursor: pointer;
+      transition: background .2s ease;
     }
 
-    .form-group label{
-      font-size:12px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:1px;
+    .submit-btn:hover {
+      background: var(--gold-dark);
     }
 
-    .form-group input,
-    .form-group textarea{
-      width:100%;
-      border:1px solid var(--border);
-      background:var(--white);
-      padding:14px 15px;
-      outline:none;
-      color:var(--black);
-      transition:.3s ease;
+    .submit-btn:disabled {
+      opacity: .6;
+      cursor: not-allowed;
     }
 
-    .form-group input:focus,
-    .form-group textarea:focus{
-      border-color:var(--gold);
-      box-shadow:0 0 0 3px rgba(198,160,106,.10);
+    /* RESULT */
+    #result {
+      display: none;
+      margin-top: 15px;
+      padding: 13px;
+      font-size: 14px;
+      text-align: center;
     }
 
-    .form-group textarea{
-      min-height:145px;
-      resize:vertical;
+    #result.success {
+      display: block;
+      background: var(--success-bg);
+      color: var(--success-text);
+      border: 1px solid #cce8d0;
     }
 
-    .submit-btn{
-      margin-top:22px;
-      width:100%;
-      border:1px solid var(--black);
-      background:var(--black);
-      color:var(--white);
-      padding:15px 24px;
-      cursor:pointer;
-      font-size:13px;
-      font-weight:700;
-      transition:.3s ease;
-    }
-
-    .submit-btn:hover{
-      background:var(--gold);
-      border-color:var(--gold);
-    }
-
-    .form-status{
-      display:none;
-      margin-top:15px;
-      padding:12px;
-      background:rgba(198,160,106,.12);
-      color:var(--black);
-      font-size:13px;
-      text-align:center;
-    }
-
-    /* FAQ / SUPPORT */
-
-    .support{
-      padding:95px 0;
-      background:var(--ivory);
-    }
-
-    .section-heading{
-      text-align:center;
-      max-width:700px;
-      margin:0 auto 50px;
-    }
-
-    .section-heading h2{
-      font-size:clamp(35px,5vw,52px);
-      margin-bottom:15px;
-    }
-
-    .section-heading p{
-      color:var(--muted);
-    }
-
-    .support-grid{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:22px;
-    }
-
-    .support-card{
-      background:var(--white);
-      border:1px solid var(--border);
-      padding:32px 27px;
-      transition:.35s ease;
-    }
-
-    .support-card:hover{
-      transform:translateY(-7px);
-      box-shadow:var(--shadow);
-    }
-
-    .support-card h3{
-      font-size:23px;
-      margin-bottom:10px;
-    }
-
-    .support-card p{
-      color:var(--muted);
-      font-size:14px;
+    #result.error {
+      display: block;
+      background: var(--error-bg);
+      color: var(--error-text);
+      border: 1px solid #f0cccc;
     }
 
     /* FOOTER */
-
-    footer{
-      background:#0b0b0b;
-      color:var(--white);
-      padding:70px 0 25px;
+    footer {
+      background: var(--black);
+      color: white;
+      padding: 55px 20px 25px;
     }
 
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1.5fr 1fr 1fr 1fr;
-      gap:45px;
-      padding-bottom:55px;
-      border-bottom:1px solid rgba(255,255,255,.10);
+    .footer-inner {
+      max-width: 1150px;
+      margin: auto;
+
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 40px;
     }
 
-    .footer-brand img{
-      width:180px;
-      margin-bottom:20px;
+    footer h3 {
+      margin-bottom: 15px;
+      font-size: 17px;
     }
 
-    .footer-brand p{
-      color:rgba(255,255,255,.55);
-      max-width:330px;
-      font-size:14px;
+    footer p,
+    footer a {
+      color: #bdbdbd;
+      font-size: 14px;
     }
 
-    .footer-col h3{
-      font-family:"DM Sans",sans-serif;
-      font-size:13px;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      margin-bottom:20px;
-      color:var(--gold);
+    footer a:hover {
+      color: var(--gold);
     }
 
-    .footer-col a{
-      display:block;
-      color:rgba(255,255,255,.60);
-      font-size:13px;
-      margin-bottom:11px;
-      transition:.3s ease;
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
     }
 
-    .footer-col a:hover{
-      color:var(--white);
-      padding-left:4px;
-    }
-
-    .footer-bottom{
-      padding-top:25px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      color:rgba(255,255,255,.42);
-      font-size:12px;
-    }
-
-    /* REVEAL */
-
-    .reveal{
-      opacity:0;
-      transform:translateY(25px);
-      transition:.8s ease;
-    }
-
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
+    .copyright {
+      max-width: 1150px;
+      margin: 35px auto 0;
+      padding-top: 20px;
+      border-top: 1px solid #333;
+      color: #888;
+      font-size: 13px;
     }
 
     /* MOBILE */
+    @media (max-width: 900px) {
 
-    @media(max-width:950px){
-
-      .nav-links{
-        position:absolute;
-        top:82px;
-        left:0;
-        right:0;
-        background:var(--ivory);
-        border-bottom:1px solid var(--border);
-        display:none;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:0;
-        padding:15px 4%;
+      nav {
+        display: none;
       }
 
-      .nav-links.open{
-        display:flex;
+      .nav-icons {
+        display: none;
       }
 
-      .nav-links a{
-        width:100%;
-        padding:13px 0;
+      .menu-btn {
+        display: block;
       }
 
-      .nav-links a::after{
-        bottom:5px;
+      .contact-wrap {
+        grid-template-columns: 1fr;
+        margin: 50px auto;
       }
 
-      .menu-btn{
-        display:flex;
-      }
-
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
-
-      .support-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr 1fr;
+      .footer-inner {
+        grid-template-columns: 1fr;
       }
     }
 
-    @media(max-width:600px){
+    @media (max-width: 550px) {
 
-      .brand-logo{
-        width:145px;
+      .nav {
+        min-height: 70px;
+        padding: 0 16px;
       }
 
-      .nav{
-        min-height:72px;
+      .brand img {
+        width: 40px;
+        height: 40px;
       }
 
-      .nav-links{
-        top:72px;
+      .brand span {
+        font-size: 18px;
       }
 
-      .nav-actions{
-        gap:6px;
+      .hero {
+        padding: 65px 18px;
       }
 
-      .icon-btn{
-        width:38px;
-        height:38px;
+      .hero h1 {
+        font-size: 43px;
       }
 
-      .page-hero{
-        padding:78px 0 60px;
+      .hero p {
+        font-size: 15px;
       }
 
-      .contact-section,
-      .support{
-        padding:70px 0;
+      .contact-wrap {
+        padding: 0 15px;
+        margin: 40px auto;
       }
 
-      .contact-form{
-        padding:25px 20px;
+      .info-card,
+      .form-card {
+        padding: 25px;
       }
 
-      .form-grid{
-        grid-template-columns:1fr;
-      }
-
-      .form-group.full{
-        grid-column:auto;
-      }
-
-      .support-grid{
-        grid-template-columns:1fr;
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr;
-        gap:35px;
-      }
-
-      .footer-bottom{
-        flex-direction:column;
-        align-items:flex-start;
+      .info-card h2,
+      .form-card h2 {
+        font-size: 28px;
       }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"ContactPage",
-    "name":"Contact Shopora Market Store",
-    "url":"https://shoporamarketstore.store/contact.html",
-    "description":"Contact Shopora Market Store for questions and general inquiries.",
-    "mainEntity":{
-      "@type":"Organization",
-      "name":"Shopora Market Store",
-      "url":"https://shoporamarketstore.store/",
-      "logo":"https://shoporamarketstore.store/assets/shopora-logo.png",
-      "email":"brandseocompany@gmail.com",
-      "telephone":"+923269547318",
-      "contactPoint":{
-        "@type":"ContactPoint",
-        "contactType":"customer service",
-        "email":"brandseocompany@gmail.com",
-        "telephone":"+923269547318"
-      }
-    }
-  }
-  </script>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
+  <!-- TOP BAR -->
+  <div class="topbar">
+    Welcome to Shopora Market Store — Discover products for everyday life.
+  </div>
 
-    <a href="index.html" class="brand" aria-label="Shopora Market Store home">
-      <img
-        src="assets/shopora-logo.png"
-        alt="Shopora Market Store"
-        class="brand-logo"
-        width="180"
-        height="60"
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="nav">
+
+      <a href="index.html" class="brand">
+        <img
+          src="assets/shopora-mark.png"
+          alt="Shopora Market Store"
+        >
+        <span>Shopora</span>
+      </a>
+
+
+      <nav id="mainNav">
+
+        <a href="index.html">
+          Home
+        </a>
+
+        <a href="shop.html">
+          Shop
+        </a>
+
+        <a href="categories.html">
+          Categories
+        </a>
+
+        <a href="index.html#trending">
+          Trending
+        </a>
+
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html" class="active">
+          Contact
+        </a>
+
+      </nav>
+
+
+      <div class="nav-icons">
+
+        <a href="cart.html">
+          Cart (<span id="cartCount">0</span>)
+        </a>
+
+      </div>
+
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        type="button"
+        aria-label="Open menu"
       >
-    </a>
-
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="categories.html">Categories</a>
-      <a href="trending.html">Trending</a>
-      <a href="about.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
-    </nav>
-
-    <div class="nav-actions">
-
-      <button class="icon-btn" onclick="goToSearch()" aria-label="Search">
-        🔍
-      </button>
-
-      <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
-        ♡
-        <span class="count" id="wishlistCount">0</span>
-      </a>
-
-      <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
-        🛒
-        <span class="count" id="cartCount">0</span>
-      </a>
-
-      <button class="icon-btn menu-btn" onclick="toggleMenu()" aria-label="Menu">
         ☰
       </button>
 
     </div>
 
-  </div>
-</header>
+  </header>
 
-
-<main>
 
   <!-- HERO -->
+  <section class="hero">
 
-  <section class="page-hero reveal">
+    <small>Shopora Support</small>
 
-    <div class="container">
+    <h1>Contact Us</h1>
 
-      <div class="eyebrow">We're Here To Help</div>
-
-      <h1>Contact Us</h1>
-
-      <p>
-        Have a question about Shopora Market Store?
-        Get in touch with us and we'll be happy to hear from you.
-      </p>
-
-    </div>
+    <p>
+      Have a question, product inquiry, seller inquiry or need help?
+      Send us a message and our team will get back to you.
+    </p>
 
   </section>
 
 
-  <!-- CONTACT SECTION -->
+  <!-- CONTACT CONTENT -->
+  <main class="contact-wrap">
 
-  <section class="contact-section">
 
-    <div class="container contact-grid">
+    <!-- LEFT INFORMATION -->
+    <section class="info-card">
 
-      <div class="contact-intro reveal">
+      <h2>Get in touch</h2>
 
-        <div class="eyebrow">Get In Touch</div>
+      <p>
+        We are here to help with questions about Shopora Market Store,
+        products, orders and seller partnerships.
+      </p>
 
-        <h2>Let's Start A Conversation.</h2>
+
+      <div class="info-item">
+
+        <strong>Email</strong>
+
+        <a href="mailto:brandseocompany@gmail.com">
+          brandseocompany@gmail.com
+        </a>
+
+      </div>
+
+
+      <div class="info-item">
+
+        <strong>Website</strong>
+
+        <a href="https://shoporamarketstore.store/">
+          shoporamarketstore.store
+        </a>
+
+      </div>
+
+
+      <div class="info-item">
+
+        <strong>Support</strong>
+
+        <span>
+          Product questions, orders and seller inquiries
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- CONTACT FORM -->
+    <section class="form-card">
+
+      <h2>Send us a message</h2>
+
+      <p>
+        Fill out the form below and your message will be sent
+        to the Shopora team.
+      </p>
+
+
+      <!--
+        ==================================================
+        WEB3FORMS
+        THIS FORM SENDS THE MESSAGE WITHOUT OPENING GMAIL
+        ==================================================
+      -->
+
+      <form id="contactForm">
+
+
+        <!-- YOUR WEB3FORMS ACCESS KEY -->
+        <input
+          type="hidden"
+          name="access_key"
+          value="c9102ca8-2613-41e2-95f7-2ec7fa1122fa"
+        >
+
+
+        <!-- EMAIL SUBJECT -->
+        <input
+          type="hidden"
+          name="subject"
+          value="New Contact Message - Shopora Market Store"
+        >
+
+
+        <!-- SENDER NAME SHOWN IN EMAIL -->
+        <input
+          type="hidden"
+          name="from_name"
+          value="Shopora Market Store Website"
+        >
+
+
+        <!-- SPAM PROTECTION -->
+        <input
+          type="checkbox"
+          name="botcheck"
+          style="display:none"
+          tabindex="-1"
+          autocomplete="off"
+        >
+
+
+        <!-- NAME -->
+        <div class="form-group">
+
+          <label for="name">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your full name"
+            required
+          >
+
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="form-group">
+
+          <label for="email">
+            Your Email
+          </label>
+
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+          >
+
+        </div>
+
+
+        <!-- PHONE -->
+        <div class="form-group">
+
+          <label for="phone">
+            Phone Number
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Your phone number"
+          >
+
+        </div>
+
+
+        <!-- MESSAGE TYPE -->
+        <div class="form-group">
+
+          <label for="type">
+            Message Type
+          </label>
+
+          <select
+            id="type"
+            name="message_type"
+            required
+          >
+
+            <option value="">
+              Select one
+            </option>
+
+            <option value="General Question">
+              General Question
+            </option>
+
+            <option value="Product Inquiry">
+              Product Inquiry
+            </option>
+
+            <option value="Order Question">
+              Order Question
+            </option>
+
+            <option value="Seller Inquiry">
+              Seller Inquiry
+            </option>
+
+            <option value="Other">
+              Other
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+        <div class="form-group">
+
+          <label for="message">
+            Message
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+        <button
+          type="submit"
+          class="submit-btn"
+          id="submitBtn"
+        >
+          Send Message
+        </button>
+
+
+        <!-- RESULT MESSAGE -->
+        <div id="result"></div>
+
+      </form>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-inner">
+
+
+      <div>
+
+        <h3>
+          Shopora Market Store
+        </h3>
 
         <p>
-          Whether you have a question about our products, shopping
-          experience or general information, you can reach Shopora
-          Market Store through the contact details below.
+          A modern online marketplace for fashion, beauty,
+          electronics, accessories, home & living and lifestyle products.
         </p>
 
-
-        <div class="contact-details">
-
-          <div class="contact-item">
-
-            <div class="contact-icon">✉</div>
-
-            <div>
-              <span>Email</span>
-
-              <a href="mailto:brandseocompany@gmail.com">
-                brandseocompany@gmail.com
-              </a>
-            </div>
-
-          </div>
+      </div>
 
 
-          <div class="contact-item">
+      <div>
 
-            <div class="contact-icon">☎</div>
+        <h3>
+          Quick Links
+        </h3>
 
-            <div>
-              <span>Phone</span>
+        <div class="footer-links">
 
-              <a href="tel:+923269547318">
-                +92 326 9547318
-              </a>
-            </div>
+          <a href="index.html">
+            Home
+          </a>
 
-          </div>
+          <a href="shop.html">
+            Shop
+          </a>
 
+          <a href="categories.html">
+            Categories
+          </a>
 
-          <div class="contact-item">
+          <a href="about.html">
+            About
+          </a>
 
-            <div class="contact-icon">🌐</div>
-
-            <div>
-              <span>Website</span>
-
-              <a href="https://shoporamarketstore.store/">
-                shoporamarketstore.store
-              </a>
-            </div>
-
-          </div>
+          <a href="contact.html">
+            Contact
+          </a>
 
         </div>
 
       </div>
 
 
-      <!-- CONTACT FORM -->
-
-      <div class="contact-form reveal">
-
-        <h2>Send A Message</h2>
-
-        <p class="form-note">
-          Fill out the form below and your email app will open with
-          the message ready to send.
-        </p>
-
-        <form id="contactForm">
-
-          <div class="form-grid">
-
-            <div class="form-group">
-
-              <label for="name">Name</label>
-
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Your name"
-                required
-              >
-
-            </div>
-
-
-            <div class="form-group">
-
-              <label for="email">Email</label>
-
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="you@example.com"
-                required
-              >
-
-            </div>
-
-
-            <div class="form-group full">
-
-              <label for="subject">Subject</label>
-
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                placeholder="How can we help?"
-                required
-              >
-
-            </div>
-
-
-            <div class="form-group full">
-
-              <label for="message">Message</label>
-
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Write your message here..."
-                required
-              ></textarea>
-
-            </div>
-
-          </div>
-
-
-          <button type="submit" class="submit-btn">
-            Send Message
-          </button>
-
-          <div class="form-status" id="formStatus">
-            Your email application is opening...
-          </div>
-
-        </form>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- SUPPORT -->
-
-  <section class="support">
-
-    <div class="container">
-
-      <div class="section-heading reveal">
-
-        <div class="eyebrow">Need Help?</div>
-
-        <h2>We're Easy To Reach</h2>
-
-        <p>
-          Choose the option that works best for you and get in touch
-          with Shopora Market Store.
-        </p>
-
-      </div>
-
-
-      <div class="support-grid">
-
-        <article class="support-card reveal">
-
-          <h3>Email Us</h3>
-
-          <p>
-            For general questions and inquiries, email us directly at
-            brandseocompany@gmail.com.
-          </p>
-
-        </article>
-
-
-        <article class="support-card reveal">
-
-          <h3>Call Us</h3>
-
-          <p>
-            You can contact Shopora Market Store by phone at
-            +92 326 9547318.
-          </p>
-
-        </article>
-
-
-        <article class="support-card reveal">
-
-          <h3>Visit Online</h3>
-
-          <p>
-            Explore our latest products and collections at
-            shoporamarketstore.store.
-          </p>
-
-        </article>
-
-      </div>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div class="footer-brand">
-
-        <a href="index.html">
-
-          <img
-            src="assets/shopora-logo.png"
-            alt="Shopora Market Store"
-            width="180"
-            height="60"
-          >
-
-        </a>
-
-        <p>
-          A modern marketplace for fashion, beauty, electronics,
-          home & living, accessories and everyday lifestyle products.
-        </p>
-
-      </div>
-
-
-      <div class="footer-col">
-
-        <h3>Shop</h3>
-
-        <a href="shop.html">Shop All</a>
-        <a href="categories.html">Categories</a>
-        <a href="trending.html">Trending</a>
-        <a href="cart.html">Cart</a>
-        <a href="wishlist.html">Wishlist</a>
-
-      </div>
-
-
-      <div class="footer-col">
-
-        <h3>Company</h3>
-
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-
-      </div>
-
-
-      <div class="footer-col">
-
-        <h3>Policies</h3>
-
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-service.html">Terms of Service</a>
-        <a href="cookie-policy.html">Cookie Policy</a>
-        <a href="return-refund.html">Return & Refund</a>
-
-      </div>
-
-    </div>
-
-
-    <div class="footer-bottom">
-
       <div>
-        © <span id="year"></span> Shopora Market Store. All rights reserved.
-      </div>
 
-      <div>
-        brandseocompany@gmail.com
+        <h3>
+          Information
+        </h3>
+
+        <div class="footer-links">
+
+          <a href="privacy-policy.html">
+            Privacy Policy
+          </a>
+
+          <a href="cookie-policy.html">
+            Cookie Policy
+          </a>
+
+          <a href="return-refund.html">
+            Returns & Refunds
+          </a>
+
+          <a href="mailto:brandseocompany@gmail.com">
+            brandseocompany@gmail.com
+          </a>
+
+        </div>
+
       </div>
 
     </div>
 
-  </div>
 
-</footer>
+    <div class="copyright">
 
+      © <span id="year"></span>
+      Shopora Market Store. All rights reserved.
 
-<script>
+    </div>
 
-  function getCart(){
-
-    try{
-      return JSON.parse(localStorage.getItem("shoporaCart")) || [];
-    }catch(e){
-      return [];
-    }
-
-  }
+  </footer>
 
 
-  function getWishlist(){
+  <!-- JAVASCRIPT -->
+  <script>
 
-    try{
-      return JSON.parse(localStorage.getItem("shoporaWishlist")) || [];
-    }catch(e){
-      return [];
-    }
+    /* ==============================
+       CONTACT FORM
+       ============================== */
 
-  }
+    const contactForm =
+      document.getElementById("contactForm");
 
+    const result =
+      document.getElementById("result");
 
-  function updateCounts(){
-
-    const cart = getCart();
-
-    const wishlist = getWishlist();
-
-    const cartCount = cart.reduce(
-      (total,item) => total + Number(item.quantity || 1),
-      0
-    );
-
-    const wishlistCount = wishlist.length;
-
-    const cartEl = document.getElementById("cartCount");
-
-    const wishlistEl = document.getElementById("wishlistCount");
-
-    if(cartEl){
-      cartEl.textContent = cartCount;
-    }
-
-    if(wishlistEl){
-      wishlistEl.textContent = wishlistCount;
-    }
-
-  }
+    const submitBtn =
+      document.getElementById("submitBtn");
 
 
-  function goToSearch(){
+    contactForm.addEventListener(
+      "submit",
+      async function(event) {
 
-    window.location.href = "shop.html#productSearch";
-
-  }
-
-
-  function toggleMenu(){
-
-    document.getElementById("navLinks").classList.toggle("open");
-
-  }
+        event.preventDefault();
 
 
-  /* CONTACT FORM */
+        result.className = "";
+        result.style.display = "block";
 
-  document
-    .getElementById("contactForm")
-    .addEventListener("submit", function(event){
-
-      event.preventDefault();
-
-      const name =
-        document.getElementById("name").value.trim();
-
-      const email =
-        document.getElementById("email").value.trim();
-
-      const subject =
-        document.getElementById("subject").value.trim();
-
-      const message =
-        document.getElementById("message").value.trim();
-
-      const body =
-        "Name: " + name +
-        "\nEmail: " + email +
-        "\n\nMessage:\n" + message;
-
-      const mailto =
-        "mailto:brandseocompany@gmail.com" +
-        "?subject=" + encodeURIComponent(subject) +
-        "&body=" + encodeURIComponent(body);
-
-      document.getElementById("formStatus").style.display = "block";
-
-      window.location.href = mailto;
-
-    });
+        result.textContent =
+          "Sending your message...";
 
 
-  /* REVEAL ANIMATION */
+        submitBtn.disabled = true;
+        submitBtn.textContent =
+          "Sending...";
 
-  const observer = new IntersectionObserver(
-    entries => {
 
-      entries.forEach(entry => {
+        const formData =
+          new FormData(contactForm);
 
-        if(entry.isIntersecting){
 
-          entry.target.classList.add("show");
+        try {
 
-          observer.unobserve(entry.target);
+          const response =
+            await fetch(
+              "https://api.web3forms.com/submit",
+              {
+                method: "POST",
+                body: formData
+              }
+            );
+
+
+          const data =
+            await response.json();
+
+
+          if (data.success) {
+
+            result.className =
+              "success";
+
+            result.textContent =
+              "Message sent successfully. Thank you for contacting Shopora!";
+
+            contactForm.reset();
+
+          } else {
+
+            result.className =
+              "error";
+
+            result.textContent =
+              data.message ||
+              "Something went wrong. Please try again.";
+
+          }
+
+
+        } catch (error) {
+
+          result.className =
+            "error";
+
+          result.textContent =
+            "Unable to send your message right now. Please try again.";
 
         }
 
-      });
 
-    },
-    {
-      threshold:.12
+        submitBtn.disabled = false;
+
+        submitBtn.textContent =
+          "Send Message";
+
+      }
+    );
+
+
+    /* ==============================
+       MOBILE MENU
+       ============================== */
+
+    const menuBtn =
+      document.getElementById("menuBtn");
+
+    const mainNav =
+      document.getElementById("mainNav");
+
+
+    menuBtn.addEventListener(
+      "click",
+      function() {
+
+        if (mainNav.style.display === "flex") {
+
+          mainNav.style.display = "none";
+
+        } else {
+
+          mainNav.style.display = "flex";
+
+          mainNav.style.flexDirection =
+            "column";
+
+          mainNav.style.position =
+            "absolute";
+
+          mainNav.style.top =
+            "70px";
+
+          mainNav.style.left =
+            "0";
+
+          mainNav.style.right =
+            "0";
+
+          mainNav.style.background =
+            "#f7f4ee";
+
+          mainNav.style.padding =
+            "25px";
+
+          mainNav.style.borderBottom =
+            "1px solid #e5e0d7";
+
+        }
+
+      }
+    );
+
+
+    /* ==============================
+       CART COUNT
+       ============================== */
+
+    let cart = [];
+
+    try {
+
+      cart =
+        JSON.parse(
+          localStorage.getItem("shoporaCart") || "[]"
+        );
+
+    } catch (error) {
+
+      cart = [];
+
     }
-  );
 
 
-  document.querySelectorAll(".reveal").forEach(el => {
-
-    observer.observe(el);
-
-  });
-
-
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+    const cartCount =
+      cart.reduce(
+        function(total, item) {
+          return total + (item.quantity || 1);
+        },
+        0
+      );
 
 
-  window.addEventListener("storage", updateCounts);
+    document.getElementById("cartCount")
+      .textContent = cartCount;
 
-  window.addEventListener("pageshow", updateCounts);
 
-  updateCounts();
+    /* ==============================
+       YEAR
+       ============================== */
 
-</script>
+    document.getElementById("year")
+      .textContent =
+      new Date().getFullYear();
+
+  </script>
 
 </body>
 </html>
