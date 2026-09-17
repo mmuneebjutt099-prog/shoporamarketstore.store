@@ -7,49 +7,45 @@
 
   <title>Product | Shopora Market Store</title>
 
-  <meta name="description" content="Explore product details at Shopora Market Store. Discover fashion, beauty, electronics, home & living, accessories and lifestyle essentials.">
-  <meta name="keywords" content="Shopora products, online shopping, fashion, beauty, electronics, home living, accessories, lifestyle">
-  <meta name="author" content="Shopora Market Store">
+  <meta name="description" content="Explore products at Shopora Market Store. Discover fashion, beauty, electronics, accessories, home and lifestyle products.">
 
   <link rel="canonical" href="https://shoporamarketstore.store/product.html">
 
   <meta property="og:type" content="product">
   <meta property="og:title" content="Product | Shopora Market Store">
-  <meta property="og:description" content="Discover products at Shopora Market Store.">
+  <meta property="og:description" content="Discover products from Shopora Market Store.">
   <meta property="og:url" content="https://shoporamarketstore.store/product.html">
   <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Product | Shopora Market Store">
-  <meta name="twitter:description" content="Discover products at Shopora Market Store.">
+  <meta name="twitter:description" content="Discover products from Shopora Market Store.">
   <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
-  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
+  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --black:#111111;
-      --ivory:#F7F4EE;
-      --gold:#C6A06A;
+      --black-soft:#191919;
+      --ivory:#f7f4ee;
       --white:#ffffff;
-      --muted:#77736d;
-      --border:rgba(17,17,17,.10);
-      --shadow:0 20px 60px rgba(17,17,17,.08);
+      --gold:#c6a06a;
+      --gold-dark:#9c753e;
+      --muted:#77736c;
+      --border:#e5e0d7;
+      --shadow:0 18px 50px rgba(17,17,17,.08);
     }
 
     *{
+      box-sizing:border-box;
       margin:0;
       padding:0;
-      box-sizing:border-box;
     }
 
     html{
@@ -58,9 +54,9 @@
 
     body{
       font-family:"DM Sans",sans-serif;
-      color:var(--black);
       background:var(--ivory);
-      line-height:1.7;
+      color:var(--black);
+      line-height:1.6;
     }
 
     a{
@@ -74,28 +70,33 @@
     }
 
     img{
-      max-width:100%;
       display:block;
+      max-width:100%;
     }
 
-    .container{
-      width:min(1180px,92%);
-      margin:auto;
+    .topbar{
+      background:var(--black);
+      color:#fff;
+      text-align:center;
+      padding:9px 15px;
+      font-size:12px;
+      letter-spacing:.4px;
     }
-
-    /* HEADER */
 
     header{
       position:sticky;
       top:0;
       z-index:1000;
-      background:rgba(247,244,238,.94);
-      backdrop-filter:blur(16px);
+      background:rgba(247,244,238,.96);
+      backdrop-filter:blur(14px);
       border-bottom:1px solid var(--border);
     }
 
     .nav{
+      max-width:1240px;
+      margin:auto;
       min-height:82px;
+      padding:0 24px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -103,150 +104,144 @@
     }
 
     .brand{
-      display:inline-flex;
+      display:flex;
       align-items:center;
-      flex:0 0 auto;
+      gap:11px;
+      flex-shrink:0;
     }
 
-    .brand-logo{
-      width:180px;
-      height:auto;
-      display:block;
+    .brand img{
+      width:43px;
+      height:43px;
       object-fit:contain;
+    }
+
+    .brand-text{
+      font-family:"Playfair Display",serif;
+      font-size:24px;
+      font-weight:700;
+      letter-spacing:-.5px;
     }
 
     .nav-links{
       display:flex;
       align-items:center;
-      justify-content:center;
-      gap:28px;
+      gap:26px;
+      font-size:14px;
+      font-weight:600;
     }
 
     .nav-links a{
-      font-size:14px;
-      font-weight:600;
       position:relative;
-      padding:28px 0;
-      transition:.3s ease;
+      transition:.2s ease;
     }
 
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:20px;
-      width:0;
-      height:2px;
-      background:var(--gold);
-      transition:.3s ease;
-    }
-
-    .nav-links a:hover::after,
-    .nav-links a.active::after{
-      width:100%;
+    .nav-links a:hover{
+      color:var(--gold-dark);
     }
 
     .nav-actions{
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:9px;
     }
 
-    .icon-btn{
+    .nav-btn{
       width:42px;
       height:42px;
       border:1px solid var(--border);
-      background:var(--white);
+      background:#fff;
       border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      display:grid;
+      place-items:center;
       cursor:pointer;
-      font-size:18px;
+      transition:.2s ease;
       position:relative;
-      transition:.3s ease;
     }
 
-    .icon-btn:hover{
-      background:var(--black);
-      color:var(--white);
-      transform:translateY(-2px);
+    .nav-btn:hover{
+      border-color:var(--gold);
+      transform:translateY(-1px);
+    }
+
+    .nav-btn svg{
+      width:18px;
+      height:18px;
     }
 
     .count{
       position:absolute;
-      top:-4px;
       right:-3px;
-      min-width:17px;
-      height:17px;
-      padding:0 4px;
-      border-radius:20px;
-      background:var(--gold);
-      color:var(--white);
+      top:-3px;
+      min-width:18px;
+      height:18px;
+      border-radius:50%;
+      background:var(--black);
+      color:#fff;
       font-size:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
+      display:grid;
+      place-items:center;
+      padding:0 4px;
     }
 
-    .menu-btn{
+    .mobile-toggle{
       display:none;
     }
 
-    /* BREADCRUMB */
-
-    .breadcrumb-section{
-      padding:28px 0 0;
+    .page{
+      max-width:1240px;
+      margin:auto;
+      padding:70px 24px 90px;
     }
 
-    .breadcrumb{
+    .breadcrumbs{
       display:flex;
       align-items:center;
-      gap:10px;
-      flex-wrap:wrap;
+      gap:8px;
       color:var(--muted);
       font-size:13px;
+      margin-bottom:35px;
     }
 
-    .breadcrumb a:hover{
+    .breadcrumbs a:hover{
       color:var(--black);
-    }
-
-    .breadcrumb .current{
-      color:var(--black);
-      font-weight:600;
-    }
-
-    /* PRODUCT */
-
-    .product-section{
-      padding:45px 0 100px;
     }
 
     .product-layout{
       display:grid;
-      grid-template-columns:1fr 1fr;
+      grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
       gap:70px;
       align-items:start;
     }
 
     .product-visual{
-      background:var(--white);
+      background:#fff;
       border:1px solid var(--border);
-      min-height:570px;
+      min-height:600px;
       display:flex;
       align-items:center;
       justify-content:center;
       padding:45px;
-      position:sticky;
-      top:120px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .product-visual::after{
+      content:"";
+      position:absolute;
+      width:380px;
+      height:380px;
+      border-radius:50%;
+      background:rgba(198,160,106,.07);
+      z-index:0;
     }
 
     .product-visual img{
+      position:relative;
+      z-index:1;
       width:100%;
-      max-width:520px;
-      max-height:500px;
+      max-width:530px;
+      max-height:520px;
       object-fit:contain;
     }
 
@@ -255,1703 +250,1334 @@
     }
 
     .product-category{
-      color:var(--gold);
+      color:var(--gold-dark);
       text-transform:uppercase;
-      letter-spacing:2.5px;
-      font-size:11px;
+      font-size:12px;
       font-weight:700;
-      margin-bottom:14px;
+      letter-spacing:1.8px;
+      margin-bottom:13px;
     }
 
-    .product-title{
+    .product-info h1{
       font-family:"Playfair Display",serif;
-      font-size:clamp(38px,5vw,58px);
+      font-size:48px;
       line-height:1.12;
-      margin-bottom:20px;
+      letter-spacing:-1.2px;
+      margin-bottom:18px;
     }
 
-    .product-price{
-      font-size:26px;
+    .price{
+      font-size:27px;
       font-weight:700;
       margin-bottom:22px;
     }
 
-    .product-description{
-      color:var(--muted);
-      font-size:15px;
-      max-width:560px;
-      margin-bottom:30px;
+    .description{
+      color:#5f5b55;
+      max-width:590px;
+      font-size:16px;
+      line-height:1.8;
+      padding-bottom:27px;
+      border-bottom:1px solid var(--border);
     }
 
-    .product-divider{
-      height:1px;
-      background:var(--border);
-      margin:30px 0;
+    .meta{
+      display:flex;
+      gap:25px;
+      padding:22px 0;
+      border-bottom:1px solid var(--border);
+      font-size:13px;
     }
 
-    .quantity-label{
+    .meta strong{
       display:block;
       font-size:12px;
       text-transform:uppercase;
-      letter-spacing:1.5px;
-      font-weight:700;
-      margin-bottom:10px;
+      letter-spacing:1px;
+      color:var(--muted);
+      margin-bottom:4px;
     }
 
-    .quantity-control{
+    .buy-row{
       display:flex;
       align-items:center;
-      width:max-content;
-      border:1px solid var(--border);
-      background:var(--white);
-      margin-bottom:25px;
+      gap:12px;
+      margin-top:27px;
     }
 
-    .quantity-control button{
-      width:44px;
-      height:44px;
+    .quantity{
+      display:flex;
+      align-items:center;
+      border:1px solid var(--border);
+      background:#fff;
+      height:54px;
+    }
+
+    .quantity button{
+      width:48px;
+      height:52px;
       border:0;
       background:transparent;
       cursor:pointer;
       font-size:20px;
+    }
+
+    .quantity span{
+      width:38px;
+      text-align:center;
+      font-weight:700;
+    }
+
+    .add-cart{
+      height:54px;
+      flex:1;
+      border:1px solid var(--black);
+      background:var(--black);
+      color:#fff;
+      padding:0 25px;
+      cursor:pointer;
+      font-weight:700;
+      letter-spacing:.2px;
       transition:.2s ease;
     }
 
-    .quantity-control button:hover{
-      background:var(--black);
-      color:var(--white);
+    .add-cart:hover{
+      background:var(--gold-dark);
+      border-color:var(--gold-dark);
     }
 
-    .quantity-control input{
-      width:50px;
-      height:44px;
-      border:0;
-      border-left:1px solid var(--border);
-      border-right:1px solid var(--border);
-      text-align:center;
-      outline:none;
-      background:var(--white);
-    }
-
-    .action-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      min-height:50px;
-      padding:13px 25px;
-      border:1px solid var(--black);
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
+    .wishlist{
+      margin-top:12px;
+      width:100%;
+      height:50px;
+      background:transparent;
+      border:1px solid var(--border);
       cursor:pointer;
-      font-size:13px;
-      font-weight:700;
-      transition:.3s ease;
-    }
-
-    .btn-primary{
-      background:var(--black);
-      color:var(--white);
-      flex:1;
-    }
-
-    .btn-primary:hover{
-      background:var(--gold);
-      border-color:var(--gold);
-    }
-
-    .btn-wishlist{
-      background:var(--white);
-      min-width:54px;
-      font-size:20px;
-    }
-
-    .btn-wishlist:hover,
-    .btn-wishlist.active{
-      background:var(--gold);
-      border-color:var(--gold);
-      color:var(--white);
-    }
-
-    .product-meta{
-      display:grid;
-      gap:13px;
-      margin-top:30px;
-    }
-
-    .meta-row{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      border-bottom:1px solid var(--border);
-      padding-bottom:12px;
-      font-size:13px;
-    }
-
-    .meta-row span:first-child{
-      color:var(--muted);
-    }
-
-    .meta-row span:last-child{
       font-weight:600;
+      transition:.2s ease;
     }
 
-    /* NOTICE */
+    .wishlist:hover{
+      border-color:var(--gold);
+    }
 
-    .notice{
+    .product-note{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
       margin-top:25px;
-      padding:17px 18px;
-      background:rgba(198,160,106,.10);
-      border-left:3px solid var(--gold);
-      font-size:13px;
-      color:var(--muted);
     }
 
-    /* RELATED */
+    .note{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:16px 12px;
+      text-align:center;
+      font-size:12px;
+    }
+
+    .note strong{
+      display:block;
+      font-size:13px;
+      margin-bottom:3px;
+    }
 
     .related{
-      padding:90px 0 100px;
-      background:var(--white);
+      margin-top:105px;
     }
 
-    .section-heading{
-      text-align:center;
-      max-width:700px;
-      margin:0 auto 50px;
+    .section-head{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      margin-bottom:28px;
+      gap:20px;
     }
 
-    .eyebrow{
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:12px;
-      font-weight:700;
-      margin-bottom:15px;
-    }
-
-    .section-heading h2{
+    .section-head h2{
       font-family:"Playfair Display",serif;
-      font-size:clamp(35px,5vw,52px);
-      margin-bottom:14px;
+      font-size:34px;
+      line-height:1.2;
     }
 
-    .section-heading p{
+    .section-head p{
       color:var(--muted);
+      font-size:14px;
     }
 
-    .product-grid{
+    .related-grid{
       display:grid;
       grid-template-columns:repeat(4,1fr);
       gap:20px;
     }
 
-    .product-card{
-      background:var(--ivory);
+    .related-card{
+      background:#fff;
       border:1px solid var(--border);
       overflow:hidden;
-      transition:.35s ease;
+      transition:.25s ease;
     }
 
-    .product-card:hover{
-      transform:translateY(-7px);
+    .related-card:hover{
+      transform:translateY(-4px);
       box-shadow:var(--shadow);
     }
 
-    .product-card-image{
-      height:260px;
-      background:var(--white);
+    .related-image{
+      aspect-ratio:1/1;
+      background:#f1eee7;
+      padding:25px;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:25px;
     }
 
-    .product-card-image img{
+    .related-image img{
       width:100%;
       height:100%;
       object-fit:contain;
     }
 
-    .product-card-info{
-      padding:20px;
+    .related-info{
+      padding:17px;
     }
 
-    .product-card-category{
-      color:var(--gold);
+    .related-category{
       font-size:10px;
+      color:var(--gold-dark);
       text-transform:uppercase;
-      letter-spacing:1.5px;
       font-weight:700;
+      letter-spacing:1px;
+      margin-bottom:5px;
+    }
+
+    .related-info h3{
+      font-size:15px;
       margin-bottom:7px;
     }
 
-    .product-card h3{
-      font-family:"Playfair Display",serif;
-      font-size:21px;
-      margin-bottom:8px;
-      line-height:1.3;
-    }
-
-    .product-card-price{
+    .related-price{
       font-weight:700;
-      font-size:15px;
-      margin-bottom:16px;
+      font-size:14px;
     }
-
-    .product-card-actions{
-      display:flex;
-      gap:8px;
-    }
-
-    .small-btn{
-      flex:1;
-      padding:10px;
-      border:1px solid var(--black);
-      background:var(--black);
-      color:var(--white);
-      cursor:pointer;
-      font-size:11px;
-      font-weight:700;
-      transition:.3s ease;
-    }
-
-    .small-btn:hover{
-      background:var(--gold);
-      border-color:var(--gold);
-    }
-
-    .small-btn.secondary{
-      background:transparent;
-      color:var(--black);
-    }
-
-    .small-btn.secondary:hover{
-      background:var(--black);
-      color:var(--white);
-    }
-
-    /* TOAST */
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:25px;
-      transform:translate(-50%,20px);
-      background:var(--black);
-      color:var(--white);
-      padding:13px 20px;
-      font-size:13px;
-      z-index:3000;
-      opacity:0;
-      pointer-events:none;
-      transition:.3s ease;
-    }
-
-    .toast.show{
-      opacity:1;
-      transform:translate(-50%,0);
-    }
-
-    /* FOOTER */
 
     footer{
-      background:#0b0b0b;
-      color:var(--white);
-      padding:70px 0 25px;
+      background:var(--black);
+      color:#fff;
+      margin-top:0;
+    }
+
+    .footer-inner{
+      max-width:1240px;
+      margin:auto;
+      padding:65px 24px 30px;
     }
 
     .footer-grid{
       display:grid;
-      grid-template-columns:1.5fr 1fr 1fr 1fr;
+      grid-template-columns:1.4fr 1fr 1fr 1fr;
       gap:45px;
-      padding-bottom:55px;
-      border-bottom:1px solid rgba(255,255,255,.10);
+      padding-bottom:50px;
+      border-bottom:1px solid rgba(255,255,255,.13);
     }
 
-    .footer-brand img{
-      width:180px;
-      margin-bottom:20px;
+    .footer-brand{
+      font-family:"Playfair Display",serif;
+      font-size:27px;
+      margin-bottom:12px;
     }
 
-    .footer-brand p{
-      color:rgba(255,255,255,.55);
-      max-width:330px;
+    .footer p{
+      color:#bdb9b1;
       font-size:14px;
+      line-height:1.8;
     }
 
-    .footer-col h3{
-      font-family:"DM Sans",sans-serif;
+    .footer h4{
       font-size:13px;
       text-transform:uppercase;
-      letter-spacing:2px;
-      margin-bottom:20px;
-      color:var(--gold);
+      letter-spacing:1.2px;
+      margin-bottom:18px;
     }
 
-    .footer-col a{
-      display:block;
-      color:rgba(255,255,255,.60);
+    .footer-links{
+      display:flex;
+      flex-direction:column;
+      gap:9px;
       font-size:13px;
-      margin-bottom:11px;
-      transition:.3s ease;
+      color:#c7c3bb;
     }
 
-    .footer-col a:hover{
-      color:var(--white);
-      padding-left:4px;
+    .footer-links a:hover{
+      color:#fff;
     }
 
     .footer-bottom{
       padding-top:25px;
       display:flex;
-      align-items:center;
       justify-content:space-between;
       gap:20px;
-      color:rgba(255,255,255,.42);
+      color:#9d9992;
       font-size:12px;
     }
 
-    /* REVEAL */
-
-    .reveal{
+    .toast{
+      position:fixed;
+      right:22px;
+      bottom:22px;
+      background:var(--black);
+      color:#fff;
+      padding:14px 20px;
+      z-index:2000;
+      transform:translateY(120px);
       opacity:0;
-      transform:translateY(25px);
-      transition:.7s ease;
+      pointer-events:none;
+      transition:.3s ease;
+      font-size:13px;
+      box-shadow:0 15px 35px rgba(0,0,0,.2);
     }
 
-    .reveal.show{
-      opacity:1;
+    .toast.show{
       transform:translateY(0);
+      opacity:1;
     }
 
-    /* MOBILE */
-
-    @media(max-width:1000px){
-
+    @media(max-width:900px){
       .nav-links{
-        position:absolute;
-        top:82px;
-        left:0;
-        right:0;
-        background:var(--ivory);
-        border-bottom:1px solid var(--border);
         display:none;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:0;
-        padding:15px 4%;
       }
 
-      .nav-links.open{
-        display:flex;
-      }
-
-      .nav-links a{
-        width:100%;
-        padding:13px 0;
-      }
-
-      .nav-links a::after{
-        bottom:5px;
-      }
-
-      .menu-btn{
-        display:flex;
-      }
-
-      .product-layout{
-        grid-template-columns:1fr;
-        gap:45px;
-      }
-
-      .product-visual{
-        position:static;
-        min-height:450px;
-      }
-
-      .product-grid{
-        grid-template-columns:repeat(2,1fr);
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr 1fr;
-      }
-    }
-
-    @media(max-width:600px){
-
-      .brand-logo{
-        width:145px;
+      .mobile-toggle{
+        display:grid;
       }
 
       .nav{
         min-height:72px;
       }
 
-      .nav-links{
-        top:72px;
+      .product-layout{
+        grid-template-columns:1fr;
+        gap:40px;
       }
 
-      .nav-actions{
-        gap:6px;
+      .product-visual{
+        min-height:480px;
       }
 
-      .icon-btn{
+      .product-info h1{
+        font-size:39px;
+      }
+
+      .related-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+    }
+
+    @media(max-width:600px){
+      .page{
+        padding:42px 16px 65px;
+      }
+
+      .brand-text{
+        font-size:20px;
+      }
+
+      .brand img{
         width:38px;
         height:38px;
       }
 
-      .breadcrumb-section{
-        padding-top:20px;
-      }
-
-      .product-section{
-        padding-top:25px;
-        padding-bottom:70px;
+      .nav-actions .search-btn{
+        display:none;
       }
 
       .product-visual{
-        min-height:330px;
+        min-height:350px;
         padding:25px;
       }
 
-      .product-title{
-        font-size:40px;
+      .product-info h1{
+        font-size:34px;
       }
 
-      .action-row{
-        display:grid;
-        grid-template-columns:1fr 55px;
+      .price{
+        font-size:24px;
       }
 
-      .btn-primary{
-        min-width:0;
+      .buy-row{
+        flex-wrap:wrap;
       }
 
-      .product-grid{
+      .quantity{
+        width:100%;
+        justify-content:center;
+      }
+
+      .add-cart{
+        width:100%;
+        flex:auto;
+      }
+
+      .product-note{
         grid-template-columns:1fr;
       }
 
       .related{
-        padding:70px 0;
+        margin-top:70px;
+      }
+
+      .section-head{
+        display:block;
+      }
+
+      .section-head p{
+        margin-top:7px;
+      }
+
+      .related-grid{
+        grid-template-columns:1fr 1fr;
+        gap:12px;
+      }
+
+      .related-info{
+        padding:12px;
+      }
+
+      .related-info h3{
+        font-size:13px;
       }
 
       .footer-grid{
         grid-template-columns:1fr;
-        gap:35px;
+        gap:30px;
       }
 
       .footer-bottom{
         flex-direction:column;
-        align-items:flex-start;
       }
     }
   </style>
-
-  <script type="application/ld+json" id="productSchema">
-  {
-    "@context":"https://schema.org",
-    "@type":"Product",
-    "name":"Shopora Product",
-    "brand":{
-      "@type":"Brand",
-      "name":"Shopora"
-    },
-    "offers":{
-      "@type":"Offer",
-      "priceCurrency":"PKR",
-      "availability":"https://schema.org/InStock",
-      "url":"https://shoporamarketstore.store/product.html"
-    }
-  }
-  </script>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
-
-    <a href="index.html" class="brand" aria-label="Shopora Market Store home">
-      <img
-        src="assets/shopora-logo.png"
-        alt="Shopora Market Store"
-        class="brand-logo"
-        width="180"
-        height="60"
-      >
-    </a>
-
-    <nav class="nav-links" id="navLinks">
-      <a href="index.html">Home</a>
-      <a href="shop.html" class="active">Shop</a>
-      <a href="categories.html">Categories</a>
-      <a href="trending.html">Trending</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-    <div class="nav-actions">
-
-      <button
-        class="icon-btn"
-        onclick="goToSearch()"
-        aria-label="Search"
-      >
-        🔍
-      </button>
-
-      <a
-        href="wishlist.html"
-        class="icon-btn"
-        aria-label="Wishlist"
-      >
-        ♡
-        <span class="count" id="wishlistCount">0</span>
-      </a>
-
-      <a
-        href="cart.html"
-        class="icon-btn"
-        aria-label="Shopping cart"
-      >
-        🛒
-        <span class="count" id="cartCount">0</span>
-      </a>
-
-      <button
-        class="icon-btn menu-btn"
-        onclick="toggleMenu()"
-        aria-label="Menu"
-      >
-        ☰
-      </button>
-
-    </div>
-
+  <div class="topbar">
+    Shopora Market Store — Modern products for everyday living
   </div>
-</header>
 
+  <header>
+    <nav class="nav">
 
-<main>
+      <a href="index.html" class="brand">
+        <img src="assets/shopora-mark.png" alt="Shopora Market Store">
+        <span class="brand-text">Shopora</span>
+      </a>
 
-  <!-- BREADCRUMB -->
-
-  <section class="breadcrumb-section">
-
-    <div class="container">
-
-      <div class="breadcrumb">
-
+      <div class="nav-links">
         <a href="index.html">Home</a>
-        <span>›</span>
-
         <a href="shop.html">Shop</a>
-        <span>›</span>
-
-        <span class="current" id="breadcrumbProduct">
-          Product
-        </span>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- PRODUCT -->
-
-  <section class="product-section">
-
-    <div class="container">
-
-      <div class="product-layout">
-
-        <div class="product-visual reveal">
-
-          <img
-            id="productImage"
-            src="assets/products/black-shirt.svg"
-            alt="Shopora product"
-          >
-
-        </div>
-
-
-        <div class="product-info reveal">
-
-          <div
-            class="product-category"
-            id="productCategory"
-          >
-            Lifestyle
-          </div>
-
-          <h1
-            class="product-title"
-            id="productName"
-          >
-            Everyday Premium Essential
-          </h1>
-
-          <div
-            class="product-price"
-            id="productPrice"
-          >
-            Rs. 2,499
-          </div>
-
-          <p
-            class="product-description"
-            id="productDescription"
-          >
-            A carefully selected everyday essential from Shopora Market
-            Store, designed to bring practical style and modern comfort
-            into your daily routine.
-          </p>
-
-          <div class="product-divider"></div>
-
-
-          <label
-            class="quantity-label"
-            for="quantity"
-          >
-            Quantity
-          </label>
-
-          <div class="quantity-control">
-
-            <button
-              type="button"
-              onclick="changeQuantity(-1)"
-              aria-label="Decrease quantity"
-            >
-              −
-            </button>
-
-            <input
-              id="quantity"
-              type="number"
-              value="1"
-              min="1"
-              max="99"
-              aria-label="Product quantity"
-            >
-
-            <button
-              type="button"
-              onclick="changeQuantity(1)"
-              aria-label="Increase quantity"
-            >
-              +
-            </button>
-
-          </div>
-
-
-          <div class="action-row">
-
-            <button
-              class="btn btn-primary"
-              type="button"
-              onclick="addCurrentProductToCart()"
-            >
-              Add To Cart
-            </button>
-
-            <button
-              class="btn btn-wishlist"
-              id="wishlistButton"
-              type="button"
-              onclick="toggleCurrentWishlist()"
-              aria-label="Add to wishlist"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-meta">
-
-            <div class="meta-row">
-              <span>Category</span>
-              <span id="metaCategory">Lifestyle</span>
-            </div>
-
-            <div class="meta-row">
-              <span>Availability</span>
-              <span>In Stock</span>
-            </div>
-
-            <div class="meta-row">
-              <span>Brand</span>
-              <span>Shopora</span>
-            </div>
-
-          </div>
-
-
-          <div class="notice">
-            Product information and pricing are displayed for the Shopora
-            Market Store shopping experience. Availability may vary.
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- RELATED PRODUCTS -->
-
-  <section class="related">
-
-    <div class="container">
-
-      <div class="section-heading reveal">
-
-        <div class="eyebrow">You May Also Like</div>
-
-        <h2>More From Shopora</h2>
-
-        <p>
-          Explore more everyday products from our curated collections.
-        </p>
-
-      </div>
-
-
-      <div
-        class="product-grid"
-        id="relatedProducts"
-      ></div>
-
-    </div>
-
-  </section>
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-  <div class="container">
-
-    <div class="footer-grid">
-
-      <div class="footer-brand">
-
-        <a href="index.html">
-
-          <img
-            src="assets/shopora-logo.png"
-            alt="Shopora Market Store"
-            width="180"
-            height="60"
-          >
-
-        </a>
-
-        <p>
-          A modern marketplace for fashion, beauty, electronics,
-          home & living, accessories and everyday lifestyle products.
-        </p>
-
-      </div>
-
-
-      <div class="footer-col">
-
-        <h3>Shop</h3>
-
-        <a href="shop.html">Shop All</a>
         <a href="categories.html">Categories</a>
         <a href="trending.html">Trending</a>
-        <a href="cart.html">Cart</a>
-        <a href="wishlist.html">Wishlist</a>
-
-      </div>
-
-
-      <div class="footer-col">
-
-        <h3>Company</h3>
-
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+
+        <button class="nav-btn search-btn" onclick="goToSearch()" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-4-4"></path>
+          </svg>
+        </button>
+
+        <button class="nav-btn" onclick="goToWishlist()" aria-label="Wishlist">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M20.8 8.7c0 5.5-8.8 10.3-8.8 10.3S3.2 14.2 3.2 8.7A4.7 4.7 0 0 1 12 6.1a4.7 4.7 0 0 1 8.8 2.6Z"></path>
+          </svg>
+          <span class="count" id="wishlistCount">0</span>
+        </button>
+
+        <button class="nav-btn" onclick="goToCart()" aria-label="Cart">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M3 4h2l2.2 11.2a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.5L21 8H6"></path>
+            <circle cx="10" cy="20" r="1"></circle>
+            <circle cx="18" cy="20" r="1"></circle>
+          </svg>
+          <span class="count" id="cartCount">0</span>
+        </button>
+
+        <button class="nav-btn mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M4 7h16M4 12h16M4 17h16"></path>
+          </svg>
+        </button>
 
       </div>
 
+    </nav>
 
-      <div class="footer-col">
+    <div id="mobileMenu" style="
+      display:none;
+      padding:18px 24px 25px;
+      border-top:1px solid var(--border);
+      background:var(--ivory);
+    ">
+      <div style="display:flex;flex-direction:column;gap:15px;font-size:14px;font-weight:600;">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="trending.html">Trending</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </header>
 
-        <h3>Policies</h3>
+  <main class="page">
 
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-service.html">Terms of Service</a>
-        <a href="cookie-policy.html">Cookie Policy</a>
-        <a href="return-refund.html">Return & Refund</a>
+    <div class="breadcrumbs">
+      <a href="index.html">Home</a>
+      <span>/</span>
+      <a href="shop.html">Shop</a>
+      <span>/</span>
+      <span id="breadcrumbName">Product</span>
+    </div>
 
+    <section class="product-layout">
+
+      <div class="product-visual">
+        <img
+          id="productImage"
+          src="assets/products/everyday-premium-essential.png"
+          alt="Shopora product"
+        >
+      </div>
+
+      <div class="product-info">
+
+        <div class="product-category" id="productCategory">
+          Lifestyle
+        </div>
+
+        <h1 id="productName">
+          Everyday Premium Essential
+        </h1>
+
+        <div class="price" id="productPrice">
+          PKR 2,499
+        </div>
+
+        <p class="description" id="productDescription">
+          A carefully selected everyday essential from Shopora Market Store,
+          designed to bring practical style and modern comfort into your daily routine.
+        </p>
+
+        <div class="meta">
+
+          <div>
+            <strong>Category</strong>
+            <span id="metaCategory">Lifestyle</span>
+          </div>
+
+          <div>
+            <strong>Availability</strong>
+            <span>Available</span>
+          </div>
+
+        </div>
+
+        <div class="buy-row">
+
+          <div class="quantity">
+            <button type="button" onclick="changeQuantity(-1)">−</button>
+            <span id="quantity">1</span>
+            <button type="button" onclick="changeQuantity(1)">+</button>
+          </div>
+
+          <button class="add-cart" onclick="addCurrentProductToCart()">
+            Add To Cart
+          </button>
+
+        </div>
+
+        <button class="wishlist" id="wishlistButton" onclick="toggleCurrentWishlist()">
+          ♡ Add to Wishlist
+        </button>
+
+        <div class="product-note">
+
+          <div class="note">
+            <strong>Secure Shopping</strong>
+            Safe checkout
+          </div>
+
+          <div class="note">
+            <strong>Easy Ordering</strong>
+            Simple process
+          </div>
+
+          <div class="note">
+            <strong>Shopora Support</strong>
+            We're here to help
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="related">
+
+      <div class="section-head">
+        <div>
+          <h2>You may also like</h2>
+          <p>Explore more from Shopora Market Store.</p>
+        </div>
+
+        <a href="shop.html" style="font-size:13px;font-weight:700;">
+          View All →
+        </a>
+      </div>
+
+      <div class="related-grid" id="relatedProducts"></div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+
+    <div class="footer-inner">
+
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand">Shopora Market Store</div>
+          <p>
+            A modern online marketplace bringing fashion, beauty,
+            electronics, accessories, home and lifestyle products together.
+          </p>
+        </div>
+
+        <div>
+          <h4>Shop</h4>
+
+          <div class="footer-links">
+            <a href="shop.html">All Products</a>
+            <a href="categories.html">Categories</a>
+            <a href="trending.html">Trending</a>
+            <a href="cart.html">Cart</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Company</h4>
+
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="cookie-policy.html">Cookie Policy</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Help</h4>
+
+          <div class="footer-links">
+            <a href="return-refund.html">Return & Refund</a>
+            <a href="checkout.html">Checkout</a>
+            <a href="contact.html">Customer Support</a>
+            <a href="mailto:brandseocompany@gmail.com">
+              brandseocompany@gmail.com
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Shopora Market Store. All rights reserved.</span>
+        <span>Built for modern everyday shopping.</span>
       </div>
 
     </div>
 
+  </footer>
 
-    <div class="footer-bottom">
+  <div class="toast" id="toast"></div>
 
-      <div>
-        © <span id="year"></span> Shopora Market Store.
-        All rights reserved.
-      </div>
+  <script>
 
-      <div>
-        brandseocompany@gmail.com
-      </div>
+    /* =========================================================
+       SHOPORA — ALL 12 PRODUCTS
+       ========================================================= */
 
-    </div>
+    const products = {
 
-  </div>
+      "everyday-premium-essential": {
+        name: "Everyday Premium Essential",
+        category: "Lifestyle",
+        price: 2499,
+        image: "assets/products/everyday-premium-essential.png",
+        description:
+          "A carefully selected everyday essential from Shopora Market Store, designed to bring practical style and modern comfort into your daily routine."
+      },
 
-</footer>
+      "modern-everyday-collection": {
+        name: "Modern Everyday Collection",
+        category: "Fashion",
+        price: 3499,
+        image: "assets/products/modern-everyday-collection.png",
+        description:
+          "A modern fashion essential selected for versatile everyday styling and a clean contemporary look."
+      },
+
+      "smart-everyday-device": {
+        name: "Smart Everyday Device",
+        category: "Electronics",
+        price: 4999,
+        image: "assets/products/smart-everyday-device.png",
+        description:
+          "A practical everyday technology pick designed for modern routines, entertainment and connected living."
+      },
+
+      "minimal-signature-accessory": {
+        name: "Minimal Signature Accessory",
+        category: "Accessories",
+        price: 1899,
+        image: "assets/products/minimal-signature-accessory.png",
+        description:
+          "A refined accessory with a minimal aesthetic, selected to complement everyday outfits and personal style."
+      },
+
+      "daily-beauty-essential": {
+        name: "Daily Beauty Essential",
+        category: "Beauty",
+        price: 1599,
+        image: "assets/products/daily-beauty-essential.png",
+        description:
+          "An everyday beauty selection designed for simple, practical and modern personal-care routines."
+      },
+
+      "modern-home-essential": {
+        name: "Modern Home Essential",
+        category: "Home & Living",
+        price: 2299,
+        image: "assets/products/modern-home-essential.png",
+        description:
+          "A modern home essential selected to add practical function and a refined touch to everyday spaces."
+      },
+
+      "everyday-lifestyle-pick": {
+        name: "Everyday Lifestyle Pick",
+        category: "Lifestyle",
+        price: 1999,
+        image: "assets/products/everyday-lifestyle-pick.png",
+        description:
+          "A practical lifestyle product selected for everyday use, convenience and modern living."
+      },
+
+      "classic-wardrobe-essential": {
+        name: "Classic Wardrobe Essential",
+        category: "Fashion",
+        price: 2899,
+        image: "assets/products/classic-wardrobe-essential.png",
+        description:
+          "A classic wardrobe essential designed to fit effortlessly into a versatile everyday fashion collection."
+      },
+
+      "signature-beauty-set": {
+        name: "Signature Beauty Set",
+        category: "Beauty",
+        price: 1799,
+        image: "assets/products/signature-beauty-set.png",
+        description:
+          "A curated beauty set selected for convenient everyday self-care and personal routines."
+      },
+
+      "connected-smart-essential": {
+        name: "Connected Smart Essential",
+        category: "Electronics",
+        price: 5999,
+        image: "assets/products/connected-smart-essential.png",
+        description:
+          "A connected everyday technology essential designed for modern routines and smart lifestyle use."
+      },
+
+      "everyday-carry-accessory": {
+        name: "Everyday Carry Accessory",
+        category: "Accessories",
+        price: 1399,
+        image: "assets/products/everyday-carry-accessory.png",
+        description:
+          "A practical everyday carry accessory selected for convenient organization and modern personal style."
+      },
+
+      "elevated-living-essential": {
+        name: "Elevated Living Essential",
+        category: "Home & Living",
+        price: 2699,
+        image: "assets/products/elevated-living-essential.png",
+        description:
+          "An elevated home essential selected to bring a clean and refined feel to everyday living spaces."
+      }
+
+    };
 
 
-<div
-  class="toast"
-  id="toast"
-  role="status"
-  aria-live="polite"
->
-</div>
+    /* =========================================================
+       GET PRODUCT FROM URL
+       Example:
+       product.html?product=smart-everyday-device
+       ========================================================= */
 
-
-<script>
-
-  /* PRODUCT DATABASE */
-
-  const products = {
-
-    "everyday-premium-essential": {
-      name: "Everyday Premium Essential",
-      category: "Lifestyle",
-      price: 2499,
-      image: "assets/products/black-shirt.svg",
-      description:
-        "A carefully selected everyday essential from Shopora Market Store, designed to bring practical style and modern comfort into your daily routine."
-    },
-
-    "modern-everyday-collection": {
-      name: "Modern Everyday Collection",
-      category: "Fashion",
-      price: 3499,
-      image: "assets/products/coord-set.svg",
-      description:
-        "A modern fashion essential selected for versatile everyday styling and a clean contemporary look."
-    },
-
-    "smart-everyday-device": {
-      name: "Smart Everyday Device",
-      category: "Electronics",
-      price: 4999,
-      image: "assets/products/wireless-buds.svg",
-      description:
-        "A practical everyday technology pick designed for modern routines, entertainment and connected living."
-    },
-
-    "minimal-signature-accessory": {
-      name: "Minimal Signature Accessory",
-      category: "Accessories",
-      price: 1899,
-      image: "assets/products/watch.svg",
-      description:
-        "A refined accessory with a minimal aesthetic, selected to complement everyday outfits and personal style."
-    },
-
-    "daily-beauty-essential": {
-      name: "Daily Beauty Essential",
-      category: "Beauty",
-      price: 1599,
-      image: "assets/products/beauty-set.svg",
-      description:
-        "An everyday beauty selection designed for simple, practical and modern personal-care routines."
-    },
-
-    "modern-home-essential": {
-      name: "Modern Home Essential",
-      category: "Home & Living",
-      price: 2299,
-      image: "assets/products/lamp.svg",
-      description:
-        "A modern home essential selected to add practical function and a refined touch to everyday spaces."
-    },
-
-    "everyday-lifestyle-pick": {
-      name: "Everyday Lifestyle Pick",
-      category: "Lifestyle",
-      price: 1999,
-      image: "assets/products/bottle.svg",
-      description:
-        "A practical lifestyle product selected for everyday use, convenience and modern living."
-    },
-
-    "classic-wardrobe-essential": {
-      name: "Classic Wardrobe Essential",
-      category: "Fashion",
-      price: 2899,
-      image: "assets/products/trousers.svg",
-      description:
-        "A classic wardrobe essential designed to fit effortlessly into a versatile everyday fashion collection."
-    },
-
-    "signature-beauty-set": {
-      name: "Signature Beauty Set",
-      category: "Beauty",
-      price: 1799,
-      image: "assets/products/self-care.svg",
-      description:
-        "A curated beauty set selected for convenient everyday self-care and personal routines."
-    },
-
-    "connected-smart-essential": {
-      name: "Connected Smart Essential",
-      category: "Electronics",
-      price: 5999,
-      image: "assets/products/smartwatch.svg",
-      description:
-        "A connected everyday technology essential designed for modern routines and smart lifestyle use."
-    },
-
-    "everyday-carry-accessory": {
-      name: "Everyday Carry Accessory",
-      category: "Accessories",
-      price: 1399,
-      image: "assets/products/bag.svg",
-      description:
-        "A practical everyday carry accessory selected for convenient organization and modern personal style."
-    },
-
-    "elevated-living-essential": {
-      name: "Elevated Living Essential",
-      category: "Home & Living",
-      price: 2699,
-      image: "assets/products/ceramic-set.svg",
-      description:
-        "An elevated home essential selected to bring a clean and refined feel to everyday living spaces."
+    function getProductSlug(){
+      const params = new URLSearchParams(window.location.search);
+      return params.get("product");
     }
 
-  };
 
+    let currentSlug = getProductSlug();
 
-  /* GET PRODUCT FROM URL */
-
-  function getProductSlug(){
-
-    const params =
-      new URLSearchParams(window.location.search);
-
-    return params.get("product");
-
-  }
-
-
-  let currentProduct = null;
-  let currentSlug = null;
-
-
-  function loadProduct(){
-
-    currentSlug = getProductSlug();
-
-    currentProduct =
+    let currentProduct =
       products[currentSlug] ||
       products["everyday-premium-essential"];
 
-
-    document.title =
-      currentProduct.name +
-      " | Shopora Market Store";
+    let quantity = 1;
 
 
-    document.getElementById("productName").textContent =
-      currentProduct.name;
+    /* =========================================================
+       FORMAT PRICE
+       ========================================================= */
 
-    document.getElementById("productCategory").textContent =
-      currentProduct.category;
-
-    document.getElementById("metaCategory").textContent =
-      currentProduct.category;
-
-    document.getElementById("productPrice").textContent =
-      formatPrice(currentProduct.price);
-
-    document.getElementById("productDescription").textContent =
-      currentProduct.description;
-
-    const image =
-      document.getElementById("productImage");
-
-    image.src =
-      currentProduct.image;
-
-    image.alt =
-      currentProduct.name;
-
-    document.getElementById("breadcrumbProduct").textContent =
-      currentProduct.name;
-
-
-    updateWishlistButton();
-
-    renderRelatedProducts();
-
-    updateProductSchema();
-
-  }
-
-
-  function formatPrice(price){
-
-    return "Rs. " +
-      Number(price).toLocaleString("en-PK");
-
-  }
-
-
-  /* CART */
-
-  function getCart(){
-
-    try{
-
-      return JSON.parse(
-        localStorage.getItem("shoporaCart")
-      ) || [];
-
-    }catch(error){
-
-      return [];
-
-    }
-
-  }
-
-
-  function saveCart(cart){
-
-    localStorage.setItem(
-      "shoporaCart",
-      JSON.stringify(cart)
-    );
-
-  }
-
-
-  function addCurrentProductToCart(){
-
-    if(!currentProduct){
-      return;
+    function formatPrice(price){
+      return "PKR " + Number(price).toLocaleString("en-PK");
     }
 
 
-    const quantityInput =
-      document.getElementById("quantity");
+    /* =========================================================
+       LOAD CURRENT PRODUCT
+       ========================================================= */
 
-    const quantity =
-      Math.max(
-        1,
-        Math.min(
-          99,
-          Number(quantityInput.value) || 1
-        )
-      );
+    function loadProduct(){
+
+      document.title =
+        currentProduct.name + " | Shopora Market Store";
+
+      const image =
+        document.getElementById("productImage");
+
+      const name =
+        document.getElementById("productName");
+
+      const category =
+        document.getElementById("productCategory");
+
+      const price =
+        document.getElementById("productPrice");
+
+      const description =
+        document.getElementById("productDescription");
+
+      const metaCategory =
+        document.getElementById("metaCategory");
+
+      const breadcrumb =
+        document.getElementById("breadcrumbName");
+
+      image.src = currentProduct.image;
+      image.alt = currentProduct.name;
+
+      name.textContent = currentProduct.name;
+
+      category.textContent =
+        currentProduct.category;
+
+      price.textContent =
+        formatPrice(currentProduct.price);
+
+      description.textContent =
+        currentProduct.description;
+
+      metaCategory.textContent =
+        currentProduct.category;
+
+      breadcrumb.textContent =
+        currentProduct.name;
+
+      quantity = 1;
+      document.getElementById("quantity").textContent = quantity;
+
+      updateWishlistButton();
+
+      renderRelatedProducts();
+
+      updateCounts();
+
+    }
 
 
-    const cart = getCart();
+    /* =========================================================
+       QUANTITY
+       ========================================================= */
 
+    function changeQuantity(amount){
 
-    const existing =
-      cart.find(
-        item =>
-          item.name === currentProduct.name
-      );
+      quantity += amount;
 
+      if(quantity < 1){
+        quantity = 1;
+      }
 
-    if(existing){
+      if(quantity > 99){
+        quantity = 99;
+      }
 
-      existing.quantity =
-        Number(existing.quantity || 1) +
+      document.getElementById("quantity").textContent =
         quantity;
+    }
 
-    }else{
 
-      cart.push({
+    /* =========================================================
+       CART
+       ========================================================= */
 
-        name: currentProduct.name,
+    function getCart(){
 
-        price: currentProduct.price,
-
-        image: currentProduct.image,
-
-        quantity: quantity
-
-      });
+      try{
+        return JSON.parse(
+          localStorage.getItem("shoporaCart")
+        ) || [];
+      }catch(error){
+        return [];
+      }
 
     }
 
 
-    saveCart(cart);
+    function saveCart(cart){
 
-    updateCounts();
-
-    showToast(
-      currentProduct.name +
-      " added to cart"
-    );
-
-  }
-
-
-  /* QUANTITY */
-
-  function changeQuantity(amount){
-
-    const input =
-      document.getElementById("quantity");
-
-    let value =
-      Number(input.value) || 1;
-
-    value += amount;
-
-    if(value < 1){
-      value = 1;
-    }
-
-    if(value > 99){
-      value = 99;
-    }
-
-    input.value = value;
-
-  }
-
-
-  /* WISHLIST */
-
-  function getWishlist(){
-
-    try{
-
-      return JSON.parse(
-        localStorage.getItem("shoporaWishlist")
-      ) || [];
-
-    }catch(error){
-
-      return [];
-
-    }
-
-  }
-
-
-  function saveWishlist(list){
-
-    localStorage.setItem(
-      "shoporaWishlist",
-      JSON.stringify(list)
-    );
-
-  }
-
-
-  function isInWishlist(){
-
-    const wishlist =
-      getWishlist();
-
-    return wishlist.some(
-      item =>
-        item.name === currentProduct.name
-    );
-
-  }
-
-
-  function toggleCurrentWishlist(){
-
-    if(!currentProduct){
-      return;
-    }
-
-
-    const wishlist =
-      getWishlist();
-
-
-    const index =
-      wishlist.findIndex(
-        item =>
-          item.name === currentProduct.name
+      localStorage.setItem(
+        "shoporaCart",
+        JSON.stringify(cart)
       );
 
+    }
 
-    if(index !== -1){
 
-      wishlist.splice(index,1);
+    function addCurrentProductToCart(){
+
+      const cart = getCart();
+
+      const existing =
+        cart.find(
+          item => item.name === currentProduct.name
+        );
+
+      if(existing){
+
+        existing.quantity =
+          Number(existing.quantity || 0) + quantity;
+
+      }else{
+
+        cart.push({
+
+          name: currentProduct.name,
+
+          price: currentProduct.price,
+
+          image: currentProduct.image,
+
+          quantity: quantity
+
+        });
+
+      }
+
+      saveCart(cart);
+
+      updateCounts();
 
       showToast(
-        "Removed from wishlist"
-      );
-
-    }else{
-
-      wishlist.push({
-
-        name: currentProduct.name,
-
-        price: currentProduct.price,
-
-        image: currentProduct.image
-
-      });
-
-      showToast(
-        "Added to wishlist"
+        currentProduct.name +
+        " added to cart."
       );
 
     }
 
 
-    saveWishlist(wishlist);
+    /* =========================================================
+       WISHLIST
+       ========================================================= */
 
-    updateWishlistButton();
+    function getWishlist(){
 
-    updateCounts();
+      try{
 
-  }
+        return JSON.parse(
+          localStorage.getItem("shoporaWishlist")
+        ) || [];
 
+      }catch(error){
 
-  function updateWishlistButton(){
+        return [];
 
-    const button =
-      document.getElementById(
-        "wishlistButton"
-      );
+      }
 
-    if(!button){
-      return;
     }
 
 
-    if(isInWishlist()){
+    function saveWishlist(list){
 
-      button.textContent = "♥";
-
-      button.classList.add("active");
-
-      button.setAttribute(
-        "aria-label",
-        "Remove from wishlist"
-      );
-
-    }else{
-
-      button.textContent = "♡";
-
-      button.classList.remove("active");
-
-      button.setAttribute(
-        "aria-label",
-        "Add to wishlist"
+      localStorage.setItem(
+        "shoporaWishlist",
+        JSON.stringify(list)
       );
 
     }
 
-  }
 
+    function toggleCurrentWishlist(){
 
-  /* COUNTS */
+      let wishlist = getWishlist();
 
-  function updateCounts(){
+      const exists =
+        wishlist.includes(currentSlug);
 
-    const cart =
-      getCart();
+      if(exists){
 
-    const wishlist =
-      getWishlist();
+        wishlist =
+          wishlist.filter(
+            slug => slug !== currentSlug
+          );
 
+        showToast("Removed from wishlist.");
 
-    const cartCount =
-      cart.reduce(
-        (total,item) =>
-          total +
-          Number(item.quantity || 1),
-        0
-      );
+      }else{
 
+        wishlist.push(currentSlug);
 
-    document.getElementById(
-      "cartCount"
-    ).textContent =
-      cartCount;
+        showToast("Added to wishlist.");
 
+      }
 
-    document.getElementById(
-      "wishlistCount"
-    ).textContent =
-      wishlist.length;
+      saveWishlist(wishlist);
 
-  }
+      updateWishlistButton();
 
+      updateCounts();
 
-  /* RELATED PRODUCTS */
-
-  function renderRelatedProducts(){
-
-    const container =
-      document.getElementById(
-        "relatedProducts"
-      );
-
-    if(!container){
-      return;
     }
 
 
-    const allProducts =
-      Object.entries(products);
+    function updateWishlistButton(){
+
+      const button =
+        document.getElementById("wishlistButton");
+
+      if(!button) return;
+
+      const wishlist = getWishlist();
+
+      if(wishlist.includes(currentSlug)){
+
+        button.textContent =
+          "♥ Added to Wishlist";
+
+      }else{
+
+        button.textContent =
+          "♡ Add to Wishlist";
+
+      }
+
+    }
 
 
-    const related =
-      allProducts
-        .filter(
-          ([slug]) =>
-            slug !== currentSlug
-        )
-        .slice(0,4);
+    /* =========================================================
+       RELATED PRODUCTS
+       ========================================================= */
 
+    function renderRelatedProducts(){
 
-    container.innerHTML =
-      related.map(
-        ([slug,product]) => `
+      const container =
+        document.getElementById("relatedProducts");
 
-          <article class="product-card">
+      if(!container) return;
 
-            <a
-              href="product.html?product=${slug}"
-              class="product-card-image"
+      container.innerHTML = "";
+
+      const related =
+        Object.entries(products)
+          .filter(([slug]) => slug !== currentSlug)
+          .slice(0,4);
+
+      related.forEach(([slug, product]) => {
+
+        const card =
+          document.createElement("a");
+
+        card.className =
+          "related-card";
+
+        card.href =
+          "product.html?product=" +
+          encodeURIComponent(slug);
+
+        card.innerHTML = `
+
+          <div class="related-image">
+
+            <img
+              src="${product.image}"
+              alt="${product.name}"
+              loading="lazy"
             >
 
-              <img
-                src="${product.image}"
-                alt="${product.name}"
-                loading="lazy"
-              >
+          </div>
 
-            </a>
+          <div class="related-info">
 
-            <div class="product-card-info">
-
-              <div class="product-card-category">
-                ${product.category}
-              </div>
-
-              <h3>
-                ${product.name}
-              </h3>
-
-              <div class="product-card-price">
-                ${formatPrice(product.price)}
-              </div>
-
-              <div class="product-card-actions">
-
-                <button
-                  class="small-btn"
-                  onclick="addRelatedToCart(
-                    '${slug}'
-                  )"
-                  type="button"
-                >
-                  Add To Cart
-                </button>
-
-                <a
-                  href="product.html?product=${slug}"
-                  class="small-btn secondary"
-                >
-                  View
-                </a>
-
-              </div>
-
+            <div class="related-category">
+              ${product.category}
             </div>
 
-          </article>
+            <h3>
+              ${product.name}
+            </h3>
 
-        `
-      ).join("");
+            <div class="related-price">
+              ${formatPrice(product.price)}
+            </div>
 
-  }
+          </div>
 
+        `;
 
-  function addRelatedToCart(slug){
-
-    const product =
-      products[slug];
-
-    if(!product){
-      return;
-    }
-
-
-    const cart =
-      getCart();
-
-
-    const existing =
-      cart.find(
-        item =>
-          item.name === product.name
-      );
-
-
-    if(existing){
-
-      existing.quantity =
-        Number(existing.quantity || 1) + 1;
-
-    }else{
-
-      cart.push({
-
-        name: product.name,
-
-        price: product.price,
-
-        image: product.image,
-
-        quantity: 1
+        container.appendChild(card);
 
       });
 
     }
 
 
-    saveCart(cart);
+    /* =========================================================
+       COUNTS
+       ========================================================= */
 
-    updateCounts();
+    function updateCounts(){
 
-    showToast(
-      product.name +
-      " added to cart"
-    );
+      const cart =
+        getCart();
 
-  }
+      const wishlist =
+        getWishlist();
 
+      const cartCount =
+        cart.reduce(
+          (total,item) =>
+            total + Number(item.quantity || 0),
+          0
+        );
 
-  /* SEARCH */
+      const wishlistCount =
+        wishlist.length;
 
-  function goToSearch(){
+      const cartElement =
+        document.getElementById("cartCount");
 
-    window.location.href =
-      "shop.html#productSearch";
+      const wishlistElement =
+        document.getElementById("wishlistCount");
 
-  }
+      if(cartElement){
+        cartElement.textContent =
+          cartCount;
+      }
 
+      if(wishlistElement){
+        wishlistElement.textContent =
+          wishlistCount;
+      }
 
-  /* MOBILE MENU */
-
-  function toggleMenu(){
-
-    document
-      .getElementById("navLinks")
-      .classList.toggle("open");
-
-  }
-
-
-  /* TOAST */
-
-  let toastTimer;
-
-  function showToast(message){
-
-    const toast =
-      document.getElementById("toast");
-
-    toast.textContent =
-      message;
-
-    toast.classList.add("show");
+    }
 
 
-    clearTimeout(toastTimer);
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    function goToCart(){
+
+      window.location.href =
+        "cart.html";
+
+    }
 
 
-    toastTimer =
-      setTimeout(
-        () => {
+    function goToWishlist(){
+
+      window.location.href =
+        "shop.html#wishlist";
+
+    }
+
+
+    function goToSearch(){
+
+      window.location.href =
+        "shop.html#productSearch";
+
+    }
+
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    function toggleMobileMenu(){
+
+      const menu =
+        document.getElementById("mobileMenu");
+
+      if(menu.style.display === "none" || !menu.style.display){
+
+        menu.style.display = "block";
+
+      }else{
+
+        menu.style.display = "none";
+
+      }
+
+    }
+
+
+    /* =========================================================
+       TOAST
+       ========================================================= */
+
+    let toastTimer;
+
+    function showToast(message){
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent =
+        message;
+
+      toast.classList.add("show");
+
+      clearTimeout(toastTimer);
+
+      toastTimer =
+        setTimeout(() => {
+
           toast.classList.remove("show");
-        },
-        2500
-      );
 
-  }
+        }, 2400);
 
-
-  /* SEO PRODUCT SCHEMA */
-
-  function updateProductSchema(){
-
-    if(!currentProduct){
-      return;
     }
 
 
-    const schema =
-      document.getElementById(
-        "productSchema"
-      );
+    /* =========================================================
+       PRODUCT STRUCTURED DATA
+       ========================================================= */
 
+    function addProductSchema(){
 
-    schema.textContent =
-      JSON.stringify({
+      const existing =
+        document.getElementById("productSchema");
 
-        "@context":"https://schema.org",
+      if(existing){
+        existing.remove();
+      }
 
-        "@type":"Product",
+      const schema =
+        document.createElement("script");
 
-        "name":currentProduct.name,
+      schema.type =
+        "application/ld+json";
 
-        "image":[
-          "https://shoporamarketstore.store/" +
-          currentProduct.image
-        ],
+      schema.id =
+        "productSchema";
 
-        "description":
-          currentProduct.description,
+      schema.textContent =
+        JSON.stringify({
 
-        "brand":{
-          "@type":"Brand",
-          "name":"Shopora"
-        },
+          "@context":"https://schema.org",
 
-        "category":
-          currentProduct.category,
+          "@type":"Product",
 
-        "offers":{
+          "name":currentProduct.name,
 
-          "@type":"Offer",
+          "image":[
+            "https://shoporamarketstore.store/" +
+            currentProduct.image
+          ],
 
-          "url":
-            "https://shoporamarketstore.store/product.html?product=" +
-            currentSlug,
+          "description":
+            currentProduct.description,
 
-          "priceCurrency":"PKR",
+          "category":
+            currentProduct.category,
 
-          "price":
-            currentProduct.price,
+          "brand":{
+            "@type":"Brand",
+            "name":"Shopora Market Store"
+          },
 
-          "availability":
-            "https://schema.org/InStock"
+          "offers":{
 
-        }
+            "@type":"Offer",
 
-      });
+            "url":
+              "https://shoporamarketstore.store/product.html?product=" +
+              encodeURIComponent(currentSlug),
 
-  }
+            "priceCurrency":"PKR",
 
+            "price":
+              currentProduct.price,
 
-  /* REVEAL */
-
-  const observer =
-    new IntersectionObserver(
-      entries => {
-
-        entries.forEach(entry => {
-
-          if(entry.isIntersecting){
-
-            entry.target.classList.add(
-              "show"
-            );
-
-            observer.unobserve(
-              entry.target
-            );
+            "availability":
+              "https://schema.org/InStock"
 
           }
 
         });
 
-      },
-      {
-        threshold:.12
+      document.head.appendChild(schema);
+
+    }
+
+
+    /* =========================================================
+       INIT
+       ========================================================= */
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function(){
+
+        loadProduct();
+
+        addProductSchema();
+
+        updateCounts();
+
       }
     );
 
-
-  document
-    .querySelectorAll(".reveal")
-    .forEach(
-      element =>
-        observer.observe(element)
-    );
-
-
-  /* YEAR */
-
-  document.getElementById(
-    "year"
-  ).textContent =
-    new Date().getFullYear();
-
-
-  /* STORAGE EVENTS */
-
-  window.addEventListener(
-    "storage",
-    () => {
-
-      updateCounts();
-
-      updateWishlistButton();
-
-    }
-  );
-
-
-  window.addEventListener(
-    "pageshow",
-    () => {
-
-      updateCounts();
-
-      updateWishlistButton();
-
-    }
-  );
-
-
-  /* START */
-
-  loadProduct();
-
-  updateCounts();
-
-</script>
+  </script>
 
 </body>
 </html>
