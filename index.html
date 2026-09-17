@@ -427,7 +427,9 @@
       background: var(--gold-dark);
     }
 
-    /* Sticky Search */
+    /* =========================
+       FLOATING SEARCH
+    ========================= */
 
     .floating-search {
       position: fixed;
@@ -576,6 +578,10 @@
       background: rgba(255,255,255,0.94);
       cursor: pointer;
       font-size: 17px;
+    }
+
+    .wishlist-btn.active {
+      background: var(--gold);
     }
 
     .product-info {
@@ -945,6 +951,7 @@
     ========================= */
 
     @media (max-width: 1000px) {
+
       .nav {
         gap: 18px;
       }
@@ -956,9 +963,11 @@
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+
     }
 
     @media (max-width: 760px) {
+
       .container {
         width: min(100% - 28px, var(--max));
       }
@@ -1097,9 +1106,11 @@
       .footer-bottom {
         flex-direction: column;
       }
+
     }
 
     @media (max-width: 480px) {
+
       .brand-name {
         font-size: 21px;
       }
@@ -1165,6 +1176,7 @@
       .newsletter-form button {
         min-height: 48px;
       }
+
     }
   </style>
 </head>
@@ -1176,27 +1188,38 @@
     Shopora Market Store — Discover something better for everyday life.
   </div>
 
+
   <!-- HEADER -->
   <header class="header">
+
     <div class="container header-inner">
 
       <a href="index.html" class="brand" aria-label="Shopora Market Store Home">
+
         <img
           src="assets/shopora-mark.png"
           alt="Shopora Market Store"
           class="brand-mark"
         >
-        <span class="brand-name">Shopora</span>
+
+        <span class="brand-name">
+          Shopora
+        </span>
+
       </a>
 
+
       <nav class="nav" id="mainNav">
+
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="categories.html">Categories</a>
         <a href="trending.html">Trending</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
+
       </nav>
+
 
       <div class="header-actions">
 
@@ -1210,29 +1233,45 @@
           <span class="count" id="cartCount">0</span>
         </a>
 
-        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open Menu">
+        <button
+          class="icon-btn menu-btn"
+          id="menuBtn"
+          aria-label="Open Menu"
+        >
           ☰
         </button>
 
       </div>
 
     </div>
+
   </header>
 
+
   <!-- FLOATING SEARCH -->
+
   <div class="floating-search" id="floatingSearch">
+
     <form id="floatingSearchForm">
+
       <input
         type="search"
         id="floatingSearchInput"
         placeholder="Search products, categories..."
         autocomplete="off"
       >
-      <button type="submit" aria-label="Search">⌕</button>
+
+      <button type="submit" aria-label="Search">
+        ⌕
+      </button>
+
     </form>
+
   </div>
 
+
   <!-- HERO -->
+
   <section class="hero">
 
     <video
@@ -1243,11 +1282,19 @@
       playsinline
       preload="auto"
     >
-      <source src="assets/video/shopora-hero-video.mp4" type="video/mp4">
+
+      <source
+        src="assets/video/shopora-hero-video.mp4"
+        type="video/mp4"
+      >
+
       Your browser does not support the video tag.
+
     </video>
 
+
     <div class="hero-overlay"></div>
+
 
     <div class="hero-content">
 
@@ -1266,6 +1313,7 @@
       </p>
 
       <div class="hero-buttons">
+
         <a href="shop.html" class="btn btn-dark">
           Shop All Products
         </a>
@@ -1273,12 +1321,16 @@
         <a href="categories.html" class="btn btn-outline">
           Explore Categories
         </a>
+
       </div>
 
     </div>
 
+
     <!-- CENTER HERO SEARCH -->
+
     <div class="hero-search-wrap">
+
       <form class="hero-search" id="heroSearchForm">
 
         <input
@@ -1293,400 +1345,323 @@
         </button>
 
       </form>
+
     </div>
 
   </section>
 
+
   <!-- FEATURED PRODUCTS -->
+
   <section class="section">
+
     <div class="container">
 
       <div class="section-head">
+
         <div>
-          <div class="section-kicker">Featured</div>
-          <h2 class="section-title">Selected for everyday</h2>
+
+          <div class="section-kicker">
+            Featured
+          </div>
+
+          <h2 class="section-title">
+            Selected for everyday
+          </h2>
+
         </div>
+
 
         <a href="shop.html" class="section-link">
           View all products
         </a>
-      </div>
-
-      <div class="products-grid">
-
-        <!-- PRODUCT 1 -->
-        <article class="product-card">
-
-          <div class="product-image">
-
-            <img
-              src="assets/products/everyday-premium-essential.png"
-              alt="Everyday Premium Essential"
-              loading="lazy"
-            >
-
-            <span class="product-tag">Essential</span>
-
-            <button
-              class="wishlist-btn"
-              onclick="toggleWishlist('everyday-premium-essential')"
-              aria-label="Add to wishlist"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Lifestyle
-            </div>
-
-            <div class="product-name">
-              Everyday Premium Essential
-            </div>
-
-            <div class="product-price">
-              PKR 2,499
-            </div>
-
-            <div class="product-actions">
-              <button
-                class="small-btn"
-                onclick="addToCart(
-                  'everyday-premium-essential',
-                  'Everyday Premium Essential',
-                  2499,
-                  'assets/products/everyday-premium-essential.png'
-                )"
-              >
-                Add to Cart
-              </button>
-
-              <a href="product.html?id=everyday-premium-essential" class="small-btn" style="display:grid;place-items:center;">
-                View
-              </a>
-            </div>
-
-          </div>
-        </article>
-
-
-        <!-- PRODUCT 2 -->
-        <article class="product-card">
-
-          <div class="product-image">
-
-            <img
-              src="assets/products/modern-everyday-collection.png"
-              alt="Modern Everyday Collection"
-              loading="lazy"
-            >
-
-            <span class="product-tag">New</span>
-
-            <button
-              class="wishlist-btn"
-              onclick="toggleWishlist('modern-everyday-collection')"
-              aria-label="Add to wishlist"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Fashion
-            </div>
-
-            <div class="product-name">
-              Modern Everyday Collection
-            </div>
-
-            <div class="product-price">
-              PKR 3,499
-            </div>
-
-            <div class="product-actions">
-              <button
-                class="small-btn"
-                onclick="addToCart(
-                  'modern-everyday-collection',
-                  'Modern Everyday Collection',
-                  3499,
-                  'assets/products/modern-everyday-collection.png'
-                )"
-              >
-                Add to Cart
-              </button>
-
-              <a href="product.html?id=modern-everyday-collection" class="small-btn" style="display:grid;place-items:center;">
-                View
-              </a>
-            </div>
-
-          </div>
-        </article>
-
-
-        <!-- PRODUCT 3 -->
-        <article class="product-card">
-
-          <div class="product-image">
-
-            <img
-              src="assets/products/smart-everyday-device.png"
-              alt="Smart Everyday Device"
-              loading="lazy"
-            >
-
-            <span class="product-tag">Smart Pick</span>
-
-            <button
-              class="wishlist-btn"
-              onclick="toggleWishlist('smart-everyday-device')"
-              aria-label="Add to wishlist"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Electronics
-            </div>
-
-            <div class="product-name">
-              Smart Everyday Device
-            </div>
-
-            <div class="product-price">
-              PKR 4,999
-            </div>
-
-            <div class="product-actions">
-              <button
-                class="small-btn"
-                onclick="addToCart(
-                  'smart-everyday-device',
-                  'Smart Everyday Device',
-                  4999,
-                  'assets/products/smart-everyday-device.png'
-                )"
-              >
-                Add to Cart
-              </button>
-
-              <a href="product.html?id=smart-everyday-device" class="small-btn" style="display:grid;place-items:center;">
-                View
-              </a>
-            </div>
-
-          </div>
-        </article>
-
-
-        <!-- PRODUCT 4 -->
-        <article class="product-card">
-
-          <div class="product-image">
-
-            <img
-              src="assets/products/minimal-signature-accessory.png"
-              alt="Minimal Signature Accessory"
-              loading="lazy"
-            >
-
-            <span class="product-tag">Signature</span>
-
-            <button
-              class="wishlist-btn"
-              onclick="toggleWishlist('minimal-signature-accessory')"
-              aria-label="Add to wishlist"
-            >
-              ♡
-            </button>
-
-          </div>
-
-          <div class="product-info">
-
-            <div class="product-category">
-              Accessories
-            </div>
-
-            <div class="product-name">
-              Minimal Signature Accessory
-            </div>
-
-            <div class="product-price">
-              PKR 1,899
-            </div>
-
-            <div class="product-actions">
-              <button
-                class="small-btn"
-                onclick="addToCart(
-                  'minimal-signature-accessory',
-                  'Minimal Signature Accessory',
-                  1899,
-                  'assets/products/minimal-signature-accessory.png'
-                )"
-              >
-                Add to Cart
-              </button>
-
-              <a href="product.html?id=minimal-signature-accessory" class="small-btn" style="display:grid;place-items:center;">
-                View
-              </a>
-            </div>
-
-          </div>
-        </article>
 
       </div>
+
+
+      <!-- PRODUCTS ARE LOADED FROM products.js -->
+
+      <div
+        class="products-grid"
+        id="featuredProducts"
+      ></div>
 
     </div>
+
   </section>
 
 
   <!-- TRUST BAR -->
+
   <section class="trust-bar">
+
     <div class="container">
 
       <div class="trust-grid">
 
         <div class="trust-item">
-          <div class="trust-icon">✓</div>
-          <div>
-            <strong>Curated marketplace</strong>
-            <span>Products across multiple categories</span>
+
+          <div class="trust-icon">
+            ✓
           </div>
+
+          <div>
+
+            <strong>
+              Curated marketplace
+            </strong>
+
+            <span>
+              Products across multiple categories
+            </span>
+
+          </div>
+
         </div>
 
-        <div class="trust-item">
-          <div class="trust-icon">◇</div>
-          <div>
-            <strong>Simple shopping</strong>
-            <span>Browse, discover and add to cart</span>
-          </div>
-        </div>
 
         <div class="trust-item">
-          <div class="trust-icon">↗</div>
-          <div>
-            <strong>Growing selection</strong>
-            <span>New products and sellers can join</span>
+
+          <div class="trust-icon">
+            ◇
           </div>
+
+          <div>
+
+            <strong>
+              Simple shopping
+            </strong>
+
+            <span>
+              Browse, discover and add to cart
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <div class="trust-item">
+
+          <div class="trust-icon">
+            ↗
+          </div>
+
+          <div>
+
+            <strong>
+              Growing selection
+            </strong>
+
+            <span>
+              New products and sellers can join
+            </span>
+
+          </div>
+
         </div>
 
       </div>
 
     </div>
+
   </section>
 
 
   <!-- CATEGORIES -->
+
   <section class="section">
+
     <div class="container">
 
       <div class="section-head">
+
         <div>
-          <div class="section-kicker">Explore</div>
-          <h2 class="section-title">Shop by category</h2>
+
+          <div class="section-kicker">
+            Explore
+          </div>
+
+          <h2 class="section-title">
+            Shop by category
+          </h2>
+
         </div>
+
 
         <a href="categories.html" class="section-link">
           All categories
         </a>
+
       </div>
+
 
       <div class="categories-grid">
 
-        <a href="shop.html?category=Fashion" class="category-card">
+        <a
+          href="shop.html?category=Fashion"
+          class="category-card"
+        >
+
           <img
             src="assets/categories/fashion.png"
             alt="Fashion"
             loading="lazy"
           >
+
           <div class="category-overlay">
-            <h3>Fashion</h3>
-            <span>Explore fashion products</span>
+
+            <h3>
+              Fashion
+            </h3>
+
+            <span>
+              Explore fashion products
+            </span>
+
           </div>
+
         </a>
 
-        <a href="shop.html?category=Beauty" class="category-card">
+
+        <a
+          href="shop.html?category=Beauty"
+          class="category-card"
+        >
+
           <img
             src="assets/categories/beauty.png"
             alt="Beauty"
             loading="lazy"
           >
+
           <div class="category-overlay">
-            <h3>Beauty</h3>
-            <span>Explore beauty products</span>
+
+            <h3>
+              Beauty
+            </h3>
+
+            <span>
+              Explore beauty products
+            </span>
+
           </div>
+
         </a>
 
-        <a href="shop.html?category=Electronics" class="category-card">
+
+        <a
+          href="shop.html?category=Electronics"
+          class="category-card"
+        >
+
           <img
             src="assets/categories/electronics.png"
             alt="Electronics"
             loading="lazy"
           >
+
           <div class="category-overlay">
-            <h3>Electronics</h3>
-            <span>Explore electronics</span>
+
+            <h3>
+              Electronics
+            </h3>
+
+            <span>
+              Explore electronics
+            </span>
+
           </div>
+
         </a>
 
-        <a href="shop.html?category=Home%20%26%20Living" class="category-card">
+
+        <a
+          href="shop.html?category=Home%20%26%20Living"
+          class="category-card"
+        >
+
           <img
             src="assets/categories/home-living.png"
             alt="Home and Living"
             loading="lazy"
           >
+
           <div class="category-overlay">
-            <h3>Home & Living</h3>
-            <span>Explore home products</span>
+
+            <h3>
+              Home & Living
+            </h3>
+
+            <span>
+              Explore home products
+            </span>
+
           </div>
+
         </a>
 
-        <a href="shop.html?category=Accessories" class="category-card">
+
+        <a
+          href="shop.html?category=Accessories"
+          class="category-card"
+        >
+
           <img
             src="assets/categories/accessories.png"
             alt="Accessories"
             loading="lazy"
           >
+
           <div class="category-overlay">
-            <h3>Accessories</h3>
-            <span>Explore accessories</span>
+
+            <h3>
+              Accessories
+            </h3>
+
+            <span>
+              Explore accessories
+            </span>
+
           </div>
+
         </a>
 
-        <a href="shop.html?category=Lifestyle" class="category-card">
+
+        <a
+          href="shop.html?category=Lifestyle"
+          class="category-card"
+        >
+
           <img
             src="assets/categories/lifestyle.png"
             alt="Lifestyle"
             loading="lazy"
           >
+
           <div class="category-overlay">
-            <h3>Lifestyle</h3>
-            <span>Explore lifestyle products</span>
+
+            <h3>
+              Lifestyle
+            </h3>
+
+            <span>
+              Explore lifestyle products
+            </span>
+
           </div>
+
         </a>
 
       </div>
 
     </div>
+
   </section>
 
 
   <!-- SHOPORA EDIT -->
+
   <section class="section edit-section">
 
     <div class="container">
@@ -1694,12 +1669,15 @@
       <div class="edit-grid">
 
         <div class="edit-image">
+
           <img
             src="assets/shopora-edit.png"
             alt="Shopora Edit"
             loading="lazy"
           >
+
         </div>
+
 
         <div class="edit-content">
 
@@ -1718,7 +1696,10 @@
             fashion, beauty, technology, home and lifestyle.
           </p>
 
-          <a href="shop.html" class="dark-button">
+          <a
+            href="shop.html"
+            class="dark-button"
+          >
             Explore the Shop
           </a>
 
@@ -1732,100 +1713,39 @@
 
 
   <!-- TRENDING -->
+
   <section class="section">
 
     <div class="container">
 
       <div class="section-head">
+
         <div>
-          <div class="section-kicker">Trending</div>
-          <h2 class="section-title">What people are exploring</h2>
+
+          <div class="section-kicker">
+            Trending
+          </div>
+
+          <h2 class="section-title">
+            What people are exploring
+          </h2>
+
         </div>
+
 
         <a href="trending.html" class="section-link">
           See trending
         </a>
-      </div>
-
-
-      <div class="products-grid">
-
-        <a href="shop.html?search=everyday" class="product-card">
-
-          <div class="product-image">
-            <img
-              src="assets/products/everyday-premium-essential.png"
-              alt="Everyday Premium Essential"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="product-info">
-            <div class="product-category">Lifestyle</div>
-            <div class="product-name">Everyday Premium Essential</div>
-            <div class="product-price">PKR 2,499</div>
-          </div>
-
-        </a>
-
-
-        <a href="shop.html?search=modern" class="product-card">
-
-          <div class="product-image">
-            <img
-              src="assets/products/modern-everyday-collection.png"
-              alt="Modern Everyday Collection"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="product-info">
-            <div class="product-category">Fashion</div>
-            <div class="product-name">Modern Everyday Collection</div>
-            <div class="product-price">PKR 3,499</div>
-          </div>
-
-        </a>
-
-
-        <a href="shop.html?search=smart" class="product-card">
-
-          <div class="product-image">
-            <img
-              src="assets/products/smart-everyday-device.png"
-              alt="Smart Everyday Device"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="product-info">
-            <div class="product-category">Electronics</div>
-            <div class="product-name">Smart Everyday Device</div>
-            <div class="product-price">PKR 4,999</div>
-          </div>
-
-        </a>
-
-
-        <a href="shop.html?search=accessory" class="product-card">
-
-          <div class="product-image">
-            <img
-              src="assets/products/minimal-signature-accessory.png"
-              alt="Minimal Signature Accessory"
-              loading="lazy"
-            >
-          </div>
-
-          <div class="product-info">
-            <div class="product-category">Accessories</div>
-            <div class="product-name">Minimal Signature Accessory</div>
-            <div class="product-price">PKR 1,899</div>
-          </div>
-
-        </a>
 
       </div>
+
+
+      <!-- TRENDING PRODUCTS ARE LOADED FROM products.js -->
+
+      <div
+        class="products-grid"
+        id="trendingProducts"
+      ></div>
 
     </div>
 
@@ -1833,6 +1753,7 @@
 
 
   <!-- NEWSLETTER -->
+
   <section class="newsletter">
 
     <div class="container">
@@ -1852,7 +1773,10 @@
           delivered without the noise.
         </p>
 
-        <form class="newsletter-form" id="newsletterForm">
+        <form
+          class="newsletter-form"
+          id="newsletterForm"
+        >
 
           <input
             type="email"
@@ -1875,6 +1799,7 @@
 
 
   <!-- FOOTER -->
+
   <footer class="footer">
 
     <div class="container">
@@ -1882,6 +1807,7 @@
       <div class="footer-grid">
 
         <!-- BRAND -->
+
         <div class="footer-brand">
 
           <a href="index.html" class="brand">
@@ -1908,26 +1834,37 @@
 
 
         <!-- COMPANY -->
+
         <div>
 
-          <h3>Company</h3>
+          <h3>
+            Company
+          </h3>
 
           <ul class="footer-links">
 
             <li>
-              <a href="about.html">About</a>
+              <a href="about.html">
+                About
+              </a>
             </li>
 
             <li>
-              <a href="contact.html">Contact</a>
+              <a href="contact.html">
+                Contact
+              </a>
             </li>
 
             <li>
-              <a href="categories.html">Categories</a>
+              <a href="categories.html">
+                Categories
+              </a>
             </li>
 
             <li>
-              <a href="trending.html">Trending</a>
+              <a href="trending.html">
+                Trending
+              </a>
             </li>
 
           </ul>
@@ -1936,26 +1873,37 @@
 
 
         <!-- SHOP -->
+
         <div>
 
-          <h3>Shop</h3>
+          <h3>
+            Shop
+          </h3>
 
           <ul class="footer-links">
 
             <li>
-              <a href="shop.html">All Products</a>
+              <a href="shop.html">
+                All Products
+              </a>
             </li>
 
             <li>
-              <a href="categories.html">Shop Categories</a>
+              <a href="categories.html">
+                Shop Categories
+              </a>
             </li>
 
             <li>
-              <a href="cart.html">Cart</a>
+              <a href="cart.html">
+                Cart
+              </a>
             </li>
 
             <li>
-              <a href="checkout.html">Checkout</a>
+              <a href="checkout.html">
+                Checkout
+              </a>
             </li>
 
           </ul>
@@ -1964,9 +1912,12 @@
 
 
         <!-- CONTACT / LEGAL -->
+
         <div>
 
-          <h3>Contact</h3>
+          <h3>
+            Contact
+          </h3>
 
           <div class="footer-contact">
 
@@ -2000,7 +1951,8 @@
       <div class="footer-bottom">
 
         <div>
-          © <span id="year"></span> Shopora Market Store. All rights reserved.
+          © <span id="year"></span>
+          Shopora Market Store. All rights reserved.
         </div>
 
         <div>
@@ -2015,10 +1967,28 @@
 
 
   <!-- TOAST -->
-  <div class="toast" id="toast"></div>
+
+  <div
+    class="toast"
+    id="toast"
+  ></div>
+
+
+  <!-- =====================================================
+       CENTRAL PRODUCT DATA
+       IMPORTANT: products.js MUST BE LOADED FIRST
+  ====================================================== -->
+
+  <script src="products.js"></script>
 
 
   <script>
+    /* =====================================================
+       SHOPORA HOME PAGE
+       Products come from products.js
+    ===================================================== */
+
+
     /* =========================
        STORAGE
     ========================= */
@@ -2028,30 +1998,56 @@
 
 
     function getCart() {
+
       try {
-        return JSON.parse(localStorage.getItem(CART_KEY)) || [];
+
+        return JSON.parse(
+          localStorage.getItem(CART_KEY)
+        ) || [];
+
       } catch (error) {
+
         return [];
+
       }
+
     }
 
 
     function saveCart(cart) {
-      localStorage.setItem(CART_KEY, JSON.stringify(cart));
+
+      localStorage.setItem(
+        CART_KEY,
+        JSON.stringify(cart)
+      );
+
     }
 
 
     function getWishlist() {
+
       try {
-        return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || [];
+
+        return JSON.parse(
+          localStorage.getItem(WISHLIST_KEY)
+        ) || [];
+
       } catch (error) {
+
         return [];
+
       }
+
     }
 
 
     function saveWishlist(list) {
-      localStorage.setItem(WISHLIST_KEY, JSON.stringify(list));
+
+      localStorage.setItem(
+        WISHLIST_KEY,
+        JSON.stringify(list)
+      );
+
     }
 
 
@@ -2064,19 +2060,32 @@
       const cart = getCart();
       const wishlist = getWishlist();
 
-      const cartCount = document.getElementById("cartCount");
-      const wishlistCount = document.getElementById("wishlistCount");
+      const cartCount =
+        document.getElementById("cartCount");
+
+      const wishlistCount =
+        document.getElementById("wishlistCount");
+
 
       if (cartCount) {
-        cartCount.textContent = cart.reduce(
-          (total, item) => total + Number(item.quantity || 1),
-          0
-        );
+
+        cartCount.textContent =
+          cart.reduce(
+            (total, item) =>
+              total + Number(item.quantity || 1),
+            0
+          );
+
       }
 
+
       if (wishlistCount) {
-        wishlistCount.textContent = wishlist.length;
+
+        wishlistCount.textContent =
+          wishlist.length;
+
       }
+
     }
 
 
@@ -2086,49 +2095,90 @@
 
     let toastTimer;
 
+
     function showToast(message) {
 
-      const toast = document.getElementById("toast");
+      const toast =
+        document.getElementById("toast");
+
+      if (!toast) {
+        return;
+      }
 
       toast.textContent = message;
+
       toast.classList.add("show");
 
       clearTimeout(toastTimer);
 
       toastTimer = setTimeout(() => {
+
         toast.classList.remove("show");
+
       }, 2200);
+
     }
 
 
     /* =========================
        ADD TO CART
+       Uses product data from products.js
     ========================= */
 
-    function addToCart(id, name, price, image) {
+    function addProductToCart(productId) {
+
+      const product =
+        window.ShoporaProducts &&
+        typeof window.ShoporaProducts.getProduct === "function"
+          ? window.ShoporaProducts.getProduct(productId)
+          : null;
+
+
+      if (!product) {
+
+        showToast("Product not found");
+
+        return;
+
+      }
+
 
       const cart = getCart();
 
-      const existing = cart.find(item => item.id === id);
+      const existing =
+        cart.find(item => item.id === product.id);
+
 
       if (existing) {
-        existing.quantity = Number(existing.quantity || 1) + 1;
+
+        existing.quantity =
+          Number(existing.quantity || 1) + 1;
+
       } else {
 
         cart.push({
-          id: id,
-          name: name,
-          price: Number(price),
-          image: image,
+
+          id: product.id,
+
+          name: product.name,
+
+          price: Number(product.price),
+
+          image: product.image,
+
           quantity: 1
+
         });
 
       }
 
+
       saveCart(cart);
+
       updateCounts();
 
       showToast("Added to cart");
+
     }
 
 
@@ -2138,25 +2188,457 @@
 
     function toggleWishlist(id) {
 
-      let wishlist = getWishlist();
+      let wishlist =
+        getWishlist();
+
 
       if (wishlist.includes(id)) {
 
-        wishlist = wishlist.filter(item => item !== id);
+        wishlist =
+          wishlist.filter(
+            item => item !== id
+          );
 
-        showToast("Removed from wishlist");
+        showToast(
+          "Removed from wishlist"
+        );
 
       } else {
 
         wishlist.push(id);
 
-        showToast("Added to wishlist");
+        showToast(
+          "Added to wishlist"
+        );
 
       }
 
+
       saveWishlist(wishlist);
+
       updateCounts();
+
+      updateWishlistButtons();
+
     }
+
+
+    /* =========================
+       UPDATE WISHLIST BUTTONS
+    ========================= */
+
+    function updateWishlistButtons() {
+
+      const wishlist =
+        getWishlist();
+
+
+      document
+        .querySelectorAll(".wishlist-btn")
+        .forEach(button => {
+
+          const productId =
+            button.dataset.productId;
+
+          if (!productId) {
+            return;
+          }
+
+
+          const isSaved =
+            wishlist.includes(productId);
+
+
+          button.classList.toggle(
+            "active",
+            isSaved
+          );
+
+
+          button.textContent =
+            isSaved ? "♥" : "♡";
+
+
+          button.setAttribute(
+            "aria-label",
+            isSaved
+              ? "Remove from wishlist"
+              : "Add to wishlist"
+          );
+
+        });
+
+    }
+
+
+    /* =========================
+       FORMAT PRICE
+    ========================= */
+
+    function formatHomePrice(price) {
+
+      if (
+        window.ShoporaProducts &&
+        typeof window.ShoporaProducts.formatPrice === "function"
+      ) {
+
+        return window.ShoporaProducts.formatPrice(
+          price
+        );
+
+      }
+
+
+      return "PKR " +
+        Number(price || 0).toLocaleString(
+          "en-PK"
+        );
+
+    }
+
+
+    /* =========================
+       ESCAPE HTML
+    ========================= */
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =========================
+       PRODUCT CARD
+    ========================= */
+
+    function createProductCard(product, options = {}) {
+
+      const showActions =
+        options.showActions !== false;
+
+
+      const card =
+        document.createElement("article");
+
+
+      card.className =
+        "product-card";
+
+
+      const tag =
+        product.badge
+          ? `
+            <span class="product-tag">
+              ${escapeHTML(product.badge)}
+            </span>
+          `
+          : "";
+
+
+      const actions =
+        showActions
+          ? `
+            <div class="product-actions">
+
+              <button
+                type="button"
+                class="small-btn add-product-btn"
+                data-product-id="${escapeHTML(product.id)}"
+              >
+                Add to Cart
+              </button>
+
+              <a
+                href="product.html?product=${encodeURIComponent(product.id)}"
+                class="small-btn"
+                style="display:grid;place-items:center;"
+              >
+                View
+              </a>
+
+            </div>
+          `
+          : "";
+
+
+      card.innerHTML = `
+
+        <div class="product-image">
+
+          <img
+            src="${escapeHTML(product.image)}"
+            alt="${escapeHTML(product.name)}"
+            loading="lazy"
+          >
+
+          ${tag}
+
+          <button
+            type="button"
+            class="wishlist-btn"
+            data-product-id="${escapeHTML(product.id)}"
+            aria-label="Add to wishlist"
+          >
+            ♡
+          </button>
+
+        </div>
+
+
+        <div class="product-info">
+
+          <div class="product-category">
+            ${escapeHTML(product.category)}
+          </div>
+
+          <div class="product-name">
+            ${escapeHTML(product.name)}
+          </div>
+
+          <div class="product-price">
+            ${formatHomePrice(product.price)}
+          </div>
+
+          ${actions}
+
+        </div>
+
+      `;
+
+
+      return card;
+
+    }
+
+
+    /* =========================
+       FEATURED PRODUCTS
+       First 4 active products
+    ========================= */
+
+    function renderFeaturedProducts() {
+
+      const container =
+        document.getElementById(
+          "featuredProducts"
+        );
+
+
+      if (!container) {
+        return;
+      }
+
+
+      if (
+        !window.ShoporaProducts ||
+        typeof window.ShoporaProducts.getAllProducts !== "function"
+      ) {
+
+        container.innerHTML = `
+          <p style="grid-column:1/-1;">
+            Products are currently unavailable.
+          </p>
+        `;
+
+        return;
+
+      }
+
+
+      const products =
+        window.ShoporaProducts
+          .getAllProducts()
+          .filter(product =>
+            product.status !== "inactive"
+          )
+          .slice(0, 4);
+
+
+      container.innerHTML = "";
+
+
+      products.forEach(product => {
+
+        container.appendChild(
+          createProductCard(product)
+        );
+
+      });
+
+    }
+
+
+    /* =========================
+       TRENDING PRODUCTS
+       First 4 active products
+       This can later be changed
+       to a dedicated trending field.
+    ========================= */
+
+    function renderTrendingProducts() {
+
+      const container =
+        document.getElementById(
+          "trendingProducts"
+        );
+
+
+      if (!container) {
+        return;
+      }
+
+
+      if (
+        !window.ShoporaProducts ||
+        typeof window.ShoporaProducts.getAllProducts !== "function"
+      ) {
+
+        container.innerHTML = `
+          <p style="grid-column:1/-1;">
+            Products are currently unavailable.
+          </p>
+        `;
+
+        return;
+
+      }
+
+
+      const products =
+        window.ShoporaProducts
+          .getAllProducts()
+          .filter(product =>
+            product.status !== "inactive"
+          )
+          .slice(0, 4);
+
+
+      container.innerHTML = "";
+
+
+      products.forEach(product => {
+
+        const card =
+          document.createElement("a");
+
+
+        card.href =
+          "product.html?product=" +
+          encodeURIComponent(product.id);
+
+
+        card.className =
+          "product-card";
+
+
+        card.innerHTML = `
+
+          <div class="product-image">
+
+            <img
+              src="${escapeHTML(product.image)}"
+              alt="${escapeHTML(product.name)}"
+              loading="lazy"
+            >
+
+          </div>
+
+
+          <div class="product-info">
+
+            <div class="product-category">
+              ${escapeHTML(product.category)}
+            </div>
+
+            <div class="product-name">
+              ${escapeHTML(product.name)}
+            </div>
+
+            <div class="product-price">
+              ${formatHomePrice(product.price)}
+            </div>
+
+          </div>
+
+        `;
+
+
+        container.appendChild(card);
+
+      });
+
+    }
+
+
+    /* =========================
+       PRODUCT BUTTON EVENTS
+    ========================= */
+
+    document.addEventListener(
+      "click",
+      function(event) {
+
+        const addButton =
+          event.target.closest(
+            ".add-product-btn"
+          );
+
+
+        if (addButton) {
+
+          event.preventDefault();
+
+          const productId =
+            addButton.dataset.productId;
+
+
+          if (productId) {
+
+            addProductToCart(
+              productId
+            );
+
+          }
+
+          return;
+
+        }
+
+
+        const wishlistButton =
+          event.target.closest(
+            ".wishlist-btn"
+          );
+
+
+        if (wishlistButton) {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+          const productId =
+            wishlistButton.dataset.productId;
+
+
+          if (productId) {
+
+            toggleWishlist(
+              productId
+            );
+
+          }
+
+        }
+
+      }
+    );
 
 
     /* =========================
@@ -2165,52 +2647,86 @@
 
     function performSearch(input) {
 
-      const query = input.trim();
+      const query =
+        String(input || "").trim();
+
 
       if (!query) {
-        showToast("Please enter a search");
+
+        showToast(
+          "Please enter a search"
+        );
+
         return;
+
       }
 
+
       window.location.href =
-        "shop.html?search=" + encodeURIComponent(query);
+        "shop.html?search=" +
+        encodeURIComponent(query);
+
     }
 
 
     const heroSearchForm =
-      document.getElementById("heroSearchForm");
+      document.getElementById(
+        "heroSearchForm"
+      );
+
 
     if (heroSearchForm) {
 
-      heroSearchForm.addEventListener("submit", function(event) {
+      heroSearchForm.addEventListener(
+        "submit",
+        function(event) {
 
-        event.preventDefault();
+          event.preventDefault();
 
-        const input =
-          document.getElementById("heroSearchInput");
 
-        performSearch(input.value);
+          const input =
+            document.getElementById(
+              "heroSearchInput"
+            );
 
-      });
+
+          performSearch(
+            input.value
+          );
+
+        }
+      );
 
     }
 
 
     const floatingSearchForm =
-      document.getElementById("floatingSearchForm");
+      document.getElementById(
+        "floatingSearchForm"
+      );
+
 
     if (floatingSearchForm) {
 
-      floatingSearchForm.addEventListener("submit", function(event) {
+      floatingSearchForm.addEventListener(
+        "submit",
+        function(event) {
 
-        event.preventDefault();
+          event.preventDefault();
 
-        const input =
-          document.getElementById("floatingSearchInput");
 
-        performSearch(input.value);
+          const input =
+            document.getElementById(
+              "floatingSearchInput"
+            );
 
-      });
+
+          performSearch(
+            input.value
+          );
+
+        }
+      );
 
     }
 
@@ -2222,17 +2738,28 @@
     function handleStickySearch() {
 
       if (window.scrollY > 650) {
-        document.body.classList.add("search-stuck");
+
+        document.body.classList.add(
+          "search-stuck"
+        );
+
       } else {
-        document.body.classList.remove("search-stuck");
+
+        document.body.classList.remove(
+          "search-stuck"
+        );
+
       }
 
     }
 
+
     window.addEventListener(
       "scroll",
       handleStickySearch,
-      { passive: true }
+      {
+        passive: true
+      }
     );
 
 
@@ -2241,37 +2768,56 @@
     ========================= */
 
     const menuBtn =
-      document.getElementById("menuBtn");
+      document.getElementById(
+        "menuBtn"
+      );
+
 
     const mainNav =
-      document.getElementById("mainNav");
+      document.getElementById(
+        "mainNav"
+      );
 
 
     if (menuBtn && mainNav) {
 
-      menuBtn.addEventListener("click", function() {
+      menuBtn.addEventListener(
+        "click",
+        function() {
 
-        mainNav.classList.toggle("open");
-
-        menuBtn.textContent =
-          mainNav.classList.contains("open")
-            ? "×"
-            : "☰";
-
-      });
+          mainNav.classList.toggle(
+            "open"
+          );
 
 
-      mainNav.querySelectorAll("a").forEach(link => {
+          menuBtn.textContent =
+            mainNav.classList.contains("open")
+              ? "×"
+              : "☰";
 
-        link.addEventListener("click", function() {
+        }
+      );
 
-          mainNav.classList.remove("open");
 
-          menuBtn.textContent = "☰";
+      mainNav
+        .querySelectorAll("a")
+        .forEach(link => {
+
+          link.addEventListener(
+            "click",
+            function() {
+
+              mainNav.classList.remove(
+                "open"
+              );
+
+              menuBtn.textContent =
+                "☰";
+
+            }
+          );
 
         });
-
-      });
 
     }
 
@@ -2281,27 +2827,40 @@
     ========================= */
 
     const newsletterForm =
-      document.getElementById("newsletterForm");
+      document.getElementById(
+        "newsletterForm"
+      );
 
 
     if (newsletterForm) {
 
-      newsletterForm.addEventListener("submit", function(event) {
+      newsletterForm.addEventListener(
+        "submit",
+        function(event) {
 
-        event.preventDefault();
+          event.preventDefault();
 
-        const email =
-          document.getElementById("newsletterEmail").value.trim();
 
-        if (!email) {
-          return;
+          const email =
+            document.getElementById(
+              "newsletterEmail"
+            ).value.trim();
+
+
+          if (!email) {
+            return;
+          }
+
+
+          showToast(
+            "Thanks for subscribing!"
+          );
+
+
+          newsletterForm.reset();
+
         }
-
-        showToast("Thanks for subscribing!");
-
-        newsletterForm.reset();
-
-      });
+      );
 
     }
 
@@ -2310,16 +2869,34 @@
        YEAR
     ========================= */
 
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    const yearElement =
+      document.getElementById(
+        "year"
+      );
+
+
+    if (yearElement) {
+
+      yearElement.textContent =
+        new Date().getFullYear();
+
+    }
 
 
     /* =========================
        INITIAL LOAD
     ========================= */
 
+    renderFeaturedProducts();
+
+    renderTrendingProducts();
+
     updateCounts();
+
+    updateWishlistButtons();
+
     handleStickySearch();
+
   </script>
 
 </body>
