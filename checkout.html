@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,22 +6,17 @@
 
   <title>Checkout | Shopora Market Store</title>
 
-  <meta name="description" content="Complete your Shopora Market Store order by providing your contact and delivery details.">
-  <meta name="keywords" content="Shopora checkout, Shopora Market Store, online shopping Pakistan, checkout">
+  <meta name="description" content="Secure checkout for Shopora Market Store. Enter delivery details and select your preferred payment method.">
+  <meta name="keywords" content="Shopora checkout, Shopora Market Store, online shopping Pakistan, JazzCash, Easypaisa, Mastercard, Visa, Bank, Raast">
   <meta name="author" content="Shopora Market Store">
 
   <link rel="canonical" href="https://shoporamarketstore.store/checkout.html">
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Checkout | Shopora Market Store">
-  <meta property="og:description" content="Complete your Shopora Market Store order.">
+  <meta property="og:description" content="Secure checkout for Shopora Market Store.">
   <meta property="og:url" content="https://shoporamarketstore.store/checkout.html">
   <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Checkout | Shopora Market Store">
-  <meta name="twitter:description" content="Complete your Shopora Market Store order.">
-  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
 
   <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
   <link rel="apple-touch-icon" href="assets/shopora-mark.png">
@@ -43,8 +37,10 @@
       --white:#ffffff;
       --muted:#77736d;
       --border:rgba(17,17,17,.10);
-      --shadow:0 20px 60px rgba(17,17,17,.08);
       --success:#397653;
+      --warning:#a56b19;
+      --danger:#a33a3a;
+      --shadow:0 20px 60px rgba(17,17,17,.08);
     }
 
     *{
@@ -85,8 +81,6 @@
       width:min(1180px,92%);
       margin:auto;
     }
-
-    /* HEADER */
 
     header{
       position:sticky;
@@ -196,8 +190,6 @@
       display:none;
     }
 
-    /* HERO */
-
     .page-hero{
       padding:85px 0 65px;
       text-align:center;
@@ -215,9 +207,7 @@
       margin-bottom:15px;
     }
 
-    h1,
-    h2,
-    h3{
+    h1,h2,h3{
       font-family:"Playfair Display",serif;
       line-height:1.2;
     }
@@ -234,8 +224,6 @@
       font-size:16px;
     }
 
-    /* CHECKOUT */
-
     .checkout-section{
       padding:65px 0 110px;
     }
@@ -247,9 +235,16 @@
       align-items:start;
     }
 
-    .checkout-card{
+    .checkout-card,
+    .order-summary,
+    .empty-checkout,
+    .success-message{
       background:var(--white);
       border:1px solid var(--border);
+      box-shadow:var(--shadow);
+    }
+
+    .checkout-card{
       padding:35px;
     }
 
@@ -299,6 +294,7 @@
       outline:none;
       color:var(--black);
       transition:.3s ease;
+      border-radius:2px;
     }
 
     .field textarea{
@@ -315,6 +311,78 @@
 
     .required{
       color:var(--gold);
+    }
+
+    .payment-box{
+      grid-column:1 / -1;
+      border:1px solid var(--border);
+      background:var(--ivory);
+      padding:20px;
+      margin-top:5px;
+    }
+
+    .payment-box h3{
+      font-family:"DM Sans",sans-serif;
+      font-size:15px;
+      margin-bottom:5px;
+    }
+
+    .payment-box p{
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:15px;
+    }
+
+    .payment-options{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:10px;
+    }
+
+    .payment-option{
+      position:relative;
+    }
+
+    .payment-option input{
+      position:absolute;
+      opacity:0;
+      pointer-events:none;
+    }
+
+    .payment-option label{
+      min-height:58px;
+      padding:12px 14px;
+      background:var(--white);
+      border:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      transition:.25s ease;
+      font-size:13px;
+      font-weight:700;
+    }
+
+    .payment-option label:hover{
+      border-color:var(--gold);
+    }
+
+    .payment-option input:checked + label{
+      border-color:var(--gold);
+      box-shadow:0 0 0 2px rgba(198,160,106,.15);
+      background:#fffdf9;
+    }
+
+    .payment-icon{
+      font-size:20px;
+      min-width:25px;
+    }
+
+    .payment-status-note{
+      margin-top:12px;
+      font-size:11px;
+      color:var(--muted);
+      line-height:1.5;
     }
 
     .order-note{
@@ -344,11 +412,12 @@
       border-color:var(--gold);
     }
 
-    /* ORDER SUMMARY */
+    .submit-btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
 
     .order-summary{
-      background:var(--white);
-      border:1px solid var(--border);
       padding:30px;
       position:sticky;
       top:110px;
@@ -446,12 +515,7 @@
       line-height:1.5;
     }
 
-    /* EMPTY */
-
     .empty-checkout{
-      display:none;
-      background:var(--white);
-      border:1px solid var(--border);
       padding:75px 30px;
       text-align:center;
     }
@@ -497,12 +561,8 @@
       border-color:var(--gold);
     }
 
-    /* SUCCESS */
-
     .success-message{
       display:none;
-      background:var(--white);
-      border:1px solid var(--border);
       padding:65px 35px;
       text-align:center;
     }
@@ -531,7 +591,14 @@
       color:var(--muted);
     }
 
-    /* FOOTER */
+    .order-reference{
+      display:inline-block;
+      background:var(--ivory);
+      padding:10px 18px;
+      margin-bottom:25px;
+      font-weight:700;
+      letter-spacing:1px;
+    }
 
     footer{
       background:#0b0b0b;
@@ -590,8 +657,6 @@
       font-size:12px;
     }
 
-    /* REVEAL */
-
     .reveal{
       opacity:0;
       transform:translateY(20px);
@@ -602,8 +667,6 @@
       opacity:1;
       transform:translateY(0);
     }
-
-    /* MOBILE */
 
     @media(max-width:1000px){
 
@@ -694,6 +757,10 @@
         grid-column:auto;
       }
 
+      .payment-options{
+        grid-template-columns:1fr;
+      }
+
       .order-summary{
         padding:23px 18px;
       }
@@ -707,7 +774,6 @@
         flex-direction:column;
         align-items:flex-start;
       }
-
     }
   </style>
 
@@ -729,14 +795,9 @@
 <body>
 
 <header>
-
   <div class="container nav">
 
-    <a
-      href="index.html"
-      class="brand"
-      aria-label="Shopora Market Store home"
-    >
+    <a href="index.html" class="brand" aria-label="Shopora Market Store home">
       <img
         src="assets/shopora-logo.png"
         alt="Shopora Market Store"
@@ -746,196 +807,104 @@
       >
     </a>
 
-
-    <nav
-      class="nav-links"
-      id="navLinks"
-    >
-
-      <a href="index.html">
-        Home
-      </a>
-
-      <a href="shop.html">
-        Shop
-      </a>
-
-      <a href="categories.html">
-        Categories
-      </a>
-
-      <a href="trending.html">
-        Trending
-      </a>
-
-      <a href="about.html">
-        About
-      </a>
-
-      <a href="contact.html">
-        Contact
-      </a>
-
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="categories.html">Categories</a>
+      <a href="trending.html">Trending</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
-
 
     <div class="nav-actions">
 
-      <button
-        class="icon-btn"
-        onclick="goToSearch()"
-        aria-label="Search"
-      >
+      <button class="icon-btn" onclick="goToSearch()" aria-label="Search">
         🔍
       </button>
 
-
-      <a
-        href="wishlist.html"
-        class="icon-btn"
-        aria-label="Wishlist"
-      >
+      <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
         ♡
-        <span
-          class="count"
-          id="wishlistCount"
-        >
-          0
-        </span>
+        <span class="count" id="wishlistCount">0</span>
       </a>
 
-
-      <a
-        href="cart.html"
-        class="icon-btn"
-        aria-label="Shopping cart"
-      >
+      <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
         🛒
-        <span
-          class="count"
-          id="cartCount"
-        >
-          0
-        </span>
+        <span class="count" id="cartCount">0</span>
       </a>
 
-
-      <button
-        class="icon-btn menu-btn"
-        onclick="toggleMenu()"
-        aria-label="Menu"
-      >
+      <button class="icon-btn menu-btn" onclick="toggleMenu()" aria-label="Menu">
         ☰
       </button>
 
     </div>
-
   </div>
-
 </header>
-
 
 <main>
 
-  <!-- HERO -->
-
   <section class="page-hero reveal">
-
     <div class="container">
 
       <div class="eyebrow">
         Secure Your Selection
       </div>
 
-      <h1>
-        Checkout
-      </h1>
+      <h1>Checkout</h1>
 
       <p>
-        Enter your details below to prepare your Shopora Market Store order.
+        Enter your delivery details and choose your preferred payment method.
       </p>
 
     </div>
-
   </section>
 
-
-  <!-- EMPTY CART -->
-
-  <section
-    class="checkout-section"
-    id="emptySection"
-    style="display:none;"
-  >
-
+  <section class="checkout-section" id="emptySection" style="display:none;">
     <div class="container">
 
-      <div class="empty-checkout" style="display:block;">
+      <div class="empty-checkout">
 
         <div class="empty-icon">
           🛒
         </div>
 
-        <h2>
-          Your Cart Is Empty
-        </h2>
+        <h2>Your Cart Is Empty</h2>
 
         <p>
           Add products to your cart before continuing to checkout.
         </p>
 
-        <a
-          href="shop.html"
-          class="shop-btn"
-        >
+        <a href="shop.html" class="shop-btn">
           Browse Products
         </a>
 
       </div>
 
     </div>
-
   </section>
 
-
-  <!-- CHECKOUT -->
-
-  <section
-    class="checkout-section"
-    id="checkoutSection"
-  >
+  <section class="checkout-section" id="checkoutSection">
 
     <div class="container">
 
       <div class="checkout-layout">
 
-
-        <!-- CUSTOMER FORM -->
-
         <div class="checkout-card reveal">
 
           <div class="section-heading">
 
-            <h2>
-              Delivery Details
-            </h2>
+            <h2>Delivery Details</h2>
 
             <p>
-              Please provide accurate contact and delivery information.
+              Please provide accurate information so your order can be processed correctly.
             </p>
 
           </div>
 
-
-          <form
-            id="checkoutForm"
-            novalidate
-          >
+          <form id="checkoutForm" novalidate>
 
             <div class="form-grid">
 
               <div class="field">
-
                 <label for="firstName">
                   First Name <span class="required">*</span>
                 </label>
@@ -948,12 +917,9 @@
                   autocomplete="given-name"
                   required
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="lastName">
                   Last Name <span class="required">*</span>
                 </label>
@@ -966,12 +932,9 @@
                   autocomplete="family-name"
                   required
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="email">
                   Email Address <span class="required">*</span>
                 </label>
@@ -984,12 +947,9 @@
                   autocomplete="email"
                   required
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="phone">
                   Phone Number <span class="required">*</span>
                 </label>
@@ -1002,30 +962,24 @@
                   autocomplete="tel"
                   required
                 >
-
               </div>
 
-
               <div class="field full">
-
                 <label for="address">
-                  Street Address <span class="required">*</span>
+                  Complete Street Address <span class="required">*</span>
                 </label>
 
                 <input
                   type="text"
                   id="address"
                   name="address"
-                  placeholder="House / Street / Area"
+                  placeholder="House / Flat / Street / Area"
                   autocomplete="street-address"
                   required
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="city">
                   City <span class="required">*</span>
                 </label>
@@ -1038,12 +992,9 @@
                   autocomplete="address-level2"
                   required
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="province">
                   Province / Region
                 </label>
@@ -1055,12 +1006,9 @@
                   placeholder="Province or region"
                   autocomplete="address-level1"
                 >
-
               </div>
 
-
               <div class="field">
-
                 <label for="postalCode">
                   Postal Code
                 </label>
@@ -1072,37 +1020,112 @@
                   placeholder="Postal code"
                   autocomplete="postal-code"
                 >
-
               </div>
-
 
               <div class="field">
-
-                <label for="payment">
-                  Preferred Payment Method
+                <label for="country">
+                  Country
                 </label>
 
-                <select
-                  id="payment"
-                  name="payment"
+                <input
+                  type="text"
+                  id="country"
+                  name="country"
+                  value="Pakistan"
+                  autocomplete="country-name"
                 >
-
-                  <option value="Cash on Delivery">
-                    Cash on Delivery
-                  </option>
-
-                  <option value="Bank Transfer">
-                    Bank Transfer
-                  </option>
-
-                  <option value="Payment instructions needed">
-                    Payment instructions needed
-                  </option>
-
-                </select>
-
               </div>
 
+              <div class="payment-box">
+
+                <h3>Payment Method</h3>
+
+                <p>
+                  Select how you want to pay. Actual online payment processing
+                  will be connected through the secure payment gateway.
+                </p>
+
+                <div class="payment-options">
+
+                  <div class="payment-option">
+                    <input
+                      type="radio"
+                      id="paymentJazzCash"
+                      name="payment"
+                      value="JazzCash"
+                      required
+                    >
+
+                    <label for="paymentJazzCash">
+                      <span class="payment-icon">🟢</span>
+                      JazzCash
+                    </label>
+                  </div>
+
+                  <div class="payment-option">
+                    <input
+                      type="radio"
+                      id="paymentEasypaisa"
+                      name="payment"
+                      value="Easypaisa"
+                    >
+
+                    <label for="paymentEasypaisa">
+                      <span class="payment-icon">🟢</span>
+                      Easypaisa
+                    </label>
+                  </div>
+
+                  <div class="payment-option">
+                    <input
+                      type="radio"
+                      id="paymentCard"
+                      name="payment"
+                      value="Visa / Mastercard"
+                    >
+
+                    <label for="paymentCard">
+                      <span class="payment-icon">💳</span>
+                      Visa / Mastercard
+                    </label>
+                  </div>
+
+                  <div class="payment-option">
+                    <input
+                      type="radio"
+                      id="paymentBank"
+                      name="payment"
+                      value="Bank / Raast"
+                    >
+
+                    <label for="paymentBank">
+                      <span class="payment-icon">🏦</span>
+                      Bank / Raast
+                    </label>
+                  </div>
+
+                  <div class="payment-option">
+                    <input
+                      type="radio"
+                      id="paymentCOD"
+                      name="payment"
+                      value="Cash on Delivery"
+                    >
+
+                    <label for="paymentCOD">
+                      <span class="payment-icon">📦</span>
+                      Cash on Delivery
+                    </label>
+                  </div>
+
+                </div>
+
+                <div class="payment-status-note">
+                  🔒 Card details and payment credentials will not be stored
+                  in this website's frontend.
+                </div>
+
+              </div>
 
               <div class="field full">
 
@@ -1120,62 +1143,48 @@
 
             </div>
 
-
             <div class="order-note">
 
-              <strong>Important:</strong>
-              This GitHub Pages checkout does not process online payments
-              directly. Your order details will be prepared and sent to
-              Shopora Market Store through your email application.
+              <strong>Order security:</strong>
+              Your order will only be marked as
+              <strong>PAID</strong> after the payment gateway confirms the
+              transaction. A browser success message alone will never be
+              treated as payment confirmation.
 
             </div>
-
 
             <button
               type="submit"
               class="submit-btn"
+              id="submitOrder"
             >
-              Place Order Request
+              Continue to Secure Payment
             </button>
 
           </form>
 
         </div>
 
-
-        <!-- ORDER SUMMARY -->
-
         <aside class="order-summary reveal">
 
-          <h2>
-            Your Order
-          </h2>
-
+          <h2>Your Order</h2>
 
           <div
             class="summary-products"
             id="summaryProducts"
           ></div>
 
-
           <div class="summary-row">
 
-            <span>
-              Items
-            </span>
+            <span>Items</span>
 
-            <strong id="summaryItems">
-              0
-            </strong>
+            <strong id="summaryItems">0</strong>
 
           </div>
 
-
           <div class="summary-row">
 
-            <span>
-              Subtotal
-            </span>
+            <span>Subtotal</span>
 
             <strong id="summarySubtotal">
               Rs. 0
@@ -1183,25 +1192,19 @@
 
           </div>
 
-
           <div class="summary-row">
 
-            <span>
-              Shipping
-            </span>
+            <span>Shipping</span>
 
             <span class="shipping-text">
-              Confirmed with order
+              To be confirmed
             </span>
 
           </div>
 
-
           <div class="summary-row total">
 
-            <span>
-              Total
-            </span>
+            <span>Total</span>
 
             <strong id="summaryTotal">
               Rs. 0
@@ -1209,11 +1212,10 @@
 
           </div>
 
-
           <div class="secure-note">
 
-            🔒 Your details are used only to prepare your order request.
-            No card information is collected on this static page.
+            🔒 Secure checkout<br>
+            Payment verification will be required before an order is marked PAID.
 
           </div>
 
@@ -1221,31 +1223,23 @@
 
       </div>
 
-
-      <!-- SUCCESS MESSAGE -->
-
-      <div
-        class="success-message"
-        id="successMessage"
-      >
+      <div class="success-message" id="successMessage">
 
         <div class="success-icon">
           ✓
         </div>
 
-        <h2>
-          Order Request Prepared
-        </h2>
+        <div class="order-reference" id="successOrderNumber">
+          SHOP-00000000
+        </div>
 
-        <p>
-          Your email application should now open with your order details.
-          Please review the message and send it to Shopora Market Store.
+        <h2>Order Received</h2>
+
+        <p id="successText">
+          Your order information has been prepared successfully.
         </p>
 
-        <a
-          href="shop.html"
-          class="shop-btn"
-        >
+        <a href="shop.html" class="shop-btn">
           Continue Shopping
         </a>
 
@@ -1256,9 +1250,6 @@
   </section>
 
 </main>
-
-
-<!-- FOOTER -->
 
 <footer>
 
@@ -1286,79 +1277,39 @@
 
       </div>
 
-
       <div class="footer-col">
 
-        <h3>
-          Shop
-        </h3>
+        <h3>Shop</h3>
 
-        <a href="shop.html">
-          Shop All
-        </a>
-
-        <a href="categories.html">
-          Categories
-        </a>
-
-        <a href="trending.html">
-          Trending
-        </a>
-
-        <a href="cart.html">
-          Cart
-        </a>
-
-        <a href="wishlist.html">
-          Wishlist
-        </a>
+        <a href="shop.html">Shop All</a>
+        <a href="categories.html">Categories</a>
+        <a href="trending.html">Trending</a>
+        <a href="cart.html">Cart</a>
+        <a href="wishlist.html">Wishlist</a>
 
       </div>
 
-
       <div class="footer-col">
 
-        <h3>
-          Company
-        </h3>
+        <h3>Company</h3>
 
-        <a href="about.html">
-          About
-        </a>
-
-        <a href="contact.html">
-          Contact
-        </a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
 
       </div>
 
-
       <div class="footer-col">
 
-        <h3>
-          Policies
-        </h3>
+        <h3>Policies</h3>
 
-        <a href="privacy-policy.html">
-          Privacy Policy
-        </a>
-
-        <a href="terms-of-service.html">
-          Terms of Service
-        </a>
-
-        <a href="cookie-policy.html">
-          Cookie Policy
-        </a>
-
-        <a href="return-refund.html">
-          Return & Refund
-        </a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-of-service.html">Terms of Service</a>
+        <a href="cookie-policy.html">Cookie Policy</a>
+        <a href="return-refund.html">Return & Refund</a>
 
       </div>
 
     </div>
-
 
     <div class="footer-bottom">
 
@@ -1377,127 +1328,180 @@
 
 </footer>
 
-
 <script>
 
-  /* =========================
-     STORAGE
-  ========================= */
-
-  function getCart(){
-
-    try{
-
-      return JSON.parse(
-        localStorage.getItem("shoporaCart")
-      ) || [];
-
-    }catch(error){
-
-      return [];
-
-    }
-
-  }
+/* =========================================================
+   SHOPORA CHECKOUT
+   Frontend order preparation
+   Real payment verification will happen server-side.
+========================================================= */
 
 
-  function getWishlist(){
+/* =========================
+   STORAGE
+========================= */
 
-    try{
+function getCart(){
 
-      return JSON.parse(
-        localStorage.getItem("shoporaWishlist")
-      ) || [];
+  try{
 
-    }catch(error){
+    return JSON.parse(
+      localStorage.getItem("shoporaCart")
+    ) || [];
 
-      return [];
+  }catch(error){
 
-    }
+    console.error("Cart read error:",error);
+
+    return [];
 
   }
 
-
-  /* =========================
-     PRICE
-  ========================= */
-
-  function formatPrice(price){
-
-    return "Rs. " +
-      Number(price).toLocaleString("en-PK");
-
-  }
+}
 
 
-  /* =========================
-     ESCAPE HTML
-  ========================= */
+function getWishlist(){
 
-  function escapeHTML(value){
+  try{
 
-    return String(value ?? "")
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#039;");
+    return JSON.parse(
+      localStorage.getItem("shoporaWishlist")
+    ) || [];
+
+  }catch(error){
+
+    return [];
 
   }
 
-
-  /* =========================
-     RENDER ORDER
-  ========================= */
-
-  function renderOrder(){
-
-    const cart =
-      getCart();
+}
 
 
-    const checkoutSection =
-      document.getElementById(
-        "checkoutSection"
-      );
+/* =========================
+   PRICE
+========================= */
 
-    const emptySection =
-      document.getElementById(
-        "emptySection"
-      );
+function formatPrice(price){
+
+  return "Rs. " +
+    Number(price || 0).toLocaleString("en-PK");
+
+}
 
 
-    if(cart.length === 0){
+/* =========================
+   ESCAPE HTML
+========================= */
 
-      checkoutSection.style.display =
-        "none";
+function escapeHTML(value){
 
-      emptySection.style.display =
-        "block";
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
-      updateCounts();
+}
 
-      return;
 
-    }
+/* =========================
+   ORDER TOTAL
+========================= */
 
+function calculateSubtotal(cart){
+
+  return cart.reduce(
+    (total,item) =>
+      total +
+      Number(item.price || 0) *
+      Number(item.quantity || 1),
+    0
+  );
+
+}
+
+
+/* =========================
+   ORDER ID
+========================= */
+
+function generateOrderNumber(){
+
+  const random =
+    Math.floor(
+      1000 +
+      Math.random() * 9000
+    );
+
+  return "SHOP-" +
+    Date.now().toString().slice(-8) +
+    "-" +
+    random;
+
+}
+
+
+/* =========================
+   RENDER ORDER
+========================= */
+
+function renderOrder(){
+
+  const cart =
+    getCart();
+
+  const checkoutSection =
+    document.getElementById(
+      "checkoutSection"
+    );
+
+  const emptySection =
+    document.getElementById(
+      "emptySection"
+    );
+
+
+  if(cart.length === 0){
 
     checkoutSection.style.display =
-      "block";
-
-    emptySection.style.display =
       "none";
 
+    emptySection.style.display =
+      "block";
 
-    const summaryProducts =
-      document.getElementById(
-        "summaryProducts"
-      );
+    updateCounts();
+
+    return;
+
+  }
 
 
-    summaryProducts.innerHTML =
-      cart.map(
-        item => `
+  checkoutSection.style.display =
+    "block";
+
+  emptySection.style.display =
+    "none";
+
+
+  const summaryProducts =
+    document.getElementById(
+      "summaryProducts"
+    );
+
+
+  summaryProducts.innerHTML =
+    cart.map(
+      item => {
+
+        const quantity =
+          Number(item.quantity || 1);
+
+        const lineTotal =
+          Number(item.price || 0) *
+          quantity;
+
+        return `
 
           <div class="summary-product">
 
@@ -1506,10 +1510,10 @@
               <img
                 src="${escapeHTML(item.image)}"
                 alt="${escapeHTML(item.name)}"
+                loading="lazy"
               >
 
             </div>
-
 
             <div>
 
@@ -1518,470 +1522,650 @@
               </div>
 
               <div class="summary-product-qty">
-                Qty: ${Number(item.quantity || 1)}
+                Qty: ${quantity}
               </div>
 
             </div>
 
-
             <div class="summary-product-price">
-
-              ${formatPrice(
-                Number(item.price || 0) *
-                Number(item.quantity || 1)
-              )}
-
+              ${formatPrice(lineTotal)}
             </div>
 
           </div>
 
-        `
-      ).join("");
-
-
-    const itemCount =
-      cart.reduce(
-        (total,item) =>
-          total +
-          Number(item.quantity || 1),
-        0
-      );
-
-
-    const subtotal =
-      cart.reduce(
-        (total,item) =>
-          total +
-          Number(item.price || 0) *
-          Number(item.quantity || 1),
-        0
-      );
-
-
-    document.getElementById(
-      "summaryItems"
-    ).textContent =
-      itemCount;
-
-
-    document.getElementById(
-      "summarySubtotal"
-    ).textContent =
-      formatPrice(subtotal);
-
-
-    document.getElementById(
-      "summaryTotal"
-    ).textContent =
-      formatPrice(subtotal);
-
-
-    updateCounts();
-
-  }
-
-
-  /* =========================
-     COUNTS
-  ========================= */
-
-  function updateCounts(){
-
-    const cart =
-      getCart();
-
-    const wishlist =
-      getWishlist();
-
-
-    const cartCount =
-      cart.reduce(
-        (total,item) =>
-          total +
-          Number(item.quantity || 1),
-        0
-      );
-
-
-    document.getElementById(
-      "cartCount"
-    ).textContent =
-      cartCount;
-
-
-    document.getElementById(
-      "wishlistCount"
-    ).textContent =
-      wishlist.length;
-
-  }
-
-
-  /* =========================
-     FORM SUBMISSION
-  ========================= */
-
-  document
-    .getElementById("checkoutForm")
-    .addEventListener(
-      "submit",
-      function(event){
-
-        event.preventDefault();
-
-
-        const form =
-          event.target;
-
-
-        if(!form.checkValidity()){
-
-          form.reportValidity();
-
-          return;
-
-        }
-
-
-        const cart =
-          getCart();
-
-
-        if(cart.length === 0){
-
-          alert(
-            "Your cart is empty."
-          );
-
-          return;
-
-        }
-
-
-        const firstName =
-          document.getElementById(
-            "firstName"
-          ).value.trim();
-
-
-        const lastName =
-          document.getElementById(
-            "lastName"
-          ).value.trim();
-
-
-        const email =
-          document.getElementById(
-            "email"
-          ).value.trim();
-
-
-        const phone =
-          document.getElementById(
-            "phone"
-          ).value.trim();
-
-
-        const address =
-          document.getElementById(
-            "address"
-          ).value.trim();
-
-
-        const city =
-          document.getElementById(
-            "city"
-          ).value.trim();
-
-
-        const province =
-          document.getElementById(
-            "province"
-          ).value.trim();
-
-
-        const postalCode =
-          document.getElementById(
-            "postalCode"
-          ).value.trim();
-
-
-        const payment =
-          document.getElementById(
-            "payment"
-          ).value;
-
-
-        const notes =
-          document.getElementById(
-            "notes"
-          ).value.trim();
-
-
-        const subtotal =
-          cart.reduce(
-            (total,item) =>
-              total +
-              Number(item.price || 0) *
-              Number(item.quantity || 1),
-            0
-          );
-
-
-        const orderNumber =
-          "SHOP-" +
-          Date.now().toString().slice(-8);
-
-
-        let productLines = "";
-
-
-        cart.forEach(
-          item => {
-
-            const quantity =
-              Number(item.quantity || 1);
-
-            const lineTotal =
-              Number(item.price || 0) *
-              quantity;
-
-
-            productLines +=
-              "- " +
-              item.name +
-              " | Qty: " +
-              quantity +
-              " | " +
-              formatPrice(lineTotal) +
-              "%0D%0A";
-
-          }
-        );
-
-
-        const subject =
-          encodeURIComponent(
-            "New Shopora Order Request - " +
-            orderNumber
-          );
-
-
-        const body =
-          "SHOPORA MARKET STORE ORDER REQUEST" +
-          "%0D%0A%0D%0A" +
-
-          "Order Number: " +
-          encodeURIComponent(orderNumber) +
-          "%0D%0A%0D%0A" +
-
-          "CUSTOMER DETAILS" +
-          "%0D%0A" +
-
-          "Name: " +
-          encodeURIComponent(
-            firstName + " " + lastName
-          ) +
-          "%0D%0A" +
-
-          "Email: " +
-          encodeURIComponent(email) +
-          "%0D%0A" +
-
-          "Phone: " +
-          encodeURIComponent(phone) +
-          "%0D%0A%0D%0A" +
-
-          "DELIVERY ADDRESS" +
-          "%0D%0A" +
-
-          "Address: " +
-          encodeURIComponent(address) +
-          "%0D%0A" +
-
-          "City: " +
-          encodeURIComponent(city) +
-          "%0D%0A" +
-
-          "Province: " +
-          encodeURIComponent(province) +
-          "%0D%0A" +
-
-          "Postal Code: " +
-          encodeURIComponent(postalCode || "Not provided") +
-          "%0D%0A%0D%0A" +
-
-          "ORDER ITEMS" +
-          "%0D%0A" +
-
-          productLines +
-
-          "%0D%0A" +
-
-          "Subtotal: " +
-          encodeURIComponent(
-            formatPrice(subtotal)
-          ) +
-          "%0D%0A" +
-
-          "Shipping: To be confirmed" +
-          "%0D%0A" +
-
-          "Total: " +
-          encodeURIComponent(
-            formatPrice(subtotal)
-          ) +
-          "%0D%0A%0D%0A" +
-
-          "Preferred Payment: " +
-          encodeURIComponent(payment) +
-          "%0D%0A%0D%0A" +
-
-          "Order Notes: " +
-          encodeURIComponent(
-            notes || "None"
-          );
-
-
-        const mailto =
-          "mailto:brandseocompany@gmail.com" +
-          "?subject=" +
-          subject +
-          "&body=" +
-          body;
-
-
-        /*
-          Open customer's email application.
-          No fake payment or backend is claimed.
-        */
-
-        window.location.href =
-          mailto;
-
-
-        document
-          .getElementById("checkoutSection")
-          .querySelector(".checkout-layout")
-          .style.display =
-          "none";
-
-
-        document
-          .getElementById("successMessage")
-          .style.display =
-          "block";
-
-
-        window.scrollTo({
-          top:0,
-          behavior:"smooth"
-        });
+        `;
 
       }
+    ).join("");
+
+
+  const itemCount =
+    cart.reduce(
+      (total,item) =>
+        total +
+        Number(item.quantity || 1),
+      0
     );
 
 
-  /* =========================
-     SEARCH
-  ========================= */
+  const subtotal =
+    calculateSubtotal(cart);
 
-  function goToSearch(){
-
-    window.location.href =
-      "shop.html#productSearch";
-
-  }
-
-
-  /* =========================
-     MOBILE MENU
-  ========================= */
-
-  function toggleMenu(){
-
-    document
-      .getElementById("navLinks")
-      .classList.toggle("open");
-
-  }
-
-
-  /* =========================
-     YEAR
-  ========================= */
 
   document.getElementById(
-    "year"
+    "summaryItems"
   ).textContent =
-    new Date().getFullYear();
+    itemCount;
 
 
-  /* =========================
-     REVEAL
-  ========================= */
+  document.getElementById(
+    "summarySubtotal"
+  ).textContent =
+    formatPrice(subtotal);
 
-  const observer =
-    new IntersectionObserver(
-      entries => {
 
-        entries.forEach(
-          entry => {
+  document.getElementById(
+    "summaryTotal"
+  ).textContent =
+    formatPrice(subtotal);
 
-            if(entry.isIntersecting){
 
-              entry.target.classList.add(
-                "show"
-              );
+  updateCounts();
 
-              observer.unobserve(
-                entry.target
-              );
+}
 
-            }
 
-          }
-        );
+/* =========================
+   COUNTS
+========================= */
 
-      },
-      {
-        threshold:.1
+function updateCounts(){
+
+  const cart =
+    getCart();
+
+  const wishlist =
+    getWishlist();
+
+
+  const cartCount =
+    cart.reduce(
+      (total,item) =>
+        total +
+        Number(item.quantity || 1),
+      0
+    );
+
+
+  const cartElement =
+    document.getElementById(
+      "cartCount"
+    );
+
+  const wishlistElement =
+    document.getElementById(
+      "wishlistCount"
+    );
+
+
+  if(cartElement){
+    cartElement.textContent =
+      cartCount;
+  }
+
+
+  if(wishlistElement){
+    wishlistElement.textContent =
+      wishlist.length;
+  }
+
+}
+
+
+/* =========================
+   BUILD COMPLETE ORDER
+========================= */
+
+function buildOrder(){
+
+  const cart =
+    getCart();
+
+
+  const firstName =
+    document.getElementById(
+      "firstName"
+    ).value.trim();
+
+
+  const lastName =
+    document.getElementById(
+      "lastName"
+    ).value.trim();
+
+
+  const email =
+    document.getElementById(
+      "email"
+    ).value.trim();
+
+
+  const phone =
+    document.getElementById(
+      "phone"
+    ).value.trim();
+
+
+  const address =
+    document.getElementById(
+      "address"
+    ).value.trim();
+
+
+  const city =
+    document.getElementById(
+      "city"
+    ).value.trim();
+
+
+  const province =
+    document.getElementById(
+      "province"
+    ).value.trim();
+
+
+  const postalCode =
+    document.getElementById(
+      "postalCode"
+    ).value.trim();
+
+
+  const country =
+    document.getElementById(
+      "country"
+    ).value.trim();
+
+
+  const paymentElement =
+    document.querySelector(
+      'input[name="payment"]:checked'
+    );
+
+
+  const paymentMethod =
+    paymentElement
+      ? paymentElement.value
+      : "";
+
+
+  const notes =
+    document.getElementById(
+      "notes"
+    ).value.trim();
+
+
+  const subtotal =
+    calculateSubtotal(cart);
+
+
+  const orderNumber =
+    generateOrderNumber();
+
+
+  const items =
+    cart.map(
+      item => {
+
+        const quantity =
+          Number(item.quantity || 1);
+
+        const unitPrice =
+          Number(item.price || 0);
+
+        return {
+
+          productId:
+            item.id || "",
+
+          sku:
+            item.sku || "",
+
+          name:
+            item.name || "",
+
+          image:
+            item.image || "",
+
+          quantity:
+            quantity,
+
+          unitPrice:
+            unitPrice,
+
+          lineTotal:
+            unitPrice * quantity,
+
+          /*
+            Supplier information is kept
+            for the secure order system.
+            It is NOT shown to customers.
+          */
+
+          supplier:
+            item.supplier || "",
+
+          supplierPrice:
+            Number(item.supplierPrice || 0),
+
+          supplierUrl:
+            item.supplierUrl || ""
+
+        };
+
       }
     );
 
 
-  document
-    .querySelectorAll(".reveal")
-    .forEach(
-      element =>
-        observer.observe(element)
+  return {
+
+    orderNumber:
+
+      orderNumber,
+
+
+    createdAt:
+
+      new Date().toISOString(),
+
+
+    currency:
+
+      "PKR",
+
+
+    customer:{
+
+      firstName:
+        firstName,
+
+      lastName:
+        lastName,
+
+      fullName:
+        firstName + " " + lastName,
+
+      email:
+        email,
+
+      phone:
+        phone
+
+    },
+
+
+    delivery:{
+
+      address:
+        address,
+
+      city:
+        city,
+
+      province:
+        province,
+
+      postalCode:
+        postalCode,
+
+      country:
+        country
+
+    },
+
+
+    items:
+      items,
+
+
+    amounts:{
+
+      subtotal:
+        subtotal,
+
+      shipping:
+        null,
+
+      total:
+        subtotal
+
+    },
+
+
+    payment:{
+
+      method:
+        paymentMethod,
+
+      status:
+        "PENDING",
+
+      transactionId:
+        null,
+
+      reference:
+        null,
+
+      verified:
+        false,
+
+      paidAt:
+        null
+
+    },
+
+
+    orderStatus:
+
+      "NEW",
+
+
+    customerNotes:
+
+      notes,
+
+
+    supplierStatus:
+
+      "NOT_ORDERED"
+
+  };
+
+}
+
+
+/* =========================
+   SAVE LOCAL ORDER
+========================= */
+
+function saveLocalOrder(order){
+
+  try{
+
+    const existing =
+      JSON.parse(
+        localStorage.getItem(
+          "shoporaOrders"
+        )
+      ) || [];
+
+
+    existing.push(order);
+
+
+    localStorage.setItem(
+      "shoporaOrders",
+      JSON.stringify(existing)
     );
 
 
-  /* =========================
-     STORAGE SYNC
-  ========================= */
+    return true;
 
-  window.addEventListener(
-    "storage",
-    renderOrder
+  }catch(error){
+
+    console.error(
+      "Order storage error:",
+      error
+    );
+
+    return false;
+
+  }
+
+}
+
+
+/* =========================
+   FORM SUBMISSION
+========================= */
+
+document
+  .getElementById("checkoutForm")
+  .addEventListener(
+    "submit",
+    function(event){
+
+      event.preventDefault();
+
+
+      const form =
+        event.target;
+
+
+      if(!form.checkValidity()){
+
+        form.reportValidity();
+
+        return;
+
+      }
+
+
+      const cart =
+        getCart();
+
+
+      if(cart.length === 0){
+
+        alert(
+          "Your cart is empty."
+        );
+
+        return;
+
+      }
+
+
+      const payment =
+        document.querySelector(
+          'input[name="payment"]:checked'
+        );
+
+
+      if(!payment){
+
+        alert(
+          "Please select a payment method."
+        );
+
+        return;
+
+      }
+
+
+      /*
+        Build complete order.
+
+        IMPORTANT:
+        This frontend record is NOT proof
+        of payment.
+
+        payment.status remains PENDING.
+      */
+
+      const order =
+        buildOrder();
+
+
+      const saved =
+        saveLocalOrder(order);
+
+
+      if(!saved){
+
+        alert(
+          "We could not prepare your order. Please try again."
+        );
+
+        return;
+
+      }
+
+
+      /*
+        TEMPORARY FRONTEND STAGE
+
+        Do NOT mark payment as PAID here.
+
+        The real gateway/backend will later
+        verify JazzCash/Easypaisa/Card/Bank
+        and update this order.
+      */
+
+
+      document.getElementById(
+        "successOrderNumber"
+      ).textContent =
+        order.orderNumber;
+
+
+      document.getElementById(
+        "successText"
+      ).textContent =
+        "Your order information has been prepared. " +
+        "Payment verification will be completed through the secure payment system.";
+
+
+      document
+        .getElementById(
+          "checkoutSection"
+        )
+        .querySelector(
+          ".checkout-layout"
+        )
+        .style.display =
+        "none";
+
+
+      document
+        .getElementById(
+          "successMessage"
+        )
+        .style.display =
+        "block";
+
+
+      window.scrollTo({
+        top:0,
+        behavior:"smooth"
+      });
+
+    }
   );
 
 
-  window.addEventListener(
-    "pageshow",
-    renderOrder
+/* =========================
+   SEARCH
+========================= */
+
+function goToSearch(){
+
+  window.location.href =
+    "shop.html#productSearch";
+
+}
+
+
+/* =========================
+   MOBILE MENU
+========================= */
+
+function toggleMenu(){
+
+  document
+    .getElementById(
+      "navLinks"
+    )
+    .classList.toggle(
+      "open"
+    );
+
+}
+
+
+/* =========================
+   YEAR
+========================= */
+
+document.getElementById(
+  "year"
+).textContent =
+  new Date().getFullYear();
+
+
+/* =========================
+   REVEAL
+========================= */
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(
+        entry => {
+
+          if(entry.isIntersecting){
+
+            entry.target.classList.add(
+              "show"
+            );
+
+            observer.unobserve(
+              entry.target
+            );
+
+          }
+
+        }
+      );
+
+    },
+    {
+      threshold:.1
+    }
   );
 
 
-  /* =========================
-     START
-  ========================= */
+document
+  .querySelectorAll(".reveal")
+  .forEach(
+    element =>
+      observer.observe(element)
+  );
 
-  renderOrder();
+
+/* =========================
+   STORAGE SYNC
+========================= */
+
+window.addEventListener(
+  "storage",
+  renderOrder
+);
+
+
+window.addEventListener(
+  "pageshow",
+  renderOrder
+);
+
+
+/* =========================
+   START
+========================= */
+
+renderOrder();
 
 </script>
 
 </body>
 </html>
-```
