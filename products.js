@@ -40,6 +40,33 @@
       status: "active"
     },
 
+
+      "p47-wireless-headphones": {
+  id: "p47-wireless-headphones",
+  name: "101% Original P47 Wireless Headphones Bluetooth Stereo Headphones",
+  category: "Electronics",
+  price: 1499,
+  image: "assets/products/p47-headphones-1.png",
+  images: [
+    "assets/products/p47-headphones-1.png",
+    "assets/products/p47-headphones-2.png",
+    "assets/products/p47-headphones-3.png",
+    "assets/products/p47-headphones-4.png"
+  ],
+  description:
+    "P47 wireless Bluetooth stereo headphones with foldable design and built-in microphone. Suitable for everyday music, calls and entertainment.",
+  badge: "Popular",
+  buyable: true,
+  stock: 10,
+  sku: "P47-001",
+  seller: "Shopora Market Store",
+  supplier: "Daraz",
+  supplierPrice: 800,
+  supplierUrl:
+    "https://www.daraz.pk/products/101-original-p47-wireless-headphones-bluetooth-stereo-head-phones-foldable-headset-with-mic-wireless-built-in-mic-i249908859-s1467798977.html",
+  status: "active"
+},   
+
     "everyday-premium-essential": {
       id: "everyday-premium-essential",
       name: "Everyday Premium Essential",
