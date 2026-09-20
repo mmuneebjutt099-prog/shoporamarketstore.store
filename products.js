@@ -128,9 +128,7 @@ async function getAllProducts(options = {}) {
 
                   id
                   title
-
                   availableForSale
-                
 
                   price {
                     amount
@@ -246,9 +244,7 @@ async function getProductByHandle(handle) {
 
               id
               title
-
               availableForSale
-              quantityAvailable
 
               price {
                 amount
@@ -448,18 +444,21 @@ function normalizeShopifyProduct(product) {
       ),
 
 
-    /* Stock */
+    /*
+      Inventory quantity is intentionally not requested
+      from Shopify Storefront API because this public
+      token does not have unauthenticated inventory access.
+
+      availableForSale remains the source of availability.
+    */
 
     stock:
-      defaultVariant?.quantityAvailable != null
-        ? Number(
-            defaultVariant.quantityAvailable
-          )
-        : (
-            productAvailable
-              ? 999
-              : 0
-          )
+      productAvailable &&
+      Boolean(
+        defaultVariant?.availableForSale
+      )
+        ? 999
+        : 0
   };
 }
 
@@ -619,15 +618,10 @@ function applyVariantToProduct(
       ),
 
     stock:
-      variant.quantityAvailable != null
-        ? Number(
-            variant.quantityAvailable
-          )
-        : (
-            variant.availableForSale
-              ? 999
-              : 0
-          )
+      product.availableForSale &&
+      variant.availableForSale
+        ? 999
+        : 0
   };
 }
 
@@ -1069,11 +1063,6 @@ async function addProductToCart(
     );
   }
 
-  /*
-    If variantId is provided,
-    use selected variant.
-  */
-
   let selectedProduct =
     product;
 
@@ -1116,10 +1105,6 @@ async function addProductToCart(
   let cartId =
     getShopifyCartId();
 
-  /*
-    Existing cart.
-  */
-
   if (cartId) {
 
     try {
@@ -1140,10 +1125,6 @@ async function addProductToCart(
       clearShopifyCartId();
     }
   }
-
-  /*
-    New cart.
-  */
 
   return await createShopifyCart(
     finalVariantId,
