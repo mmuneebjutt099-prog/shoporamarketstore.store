@@ -264,6 +264,7 @@
       border-radius: 14px;
       background: var(--ivory);
       overflow: hidden;
+      display: block;
     }
 
     .cart-image img {
@@ -310,6 +311,11 @@
       background: var(--ivory);
     }
 
+    .quantity-box button:disabled {
+      opacity: .5;
+      cursor: wait;
+    }
+
     .quantity-value {
       width: 35px;
       text-align: center;
@@ -339,6 +345,11 @@
 
     .remove-btn:hover {
       text-decoration: underline;
+    }
+
+    .remove-btn:disabled {
+      opacity: .5;
+      cursor: wait;
     }
 
     .summary {
@@ -634,6 +645,7 @@
 
       <a href="index.html" class="brand">
         <img src="assets/shopora-mark.png" alt="Shopora Market Store">
+
         <div class="brand-text">
           <strong>Shopora</strong>
           <span>Market Store</span>
@@ -727,7 +739,11 @@
             Proceed to Checkout
           </button>
 
-          <a href="shop.html" class="continue-btn" style="display:flex;align-items:center;justify-content:center;">
+          <a
+            href="shop.html"
+            class="continue-btn"
+            style="display:flex;align-items:center;justify-content:center;"
+          >
             Continue Shopping
           </a>
 
@@ -766,6 +782,7 @@
 
       <div class="footer-brand">
         <h3>Shopora Market Store</h3>
+
         <p>
           A premium online marketplace for fashion, beauty,
           electronics, accessories, home & living and lifestyle products.
@@ -774,6 +791,7 @@
 
       <div>
         <h4>Explore</h4>
+
         <ul>
           <li><a href="shop.html">All Products</a></li>
           <li><a href="categories.html">Categories</a></li>
@@ -784,10 +802,14 @@
 
       <div>
         <h4>Help</h4>
+
         <ul>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="policy.html">Cookie Policy</a></li>
+          <li><a href="cart.html">Cart</a></li>
+          <li><a href="wishlist.html">Wishlist</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="terms-of-service.html">Terms of Service</a></li>
+          <li><a href="cookie-policy.html">Cookie Policy</a></li>
           <li><a href="return-refund.html">Return / Refunds</a></li>
         </ul>
       </div>
@@ -802,1036 +824,611 @@
 
   <div id="toast" class="toast"></div>
 
+  <!-- CENTRAL SHOPIFY PRODUCT + CART SYSTEM -->
+  <script src="products.js"></script>
+
   <script>
+    (() => {
+      "use strict";
 
-    /* =========================================================
-       SHOPIFY CONFIG
-       ========================================================= */
+      const Shopora = window.ShoporaProducts;
 
-    const SHOPIFY_STORE_DOMAIN =
-      "fsgigg-tp.myshopify.com";
-
-    const SHOPIFY_STOREFRONT_TOKEN =
-      "b00f8861faa3611c651415d574bf0095";
-
-    const SHOPIFY_API_VERSION =
-      "2026-07";
-
-    const SHOPIFY_STOREFRONT_URL =
-      "https://" +
-      SHOPIFY_STORE_DOMAIN +
-      "/api/" +
-      SHOPIFY_API_VERSION +
-      "/graphql.json";
-
-
-    /* =========================================================
-       STORAGE
-       ========================================================= */
-
-    const SHOPIFY_CART_STORAGE_KEY =
-      "shoporaShopifyCartId";
-
-    const OLD_LOCAL_CART_KEY =
-      "shoporaCart";
-
-
-    /* =========================================================
-       HELPERS
-       ========================================================= */
-
-    function getShopifyCartId() {
-      return localStorage.getItem(SHOPIFY_CART_STORAGE_KEY);
-    }
-
-
-    function saveShopifyCartId(cartId) {
-      if (cartId) {
-        localStorage.setItem(
-          SHOPIFY_CART_STORAGE_KEY,
-          cartId
-        );
-      }
-    }
-
-
-    function removeShopifyCartId() {
-      localStorage.removeItem(
-        SHOPIFY_CART_STORAGE_KEY
-      );
-    }
-
-
-    function escapeHTML(value) {
-      return String(value ?? "")
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-    }
-
-
-    function formatMoney(amount, currencyCode) {
-
-      const number =
-        Number(amount || 0);
-
-      if (currencyCode === "PKR") {
-        return (
-          "PKR " +
-          number.toLocaleString("en-PK", {
-            maximumFractionDigits: 2
-          })
-        );
+      if (!Shopora) {
+        console.error("ShoporaProducts is not loaded.");
+        showError("Shopora shopping system could not be loaded.");
+        return;
       }
 
-      try {
-        return new Intl.NumberFormat(
-          "en-US",
-          {
+      const errorBox = document.getElementById("errorBox");
+      const loading = document.getElementById("loading");
+      const cartContent = document.getElementById("cartContent");
+      const emptyCart = document.getElementById("emptyCart");
+      const cartItems = document.getElementById("cartItems");
+      const checkoutBtn = document.getElementById("checkoutBtn");
+
+      let busy = false;
+
+      function showError(message) {
+        if (!errorBox) return;
+
+        errorBox.textContent =
+          message || "Something went wrong.";
+
+        errorBox.style.display = "block";
+      }
+
+      function hideError() {
+        if (!errorBox) return;
+
+        errorBox.textContent = "";
+        errorBox.style.display = "none";
+      }
+
+      function showToast(message) {
+        const toast = document.getElementById("toast");
+
+        if (!toast) return;
+
+        toast.textContent = message;
+        toast.classList.add("show");
+
+        clearTimeout(window.shoporaToastTimer);
+
+        window.shoporaToastTimer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+
+      function updateWishlistCount() {
+        let wishlist = [];
+
+        try {
+          wishlist =
+            JSON.parse(
+              localStorage.getItem("shoporaWishlist") || "[]"
+            );
+        } catch {
+          wishlist = [];
+        }
+
+        document.getElementById("wishlistCount").textContent =
+          Array.isArray(wishlist) ? wishlist.length : 0;
+      }
+
+      async function updateCartCount() {
+        try {
+          const count =
+            await Shopora.getShopifyCartCount();
+
+          document.getElementById("cartCount").textContent =
+            Number(count || 0);
+
+        } catch (error) {
+          console.error("Cart count error:", error);
+
+          document.getElementById("cartCount").textContent = "0";
+        }
+      }
+
+      function formatMoney(amount, currencyCode) {
+        const number = Number(amount || 0);
+
+        if (currencyCode === "PKR") {
+          return (
+            "PKR " +
+            number.toLocaleString("en-PK", {
+              maximumFractionDigits: 2
+            })
+          );
+        }
+
+        try {
+          return new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: currencyCode || "USD"
-          }
-        ).format(number);
-      } catch {
-        return (
-          (currencyCode || "") +
-          " " +
-          number.toLocaleString()
-        );
-      }
-    }
-
-
-    function showToast(message) {
-
-      const toast =
-        document.getElementById("toast");
-
-      toast.textContent = message;
-      toast.classList.add("show");
-
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2500);
-    }
-
-
-    function updateHeaderCount(quantity) {
-
-      const cartCount =
-        document.getElementById("cartCount");
-
-      cartCount.textContent =
-        quantity || 0;
-
-      const localCart =
-        JSON.parse(
-          localStorage.getItem(OLD_LOCAL_CART_KEY) || "[]"
-        );
-
-      const wishlist =
-        JSON.parse(
-          localStorage.getItem("shoporaWishlist") || "[]"
-        );
-
-      document.getElementById("wishlistCount").textContent =
-        wishlist.length;
-
-      /*
-       * Keep old local cart visual data synchronized.
-       * Shopify remains the real cart.
-       */
-      if (quantity === 0) {
-        localStorage.removeItem(
-          OLD_LOCAL_CART_KEY
-        );
-      }
-    }
-
-
-    /* =========================================================
-       SHOPIFY GRAPHQL
-       ========================================================= */
-
-    async function shopifyRequest(query, variables = {}) {
-
-      if (
-        !SHOPIFY_STOREFRONT_TOKEN ||
-        SHOPIFY_STOREFRONT_TOKEN ===
-        "YOUR_STOREFRONT_PUBLIC_TOKEN"
-      ) {
-        throw new Error(
-          "Shopify Storefront API token is not configured."
-        );
-      }
-
-      const response =
-        await fetch(
-          SHOPIFY_STOREFRONT_URL,
-          {
-            method: "POST",
-
-            headers: {
-              "Content-Type":
-                "application/json",
-
-              "X-Shopify-Storefront-Access-Token":
-                SHOPIFY_STOREFRONT_TOKEN
-            },
-
-            body: JSON.stringify({
-              query,
-              variables
-            })
-          }
-        );
-
-      if (!response.ok) {
-        throw new Error(
-          "Shopify API HTTP error: " +
-          response.status
-        );
-      }
-
-      const data =
-        await response.json();
-
-      if (data.errors?.length) {
-        throw new Error(
-          data.errors
-            .map(error => error.message)
-            .join(", ")
-        );
-      }
-
-      return data.data;
-    }
-
-
-    /* =========================================================
-       GET CART
-       ========================================================= */
-
-    async function getShopifyCart(cartId) {
-
-      const query = `
-        query GetCart($cartId: ID!) {
-
-          cart(id: $cartId) {
-
-            id
-
-            checkoutUrl
-
-            totalQuantity
-
-            cost {
-
-              subtotalAmount {
-                amount
-                currencyCode
-              }
-
-              totalAmount {
-                amount
-                currencyCode
-              }
-            }
-
-            lines(first: 100) {
-
-              nodes {
-
-                id
-
-                quantity
-
-                merchandise {
-
-                  ... on ProductVariant {
-
-                    id
-
-                    title
-
-                    availableForSale
-
-                    price {
-                      amount
-                      currencyCode
-                    }
-
-                    product {
-
-                      id
-                      title
-                      handle
-
-                      featuredImage {
-                        url
-                        altText
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+          }).format(number);
+        } catch {
+          return (
+            (currencyCode || "") +
+            " " +
+            number.toLocaleString()
+          );
         }
-      `;
-
-      const data =
-        await shopifyRequest(
-          query,
-          { cartId }
-        );
-
-      return data.cart;
-    }
-
-
-    /* =========================================================
-       UPDATE QUANTITY
-       ========================================================= */
-
-    async function updateCartLine(
-      lineId,
-      quantity
-    ) {
-
-      const cartId =
-        getShopifyCartId();
-
-      if (!cartId) {
-        return;
       }
 
-      const query = `
-        mutation UpdateCartLines(
-          $cartId: ID!,
-          $lines: [CartLineUpdateInput!]!
+      function escapeHTML(value) {
+        if (typeof Shopora.escapeHtml === "function") {
+          return Shopora.escapeHtml(value);
+        }
+
+        return String(value ?? "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      }
+
+      function renderEmptyCart() {
+        loading.style.display = "none";
+        cartContent.style.display = "none";
+        emptyCart.style.display = "block";
+
+        document.getElementById("cartCount").textContent = "0";
+        document.getElementById("cartItemCount").textContent = "0 items";
+        document.getElementById("summaryQuantity").textContent = "0";
+        document.getElementById("summarySubtotal").textContent = "PKR 0";
+        document.getElementById("summaryTotal").textContent = "PKR 0";
+      }
+
+      function renderCart(cart) {
+        loading.style.display = "none";
+
+        if (
+          !cart ||
+          !cart.lines ||
+          !Array.isArray(cart.lines.nodes) ||
+          cart.lines.nodes.length === 0
         ) {
-
-          cartLinesUpdate(
-            cartId: $cartId,
-            lines: $lines
-          ) {
-
-            cart {
-
-              id
-              checkoutUrl
-              totalQuantity
-
-              cost {
-
-                subtotalAmount {
-                  amount
-                  currencyCode
-                }
-
-                totalAmount {
-                  amount
-                  currencyCode
-                }
-              }
-
-              lines(first: 100) {
-
-                nodes {
-
-                  id
-                  quantity
-
-                  merchandise {
-
-                    ... on ProductVariant {
-
-                      id
-                      title
-
-                      price {
-                        amount
-                        currencyCode
-                      }
-
-                      product {
-
-                        id
-                        title
-                        handle
-
-                        featuredImage {
-                          url
-                          altText
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-
-            userErrors {
-              field
-              message
-            }
-          }
+          renderEmptyCart();
+          return;
         }
-      `;
 
-      const data =
-        await shopifyRequest(
-          query,
-          {
-            cartId,
-            lines: [
-              {
-                id: lineId,
-                quantity: Number(quantity)
-              }
-            ]
-          }
-        );
+        cartContent.style.display = "block";
+        emptyCart.style.display = "none";
 
-      const result =
-        data.cartLinesUpdate;
+        const lines = cart.lines.nodes;
 
-      if (result.userErrors?.length) {
-        throw new Error(
-          result.userErrors
-            .map(error => error.message)
-            .join(", ")
-        );
-      }
+        document.getElementById("cartItemCount").textContent =
+          lines.length +
+          (lines.length === 1 ? " item" : " items");
 
-      return result.cart;
-    }
+        document.getElementById("summaryQuantity").textContent =
+          cart.totalQuantity || 0;
 
+        const subtotalAmount =
+          cart.cost?.subtotalAmount?.amount || 0;
 
-    /* =========================================================
-       REMOVE LINE
-       ========================================================= */
+        const subtotalCurrency =
+          cart.cost?.subtotalAmount?.currencyCode || "PKR";
 
-    async function removeCartLine(lineId) {
+        const totalAmount =
+          cart.cost?.totalAmount?.amount || 0;
 
-      const cartId =
-        getShopifyCartId();
+        const totalCurrency =
+          cart.cost?.totalAmount?.currencyCode || "PKR";
 
-      if (!cartId) {
-        return;
-      }
+        document.getElementById("summarySubtotal").textContent =
+          formatMoney(
+            subtotalAmount,
+            subtotalCurrency
+          );
 
-      const query = `
-        mutation RemoveCartLines(
-          $cartId: ID!,
-          $lineIds: [ID!]!
-        ) {
+        document.getElementById("summaryTotal").textContent =
+          formatMoney(
+            totalAmount,
+            totalCurrency
+          );
 
-          cartLinesRemove(
-            cartId: $cartId,
-            lineIds: $lineIds
-          ) {
+        document.getElementById("cartCount").textContent =
+          cart.totalQuantity || 0;
 
-            cart {
+        cartItems.innerHTML =
+          lines.map(line => {
 
-              id
-              checkoutUrl
-              totalQuantity
+            const variant = line.merchandise || {};
+            const product = variant.product || {};
 
-              cost {
+            const image =
+              product.featuredImage?.url ||
+              "assets/shopora-mark.png";
 
-                subtotalAmount {
-                  amount
-                  currencyCode
-                }
+            const alt =
+              product.featuredImage?.altText ||
+              product.title ||
+              "Shopora product";
 
-                totalAmount {
-                  amount
-                  currencyCode
-                }
-              }
+            const lineTotal =
+              Number(variant.price?.amount || 0) *
+              Number(line.quantity || 0);
 
-              lines(first: 100) {
+            const currency =
+              variant.price?.currencyCode || "PKR";
 
-                nodes {
+            const variantTitle =
+              variant.title &&
+              variant.title !== "Default Title"
+                ? `
+                  <div class="item-variant">
+                    ${escapeHTML(variant.title)}
+                  </div>
+                `
+                : "";
 
-                  id
-                  quantity
-
-                  merchandise {
-
-                    ... on ProductVariant {
-
-                      id
-                      title
-
-                      price {
-                        amount
-                        currencyCode
-                      }
-
-                      product {
-
-                        id
-                        title
-                        handle
-
-                        featuredImage {
-                          url
-                          altText
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
-
-            userErrors {
-              field
-              message
-            }
-          }
-        }
-      `;
-
-      const data =
-        await shopifyRequest(
-          query,
-          {
-            cartId,
-            lineIds: [lineId]
-          }
-        );
-
-      const result =
-        data.cartLinesRemove;
-
-      if (result.userErrors?.length) {
-        throw new Error(
-          result.userErrors
-            .map(error => error.message)
-            .join(", ")
-        );
-      }
-
-      return result.cart;
-    }
-
-
-    /* =========================================================
-       RENDER CART
-       ========================================================= */
-
-    function renderCart(cart) {
-
-      const loading =
-        document.getElementById("loading");
-
-      const content =
-        document.getElementById("cartContent");
-
-      const empty =
-        document.getElementById("emptyCart");
-
-      const cartItems =
-        document.getElementById("cartItems");
-
-      loading.style.display = "none";
-
-      if (
-        !cart ||
-        !cart.lines ||
-        cart.lines.nodes.length === 0
-      ) {
-
-        content.style.display = "none";
-        empty.style.display = "block";
-
-        updateHeaderCount(0);
-
-        return;
-      }
-
-      content.style.display = "block";
-      empty.style.display = "none";
-
-      const lines =
-        cart.lines.nodes;
-
-      document.getElementById(
-        "cartItemCount"
-      ).textContent =
-        lines.length +
-        (lines.length === 1 ? " item" : " items");
-
-      document.getElementById(
-        "summaryQuantity"
-      ).textContent =
-        cart.totalQuantity || 0;
-
-      document.getElementById(
-        "summarySubtotal"
-      ).textContent =
-        formatMoney(
-          cart.cost.subtotalAmount.amount,
-          cart.cost.subtotalAmount.currencyCode
-        );
-
-      document.getElementById(
-        "summaryTotal"
-      ).textContent =
-        formatMoney(
-          cart.cost.totalAmount.amount,
-          cart.cost.totalAmount.currencyCode
-        );
-
-      updateHeaderCount(
-        cart.totalQuantity || 0
-      );
-
-      cartItems.innerHTML =
-        lines.map(line => {
-
-          const variant =
-            line.merchandise;
-
-          const product =
-            variant.product;
-
-          const image =
-            product.featuredImage?.url ||
-            "assets/shopora-mark.png";
-
-          const alt =
-            product.featuredImage?.altText ||
-            product.title;
-
-          const lineTotal =
-            Number(variant.price.amount) *
-            Number(line.quantity);
-
-          return `
-            <article
-              class="cart-item"
-              data-line-id="${escapeHTML(line.id)}"
-            >
-
-              <a
-                href="product.html?handle=${encodeURIComponent(product.handle)}"
-                class="cart-image"
+            return `
+              <article
+                class="cart-item"
+                data-line-id="${escapeHTML(line.id)}"
               >
-                <img
-                  src="${escapeHTML(image)}"
-                  alt="${escapeHTML(alt)}"
-                  loading="lazy"
+
+                <a
+                  href="product.html?handle=${encodeURIComponent(
+                    product.handle || ""
+                  )}"
+                  class="cart-image"
                 >
-              </a>
+                  <img
+                    src="${escapeHTML(image)}"
+                    alt="${escapeHTML(alt)}"
+                    loading="lazy"
+                  >
+                </a>
 
-              <div class="item-info">
+                <div class="item-info">
 
-                <h3>
-                  ${escapeHTML(product.title)}
-                </h3>
+                  <h3>
+                    ${escapeHTML(product.title || "Product")}
+                  </h3>
 
-                ${
-                  variant.title &&
-                  variant.title !== "Default Title"
-                    ? `
-                      <div class="item-variant">
-                        ${escapeHTML(variant.title)}
-                      </div>
-                    `
-                    : ""
-                }
+                  ${variantTitle}
 
-                <div class="item-price">
-                  ${formatMoney(
-                    variant.price.amount,
-                    variant.price.currencyCode
-                  )}
+                  <div class="item-price">
+                    ${formatMoney(
+                      variant.price?.amount || 0,
+                      currency
+                    )}
+                  </div>
+
+                  <div class="quantity-box">
+
+                    <button
+                      type="button"
+                      class="quantity-minus"
+                      aria-label="Decrease quantity"
+                      data-line-id="${escapeHTML(line.id)}"
+                    >
+                      −
+                    </button>
+
+                    <span class="quantity-value">
+                      ${Number(line.quantity || 0)}
+                    </span>
+
+                    <button
+                      type="button"
+                      class="quantity-plus"
+                      aria-label="Increase quantity"
+                      data-line-id="${escapeHTML(line.id)}"
+                    >
+                      +
+                    </button>
+
+                  </div>
+
                 </div>
 
-                <div class="quantity-box">
+                <div class="item-right">
+
+                  <div class="item-total">
+                    ${formatMoney(
+                      lineTotal,
+                      currency
+                    )}
+                  </div>
 
                   <button
                     type="button"
-                    class="quantity-minus"
-                    aria-label="Decrease quantity"
+                    class="remove-btn"
+                    data-line-id="${escapeHTML(line.id)}"
                   >
-                    −
-                  </button>
-
-                  <span class="quantity-value">
-                    ${line.quantity}
-                  </span>
-
-                  <button
-                    type="button"
-                    class="quantity-plus"
-                    aria-label="Increase quantity"
-                  >
-                    +
+                    Remove
                   </button>
 
                 </div>
 
-              </div>
+              </article>
+            `;
+          }).join("");
 
-              <div class="item-right">
+        bindCartActions();
+      }
 
-                <div class="item-total">
-                  ${formatMoney(
-                    lineTotal,
-                    variant.price.currencyCode
-                  )}
-                </div>
+      function setCartButtonsDisabled(disabled) {
+        document
+          .querySelectorAll(
+            ".quantity-minus, .quantity-plus, .remove-btn"
+          )
+          .forEach(button => {
+            button.disabled = disabled;
+          });
+      }
 
-                <button
-                  type="button"
-                  class="remove-btn"
-                >
-                  Remove
-                </button>
+      async function bindCartActions() {
+        document
+          .querySelectorAll(".quantity-minus")
+          .forEach(button => {
 
-              </div>
+            button.addEventListener("click", async () => {
 
-            </article>
-          `;
+              if (busy) return;
 
-        }).join("");
+              const lineId =
+                button.dataset.lineId;
 
-      document
-        .querySelectorAll(".cart-item")
-        .forEach(item => {
+              const item =
+                button.closest(".cart-item");
 
-          const lineId =
-            item.dataset.lineId;
+              const quantityElement =
+                item?.querySelector(".quantity-value");
 
-          const quantity =
-            Number(
-              item.querySelector(
-                ".quantity-value"
-              ).textContent
-            );
+              const currentQuantity =
+                Number(
+                  quantityElement?.textContent || 1
+                );
 
-          item
-            .querySelector(".quantity-minus")
-            .addEventListener(
-              "click",
-              async () => {
-
-                if (quantity <= 1) {
-
-                  await changeLine(
-                    lineId,
-                    0
-                  );
-
-                } else {
-
-                  await changeLine(
-                    lineId,
-                    quantity - 1
-                  );
-                }
-              }
-            );
-
-          item
-            .querySelector(".quantity-plus")
-            .addEventListener(
-              "click",
-              async () => {
-
+              if (currentQuantity <= 1) {
+                await changeLine(lineId, 0);
+              } else {
                 await changeLine(
                   lineId,
-                  quantity + 1
+                  currentQuantity - 1
                 );
               }
-            );
-
-          item
-            .querySelector(".remove-btn")
-            .addEventListener(
-              "click",
-              async () => {
-
-                await changeLine(
-                  lineId,
-                  0
-                );
-              }
-            );
-        });
-    }
-
-
-    /* =========================================================
-       CHANGE LINE
-       ========================================================= */
-
-    async function changeLine(
-      lineId,
-      quantity
-    ) {
-
-      const errorBox =
-        document.getElementById("errorBox");
-
-      errorBox.style.display = "none";
-
-      try {
-
-        document.body.style.cursor =
-          "wait";
-
-        let cart;
-
-        if (quantity <= 0) {
-
-          cart =
-            await removeCartLine(
-              lineId
-            );
-
-        } else {
-
-          cart =
-            await updateCartLine(
-              lineId,
-              quantity
-            );
-        }
-
-        if (!cart) {
-          throw new Error(
-            "Unable to update cart."
-          );
-        }
-
-        renderCart(cart);
-
-      } catch (error) {
-
-        console.error(error);
-
-        errorBox.textContent =
-          error.message ||
-          "Unable to update your cart.";
-
-        errorBox.style.display =
-          "block";
-
-      } finally {
-
-        document.body.style.cursor =
-          "";
-      }
-    }
-
-
-    /* =========================================================
-       CHECKOUT
-       ========================================================= */
-
-    async function checkout() {
-
-      const button =
-        document.getElementById(
-          "checkoutBtn"
-        );
-
-      const cartId =
-        getShopifyCartId();
-
-      if (!cartId) {
-        showToast(
-          "Your cart is empty."
-        );
-        return;
-      }
-
-      try {
-
-        button.disabled = true;
-
-        button.textContent =
-          "Opening Checkout...";
-
-        const cart =
-          await getShopifyCart(
-            cartId
-          );
-
-        if (!cart) {
-
-          removeShopifyCartId();
-
-          showToast(
-            "Your cart has expired. Please add your products again."
-          );
-
-          await loadCart();
-
-          return;
-        }
-
-        if (!cart.checkoutUrl) {
-          throw new Error(
-            "Shopify checkout URL is unavailable."
-          );
-        }
-
-        /*
-         * Shopify handles checkout.
-         * Payment methods configured in Shopify
-         * will appear there.
-         */
-        window.location.href =
-          cart.checkoutUrl;
-
-      } catch (error) {
-
-        console.error(error);
-
-        const errorBox =
-          document.getElementById(
-            "errorBox"
-          );
-
-        errorBox.textContent =
-          error.message ||
-          "Unable to open checkout.";
-
-        errorBox.style.display =
-          "block";
-
-      } finally {
-
-        button.disabled = false;
-
-        button.textContent =
-          "Proceed to Checkout";
-      }
-    }
-
-
-    /* =========================================================
-       LOAD CART
-       ========================================================= */
-
-    async function loadCart() {
-
-      const loading =
-        document.getElementById(
-          "loading"
-        );
-
-      const errorBox =
-        document.getElementById(
-          "errorBox"
-        );
-
-      errorBox.style.display =
-        "none";
-
-      loading.style.display =
-        "block";
-
-      try {
-
-        const cartId =
-          getShopifyCartId();
-
-        if (!cartId) {
-
-          loading.style.display =
-            "none";
-
-          document.getElementById(
-            "emptyCart"
-          ).style.display =
-            "block";
-
-          updateHeaderCount(0);
-
-          return;
-        }
-
-        const cart =
-          await getShopifyCart(
-            cartId
-          );
-
-        /*
-         * Shopify can invalidate/expire a cart.
-         * If that happens, start clean.
-         */
-        if (!cart) {
-
-          removeShopifyCartId();
-
-          loading.style.display =
-            "none";
-
-          document.getElementById(
-            "emptyCart"
-          ).style.display =
-            "block";
-
-          updateHeaderCount(0);
-
-          return;
-        }
-
-        saveShopifyCartId(
-          cart.id
-        );
-
-        renderCart(cart);
-
-      } catch (error) {
-
-        console.error(error);
-
-        loading.style.display =
-          "none";
-
-        errorBox.textContent =
-          error.message ||
-          "Unable to load your cart.";
-
-        errorBox.style.display =
-          "block";
-      }
-    }
-
-
-    /* =========================================================
-       INIT
-       ========================================================= */
-
-    document.addEventListener(
-      "DOMContentLoaded",
-      () => {
+            });
+          });
 
         document
-          .getElementById(
-            "checkoutBtn"
-          )
-          .addEventListener(
-            "click",
-            checkout
+          .querySelectorAll(".quantity-plus")
+          .forEach(button => {
+
+            button.addEventListener("click", async () => {
+
+              if (busy) return;
+
+              const lineId =
+                button.dataset.lineId;
+
+              const item =
+                button.closest(".cart-item");
+
+              const quantityElement =
+                item?.querySelector(".quantity-value");
+
+              const currentQuantity =
+                Number(
+                  quantityElement?.textContent || 0
+                );
+
+              await changeLine(
+                lineId,
+                currentQuantity + 1
+              );
+            });
+          });
+
+        document
+          .querySelectorAll(".remove-btn")
+          .forEach(button => {
+
+            button.addEventListener("click", async () => {
+
+              if (busy) return;
+
+              const lineId =
+                button.dataset.lineId;
+
+              await changeLine(
+                lineId,
+                0
+              );
+            });
+          });
+      }
+
+      async function changeLine(lineId, quantity) {
+
+        if (!lineId || busy) return;
+
+        hideError();
+
+        busy = true;
+
+        setCartButtonsDisabled(true);
+
+        document.body.style.cursor = "wait";
+
+        try {
+
+          let cart;
+
+          /*
+           * These methods are added to products.js.
+           * Shopify remains the single source of truth.
+           */
+          if (quantity <= 0) {
+
+            if (
+              typeof Shopora.removeCartLine !==
+              "function"
+            ) {
+              throw new Error(
+                "Cart remove function is missing from products.js."
+              );
+            }
+
+            cart =
+              await Shopora.removeCartLine(
+                lineId
+              );
+
+          } else {
+
+            if (
+              typeof Shopora.updateCartLine !==
+              "function"
+            ) {
+              throw new Error(
+                "Cart update function is missing from products.js."
+              );
+            }
+
+            cart =
+              await Shopora.updateCartLine(
+                lineId,
+                quantity
+              );
+          }
+
+          if (!cart) {
+            throw new Error(
+              "Unable to update your cart."
+            );
+          }
+
+          renderCart(cart);
+
+          await updateCartCount();
+
+          if (quantity <= 0) {
+            showToast("Product removed from cart.");
+          }
+
+        } catch (error) {
+
+          console.error(error);
+
+          showError(
+            error?.message ||
+            "Unable to update your cart."
           );
 
-        loadCart();
-      }
-    );
+        } finally {
 
+          busy = false;
+
+          document.body.style.cursor = "";
+
+          setCartButtonsDisabled(false);
+        }
+      }
+
+      async function loadCart() {
+
+        hideError();
+
+        loading.style.display = "block";
+        cartContent.style.display = "none";
+        emptyCart.style.display = "none";
+
+        try {
+
+          if (
+            typeof Shopora.getShopifyCart !==
+            "function"
+          ) {
+            throw new Error(
+              "Shopify cart function is missing from products.js."
+            );
+          }
+
+          const cart =
+            await Shopora.getShopifyCart();
+
+          if (!cart) {
+
+            renderEmptyCart();
+
+            await updateCartCount();
+
+            return;
+          }
+
+          renderCart(cart);
+
+          await updateCartCount();
+
+        } catch (error) {
+
+          console.error(
+            "Cart loading error:",
+            error
+          );
+
+          loading.style.display = "none";
+
+          showError(
+            error?.message ||
+            "Unable to load your cart."
+          );
+
+          await updateCartCount();
+        }
+      }
+
+      async function checkout() {
+
+        if (busy) return;
+
+        hideError();
+
+        try {
+
+          checkoutBtn.disabled = true;
+
+          checkoutBtn.textContent =
+            "Opening Checkout...";
+
+          /*
+           * Central checkout function from products.js.
+           */
+          if (
+            typeof Shopora.goToShopifyCheckout !==
+            "function"
+          ) {
+            throw new Error(
+              "Checkout function is missing from products.js."
+            );
+          }
+
+          await Shopora.goToShopifyCheckout();
+
+        } catch (error) {
+
+          console.error(
+            "Checkout error:",
+            error
+          );
+
+          showError(
+            error?.message ||
+            "Unable to open checkout."
+          );
+
+          checkoutBtn.disabled = false;
+
+          checkoutBtn.textContent =
+            "Proceed to Checkout";
+        }
+      }
+
+      checkoutBtn.addEventListener(
+        "click",
+        checkout
+      );
+
+      updateWishlistCount();
+      loadCart();
+
+      window.addEventListener(
+        "pageshow",
+        () => {
+          updateWishlistCount();
+          updateCartCount();
+          loadCart();
+        }
+      );
+
+    })();
   </script>
 
 </body>
