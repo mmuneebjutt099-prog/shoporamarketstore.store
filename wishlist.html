@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -281,8 +280,7 @@
 
     .wishlist-grid{
       display:grid;
-      grid-template-columns:
-        repeat(4,minmax(0,1fr));
+      grid-template-columns:repeat(4,minmax(0,1fr));
       gap:20px;
     }
 
@@ -316,8 +314,7 @@
       transition:.4s ease;
     }
 
-    .wishlist-card:hover
-    .wishlist-image img{
+    .wishlist-card:hover .wishlist-image img{
       transform:scale(1.05);
     }
 
@@ -404,6 +401,11 @@
       border-color:var(--black);
     }
 
+    .product-btn:disabled{
+      opacity:.6;
+      cursor:not-allowed;
+    }
+
     /* =========================
        EMPTY WISHLIST
     ========================= */
@@ -454,6 +456,19 @@
     .shop-btn:hover{
       background:var(--gold);
       border-color:var(--gold);
+    }
+
+    /* =========================
+       LOADING / ERROR
+    ========================= */
+
+    .wishlist-status{
+      background:var(--white);
+      border:1px solid var(--border);
+      padding:40px 25px;
+      text-align:center;
+      color:var(--muted);
+      display:none;
     }
 
     /* =========================
@@ -563,8 +578,7 @@
     @media(max-width:1100px){
 
       .wishlist-grid{
-        grid-template-columns:
-          repeat(3,minmax(0,1fr));
+        grid-template-columns:repeat(3,minmax(0,1fr));
       }
 
     }
@@ -611,8 +625,7 @@
     @media(max-width:750px){
 
       .wishlist-grid{
-        grid-template-columns:
-          repeat(2,minmax(0,1fr));
+        grid-template-columns:repeat(2,minmax(0,1fr));
       }
 
     }
@@ -709,7 +722,6 @@
       class="brand"
       aria-label="Shopora Market Store home"
     >
-
       <img
         src="assets/shopora-logo.png"
         alt="Shopora Market Store"
@@ -717,9 +729,7 @@
         width="180"
         height="60"
       >
-
     </a>
-
 
     <nav
       class="nav-links"
@@ -752,7 +762,6 @@
 
     </nav>
 
-
     <div class="nav-actions">
 
       <button
@@ -762,7 +771,6 @@
       >
         🔍
       </button>
-
 
       <a
         href="wishlist.html"
@@ -777,9 +785,7 @@
         >
           0
         </span>
-
       </a>
-
 
       <a
         href="cart.html"
@@ -794,9 +800,7 @@
         >
           0
         </span>
-
       </a>
-
 
       <button
         class="icon-btn menu-btn"
@@ -861,7 +865,6 @@
 
         </div>
 
-
         <button
           type="button"
           class="clear-btn"
@@ -870,6 +873,14 @@
           Clear Wishlist
         </button>
 
+      </div>
+
+
+      <div
+        class="wishlist-status"
+        id="wishlistLoading"
+      >
+        Loading your wishlist...
       </div>
 
 
@@ -1044,6 +1055,10 @@
 ></div>
 
 
+<!-- CENTRAL SHOPORA PRODUCT / CART SYSTEM -->
+<script src="products.js"></script>
+
+
 <script>
 
   /* =========================
@@ -1054,9 +1069,12 @@
 
     try{
 
-      return JSON.parse(
-        localStorage.getItem("shoporaWishlist")
-      ) || [];
+      const data =
+        JSON.parse(
+          localStorage.getItem("shoporaWishlist")
+        );
+
+      return Array.isArray(data) ? data : [];
 
     }catch(error){
 
@@ -1077,137 +1095,399 @@
   }
 
 
-  function getCart(){
+  /* =========================
+     PRODUCT ID
+  ========================= */
 
-    try{
+  function getWishlistProductId(item){
 
-      return JSON.parse(
-        localStorage.getItem("shoporaCart")
-      ) || [];
+    if(item === null || item === undefined){
+      return null;
+    }
 
-    }catch(error){
+    if(typeof item === "string" || typeof item === "number"){
+      return String(item);
+    }
 
-      return [];
+    if(typeof item === "object"){
+
+      return String(
+        item.id ||
+        item.productId ||
+        item.product_id ||
+        ""
+      );
 
     }
 
-  }
-
-
-  function saveCart(cart){
-
-    localStorage.setItem(
-      "shoporaCart",
-      JSON.stringify(cart)
-    );
+    return null;
 
   }
 
 
   /* =========================
-     PRICE
-  ========================= */
-
-  function formatPrice(price){
-
-    return "Rs. " +
-      Number(price).toLocaleString("en-PK");
-
-  }
-
-
-  /* =========================
-     ESCAPE HTML
-  ========================= */
-
-  function escapeHTML(value){
-
-    return String(value ?? "")
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#039;");
-
-  }
-
-
-  /* =========================
-     PRODUCT SLUG
-  ========================= */
-
-  function createSlug(name){
-
-    return String(name || "")
-      .toLowerCase()
-      .trim()
-      .replace(/[^a-z0-9]+/g,"-")
-      .replace(/^-+|-+$/g,"");
-
-  }
-
-
-  /* =========================
-     RENDER WISHLIST — SHOPIFY
+     RENDER WISHLIST
   ========================= */
 
   async function renderWishlist(){
-    const ids=getWishlist();
-    const grid=document.getElementById("wishlistGrid");
-    const empty=document.getElementById("emptyWishlist");
-    const top=document.getElementById("wishlistTop");
-    const count=document.getElementById("wishlistItemCount");
 
-    if(count) count.textContent=ids.length;
+    const wishlist =
+      getWishlist();
 
-    if(!ids.length){
-      grid.innerHTML="";
-      grid.style.display="none";
-      top.style.display="none";
-      empty.style.display="block";
-      await updateCounts();
+    const grid =
+      document.getElementById("wishlistGrid");
+
+    const empty =
+      document.getElementById("emptyWishlist");
+
+    const top =
+      document.getElementById("wishlistTop");
+
+    const count =
+      document.getElementById("wishlistItemCount");
+
+    const loading =
+      document.getElementById("wishlistLoading");
+
+
+    if(!grid || !empty || !top){
       return;
     }
 
-    try{
-      const products=await Promise.all(
-        ids.map(id=>window.ShoporaProducts.getProduct(id).catch(()=>null))
-      );
-      const valid=products.filter(Boolean);
 
-      grid.style.display="grid";
-      top.style.display=valid.length?"flex":"none";
-      empty.style.display=valid.length?"none":"block";
-      if(count) count.textContent=valid.length;
-
-      grid.innerHTML=valid.map((item)=>{
-        const originalIndex=ids.findIndex(id=>String(id)===String(item.id));
-        return `
-          <article class="wishlist-card reveal">
-            <div class="wishlist-image">
-              <button type="button" class="heart-remove" onclick="removeFromWishlist(${originalIndex})" aria-label="Remove ${escapeHTML(item.name)} from wishlist">♥</button>
-              <a href="product.html?handle=${encodeURIComponent(item.handle)}" aria-label="${escapeHTML(item.name)}">
-                <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy">
-              </a>
-            </div>
-            <div class="wishlist-info">
-              <div class="product-category">${escapeHTML(item.category || "Shopora Collection")}</div>
-              <h2 class="product-name">${escapeHTML(item.name)}</h2>
-              <div class="product-price">${escapeHTML(window.ShoporaProducts.formatPrice(item.price,item.currency))}</div>
-              <div class="product-actions">
-                <button type="button" class="product-btn" onclick="addWishlistItemToCart(${originalIndex})">Add To Cart</button>
-                <a href="product.html?handle=${encodeURIComponent(item.handle)}" class="product-btn secondary">View Product</a>
-              </div>
-            </div>
-          </article>`;
-      }).join("");
-
-      requestAnimationFrame(()=>grid.querySelectorAll(".reveal").forEach(e=>e.classList.add("show")));
-      await updateCounts();
-    }catch(error){
-      console.error("Wishlist Shopify error:",error);
-      grid.innerHTML='<p>Unable to load your Shopify wishlist.</p>';
+    if(count){
+      count.textContent =
+        wishlist.length;
     }
+
+
+    /* EMPTY BEFORE SHOPIFY REQUEST */
+
+    if(!wishlist.length){
+
+      grid.innerHTML = "";
+      grid.style.display = "none";
+
+      top.style.display = "none";
+
+      if(loading){
+        loading.style.display = "none";
+      }
+
+      empty.style.display = "block";
+
+      await updateCounts();
+
+      return;
+
+    }
+
+
+    if(loading){
+      loading.style.display = "block";
+    }
+
+    grid.style.display = "none";
+    empty.style.display = "none";
+    top.style.display = "none";
+
+
+    try{
+
+      if(
+        !window.ShoporaProducts ||
+        typeof window.ShoporaProducts.getProductById !== "function"
+      ){
+
+        throw new Error(
+          "ShoporaProducts is not ready."
+        );
+
+      }
+
+
+      /*
+       * Get the actual Shopify product for
+       * every saved wishlist ID.
+       */
+
+      const products =
+        await Promise.all(
+
+          wishlist.map(
+            async item => {
+
+              const id =
+                getWishlistProductId(item);
+
+              if(!id){
+                return null;
+              }
+
+              try{
+
+                return await
+                  window.ShoporaProducts
+                    .getProductById(id);
+
+              }catch(error){
+
+                console.warn(
+                  "Wishlist product could not be loaded:",
+                  id,
+                  error
+                );
+
+                return null;
+
+              }
+
+            }
+          )
+
+        );
+
+
+      const validProducts =
+        products.filter(Boolean);
+
+
+      if(loading){
+        loading.style.display = "none";
+      }
+
+
+      /*
+       * If old/invalid wishlist IDs exist,
+       * remove them so the wishlist stays clean.
+       */
+
+      if(validProducts.length !== wishlist.length){
+
+        const validIds =
+          new Set(
+            validProducts.map(
+              product => String(product.id)
+            )
+          );
+
+        const cleanedWishlist =
+          wishlist.filter(
+            item =>
+              validIds.has(
+                getWishlistProductId(item)
+              )
+          );
+
+        saveWishlist(
+          cleanedWishlist
+        );
+
+      }
+
+
+      if(!validProducts.length){
+
+        grid.innerHTML = "";
+        grid.style.display = "none";
+        top.style.display = "none";
+        empty.style.display = "block";
+
+        if(count){
+          count.textContent = "0";
+        }
+
+        await updateCounts();
+
+        return;
+
+      }
+
+
+      grid.style.display = "grid";
+      top.style.display = "flex";
+      empty.style.display = "none";
+
+
+      if(count){
+        count.textContent =
+          validProducts.length;
+      }
+
+
+      grid.innerHTML =
+        validProducts.map(
+          product => {
+
+            const productId =
+              String(product.id);
+
+            const productHandle =
+              product.handle || "";
+
+            const productName =
+              product.name ||
+              product.title ||
+              "Shopora Product";
+
+            const productCategory =
+              product.category ||
+              "Shopora Collection";
+
+            const productImage =
+              typeof window.ShoporaProducts.getProductImage === "function"
+                ? window.ShoporaProducts.getProductImage(product)
+                : (
+                    product.image ||
+                    "assets/shopora-mark.png"
+                  );
+
+            const productPrice =
+              typeof window.ShoporaProducts.formatProductPrice === "function"
+                ? window.ShoporaProducts.formatProductPrice(
+                    product.price,
+                    product.currency
+                  )
+                : (
+                    "Rs. " +
+                    Number(product.price || 0)
+                      .toLocaleString("en-PK")
+                  );
+
+
+            return `
+
+              <article
+                class="wishlist-card reveal"
+              >
+
+                <div class="wishlist-image">
+
+                  <button
+                    type="button"
+                    class="heart-remove"
+                    onclick="removeFromWishlist('${escapeAttribute(productId)}')"
+                    aria-label="Remove ${escapeHTML(productName)} from wishlist"
+                    title="Remove from wishlist"
+                  >
+                    ♥
+                  </button>
+
+
+                  <a
+                    href="product.html?handle=${encodeURIComponent(productHandle)}"
+                    aria-label="${escapeHTML(productName)}"
+                  >
+
+                    <img
+                      src="${escapeAttribute(productImage)}"
+                      alt="${escapeHTML(productName)}"
+                      loading="lazy"
+                    >
+
+                  </a>
+
+                </div>
+
+
+                <div class="wishlist-info">
+
+                  <div class="product-category">
+                    ${escapeHTML(productCategory)}
+                  </div>
+
+
+                  <h2 class="product-name">
+                    ${escapeHTML(productName)}
+                  </h2>
+
+
+                  <div class="product-price">
+                    ${escapeHTML(productPrice)}
+                  </div>
+
+
+                  <div class="product-actions">
+
+                    <button
+                      type="button"
+                      class="product-btn"
+                      data-product-id="${escapeAttribute(productId)}"
+                      onclick="addWishlistItemToCart('${escapeAttribute(productId)}', this)"
+                    >
+                      Add To Cart
+                    </button>
+
+
+                    <a
+                      href="product.html?handle=${encodeURIComponent(productHandle)}"
+                      class="product-btn secondary"
+                    >
+                      View Product
+                    </a>
+
+                  </div>
+
+                </div>
+
+              </article>
+
+            `;
+
+          }
+        ).join("");
+
+
+      requestAnimationFrame(
+        () => {
+
+          grid
+            .querySelectorAll(".reveal")
+            .forEach(
+              element =>
+                element.classList.add("show")
+            );
+
+        }
+      );
+
+
+      await updateCounts();
+
+    }catch(error){
+
+      console.error(
+        "Wishlist error:",
+        error
+      );
+
+
+      if(loading){
+        loading.style.display = "none";
+      }
+
+
+      grid.style.display = "block";
+
+      grid.innerHTML = `
+
+        <div class="wishlist-status" style="display:block;">
+
+          Unable to load your wishlist right now.
+
+          <br>
+
+          Please refresh the page and try again.
+
+        </div>
+
+      `;
+
+      top.style.display = "none";
+      empty.style.display = "none";
+
+    }
+
   }
 
 
@@ -1215,19 +1495,37 @@
      REMOVE ITEM
   ========================= */
 
-  function removeFromWishlist(index){
+  function removeFromWishlist(productId){
 
     const wishlist =
       getWishlist();
 
 
-    if(!wishlist[index]){
+    const index =
+      wishlist.findIndex(
+        item =>
+          getWishlistProductId(item) ===
+          String(productId)
+      );
+
+
+    if(index === -1){
       return;
     }
 
 
-    const name =
-      wishlist[index].name;
+    const item =
+      wishlist[index];
+
+
+    const itemName =
+      typeof item === "object"
+        ? (
+            item.name ||
+            item.title ||
+            "Product"
+          )
+        : "Product";
 
 
     wishlist.splice(
@@ -1245,7 +1543,7 @@
 
 
     showToast(
-      name +
+      itemName +
       " removed from wishlist"
     );
 
@@ -1262,7 +1560,7 @@
       getWishlist();
 
 
-    if(wishlist.length === 0){
+    if(!wishlist.length){
       return;
     }
 
@@ -1292,47 +1590,124 @@
 
 
   /* =========================
-     ADD TO CART — SHOPIFY
+     ADD WISHLIST ITEM TO SHOPIFY CART
+     CENTRAL products.js ONLY
   ========================= */
 
-  async function addWishlistItemToCart(index){
-    const ids=getWishlist();
-    const item=ids[index];
-    if(!item) return;
+  async function addWishlistItemToCart(
+    productId,
+    button
+  ){
+
+    if(!window.ShoporaProducts){
+
+      showToast(
+        "Shopora product system is unavailable."
+      );
+
+      return;
+
+    }
+
+
+    if(
+      typeof window.ShoporaProducts.addProductToCart !==
+      "function"
+    ){
+
+      showToast(
+        "Cart system is unavailable."
+      );
+
+      return;
+
+    }
+
+
+    if(button){
+
+      button.disabled = true;
+      button.textContent = "Adding...";
+
+    }
+
 
     try{
-      const product=await window.ShoporaProducts.getProduct(item);
-      if(!product || !product.buyable || !product.variantId){
-        showToast("This product is currently unavailable.");
-        return;
+
+      /*
+       * Central Shopify cart function.
+       * No direct GraphQL/payment code here.
+       */
+
+      const result =
+        await window.ShoporaProducts
+          .addProductToCart(
+            String(productId),
+            1
+          );
+
+
+      if(!result){
+
+        throw new Error(
+          "Product could not be added."
+        );
+
       }
 
-      let cartId=localStorage.getItem("shoporaShopifyCartId");
-      let cart=null;
-      if(cartId){
-        try{
-          cart=await window.ShoporaProducts.shopifyRequest(`query Cart($id:ID!){cart(id:$id){id totalQuantity}}`,{id:cartId}).then(d=>d.cart);
-        }catch(e){cart=null;}
-      }
 
-      if(!cart){
-        const d=await window.ShoporaProducts.shopifyRequest(`mutation C($lines:[CartLineInput!]!){cartCreate(input:{lines:$lines}){cart{id totalQuantity checkoutUrl} userErrors{message}}}`,{lines:[{merchandiseId:product.variantId,quantity:1}]});
-        if(d.cartCreate.userErrors?.length) throw new Error(d.cartCreate.userErrors.map(e=>e.message).join(", "));
-        cart=d.cartCreate.cart;
-      }else{
-        const d=await window.ShoporaProducts.shopifyRequest(`mutation A($cartId:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cartId,lines:$lines){cart{id totalQuantity checkoutUrl} userErrors{message}}}`,{cartId,lines:[{merchandiseId:product.variantId,quantity:1}]});
-        if(d.cartLinesAdd.userErrors?.length) throw new Error(d.cartLinesAdd.userErrors.map(e=>e.message).join(", "));
-        cart=d.cartLinesAdd.cart;
-      }
+      const product =
+        typeof window.ShoporaProducts.getProductById ===
+        "function"
+          ? await window.ShoporaProducts
+              .getProductById(
+                String(productId)
+              )
+          : null;
 
-      localStorage.setItem("shoporaShopifyCartId",cart.id);
-      localStorage.removeItem("shoporaCart");
-      document.getElementById("cartCount").textContent=cart.totalQuantity||0;
-      showToast(product.name+" added to Shopify cart");
+
+      const productName =
+        product?.name ||
+        product?.title ||
+        "Product";
+
+
+      /*
+       * Update central cart count.
+       */
+
+      await updateCounts();
+
+
+      showToast(
+        productName +
+        " added to cart"
+      );
+
+
     }catch(error){
-      console.error("Wishlist cart error:",error);
-      showToast("Unable to add product to Shopify cart.");
+
+      console.error(
+        "Wishlist Add To Cart error:",
+        error
+      );
+
+
+      showToast(
+        "Unable to add product to cart."
+      );
+
+    }finally{
+
+      if(button){
+
+        button.disabled = false;
+        button.textContent = "Add To Cart";
+
+      }
+
     }
+
   }
 
 
@@ -1341,22 +1716,115 @@
   ========================= */
 
   async function updateCounts(){
-    const wishlist=getWishlist();
-    const wishlistCount=document.getElementById("wishlistCount");
-    const wishlistItemCount=document.getElementById("wishlistItemCount");
-    if(wishlistCount) wishlistCount.textContent=wishlist.length;
-    if(wishlistItemCount) wishlistItemCount.textContent=wishlist.length;
 
-    let quantity=0;
-    const cartId=localStorage.getItem("shoporaShopifyCartId");
-    if(cartId){
-      try{
-        const cart=await window.ShoporaProducts.shopifyRequest(`query Cart($id:ID!){cart(id:$id){totalQuantity}}`,{id:cartId});
-        quantity=cart.cart?.totalQuantity||0;
-      }catch(e){}
+    const wishlist =
+      getWishlist();
+
+
+    const wishlistCount =
+      document.getElementById(
+        "wishlistCount"
+      );
+
+
+    const wishlistItemCount =
+      document.getElementById(
+        "wishlistItemCount"
+      );
+
+
+    if(wishlistCount){
+
+      wishlistCount.textContent =
+        wishlist.length;
+
     }
-    const cartCount=document.getElementById("cartCount");
-    if(cartCount) cartCount.textContent=quantity;
+
+
+    if(wishlistItemCount){
+
+      wishlistItemCount.textContent =
+        wishlist.length;
+
+    }
+
+
+    const cartCount =
+      document.getElementById(
+        "cartCount"
+      );
+
+
+    if(
+      cartCount &&
+      window.ShoporaProducts &&
+      typeof window.ShoporaProducts
+        .getShopifyCartCount === "function"
+    ){
+
+      try{
+
+        const quantity =
+          await window.ShoporaProducts
+            .getShopifyCartCount();
+
+
+        cartCount.textContent =
+          Number(quantity || 0);
+
+      }catch(error){
+
+        console.warn(
+          "Unable to update cart count:",
+          error
+        );
+
+      }
+
+    }
+
+  }
+
+
+  /* =========================
+     ESCAPE HTML
+  ========================= */
+
+  function escapeHTML(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
+  }
+
+
+  function escapeAttribute(value){
+
+    return escapeHTML(value);
+
+  }
+
+
+  function escapeHTMLForMessage(value){
+
+    return String(value ?? "");
+
+  }
+
+
+  function escapeHTML(value){
+
+    return String(value ?? "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+
   }
 
 
@@ -1378,9 +1846,19 @@
 
   function toggleMenu(){
 
-    document
-      .getElementById("navLinks")
-      .classList.toggle("open");
+    const nav =
+      document.getElementById(
+        "navLinks"
+      );
+
+
+    if(nav){
+
+      nav.classList.toggle(
+        "open"
+      );
+
+    }
 
   }
 
@@ -1398,6 +1876,11 @@
       document.getElementById(
         "toast"
       );
+
+
+    if(!toast){
+      return;
+    }
 
 
     toast.textContent =
@@ -1433,10 +1916,18 @@
      YEAR
   ========================= */
 
-  document.getElementById(
-    "year"
-  ).textContent =
-    new Date().getFullYear();
+  const year =
+    document.getElementById(
+      "year"
+    );
+
+
+  if(year){
+
+    year.textContent =
+      new Date().getFullYear();
+
+  }
 
 
   /* =========================
@@ -1445,9 +1936,15 @@
 
   window.addEventListener(
     "storage",
-    () => {
+    event => {
 
-      renderWishlist();
+      if(
+        event.key === "shoporaWishlist"
+      ){
+
+        renderWishlist();
+
+      }
 
     }
   );
@@ -1467,11 +1964,16 @@
      START
   ========================= */
 
-  renderWishlist();
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+      renderWishlist();
+
+    }
+  );
 
 </script>
 
-<script src="products.js"></script>
 </body>
 </html>
-```
