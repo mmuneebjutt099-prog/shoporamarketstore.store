@@ -5,27 +5,14 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Shopping Cart | Shopora Market Store</title>
+  <title>Your Cart | Shopora Market Store</title>
 
-  <meta name="description" content="Review your shopping cart at Shopora Market Store. Update quantities, remove products and continue to checkout.">
-  <meta name="keywords" content="Shopora cart, shopping cart, Shopora Market Store, online shopping Pakistan">
-  <meta name="author" content="Shopora Market Store">
+  <meta
+    name="description"
+    content="Review your Shopora Market Store cart and continue securely to checkout."
+  >
 
-  <link rel="canonical" href="https://shoporamarketstore.store/cart.html">
-
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Shopping Cart | Shopora Market Store">
-  <meta property="og:description" content="Review your selected products at Shopora Market Store.">
-  <meta property="og:url" content="https://shoporamarketstore.store/cart.html">
-  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Shopping Cart | Shopora Market Store">
-  <meta name="twitter:description" content="Review your selected products at Shopora Market Store.">
-  <meta name="twitter:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
-
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
-  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
+  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,922 +23,718 @@
   >
 
   <style>
-    :root{
-      --black:#111111;
-      --ivory:#F7F4EE;
-      --gold:#C6A06A;
-      --white:#ffffff;
-      --muted:#77736d;
-      --border:rgba(17,17,17,.10);
-      --shadow:0 20px 60px rgba(17,17,17,.08);
+    :root {
+      --black: #111111;
+      --black-soft: #1b1b1b;
+      --ivory: #f7f4ee;
+      --white: #ffffff;
+      --cream: #eee9df;
+      --gold: #c6a06a;
+      --gold-dark: #9c753e;
+      --text: #191919;
+      --muted: #77736c;
+      --border: rgba(17,17,17,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 1240px;
     }
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html{
-      scroll-behavior:smooth;
+    body {
+      font-family: "DM Sans", sans-serif;
+      background: var(--ivory);
+      color: var(--text);
+      min-height: 100vh;
     }
 
-    body{
-      font-family:"DM Sans",sans-serif;
-      color:var(--black);
-      background:var(--ivory);
-      line-height:1.7;
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
     }
+
+    .topbar {
+      background: var(--black);
+      color: #fff;
+      text-align: center;
+      padding: 10px 15px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(247,244,238,.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto;
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+    }
+
+    .brand-text strong {
+      display: block;
+      font-family: "Playfair Display", serif;
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
 
-    a{
-      color:inherit;
-      text-decoration:none;
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
     }
 
-    button,
-    input{
-      font:inherit;
+    nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: #333;
+      transition: .2s;
     }
 
-    img{
-      max-width:100%;
-      display:block;
+    nav a:hover,
+    nav a.active {
+      color: var(--gold-dark);
     }
 
-    .container{
-      width:min(1180px,92%);
-      margin:auto;
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
     }
 
-    /* HEADER */
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      background:rgba(247,244,238,.94);
-      backdrop-filter:blur(16px);
-      border-bottom:1px solid var(--border);
-    }
-
-    .nav{
-      min-height:82px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:30px;
-    }
-
-    .brand{
-      display:inline-flex;
-      align-items:center;
-      flex:0 0 auto;
-    }
-
-    .brand-logo{
-      width:180px;
-      height:auto;
-      display:block;
-      object-fit:contain;
-    }
-
-    .nav-links{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:28px;
-    }
-
-    .nav-links a{
-      font-size:14px;
-      font-weight:600;
-      position:relative;
-      padding:28px 0;
-      transition:.3s ease;
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: rgba(255,255,255,.65);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      transition: .2s;
     }
 
-    .nav-links a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:20px;
-      width:0;
-      height:2px;
-      background:var(--gold);
-      transition:.3s ease;
+    .icon-btn:hover {
+      background: var(--black);
+      color: #fff;
     }
 
-    .nav-links a:hover::after,
-    .nav-links a.active::after{
-      width:100%;
+    .count {
+      position: absolute;
+      right: -2px;
+      top: -2px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 99px;
+      background: var(--gold);
+      color: #fff;
+      font-size: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
     }
 
-    .nav-actions{
-      display:flex;
-      align-items:center;
-      gap:10px;
+    main {
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto;
+      padding: 70px 0 100px;
     }
 
-    .icon-btn{
-      width:42px;
-      height:42px;
-      border:1px solid var(--border);
-      background:var(--white);
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      cursor:pointer;
-      font-size:18px;
-      position:relative;
-      transition:.3s ease;
+    .page-heading {
+      text-align: center;
+      margin-bottom: 45px;
     }
 
-    .icon-btn:hover{
-      background:var(--black);
-      color:var(--white);
-      transform:translateY(-2px);
+    .eyebrow {
+      color: var(--gold-dark);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    .count{
-      position:absolute;
-      top:-4px;
-      right:-3px;
-      min-width:17px;
-      height:17px;
-      padding:0 4px;
-      border-radius:20px;
-      background:var(--gold);
-      color:var(--white);
-      font-size:10px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-weight:700;
+    .page-heading h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(42px, 6vw, 68px);
+      font-weight: 600;
+      line-height: 1;
     }
 
-    .menu-btn{
-      display:none;
+    .page-heading p {
+      color: var(--muted);
+      margin-top: 14px;
+      font-size: 15px;
     }
 
-    /* HERO */
-
-    .page-hero{
-      padding:95px 0 75px;
-      text-align:center;
-      background:
-        radial-gradient(circle at 15% 20%,rgba(198,160,106,.15),transparent 30%),
-        radial-gradient(circle at 85% 70%,rgba(198,160,106,.10),transparent 30%);
-    }
-
-    .eyebrow{
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:3px;
-      font-size:12px;
-      font-weight:700;
-      margin-bottom:15px;
+    .cart-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: 30px;
+      align-items: start;
     }
 
-    h1,
-    h2,
-    h3{
-      font-family:"Playfair Display",serif;
-      line-height:1.2;
+    .cart-box,
+    .summary {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
     }
 
-    .page-hero h1{
-      font-size:clamp(42px,7vw,70px);
-      margin-bottom:15px;
+    .cart-box {
+      overflow: hidden;
     }
 
-    .page-hero p{
-      max-width:650px;
-      margin:auto;
-      color:var(--muted);
-      font-size:16px;
+    .cart-header {
+      padding: 22px 25px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
-    /* CART */
-
-    .cart-section{
-      padding:70px 0 110px;
+    .cart-header h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
     }
 
-    .cart-layout{
-      display:grid;
-      grid-template-columns:1fr 360px;
-      gap:35px;
-      align-items:start;
+    .cart-header span {
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    .cart-items{
-      display:grid;
-      gap:15px;
+    .cart-item {
+      padding: 22px 25px;
+      display: grid;
+      grid-template-columns: 100px minmax(0,1fr) auto;
+      gap: 20px;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
     }
 
-    .cart-item{
-      background:var(--white);
-      border:1px solid var(--border);
-      padding:20px;
-      display:grid;
-      grid-template-columns:115px 1fr auto;
-      gap:22px;
-      align-items:center;
-      transition:.3s ease;
+    .cart-image {
+      width: 100px;
+      height: 100px;
+      border-radius: 14px;
+      background: var(--ivory);
+      overflow: hidden;
     }
 
-    .cart-item:hover{
-      box-shadow:var(--shadow);
+    .cart-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .cart-image{
-      width:115px;
-      height:115px;
-      background:var(--ivory);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px;
+    .item-info h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
     }
 
-    .cart-image img{
-      width:100%;
-      height:100%;
-      object-fit:contain;
+    .item-variant {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 9px;
     }
 
-    .cart-category{
-      color:var(--gold);
-      text-transform:uppercase;
-      letter-spacing:1.5px;
-      font-size:10px;
-      font-weight:700;
-      margin-bottom:5px;
+    .item-price {
+      font-weight: 700;
+      font-size: 15px;
     }
 
-    .cart-name{
-      font-family:"Playfair Display",serif;
-      font-size:22px;
-      line-height:1.25;
-      margin-bottom:7px;
+    .quantity-box {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-top: 14px;
     }
 
-    .cart-price{
-      font-size:14px;
-      color:var(--muted);
+    .quantity-box button {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      background: #fff;
+      cursor: pointer;
+      font-size: 18px;
     }
 
-    .cart-item-right{
-      text-align:right;
-      min-width:150px;
+    .quantity-box button:hover {
+      background: var(--ivory);
     }
 
-    .item-total{
-      font-weight:700;
-      font-size:16px;
-      margin-bottom:12px;
+    .quantity-value {
+      width: 35px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 700;
     }
 
-    .quantity-control{
-      display:inline-flex;
-      align-items:center;
-      border:1px solid var(--border);
-      background:var(--white);
+    .item-right {
+      text-align: right;
+      min-width: 130px;
     }
 
-    .quantity-control button{
-      width:34px;
-      height:34px;
-      border:0;
-      background:transparent;
-      cursor:pointer;
-      font-size:17px;
+    .item-total {
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 15px;
     }
 
-    .quantity-control button:hover{
-      background:var(--black);
-      color:var(--white);
+    .remove-btn {
+      border: 0;
+      background: transparent;
+      color: #9a4b4b;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
     }
 
-    .quantity-control input{
-      width:40px;
-      height:34px;
-      border:0;
-      border-left:1px solid var(--border);
-      border-right:1px solid var(--border);
-      text-align:center;
-      outline:none;
+    .remove-btn:hover {
+      text-decoration: underline;
     }
 
-    .remove-btn{
-      border:0;
-      background:transparent;
-      color:var(--muted);
-      cursor:pointer;
-      display:block;
-      margin:9px 0 0 auto;
-      font-size:12px;
-      text-decoration:underline;
+    .summary {
+      padding: 28px;
+      position: sticky;
+      top: 110px;
     }
 
-    .remove-btn:hover{
-      color:var(--black);
+    .summary h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      margin-bottom: 25px;
     }
-
-    /* SUMMARY */
 
-    .summary{
-      background:var(--white);
-      border:1px solid var(--border);
-      padding:30px;
-      position:sticky;
-      top:110px;
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
     }
 
-    .summary h2{
-      font-size:30px;
-      margin-bottom:25px;
+    .summary-row span:first-child {
+      color: var(--muted);
     }
 
-    .summary-row{
-      display:flex;
-      justify-content:space-between;
-      gap:20px;
-      padding:12px 0;
-      border-bottom:1px solid var(--border);
-      font-size:14px;
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      padding: 22px 0;
+      font-size: 20px;
+      font-weight: 700;
     }
 
-    .summary-row span:first-child{
-      color:var(--muted);
+    .checkout-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 13px;
+      min-height: 54px;
+      background: var(--black);
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s;
     }
 
-    .summary-row.total{
-      border-bottom:0;
-      padding-top:20px;
-      font-size:18px;
-      font-weight:700;
+    .checkout-btn:hover {
+      background: var(--gold-dark);
     }
 
-    .checkout-btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-      min-height:50px;
-      margin-top:20px;
-      background:var(--black);
-      color:var(--white);
-      border:1px solid var(--black);
-      font-size:13px;
-      font-weight:700;
-      transition:.3s ease;
+    .checkout-btn:disabled {
+      opacity: .55;
+      cursor: not-allowed;
     }
 
-    .checkout-btn:hover{
-      background:var(--gold);
-      border-color:var(--gold);
+    .continue-btn {
+      width: 100%;
+      min-height: 50px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      background: transparent;
+      margin-top: 12px;
+      cursor: pointer;
+      font-weight: 600;
     }
 
-    .continue-btn{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      width:100%;
-      min-height:48px;
-      margin-top:10px;
-      border:1px solid var(--border);
-      background:transparent;
-      font-size:13px;
-      font-weight:600;
-      transition:.3s ease;
+    .continue-btn:hover {
+      background: var(--ivory);
     }
 
-    .continue-btn:hover{
-      background:var(--ivory);
+    .secure-note {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
     }
 
-    .cart-note{
-      margin-top:20px;
-      color:var(--muted);
-      font-size:11px;
-      line-height:1.6;
-      text-align:center;
+    .empty-cart {
+      text-align: center;
+      padding: 80px 25px;
     }
 
-    /* EMPTY */
-
-    .empty-cart{
-      background:var(--white);
-      border:1px solid var(--border);
-      padding:75px 30px;
-      text-align:center;
+    .empty-cart .empty-icon {
+      font-size: 46px;
+      margin-bottom: 18px;
     }
 
-    .empty-icon{
-      width:75px;
-      height:75px;
-      border-radius:50%;
-      background:var(--ivory);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      margin:0 auto 25px;
-      font-size:30px;
+    .empty-cart h2 {
+      font-family: "Playfair Display", serif;
+      font-size: 32px;
+      margin-bottom: 10px;
     }
 
-    .empty-cart h2{
-      font-size:36px;
-      margin-bottom:10px;
+    .empty-cart p {
+      color: var(--muted);
+      margin-bottom: 25px;
     }
 
-    .empty-cart p{
-      color:var(--muted);
-      max-width:500px;
-      margin:0 auto 25px;
+    .shop-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 28px;
+      background: var(--black);
+      color: #fff;
+      border-radius: 12px;
+      font-weight: 700;
     }
 
-    .shop-btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--black);
-      color:var(--white);
-      padding:13px 27px;
-      border:1px solid var(--black);
-      font-size:13px;
-      font-weight:700;
-      transition:.3s ease;
+    .loading {
+      text-align: center;
+      padding: 80px 20px;
+      color: var(--muted);
     }
 
-    .shop-btn:hover{
-      background:var(--gold);
-      border-color:var(--gold);
+    .error-box {
+      background: #fff4f4;
+      border: 1px solid #e5b7b7;
+      color: #8c3c3c;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 25px;
+      display: none;
     }
 
-    /* TOAST */
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom:25px;
-      transform:translate(-50%,20px);
-      background:var(--black);
-      color:var(--white);
-      padding:13px 20px;
-      font-size:13px;
-      z-index:3000;
-      opacity:0;
-      pointer-events:none;
-      transition:.3s ease;
+    footer {
+      background: var(--black);
+      color: #fff;
+      padding: 55px 0 30px;
     }
 
-    .toast.show{
-      opacity:1;
-      transform:translate(-50%,0);
+    .footer-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 45px;
     }
-
-    /* FOOTER */
 
-    footer{
-      background:#0b0b0b;
-      color:var(--white);
-      padding:70px 0 25px;
+    .footer-brand h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 27px;
+      margin-bottom: 12px;
     }
 
-    .footer-grid{
-      display:grid;
-      grid-template-columns:1.5fr 1fr 1fr 1fr;
-      gap:45px;
-      padding-bottom:55px;
-      border-bottom:1px solid rgba(255,255,255,.10);
+    .footer-brand p {
+      color: rgba(255,255,255,.65);
+      max-width: 420px;
+      line-height: 1.7;
+      font-size: 14px;
     }
 
-    .footer-brand img{
-      width:180px;
-      margin-bottom:20px;
+    footer h4 {
+      margin-bottom: 15px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
 
-    .footer-brand p{
-      color:rgba(255,255,255,.55);
-      max-width:330px;
-      font-size:14px;
+    footer ul {
+      list-style: none;
     }
 
-    .footer-col h3{
-      font-family:"DM Sans",sans-serif;
-      font-size:13px;
-      text-transform:uppercase;
-      letter-spacing:2px;
-      margin-bottom:20px;
-      color:var(--gold);
+    footer li {
+      margin-bottom: 9px;
     }
 
-    .footer-col a{
-      display:block;
-      color:rgba(255,255,255,.60);
-      font-size:13px;
-      margin-bottom:11px;
-      transition:.3s ease;
+    footer a {
+      color: rgba(255,255,255,.65);
+      font-size: 14px;
     }
 
-    .footer-col a:hover{
-      color:var(--white);
-      padding-left:4px;
+    footer a:hover {
+      color: #fff;
     }
 
-    .footer-bottom{
-      padding-top:25px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:20px;
-      color:rgba(255,255,255,.42);
-      font-size:12px;
+    .footer-bottom {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 40px auto 0;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.45);
+      font-size: 12px;
+      text-align: center;
     }
 
-    /* REVEAL */
-
-    .reveal{
-      opacity:0;
-      transform:translateY(20px);
-      transition:.7s ease;
+    .toast {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 2000;
+      background: var(--black);
+      color: #fff;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-size: 13px;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: .25s;
     }
 
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    /* MOBILE */
-
-    @media(max-width:1000px){
 
-      .nav-links{
-        position:absolute;
-        top:82px;
-        left:0;
-        right:0;
-        background:var(--ivory);
-        border-bottom:1px solid var(--border);
-        display:none;
-        flex-direction:column;
-        align-items:flex-start;
-        gap:0;
-        padding:15px 4%;
+    @media (max-width: 1000px) {
+      nav {
+        display: none;
       }
 
-      .nav-links.open{
-        display:flex;
+      .cart-layout {
+        grid-template-columns: 1fr;
       }
 
-      .nav-links a{
-        width:100%;
-        padding:13px 0;
+      .summary {
+        position: static;
       }
 
-      .nav-links a::after{
-        bottom:5px;
-      }
-
-      .menu-btn{
-        display:flex;
-      }
-
-      .cart-layout{
-        grid-template-columns:1fr;
-      }
-
-      .summary{
-        position:static;
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr 1fr;
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
       }
     }
 
-    @media(max-width:650px){
-
-      .brand-logo{
-        width:145px;
+    @media (max-width: 650px) {
+      .header-inner {
+        width: min(var(--max), calc(100% - 24px));
       }
 
-      .nav{
-        min-height:72px;
+      .brand-text {
+        display: none;
       }
 
-      .nav-links{
-        top:72px;
+      main {
+        width: min(var(--max), calc(100% - 24px));
+        padding-top: 45px;
       }
 
-      .nav-actions{
-        gap:6px;
+      .cart-item {
+        grid-template-columns: 80px minmax(0,1fr);
+        gap: 15px;
       }
 
-      .icon-btn{
-        width:38px;
-        height:38px;
+      .cart-image {
+        width: 80px;
+        height: 80px;
       }
 
-      .page-hero{
-        padding:75px 0 60px;
+      .item-right {
+        grid-column: 2;
+        text-align: left;
+        min-width: 0;
       }
 
-      .cart-section{
-        padding:45px 0 75px;
+      .item-total {
+        margin-bottom: 8px;
       }
 
-      .cart-item{
-        grid-template-columns:80px 1fr;
-        gap:15px;
-        padding:15px;
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .header-actions .icon-btn:first-child {
+        display: none;
       }
 
-      .cart-image{
-        width:80px;
-        height:80px;
+      .page-heading h1 {
+        font-size: 44px;
       }
 
-      .cart-item-right{
-        grid-column:1 / -1;
-        min-width:0;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        gap:12px;
-        text-align:left;
-        border-top:1px solid var(--border);
-        padding-top:15px;
-      }
-
-      .item-total{
-        margin-bottom:0;
-      }
-
-      .remove-btn{
-        margin:0 0 0 auto;
-      }
-
-      .empty-cart{
-        padding:55px 20px;
-      }
-
-      .empty-cart h2{
-        font-size:31px;
-      }
-
-      .footer-grid{
-        grid-template-columns:1fr;
-        gap:35px;
-      }
-
-      .footer-bottom{
-        flex-direction:column;
-        align-items:flex-start;
+      .summary {
+        padding: 22px;
       }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebPage",
-    "name":"Shopping Cart",
-    "url":"https://shoporamarketstore.store/cart.html",
-    "isPartOf":{
-      "@type":"WebSite",
-      "name":"Shopora Market Store",
-      "url":"https://shoporamarketstore.store/"
-    }
-  }
-  </script>
 </head>
 
 <body>
 
-<header>
-  <div class="container nav">
-
-    <a
-      href="index.html"
-      class="brand"
-      aria-label="Shopora Market Store home"
-    >
-      <img
-        src="assets/shopora-logo.png"
-        alt="Shopora Market Store"
-        class="brand-logo"
-        width="180"
-        height="60"
-      >
-    </a>
-
-    <nav class="nav-links" id="navLinks">
-
-      <a href="index.html">Home</a>
-
-      <a href="shop.html">Shop</a>
-
-      <a href="categories.html">Categories</a>
-
-      <a href="trending.html">Trending</a>
-
-      <a href="about.html">About</a>
-
-      <a href="contact.html">Contact</a>
-
-    </nav>
-
-    <div class="nav-actions">
-
-      <button
-        class="icon-btn"
-        onclick="goToSearch()"
-        aria-label="Search"
-      >
-        🔍
-      </button>
-
-      <a
-        href="wishlist.html"
-        class="icon-btn"
-        aria-label="Wishlist"
-      >
-        ♡
-        <span
-          class="count"
-          id="wishlistCount"
-        >0</span>
-      </a>
-
-      <a
-        href="cart.html"
-        class="icon-btn"
-        aria-label="Shopping cart"
-      >
-        🛒
-        <span
-          class="count"
-          id="cartCount"
-        >0</span>
-      </a>
-
-      <button
-        class="icon-btn menu-btn"
-        onclick="toggleMenu()"
-        aria-label="Menu"
-      >
-        ☰
-      </button>
-
-    </div>
-
+  <div class="topbar">
+    Premium shopping · Secure Shopify checkout
   </div>
-</header>
 
+  <header>
+    <div class="header-inner">
 
-<main>
-
-  <!-- HERO -->
-
-  <section class="page-hero reveal">
-
-    <div class="container">
-
-      <div class="eyebrow">Your Selection</div>
-
-      <h1>Shopping Cart</h1>
-
-      <p>
-        Review your selected products, update quantities and continue
-        when you're ready.
-      </p>
-
-    </div>
-
-  </section>
-
-
-  <!-- CART -->
-
-  <section class="cart-section">
-
-    <div class="container">
-
-      <!-- EMPTY CART -->
-
-      <div
-        class="empty-cart reveal"
-        id="emptyCart"
-        style="display:none;"
-      >
-
-        <div class="empty-icon">
-          🛒
+      <a href="index.html" class="brand">
+        <img src="assets/shopora-mark.png" alt="Shopora Market Store">
+        <div class="brand-text">
+          <strong>Shopora</strong>
+          <span>Market Store</span>
         </div>
+      </a>
 
-        <h2>Your Cart Is Empty</h2>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="categories.html">Categories</a>
+        <a href="trending.html">Trending</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-        <p>
-          You haven't added any products yet. Explore our collections
-          and find something you'll love.
-        </p>
+      <div class="header-actions">
 
-        <a
-          href="shop.html"
-          class="shop-btn"
-        >
-          Continue Shopping
+        <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+          ♡
+          <span class="count" id="wishlistCount">0</span>
+        </a>
+
+        <a href="cart.html" class="icon-btn" aria-label="Cart">
+          🛒
+          <span class="count" id="cartCount">0</span>
         </a>
 
       </div>
 
+    </div>
+  </header>
 
-      <!-- CART CONTENT -->
+  <main>
 
-      <div
-        class="cart-layout"
-        id="cartContent"
-        style="display:none;"
-      >
+    <div class="page-heading">
+      <div class="eyebrow">Your selection</div>
+      <h1>Your Cart</h1>
+      <p>Review your products before continuing to secure checkout.</p>
+    </div>
 
-        <div
-          class="cart-items"
-          id="cartItems"
-        ></div>
+    <div id="errorBox" class="error-box"></div>
 
+    <div id="loading" class="loading">
+      Loading your cart...
+    </div>
+
+    <div id="cartContent" style="display:none;">
+
+      <div class="cart-layout">
+
+        <section class="cart-box">
+
+          <div class="cart-header">
+            <h2>Shopping Bag</h2>
+            <span id="cartItemCount">0 items</span>
+          </div>
+
+          <div id="cartItems"></div>
+
+        </section>
 
         <aside class="summary">
 
           <h2>Order Summary</h2>
 
           <div class="summary-row">
-
             <span>Items</span>
-
-            <strong id="summaryItems">
-              0
-            </strong>
-
+            <strong id="summaryQuantity">0</strong>
           </div>
 
-
           <div class="summary-row">
-
             <span>Subtotal</span>
-
-            <strong id="summarySubtotal">
-              Rs. 0
-            </strong>
-
+            <strong id="summarySubtotal">PKR 0</strong>
           </div>
-
 
           <div class="summary-row">
-
             <span>Shipping</span>
-
-            <strong>
-              Calculated at checkout
-            </strong>
-
+            <strong>Calculated at checkout</strong>
           </div>
 
-
-          <div class="summary-row total">
-
+          <div class="summary-total">
             <span>Total</span>
-
-            <strong id="summaryTotal">
-              Rs. 0
-            </strong>
-
+            <span id="summaryTotal">PKR 0</span>
           </div>
 
-
-          <a
-            href="checkout.html"
+          <button
+            type="button"
+            id="checkoutBtn"
             class="checkout-btn"
-            id="checkoutLink"
           >
-            Proceed To Checkout
-          </a>
+            Proceed to Checkout
+          </button>
 
-
-          <a
-            href="shop.html"
-            class="continue-btn"
-          >
+          <a href="shop.html" class="continue-btn" style="display:flex;align-items:center;justify-content:center;">
             Continue Shopping
           </a>
 
-
-          <p class="cart-note">
-            This is a static shopping experience. Final order,
-            delivery and payment details are handled during checkout.
-          </p>
+          <div class="secure-note">
+            Checkout is handled securely through Shopify.
+            Available payment methods will appear during checkout.
+          </div>
 
         </aside>
 
@@ -959,309 +742,736 @@
 
     </div>
 
-  </section>
+    <div id="emptyCart" class="empty-cart" style="display:none;">
 
-</main>
+      <div class="empty-icon">🛒</div>
 
+      <h2>Your cart is empty</h2>
 
-<!-- FOOTER -->
+      <p>
+        Looks like you haven't added anything yet.
+      </p>
 
-<footer>
+      <a href="shop.html" class="shop-btn">
+        Start Shopping
+      </a>
 
-  <div class="container">
+    </div>
 
-    <div class="footer-grid">
+  </main>
+
+  <footer>
+
+    <div class="footer-inner">
 
       <div class="footer-brand">
-
-        <a href="index.html">
-
-          <img
-            src="assets/shopora-logo.png"
-            alt="Shopora Market Store"
-            width="180"
-            height="60"
-          >
-
-        </a>
-
+        <h3>Shopora Market Store</h3>
         <p>
-          A modern marketplace for fashion, beauty, electronics,
-          home & living, accessories and everyday lifestyle products.
+          A premium online marketplace for fashion, beauty,
+          electronics, accessories, home & living and lifestyle products.
         </p>
-
       </div>
 
-
-      <div class="footer-col">
-
-        <h3>Shop</h3>
-
-        <a href="shop.html">
-          Shop All
-        </a>
-
-        <a href="categories.html">
-          Categories
-        </a>
-
-        <a href="trending.html">
-          Trending
-        </a>
-
-        <a href="cart.html">
-          Cart
-        </a>
-
-        <a href="wishlist.html">
-          Wishlist
-        </a>
-
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="shop.html">All Products</a></li>
+          <li><a href="categories.html">Categories</a></li>
+          <li><a href="trending.html">Trending</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
       </div>
 
-
-      <div class="footer-col">
-
-        <h3>Company</h3>
-
-        <a href="about.html">
-          About
-        </a>
-
-        <a href="contact.html">
-          Contact
-        </a>
-
-      </div>
-
-
-      <div class="footer-col">
-
-        <h3>Policies</h3>
-
-        <a href="privacy-policy.html">
-          Privacy Policy
-        </a>
-
-        <a href="terms-of-service.html">
-          Terms of Service
-        </a>
-
-        <a href="cookie-policy.html">
-          Cookie Policy
-        </a>
-
-        <a href="return-refund.html">
-          Return & Refund
-        </a>
-
+      <div>
+        <h4>Help</h4>
+        <ul>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="policy.html">Cookie Policy</a></li>
+          <li><a href="return-refund.html">Return / Refunds</a></li>
+        </ul>
       </div>
 
     </div>
-
 
     <div class="footer-bottom">
-
-      <div>
-        © <span id="year"></span>
-        Shopora Market Store. All rights reserved.
-      </div>
-
-      <div>
-        brandseocompany@gmail.com
-      </div>
-
+      © 2026 Shopora Market Store. All rights reserved.
     </div>
 
-  </div>
+  </footer>
 
-</footer>
+  <div id="toast" class="toast"></div>
 
+  <script>
 
-<div
-  class="toast"
-  id="toast"
-  role="status"
-  aria-live="polite"
-></div>
+    /* =========================================================
+       SHOPIFY CONFIG
+       ========================================================= */
 
+    const SHOPIFY_STORE_DOMAIN =
+      "fsgigg-tp.myshopify.com";
 
-<script>
+    const SHOPIFY_STOREFRONT_TOKEN =
+      "YOUR_STOREFRONT_PUBLIC_TOKEN";
 
-  /* =========================
-     CART STORAGE
-  ========================= */
+    const SHOPIFY_API_VERSION =
+      "2026-07";
 
-  function getCart(){
-
-    try{
-
-      return JSON.parse(
-        localStorage.getItem("shoporaCart")
-      ) || [];
-
-    }catch(error){
-
-      return [];
-
-    }
-
-  }
+    const SHOPIFY_STOREFRONT_URL =
+      "https://" +
+      SHOPIFY_STORE_DOMAIN +
+      "/api/" +
+      SHOPIFY_API_VERSION +
+      "/graphql.json";
 
 
-  function saveCart(cart){
+    /* =========================================================
+       STORAGE
+       ========================================================= */
 
-    localStorage.setItem(
-      "shoporaCart",
-      JSON.stringify(cart)
-    );
+    const SHOPIFY_CART_STORAGE_KEY =
+      "shoporaShopifyCartId";
 
-  }
-
-
-  /* =========================
-     WISHLIST STORAGE
-  ========================= */
-
-  function getWishlist(){
-
-    try{
-
-      return JSON.parse(
-        localStorage.getItem("shoporaWishlist")
-      ) || [];
-
-    }catch(error){
-
-      return [];
-
-    }
-
-  }
+    const OLD_LOCAL_CART_KEY =
+      "shoporaCart";
 
 
-  /* =========================
-     PRICE FORMAT
-  ========================= */
+    /* =========================================================
+       HELPERS
+       ========================================================= */
 
-  function formatPrice(price){
-
-    return "Rs. " +
-      Number(price).toLocaleString("en-PK");
-
-  }
-
-
-  /* =========================
-     RENDER CART
-  ========================= */
-
-  function renderCart(){
-
-    const cart =
-      getCart();
-
-    const emptyCart =
-      document.getElementById("emptyCart");
-
-    const cartContent =
-      document.getElementById("cartContent");
-
-    const cartItems =
-      document.getElementById("cartItems");
-
-
-    if(cart.length === 0){
-
-      emptyCart.style.display = "block";
-
-      cartContent.style.display = "none";
-
-      updateCounts();
-
-      return;
-
+    function getShopifyCartId() {
+      return localStorage.getItem(SHOPIFY_CART_STORAGE_KEY);
     }
 
 
-    emptyCart.style.display = "none";
+    function saveShopifyCartId(cartId) {
+      if (cartId) {
+        localStorage.setItem(
+          SHOPIFY_CART_STORAGE_KEY,
+          cartId
+        );
+      }
+    }
 
-    cartContent.style.display = "grid";
+
+    function removeShopifyCartId() {
+      localStorage.removeItem(
+        SHOPIFY_CART_STORAGE_KEY
+      );
+    }
 
 
-    cartItems.innerHTML =
-      cart.map(
-        (item,index) => `
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
 
-          <article
-            class="cart-item"
-            data-index="${index}"
-          >
 
-            <a
-              href="product.html"
-              class="cart-image"
-              aria-label="${escapeHTML(item.name)}"
+    function formatMoney(amount, currencyCode) {
+
+      const number =
+        Number(amount || 0);
+
+      if (currencyCode === "PKR") {
+        return (
+          "PKR " +
+          number.toLocaleString("en-PK", {
+            maximumFractionDigits: 2
+          })
+        );
+      }
+
+      try {
+        return new Intl.NumberFormat(
+          "en-US",
+          {
+            style: "currency",
+            currency: currencyCode || "USD"
+          }
+        ).format(number);
+      } catch {
+        return (
+          (currencyCode || "") +
+          " " +
+          number.toLocaleString()
+        );
+      }
+    }
+
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById("toast");
+
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2500);
+    }
+
+
+    function updateHeaderCount(quantity) {
+
+      const cartCount =
+        document.getElementById("cartCount");
+
+      cartCount.textContent =
+        quantity || 0;
+
+      const localCart =
+        JSON.parse(
+          localStorage.getItem(OLD_LOCAL_CART_KEY) || "[]"
+        );
+
+      const wishlist =
+        JSON.parse(
+          localStorage.getItem("shoporaWishlist") || "[]"
+        );
+
+      document.getElementById("wishlistCount").textContent =
+        wishlist.length;
+
+      /*
+       * Keep old local cart visual data synchronized.
+       * Shopify remains the real cart.
+       */
+      if (quantity === 0) {
+        localStorage.removeItem(
+          OLD_LOCAL_CART_KEY
+        );
+      }
+    }
+
+
+    /* =========================================================
+       SHOPIFY GRAPHQL
+       ========================================================= */
+
+    async function shopifyRequest(query, variables = {}) {
+
+      if (
+        !SHOPIFY_STOREFRONT_TOKEN ||
+        SHOPIFY_STOREFRONT_TOKEN ===
+        "YOUR_STOREFRONT_PUBLIC_TOKEN"
+      ) {
+        throw new Error(
+          "Shopify Storefront API token is not configured."
+        );
+      }
+
+      const response =
+        await fetch(
+          SHOPIFY_STOREFRONT_URL,
+          {
+            method: "POST",
+
+            headers: {
+              "Content-Type":
+                "application/json",
+
+              "X-Shopify-Storefront-Access-Token":
+                SHOPIFY_STOREFRONT_TOKEN
+            },
+
+            body: JSON.stringify({
+              query,
+              variables
+            })
+          }
+        );
+
+      if (!response.ok) {
+        throw new Error(
+          "Shopify API HTTP error: " +
+          response.status
+        );
+      }
+
+      const data =
+        await response.json();
+
+      if (data.errors?.length) {
+        throw new Error(
+          data.errors
+            .map(error => error.message)
+            .join(", ")
+        );
+      }
+
+      return data.data;
+    }
+
+
+    /* =========================================================
+       GET CART
+       ========================================================= */
+
+    async function getShopifyCart(cartId) {
+
+      const query = `
+        query GetCart($cartId: ID!) {
+
+          cart(id: $cartId) {
+
+            id
+
+            checkoutUrl
+
+            totalQuantity
+
+            cost {
+
+              subtotalAmount {
+                amount
+                currencyCode
+              }
+
+              totalAmount {
+                amount
+                currencyCode
+              }
+            }
+
+            lines(first: 100) {
+
+              nodes {
+
+                id
+
+                quantity
+
+                merchandise {
+
+                  ... on ProductVariant {
+
+                    id
+
+                    title
+
+                    availableForSale
+
+                    price {
+                      amount
+                      currencyCode
+                    }
+
+                    product {
+
+                      id
+                      title
+                      handle
+
+                      featuredImage {
+                        url
+                        altText
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      `;
+
+      const data =
+        await shopifyRequest(
+          query,
+          { cartId }
+        );
+
+      return data.cart;
+    }
+
+
+    /* =========================================================
+       UPDATE QUANTITY
+       ========================================================= */
+
+    async function updateCartLine(
+      lineId,
+      quantity
+    ) {
+
+      const cartId =
+        getShopifyCartId();
+
+      if (!cartId) {
+        return;
+      }
+
+      const query = `
+        mutation UpdateCartLines(
+          $cartId: ID!,
+          $lines: [CartLineUpdateInput!]!
+        ) {
+
+          cartLinesUpdate(
+            cartId: $cartId,
+            lines: $lines
+          ) {
+
+            cart {
+
+              id
+              checkoutUrl
+              totalQuantity
+
+              cost {
+
+                subtotalAmount {
+                  amount
+                  currencyCode
+                }
+
+                totalAmount {
+                  amount
+                  currencyCode
+                }
+              }
+
+              lines(first: 100) {
+
+                nodes {
+
+                  id
+                  quantity
+
+                  merchandise {
+
+                    ... on ProductVariant {
+
+                      id
+                      title
+
+                      price {
+                        amount
+                        currencyCode
+                      }
+
+                      product {
+
+                        id
+                        title
+                        handle
+
+                        featuredImage {
+                          url
+                          altText
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            userErrors {
+              field
+              message
+            }
+          }
+        }
+      `;
+
+      const data =
+        await shopifyRequest(
+          query,
+          {
+            cartId,
+            lines: [
+              {
+                id: lineId,
+                quantity: Number(quantity)
+              }
+            ]
+          }
+        );
+
+      const result =
+        data.cartLinesUpdate;
+
+      if (result.userErrors?.length) {
+        throw new Error(
+          result.userErrors
+            .map(error => error.message)
+            .join(", ")
+        );
+      }
+
+      return result.cart;
+    }
+
+
+    /* =========================================================
+       REMOVE LINE
+       ========================================================= */
+
+    async function removeCartLine(lineId) {
+
+      const cartId =
+        getShopifyCartId();
+
+      if (!cartId) {
+        return;
+      }
+
+      const query = `
+        mutation RemoveCartLines(
+          $cartId: ID!,
+          $lineIds: [ID!]!
+        ) {
+
+          cartLinesRemove(
+            cartId: $cartId,
+            lineIds: $lineIds
+          ) {
+
+            cart {
+
+              id
+              checkoutUrl
+              totalQuantity
+
+              cost {
+
+                subtotalAmount {
+                  amount
+                  currencyCode
+                }
+
+                totalAmount {
+                  amount
+                  currencyCode
+                }
+              }
+
+              lines(first: 100) {
+
+                nodes {
+
+                  id
+                  quantity
+
+                  merchandise {
+
+                    ... on ProductVariant {
+
+                      id
+                      title
+
+                      price {
+                        amount
+                        currencyCode
+                      }
+
+                      product {
+
+                        id
+                        title
+                        handle
+
+                        featuredImage {
+                          url
+                          altText
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            userErrors {
+              field
+              message
+            }
+          }
+        }
+      `;
+
+      const data =
+        await shopifyRequest(
+          query,
+          {
+            cartId,
+            lineIds: [lineId]
+          }
+        );
+
+      const result =
+        data.cartLinesRemove;
+
+      if (result.userErrors?.length) {
+        throw new Error(
+          result.userErrors
+            .map(error => error.message)
+            .join(", ")
+        );
+      }
+
+      return result.cart;
+    }
+
+
+    /* =========================================================
+       RENDER CART
+       ========================================================= */
+
+    function renderCart(cart) {
+
+      const loading =
+        document.getElementById("loading");
+
+      const content =
+        document.getElementById("cartContent");
+
+      const empty =
+        document.getElementById("emptyCart");
+
+      const cartItems =
+        document.getElementById("cartItems");
+
+      loading.style.display = "none";
+
+      if (
+        !cart ||
+        !cart.lines ||
+        cart.lines.nodes.length === 0
+      ) {
+
+        content.style.display = "none";
+        empty.style.display = "block";
+
+        updateHeaderCount(0);
+
+        return;
+      }
+
+      content.style.display = "block";
+      empty.style.display = "none";
+
+      const lines =
+        cart.lines.nodes;
+
+      document.getElementById(
+        "cartItemCount"
+      ).textContent =
+        lines.length +
+        (lines.length === 1 ? " item" : " items");
+
+      document.getElementById(
+        "summaryQuantity"
+      ).textContent =
+        cart.totalQuantity || 0;
+
+      document.getElementById(
+        "summarySubtotal"
+      ).textContent =
+        formatMoney(
+          cart.cost.subtotalAmount.amount,
+          cart.cost.subtotalAmount.currencyCode
+        );
+
+      document.getElementById(
+        "summaryTotal"
+      ).textContent =
+        formatMoney(
+          cart.cost.totalAmount.amount,
+          cart.cost.totalAmount.currencyCode
+        );
+
+      updateHeaderCount(
+        cart.totalQuantity || 0
+      );
+
+      cartItems.innerHTML =
+        lines.map(line => {
+
+          const variant =
+            line.merchandise;
+
+          const product =
+            variant.product;
+
+          const image =
+            product.featuredImage?.url ||
+            "assets/shopora-mark.png";
+
+          const alt =
+            product.featuredImage?.altText ||
+            product.title;
+
+          const lineTotal =
+            Number(variant.price.amount) *
+            Number(line.quantity);
+
+          return `
+            <article
+              class="cart-item"
+              data-line-id="${escapeHTML(line.id)}"
             >
 
-              <img
-                src="${escapeHTML(item.image)}"
-                alt="${escapeHTML(item.name)}"
+              <a
+                href="product.html?handle=${encodeURIComponent(product.handle)}"
+                class="cart-image"
               >
+                <img
+                  src="${escapeHTML(image)}"
+                  alt="${escapeHTML(alt)}"
+                  loading="lazy"
+                >
+              </a>
 
-            </a>
+              <div class="item-info">
 
+                <h3>
+                  ${escapeHTML(product.title)}
+                </h3>
 
-            <div>
+                ${
+                  variant.title &&
+                  variant.title !== "Default Title"
+                    ? `
+                      <div class="item-variant">
+                        ${escapeHTML(variant.title)}
+                      </div>
+                    `
+                    : ""
+                }
 
-              <div class="cart-category">
-                Shopora Product
-              </div>
-
-              <h2 class="cart-name">
-                ${escapeHTML(item.name)}
-              </h2>
-
-              <div class="cart-price">
-                ${formatPrice(item.price)}
-              </div>
-
-            </div>
-
-
-            <div class="cart-item-right">
-
-              <div>
-
-                <div class="item-total">
-                  ${formatPrice(
-                    Number(item.price) *
-                    Number(item.quantity || 1)
+                <div class="item-price">
+                  ${formatMoney(
+                    variant.price.amount,
+                    variant.price.currencyCode
                   )}
                 </div>
 
-                <div class="quantity-control">
+                <div class="quantity-box">
 
                   <button
                     type="button"
-                    onclick="changeQuantity(${index},-1)"
+                    class="quantity-minus"
                     aria-label="Decrease quantity"
                   >
                     −
                   </button>
 
-                  <input
-                    type="number"
-                    min="1"
-                    max="99"
-                    value="${Number(item.quantity || 1)}"
-                    onchange="setQuantity(${index},this.value)"
-                    aria-label="Quantity"
-                  >
+                  <span class="quantity-value">
+                    ${line.quantity}
+                  </span>
 
                   <button
                     type="button"
-                    onclick="changeQuantity(${index},1)"
+                    class="quantity-plus"
                     aria-label="Increase quantity"
                   >
                     +
@@ -1271,379 +1481,358 @@
 
               </div>
 
+              <div class="item-right">
 
-              <button
-                class="remove-btn"
-                type="button"
-                onclick="removeItem(${index})"
-              >
-                Remove
-              </button>
+                <div class="item-total">
+                  ${formatMoney(
+                    lineTotal,
+                    variant.price.currencyCode
+                  )}
+                </div>
 
-            </div>
+                <button
+                  type="button"
+                  class="remove-btn"
+                >
+                  Remove
+                </button>
 
-          </article>
+              </div>
 
-        `
-      ).join("");
+            </article>
+          `;
 
+        }).join("");
 
-    updateSummary(cart);
+      document
+        .querySelectorAll(".cart-item")
+        .forEach(item => {
 
-    updateCounts();
+          const lineId =
+            item.dataset.lineId;
 
-  }
+          const quantity =
+            Number(
+              item.querySelector(
+                ".quantity-value"
+              ).textContent
+            );
 
+          item
+            .querySelector(".quantity-minus")
+            .addEventListener(
+              "click",
+              async () => {
 
-  /* =========================
-     SUMMARY
-  ========================= */
+                if (quantity <= 1) {
 
-  function updateSummary(cart){
+                  await changeLine(
+                    lineId,
+                    0
+                  );
 
-    const itemCount =
-      cart.reduce(
-        (total,item) =>
-          total +
-          Number(item.quantity || 1),
-        0
-      );
+                } else {
 
+                  await changeLine(
+                    lineId,
+                    quantity - 1
+                  );
+                }
+              }
+            );
 
-    const subtotal =
-      cart.reduce(
-        (total,item) =>
-          total +
-          (
-            Number(item.price || 0) *
-            Number(item.quantity || 1)
-          ),
-        0
-      );
+          item
+            .querySelector(".quantity-plus")
+            .addEventListener(
+              "click",
+              async () => {
 
+                await changeLine(
+                  lineId,
+                  quantity + 1
+                );
+              }
+            );
 
-    document.getElementById(
-      "summaryItems"
-    ).textContent =
-      itemCount;
+          item
+            .querySelector(".remove-btn")
+            .addEventListener(
+              "click",
+              async () => {
 
-
-    document.getElementById(
-      "summarySubtotal"
-    ).textContent =
-      formatPrice(subtotal);
-
-
-    document.getElementById(
-      "summaryTotal"
-    ).textContent =
-      formatPrice(subtotal);
-
-  }
-
-
-  /* =========================
-     CHANGE QUANTITY
-  ========================= */
-
-  function changeQuantity(index,amount){
-
-    const cart =
-      getCart();
-
-    if(!cart[index]){
-      return;
+                await changeLine(
+                  lineId,
+                  0
+                );
+              }
+            );
+        });
     }
 
 
-    let quantity =
-      Number(cart[index].quantity || 1);
+    /* =========================================================
+       CHANGE LINE
+       ========================================================= */
 
+    async function changeLine(
+      lineId,
+      quantity
+    ) {
 
-    quantity += amount;
+      const errorBox =
+        document.getElementById("errorBox");
 
+      errorBox.style.display = "none";
 
-    if(quantity < 1){
-      quantity = 1;
-    }
+      try {
 
-    if(quantity > 99){
-      quantity = 99;
-    }
+        document.body.style.cursor =
+          "wait";
 
+        let cart;
 
-    cart[index].quantity =
-      quantity;
+        if (quantity <= 0) {
 
+          cart =
+            await removeCartLine(
+              lineId
+            );
 
-    saveCart(cart);
+        } else {
 
-    renderCart();
+          cart =
+            await updateCartLine(
+              lineId,
+              quantity
+            );
+        }
 
-  }
+        if (!cart) {
+          throw new Error(
+            "Unable to update cart."
+          );
+        }
 
+        renderCart(cart);
 
-  /* =========================
-     SET QUANTITY
-  ========================= */
+      } catch (error) {
 
-  function setQuantity(index,value){
+        console.error(error);
 
-    const cart =
-      getCart();
+        errorBox.textContent =
+          error.message ||
+          "Unable to update your cart.";
 
-    if(!cart[index]){
-      return;
-    }
+        errorBox.style.display =
+          "block";
 
+      } finally {
 
-    let quantity =
-      Number(value) || 1;
-
-
-    quantity =
-      Math.max(
-        1,
-        Math.min(99,quantity)
-      );
-
-
-    cart[index].quantity =
-      quantity;
-
-
-    saveCart(cart);
-
-    renderCart();
-
-  }
-
-
-  /* =========================
-     REMOVE ITEM
-  ========================= */
-
-  function removeItem(index){
-
-    const cart =
-      getCart();
-
-    if(!cart[index]){
-      return;
+        document.body.style.cursor =
+          "";
+      }
     }
 
 
-    const name =
-      cart[index].name;
+    /* =========================================================
+       CHECKOUT
+       ========================================================= */
 
+    async function checkout() {
 
-    cart.splice(index,1);
+      const button =
+        document.getElementById(
+          "checkoutBtn"
+        );
 
-    saveCart(cart);
+      const cartId =
+        getShopifyCartId();
 
-    renderCart();
+      if (!cartId) {
+        showToast(
+          "Your cart is empty."
+        );
+        return;
+      }
 
-    showToast(
-      name + " removed from cart"
-    );
+      try {
 
-  }
+        button.disabled = true;
 
+        button.textContent =
+          "Opening Checkout...";
 
-  /* =========================
-     COUNTS
-  ========================= */
-
-  function updateCounts(){
-
-    const cart =
-      getCart();
-
-    const wishlist =
-      getWishlist();
-
-
-    const cartCount =
-      cart.reduce(
-        (total,item) =>
-          total +
-          Number(item.quantity || 1),
-        0
-      );
-
-
-    document.getElementById(
-      "cartCount"
-    ).textContent =
-      cartCount;
-
-
-    document.getElementById(
-      "wishlistCount"
-    ).textContent =
-      wishlist.length;
-
-  }
-
-
-  /* =========================
-     SEARCH
-  ========================= */
-
-  function goToSearch(){
-
-    window.location.href =
-      "shop.html#productSearch";
-
-  }
-
-
-  /* =========================
-     MOBILE MENU
-  ========================= */
-
-  function toggleMenu(){
-
-    document
-      .getElementById("navLinks")
-      .classList.toggle("open");
-
-  }
-
-
-  /* =========================
-     TOAST
-  ========================= */
-
-  let toastTimer;
-
-  function showToast(message){
-
-    const toast =
-      document.getElementById("toast");
-
-
-    toast.textContent =
-      message;
-
-
-    toast.classList.add("show");
-
-
-    clearTimeout(toastTimer);
-
-
-    toastTimer =
-      setTimeout(
-        () => {
-
-          toast.classList.remove(
-            "show"
+        const cart =
+          await getShopifyCart(
+            cartId
           );
 
-        },
-        2500
-      );
+        if (!cart) {
 
-  }
+          removeShopifyCartId();
+
+          showToast(
+            "Your cart has expired. Please add your products again."
+          );
+
+          await loadCart();
+
+          return;
+        }
+
+        if (!cart.checkoutUrl) {
+          throw new Error(
+            "Shopify checkout URL is unavailable."
+          );
+        }
+
+        /*
+         * Shopify handles checkout.
+         * Payment methods configured in Shopify
+         * will appear there.
+         */
+        window.location.href =
+          cart.checkoutUrl;
+
+      } catch (error) {
+
+        console.error(error);
+
+        const errorBox =
+          document.getElementById(
+            "errorBox"
+          );
+
+        errorBox.textContent =
+          error.message ||
+          "Unable to open checkout.";
+
+        errorBox.style.display =
+          "block";
+
+      } finally {
+
+        button.disabled = false;
+
+        button.textContent =
+          "Proceed to Checkout";
+      }
+    }
 
 
-  /* =========================
-     SAFE HTML
-  ========================= */
+    /* =========================================================
+       LOAD CART
+       ========================================================= */
 
-  function escapeHTML(value){
+    async function loadCart() {
 
-    return String(value ?? "")
-      .replace(/&/g,"&amp;")
-      .replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;")
-      .replace(/"/g,"&quot;")
-      .replace(/'/g,"&#039;");
+      const loading =
+        document.getElementById(
+          "loading"
+        );
 
-  }
+      const errorBox =
+        document.getElementById(
+          "errorBox"
+        );
+
+      errorBox.style.display =
+        "none";
+
+      loading.style.display =
+        "block";
+
+      try {
+
+        const cartId =
+          getShopifyCartId();
+
+        if (!cartId) {
+
+          loading.style.display =
+            "none";
+
+          document.getElementById(
+            "emptyCart"
+          ).style.display =
+            "block";
+
+          updateHeaderCount(0);
+
+          return;
+        }
+
+        const cart =
+          await getShopifyCart(
+            cartId
+          );
+
+        /*
+         * Shopify can invalidate/expire a cart.
+         * If that happens, start clean.
+         */
+        if (!cart) {
+
+          removeShopifyCartId();
+
+          loading.style.display =
+            "none";
+
+          document.getElementById(
+            "emptyCart"
+          ).style.display =
+            "block";
+
+          updateHeaderCount(0);
+
+          return;
+        }
+
+        saveShopifyCartId(
+          cart.id
+        );
+
+        renderCart(cart);
+
+      } catch (error) {
+
+        console.error(error);
+
+        loading.style.display =
+          "none";
+
+        errorBox.textContent =
+          error.message ||
+          "Unable to load your cart.";
+
+        errorBox.style.display =
+          "block";
+      }
+    }
 
 
-  /* =========================
-     REVEAL
-  ========================= */
+    /* =========================================================
+       INIT
+       ========================================================= */
 
-  const observer =
-    new IntersectionObserver(
-      entries => {
+    document.addEventListener(
+      "DOMContentLoaded",
+      () => {
 
-        entries.forEach(entry => {
+        document
+          .getElementById(
+            "checkoutBtn"
+          )
+          .addEventListener(
+            "click",
+            checkout
+          );
 
-          if(entry.isIntersecting){
-
-            entry.target.classList.add(
-              "show"
-            );
-
-            observer.unobserve(
-              entry.target
-            );
-
-          }
-
-        });
-
-      },
-      {
-        threshold:.1
+        loadCart();
       }
     );
 
-
-  document
-    .querySelectorAll(".reveal")
-    .forEach(
-      element =>
-        observer.observe(element)
-    );
-
-
-  /* =========================
-     YEAR
-  ========================= */
-
-  document.getElementById(
-    "year"
-  ).textContent =
-    new Date().getFullYear();
-
-
-  /* =========================
-     STORAGE EVENTS
-  ========================= */
-
-  window.addEventListener(
-    "storage",
-    () => {
-
-      renderCart();
-
-    }
-  );
-
-
-  window.addEventListener(
-    "pageshow",
-    () => {
-
-      renderCart();
-
-    }
-  );
-
-
-  /* =========================
-     START
-  ========================= */
-
-  renderCart();
-
-</script>
+  </script>
 
 </body>
 </html>
