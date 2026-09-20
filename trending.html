@@ -1525,16 +1525,7 @@
       Product information itself still comes from products.js.
     */
 
-    const TRENDING_PRODUCTS = [
-      "everyday-premium-essential",
-      "modern-everyday-collection",
-      "smart-everyday-device",
-      "daily-beauty-essential",
-      "modern-home-essential",
-      "minimal-signature-accessory",
-      "classic-wardrobe-essential",
-      "everyday-carry-accessory"
-    ];
+    const TRENDING_LIMIT = 8;
 
 
     /* =========================================================
@@ -1750,124 +1741,40 @@
       document.getElementById("productGrid");
 
 
-    function renderTrendingProducts() {
-
+    async function renderTrendingProducts() {
       if (!productGrid) return;
-
-
-      productGrid.innerHTML = "";
-
-
-      TRENDING_PRODUCTS.forEach(productId => {
-
-        const product =
-          getTrendingProduct(productId);
-
-
-        if (!product) return;
-
-
-        const card =
-          document.createElement("article");
-
-
-        card.className =
-          "product-card";
-
-
-        card.dataset.productId =
-          product.id;
-
-
-        card.dataset.category =
-          product.category || "";
-
-
-        card.dataset.search = [
-          product.name,
-          product.category,
-          product.description,
-          product.badge,
-          product.sku
-        ]
-          .filter(Boolean)
-          .join(" ")
-          .toLowerCase();
-
-
-        card.innerHTML = `
-
-          <div class="product-image">
-
-            <span class="trend-badge">
-              Trending
-            </span>
-
-            <img
-              src="${escapeHTML(product.image)}"
-              alt="${escapeHTML(product.name)}"
-              loading="lazy"
-            >
-
-            <button
-              class="wishlist-btn"
-              data-product="${escapeHTML(product.id)}"
-              aria-label="Add ${escapeHTML(product.name)} to wishlist"
-            >
-              ♡
-            </button>
-
-          </div>
-
-
-          <div class="product-info">
-
-            <div class="product-category">
-              ${escapeHTML(product.category)}
+      try {
+        const products = await window.ShoporaProducts.getAllProducts({ first: 50 });
+        const trending = products.filter(p => p.buyable).slice(0, TRENDING_LIMIT);
+        productGrid.innerHTML = "";
+        trending.forEach(product => {
+          const card = document.createElement("article");
+          card.className = "product-card";
+          card.dataset.category = product.category || "";
+          card.dataset.search = [product.name,product.category,product.description,product.sku].filter(Boolean).join(" ").toLowerCase();
+          card.innerHTML = `
+            <div class="product-image">
+              <img src="${escapeHTML(product.image)}" alt="${escapeHTML(product.name)}" loading="lazy">
+              <button class="wishlist-btn" data-product="${escapeHTML(product.id)}" type="button" aria-label="Add to wishlist">♡</button>
             </div>
-
-            <h3 class="product-title">
-              ${escapeHTML(product.name)}
-            </h3>
-
-            <div class="product-price">
-              ${escapeHTML(displayPrice(product))}
-            </div>
-
-            <div class="product-actions">
-
-              <button
-                class="btn btn-dark add-cart"
-                data-product-id="${escapeHTML(product.id)}"
-              >
-                Add to Cart
-              </button>
-
-              <a
-                href="product.html?product=${encodeURIComponent(product.id)}"
-                class="btn btn-light"
-              >
-                View Product
-              </a>
-
-            </div>
-
-          </div>
-
-        `;
-
-
-        productGrid.appendChild(card);
-
-      });
-
-
-      attachProductEvents();
-
-      updateWishlistButtons();
-
-      filterProducts();
-
+            <div class="product-info">
+              <div class="product-category">${escapeHTML(product.category || "Shopora Collection")}</div>
+              <h3 class="product-title">${escapeHTML(product.name)}</h3>
+              <div class="product-price">${escapeHTML(displayPrice(product))}</div>
+              <div class="product-actions">
+                <button class="btn btn-dark add-cart" data-product="${escapeHTML(product.id)}" type="button">Add to Cart</button>
+                <a class="btn btn-light" href="product.html?handle=${encodeURIComponent(product.handle)}">View Product</a>
+              </div>
+            </div>`;
+          productGrid.appendChild(card);
+        });
+        attachProductEvents();
+        updateWishlistButtons();
+        filterProducts();
+      } catch(error) {
+        console.error("Trending Shopify products error:", error);
+        if (productGrid) productGrid.innerHTML = '<div class="products-error">Unable to load Shopify trending products.</div>';
+      }
     }
 
 
@@ -1875,85 +1782,40 @@
        ADD TO CART
     ========================================================== */
 
-    function addProductToCart(productId) {
-
-      const product =
-        getTrendingProduct(productId);
-
-
-      if (!product) {
-
-        showToast(
-          "Product could not be found."
-        );
-
-        return;
-
+    async function addProductToCart(productId, button) {
+      try {
+        const product = await window.ShoporaProducts.getProduct(productId);
+        if (!product || !product.buyable || !product.variantId) {
+          showToast("This product is currently unavailable.");
+          return;
+        }
+        if (button) { button.disabled = true; button.textContent = "Adding..."; }
+        let cartId = localStorage.getItem("shoporaShopifyCartId");
+        let cart = null;
+        if (cartId) {
+          try {
+            cart = await window.ShoporaProducts.shopifyRequest(`query Cart($id:ID!){cart(id:$id){id totalQuantity}}`,{id:cartId}).then(d=>d.cart);
+          } catch(e) { cart=null; }
+        }
+        if (!cart) {
+          const d=await window.ShoporaProducts.shopifyRequest(`mutation C($lines:[CartLineInput!]!){cartCreate(input:{lines:$lines}){cart{id totalQuantity checkoutUrl} userErrors{message}}}`,{lines:[{merchandiseId:product.variantId,quantity:1}]});
+          if(d.cartCreate.userErrors?.length) throw new Error(d.cartCreate.userErrors.map(e=>e.message).join(", "));
+          cart=d.cartCreate.cart;
+        } else {
+          const d=await window.ShoporaProducts.shopifyRequest(`mutation A($cartId:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cartId,lines:$lines){cart{id totalQuantity checkoutUrl} userErrors{message}}}`,{cartId,lines:[{merchandiseId:product.variantId,quantity:1}]});
+          if(d.cartLinesAdd.userErrors?.length) throw new Error(d.cartLinesAdd.userErrors.map(e=>e.message).join(", "));
+          cart=d.cartLinesAdd.cart;
+        }
+        localStorage.setItem("shoporaShopifyCartId",cart.id);
+        localStorage.removeItem("shoporaCart");
+        const count=document.getElementById("cartCount"); if(count) count.textContent=cart.totalQuantity||0;
+        showToast(product.name+" added to Shopify cart.");
+        if(button){button.textContent="Added ✓";setTimeout(()=>{button.disabled=false;button.textContent="Add to Cart"},1000);}
+      } catch(error) {
+        console.error("Trending cart error:",error);
+        showToast("Unable to add product to Shopify cart.");
+        if(button){button.disabled=false;button.textContent="Add to Cart";}
       }
-
-
-      if (product.buyable === false) {
-
-        showToast(
-          "This product is currently unavailable."
-        );
-
-        return;
-
-      }
-
-
-      const cart =
-        getCart();
-
-
-      const existing =
-        cart.find(item => {
-
-          return (
-            item.id === product.id ||
-            item.productId === product.id ||
-            item.name === product.name
-          );
-
-        });
-
-
-      if (existing) {
-
-        existing.quantity =
-          Number(existing.quantity || 1) + 1;
-
-      } else {
-
-        cart.push({
-
-          id: product.id,
-
-          productId: product.id,
-
-          name: product.name,
-
-          price: Number(product.price || 0),
-
-          image: product.image,
-
-          quantity: 1
-
-        });
-
-      }
-
-
-      saveCart(cart);
-
-      updateCounts();
-
-
-      showToast(
-        `${product.name} added to cart.`
-      );
-
     }
 
 
@@ -2383,7 +2245,6 @@
     ========================================================== */
 
     renderTrendingProducts();
-
     updateCounts();
 
     updateWishlistButtons();
