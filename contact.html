@@ -2,30 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Contact Us | Shopora Market Store</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
-  <meta name="description" content="Contact Shopora Market Store for questions, product inquiries, orders, seller inquiries and support.">
+  <title>Contact Shopora | Shopora Market Store</title>
 
-  <link rel="canonical" href="https://shoporamarketstore.store/contact.html">
+  <meta
+    name="description"
+    content="Contact Shopora Market Store for product questions, orders, shipping, returns, refunds and customer support."
+  >
 
-  <link rel="icon" type="image/png" href="assets/shopora-mark.png">
+  <meta
+    name="keywords"
+    content="Shopora contact, Shopora Market Store contact, online shopping Pakistan, customer support, order support"
+  >
+
+  <link
+    rel="canonical"
+    href="https://shoporamarketstore.store/contact.html"
+  >
+
+  <link
+    rel="icon"
+    type="image/png"
+    href="assets/shopora-mark.png"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
 
   <style>
     :root {
       --black: #111111;
+      --black-soft: #1b1b1b;
       --ivory: #f7f4ee;
       --white: #ffffff;
+      --cream: #eee9df;
       --gold: #c6a06a;
       --gold-dark: #9c753e;
-      --text: #222222;
-      --muted: #777777;
-      --border: #e5e0d7;
-      --success-bg: #edf8ef;
-      --success-text: #256b32;
-      --error-bg: #fff0f0;
-      --error-text: #9b2d2d;
+      --text: #191919;
+      --muted: #77736c;
+      --border: rgba(17,17,17,.10);
+      --shadow: 0 18px 50px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 1240px;
     }
 
     * {
@@ -34,11 +69,15 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "DM Sans", sans-serif;
       background: var(--ivory);
       color: var(--text);
-      line-height: 1.6;
+      min-height: 100vh;
     }
 
     a {
@@ -46,66 +85,97 @@
       text-decoration: none;
     }
 
-    /* TOP BAR */
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
     .topbar {
       background: var(--black);
       color: #fff;
       text-align: center;
-      padding: 9px 15px;
-      font-size: 13px;
-      letter-spacing: .3px;
+      padding: 10px 15px;
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
     }
 
-    /* HEADER */
     header {
-      background: rgba(247, 244, 238, .98);
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 1000;
+      background: rgba(247,244,238,.94);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
     }
 
-    .nav {
-      max-width: 1200px;
+    .header-inner {
+      width: min(
+        var(--max),
+        calc(100% - 40px)
+      );
+
+      min-height: 82px;
+
       margin: auto;
-      min-height: 78px;
-      padding: 0 24px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 25px;
+
+      gap: 30px;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      letter-spacing: .5px;
+      gap: 12px;
       flex-shrink: 0;
     }
 
     .brand img {
-      width: 43px;
-      height: 43px;
+      width: 44px;
+      height: 44px;
       object-fit: contain;
     }
 
-    .brand span {
-      font-size: 21px;
+    .brand-text strong {
+      display: block;
+
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .brand-text span {
+      display: block;
+
+      margin-top: 4px;
+
+      color: var(--muted);
+
+      font-size: 10px;
+
+      letter-spacing: .13em;
+
+      text-transform: uppercase;
     }
 
     nav {
       display: flex;
       align-items: center;
-      gap: 24px;
+      gap: 22px;
     }
 
     nav a {
       font-size: 14px;
       font-weight: 600;
-      transition: .2s ease;
+      color: #333;
+      transition: .2s;
     }
 
     nav a:hover,
@@ -113,172 +183,305 @@
       color: var(--gold-dark);
     }
 
-    .nav-icons {
+    .header-actions {
       display: flex;
       align-items: center;
-      gap: 15px;
-      white-space: nowrap;
+      gap: 9px;
     }
 
-    .nav-icons a {
-      font-size: 14px;
-      font-weight: 700;
-    }
+    .icon-btn {
+      width: 42px;
+      height: 42px;
 
-    .menu-btn {
-      display: none;
-      border: 0;
-      background: transparent;
-      font-size: 26px;
-      cursor: pointer;
-      color: var(--black);
-    }
-
-    /* HERO */
-    .hero {
-      background: var(--black);
-      color: white;
-      text-align: center;
-      padding: 85px 20px;
-    }
-
-    .hero small {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      font-weight: 700;
-    }
-
-    .hero h1 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(40px, 6vw, 68px);
-      line-height: 1.1;
-      font-weight: 500;
-      margin: 15px 0;
-    }
-
-    .hero p {
-      max-width: 680px;
-      margin: auto;
-      color: #d5d5d5;
-      font-size: 17px;
-    }
-
-    /* CONTACT AREA */
-    .contact-wrap {
-      max-width: 1150px;
-      margin: 70px auto;
-      padding: 0 20px;
-
-      display: grid;
-      grid-template-columns: .85fr 1.15fr;
-      gap: 45px;
-    }
-
-    .info-card,
-    .form-card {
-      background: var(--white);
       border: 1px solid var(--border);
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.65);
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      position: relative;
+
+      transition: .2s;
+    }
+
+    .icon-btn:hover {
+      background: var(--black);
+      color: #fff;
+    }
+
+    .count {
+      position: absolute;
+
+      right: -2px;
+      top: -2px;
+
+      min-width: 18px;
+      height: 18px;
+
+      padding: 0 5px;
+
+      border-radius: 99px;
+
+      background: var(--gold);
+      color: #fff;
+
+      font-size: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 700;
+    }
+
+    main {
+      width: min(
+        var(--max),
+        calc(100% - 40px)
+      );
+
+      margin: auto;
+
+      padding: 75px 0 100px;
+    }
+
+    .page-heading {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .eyebrow {
+      color: var(--gold-dark);
+
+      font-size: 12px;
+      font-weight: 700;
+
+      letter-spacing: .16em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 10px;
+    }
+
+    .page-heading h1 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size:
+        clamp(
+          42px,
+          6vw,
+          68px
+        );
+
+      font-weight: 600;
+
+      line-height: 1;
+    }
+
+    .page-heading p {
+      color: var(--muted);
+
+      margin: 16px auto 0;
+
+      font-size: 15px;
+
+      line-height: 1.7;
+
+      max-width: 650px;
+    }
+
+    .contact-layout {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1.1fr);
+
+      gap: 30px;
+
+      align-items: stretch;
+    }
+
+    .contact-info,
+    .contact-form {
+      background: var(--white);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      box-shadow: var(--shadow);
+    }
+
+    .contact-info {
       padding: 38px;
     }
 
-    .info-card h2,
-    .form-card h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: 32px;
-      font-weight: 500;
-      margin-bottom: 15px;
+    .contact-info h2,
+    .contact-form h2 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 30px;
+
+      margin-bottom: 12px;
     }
 
-    .info-card > p,
-    .form-card > p {
+    .contact-info > p {
       color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.8;
+
+      margin-bottom: 30px;
     }
 
-    .info-card > p {
-      margin-bottom: 28px;
-    }
+    .contact-item {
+      display: flex;
 
-    .info-item {
+      align-items: flex-start;
+
+      gap: 15px;
+
       padding: 18px 0;
-      border-top: 1px solid var(--border);
+
+      border-bottom: 1px solid var(--border);
     }
 
-    .info-item strong {
-      display: block;
+    .contact-item:last-child {
+      border-bottom: 0;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+
+      flex-shrink: 0;
+
+      border-radius: 12px;
+
+      background: var(--ivory);
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      font-size: 20px;
+    }
+
+    .contact-item h3 {
+      font-size: 14px;
+
       margin-bottom: 5px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
-    .info-item a,
-    .info-item span {
+    .contact-item p,
+    .contact-item a {
       color: var(--muted);
-      word-break: break-word;
+
+      font-size: 14px;
+
+      line-height: 1.6;
     }
 
-    .info-item a:hover {
+    .contact-item a:hover {
       color: var(--gold-dark);
     }
 
-    .form-card > p {
+    .contact-form {
+      padding: 38px;
+    }
+
+    .contact-form > p {
+      color: var(--muted);
+
+      font-size: 14px;
+
+      line-height: 1.7;
+
       margin-bottom: 25px;
     }
 
-    /* FORM */
     .form-group {
       margin-bottom: 18px;
     }
 
     .form-group label {
       display: block;
-      font-size: 14px;
+
+      font-size: 13px;
+
       font-weight: 700;
-      margin-bottom: 7px;
+
+      margin-bottom: 8px;
     }
 
-    input,
-    textarea,
-    select {
+    .form-group input,
+    .form-group textarea {
       width: 100%;
-      padding: 14px 15px;
 
       border: 1px solid var(--border);
+
+      border-radius: 12px;
+
       background: #fff;
+
       color: var(--text);
 
-      font: inherit;
+      padding: 14px 15px;
+
       outline: none;
 
-      transition: border-color .2s ease;
+      transition: .2s;
     }
 
-    input:focus,
-    textarea:focus,
-    select:focus {
-      border-color: var(--gold);
+    .form-group input {
+      min-height: 50px;
     }
 
-    textarea {
-      min-height: 160px;
+    .form-group textarea {
+      min-height: 145px;
+
       resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+
+      box-shadow:
+        0 0 0 3px
+        rgba(198,160,106,.12);
     }
 
     .submit-btn {
       width: 100%;
+
+      min-height: 54px;
+
       border: 0;
 
+      border-radius: 13px;
+
       background: var(--black);
-      color: white;
 
-      padding: 15px 20px;
+      color: #fff;
 
-      font-size: 15px;
       font-weight: 700;
 
       cursor: pointer;
-      transition: background .2s ease;
+
+      transition: .2s;
     }
 
     .submit-btn:hover {
@@ -286,97 +489,276 @@
     }
 
     .submit-btn:disabled {
-      opacity: .6;
-      cursor: not-allowed;
+      opacity: .55;
+      cursor: wait;
     }
 
-    /* RESULT */
-    #result {
-      display: none;
-      margin-top: 15px;
-      padding: 13px;
-      font-size: 14px;
+    .form-note {
+      margin-top: 12px;
+
+      color: var(--muted);
+
+      font-size: 12px;
+
+      line-height: 1.6;
+
       text-align: center;
     }
 
-    #result.success {
-      display: block;
-      background: var(--success-bg);
-      color: var(--success-text);
-      border: 1px solid #cce8d0;
+    .success-box {
+      display: none;
+
+      margin-bottom: 20px;
+
+      padding: 15px 16px;
+
+      border-radius: 12px;
+
+      background: #f1f8f1;
+
+      border: 1px solid #bfd9bf;
+
+      color: #386038;
+
+      font-size: 13px;
+
+      line-height: 1.6;
     }
 
-    #result.error {
-      display: block;
-      background: var(--error-bg);
-      color: var(--error-text);
-      border: 1px solid #f0cccc;
+    .support-section {
+      margin-top: 35px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+      gap: 20px;
     }
 
-    /* FOOTER */
+    .support-card {
+      background: var(--white);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      padding: 28px;
+
+      text-align: center;
+
+      box-shadow:
+        0 12px 35px
+        rgba(0,0,0,.05);
+    }
+
+    .support-card .support-icon {
+      font-size: 27px;
+
+      margin-bottom: 12px;
+    }
+
+    .support-card h3 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 22px;
+
+      margin-bottom: 8px;
+    }
+
+    .support-card p {
+      color: var(--muted);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+    }
+
     footer {
       background: var(--black);
-      color: white;
-      padding: 55px 20px 25px;
+
+      color: #fff;
+
+      padding: 55px 0 30px;
     }
 
     .footer-inner {
-      max-width: 1150px;
+      width: min(
+        var(--max),
+        calc(100% - 40px)
+      );
+
       margin: auto;
 
       display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr;
-      gap: 40px;
+
+      grid-template-columns:
+        1.5fr
+        1fr
+        1fr;
+
+      gap: 45px;
     }
 
-    footer h3 {
+    .footer-brand h3 {
+      font-family:
+        "Playfair Display",
+        serif;
+
+      font-size: 27px;
+
+      margin-bottom: 12px;
+    }
+
+    .footer-brand p {
+      color:
+        rgba(255,255,255,.65);
+
+      max-width: 420px;
+
+      line-height: 1.7;
+
+      font-size: 14px;
+    }
+
+    footer h4 {
       margin-bottom: 15px;
-      font-size: 17px;
+
+      font-size: 14px;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
     }
 
-    footer p,
+    footer ul {
+      list-style: none;
+    }
+
+    footer li {
+      margin-bottom: 9px;
+    }
+
     footer a {
-      color: #bdbdbd;
+      color:
+        rgba(255,255,255,.65);
+
       font-size: 14px;
     }
 
     footer a:hover {
-      color: var(--gold);
+      color: #fff;
     }
 
-    .footer-links {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
+    .footer-bottom {
+      width: min(
+        var(--max),
+        calc(100% - 40px)
+      );
+
+      margin: 40px auto 0;
+
+      padding-top: 22px;
+
+      border-top:
+        1px solid
+        rgba(255,255,255,.12);
+
+      color:
+        rgba(255,255,255,.45);
+
+      font-size: 12px;
+
+      text-align: center;
     }
 
-    .copyright {
-      max-width: 1150px;
-      margin: 35px auto 0;
-      padding-top: 20px;
-      border-top: 1px solid #333;
-      color: #888;
+    .toast {
+      position: fixed;
+
+      right: 20px;
+      bottom: 20px;
+
+      z-index: 2000;
+
+      background: var(--black);
+
+      color: #fff;
+
+      padding: 13px 18px;
+
+      border-radius: 12px;
+
       font-size: 13px;
+
+      box-shadow: var(--shadow);
+
+      opacity: 0;
+
+      pointer-events: none;
+
+      transform: translateY(10px);
+
+      transition: .25s;
     }
 
-    /* MOBILE */
-    @media (max-width: 900px) {
+    .toast.show {
+      opacity: 1;
 
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1050px) {
       nav {
         display: none;
       }
 
-      .nav-icons {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .support-section {
+        grid-template-columns:
+          repeat(3, 1fr);
+      }
+
+      .footer-inner {
+        grid-template-columns:
+          1fr 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .header-inner {
+        width:
+          min(
+            var(--max),
+            calc(100% - 24px)
+          );
+      }
+
+      .brand-text {
         display: none;
       }
 
-      .menu-btn {
-        display: block;
+      main {
+        width:
+          min(
+            var(--max),
+            calc(100% - 24px)
+          );
+
+        padding-top: 50px;
       }
 
-      .contact-wrap {
+      .contact-info,
+      .contact-form {
+        padding: 26px;
+      }
+
+      .support-section {
         grid-template-columns: 1fr;
-        margin: 50px auto;
       }
 
       .footer-inner {
@@ -384,47 +766,14 @@
       }
     }
 
-    @media (max-width: 550px) {
-
-      .nav {
-        min-height: 70px;
-        padding: 0 16px;
+    @media (max-width: 420px) {
+      .header-actions
+      .icon-btn:first-child {
+        display: none;
       }
 
-      .brand img {
-        width: 40px;
-        height: 40px;
-      }
-
-      .brand span {
-        font-size: 18px;
-      }
-
-      .hero {
-        padding: 65px 18px;
-      }
-
-      .hero h1 {
-        font-size: 43px;
-      }
-
-      .hero p {
-        font-size: 15px;
-      }
-
-      .contact-wrap {
-        padding: 0 15px;
-        margin: 40px auto;
-      }
-
-      .info-card,
-      .form-card {
-        padding: 25px;
-      }
-
-      .info-card h2,
-      .form-card h2 {
-        font-size: 28px;
+      .page-heading h1 {
+        font-size: 44px;
       }
     }
   </style>
@@ -432,27 +781,29 @@
 
 <body>
 
-  <!-- TOP BAR -->
   <div class="topbar">
-    Welcome to Shopora Market Store — Discover products for everyday life.
+    Premium shopping · Secure Shopify checkout
   </div>
 
-
-  <!-- HEADER -->
   <header>
+    <div class="header-inner">
 
-    <div class="nav">
-
-      <a href="index.html" class="brand">
+      <a
+        href="index.html"
+        class="brand"
+      >
         <img
           src="assets/shopora-mark.png"
           alt="Shopora Market Store"
         >
-        <span>Shopora</span>
+
+        <div class="brand-text">
+          <strong>Shopora</strong>
+          <span>Market Store</span>
+        </div>
       </a>
 
-
-      <nav id="mainNav">
+      <nav>
 
         <a href="index.html">
           Home
@@ -466,7 +817,7 @@
           Categories
         </a>
 
-        <a href="index.html#trending">
+        <a href="trending.html">
           Trending
         </a>
 
@@ -474,574 +825,690 @@
           About
         </a>
 
-        <a href="contact.html" class="active">
+        <a
+          href="contact.html"
+          class="active"
+        >
           Contact
         </a>
 
       </nav>
 
+      <div class="header-actions">
 
-      <div class="nav-icons">
+        <a
+          href="wishlist.html"
+          class="icon-btn"
+          aria-label="Wishlist"
+        >
+          ♡
+          <span
+            class="count"
+            id="wishlistCount"
+          >
+            0
+          </span>
+        </a>
 
-        <a href="cart.html">
-          Cart (<span id="cartCount">0</span>)
+        <a
+          href="cart.html"
+          class="icon-btn"
+          aria-label="Cart"
+        >
+          🛒
+          <span
+            class="count"
+            id="cartCount"
+          >
+            0
+          </span>
         </a>
 
       </div>
-
-
-      <button
-        class="menu-btn"
-        id="menuBtn"
-        type="button"
-        aria-label="Open menu"
-      >
-        ☰
-      </button>
 
     </div>
-
   </header>
 
+  <main>
 
-  <!-- HERO -->
-  <section class="hero">
+    <section class="page-heading">
 
-    <small>Shopora Support</small>
+      <div class="eyebrow">
+        We're here to help
+      </div>
 
-    <h1>Contact Us</h1>
-
-    <p>
-      Have a question, product inquiry, seller inquiry or need help?
-      Send us a message and our team will get back to you.
-    </p>
-
-  </section>
-
-
-  <!-- CONTACT CONTENT -->
-  <main class="contact-wrap">
-
-
-    <!-- LEFT INFORMATION -->
-    <section class="info-card">
-
-      <h2>Get in touch</h2>
+      <h1>
+        Contact Shopora
+      </h1>
 
       <p>
-        We are here to help with questions about Shopora Market Store,
-        products, orders and seller partnerships.
+        Have a question about a product, order, shipping,
+        returns or anything else? Send us a message and
+        our team will help you.
       </p>
 
+    </section>
 
-      <div class="info-item">
+    <section class="contact-layout">
 
-        <strong>Email</strong>
+      <div class="contact-info">
 
-        <a href="mailto:brandseocompany@gmail.com">
-          brandseocompany@gmail.com
-        </a>
+        <h2>
+          Get in Touch
+        </h2>
+
+        <p>
+          For product questions, order support, shipping
+          information, returns and general assistance,
+          contact Shopora Market Store directly.
+        </p>
+
+        <div class="contact-item">
+
+          <div class="contact-icon">
+            ✉
+          </div>
+
+          <div>
+
+            <h3>
+              Email
+            </h3>
+
+            <a
+              href="mailto:brandseocompany@gmail.com"
+            >
+              brandseocompany@gmail.com
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="contact-item">
+
+          <div class="contact-icon">
+            ☎
+          </div>
+
+          <div>
+
+            <h3>
+              Phone
+            </h3>
+
+            <a
+              href="tel:+923269547318"
+            >
+              +92 326 9547318
+            </a>
+
+          </div>
+
+        </div>
+
+        <div class="contact-item">
+
+          <div class="contact-icon">
+            🛍
+          </div>
+
+          <div>
+
+            <h3>
+              Order Support
+            </h3>
+
+            <p>
+              For order-related questions, please include
+              your Shopify order number in your message.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="contact-item">
+
+          <div class="contact-icon">
+            ⏱
+          </div>
+
+          <div>
+
+            <h3>
+              Response
+            </h3>
+
+            <p>
+              We aim to respond to customer enquiries
+              as soon as possible.
+            </p>
+
+          </div>
+
+        </div>
 
       </div>
 
+      <div class="contact-form">
 
-      <div class="info-item">
+        <h2>
+          Send a Message
+        </h2>
 
-        <strong>Website</strong>
+        <p>
+          Complete the form below and your email
+          application will open with your message ready
+          to send.
+        </p>
 
-        <a href="https://shoporamarketstore.store/">
-          shoporamarketstore.store
-        </a>
+        <div
+          id="successBox"
+          class="success-box"
+        ></div>
 
-      </div>
+        <form id="contactForm">
 
+          <div class="form-group">
 
-      <div class="info-item">
+            <label for="name">
+              Your Name
+            </label>
 
-        <strong>Support</strong>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Enter your name"
+              required
+            >
 
-        <span>
-          Product questions, orders and seller inquiries
-        </span>
+          </div>
+
+          <div class="form-group">
+
+            <label for="email">
+              Your Email
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="order">
+              Order Number
+              <span style="font-weight:400;color:#777;">
+                (optional)
+              </span>
+            </label>
+
+            <input
+              type="text"
+              id="order"
+              name="order"
+              placeholder="For example: #1001"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="message">
+              Message
+            </label>
+
+            <textarea
+              id="message"
+              name="message"
+              placeholder="How can we help you?"
+              required
+            ></textarea>
+
+          </div>
+
+          <button
+            type="submit"
+            class="submit-btn"
+            id="submitBtn"
+          >
+            Send Message
+          </button>
+
+        </form>
+
+        <div class="form-note">
+          Your message will be prepared for
+          brandseocompany@gmail.com.
+        </div>
 
       </div>
 
     </section>
 
+    <section class="support-section">
 
-    <!-- CONTACT FORM -->
-    <section class="form-card">
+      <div class="support-card">
 
-      <h2>Send us a message</h2>
-
-      <p>
-        Fill out the form below and your message will be sent
-        to the Shopora team.
-      </p>
-
-
-      <!--
-        ==================================================
-        WEB3FORMS
-        THIS FORM SENDS THE MESSAGE WITHOUT OPENING GMAIL
-        ==================================================
-      -->
-
-      <form id="contactForm">
-
-
-        <!-- YOUR WEB3FORMS ACCESS KEY -->
-        <input
-          type="hidden"
-          name="access_key"
-          value="c9102ca8-2613-41e2-95f7-2ec7fa1122fa"
-        >
-
-
-        <!-- EMAIL SUBJECT -->
-        <input
-          type="hidden"
-          name="subject"
-          value="New Contact Message - Shopora Market Store"
-        >
-
-
-        <!-- SENDER NAME SHOWN IN EMAIL -->
-        <input
-          type="hidden"
-          name="from_name"
-          value="Shopora Market Store Website"
-        >
-
-
-        <!-- SPAM PROTECTION -->
-        <input
-          type="checkbox"
-          name="botcheck"
-          style="display:none"
-          tabindex="-1"
-          autocomplete="off"
-        >
-
-
-        <!-- NAME -->
-        <div class="form-group">
-
-          <label for="name">
-            Full Name
-          </label>
-
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="Your full name"
-            required
-          >
-
+        <div class="support-icon">
+          🛒
         </div>
 
+        <h3>
+          Orders
+        </h3>
 
-        <!-- EMAIL -->
-        <div class="form-group">
+        <p>
+          Need help with an order? Include your
+          order number when contacting us.
+        </p>
 
-          <label for="email">
-            Your Email
-          </label>
+      </div>
 
-          <input
-            type="email"
-            id="email"
-            name="email"
-            placeholder="you@example.com"
-            required
-          >
+      <div class="support-card">
 
+        <div class="support-icon">
+          📦
         </div>
 
+        <h3>
+          Shipping
+        </h3>
 
-        <!-- PHONE -->
-        <div class="form-group">
+        <p>
+          Contact us if you have questions about
+          delivery or your shipment.
+        </p>
 
-          <label for="phone">
-            Phone Number
-          </label>
+      </div>
 
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            placeholder="Your phone number"
-          >
+      <div class="support-card">
 
+        <div class="support-icon">
+          ↩
         </div>
 
+        <h3>
+          Returns
+        </h3>
 
-        <!-- MESSAGE TYPE -->
-        <div class="form-group">
+        <p>
+          For return and refund questions,
+          please review our return policy.
+        </p>
 
-          <label for="type">
-            Message Type
-          </label>
-
-          <select
-            id="type"
-            name="message_type"
-            required
-          >
-
-            <option value="">
-              Select one
-            </option>
-
-            <option value="General Question">
-              General Question
-            </option>
-
-            <option value="Product Inquiry">
-              Product Inquiry
-            </option>
-
-            <option value="Order Question">
-              Order Question
-            </option>
-
-            <option value="Seller Inquiry">
-              Seller Inquiry
-            </option>
-
-            <option value="Other">
-              Other
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- MESSAGE -->
-        <div class="form-group">
-
-          <label for="message">
-            Message
-          </label>
-
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Write your message here..."
-            required
-          ></textarea>
-
-        </div>
-
-
-        <!-- SUBMIT -->
-        <button
-          type="submit"
-          class="submit-btn"
-          id="submitBtn"
-        >
-          Send Message
-        </button>
-
-
-        <!-- RESULT MESSAGE -->
-        <div id="result"></div>
-
-      </form>
+      </div>
 
     </section>
 
   </main>
 
-
-  <!-- FOOTER -->
   <footer>
 
     <div class="footer-inner">
 
-
-      <div>
+      <div class="footer-brand">
 
         <h3>
           Shopora Market Store
         </h3>
 
         <p>
-          A modern online marketplace for fashion, beauty,
-          electronics, accessories, home & living and lifestyle products.
+          A premium online marketplace for fashion,
+          beauty, electronics, accessories, home &
+          living and lifestyle products.
         </p>
 
       </div>
 
-
       <div>
 
-        <h3>
-          Quick Links
-        </h3>
+        <h4>
+          Explore
+        </h4>
 
-        <div class="footer-links">
+        <ul>
 
-          <a href="index.html">
-            Home
-          </a>
+          <li>
+            <a href="index.html">
+              Home
+            </a>
+          </li>
 
-          <a href="shop.html">
-            Shop
-          </a>
+          <li>
+            <a href="shop.html">
+              Shop
+            </a>
+          </li>
 
-          <a href="categories.html">
-            Categories
-          </a>
+          <li>
+            <a href="categories.html">
+              Categories
+            </a>
+          </li>
 
-          <a href="about.html">
-            About
-          </a>
+          <li>
+            <a href="trending.html">
+              Trending
+            </a>
+          </li>
 
-          <a href="contact.html">
-            Contact
-          </a>
+          <li>
+            <a href="wishlist.html">
+              Wishlist
+            </a>
+          </li>
 
-        </div>
+          <li>
+            <a href="cart.html">
+              Cart
+            </a>
+          </li>
+
+        </ul>
 
       </div>
 
-
       <div>
 
-        <h3>
-          Information
-        </h3>
+        <h4>
+          Help
+        </h4>
 
-        <div class="footer-links">
+        <ul>
 
-          <a href="privacy-policy.html">
-            Privacy Policy
-          </a>
+          <li>
+            <a href="about.html">
+              About
+            </a>
+          </li>
 
-          <a href="cookie-policy.html">
-            Cookie Policy
-          </a>
+          <li>
+            <a href="contact.html">
+              Contact
+            </a>
+          </li>
 
-          <a href="return-refund.html">
-            Returns & Refunds
-          </a>
+          <li>
+            <a href="privacy-policy.html">
+              Privacy Policy
+            </a>
+          </li>
 
-          <a href="mailto:brandseocompany@gmail.com">
-            brandseocompany@gmail.com
-          </a>
+          <li>
+            <a href="terms-of-service.html">
+              Terms of Service
+            </a>
+          </li>
 
-        </div>
+          <li>
+            <a href="cookie-policy.html">
+              Cookie Policy
+            </a>
+          </li>
+
+          <li>
+            <a href="return-refund.html">
+              Return / Refunds
+            </a>
+          </li>
+
+        </ul>
 
       </div>
 
     </div>
 
-
-    <div class="copyright">
-
-      © <span id="year"></span>
-      Shopora Market Store. All rights reserved.
-
+    <div class="footer-bottom">
+      © 2026 Shopora Market Store. All rights reserved.
     </div>
 
   </footer>
 
+  <div
+    id="toast"
+    class="toast"
+  ></div>
 
-  <!-- JAVASCRIPT -->
+  <!-- CENTRAL SHOPIFY PRODUCT + CART SYSTEM -->
+  <script src="products.js"></script>
+
   <script>
+    (() => {
+      "use strict";
 
-    /* ==============================
-       CONTACT FORM
-       ============================== */
+      const Shopora =
+        window.ShoporaProducts;
 
-    const contactForm =
-      document.getElementById("contactForm");
+      function updateWishlistCount() {
 
-    const result =
-      document.getElementById("result");
-
-    const submitBtn =
-      document.getElementById("submitBtn");
-
-
-    contactForm.addEventListener(
-      "submit",
-      async function(event) {
-
-        event.preventDefault();
-
-
-        result.className = "";
-        result.style.display = "block";
-
-        result.textContent =
-          "Sending your message...";
-
-
-        submitBtn.disabled = true;
-        submitBtn.textContent =
-          "Sending...";
-
-
-        const formData =
-          new FormData(contactForm);
-
+        let wishlist = [];
 
         try {
 
-          const response =
-            await fetch(
-              "https://api.web3forms.com/submit",
-              {
-                method: "POST",
-                body: formData
-              }
+          wishlist =
+            JSON.parse(
+              localStorage.getItem(
+                "shoporaWishlist"
+              ) || "[]"
             );
 
+        } catch {
 
-          const data =
-            await response.json();
+          wishlist = [];
 
+        }
 
-          if (data.success) {
+        const element =
+          document.getElementById(
+            "wishlistCount"
+          );
 
-            result.className =
-              "success";
+        if (element) {
 
-            result.textContent =
-              "Message sent successfully. Thank you for contacting Shopora!";
+          element.textContent =
+            Array.isArray(wishlist)
+              ? wishlist.length
+              : 0;
 
-            contactForm.reset();
+        }
+      }
 
-          } else {
+      async function updateCartCount() {
 
-            result.className =
-              "error";
+        const element =
+          document.getElementById(
+            "cartCount"
+          );
 
-            result.textContent =
-              data.message ||
-              "Something went wrong. Please try again.";
+        if (!element) return;
 
-          }
+        if (
+          !Shopora ||
+          typeof Shopora.getShopifyCartCount !==
+          "function"
+        ) {
 
+          element.textContent = "0";
+
+          return;
+        }
+
+        try {
+
+          const count =
+            await Shopora.getShopifyCartCount();
+
+          element.textContent =
+            Number(count || 0);
 
         } catch (error) {
 
-          result.className =
-            "error";
+          console.error(
+            "Cart count error:",
+            error
+          );
 
-          result.textContent =
-            "Unable to send your message right now. Please try again.";
-
+          element.textContent = "0";
         }
-
-
-        submitBtn.disabled = false;
-
-        submitBtn.textContent =
-          "Send Message";
-
       }
-    );
 
-
-    /* ==============================
-       MOBILE MENU
-       ============================== */
-
-    const menuBtn =
-      document.getElementById("menuBtn");
-
-    const mainNav =
-      document.getElementById("mainNav");
-
-
-    menuBtn.addEventListener(
-      "click",
-      function() {
-
-        if (mainNav.style.display === "flex") {
-
-          mainNav.style.display = "none";
-
-        } else {
-
-          mainNav.style.display = "flex";
-
-          mainNav.style.flexDirection =
-            "column";
-
-          mainNav.style.position =
-            "absolute";
-
-          mainNav.style.top =
-            "70px";
-
-          mainNav.style.left =
-            "0";
-
-          mainNav.style.right =
-            "0";
-
-          mainNav.style.background =
-            "#f7f4ee";
-
-          mainNav.style.padding =
-            "25px";
-
-          mainNav.style.borderBottom =
-            "1px solid #e5e0d7";
-
-        }
-
-      }
-    );
-
-
-    /* ==============================
-       CART COUNT
-       ============================== */
-
-    let cart = [];
-
-    try {
-
-      cart =
-        JSON.parse(
-          localStorage.getItem("shoporaCart") || "[]"
+      const form =
+        document.getElementById(
+          "contactForm"
         );
 
-    } catch (error) {
+      const submitBtn =
+        document.getElementById(
+          "submitBtn"
+        );
 
-      cart = [];
+      const successBox =
+        document.getElementById(
+          "successBox"
+        );
 
-    }
+      if (form) {
 
+        form.addEventListener(
+          "submit",
+          event => {
 
-    const cartCount =
-      cart.reduce(
-        function(total, item) {
-          return total + (item.quantity || 1);
-        },
-        0
+            event.preventDefault();
+
+            const name =
+              document.getElementById(
+                "name"
+              ).value.trim();
+
+            const email =
+              document.getElementById(
+                "email"
+              ).value.trim();
+
+            const order =
+              document.getElementById(
+                "order"
+              ).value.trim();
+
+            const message =
+              document.getElementById(
+                "message"
+              ).value.trim();
+
+            if (
+              !name ||
+              !email ||
+              !message
+            ) {
+              return;
+            }
+
+            submitBtn.disabled = true;
+
+            submitBtn.textContent =
+              "Preparing Message...";
+
+            let body =
+              "Hello Shopora Market Store,%0D%0A%0D%0A";
+
+            body +=
+              "Name: " +
+              encodeURIComponent(name) +
+              "%0D%0A";
+
+            body +=
+              "Email: " +
+              encodeURIComponent(email) +
+              "%0D%0A";
+
+            if (order) {
+
+              body +=
+                "Order Number: " +
+                encodeURIComponent(order) +
+                "%0D%0A";
+
+            }
+
+            body +=
+              "%0D%0AMessage:%0D%0A" +
+              encodeURIComponent(message) +
+              "%0D%0A%0D%0A";
+
+            body +=
+              "Thank you.";
+
+            const subject =
+              encodeURIComponent(
+                order
+                  ? "Shopora Customer Support - " +
+                    order
+                  : "Shopora Customer Support"
+              );
+
+            const mailto =
+              "mailto:brandseocompany@gmail.com" +
+              "?subject=" +
+              subject +
+              "&body=" +
+              body;
+
+            if (successBox) {
+
+              successBox.textContent =
+                "Your message is ready. Your email application will open now.";
+
+              successBox.style.display =
+                "block";
+
+            }
+
+            window.location.href =
+              mailto;
+
+            setTimeout(() => {
+
+              submitBtn.disabled =
+                false;
+
+              submitBtn.textContent =
+                "Send Message";
+
+            }, 1500);
+
+          }
+        );
+
+      }
+
+      updateWishlistCount();
+      updateCartCount();
+
+      window.addEventListener(
+        "pageshow",
+        () => {
+          updateWishlistCount();
+          updateCartCount();
+        }
       );
 
+      window.addEventListener(
+        "storage",
+        () => {
+          updateWishlistCount();
+        }
+      );
 
-    document.getElementById("cartCount")
-      .textContent = cartCount;
-
-
-    /* ==============================
-       YEAR
-       ============================== */
-
-    document.getElementById("year")
-      .textContent =
-      new Date().getFullYear();
-
+    })();
   </script>
 
 </body>
