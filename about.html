@@ -970,53 +970,82 @@
 </footer>
 
 
+<!-- CENTRAL SHOPIFY PRODUCT / CART SYSTEM -->
+<script src="products.js"></script>
+
 <script>
 
-  function getCart(){
-    try{
-      return JSON.parse(localStorage.getItem("shoporaCart")) || [];
-    }catch(e){
-      return [];
-    }
-  }
-
+  /* WISHLIST COUNT */
 
   function getWishlist(){
+
     try{
-      return JSON.parse(localStorage.getItem("shoporaWishlist")) || [];
+      const wishlist =
+        JSON.parse(localStorage.getItem("shoporaWishlist"));
+
+      return Array.isArray(wishlist) ? wishlist : [];
+
     }catch(e){
+
       return [];
+
     }
+
   }
 
 
-  function updateCounts(){
+  /* UPDATE CART + WISHLIST COUNTS */
 
-    const cart = getCart();
+  async function updateCounts(){
 
     const wishlist = getWishlist();
 
-    const cartCount = cart.reduce(
-      (total,item) => total + Number(item.quantity || 1),
-      0
-    );
+    const wishlistEl =
+      document.getElementById("wishlistCount");
 
-    const wishlistCount = wishlist.length;
+    const cartEl =
+      document.getElementById("cartCount");
 
-    const cartEl = document.getElementById("cartCount");
-
-    const wishlistEl = document.getElementById("wishlistCount");
-
-    if(cartEl){
-      cartEl.textContent = cartCount;
-    }
 
     if(wishlistEl){
-      wishlistEl.textContent = wishlistCount;
+      wishlistEl.textContent = wishlist.length;
+    }
+
+
+    if(cartEl){
+
+      try{
+
+        if(
+          window.ShoporaProducts &&
+          typeof window.ShoporaProducts.getShopifyCartCount === "function"
+        ){
+
+          const count =
+            await window.ShoporaProducts.getShopifyCartCount();
+
+          cartEl.textContent = Number(count || 0);
+
+        }else{
+
+          cartEl.textContent = "0";
+
+        }
+
+      }catch(error){
+
+        console.error("Shopify cart count error:", error);
+
+        cartEl.textContent = "0";
+
+      }
+
     }
 
   }
 
+
+  /* SEARCH */
 
   function goToSearch(){
 
@@ -1025,33 +1054,45 @@
   }
 
 
+  /* MOBILE MENU */
+
   function toggleMenu(){
 
-    document.getElementById("navLinks").classList.toggle("open");
+    const navLinks =
+      document.getElementById("navLinks");
+
+    if(navLinks){
+
+      navLinks.classList.toggle("open");
+
+    }
 
   }
 
 
-  const observer = new IntersectionObserver(
-    entries => {
+  /* REVEAL ANIMATION */
 
-      entries.forEach(entry => {
+  const observer =
+    new IntersectionObserver(
+      entries => {
 
-        if(entry.isIntersecting){
+        entries.forEach(entry => {
 
-          entry.target.classList.add("show");
+          if(entry.isIntersecting){
 
-          observer.unobserve(entry.target);
+            entry.target.classList.add("show");
 
-        }
+            observer.unobserve(entry.target);
 
-      });
+          }
 
-    },
-    {
-      threshold:.12
-    }
-  );
+        });
+
+      },
+      {
+        threshold:.12
+      }
+    );
 
 
   document.querySelectorAll(".reveal").forEach(el => {
@@ -1061,13 +1102,36 @@
   });
 
 
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+  /* YEAR */
+
+  const yearEl =
+    document.getElementById("year");
+
+  if(yearEl){
+
+    yearEl.textContent =
+      new Date().getFullYear();
+
+  }
 
 
-  window.addEventListener("storage", updateCounts);
+  /* UPDATE WHEN LOCAL STORAGE CHANGES */
 
-  window.addEventListener("pageshow", updateCounts);
+  window.addEventListener(
+    "storage",
+    updateCounts
+  );
+
+
+  /* UPDATE WHEN PAGE IS RESTORED */
+
+  window.addEventListener(
+    "pageshow",
+    updateCounts
+  );
+
+
+  /* INITIAL COUNTS */
 
   updateCounts();
 
