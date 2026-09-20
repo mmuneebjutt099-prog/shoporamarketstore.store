@@ -1456,20 +1456,14 @@
       );
 
 
-    function getProductsArray() {
-
+    async function getProductsArray() {
       if (
         window.ShoporaProducts &&
         typeof window.ShoporaProducts.getAllProducts === "function"
       ) {
-
-        return window.ShoporaProducts.getAllProducts();
-
+        return await window.ShoporaProducts.getAllProducts({ first: 50 });
       }
-
-
       return [];
-
     }
 
 
@@ -1587,77 +1581,80 @@
        Add To Cart
     ========================= */
 
-    function addProductToCart(productId) {
+    async function addProductToCart(productId, button) {
+      try {
+        const product = await window.ShoporaProducts.getProduct(productId);
+        if (!product) {
+          showToast("Product could not be found.");
+          return;
+        }
+        if (!product.buyable || !product.variantId) {
+          showToast("This product is currently unavailable.");
+          return;
+        }
 
-      const product =
-        window.ShoporaProducts &&
-        typeof window.ShoporaProducts.getProduct === "function"
-          ? window.ShoporaProducts.getProduct(productId)
-          : null;
+        if (button) {
+          button.disabled = true;
+          button.textContent = "Adding...";
+        }
 
+        let cartId = localStorage.getItem("shoporaShopifyCartId");
+        let cart = null;
 
-      if (!product) {
+        if (cartId) {
+          try {
+            cart = await window.ShoporaProducts.shopifyRequest(`
+              query Cart($id: ID!) {
+                cart(id: $id) { id totalQuantity }
+              }
+            `, { id: cartId }).then(d => d.cart);
+          } catch(e) {
+            cart = null;
+          }
+        }
 
-        showToast("Product could not be found.");
+        if (!cart) {
+          const created = await window.ShoporaProducts.shopifyRequest(`
+            mutation CreateCart($lines: [CartLineInput!]!) {
+              cartCreate(input: { lines: $lines }) {
+                cart { id totalQuantity checkoutUrl }
+                userErrors { message }
+              }
+            }
+          `, { lines: [{ merchandiseId: product.variantId, quantity: 1 }] });
+          if (created.cartCreate.userErrors?.length) throw new Error(created.cartCreate.userErrors.map(e=>e.message).join(", "));
+          cart = created.cartCreate.cart;
+        } else {
+          const added = await window.ShoporaProducts.shopifyRequest(`
+            mutation AddLine($cartId: ID!, $lines: [CartLineInput!]!) {
+              cartLinesAdd(cartId: $cartId, lines: $lines) {
+                cart { id totalQuantity checkoutUrl }
+                userErrors { message }
+              }
+            }
+          `, { cartId, lines: [{ merchandiseId: product.variantId, quantity: 1 }] });
+          if (added.cartLinesAdd.userErrors?.length) throw new Error(added.cartLinesAdd.userErrors.map(e=>e.message).join(", "));
+          cart = added.cartLinesAdd.cart;
+        }
 
-        return;
-
+        localStorage.setItem("shoporaShopifyCartId", cart.id);
+        localStorage.removeItem("shoporaCart");
+        updateCounts();
+        const count = document.getElementById("cartCount");
+        if (count) count.textContent = cart.totalQuantity || 0;
+        showToast(product.name + " added to Shopify cart.");
+        if (button) {
+          button.textContent = "Added ✓";
+          setTimeout(()=>{ button.disabled=false; button.textContent="Add to Cart"; }, 1000);
+        }
+      } catch(error) {
+        console.error("Shopify cart error:", error);
+        showToast("Unable to add product to Shopify cart.");
+        if (button) {
+          button.disabled = false;
+          button.textContent = "Add to Cart";
+        }
       }
-
-
-      if (product.buyable === false) {
-
-        showToast("This product is currently unavailable.");
-
-        return;
-
-      }
-
-
-      const cart =
-        getCart();
-
-
-      const existing =
-        cart.find(
-          item =>
-            item.id === product.id ||
-            item.name === product.name
-        );
-
-
-      if (existing) {
-
-        existing.quantity =
-          Number(existing.quantity || 1) + 1;
-
-      } else {
-
-        cart.push({
-
-          id: product.id,
-
-          name: product.name,
-
-          price: Number(product.price || 0),
-
-          image: product.image,
-
-          quantity: 1
-
-        });
-
-      }
-
-
-      saveCart(cart);
-
-      updateCounts();
-
-      showToast(
-        `${product.name} added to cart.`
-      );
-
     }
 
 
@@ -1761,7 +1758,8 @@
                 button.dataset.product;
 
               addProductToCart(
-                productId
+                productId,
+                button
               );
 
             }
@@ -1821,8 +1819,7 @@
       );
 
 
-    let allProducts =
-      getProductsArray();
+    let allProducts = [];
 
 
     function filterProducts() {
@@ -1955,11 +1952,26 @@
       filterProducts
     );
 
-
     categoryFilter.addEventListener(
       "change",
       filterProducts
     );
+
+    async function initializeShopifyProducts() {
+      try {
+        allProducts = await getProductsArray();
+        await filterProducts();
+        if (!allProducts.length) {
+          showToast("No active Shopify products found.");
+        }
+      } catch (error) {
+        console.error("Shopify products error:", error);
+        productGrid.innerHTML = '<div class="products-error">Unable to load Shopify products. Check Shopify Storefront API access.</div>';
+        if (resultCount) resultCount.textContent = "0 products";
+      }
+    }
+
+    initializeShopifyProducts();
 
 
     /* =========================
