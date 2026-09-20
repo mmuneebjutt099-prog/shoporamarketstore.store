@@ -1,63 +1,47 @@
 /* =========================================================
    SHOPORA MARKET STORE
-   SHOPIFY STOREFRONT PRODUCT DATA
-   File: products.js
+   products.js
+   Shopify Storefront Product System
    ========================================================= */
 
-(function () {
-  "use strict";
+const SHOPIFY_STORE_DOMAIN = "fsgigg-tp.myshopify.com";
+const SHOPIFY_API_VERSION = "2026-07";
 
-  /* =========================================================
-     SHOPIFY CONFIG
-     ========================================================= */
+/*
+  Shopify Storefront public token
+  Is token ko frontend mein use kiya ja sakta hai.
+*/
+const SHOPIFY_STOREFRONT_PUBLIC_TOKEN =
+  "b00f8861faa3611c651415d574bf0095";
 
-  const SHOPIFY_DOMAIN = "fsgigg-tp.myshopify.com";
-
-  /*
-    IMPORTANT:
-    Paste your Shopify PUBLIC Storefront API token here.
-
-    Do NOT use:
-    - Client Secret
-    - Admin API token
-    - App automation token
-    - Private Storefront token
-  */
-  const SHOPIFY_STOREFRONT_TOKEN = "b00f8861faa3611c651415d574bf0095";
-
-  const SHOPIFY_API_VERSION = "2026-07";
-
-  const SHOPIFY_ENDPOINT =
-    "https://" +
-    SHOPIFY_DOMAIN +
-    "/api/" +
-    SHOPIFY_API_VERSION +
-    "/graphql.json";
+const SHOPIFY_GRAPHQL_URL =
+  `https://${SHOPIFY_STORE_DOMAIN}/api/${SHOPIFY_API_VERSION}/graphql.json`;
 
 
-  /* =========================================================
-     SHOPIFY GRAPHQL REQUEST
-     ========================================================= */
+/* =========================================================
+   SHOPIFY REQUEST
+   ========================================================= */
 
-  async function shopifyRequest(query, variables) {
-    const response = await fetch(SHOPIFY_ENDPOINT, {
+async function shopifyRequest(query, variables = {}) {
+  try {
+    const response = await fetch(SHOPIFY_GRAPHQL_URL, {
       method: "POST",
 
       headers: {
         "Content-Type": "application/json",
         "X-Shopify-Storefront-Access-Token":
-          SHOPIFY_STOREFRONT_TOKEN
+          SHOPIFY_STOREFRONT_PUBLIC_TOKEN
       },
 
       body: JSON.stringify({
-        query: query,
-        variables: variables || {}
+        query,
+        variables
       })
     });
 
     if (!response.ok) {
       throw new Error(
-        "Shopify API request failed: " + response.status
+        `Shopify HTTP error: ${response.status}`
       );
     }
 
@@ -65,476 +49,989 @@
 
     if (result.errors && result.errors.length) {
       console.error("Shopify GraphQL errors:", result.errors);
-
-      throw new Error(
-        result.errors[0].message || "Shopify GraphQL error"
-      );
+      throw new Error(result.errors[0].message);
     }
 
     return result.data;
+
+  } catch (error) {
+    console.error("Shopify request failed:", error);
+    throw error;
   }
+}
 
 
-  /* =========================================================
-     CONVERT SHOPIFY PRODUCT → SHOPORA PRODUCT FORMAT
-     ========================================================= */
+/* =========================================================
+   GET ALL PRODUCTS
+   ========================================================= */
 
-  function convertShopifyProduct(product) {
-    if (!product) return null;
+async function getAllProducts(options = {}) {
 
-    const variants =
-      product.variants &&
-      product.variants.nodes
-        ? product.variants.nodes
-        : [];
+  const first = options.first || 50;
 
-    const firstVariant =
-      variants.find(function (variant) {
-        return variant.availableForSale;
-      }) || variants[0] || null;
-
-    const firstImage =
-      product.images &&
-      product.images.nodes &&
-      product.images.nodes.length
-        ? product.images.nodes[0]
-        : null;
-
-    const image =
-      firstImage && firstImage.url
-        ? firstImage.url
-        : "assets/shopora-mark.png";
-
-    let category = "Lifestyle";
-
-    if (
-      product.productType &&
-      String(product.productType).trim()
-    ) {
-      category = product.productType;
-    } else if (
-      product.collections &&
-      product.collections.nodes &&
-      product.collections.nodes.length
-    ) {
-      category =
-        product.collections.nodes[0].title || "Lifestyle";
-    }
-
-    const price =
-      firstVariant &&
-      firstVariant.price &&
-      firstVariant.price.amount
-        ? Number(firstVariant.price.amount)
-        : 0;
-
-    const available =
-      firstVariant &&
-      typeof firstVariant.availableForSale !== "undefined"
-        ? firstVariant.availableForSale
-        : false;
-
-    return {
-      id: product.id,
-      shopifyId: product.id,
-
-      handle: product.handle,
-
-      name: product.title,
-
-      title: product.title,
-
-      category: category,
-
-      price: price,
-
-      currency:
-        firstVariant &&
-        firstVariant.price &&
-        firstVariant.price.currencyCode
-          ? firstVariant.price.currencyCode
-          : "PKR",
-
-      image: image,
-
-      images:
-        product.images &&
-        product.images.nodes
-          ? product.images.nodes.map(function (item) {
-              return item.url;
-            })
-          : [image],
-
-      description:
-        product.description ||
-        product.descriptionHtml ||
-        "",
-
-      badge: available ? "Available" : "Sold Out",
-
-      buyable: available,
-
-      stock: available ? 999 : 0,
-
-      sku:
-        firstVariant && firstVariant.sku
-          ? firstVariant.sku
-          : "",
-
-      seller: "Shopora Market Store",
-
-      status: "active",
-
-      variantId:
-        firstVariant && firstVariant.id
-          ? firstVariant.id
-          : null,
-
-      variants:
-        product.variants &&
-        product.variants.nodes
-          ? product.variants.nodes
-          : []
-    };
-  }
-
-
-  /* =========================================================
-     FETCH ALL SHOPIFY PRODUCTS
-     ========================================================= */
-
-  async function fetchShopifyProducts(options) {
-    options = options || {};
-
-    const first =
-      Number(options.first) > 0
-        ? Number(options.first)
-        : 50;
-
-    const query = `
-      query GetProducts($first: Int!) {
-        products(first: $first) {
-          nodes {
+  const query = `
+    query GetProducts($first: Int!) {
+      products(first: $first) {
+        edges {
+          node {
             id
             handle
             title
             description
             descriptionHtml
+
+            availableForSale
+
+            vendor
             productType
 
-            images(first: 10) {
-              nodes {
-                url
-                altText
-              }
+            featuredImage {
+              url
+              altText
+              width
+              height
             }
 
-            variants(first: 50) {
-              nodes {
-                id
-                title
-                sku
-                availableForSale
-                price {
-                  amount
-                  currencyCode
+            images(first: 10) {
+              edges {
+                node {
+                  url
+                  altText
+                  width
+                  height
                 }
               }
             }
 
-            collections(first: 10) {
-              nodes {
-                id
-                title
-                handle
+            variants(first: 100) {
+              edges {
+                node {
+                  id
+                  title
+                  availableForSale
+
+                  quantityAvailable
+
+                  price {
+                    amount
+                    currencyCode
+                  }
+
+                  compareAtPrice {
+                    amount
+                    currencyCode
+                  }
+
+                  selectedOptions {
+                    name
+                    value
+                  }
+                }
               }
             }
           }
         }
       }
-    `;
+    }
+  `;
 
-    const data = await shopifyRequest(query, {
-      first: first
-    });
+  const data = await shopifyRequest(query, { first });
 
-    const nodes =
-      data &&
-      data.products &&
-      data.products.nodes
-        ? data.products.nodes
-        : [];
+  const products = data?.products?.edges || [];
 
-    return nodes
-      .map(convertShopifyProduct)
-      .filter(Boolean);
+  return products.map(edge => normalizeShopifyProduct(edge.node));
+}
+
+
+/* =========================================================
+   GET SINGLE PRODUCT BY HANDLE
+   ========================================================= */
+
+async function getProductByHandle(handle) {
+
+  if (!handle) {
+    return null;
   }
 
+  const query = `
+    query GetProductByHandle($handle: String!) {
+      product(handle: $handle) {
+        id
+        handle
+        title
+        description
+        descriptionHtml
 
-  /* =========================================================
-     GET SINGLE SHOPIFY PRODUCT
-     ========================================================= */
+        availableForSale
 
-  async function getShopifyProductByHandle(handle) {
-    if (!handle) return null;
+        vendor
+        productType
 
-    const query = `
-      query GetProduct($handle: String!) {
-        product(handle: $handle) {
-          id
-          handle
-          title
-          description
-          descriptionHtml
-          productType
+        featuredImage {
+          url
+          altText
+          width
+          height
+        }
 
-          images(first: 10) {
-            nodes {
+        images(first: 20) {
+          edges {
+            node {
               url
               altText
+              width
+              height
             }
           }
+        }
 
-          variants(first: 50) {
-            nodes {
+        variants(first: 100) {
+          edges {
+            node {
               id
               title
-              sku
               availableForSale
+
+              quantityAvailable
+
               price {
                 amount
                 currencyCode
               }
-            }
-          }
 
-          collections(first: 10) {
-            nodes {
-              id
-              title
-              handle
+              compareAtPrice {
+                amount
+                currencyCode
+
+              selectedOptions {
+                name
+                value
+              }
             }
           }
         }
       }
-    `;
+    }
+  `;
 
-    const data = await shopifyRequest(query, {
-      handle: String(handle)
-    });
+  const data = await shopifyRequest(query, {
+    handle
+  });
 
-    if (!data || !data.product) {
+  if (!data?.product) {
+    return null;
+  }
+
+  return normalizeShopifyProduct(data.product);
+}
+
+
+/* =========================================================
+   NORMALIZE PRODUCT
+   ========================================================= */
+
+function normalizeShopifyProduct(product) {
+
+  const variants =
+    product?.variants?.edges?.map(edge => edge.node) || [];
+
+  /*
+    Pehle available variant choose karo.
+    Agar koi available variant nahi hai to first variant.
+  */
+  const selectedVariant =
+    variants.find(variant => variant.availableForSale) ||
+    variants[0] ||
+    null;
+
+  const images =
+    product?.images?.edges?.map(edge => edge.node) || [];
+
+  const featuredImage =
+    product?.featuredImage ||
+    images[0] ||
+    null;
+
+  const price =
+    selectedVariant?.price?.amount || "0.00";
+
+  const currency =
+    selectedVariant?.price?.currencyCode || "PKR";
+
+  const compareAtPrice =
+    selectedVariant?.compareAtPrice?.amount || null;
+
+  const available =
+    Boolean(
+      product?.availableForSale &&
+      selectedVariant?.availableForSale
+    );
+
+  return {
+
+    /* Shopify identity */
+    id: product.id,
+    shopifyId: product.id,
+    handle: product.handle,
+
+    /* Product information */
+    title: product.title,
+    name: product.title,
+
+    description: product.description || "",
+    descriptionHtml: product.descriptionHtml || "",
+
+    vendor: product.vendor || "",
+    productType: product.productType || "",
+
+    /* Images */
+    image: featuredImage?.url || "",
+    imageUrl: featuredImage?.url || "",
+    featuredImage: featuredImage,
+
+    images: images,
+
+    /* Pricing */
+    price: Number(price),
+    priceAmount: price,
+    currency: currency,
+
+    formattedPrice: formatProductPrice(
+      price,
+      currency
+    ),
+
+    compareAtPrice: compareAtPrice
+      ? Number(compareAtPrice)
+      : null,
+
+    /* Variant */
+    variantId: selectedVariant?.id || null,
+    variant: selectedVariant,
+
+    variants: variants,
+
+    /* Availability */
+    availableForSale: available,
+    available: available,
+    buyable: available,
+
+    /*
+      Frontend stock display.
+      Shopify quantityAvailable may be null depending
+      on store/API configuration.
+    */
+    stock:
+      selectedVariant?.quantityAvailable != null
+        ? selectedVariant.quantityAvailable
+        : available
+          ? 999
+          : 0
+  };
+}
+
+
+/* =========================================================
+   FORMAT PRICE
+   ========================================================= */
+
+function formatProductPrice(
+  amount,
+  currency = "PKR"
+) {
+
+  const numericAmount = Number(amount || 0);
+
+  try {
+
+    return new Intl.NumberFormat("en-PK", {
+      style: "currency",
+      currency: currency,
+      maximumFractionDigits: 0
+    }).format(numericAmount);
+
+  } catch (error) {
+
+    return `${currency} ${numericAmount.toLocaleString()}`;
+  }
+}
+
+
+/* =========================================================
+   GET PRODUCT BY ID
+   ========================================================= */
+
+async function getProductById(productId) {
+
+  if (!productId) {
+    return null;
+  }
+
+  const products = await getAllProducts({
+    first: 50
+  });
+
+  return (
+    products.find(
+      product =>
+        product.id === productId ||
+        product.shopifyId === productId
+    ) || null
+  );
+}
+
+
+/* =========================================================
+   GET AVAILABLE PRODUCTS
+   ========================================================= */
+
+async function getAvailableProducts(options = {}) {
+
+  const products = await getAllProducts(options);
+
+  return products.filter(
+    product => product.buyable === true
+  );
+}
+
+
+/* =========================================================
+   FIND PRODUCT
+   ========================================================= */
+
+async function findProduct(identifier) {
+
+  if (!identifier) {
+    return null;
+  }
+
+  /*
+    Agar Shopify handle hai to direct Shopify request.
+  */
+  if (
+    typeof identifier === "string" &&
+    !identifier.startsWith("gid://")
+  ) {
+
+    const product =
+      await getProductByHandle(identifier);
+
+    if (product) {
+      return product;
+    }
+  }
+
+  /*
+    Otherwise product ID se search.
+  */
+  if (
+    typeof identifier === "string" &&
+    identifier.startsWith("gid://")
+  ) {
+
+    return await getProductById(identifier);
+  }
+
+  return null;
+}
+
+
+/* =========================================================
+   SHOPIFY CART HELPERS
+   ========================================================= */
+
+const SHOPORA_CART_STORAGE_KEY =
+  "shoporaShopifyCartId";
+
+
+function getShopifyCartId() {
+
+  return localStorage.getItem(
+    SHOPORA_CART_STORAGE_KEY
+  );
+}
+
+
+function saveShopifyCartId(cartId) {
+
+  if (!cartId) {
+    return;
+  }
+
+  localStorage.setItem(
+    SHOPORA_CART_STORAGE_KEY,
+    cartId
+  );
+}
+
+
+function clearShopifyCartId() {
+
+  localStorage.removeItem(
+    SHOPORA_CART_STORAGE_KEY
+  );
+}
+
+
+/* =========================================================
+   CREATE SHOPIFY CART
+   ========================================================= */
+
+async function createShopifyCart(
+  variantId,
+  quantity = 1
+) {
+
+  if (!variantId) {
+    throw new Error(
+      "Product variant is missing."
+    );
+  }
+
+  const mutation = `
+    mutation CreateCart(
+      $lines: [CartLineInput!]
+    ) {
+      cartCreate(
+        input: {
+          lines: $lines
+        }
+      ) {
+        cart {
+          id
+          checkoutUrl
+
+          totalQuantity
+
+          cost {
+            totalAmount {
+              amount
+              currencyCode
+            }
+          }
+
+          lines(first: 100) {
+            edges {
+              node {
+                id
+                quantity
+
+                merchandise {
+                  ... on ProductVariant {
+                    id
+
+                    product {
+                      id
+                      title
+                      handle
+                    }
+
+                    price {
+                      amount
+                      currencyCode
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+  `;
+
+  const data = await shopifyRequest(
+    mutation,
+    {
+      lines: [
+        {
+          merchandiseId: variantId,
+          quantity: quantity
+        }
+      ]
+    }
+  );
+
+  const payload =
+    data?.cartCreate;
+
+  if (payload?.userErrors?.length) {
+
+    console.error(
+      "Cart create errors:",
+      payload.userErrors
+    );
+
+    throw new Error(
+      payload.userErrors[0].message
+    );
+  }
+
+  const cart =
+    payload?.cart;
+
+  if (!cart?.id) {
+    throw new Error(
+      "Shopify cart could not be created."
+    );
+  }
+
+  saveShopifyCartId(cart.id);
+
+  return cart;
+}
+
+
+/* =========================================================
+   ADD TO EXISTING SHOPIFY CART
+   ========================================================= */
+
+async function addToShopifyCart(
+  cartId,
+  variantId,
+  quantity = 1
+) {
+
+  const mutation = `
+    mutation AddCartLines(
+      $cartId: ID!,
+      $lines: [CartLineInput!]!
+    ) {
+      cartLinesAdd(
+        cartId: $cartId,
+        lines: $lines
+      ) {
+        cart {
+          id
+          checkoutUrl
+          totalQuantity
+
+          cost {
+            totalAmount {
+              amount
+              currencyCode
+            }
+          }
+
+          lines(first: 100) {
+            edges {
+              node {
+                id
+                quantity
+
+                merchandise {
+                  ... on ProductVariant {
+                    id
+
+                    product {
+                      id
+                      title
+                      handle
+                    }
+
+                    price {
+                      amount
+                      currencyCode
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        userErrors {
+          field
+          message
+        }
+      }
+    }
+  `;
+
+  const data = await shopifyRequest(
+    mutation,
+    {
+      cartId,
+      lines: [
+        {
+          merchandiseId: variantId,
+          quantity: quantity
+        }
+      ]
+    }
+  );
+
+  const payload =
+    data?.cartLinesAdd;
+
+  if (payload?.userErrors?.length) {
+
+    console.error(
+      "Cart add errors:",
+      payload.userErrors
+    );
+
+    throw new Error(
+      payload.userErrors[0].message
+    );
+  }
+
+  const cart =
+    payload?.cart;
+
+  if (!cart?.id) {
+    throw new Error(
+      "Product could not be added to cart."
+    );
+  }
+
+  saveShopifyCartId(cart.id);
+
+  return cart;
+}
+
+
+/* =========================================================
+   ADD PRODUCT TO CART
+   ========================================================= */
+
+async function addProductToCart(
+  product,
+  quantity = 1
+) {
+
+  if (!product) {
+    throw new Error(
+      "Product not found."
+    );
+  }
+
+  const variantId =
+    product.variantId ||
+    product.variant?.id;
+
+  if (!variantId) {
+    throw new Error(
+      "This product has no Shopify variant."
+    );
+  }
+
+  let cartId =
+    getShopifyCartId();
+
+  /*
+    Existing cart ho to usmein product add karo.
+  */
+  if (cartId) {
+
+    try {
+
+      return await addToShopifyCart(
+        cartId,
+        variantId,
+        quantity
+      );
+
+    } catch (error) {
+
+      /*
+        Agar old/expired cart hai,
+        naya cart create kar do.
+      */
+
+      console.warn(
+        "Existing Shopify cart failed. Creating new cart.",
+        error
+      );
+
+      clearShopifyCartId();
+    }
+  }
+
+  /*
+    No cart → new Shopify cart.
+  */
+
+  return await createShopifyCart(
+    variantId,
+    quantity
+  );
+}
+
+
+/* =========================================================
+   GET CURRENT SHOPIFY CART
+   ========================================================= */
+
+async function getShopifyCart() {
+
+  const cartId =
+    getShopifyCartId();
+
+  if (!cartId) {
+    return null;
+  }
+
+  const query = `
+    query GetCart($cartId: ID!) {
+      cart(id: $cartId) {
+        id
+        checkoutUrl
+
+        totalQuantity
+
+        cost {
+          totalAmount {
+            amount
+            currencyCode
+          }
+        }
+
+        lines(first: 100) {
+          edges {
+            node {
+              id
+              quantity
+
+              merchandise {
+                ... on ProductVariant {
+                  id
+                  title
+
+                  product {
+                    id
+                    title
+                    handle
+
+                    featuredImage {
+                      url
+                      altText
+                    }
+                  }
+
+                  price {
+                    amount
+                    currencyCode
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+
+  try {
+
+    const data =
+      await shopifyRequest(
+        query,
+        {
+          cartId
+        }
+      );
+
+    const cart =
+      data?.cart;
+
+    if (!cart) {
+
+      clearShopifyCartId();
+
       return null;
     }
 
-    return convertShopifyProduct(data.product);
+    return cart;
+
+  } catch (error) {
+
+    console.error(
+      "Could not load Shopify cart:",
+      error
+    );
+
+    return null;
+  }
+}
+
+
+/* =========================================================
+   CART COUNT
+   ========================================================= */
+
+async function getShopifyCartCount() {
+
+  const cart =
+    await getShopifyCart();
+
+  return cart?.totalQuantity || 0;
+}
+
+
+/* =========================================================
+   UPDATE CART COUNT ON PAGE
+   ========================================================= */
+
+async function updateShopifyCartCount() {
+
+  const count =
+    await getShopifyCartCount();
+
+  const selectors = [
+    "#cartCount",
+    ".cart-count",
+    "[data-cart-count]",
+    ".cart-badge"
+  ];
+
+  selectors.forEach(selector => {
+
+    document
+      .querySelectorAll(selector)
+      .forEach(element => {
+
+        element.textContent =
+          count;
+
+        element.style.display =
+          count > 0
+            ? ""
+            : "";
+      });
+  });
+
+  return count;
+}
+
+
+/* =========================================================
+   OPEN SHOPIFY CHECKOUT
+   ========================================================= */
+
+async function goToShopifyCheckout() {
+
+  const cart =
+    await getShopifyCart();
+
+  if (!cart?.checkoutUrl) {
+
+    alert(
+      "Your cart is empty. Please add a product first."
+    );
+
+    return;
   }
 
+  window.location.href =
+    cart.checkoutUrl;
+}
 
-  /* =========================================================
-     SEARCH SHOPIFY PRODUCTS
-     ========================================================= */
 
-  async function searchProducts(queryText) {
-    const products = await fetchShopifyProducts({
-      first: 50
-    });
+/* =========================================================
+   PRODUCT URL
+   ========================================================= */
 
-    if (!queryText) {
-      return products;
-    }
+function getProductUrl(product) {
 
-    const searchTerm = String(queryText)
-      .trim()
-      .toLowerCase();
-
-    if (!searchTerm) {
-      return products;
-    }
-
-    return products.filter(function (product) {
-      const searchableText = [
-        product.name,
-        product.category,
-        product.description,
-        product.badge,
-        product.sku,
-        product.handle
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      return searchableText.includes(searchTerm);
-    });
+  if (!product) {
+    return "#";
   }
 
-
-  /* =========================================================
-     CATEGORY FILTER
-     ========================================================= */
-
-  async function getProductsByCategory(category) {
-    const products = await fetchShopifyProducts({
-      first: 50
-    });
-
-    if (!category) {
-      return products;
-    }
-
-    const normalizedCategory = String(category)
-      .trim()
-      .toLowerCase();
-
-    return products.filter(function (product) {
-      return (
-        String(product.category)
-          .trim()
-          .toLowerCase() === normalizedCategory
-      );
-    });
-  }
-
-
-  /* =========================================================
-     RELATED PRODUCTS
-     ========================================================= */
-
-  async function getRelatedProducts(productId, limit) {
-    const maxItems =
-      Number(limit) > 0
-        ? Number(limit)
-        : 4;
-
-    const products = await fetchShopifyProducts({
-      first: 50
-    });
-
-    const currentProduct = products.find(function (product) {
-      return (
-        product.id === productId ||
-        product.handle === productId
-      );
-    });
-
-    if (!currentProduct) {
-      return products.slice(0, maxItems);
-    }
-
-    const sameCategory = products.filter(function (product) {
-      return (
-        product.id !== currentProduct.id &&
-        product.category === currentProduct.category
-      );
-    });
-
-    const otherProducts = products.filter(function (product) {
-      return (
-        product.id !== currentProduct.id &&
-        product.category !== currentProduct.category
-      );
-    });
-
-    return sameCategory
-      .concat(otherProducts)
-      .slice(0, maxItems);
-  }
-
-
-  /* =========================================================
-     FORMAT PRICE
-     ========================================================= */
-
-  function formatPrice(price, currency) {
-    const numericPrice = Number(price) || 0;
-
-    const code = currency || "PKR";
-
-    if (code === "PKR") {
-      return (
-        "PKR " +
-        numericPrice.toLocaleString("en-PK")
-      );
-    }
+  if (product.handle) {
 
     return (
-      code +
-      " " +
-      numericPrice.toLocaleString("en-US")
+      `product.html?handle=` +
+      encodeURIComponent(product.handle)
     );
   }
 
+  return "#";
+}
 
-  /* =========================================================
-     GET PRODUCT
-     ========================================================= */
 
-  async function getProduct(productId) {
-    if (!productId) return null;
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
 
-    /*
-      If productId is a Shopify handle
-    */
-    if (
-      typeof productId === "string" &&
-      !productId.startsWith("gid://")
-    ) {
-      return await getShopifyProductByHandle(productId);
-    }
+function getProductImage(product) {
 
-    const products = await fetchShopifyProducts({
-      first: 50
-    });
-
-    return (
-      products.find(function (product) {
-        return product.id === productId;
-      }) || null
-    );
+  if (!product) {
+    return "";
   }
 
-
-  /* =========================================================
-     PUBLIC SHOPORA API
-     ========================================================= */
-
-  window.ShoporaProducts = {
-
-    shopifyDomain: SHOPIFY_DOMAIN,
-
-    shopifyEndpoint: SHOPIFY_ENDPOINT,
-
-    getAllProducts: fetchShopifyProducts,
-
-    getProduct: getProduct,
-
-    getProductsByCategory:
-      getProductsByCategory,
-
-    searchProducts: searchProducts,
-
-    getRelatedProducts:
-      getRelatedProducts,
-
-    formatPrice: formatPrice,
-
-    convertShopifyProduct:
-      convertShopifyProduct,
-
-    shopifyRequest:
-      shopifyRequest
-  };
-
-
-  /* =========================================================
-     OPTIONAL GLOBAL READY EVENT
-     ========================================================= */
-
-  window.ShoporaProductsReady = true;
-
-  window.dispatchEvent(
-    new CustomEvent("shopora:products-ready")
+  return (
+    product.image ||
+    product.imageUrl ||
+    product.featuredImage?.url ||
+    product.images?.[0]?.url ||
+    ""
   );
+}
 
-})();
+
+/* =========================================================
+   SAFE HTML
+   ========================================================= */
+
+function escapeHtml(value) {
+
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+/* =========================================================
+   GLOBAL SHOPORA PRODUCT API
+   ========================================================= */
+
+window.ShoporaProducts = {
+
+  getAllProducts,
+  getProductByHandle,
+  getProductById,
+  getAvailableProducts,
+  findProduct,
+
+  addProductToCart,
+
+  getShopifyCart,
+  getShopifyCartCount,
+  updateShopifyCartCount,
+
+  goToShopifyCheckout,
+
+  getProductUrl,
+  getProductImage,
+  formatProductPrice,
+  escapeHtml
+};
+
+
+/* =========================================================
+   AUTO CART COUNT
+   ========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    updateShopifyCartCount()
+      .catch(error => {
+        console.error(
+          "Cart count initialization failed:",
+          error
+        );
+      });
+
+  }
+);
