@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Your Cart | Shopora Market Store</title>
@@ -644,7 +643,10 @@
     <div class="header-inner">
 
       <a href="index.html" class="brand">
-        <img src="assets/shopora-mark.png" alt="Shopora Market Store">
+        <img
+          src="assets/shopora-mark.png"
+          alt="Shopora Market Store"
+        >
 
         <div class="brand-text">
           <strong>Shopora</strong>
@@ -663,12 +665,20 @@
 
       <div class="header-actions">
 
-        <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+        <a
+          href="wishlist.html"
+          class="icon-btn"
+          aria-label="Wishlist"
+        >
           ♡
           <span class="count" id="wishlistCount">0</span>
         </a>
 
-        <a href="cart.html" class="icon-btn" aria-label="Cart">
+        <a
+          href="cart.html"
+          class="icon-btn"
+          aria-label="Cart"
+        >
           🛒
           <span class="count" id="cartCount">0</span>
         </a>
@@ -682,8 +692,12 @@
 
     <div class="page-heading">
       <div class="eyebrow">Your selection</div>
+
       <h1>Your Cart</h1>
-      <p>Review your products before continuing to secure checkout.</p>
+
+      <p>
+        Review your products before continuing to secure checkout.
+      </p>
     </div>
 
     <div id="errorBox" class="error-box"></div>
@@ -700,7 +714,10 @@
 
           <div class="cart-header">
             <h2>Shopping Bag</h2>
-            <span id="cartItemCount">0 items</span>
+
+            <span id="cartItemCount">
+              0 items
+            </span>
           </div>
 
           <div id="cartItems"></div>
@@ -718,7 +735,9 @@
 
           <div class="summary-row">
             <span>Subtotal</span>
-            <strong id="summarySubtotal">PKR 0</strong>
+            <strong id="summarySubtotal">
+              PKR 0
+            </strong>
           </div>
 
           <div class="summary-row">
@@ -728,7 +747,10 @@
 
           <div class="summary-total">
             <span>Total</span>
-            <span id="summaryTotal">PKR 0</span>
+
+            <span id="summaryTotal">
+              PKR 0
+            </span>
           </div>
 
           <button
@@ -758,7 +780,11 @@
 
     </div>
 
-    <div id="emptyCart" class="empty-cart" style="display:none;">
+    <div
+      id="emptyCart"
+      class="empty-cart"
+      style="display:none;"
+    >
 
       <div class="empty-icon">🛒</div>
 
@@ -768,7 +794,10 @@
         Looks like you haven't added anything yet.
       </p>
 
-      <a href="shop.html" class="shop-btn">
+      <a
+        href="shop.html"
+        class="shop-btn"
+      >
         Start Shopping
       </a>
 
@@ -793,10 +822,21 @@
         <h4>Explore</h4>
 
         <ul>
-          <li><a href="shop.html">All Products</a></li>
-          <li><a href="categories.html">Categories</a></li>
-          <li><a href="trending.html">Trending</a></li>
-          <li><a href="about.html">About</a></li>
+          <li>
+            <a href="shop.html">All Products</a>
+          </li>
+
+          <li>
+            <a href="categories.html">Categories</a>
+          </li>
+
+          <li>
+            <a href="trending.html">Trending</a>
+          </li>
+
+          <li>
+            <a href="about.html">About</a>
+          </li>
         </ul>
       </div>
 
@@ -804,13 +844,41 @@
         <h4>Help</h4>
 
         <ul>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="cart.html">Cart</a></li>
-          <li><a href="wishlist.html">Wishlist</a></li>
-          <li><a href="privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="terms-of-service.html">Terms of Service</a></li>
-          <li><a href="cookie-policy.html">Cookie Policy</a></li>
-          <li><a href="return-refund.html">Return / Refunds</a></li>
+          <li>
+            <a href="contact.html">Contact</a>
+          </li>
+
+          <li>
+            <a href="cart.html">Cart</a>
+          </li>
+
+          <li>
+            <a href="wishlist.html">Wishlist</a>
+          </li>
+
+          <li>
+            <a href="privacy-policy.html">
+              Privacy Policy
+            </a>
+          </li>
+
+          <li>
+            <a href="terms-of-service.html">
+              Terms of Service
+            </a>
+          </li>
+
+          <li>
+            <a href="cookie-policy.html">
+              Cookie Policy
+            </a>
+          </li>
+
+          <li>
+            <a href="return-refund.html">
+              Return / Refunds
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -824,7 +892,7 @@
 
   <div id="toast" class="toast"></div>
 
-  <!-- CENTRAL SHOPIFY PRODUCT + CART SYSTEM -->
+  <!-- IMPORTANT: products.js MUST LOAD BEFORE CART SCRIPT -->
   <script src="products.js"></script>
 
   <script>
@@ -832,12 +900,6 @@
       "use strict";
 
       const Shopora = window.ShoporaProducts;
-
-      if (!Shopora) {
-        console.error("ShoporaProducts is not loaded.");
-        showError("Shopora shopping system could not be loaded.");
-        return;
-      }
 
       const errorBox = document.getElementById("errorBox");
       const loading = document.getElementById("loading");
@@ -847,6 +909,23 @@
       const checkoutBtn = document.getElementById("checkoutBtn");
 
       let busy = false;
+
+      if (!Shopora) {
+        console.error("ShoporaProducts is not loaded.");
+
+        if (errorBox) {
+          errorBox.textContent =
+            "Shopora shopping system could not be loaded.";
+
+          errorBox.style.display = "block";
+        }
+
+        if (loading) {
+          loading.style.display = "none";
+        }
+
+        return;
+      }
 
       function showError(message) {
         if (!errorBox) return;
@@ -865,34 +944,51 @@
       }
 
       function showToast(message) {
-        const toast = document.getElementById("toast");
+        const toast =
+          document.getElementById("toast");
 
         if (!toast) return;
 
         toast.textContent = message;
+
         toast.classList.add("show");
 
-        clearTimeout(window.shoporaToastTimer);
+        clearTimeout(
+          window.shoporaToastTimer
+        );
 
-        window.shoporaToastTimer = setTimeout(() => {
-          toast.classList.remove("show");
-        }, 2500);
+        window.shoporaToastTimer =
+          setTimeout(() => {
+            toast.classList.remove("show");
+          }, 2500);
       }
 
       function updateWishlistCount() {
         let wishlist = [];
 
         try {
-          wishlist =
-            JSON.parse(
-              localStorage.getItem("shoporaWishlist") || "[]"
-            );
+          wishlist = JSON.parse(
+            localStorage.getItem(
+              "shoporaWishlist"
+            ) || "[]"
+          );
         } catch {
           wishlist = [];
         }
 
-        document.getElementById("wishlistCount").textContent =
-          Array.isArray(wishlist) ? wishlist.length : 0;
+        const count =
+          Array.isArray(wishlist)
+            ? wishlist.length
+            : 0;
+
+        const element =
+          document.getElementById(
+            "wishlistCount"
+          );
+
+        if (element) {
+          element.textContent = count;
+        }
       }
 
       async function updateCartCount() {
@@ -900,36 +996,68 @@
           const count =
             await Shopora.getShopifyCartCount();
 
-          document.getElementById("cartCount").textContent =
-            Number(count || 0);
+          const element =
+            document.getElementById(
+              "cartCount"
+            );
+
+          if (element) {
+            element.textContent =
+              Number(count || 0);
+          }
 
         } catch (error) {
-          console.error("Cart count error:", error);
+          console.error(
+            "Cart count error:",
+            error
+          );
 
-          document.getElementById("cartCount").textContent = "0";
+          const element =
+            document.getElementById(
+              "cartCount"
+            );
+
+          if (element) {
+            element.textContent = "0";
+          }
         }
       }
 
-      function formatMoney(amount, currencyCode) {
-        const number = Number(amount || 0);
+      function formatMoney(
+        amount,
+        currencyCode
+      ) {
+        const number =
+          Number(amount || 0);
 
-        if (currencyCode === "PKR") {
+        const currency =
+          currencyCode || "PKR";
+
+        if (currency === "PKR") {
           return (
             "PKR " +
-            number.toLocaleString("en-PK", {
-              maximumFractionDigits: 2
-            })
+            number.toLocaleString(
+              "en-PK",
+              {
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 2
+              }
+            )
           );
         }
 
         try {
-          return new Intl.NumberFormat("en-US", {
-            style: "currency",
-            currency: currencyCode || "USD"
-          }).format(number);
+          return new Intl.NumberFormat(
+            "en-US",
+            {
+              style: "currency",
+              currency
+            }
+          ).format(number);
+
         } catch {
           return (
-            (currencyCode || "") +
+            currency +
             " " +
             number.toLocaleString()
           );
@@ -937,7 +1065,10 @@
       }
 
       function escapeHTML(value) {
-        if (typeof Shopora.escapeHtml === "function") {
+        if (
+          typeof Shopora.escapeHtml ===
+          "function"
+        ) {
           return Shopora.escapeHtml(value);
         }
 
@@ -949,78 +1080,232 @@
           .replace(/'/g, "&#039;");
       }
 
-      function renderEmptyCart() {
-        loading.style.display = "none";
-        cartContent.style.display = "none";
-        emptyCart.style.display = "block";
+      /*
+       * Shopify can return connection data
+       * as either:
+       *
+       * lines.nodes
+       *
+       * or:
+       *
+       * lines.edges[].node
+       *
+       * This function supports BOTH.
+       */
+      function getCartLines(cart) {
+        if (
+          cart &&
+          cart.lines &&
+          Array.isArray(cart.lines.nodes)
+        ) {
+          return cart.lines.nodes;
+        }
 
-        document.getElementById("cartCount").textContent = "0";
-        document.getElementById("cartItemCount").textContent = "0 items";
-        document.getElementById("summaryQuantity").textContent = "0";
-        document.getElementById("summarySubtotal").textContent = "PKR 0";
-        document.getElementById("summaryTotal").textContent = "PKR 0";
+        if (
+          cart &&
+          cart.lines &&
+          Array.isArray(cart.lines.edges)
+        ) {
+          return cart.lines.edges
+            .map(edge => edge?.node)
+            .filter(Boolean);
+        }
+
+        return [];
+      }
+
+      function renderEmptyCart() {
+        if (loading) {
+          loading.style.display = "none";
+        }
+
+        if (cartContent) {
+          cartContent.style.display = "none";
+        }
+
+        if (emptyCart) {
+          emptyCart.style.display = "block";
+        }
+
+        const cartCount =
+          document.getElementById(
+            "cartCount"
+          );
+
+        const cartItemCount =
+          document.getElementById(
+            "cartItemCount"
+          );
+
+        const summaryQuantity =
+          document.getElementById(
+            "summaryQuantity"
+          );
+
+        const summarySubtotal =
+          document.getElementById(
+            "summarySubtotal"
+          );
+
+        const summaryTotal =
+          document.getElementById(
+            "summaryTotal"
+          );
+
+        if (cartCount) {
+          cartCount.textContent = "0";
+        }
+
+        if (cartItemCount) {
+          cartItemCount.textContent =
+            "0 items";
+        }
+
+        if (summaryQuantity) {
+          summaryQuantity.textContent = "0";
+        }
+
+        if (summarySubtotal) {
+          summarySubtotal.textContent =
+            "PKR 0";
+        }
+
+        if (summaryTotal) {
+          summaryTotal.textContent =
+            "PKR 0";
+        }
       }
 
       function renderCart(cart) {
-        loading.style.display = "none";
+        if (loading) {
+          loading.style.display = "none";
+        }
 
-        if (
-          !cart ||
-          !cart.lines ||
-          !Array.isArray(cart.lines.nodes) ||
-          cart.lines.nodes.length === 0
-        ) {
+        /*
+         * IMPORTANT:
+         * Get lines from either nodes OR edges.
+         */
+        const lines =
+          getCartLines(cart);
+
+        if (lines.length === 0) {
           renderEmptyCart();
           return;
         }
 
-        cartContent.style.display = "block";
-        emptyCart.style.display = "none";
+        if (cartContent) {
+          cartContent.style.display =
+            "block";
+        }
 
-        const lines = cart.lines.nodes;
+        if (emptyCart) {
+          emptyCart.style.display =
+            "none";
+        }
 
-        document.getElementById("cartItemCount").textContent =
-          lines.length +
-          (lines.length === 1 ? " item" : " items");
+        const cartItemCount =
+          document.getElementById(
+            "cartItemCount"
+          );
 
-        document.getElementById("summaryQuantity").textContent =
-          cart.totalQuantity || 0;
+        if (cartItemCount) {
+          cartItemCount.textContent =
+            lines.length +
+            (
+              lines.length === 1
+                ? " item"
+                : " items"
+            );
+        }
+
+        const summaryQuantity =
+          document.getElementById(
+            "summaryQuantity"
+          );
+
+        if (summaryQuantity) {
+          summaryQuantity.textContent =
+            Number(
+              cart.totalQuantity || 0
+            );
+        }
+
+        const subtotal =
+          cart.cost?.subtotalAmount;
+
+        const total =
+          cart.cost?.totalAmount;
 
         const subtotalAmount =
-          cart.cost?.subtotalAmount?.amount || 0;
+          Number(
+            subtotal?.amount || 0
+          );
 
         const subtotalCurrency =
-          cart.cost?.subtotalAmount?.currencyCode || "PKR";
+          subtotal?.currencyCode ||
+          "PKR";
 
         const totalAmount =
-          cart.cost?.totalAmount?.amount || 0;
+          Number(
+            total?.amount || 0
+          );
 
         const totalCurrency =
-          cart.cost?.totalAmount?.currencyCode || "PKR";
+          total?.currencyCode ||
+          "PKR";
 
-        document.getElementById("summarySubtotal").textContent =
-          formatMoney(
-            subtotalAmount,
-            subtotalCurrency
+        const summarySubtotal =
+          document.getElementById(
+            "summarySubtotal"
           );
 
-        document.getElementById("summaryTotal").textContent =
-          formatMoney(
-            totalAmount,
-            totalCurrency
+        const summaryTotal =
+          document.getElementById(
+            "summaryTotal"
           );
 
-        document.getElementById("cartCount").textContent =
-          cart.totalQuantity || 0;
+        if (summarySubtotal) {
+          summarySubtotal.textContent =
+            formatMoney(
+              subtotalAmount,
+              subtotalCurrency
+            );
+        }
+
+        if (summaryTotal) {
+          summaryTotal.textContent =
+            formatMoney(
+              totalAmount,
+              totalCurrency
+            );
+        }
+
+        const cartCount =
+          document.getElementById(
+            "cartCount"
+          );
+
+        if (cartCount) {
+          cartCount.textContent =
+            Number(
+              cart.totalQuantity || 0
+            );
+        }
+
+        if (!cartItems) return;
 
         cartItems.innerHTML =
           lines.map(line => {
 
-            const variant = line.merchandise || {};
-            const product = variant.product || {};
+            const merchandise =
+              line?.merchandise || {};
+
+            const product =
+              merchandise?.product || {};
 
             const image =
               product.featuredImage?.url ||
+              product.images?.edges?.[0]?.node?.url ||
               "assets/shopora-mark.png";
 
             const alt =
@@ -1028,32 +1313,55 @@
               product.title ||
               "Shopora product";
 
+            const quantity =
+              Number(
+                line.quantity || 0
+              );
+
+            const unitPrice =
+              Number(
+                merchandise.price?.amount ||
+                0
+              );
+
             const lineTotal =
-              Number(variant.price?.amount || 0) *
-              Number(line.quantity || 0);
+              unitPrice * quantity;
 
             const currency =
-              variant.price?.currencyCode || "PKR";
+              merchandise.price?.currencyCode ||
+              subtotalCurrency ||
+              "PKR";
 
             const variantTitle =
-              variant.title &&
-              variant.title !== "Default Title"
+              merchandise.title &&
+              merchandise.title !==
+                "Default Title"
                 ? `
                   <div class="item-variant">
-                    ${escapeHTML(variant.title)}
+                    ${escapeHTML(
+                      merchandise.title
+                    )}
                   </div>
                 `
                 : "";
 
+            const productHandle =
+              product.handle || "";
+
+            const safeLineId =
+              escapeHTML(
+                line.id || ""
+              );
+
             return `
               <article
                 class="cart-item"
-                data-line-id="${escapeHTML(line.id)}"
+                data-line-id="${safeLineId}"
               >
 
                 <a
                   href="product.html?handle=${encodeURIComponent(
-                    product.handle || ""
+                    productHandle
                   )}"
                   class="cart-image"
                 >
@@ -1067,14 +1375,17 @@
                 <div class="item-info">
 
                   <h3>
-                    ${escapeHTML(product.title || "Product")}
+                    ${escapeHTML(
+                      product.title ||
+                      "Product"
+                    )}
                   </h3>
 
                   ${variantTitle}
 
                   <div class="item-price">
                     ${formatMoney(
-                      variant.price?.amount || 0,
+                      unitPrice,
                       currency
                     )}
                   </div>
@@ -1085,20 +1396,20 @@
                       type="button"
                       class="quantity-minus"
                       aria-label="Decrease quantity"
-                      data-line-id="${escapeHTML(line.id)}"
+                      data-line-id="${safeLineId}"
                     >
                       −
                     </button>
 
                     <span class="quantity-value">
-                      ${Number(line.quantity || 0)}
+                      ${quantity}
                     </span>
 
                     <button
                       type="button"
                       class="quantity-plus"
                       aria-label="Increase quantity"
-                      data-line-id="${escapeHTML(line.id)}"
+                      data-line-id="${safeLineId}"
                     >
                       +
                     </button>
@@ -1119,7 +1430,7 @@
                   <button
                     type="button"
                     class="remove-btn"
-                    data-line-id="${escapeHTML(line.id)}"
+                    data-line-id="${safeLineId}"
                   >
                     Remove
                   </button>
@@ -1133,99 +1444,136 @@
         bindCartActions();
       }
 
-      function setCartButtonsDisabled(disabled) {
+      function setCartButtonsDisabled(
+        disabled
+      ) {
         document
           .querySelectorAll(
             ".quantity-minus, .quantity-plus, .remove-btn"
           )
           .forEach(button => {
-            button.disabled = disabled;
+            button.disabled =
+              disabled;
           });
       }
 
-      async function bindCartActions() {
+      function bindCartActions() {
+
         document
-          .querySelectorAll(".quantity-minus")
+          .querySelectorAll(
+            ".quantity-minus"
+          )
           .forEach(button => {
 
-            button.addEventListener("click", async () => {
+            button.addEventListener(
+              "click",
+              async () => {
 
-              if (busy) return;
+                if (busy) return;
 
-              const lineId =
-                button.dataset.lineId;
+                const lineId =
+                  button.dataset.lineId;
 
-              const item =
-                button.closest(".cart-item");
+                const item =
+                  button.closest(
+                    ".cart-item"
+                  );
 
-              const quantityElement =
-                item?.querySelector(".quantity-value");
+                const quantityElement =
+                  item?.querySelector(
+                    ".quantity-value"
+                  );
 
-              const currentQuantity =
-                Number(
-                  quantityElement?.textContent || 1
-                );
+                const currentQuantity =
+                  Number(
+                    quantityElement
+                      ?.textContent || 1
+                  );
 
-              if (currentQuantity <= 1) {
-                await changeLine(lineId, 0);
-              } else {
+                if (
+                  currentQuantity <= 1
+                ) {
+                  await changeLine(
+                    lineId,
+                    0
+                  );
+                } else {
+                  await changeLine(
+                    lineId,
+                    currentQuantity - 1
+                  );
+                }
+              }
+            );
+          });
+
+        document
+          .querySelectorAll(
+            ".quantity-plus"
+          )
+          .forEach(button => {
+
+            button.addEventListener(
+              "click",
+              async () => {
+
+                if (busy) return;
+
+                const lineId =
+                  button.dataset.lineId;
+
+                const item =
+                  button.closest(
+                    ".cart-item"
+                  );
+
+                const quantityElement =
+                  item?.querySelector(
+                    ".quantity-value"
+                  );
+
+                const currentQuantity =
+                  Number(
+                    quantityElement
+                      ?.textContent || 0
+                  );
+
                 await changeLine(
                   lineId,
-                  currentQuantity - 1
+                  currentQuantity + 1
                 );
               }
-            });
+            );
           });
 
         document
-          .querySelectorAll(".quantity-plus")
+          .querySelectorAll(
+            ".remove-btn"
+          )
           .forEach(button => {
 
-            button.addEventListener("click", async () => {
+            button.addEventListener(
+              "click",
+              async () => {
 
-              if (busy) return;
+                if (busy) return;
 
-              const lineId =
-                button.dataset.lineId;
+                const lineId =
+                  button.dataset.lineId;
 
-              const item =
-                button.closest(".cart-item");
-
-              const quantityElement =
-                item?.querySelector(".quantity-value");
-
-              const currentQuantity =
-                Number(
-                  quantityElement?.textContent || 0
+                await changeLine(
+                  lineId,
+                  0
                 );
-
-              await changeLine(
-                lineId,
-                currentQuantity + 1
-              );
-            });
-          });
-
-        document
-          .querySelectorAll(".remove-btn")
-          .forEach(button => {
-
-            button.addEventListener("click", async () => {
-
-              if (busy) return;
-
-              const lineId =
-                button.dataset.lineId;
-
-              await changeLine(
-                lineId,
-                0
-              );
-            });
+              }
+            );
           });
       }
 
-      async function changeLine(lineId, quantity) {
+      async function changeLine(
+        lineId,
+        quantity
+      ) {
 
         if (!lineId || busy) return;
 
@@ -1235,16 +1583,13 @@
 
         setCartButtonsDisabled(true);
 
-        document.body.style.cursor = "wait";
+        document.body.style.cursor =
+          "wait";
 
         try {
 
-          let cart;
+          let updatedCart;
 
-          /*
-           * These methods are added to products.js.
-           * Shopify remains the single source of truth.
-           */
           if (quantity <= 0) {
 
             if (
@@ -1256,7 +1601,7 @@
               );
             }
 
-            cart =
+            updatedCart =
               await Shopora.removeCartLine(
                 lineId
               );
@@ -1272,30 +1617,37 @@
               );
             }
 
-            cart =
+            updatedCart =
               await Shopora.updateCartLine(
                 lineId,
                 quantity
               );
           }
 
-          if (!cart) {
+          if (!updatedCart) {
             throw new Error(
               "Unable to update your cart."
             );
           }
 
-          renderCart(cart);
+          renderCart(
+            updatedCart
+          );
 
           await updateCartCount();
 
           if (quantity <= 0) {
-            showToast("Product removed from cart.");
+            showToast(
+              "Product removed from cart."
+            );
           }
 
         } catch (error) {
 
-          console.error(error);
+          console.error(
+            "Cart update error:",
+            error
+          );
 
           showError(
             error?.message ||
@@ -1306,9 +1658,12 @@
 
           busy = false;
 
-          document.body.style.cursor = "";
+          document.body.style.cursor =
+            "";
 
-          setCartButtonsDisabled(false);
+          setCartButtonsDisabled(
+            false
+          );
         }
       }
 
@@ -1316,9 +1671,20 @@
 
         hideError();
 
-        loading.style.display = "block";
-        cartContent.style.display = "none";
-        emptyCart.style.display = "none";
+        if (loading) {
+          loading.style.display =
+            "block";
+        }
+
+        if (cartContent) {
+          cartContent.style.display =
+            "none";
+        }
+
+        if (emptyCart) {
+          emptyCart.style.display =
+            "none";
+        }
 
         try {
 
@@ -1334,6 +1700,10 @@
           const cart =
             await Shopora.getShopifyCart();
 
+          /*
+           * No Shopify cart ID means
+           * the cart is empty.
+           */
           if (!cart) {
 
             renderEmptyCart();
@@ -1343,6 +1713,9 @@
             return;
           }
 
+          /*
+           * Render actual Shopify cart.
+           */
           renderCart(cart);
 
           await updateCartCount();
@@ -1354,7 +1727,10 @@
             error
           );
 
-          loading.style.display = "none";
+          if (loading) {
+            loading.style.display =
+              "none";
+          }
 
           showError(
             error?.message ||
@@ -1373,14 +1749,12 @@
 
         try {
 
-          checkoutBtn.disabled = true;
+          checkoutBtn.disabled =
+            true;
 
           checkoutBtn.textContent =
             "Opening Checkout...";
 
-          /*
-           * Central checkout function from products.js.
-           */
           if (
             typeof Shopora.goToShopifyCheckout !==
             "function"
@@ -1404,7 +1778,8 @@
             "Unable to open checkout."
           );
 
-          checkoutBtn.disabled = false;
+          checkoutBtn.disabled =
+            false;
 
           checkoutBtn.textContent =
             "Proceed to Checkout";
@@ -1416,9 +1791,17 @@
         checkout
       );
 
+      /*
+       * Initial page load
+       */
       updateWishlistCount();
+      updateCartCount();
       loadCart();
 
+      /*
+       * When user returns to this page
+       * from another page/tab.
+       */
       window.addEventListener(
         "pageshow",
         () => {
