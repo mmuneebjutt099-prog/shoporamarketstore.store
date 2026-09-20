@@ -1,265 +1,1281 @@
-/* =========================================================
-   SHOPORA MARKET STORE
-   REAL SHOPIFY PRODUCT DETAIL CONTROLLER
-   ========================================================= */
+ /* =========================================================
+    SHOPORA MARKET STORE
+    product.js
+    PRODUCT DETAIL PAGE CONTROLLER
+    Uses central products.js system
+    ========================================================= */
+
 (function () {
   "use strict";
 
-  const SHOPIFY_STORE_DOMAIN = "fsgigg-tp.myshopify.com";
-  const SHOPIFY_STOREFRONT_TOKEN = "b00f8861faa3611c651415d574bf0095";
-  const SHOPIFY_API_VERSION = "2026-07";
-  const SHOPIFY_URL =
-    "https://" + SHOPIFY_STORE_DOMAIN +
-    "/api/" + SHOPIFY_API_VERSION + "/graphql.json";
-  const CART_KEY = "shoporaShopifyCartId";
+  /* =========================================================
+     BASIC HELPERS
+     ========================================================= */
 
-  function $(id){ return document.getElementById(id); }
-
-  function escapeHTML(value){
-    return String(value ?? "")
-      .replace(/&/g,"&amp;").replace(/</g,"&lt;")
-      .replace(/>/g,"&gt;").replace(/"/g,"&quot;")
-      .replace(/'/g,"&#039;");
+  function $(id) {
+    return document.getElementById(id);
   }
 
-  function toast(message){
-    let t=$("shoporaToast");
-    if(!t){
-      t=document.createElement("div");
-      t.id="shoporaToast";
-      t.style.cssText="position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);background:#111;color:#fff;padding:13px 20px;border-radius:999px;font:600 14px Arial;z-index:99999;opacity:0;transition:.25s;pointer-events:none";
+  function escapeHTML(value) {
+    if (window.ShoporaProducts?.escapeHtml) {
+      return window.ShoporaProducts.escapeHtml(value);
+    }
+
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function formatMoney(amount, currency) {
+    if (window.ShoporaProducts?.formatProductPrice) {
+      return window.ShoporaProducts.formatProductPrice(
+        amount,
+        currency || "PKR"
+      );
+    }
+
+    try {
+      return new Intl.NumberFormat("en-PK", {
+        style: "currency",
+        currency: currency || "PKR",
+        maximumFractionDigits: 0
+      }).format(Number(amount || 0));
+    } catch (error) {
+      return `${currency || "PKR"} ${Number(
+        amount || 0
+      ).toLocaleString()}`;
+    }
+  }
+
+
+  /* =========================================================
+     TOAST
+     ========================================================= */
+
+  function toast(message) {
+    let t = $("shoporaToast");
+
+    if (!t) {
+      t = document.createElement("div");
+
+      t.id = "shoporaToast";
+
+      t.style.cssText = `
+        position:fixed;
+        left:50%;
+        bottom:28px;
+        transform:translateX(-50%) translateY(20px);
+        background:#111;
+        color:#fff;
+        padding:13px 20px;
+        border-radius:999px;
+        font:600 14px Arial,sans-serif;
+        z-index:99999;
+        opacity:0;
+        transition:.25s;
+        pointer-events:none;
+        box-shadow:0 10px 30px rgba(0,0,0,.18);
+      `;
+
       document.body.appendChild(t);
     }
-    t.textContent=message;
-    requestAnimationFrame(()=>{t.style.opacity="1";t.style.transform="translateX(-50%) translateY(0)"});
-    clearTimeout(window.shoporaToastTimer);
-    window.shoporaToastTimer=setTimeout(()=>{t.style.opacity="0";t.style.transform="translateX(-50%) translateY(20px)"},2600);
-  }
 
-  async function shopify(query, variables={}){
-    const response=await fetch(SHOPIFY_URL,{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "X-Shopify-Storefront-Access-Token":SHOPIFY_STOREFRONT_TOKEN
-      },
-      body:JSON.stringify({query,variables})
+    t.textContent = message;
+
+    requestAnimationFrame(() => {
+      t.style.opacity = "1";
+      t.style.transform =
+        "translateX(-50%) translateY(0)";
     });
-    const json=await response.json();
-    if(!response.ok) throw new Error("Shopify HTTP "+response.status);
-    if(json.errors?.length) throw new Error(json.errors.map(e=>e.message).join(", "));
-    return json.data;
+
+    clearTimeout(
+      window.shoporaToastTimer
+    );
+
+    window.shoporaToastTimer =
+      setTimeout(() => {
+        t.style.opacity = "0";
+        t.style.transform =
+          "translateX(-50%) translateY(20px)";
+      }, 2600);
   }
 
-  function getParam(){
-    const p=new URLSearchParams(location.search);
-    return p.get("handle") || p.get("product") || "";
+
+  /* =========================================================
+     URL HANDLE
+     ========================================================= */
+
+  function getProductHandle() {
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    return (
+      params.get("handle") ||
+      params.get("product") ||
+      ""
+    );
   }
 
-  function getCartId(){ return localStorage.getItem(CART_KEY); }
-  function saveCartId(id){ if(id) localStorage.setItem(CART_KEY,id); }
 
-  async function getCart(id){
-    if(!id) return null;
-    const q=`query Cart($id:ID!){
-      cart(id:$id){ id totalQuantity checkoutUrl }
-    }`;
-    const d=await shopify(q,{id});
-    return d.cart;
-  }
+  /* =========================================================
+     PAGE STATE
+     ========================================================= */
 
-  async function createCart(variantId, quantity){
-    const q=`mutation Create($lines:[CartLineInput!]!){
-      cartCreate(input:{lines:$lines}){
-        cart{id checkoutUrl totalQuantity}
-        userErrors{field message}
-      }
-    }`;
-    const d=await shopify(q,{lines:[{merchandiseId:variantId,quantity}]});
-    if(d.cartCreate.userErrors?.length) throw new Error(d.cartCreate.userErrors.map(e=>e.message).join(", "));
-    return d.cartCreate.cart;
-  }
+  let currentProduct = null;
+  let selectedVariant = null;
+  let quantity = 1;
 
-  async function addToCart(variantId, quantity){
-    let cartId=getCartId();
-    let cart=await getCart(cartId).catch(()=>null);
 
-    if(!cart){
-      cart=await createCart(variantId,quantity);
-      saveCartId(cart.id);
-      return cart;
+  /* =========================================================
+     LOAD PRODUCT
+     ========================================================= */
+
+  async function loadProduct() {
+
+    const handle =
+      getProductHandle();
+
+    if (!handle) {
+      showNotFound();
+      return;
     }
 
-    const q=`mutation Add($cartId:ID!,$lines:[CartLineInput!]!){
-      cartLinesAdd(cartId:$cartId,lines:$lines){
-        cart{id checkoutUrl totalQuantity}
-        userErrors{field message}
-      }
-    }`;
-    const d=await shopify(q,{cartId,lines:[{merchandiseId:variantId,quantity}]});
-    if(d.cartLinesAdd.userErrors?.length){
-      throw new Error(d.cartLinesAdd.userErrors.map(e=>e.message).join(", "));
+    if (!window.ShoporaProducts) {
+
+      showError(
+        "products.js is not loaded."
+      );
+
+      return;
     }
-    saveCartId(d.cartLinesAdd.cart.id);
-    return d.cartLinesAdd.cart;
-  }
 
-  function updateCartCount(count){
-    const el=$("cartCount");
-    if(el && count != null) el.textContent=String(count);
-  }
+    try {
 
-  async function loadProduct(){
-    const handle=getParam();
-    if(!handle) return showNotFound();
+      const product =
+        await window.ShoporaProducts
+          .getProductByHandle(handle);
 
-    const q=`query Product($handle:String!){
-      productByHandle(handle:$handle){
-        id title handle description
-        featuredImage{url altText}
-        priceRange{minVariantPrice{amount currencyCode}}
-        variants(first:50){
-          nodes{id title availableForSale price{amount currencyCode}}
-        }
+      if (!product) {
+        showNotFound();
+        return;
       }
-    }`;
 
-    try{
-      const d=await shopify(q,{handle});
-      const product=d.productByHandle;
-      if(!product) return showNotFound();
+      currentProduct = product;
 
-      const variants=product.variants.nodes || [];
-      const variant=variants.find(v=>v.availableForSale) || variants[0];
-      if(!variant) return showNotFound();
+      /*
+        Default variant:
+        first available Shopify variant.
+      */
 
-      render(product,variant);
+      selectedVariant =
+        window.ShoporaProducts
+          .getDefaultVariant(product);
+
+      if (!selectedVariant) {
+        showNotFound();
+        return;
+      }
+
+      renderProduct();
+
+      setupVariantSelector();
+
       setupQuantity();
-      setupCart(product,variant);
-      setupWishlist(product);
-      loadRelated(product.id);
-      updateCartFromShopify();
-    }catch(error){
-      console.error("Shopify product error:",error);
-      showError(error.message);
+
+      setupCart();
+
+      setupWishlist();
+
+      await loadRelatedProducts(
+        product.id
+      );
+
+      await updateCartCount();
+
+    } catch (error) {
+
+      console.error(
+        "Shopora product error:",
+        error
+      );
+
+      showError(
+        error.message
+      );
     }
   }
 
-  function render(product,variant){
-    const image=$("productImage"), name=$("productName"), category=$("productCategory");
-    const price=$("productPrice"), desc=$("productDescription"), meta=$("metaCategory");
-    const crumb=$("breadcrumbName"), badge=$("productBadge"), avail=$("productAvailability");
-    const seller=$("productSeller");
 
-    if(image){ image.src=product.featuredImage?.url || "assets/shopora-mark.png"; image.alt=product.featuredImage?.altText || product.title; }
-    if(name) name.textContent=product.title;
-    if(category) category.textContent="Shopora Collection";
-    if(price) price.textContent=formatMoney(variant.price.amount,variant.price.currencyCode);
-    if(desc) desc.textContent=product.description || "Discover this product at Shopora Market Store.";
-    if(meta) meta.textContent="Shopora Collection";
-    if(crumb) crumb.textContent=product.title;
-    if(badge){ badge.textContent="Shopify"; badge.style.display=""; }
-    if(avail) avail.textContent=variant.availableForSale ? "In stock" : "Currently unavailable";
-    if(seller) seller.textContent="Sold by Shopora Market Store";
-    document.title=product.title+" | Shopora Market Store";
-  }
+  /* =========================================================
+     RENDER PRODUCT
+     ========================================================= */
 
-  function formatMoney(amount,currency){
-    try{
-      return new Intl.NumberFormat("en-PK",{style:"currency",currency:currency||"PKR",maximumFractionDigits:0}).format(Number(amount));
-    }catch(e){ return (currency||"PKR")+" "+Number(amount).toLocaleString(); }
-  }
+  function renderProduct() {
 
-  function setupQuantity(){
-    let quantity=1;
-    const value=$("quantityValue");
-    const plus=$("increaseQuantity"), minus=$("decreaseQuantity");
-    if(plus) plus.onclick=()=>{quantity++; if(value)value.textContent=quantity;};
-    if(minus) minus.onclick=()=>{if(quantity>1){quantity--;if(value)value.textContent=quantity;}};
-    if(value)value.textContent="1";
-  }
+    if (!currentProduct) {
+      return;
+    }
 
-  function setupCart(product,variant){
-    const btn=$("addToCart");
-    if(!btn)return;
-    btn.disabled=!variant.availableForSale;
-    btn.textContent=variant.availableForSale ? "Add To Cart" : "Currently Unavailable";
-    btn.onclick=async()=>{
-      if(!variant.availableForSale){toast("This product is currently unavailable.");return;}
-      const qty=Math.max(1,Number($("quantityValue")?.textContent||1));
-      btn.disabled=true; btn.textContent="Adding...";
-      try{
-        const cart=await addToCart(variant.id,qty);
-        updateCartCount(cart.totalQuantity);
-        btn.textContent="Added ✓";
-        toast(product.title+" added to your cart.");
-        setTimeout(()=>{btn.disabled=false;btn.textContent="Add To Cart"},1200);
-      }catch(e){
-        console.error(e);
-        btn.disabled=false; btn.textContent="Add To Cart";
-        toast("Unable to add to Shopify cart.");
+    const product =
+      window.ShoporaProducts
+        .applyVariantToProduct(
+          currentProduct,
+          selectedVariant.id
+        );
+
+    if (product) {
+      currentProduct = product;
+    }
+
+    const image =
+      $("productImage");
+
+    const name =
+      $("productName");
+
+    const category =
+      $("productCategory");
+
+    const price =
+      $("productPrice");
+
+    const description =
+      $("productDescription");
+
+    const meta =
+      $("metaCategory");
+
+    const breadcrumb =
+      $("breadcrumbName");
+
+    const badge =
+      $("productBadge");
+
+    const availability =
+      $("productAvailability");
+
+    const seller =
+      $("productSeller");
+
+
+    /* =====================================================
+       IMAGE
+       ===================================================== */
+
+    if (image) {
+
+      image.src =
+        currentProduct.image ||
+        currentProduct.featuredImage?.url ||
+        "assets/shopora-mark.png";
+
+      image.alt =
+        currentProduct
+          .variant
+          ?.image
+          ?.altText ||
+        currentProduct.featuredImage
+          ?.altText ||
+        currentProduct.title;
+    }
+
+
+    /* =====================================================
+       TITLE
+       ===================================================== */
+
+    if (name) {
+      name.textContent =
+        currentProduct.title;
+    }
+
+
+    /* =====================================================
+       CATEGORY
+       ===================================================== */
+
+    if (category) {
+      category.textContent =
+        currentProduct.productType ||
+        "Shopora Collection";
+    }
+
+    if (meta) {
+      meta.textContent =
+        currentProduct.productType ||
+        "Shopora Collection";
+    }
+
+
+    /* =====================================================
+       PRICE
+       ===================================================== */
+
+    if (price) {
+
+      price.textContent =
+        formatMoney(
+          selectedVariant.price.amount,
+          selectedVariant.price.currencyCode
+        );
+    }
+
+
+    /* =====================================================
+       DESCRIPTION
+       ===================================================== */
+
+    if (description) {
+
+      description.textContent =
+        currentProduct.description ||
+        "Discover this product at Shopora Market Store.";
+    }
+
+
+    /* =====================================================
+       BREADCRUMB
+       ===================================================== */
+
+    if (breadcrumb) {
+      breadcrumb.textContent =
+        currentProduct.title;
+    }
+
+
+    /* =====================================================
+       BADGE
+       ===================================================== */
+
+    if (badge) {
+      badge.textContent =
+        "Shopify";
+
+      badge.style.display =
+        "";
+    }
+
+
+    /* =====================================================
+       AVAILABILITY
+       ===================================================== */
+
+    if (availability) {
+
+      if (
+        selectedVariant.availableForSale
+      ) {
+
+        availability.textContent =
+          "In stock";
+
+      } else {
+
+        availability.textContent =
+          "Currently unavailable";
       }
-    };
+    }
+
+
+    /* =====================================================
+       SELLER
+       ===================================================== */
+
+    if (seller) {
+
+      seller.textContent =
+        currentProduct.vendor ||
+        "Sold by Shopora Market Store";
+    }
+
+
+    /* =====================================================
+       DOCUMENT TITLE
+       ===================================================== */
+
+    document.title =
+      `${currentProduct.title} | Shopora Market Store`;
   }
 
-  function setupWishlist(product){
-    const btn=$("wishlistButton");
-    if(!btn)return;
-    let list=[];
-    try{list=JSON.parse(localStorage.getItem("shoporaWishlist")||"[]")}catch(e){}
-    const exists=list.includes(product.id);
-    btn.classList.toggle("active",exists);
-    btn.onclick=()=>{
-      let l=[];
-      try{l=JSON.parse(localStorage.getItem("shoporaWishlist")||"[]")}catch(e){}
-      const i=l.indexOf(product.id);
-      if(i>=0){l.splice(i,1);toast("Removed from wishlist.");}
-      else{l.push(product.id);toast("Added to wishlist.");}
-      localStorage.setItem("shoporaWishlist",JSON.stringify(l));
-      btn.classList.toggle("active",i<0);
-    };
+
+  /* =========================================================
+     VARIANT SELECTOR
+     ========================================================= */
+
+  function setupVariantSelector() {
+
+    if (!currentProduct) {
+      return;
+    }
+
+    /*
+      Remove previously created selector.
+    */
+
+    const old =
+      document.getElementById(
+        "shoporaVariantSelector"
+      );
+
+    if (old) {
+      old.remove();
+    }
+
+
+    const variants =
+      currentProduct.variants || [];
+
+    if (!variants.length) {
+      return;
+    }
+
+
+    /*
+      Find a sensible place in existing product page.
+
+      We do NOT rebuild the design.
+      We simply insert the variant selector
+      before quantity/add-to-cart area.
+    */
+
+    const addButton =
+      $("addToCart");
+
+    const quantityArea =
+      $("quantityValue")?.closest(
+        ".quantity-selector, .quantity-control, .quantity, .product-quantity"
+      );
+
+
+    const wrapper =
+      document.createElement("div");
+
+    wrapper.id =
+      "shoporaVariantSelector";
+
+    wrapper.style.cssText = `
+      margin:18px 0;
+    `;
+
+
+    const title =
+      document.createElement("div");
+
+    title.textContent =
+      "Color";
+
+    title.style.cssText = `
+      font-weight:600;
+      margin-bottom:10px;
+      font-size:14px;
+    `;
+
+    wrapper.appendChild(title);
+
+
+    const options =
+      document.createElement("div");
+
+    options.style.cssText = `
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    `;
+
+
+    variants.forEach(
+      variant => {
+
+        const button =
+          document.createElement("button");
+
+        button.type =
+          "button";
+
+        button.dataset.variantId =
+          variant.id;
+
+        button.textContent =
+          variant.title;
+
+        const active =
+          selectedVariant.id ===
+          variant.id;
+
+        button.style.cssText = `
+          border:1px solid ${
+            active
+              ? "#111"
+              : "#d8d3ca"
+          };
+          background:${
+            active
+              ? "#111"
+              : "#fff"
+          };
+          color:${
+            active
+              ? "#fff"
+              : "#111"
+          };
+          border-radius:999px;
+          padding:9px 14px;
+          font:500 13px Arial,sans-serif;
+          cursor:${
+            variant.availableForSale
+              ? "pointer"
+              : "not-allowed"
+          };
+          opacity:${
+            variant.availableForSale
+              ? "1"
+              : ".45"
+          };
+          transition:.2s;
+        `;
+
+
+        button.disabled =
+          !variant.availableForSale;
+
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            selectVariant(
+              variant.id
+            );
+
+          }
+        );
+
+
+        options.appendChild(
+          button
+        );
+      }
+    );
+
+
+    wrapper.appendChild(
+      options
+    );
+
+
+    /*
+      Insert before quantity if possible.
+    */
+
+    if (quantityArea) {
+
+      quantityArea.parentNode.insertBefore(
+        wrapper,
+        quantityArea
+      );
+
+    } else if (addButton) {
+
+      addButton.parentNode.insertBefore(
+        wrapper,
+        addButton
+      );
+
+    }
   }
 
-  async function updateCartFromShopify(){
-    const cart=await getCart(getCartId()).catch(()=>null);
-    if(cart) updateCartCount(cart.totalQuantity);
+
+  /* =========================================================
+     SELECT VARIANT
+     ========================================================= */
+
+  function selectVariant(
+    variantId
+  ) {
+
+    if (!currentProduct) {
+      return;
+    }
+
+    const variant =
+      window.ShoporaProducts
+        .getVariantById(
+          currentProduct,
+          variantId
+        );
+
+    if (!variant) {
+      return;
+    }
+
+    selectedVariant =
+      variant;
+
+
+    /*
+      Apply selected variant to
+      product object.
+    */
+
+    currentProduct =
+      window.ShoporaProducts
+        .applyVariantToProduct(
+          currentProduct,
+          variant.id
+        );
+
+
+    renderProduct();
+
+    setupVariantButtons();
+
+    updateAddToCartButton();
   }
 
-  async function loadRelated(currentId){
-    const box=$("relatedProducts");
-    if(!box)return;
-    try{
-      const q=`query Related{products(first:5){nodes{id title handle featuredImage{url altText} priceRange{minVariantPrice{amount currencyCode}} variants(first:1){nodes{id availableForSale}}}}}`;
-      const d=await shopify(q);
-      const items=(d.products.nodes||[]).filter(p=>p.id!==currentId).slice(0,4);
-      box.innerHTML=items.map(p=>{
-        const v=p.variants.nodes[0];
-        return `<article class="product-card">
-          <a href="product.html?handle=${encodeURIComponent(p.handle)}" class="product-card-image">
-            <img src="${escapeHTML(p.featuredImage?.url||"assets/shopora-mark.png")}" alt="${escapeHTML(p.title)}" loading="lazy">
-          </a>
-          <div class="product-card-content">
-            <span class="product-category">Shopora Collection</span>
-            <h3><a href="product.html?handle=${encodeURIComponent(p.handle)}">${escapeHTML(p.title)}</a></h3>
-            <div class="product-card-bottom"><strong>${formatMoney(p.priceRange.minVariantPrice.amount,p.priceRange.minVariantPrice.currencyCode)}</strong></div>
-            <div class="product-card-actions"><a href="product.html?handle=${encodeURIComponent(p.handle)}" class="view-product">View Product</a></div>
-          </div>
-        </article>`;
-      }).join("");
-    }catch(e){ console.warn("Related products:",e); }
+
+  /* =========================================================
+     UPDATE VARIANT BUTTONS
+     ========================================================= */
+
+  function setupVariantButtons() {
+
+    const selector =
+      $("shoporaVariantSelector");
+
+    if (!selector) {
+      return;
+    }
+
+    selector
+      .querySelectorAll(
+        "button[data-variant-id]"
+      )
+      .forEach(button => {
+
+        const active =
+          button.dataset.variantId ===
+          selectedVariant.id;
+
+        const available =
+          !button.disabled;
+
+
+        button.style.background =
+          active
+            ? "#111"
+            : "#fff";
+
+        button.style.color =
+          active
+            ? "#fff"
+            : "#111";
+
+        button.style.borderColor =
+          active
+            ? "#111"
+            : "#d8d3ca";
+
+        button.style.opacity =
+          available
+            ? "1"
+            : ".45";
+      });
   }
 
-  function showNotFound(){
-    if($("productName"))$("productName").textContent="Product not found";
-    if($("productDescription"))$("productDescription").textContent="This Shopify product could not be found.";
-    if($("addToCart")){$("addToCart").disabled=true;$("addToCart").textContent="Product Unavailable";}
+
+  /* =========================================================
+     UPDATE ADD TO CART BUTTON
+     ========================================================= */
+
+  function updateAddToCartButton() {
+
+    const button =
+      $("addToCart");
+
+    if (!button) {
+      return;
+    }
+
+    const available =
+      Boolean(
+        selectedVariant &&
+        selectedVariant.availableForSale
+      );
+
+    button.disabled =
+      !available;
+
+    button.textContent =
+      available
+        ? "Add To Cart"
+        : "Currently Unavailable";
   }
 
-  function showError(message){
-    if($("productName"))$("productName").textContent="Shopify product could not load";
-    if($("productDescription"))$("productDescription").textContent="Please refresh the page and try again.";
-    console.error(message);
+
+  /* =========================================================
+     QUANTITY
+     ========================================================= */
+
+  function setupQuantity() {
+
+    quantity = 1;
+
+    const value =
+      $("quantityValue");
+
+    const plus =
+      $("increaseQuantity");
+
+    const minus =
+      $("decreaseQuantity");
+
+
+    if (value) {
+      value.textContent =
+        "1";
+    }
+
+
+    if (plus) {
+
+      plus.onclick =
+        () => {
+
+          quantity++;
+
+          if (value) {
+            value.textContent =
+              String(quantity);
+          }
+        };
+    }
+
+
+    if (minus) {
+
+      minus.onclick =
+        () => {
+
+          if (quantity > 1) {
+            quantity--;
+          }
+
+          if (value) {
+            value.textContent =
+              String(quantity);
+          }
+        };
+    }
   }
 
-  document.addEventListener("DOMContentLoaded",loadProduct);
+
+  /* =========================================================
+     ADD TO CART
+     ========================================================= */
+
+  function setupCart() {
+
+    const button =
+      $("addToCart");
+
+    if (!button) {
+      return;
+    }
+
+
+    updateAddToCartButton();
+
+
+    button.onclick =
+      async () => {
+
+        if (!selectedVariant) {
+
+          toast(
+            "Please select a product variant."
+          );
+
+          return;
+        }
+
+
+        if (
+          !selectedVariant.availableForSale
+        ) {
+
+          toast(
+            "This variant is currently unavailable."
+          );
+
+          return;
+        }
+
+
+        const qty =
+          Math.max(
+            1,
+            Number(
+              $("quantityValue")
+                ?.textContent ||
+              quantity ||
+              1
+            )
+          );
+
+
+        button.disabled =
+          true;
+
+        button.textContent =
+          "Adding...";
+
+
+        try {
+
+          /*
+            IMPORTANT:
+            Use central products.js.
+            Selected variant ID goes directly
+            into Shopify cart.
+          */
+
+          const cart =
+            await window.ShoporaProducts
+              .addProductToCart(
+                currentProduct,
+                qty,
+                selectedVariant.id
+              );
+
+
+          await updateCartCount(
+            cart?.totalQuantity
+          );
+
+
+          button.textContent =
+            "Added ✓";
+
+
+          toast(
+            `${currentProduct.title} added to your cart.`
+          );
+
+
+          setTimeout(
+            () => {
+
+              updateAddToCartButton();
+
+            },
+            1200
+          );
+
+
+        } catch (error) {
+
+          console.error(
+            "Add to cart error:",
+            error
+          );
+
+
+          toast(
+            error.message ||
+            "Unable to add product to cart."
+          );
+
+
+          updateAddToCartButton();
+        }
+      };
+  }
+
+
+  /* =========================================================
+     CART COUNT
+     ========================================================= */
+
+  async function updateCartCount(
+    knownCount = null
+  ) {
+
+    try {
+
+      if (
+        knownCount !== null &&
+        knownCount !== undefined
+      ) {
+
+        const selectors = [
+          "#cartCount",
+          ".cart-count",
+          "[data-cart-count]",
+          ".cart-badge"
+        ];
+
+        selectors.forEach(
+          selector => {
+
+            document
+              .querySelectorAll(
+                selector
+              )
+              .forEach(
+                element => {
+
+                  element.textContent =
+                    String(knownCount);
+
+                }
+              );
+          }
+        );
+
+        return knownCount;
+      }
+
+
+      return await window
+        .ShoporaProducts
+        .updateShopifyCartCount();
+
+    } catch (error) {
+
+      console.warn(
+        "Cart count update failed:",
+        error
+      );
+
+      return 0;
+    }
+  }
+
+
+  /* =========================================================
+     WISHLIST
+     ========================================================= */
+
+  function setupWishlist(
+    product
+  ) {
+
+    const button =
+      $("wishlistButton");
+
+    if (!button) {
+      return;
+    }
+
+
+    let list = [];
+
+    try {
+
+      list =
+        JSON.parse(
+          localStorage.getItem(
+            "shoporaWishlist"
+          ) || "[]"
+        );
+
+    } catch {
+      list = [];
+    }
+
+
+    const exists =
+      list.includes(
+        product.id
+      );
+
+
+    button.classList.toggle(
+      "active",
+      exists
+    );
+
+
+    button.onclick =
+      () => {
+
+        let wishlist = [];
+
+        try {
+
+          wishlist =
+            JSON.parse(
+              localStorage.getItem(
+                "shoporaWishlist"
+              ) || "[]"
+            );
+
+        } catch {
+
+          wishlist = [];
+        }
+
+
+        const index =
+          wishlist.indexOf(
+            product.id
+          );
+
+
+        if (index >= 0) {
+
+          wishlist.splice(
+            index,
+            1
+          );
+
+          toast(
+            "Removed from wishlist."
+          );
+
+          button.classList.remove(
+            "active"
+          );
+
+        } else {
+
+          wishlist.push(
+            product.id
+          );
+
+          toast(
+            "Added to wishlist."
+          );
+
+          button.classList.add(
+            "active"
+          );
+        }
+
+
+        localStorage.setItem(
+          "shoporaWishlist",
+          JSON.stringify(
+            wishlist
+          )
+        );
+      };
+  }
+
+
+  /* =========================================================
+     RELATED PRODUCTS
+     ========================================================= */
+
+  async function loadRelatedProducts(
+    currentId
+  ) {
+
+    const box =
+      $("relatedProducts");
+
+    if (!box) {
+      return;
+    }
+
+
+    try {
+
+      const products =
+        await window.ShoporaProducts
+          .getAvailableProducts({
+            first: 50
+          });
+
+
+      const items =
+        products
+          .filter(
+            product =>
+              product.id !== currentId
+          )
+          .slice(0, 4);
+
+
+      if (!items.length) {
+
+        box.innerHTML = "";
+
+        return;
+      }
+
+
+      box.innerHTML =
+        items
+          .map(
+            product => {
+
+              const image =
+                window.ShoporaProducts
+                  .getProductImage(
+                    product
+                  );
+
+
+              const url =
+                window.ShoporaProducts
+                  .getProductUrl(
+                    product
+                  );
+
+
+              return `
+                <article class="product-card">
+
+                  <a
+                    href="${escapeHTML(url)}"
+                    class="product-card-image"
+                  >
+                    <img
+                      src="${escapeHTML(
+                        image ||
+                        "assets/shopora-mark.png"
+                      )}"
+                      alt="${escapeHTML(
+                        product.title
+                      )}"
+                      loading="lazy"
+                    >
+                  </a>
+
+                  <div class="product-card-content">
+
+                    <span class="product-category">
+                      ${
+                        escapeHTML(
+                          product.productType ||
+                          "Shopora Collection"
+                        )
+                      }
+                    </span>
+
+                    <h3>
+                      <a
+                        href="${escapeHTML(url)}"
+                      >
+                        ${escapeHTML(
+                          product.title
+                        )}
+                      </a>
+                    </h3>
+
+                    <div class="product-card-bottom">
+
+                      <strong>
+                        ${escapeHTML(
+                          product.formattedPrice
+                        )}
+                      </strong>
+
+                    </div>
+
+                    <div class="product-card-actions">
+
+                      <a
+                        href="${escapeHTML(url)}"
+                        class="view-product"
+                      >
+                        View Product
+                      </a>
+
+                    </div>
+
+                  </div>
+
+                </article>
+              `;
+            }
+          )
+          .join("");
+
+
+    } catch (error) {
+
+      console.warn(
+        "Related products failed:",
+        error
+      );
+    }
+  }
+
+
+  /* =========================================================
+     NOT FOUND
+     ========================================================= */
+
+  function showNotFound() {
+
+    if ($("productName")) {
+
+      $("productName").textContent =
+        "Product not found";
+    }
+
+
+    if ($("productDescription")) {
+
+      $("productDescription").textContent =
+        "This Shopify product could not be found.";
+    }
+
+
+    if ($("addToCart")) {
+
+      $("addToCart").disabled =
+        true;
+
+      $("addToCart").textContent =
+        "Product Unavailable";
+    }
+  }
+
+
+  /* =========================================================
+     ERROR
+     ========================================================= */
+
+  function showError(
+    message
+  ) {
+
+    if ($("productName")) {
+
+      $("productName").textContent =
+        "Shopify product could not load";
+    }
+
+
+    if ($("productDescription")) {
+
+      $("productDescription").textContent =
+        "Please refresh the page and try again.";
+    }
+
+
+    console.error(
+      "Shopora product error:",
+      message
+    );
+  }
+
+
+  /* =========================================================
+     START
+     ========================================================= */
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    loadProduct
+  );
+
 })();
