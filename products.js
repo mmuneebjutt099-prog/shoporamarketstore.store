@@ -23,7 +23,7 @@
     - App automation token
     - Private Storefront token
   */
-  const SHOPIFY_STOREFRONT_TOKEN = "PASTE_PUBLIC_STOREFRONT_TOKEN_HERE";
+  const SHOPIFY_STOREFRONT_TOKEN = "b00f8861faa3611c651415d574bf0095";
 
   const SHOPIFY_API_VERSION = "2026-07";
 
