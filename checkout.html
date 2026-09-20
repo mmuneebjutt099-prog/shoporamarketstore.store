@@ -1458,7 +1458,7 @@ const SHOPIFY_STORE_DOMAIN =
  */
 
 const SHOPIFY_STOREFRONT_TOKEN =
-  "YOUR_STOREFRONT_PUBLIC_TOKEN";
+  "b00f8861faa3611c651415d574bf0095";
 
 
 const SHOPIFY_API_VERSION =
@@ -2244,6 +2244,36 @@ async function continueToShopifyCheckout(){
    *
    * This is NOT an order record.
    */
+
+  /*
+   * Prefill Shopify Checkout with the customer email/phone.
+   * This does not create an order or mark payment as paid.
+   */
+  try {
+    await shopifyRequest(`
+      mutation BuyerIdentity(
+        $cartId: ID!,
+        $buyerIdentity: CartBuyerIdentityInput!
+      ) {
+        cartBuyerIdentityUpdate(
+          cartId: $cartId,
+          buyerIdentity: $buyerIdentity
+        ) {
+          cart { id checkoutUrl }
+          userErrors { field message }
+        }
+      }
+    `, {
+      cartId,
+      buyerIdentity: {
+        email: customer.email,
+        phone: customer.phone || null,
+        countryCode: customer.country ? customer.country.toUpperCase().slice(0,2) : "PK"
+      }
+    });
+  } catch (identityError) {
+    console.warn("Shopify checkout identity prefill skipped:", identityError);
+  }
 
   try{
 
