@@ -44,7 +44,7 @@
     crossorigin="anonymous">
   </script>
 
-  <!-- Central Product Database -->
+  <!-- Central Shopora Product / Cart System -->
   <script src="products.js"></script>
 
   <!-- Structured Data -->
@@ -117,7 +117,6 @@
       margin: 0 auto;
     }
 
-
     /* =========================
        Announcement
     ========================= */
@@ -132,7 +131,6 @@
       letter-spacing: .1em;
       text-transform: uppercase;
     }
-
 
     /* =========================
        Header
@@ -248,7 +246,6 @@
       font-size: 25px;
     }
 
-
     /* =========================
        Hero
     ========================= */
@@ -311,7 +308,6 @@
       height: 100%;
       object-fit: cover;
     }
-
 
     /* =========================
        Categories
@@ -434,7 +430,6 @@
       transform: translateX(4px);
     }
 
-
     /* =========================
        Category Guide
     ========================= */
@@ -488,7 +483,6 @@
       border-color: var(--black);
     }
 
-
     /* =========================
        Newsletter
     ========================= */
@@ -540,7 +534,6 @@
       padding: 0 20px;
       font-weight: 700;
     }
-
 
     /* =========================
        Footer
@@ -601,7 +594,6 @@
       font-size: 11px;
     }
 
-
     /* =========================
        Toast
     ========================= */
@@ -627,7 +619,6 @@
       opacity: 1;
     }
 
-
     /* =========================
        Responsive
     ========================= */
@@ -651,7 +642,6 @@
       }
 
     }
-
 
     @media (max-width: 850px) {
 
@@ -712,7 +702,6 @@
       }
 
     }
-
 
     @media (max-width: 640px) {
 
@@ -797,7 +786,6 @@
 
     }
 
-
     @media (max-width: 400px) {
 
       .brand-logo {
@@ -819,16 +807,13 @@
 
 </head>
 
-
 <body>
-
 
   <!-- Announcement -->
 
   <div class="announcement">
     SHOPORA — Explore categories. Discover better products.
   </div>
-
 
   <!-- Header -->
 
@@ -851,7 +836,6 @@
         >
 
       </a>
-
 
       <nav class="main-nav" id="mainNav">
 
@@ -881,7 +865,6 @@
 
       </nav>
 
-
       <div class="header-actions">
 
         <a
@@ -893,7 +876,6 @@
           <span class="count" id="wishlistCount">0</span>
         </a>
 
-
         <a
           href="cart.html"
           class="icon-link"
@@ -902,7 +884,6 @@
           🛒
           <span class="count" id="cartCount">0</span>
         </a>
-
 
         <button
           class="mobile-toggle"
@@ -920,13 +901,9 @@
 
   </header>
 
-
   <main>
 
-
-    <!-- =========================
-         Hero
-    ========================= -->
+    <!-- Hero -->
 
     <section class="category-hero">
 
@@ -952,7 +929,6 @@
 
           </div>
 
-
           <div class="hero-image">
 
             <img
@@ -971,10 +947,7 @@
 
     </section>
 
-
-    <!-- =========================
-         Category Grid
-    ========================= -->
+    <!-- Category Grid -->
 
     <section class="categories-section">
 
@@ -992,9 +965,7 @@
 
         </div>
 
-
         <div class="category-grid">
-
 
           <!-- Fashion -->
 
@@ -1041,7 +1012,6 @@
 
           </a>
 
-
           <!-- Beauty -->
 
           <a
@@ -1086,7 +1056,6 @@
             </div>
 
           </a>
-
 
           <!-- Electronics -->
 
@@ -1133,7 +1102,6 @@
 
           </a>
 
-
           <!-- Home & Living -->
 
           <a
@@ -1178,7 +1146,6 @@
             </div>
 
           </a>
-
 
           <!-- Accessories -->
 
@@ -1225,7 +1192,6 @@
 
           </a>
 
-
           <!-- Lifestyle -->
 
           <a
@@ -1271,17 +1237,13 @@
 
           </a>
 
-
         </div>
 
       </div>
 
     </section>
 
-
-    <!-- =========================
-         Category Guide
-    ========================= -->
+    <!-- Category Guide -->
 
     <section class="category-guide">
 
@@ -1296,7 +1258,6 @@
             </h2>
 
           </div>
-
 
           <div class="guide-copy">
 
@@ -1315,7 +1276,6 @@
             <p>
               Choose a category below to start shopping.
             </p>
-
 
             <div class="guide-links">
 
@@ -1357,10 +1317,7 @@
 
     </section>
 
-
-    <!-- =========================
-         Newsletter
-    ========================= -->
+    <!-- Newsletter -->
 
     <section class="newsletter">
 
@@ -1377,7 +1334,6 @@
           </p>
 
         </div>
-
 
         <form
           class="newsletter-form"
@@ -1402,18 +1358,13 @@
 
     </section>
 
-
   </main>
 
-
-  <!-- =========================
-       Footer
-  ========================= -->
+  <!-- Footer -->
 
   <footer>
 
     <div class="container footer-main">
-
 
       <div class="footer-brand">
 
@@ -1434,7 +1385,6 @@
         </p>
 
       </div>
-
 
       <div class="footer-col">
 
@@ -1464,7 +1414,6 @@
 
       </div>
 
-
       <div class="footer-col">
 
         <h3>
@@ -1480,7 +1429,6 @@
         </a>
 
       </div>
-
 
       <div class="footer-col">
 
@@ -1506,9 +1454,7 @@
 
       </div>
 
-
     </div>
-
 
     <div class="container footer-bottom">
 
@@ -1525,7 +1471,6 @@
 
   </footer>
 
-
   <!-- Toast -->
 
   <div
@@ -1537,51 +1482,19 @@
     Thanks for subscribing to Shopora.
   </div>
 
-
   <script>
 
     /* ============================
-       Storage Keys
+       Wishlist
     ============================ */
-
-    const CART_KEY = "shoporaCart";
-    const WISHLIST_KEY = "shoporaWishlist";
-
-
-    /* ============================
-       Safe Storage Helpers
-    ============================ */
-
-    function getCart() {
-
-      try {
-
-        const data =
-          JSON.parse(
-            localStorage.getItem(CART_KEY)
-          );
-
-        return Array.isArray(data)
-          ? data
-          : [];
-
-      } catch (error) {
-
-        return [];
-
-      }
-
-    }
-
 
     function getWishlist() {
 
       try {
 
-        const data =
-          JSON.parse(
-            localStorage.getItem(WISHLIST_KEY)
-          );
+        const data = JSON.parse(
+          localStorage.getItem("shoporaWishlist")
+        );
 
         return Array.isArray(data)
           ? data
@@ -1597,43 +1510,57 @@
 
 
     /* ============================
-       Cart / Wishlist Counts
+       Central Cart + Wishlist Counts
     ============================ */
 
-    function updateCounts() {
-
-      const cart = getCart();
-      const wishlist = getWishlist();
-
-
-      const cartCount =
-        cart.reduce(
-          (total, item) =>
-            total + Number(item.quantity || 1),
-          0
-        );
-
+    async function updateCounts() {
 
       const cartCountElement =
         document.getElementById("cartCount");
-
 
       const wishlistCountElement =
         document.getElementById("wishlistCount");
 
 
-      if (cartCountElement) {
+      /* Wishlist */
 
-        cartCountElement.textContent =
-          cartCount;
+      if (wishlistCountElement) {
+
+        const wishlist =
+          getWishlist();
+
+        wishlistCountElement.textContent =
+          wishlist.length;
 
       }
 
 
-      if (wishlistCountElement) {
+      /* Shopify Cart */
 
-        wishlistCountElement.textContent =
-          wishlist.length;
+      if (
+        cartCountElement &&
+        window.ShoporaProducts &&
+        typeof window.ShoporaProducts.getShopifyCartCount === "function"
+      ) {
+
+        try {
+
+          const cartCount =
+            await window.ShoporaProducts.getShopifyCartCount();
+
+          cartCountElement.textContent =
+            Number(cartCount || 0);
+
+        } catch (error) {
+
+          console.error(
+            "Shopora cart count error:",
+            error
+          );
+
+          cartCountElement.textContent = "0";
+
+        }
 
       }
 
@@ -1646,7 +1573,6 @@
 
     const mobileToggle =
       document.getElementById("mobileToggle");
-
 
     const mainNav =
       document.getElementById("mainNav");
@@ -1693,20 +1619,14 @@
             "click",
             () => {
 
-              mainNav.classList.remove(
-                "open"
-              );
+              mainNav.classList.remove("open");
 
-
-              mobileToggle.textContent =
-                "☰";
-
+              mobileToggle.textContent = "☰";
 
               mobileToggle.setAttribute(
                 "aria-expanded",
                 "false"
               );
-
 
               mobileToggle.setAttribute(
                 "aria-label",
@@ -1726,10 +1646,7 @@
     ============================ */
 
     const newsletterForm =
-      document.getElementById(
-        "newsletterForm"
-      );
-
+      document.getElementById("newsletterForm");
 
     const toast =
       document.getElementById("toast");
@@ -1743,19 +1660,14 @@
 
           event.preventDefault();
 
-
           toast.classList.add("show");
 
-
           newsletterForm.reset();
-
 
           setTimeout(
             () => {
 
-              toast.classList.remove(
-                "show"
-              );
+              toast.classList.remove("show");
 
             },
             2200
@@ -1800,12 +1712,10 @@
       updateCounts
     );
 
-
     window.addEventListener(
       "pageshow",
       updateCounts
     );
-
 
     window.addEventListener(
       "focus",
