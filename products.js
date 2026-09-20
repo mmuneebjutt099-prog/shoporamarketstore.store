@@ -82,12 +82,16 @@
   function convertShopifyProduct(product) {
     if (!product) return null;
 
-    const firstVariant =
+    const variants =
       product.variants &&
-      product.variants.nodes &&
-      product.variants.nodes.length
-        ? product.variants.nodes[0]
-        : null;
+      product.variants.nodes
+        ? product.variants.nodes
+        : [];
+
+    const firstVariant =
+      variants.find(function (variant) {
+        return variant.availableForSale;
+      }) || variants[0] || null;
 
     const firstImage =
       product.images &&
@@ -170,7 +174,7 @@
 
       buyable: available,
 
-      stock: available ? 1 : 0,
+      stock: available ? 999 : 0,
 
       sku:
         firstVariant && firstVariant.sku
