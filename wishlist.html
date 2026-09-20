@@ -1148,175 +1148,66 @@
 
 
   /* =========================
-     RENDER WISHLIST
+     RENDER WISHLIST — SHOPIFY
   ========================= */
 
-  function renderWishlist(){
+  async function renderWishlist(){
+    const ids=getWishlist();
+    const grid=document.getElementById("wishlistGrid");
+    const empty=document.getElementById("emptyWishlist");
+    const top=document.getElementById("wishlistTop");
+    const count=document.getElementById("wishlistItemCount");
 
-    const wishlist =
-      getWishlist();
+    if(count) count.textContent=ids.length;
 
-
-    const grid =
-      document.getElementById(
-        "wishlistGrid"
-      );
-
-    const empty =
-      document.getElementById(
-        "emptyWishlist"
-      );
-
-    const top =
-      document.getElementById(
-        "wishlistTop"
-      );
-
-
-    document.getElementById(
-      "wishlistItemCount"
-    ).textContent =
-      wishlist.length;
-
-
-    if(wishlist.length === 0){
-
-      grid.innerHTML = "";
-
-      grid.style.display =
-        "none";
-
-      top.style.display =
-        "none";
-
-      empty.style.display =
-        "block";
-
-      updateCounts();
-
+    if(!ids.length){
+      grid.innerHTML="";
+      grid.style.display="none";
+      top.style.display="none";
+      empty.style.display="block";
+      await updateCounts();
       return;
-
     }
 
+    try{
+      const products=await Promise.all(
+        ids.map(id=>window.ShoporaProducts.getProduct(id).catch(()=>null))
+      );
+      const valid=products.filter(Boolean);
 
-    grid.style.display =
-      "grid";
+      grid.style.display="grid";
+      top.style.display=valid.length?"flex":"none";
+      empty.style.display=valid.length?"none":"block";
+      if(count) count.textContent=valid.length;
 
-    top.style.display =
-      "flex";
-
-    empty.style.display =
-      "none";
-
-
-    grid.innerHTML =
-      wishlist.map(
-        (item,index) => {
-
-          const slug =
-            item.slug ||
-            createSlug(item.name);
-
-
-          return `
-
-            <article
-              class="wishlist-card reveal"
-            >
-
-              <div class="wishlist-image">
-
-                <button
-                  type="button"
-                  class="heart-remove"
-                  onclick="removeFromWishlist(${index})"
-                  aria-label="Remove ${escapeHTML(item.name)} from wishlist"
-                >
-                  ♥
-                </button>
-
-
-                <a
-                  href="product.html?product=${encodeURIComponent(slug)}"
-                  aria-label="${escapeHTML(item.name)}"
-                >
-
-                  <img
-                    src="${escapeHTML(item.image)}"
-                    alt="${escapeHTML(item.name)}"
-                    loading="lazy"
-                  >
-
-                </a>
-
+      grid.innerHTML=valid.map((item)=>{
+        const originalIndex=ids.findIndex(id=>String(id)===String(item.id));
+        return `
+          <article class="wishlist-card reveal">
+            <div class="wishlist-image">
+              <button type="button" class="heart-remove" onclick="removeFromWishlist(${originalIndex})" aria-label="Remove ${escapeHTML(item.name)} from wishlist">♥</button>
+              <a href="product.html?handle=${encodeURIComponent(item.handle)}" aria-label="${escapeHTML(item.name)}">
+                <img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.name)}" loading="lazy">
+              </a>
+            </div>
+            <div class="wishlist-info">
+              <div class="product-category">${escapeHTML(item.category || "Shopora Collection")}</div>
+              <h2 class="product-name">${escapeHTML(item.name)}</h2>
+              <div class="product-price">${escapeHTML(window.ShoporaProducts.formatPrice(item.price,item.currency))}</div>
+              <div class="product-actions">
+                <button type="button" class="product-btn" onclick="addWishlistItemToCart(${originalIndex})">Add To Cart</button>
+                <a href="product.html?handle=${encodeURIComponent(item.handle)}" class="product-btn secondary">View Product</a>
               </div>
+            </div>
+          </article>`;
+      }).join("");
 
-
-              <div class="wishlist-info">
-
-                <div class="product-category">
-                  ${escapeHTML(item.category || "Shopora Product")}
-                </div>
-
-
-                <h2 class="product-name">
-                  ${escapeHTML(item.name)}
-                </h2>
-
-
-                <div class="product-price">
-                  ${formatPrice(item.price)}
-                </div>
-
-
-                <div class="product-actions">
-
-                  <button
-                    type="button"
-                    class="product-btn"
-                    onclick="addWishlistItemToCart(${index})"
-                  >
-                    Add To Cart
-                  </button>
-
-
-                  <a
-                    href="product.html?product=${encodeURIComponent(slug)}"
-                    class="product-btn secondary"
-                  >
-                    View Product
-                  </a>
-
-                </div>
-
-              </div>
-
-            </article>
-
-          `;
-
-        }
-      ).join("");
-
-
-    /* Trigger reveal animation */
-
-    requestAnimationFrame(
-      () => {
-
-        grid
-          .querySelectorAll(".reveal")
-          .forEach(
-            element =>
-              element.classList.add("show")
-          );
-
-      }
-    );
-
-
-    updateCounts();
-
+      requestAnimationFrame(()=>grid.querySelectorAll(".reveal").forEach(e=>e.classList.add("show")));
+      await updateCounts();
+    }catch(error){
+      console.error("Wishlist Shopify error:",error);
+      grid.innerHTML='<p>Unable to load your Shopify wishlist.</p>';
+    }
   }
 
 
@@ -1401,70 +1292,47 @@
 
 
   /* =========================
-     ADD TO CART
+     ADD TO CART — SHOPIFY
   ========================= */
 
-  function addWishlistItemToCart(index){
+  async function addWishlistItemToCart(index){
+    const ids=getWishlist();
+    const item=ids[index];
+    if(!item) return;
 
-    const wishlist =
-      getWishlist();
+    try{
+      const product=await window.ShoporaProducts.getProduct(item);
+      if(!product || !product.buyable || !product.variantId){
+        showToast("This product is currently unavailable.");
+        return;
+      }
 
+      let cartId=localStorage.getItem("shoporaShopifyCartId");
+      let cart=null;
+      if(cartId){
+        try{
+          cart=await window.ShoporaProducts.shopifyRequest(`query Cart($id:ID!){cart(id:$id){id totalQuantity}}`,{id:cartId}).then(d=>d.cart);
+        }catch(e){cart=null;}
+      }
 
-    if(!wishlist[index]){
-      return;
+      if(!cart){
+        const d=await window.ShoporaProducts.shopifyRequest(`mutation C($lines:[CartLineInput!]!){cartCreate(input:{lines:$lines}){cart{id totalQuantity checkoutUrl} userErrors{message}}}`,{lines:[{merchandiseId:product.variantId,quantity:1}]});
+        if(d.cartCreate.userErrors?.length) throw new Error(d.cartCreate.userErrors.map(e=>e.message).join(", "));
+        cart=d.cartCreate.cart;
+      }else{
+        const d=await window.ShoporaProducts.shopifyRequest(`mutation A($cartId:ID!,$lines:[CartLineInput!]!){cartLinesAdd(cartId:$cartId,lines:$lines){cart{id totalQuantity checkoutUrl} userErrors{message}}}`,{cartId,lines:[{merchandiseId:product.variantId,quantity:1}]});
+        if(d.cartLinesAdd.userErrors?.length) throw new Error(d.cartLinesAdd.userErrors.map(e=>e.message).join(", "));
+        cart=d.cartLinesAdd.cart;
+      }
+
+      localStorage.setItem("shoporaShopifyCartId",cart.id);
+      localStorage.removeItem("shoporaCart");
+      document.getElementById("cartCount").textContent=cart.totalQuantity||0;
+      showToast(product.name+" added to Shopify cart");
+    }catch(error){
+      console.error("Wishlist cart error:",error);
+      showToast("Unable to add product to Shopify cart.");
     }
-
-
-    const item =
-      wishlist[index];
-
-
-    const cart =
-      getCart();
-
-
-    const existing =
-      cart.find(
-        cartItem =>
-          cartItem.name === item.name
-      );
-
-
-    if(existing){
-
-      existing.quantity =
-        Number(existing.quantity || 1) + 1;
-
-    }else{
-
-      cart.push({
-
-        name:item.name,
-
-        price:Number(item.price || 0),
-
-        image:item.image,
-
-        quantity:1
-
-      });
-
-    }
-
-
-    saveCart(
-      cart
-    );
-
-
-    showToast(
-      item.name +
-      " added to cart"
-    );
-
-
-    updateCounts();
-
   }
 
 
@@ -1472,41 +1340,23 @@
      COUNTS
   ========================= */
 
-  function updateCounts(){
+  async function updateCounts(){
+    const wishlist=getWishlist();
+    const wishlistCount=document.getElementById("wishlistCount");
+    const wishlistItemCount=document.getElementById("wishlistItemCount");
+    if(wishlistCount) wishlistCount.textContent=wishlist.length;
+    if(wishlistItemCount) wishlistItemCount.textContent=wishlist.length;
 
-    const wishlist =
-      getWishlist();
-
-    const cart =
-      getCart();
-
-
-    const cartCount =
-      cart.reduce(
-        (total,item) =>
-          total +
-          Number(item.quantity || 1),
-        0
-      );
-
-
-    document.getElementById(
-      "wishlistCount"
-    ).textContent =
-      wishlist.length;
-
-
-    document.getElementById(
-      "cartCount"
-    ).textContent =
-      cartCount;
-
-
-    document.getElementById(
-      "wishlistItemCount"
-    ).textContent =
-      wishlist.length;
-
+    let quantity=0;
+    const cartId=localStorage.getItem("shoporaShopifyCartId");
+    if(cartId){
+      try{
+        const cart=await window.ShoporaProducts.shopifyRequest(`query Cart($id:ID!){cart(id:$id){totalQuantity}}`,{id:cartId});
+        quantity=cart.cart?.totalQuantity||0;
+      }catch(e){}
+    }
+    const cartCount=document.getElementById("cartCount");
+    if(cartCount) cartCount.textContent=quantity;
   }
 
 
@@ -1621,6 +1471,7 @@
 
 </script>
 
+<script src="products.js"></script>
 </body>
 </html>
 ```
