@@ -1377,43 +1377,27 @@
 
 
     /* =========================
-       Counts
+       Counts — Shopify cart
     ========================= */
 
-    function updateCounts() {
-
-      const cart = getCart();
-
+    async function updateCounts() {
       const wishlist = getWishlist();
+      const wishlistCountElement = document.getElementById("wishlistCount");
+      if (wishlistCountElement) wishlistCountElement.textContent = wishlist.length;
 
-      const cartCount = cart.reduce(
-        (total, item) =>
-          total + Number(item.quantity || 1),
-        0
-      );
-
-      const cartCountElement =
-        document.getElementById("cartCount");
-
-      const wishlistCountElement =
-        document.getElementById("wishlistCount");
-
-
-      if (cartCountElement) {
-
-        cartCountElement.textContent =
-          cartCount;
-
+      let quantity = 0;
+      const cartId = localStorage.getItem("shoporaShopifyCartId");
+      if (cartId && window.ShoporaProducts?.shopifyRequest) {
+        try {
+          const data = await window.ShoporaProducts.shopifyRequest(
+            `query Cart($id: ID!) { cart(id: $id) { totalQuantity } }`,
+            { id: cartId }
+          );
+          quantity = data.cart?.totalQuantity || 0;
+        } catch (e) {}
       }
-
-
-      if (wishlistCountElement) {
-
-        wishlistCountElement.textContent =
-          wishlist.length;
-
-      }
-
+      const cartCountElement = document.getElementById("cartCount");
+      if (cartCountElement) cartCountElement.textContent = quantity;
     }
 
 
