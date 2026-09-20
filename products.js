@@ -130,7 +130,7 @@ async function getAllProducts(options = {}) {
                   title
 
                   availableForSale
-                  quantityAvailable
+                
 
                   price {
                     amount
