@@ -6,20 +6,49 @@
 
   <title>Checkout | Shopora Market Store</title>
 
-  <meta name="description" content="Secure checkout for Shopora Market Store. Enter delivery details and select your preferred payment method.">
-  <meta name="keywords" content="Shopora checkout, Shopora Market Store, online shopping Pakistan, JazzCash, Easypaisa, Mastercard, Visa, Bank, Raast">
+  <meta
+    name="description"
+    content="Secure checkout for Shopora Market Store."
+  >
+
+  <meta
+    name="keywords"
+    content="Shopora checkout, Shopora Market Store, online shopping Pakistan"
+  >
+
   <meta name="author" content="Shopora Market Store">
 
-  <link rel="canonical" href="https://shoporamarketstore.store/checkout.html">
+  <link
+    rel="canonical"
+    href="https://shoporamarketstore.store/checkout.html"
+  >
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Checkout | Shopora Market Store">
-  <meta property="og:description" content="Secure checkout for Shopora Market Store.">
-  <meta property="og:url" content="https://shoporamarketstore.store/checkout.html">
-  <meta property="og:image" content="https://shoporamarketstore.store/assets/shopora-logo.png">
+  <meta
+    property="og:description"
+    content="Secure checkout for Shopora Market Store."
+  >
+  <meta
+    property="og:url"
+    content="https://shoporamarketstore.store/checkout.html"
+  >
+  <meta
+    property="og:image"
+    content="https://shoporamarketstore.store/assets/shopora-logo.png"
+  >
 
-  <link rel="icon" type="image/png" sizes="512x512" href="assets/shopora-mark.png">
-  <link rel="apple-touch-icon" href="assets/shopora-mark.png">
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="512x512"
+    href="assets/shopora-mark.png"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    href="assets/shopora-mark.png"
+  >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,11 +63,11 @@
       --black:#111111;
       --ivory:#F7F4EE;
       --gold:#C6A06A;
+      --gold-dark:#9c753e;
       --white:#ffffff;
       --muted:#77736d;
       --border:rgba(17,17,17,.10);
       --success:#397653;
-      --warning:#a56b19;
       --danger:#a33a3a;
       --shadow:0 20px 60px rgba(17,17,17,.08);
     }
@@ -58,6 +87,7 @@
       color:var(--black);
       background:var(--ivory);
       line-height:1.7;
+      min-height:100vh;
     }
 
     a{
@@ -67,8 +97,7 @@
 
     button,
     input,
-    textarea,
-    select{
+    textarea{
       font:inherit;
     }
 
@@ -81,6 +110,10 @@
       width:min(1180px,92%);
       margin:auto;
     }
+
+    /* =========================
+       HEADER
+    ========================= */
 
     header{
       position:sticky;
@@ -190,16 +223,28 @@
       display:none;
     }
 
+    /* =========================
+       PAGE HERO
+    ========================= */
+
     .page-hero{
       padding:85px 0 65px;
       text-align:center;
       background:
-        radial-gradient(circle at 15% 20%,rgba(198,160,106,.15),transparent 30%),
-        radial-gradient(circle at 85% 70%,rgba(198,160,106,.10),transparent 30%);
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(198,160,106,.15),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 85% 70%,
+          rgba(198,160,106,.10),
+          transparent 30%
+        );
     }
 
     .eyebrow{
-      color:var(--gold);
+      color:var(--gold-dark);
       text-transform:uppercase;
       letter-spacing:3px;
       font-size:12px;
@@ -207,7 +252,9 @@
       margin-bottom:15px;
     }
 
-    h1,h2,h3{
+    h1,
+    h2,
+    h3{
       font-family:"Playfair Display",serif;
       line-height:1.2;
     }
@@ -223,6 +270,10 @@
       color:var(--muted);
       font-size:16px;
     }
+
+    /* =========================
+       CHECKOUT
+    ========================= */
 
     .checkout-section{
       padding:65px 0 110px;
@@ -262,6 +313,10 @@
       font-size:13px;
     }
 
+    /* =========================
+       CUSTOMER INFO
+    ========================= */
+
     .form-grid{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -285,8 +340,7 @@
     }
 
     .field input,
-    .field textarea,
-    .field select{
+    .field textarea{
       width:100%;
       border:1px solid var(--border);
       background:#fff;
@@ -303,89 +357,67 @@
     }
 
     .field input:focus,
-    .field textarea:focus,
-    .field select:focus{
+    .field textarea:focus{
       border-color:var(--gold);
-      box-shadow:0 0 0 3px rgba(198,160,106,.10);
+      box-shadow:
+        0 0 0 3px rgba(198,160,106,.10);
     }
 
     .required{
-      color:var(--gold);
+      color:var(--gold-dark);
     }
+
+    /* =========================
+       SHOPIFY CHECKOUT NOTICE
+    ========================= */
 
     .payment-box{
       grid-column:1 / -1;
       border:1px solid var(--border);
       background:var(--ivory);
-      padding:20px;
+      padding:22px;
       margin-top:5px;
     }
 
     .payment-box h3{
       font-family:"DM Sans",sans-serif;
       font-size:15px;
-      margin-bottom:5px;
+      margin-bottom:6px;
     }
 
     .payment-box p{
       color:var(--muted);
-      font-size:12px;
-      margin-bottom:15px;
-    }
-
-    .payment-options{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:10px;
-    }
-
-    .payment-option{
-      position:relative;
-    }
-
-    .payment-option input{
-      position:absolute;
-      opacity:0;
-      pointer-events:none;
-    }
-
-    .payment-option label{
-      min-height:58px;
-      padding:12px 14px;
-      background:var(--white);
-      border:1px solid var(--border);
-      display:flex;
-      align-items:center;
-      gap:10px;
-      cursor:pointer;
-      transition:.25s ease;
       font-size:13px;
-      font-weight:700;
+      line-height:1.6;
     }
 
-    .payment-option label:hover{
-      border-color:var(--gold);
+    .payment-methods{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:15px;
     }
 
-    .payment-option input:checked + label{
-      border-color:var(--gold);
-      box-shadow:0 0 0 2px rgba(198,160,106,.15);
-      background:#fffdf9;
-    }
-
-    .payment-icon{
-      font-size:20px;
-      min-width:25px;
-    }
-
-    .payment-status-note{
-      margin-top:12px;
+    .method{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:8px 12px;
       font-size:11px;
-      color:var(--muted);
-      line-height:1.5;
+      font-weight:700;
+      border-radius:6px;
     }
 
-    .order-note{
+    .secure-note{
+      margin-top:22px;
+      padding:15px;
+      background:var(--ivory);
+      text-align:center;
+      color:var(--muted);
+      font-size:11px;
+      line-height:1.6;
+    }
+
+    .checkout-note{
       margin-top:25px;
       padding:15px;
       background:var(--ivory);
@@ -396,7 +428,7 @@
 
     .submit-btn{
       width:100%;
-      min-height:54px;
+      min-height:56px;
       margin-top:25px;
       border:1px solid var(--black);
       background:var(--black);
@@ -408,14 +440,18 @@
     }
 
     .submit-btn:hover{
-      background:var(--gold);
-      border-color:var(--gold);
+      background:var(--gold-dark);
+      border-color:var(--gold-dark);
     }
 
     .submit-btn:disabled{
       opacity:.6;
       cursor:not-allowed;
     }
+
+    /* =========================
+       SUMMARY
+    ========================= */
 
     .order-summary{
       padding:30px;
@@ -453,6 +489,7 @@
       align-items:center;
       justify-content:center;
       padding:7px;
+      overflow:hidden;
     }
 
     .summary-image img{
@@ -465,6 +502,12 @@
       font-size:13px;
       font-weight:600;
       line-height:1.35;
+    }
+
+    .summary-product-variant{
+      color:var(--muted);
+      font-size:10px;
+      margin-top:2px;
     }
 
     .summary-product-qty{
@@ -505,15 +548,9 @@
       text-align:right;
     }
 
-    .secure-note{
-      margin-top:22px;
-      padding:14px;
-      background:var(--ivory);
-      text-align:center;
-      color:var(--muted);
-      font-size:11px;
-      line-height:1.5;
-    }
+    /* =========================
+       EMPTY
+    ========================= */
 
     .empty-checkout{
       padding:75px 30px;
@@ -557,48 +594,27 @@
     }
 
     .shop-btn:hover{
-      background:var(--gold);
-      border-color:var(--gold);
+      background:var(--gold-dark);
+      border-color:var(--gold-dark);
     }
 
-    .success-message{
+    /* =========================
+       ERROR
+    ========================= */
+
+    .error-box{
       display:none;
-      padding:65px 35px;
-      text-align:center;
+      margin-bottom:20px;
+      padding:15px;
+      border:1px solid rgba(163,58,58,.25);
+      background:#fff5f5;
+      color:var(--danger);
+      font-size:13px;
     }
 
-    .success-icon{
-      width:70px;
-      height:70px;
-      margin:0 auto 22px;
-      border-radius:50%;
-      background:rgba(57,118,83,.10);
-      color:var(--success);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-size:30px;
-    }
-
-    .success-message h2{
-      font-size:38px;
-      margin-bottom:12px;
-    }
-
-    .success-message p{
-      max-width:600px;
-      margin:0 auto 25px;
-      color:var(--muted);
-    }
-
-    .order-reference{
-      display:inline-block;
-      background:var(--ivory);
-      padding:10px 18px;
-      margin-bottom:25px;
-      font-weight:700;
-      letter-spacing:1px;
-    }
+    /* =========================
+       FOOTER
+    ========================= */
 
     footer{
       background:#0b0b0b;
@@ -657,16 +673,21 @@
       font-size:12px;
     }
 
-    .reveal{
-      opacity:0;
-      transform:translateY(20px);
-      transition:.7s ease;
+    /* =========================
+       LOADING
+    ========================= */
+
+    .loading{
+      display:none;
+      text-align:center;
+      padding:50px 20px;
+      color:var(--muted);
+      font-size:14px;
     }
 
-    .reveal.show{
-      opacity:1;
-      transform:translateY(0);
-    }
+    /* =========================
+       MOBILE
+    ========================= */
 
     @media(max-width:1000px){
 
@@ -757,10 +778,6 @@
         grid-column:auto;
       }
 
-      .payment-options{
-        grid-template-columns:1fr;
-      }
-
       .order-summary{
         padding:23px 18px;
       }
@@ -790,14 +807,20 @@
     }
   }
   </script>
+
 </head>
 
 <body>
 
 <header>
+
   <div class="container nav">
 
-    <a href="index.html" class="brand" aria-label="Shopora Market Store home">
+    <a
+      href="index.html"
+      class="brand"
+      aria-label="Shopora Market Store home"
+    >
       <img
         src="assets/shopora-logo.png"
         alt="Shopora Market Store"
@@ -808,41 +831,63 @@
     </a>
 
     <nav class="nav-links" id="navLinks">
+
       <a href="index.html">Home</a>
       <a href="shop.html">Shop</a>
       <a href="categories.html">Categories</a>
       <a href="trending.html">Trending</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
+
     </nav>
 
     <div class="nav-actions">
 
-      <button class="icon-btn" onclick="goToSearch()" aria-label="Search">
+      <button
+        class="icon-btn"
+        onclick="goToSearch()"
+        aria-label="Search"
+      >
         🔍
       </button>
 
-      <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">
+      <a
+        href="wishlist.html"
+        class="icon-btn"
+        aria-label="Wishlist"
+      >
         ♡
         <span class="count" id="wishlistCount">0</span>
       </a>
 
-      <a href="cart.html" class="icon-btn" aria-label="Shopping cart">
+      <a
+        href="cart.html"
+        class="icon-btn"
+        aria-label="Shopping cart"
+      >
         🛒
         <span class="count" id="cartCount">0</span>
       </a>
 
-      <button class="icon-btn menu-btn" onclick="toggleMenu()" aria-label="Menu">
+      <button
+        class="icon-btn menu-btn"
+        onclick="toggleMenu()"
+        aria-label="Menu"
+      >
         ☰
       </button>
 
     </div>
+
   </div>
+
 </header>
+
 
 <main>
 
-  <section class="page-hero reveal">
+  <section class="page-hero">
+
     <div class="container">
 
       <div class="eyebrow">
@@ -852,13 +897,22 @@
       <h1>Checkout</h1>
 
       <p>
-        Enter your delivery details and choose your preferred payment method.
+        Review your order and continue to secure Shopify checkout.
       </p>
 
     </div>
+
   </section>
 
-  <section class="checkout-section" id="emptySection" style="display:none;">
+
+  <!-- EMPTY CART -->
+
+  <section
+    class="checkout-section"
+    id="emptySection"
+    style="display:none;"
+  >
+
     <div class="container">
 
       <div class="empty-checkout">
@@ -873,40 +927,75 @@
           Add products to your cart before continuing to checkout.
         </p>
 
-        <a href="shop.html" class="shop-btn">
+        <a
+          href="shop.html"
+          class="shop-btn"
+        >
           Browse Products
         </a>
 
       </div>
 
     </div>
+
   </section>
 
-  <section class="checkout-section" id="checkoutSection">
+
+  <!-- CHECKOUT -->
+
+  <section
+    class="checkout-section"
+    id="checkoutSection"
+  >
 
     <div class="container">
 
-      <div class="checkout-layout">
+      <div
+        class="error-box"
+        id="errorBox"
+      ></div>
 
-        <div class="checkout-card reveal">
+      <div
+        class="loading"
+        id="loading"
+      >
+        Loading your Shopify cart...
+      </div>
+
+
+      <div
+        class="checkout-layout"
+        id="checkoutLayout"
+      >
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="checkout-card">
 
           <div class="section-heading">
 
             <h2>Delivery Details</h2>
 
             <p>
-              Please provide accurate information so your order can be processed correctly.
+              Enter your delivery information before continuing
+              to secure Shopify checkout.
             </p>
 
           </div>
 
-          <form id="checkoutForm" novalidate>
+
+          <form
+            id="checkoutForm"
+            novalidate
+          >
 
             <div class="form-grid">
 
               <div class="field">
+
                 <label for="firstName">
-                  First Name <span class="required">*</span>
+                  First Name
+                  <span class="required">*</span>
                 </label>
 
                 <input
@@ -917,11 +1006,15 @@
                   autocomplete="given-name"
                   required
                 >
+
               </div>
 
+
               <div class="field">
+
                 <label for="lastName">
-                  Last Name <span class="required">*</span>
+                  Last Name
+                  <span class="required">*</span>
                 </label>
 
                 <input
@@ -932,11 +1025,15 @@
                   autocomplete="family-name"
                   required
                 >
+
               </div>
 
+
               <div class="field">
+
                 <label for="email">
-                  Email Address <span class="required">*</span>
+                  Email Address
+                  <span class="required">*</span>
                 </label>
 
                 <input
@@ -947,11 +1044,15 @@
                   autocomplete="email"
                   required
                 >
+
               </div>
 
+
               <div class="field">
+
                 <label for="phone">
-                  Phone Number <span class="required">*</span>
+                  Phone Number
+                  <span class="required">*</span>
                 </label>
 
                 <input
@@ -962,11 +1063,15 @@
                   autocomplete="tel"
                   required
                 >
+
               </div>
 
+
               <div class="field full">
+
                 <label for="address">
-                  Complete Street Address <span class="required">*</span>
+                  Complete Street Address
+                  <span class="required">*</span>
                 </label>
 
                 <input
@@ -977,11 +1082,15 @@
                   autocomplete="street-address"
                   required
                 >
+
               </div>
 
+
               <div class="field">
+
                 <label for="city">
-                  City <span class="required">*</span>
+                  City
+                  <span class="required">*</span>
                 </label>
 
                 <input
@@ -992,9 +1101,12 @@
                   autocomplete="address-level2"
                   required
                 >
+
               </div>
 
+
               <div class="field">
+
                 <label for="province">
                   Province / Region
                 </label>
@@ -1006,9 +1118,12 @@
                   placeholder="Province or region"
                   autocomplete="address-level1"
                 >
+
               </div>
 
+
               <div class="field">
+
                 <label for="postalCode">
                   Postal Code
                 </label>
@@ -1020,9 +1135,12 @@
                   placeholder="Postal code"
                   autocomplete="postal-code"
                 >
+
               </div>
 
+
               <div class="field">
+
                 <label for="country">
                   Country
                 </label>
@@ -1034,98 +1152,42 @@
                   value="Pakistan"
                   autocomplete="country-name"
                 >
+
               </div>
+
+
+              <!-- SHOPIFY PAYMENT -->
 
               <div class="payment-box">
 
-                <h3>Payment Method</h3>
+                <h3>
+                  Payment
+                </h3>
 
                 <p>
-                  Select how you want to pay. Actual online payment processing
-                  will be connected through the secure payment gateway.
+                  Payment methods are handled securely by Shopify Checkout.
+                  After you continue, Shopify will show the payment methods
+                  currently available for your store.
                 </p>
 
-                <div class="payment-options">
+                <div class="payment-methods">
 
-                  <div class="payment-option">
-                    <input
-                      type="radio"
-                      id="paymentJazzCash"
-                      name="payment"
-                      value="JazzCash"
-                      required
-                    >
+                  <span class="method">
+                    🔒 Secure Checkout
+                  </span>
 
-                    <label for="paymentJazzCash">
-                      <span class="payment-icon">🟢</span>
-                      JazzCash
-                    </label>
-                  </div>
+                  <span class="method">
+                    💳 Card
+                  </span>
 
-                  <div class="payment-option">
-                    <input
-                      type="radio"
-                      id="paymentEasypaisa"
-                      name="payment"
-                      value="Easypaisa"
-                    >
+                  <span class="method">
+                    🏦 Available Payment Methods
+                  </span>
 
-                    <label for="paymentEasypaisa">
-                      <span class="payment-icon">🟢</span>
-                      Easypaisa
-                    </label>
-                  </div>
-
-                  <div class="payment-option">
-                    <input
-                      type="radio"
-                      id="paymentCard"
-                      name="payment"
-                      value="Visa / Mastercard"
-                    >
-
-                    <label for="paymentCard">
-                      <span class="payment-icon">💳</span>
-                      Visa / Mastercard
-                    </label>
-                  </div>
-
-                  <div class="payment-option">
-                    <input
-                      type="radio"
-                      id="paymentBank"
-                      name="payment"
-                      value="Bank / Raast"
-                    >
-
-                    <label for="paymentBank">
-                      <span class="payment-icon">🏦</span>
-                      Bank / Raast
-                    </label>
-                  </div>
-
-                  <div class="payment-option">
-                    <input
-                      type="radio"
-                      id="paymentCOD"
-                      name="payment"
-                      value="Cash on Delivery"
-                    >
-
-                    <label for="paymentCOD">
-                      <span class="payment-icon">📦</span>
-                      Cash on Delivery
-                    </label>
-                  </div>
-
-                </div>
-
-                <div class="payment-status-note">
-                  🔒 Card details and payment credentials will not be stored
-                  in this website's frontend.
                 </div>
 
               </div>
+
 
               <div class="field full">
 
@@ -1143,29 +1205,34 @@
 
             </div>
 
-            <div class="order-note">
 
-              <strong>Order security:</strong>
-              Your order will only be marked as
-              <strong>PAID</strong> after the payment gateway confirms the
-              transaction. A browser success message alone will never be
-              treated as payment confirmation.
+            <div class="checkout-note">
+
+              <strong>Important:</strong>
+              This website does not create or confirm a payment itself.
+              Clicking the button below will open the real Shopify Checkout.
+              The payment provider configured in Shopify will handle payment
+              there.
 
             </div>
+
 
             <button
               type="submit"
               class="submit-btn"
               id="submitOrder"
             >
-              Continue to Secure Payment
+              Continue to Secure Shopify Checkout
             </button>
 
           </form>
 
         </div>
 
-        <aside class="order-summary reveal">
+
+        <!-- ORDER SUMMARY -->
+
+        <aside class="order-summary">
 
           <h2>Your Order</h2>
 
@@ -1174,74 +1241,69 @@
             id="summaryProducts"
           ></div>
 
-          <div class="summary-row">
-
-            <span>Items</span>
-
-            <strong id="summaryItems">0</strong>
-
-          </div>
 
           <div class="summary-row">
 
-            <span>Subtotal</span>
+            <span>
+              Items
+            </span>
 
-            <strong id="summarySubtotal">
-              Rs. 0
+            <strong id="summaryItems">
+              0
             </strong>
 
           </div>
 
+
           <div class="summary-row">
 
-            <span>Shipping</span>
+            <span>
+              Subtotal
+            </span>
+
+            <strong id="summarySubtotal">
+              PKR 0
+            </strong>
+
+          </div>
+
+
+          <div class="summary-row">
+
+            <span>
+              Shipping
+            </span>
 
             <span class="shipping-text">
-              To be confirmed
+              Calculated at checkout
             </span>
 
           </div>
 
+
           <div class="summary-row total">
 
-            <span>Total</span>
+            <span>
+              Total
+            </span>
 
             <strong id="summaryTotal">
-              Rs. 0
+              PKR 0
             </strong>
 
           </div>
 
+
           <div class="secure-note">
 
-            🔒 Secure checkout<br>
-            Payment verification will be required before an order is marked PAID.
+            🔒 Secure Shopify Checkout<br>
+
+            Your payment details are handled by the
+            payment provider at Shopify Checkout.
 
           </div>
 
         </aside>
-
-      </div>
-
-      <div class="success-message" id="successMessage">
-
-        <div class="success-icon">
-          ✓
-        </div>
-
-        <div class="order-reference" id="successOrderNumber">
-          SHOP-00000000
-        </div>
-
-        <h2>Order Received</h2>
-
-        <p id="successText">
-          Your order information has been prepared successfully.
-        </p>
-
-        <a href="shop.html" class="shop-btn">
-          Continue Shopping
-        </a>
 
       </div>
 
@@ -1250,6 +1312,7 @@
   </section>
 
 </main>
+
 
 <footer>
 
@@ -1277,39 +1340,79 @@
 
       </div>
 
+
       <div class="footer-col">
 
-        <h3>Shop</h3>
+        <h3>
+          Shop
+        </h3>
 
-        <a href="shop.html">Shop All</a>
-        <a href="categories.html">Categories</a>
-        <a href="trending.html">Trending</a>
-        <a href="cart.html">Cart</a>
-        <a href="wishlist.html">Wishlist</a>
+        <a href="shop.html">
+          Shop All
+        </a>
+
+        <a href="categories.html">
+          Categories
+        </a>
+
+        <a href="trending.html">
+          Trending
+        </a>
+
+        <a href="cart.html">
+          Cart
+        </a>
+
+        <a href="wishlist.html">
+          Wishlist
+        </a>
 
       </div>
 
+
       <div class="footer-col">
 
-        <h3>Company</h3>
+        <h3>
+          Company
+        </h3>
 
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+        <a href="about.html">
+          About
+        </a>
+
+        <a href="contact.html">
+          Contact
+        </a>
 
       </div>
 
+
       <div class="footer-col">
 
-        <h3>Policies</h3>
+        <h3>
+          Policies
+        </h3>
 
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="terms-of-service.html">Terms of Service</a>
-        <a href="cookie-policy.html">Cookie Policy</a>
-        <a href="return-refund.html">Return & Refund</a>
+        <a href="privacy-policy.html">
+          Privacy Policy
+        </a>
+
+        <a href="terms-of-service.html">
+          Terms of Service
+        </a>
+
+        <a href="cookie-policy.html">
+          Cookie Policy
+        </a>
+
+        <a href="return-refund.html">
+          Return & Refund
+        </a>
 
       </div>
 
     </div>
+
 
     <div class="footer-bottom">
 
@@ -1328,70 +1431,82 @@
 
 </footer>
 
+
 <script>
 
 /* =========================================================
-   SHOPORA CHECKOUT
-   Frontend order preparation
-   Real payment verification will happen server-side.
+   SHOPORA
+   REAL SHOPIFY CHECKOUT
 ========================================================= */
 
 
-/* =========================
-   STORAGE
-========================= */
+/* =========================================================
+   SHOPIFY CONFIG
+========================================================= */
 
-function getCart(){
+const SHOPIFY_STORE_DOMAIN =
+  "fsgigg-tp.myshopify.com";
 
-  try{
 
-    return JSON.parse(
-      localStorage.getItem("shoporaCart")
-    ) || [];
+/*
+ * IMPORTANT:
+ * Put the SAME Shopify Storefront public token
+ * here that is already being used by index.html/cart.html.
+ *
+ * Do NOT put Shopify Admin API tokens here.
+ * Do NOT put Safepay Secret Key here.
+ */
 
-  }catch(error){
+const SHOPIFY_STOREFRONT_TOKEN =
+  "YOUR_STOREFRONT_PUBLIC_TOKEN";
 
-    console.error("Cart read error:",error);
 
-    return [];
+const SHOPIFY_API_VERSION =
+  "2026-07";
+
+
+const SHOPIFY_STOREFRONT_URL =
+  "https://" +
+  SHOPIFY_STORE_DOMAIN +
+  "/api/" +
+  SHOPIFY_API_VERSION +
+  "/graphql.json";
+
+
+/* =========================================================
+   SHOPIFY CART STORAGE
+========================================================= */
+
+const SHOPIFY_CART_STORAGE_KEY =
+  "shoporaShopifyCartId";
+
+
+function getShopifyCartId(){
+
+  return localStorage.getItem(
+    SHOPIFY_CART_STORAGE_KEY
+  );
+
+}
+
+
+function saveShopifyCartId(cartId){
+
+  if(cartId){
+
+    localStorage.setItem(
+      SHOPIFY_CART_STORAGE_KEY,
+      cartId
+    );
 
   }
 
 }
 
 
-function getWishlist(){
-
-  try{
-
-    return JSON.parse(
-      localStorage.getItem("shoporaWishlist")
-    ) || [];
-
-  }catch(error){
-
-    return [];
-
-  }
-
-}
-
-
-/* =========================
-   PRICE
-========================= */
-
-function formatPrice(price){
-
-  return "Rs. " +
-    Number(price || 0).toLocaleString("en-PK");
-
-}
-
-
-/* =========================
-   ESCAPE HTML
-========================= */
+/* =========================================================
+   HELPERS
+========================================================= */
 
 function escapeHTML(value){
 
@@ -1405,534 +1520,771 @@ function escapeHTML(value){
 }
 
 
-/* =========================
-   ORDER TOTAL
-========================= */
+function formatMoney(
+  amount,
+  currencyCode
+){
 
-function calculateSubtotal(cart){
+  const number =
+    Number(amount || 0);
 
-  return cart.reduce(
-    (total,item) =>
-      total +
-      Number(item.price || 0) *
-      Number(item.quantity || 1),
-    0
-  );
+
+  if(currencyCode === "PKR"){
+
+    return (
+      "PKR " +
+      number.toLocaleString(
+        "en-PK",
+        {
+          maximumFractionDigits:2
+        }
+      )
+    );
+
+  }
+
+
+  try{
+
+    return new Intl.NumberFormat(
+      "en-US",
+      {
+        style:"currency",
+        currency:currencyCode || "USD"
+      }
+    ).format(number);
+
+  }catch(error){
+
+    return (
+      (currencyCode || "") +
+      " " +
+      number.toLocaleString()
+    );
+
+  }
 
 }
 
 
-/* =========================
-   ORDER ID
-========================= */
+/* =========================================================
+   SHOPIFY GRAPHQL
+========================================================= */
 
-function generateOrderNumber(){
+async function shopifyRequest(
+  query,
+  variables={}
+){
 
-  const random =
-    Math.floor(
-      1000 +
-      Math.random() * 9000
+  if(
+    !SHOPIFY_STOREFRONT_TOKEN ||
+    SHOPIFY_STOREFRONT_TOKEN ===
+      "YOUR_STOREFRONT_PUBLIC_TOKEN"
+  ){
+
+    throw new Error(
+      "Shopify Storefront API token is not configured."
     );
 
-  return "SHOP-" +
-    Date.now().toString().slice(-8) +
-    "-" +
-    random;
+  }
+
+
+  const response =
+    await fetch(
+      SHOPIFY_STOREFRONT_URL,
+      {
+        method:"POST",
+
+        headers:{
+          "Content-Type":
+            "application/json",
+
+          "X-Shopify-Storefront-Access-Token":
+            SHOPIFY_STOREFRONT_TOKEN
+        },
+
+        body:JSON.stringify({
+          query,
+          variables
+        })
+      }
+    );
+
+
+  if(!response.ok){
+
+    throw new Error(
+      "Shopify API error: " +
+      response.status
+    );
+
+  }
+
+
+  const result =
+    await response.json();
+
+
+  if(result.errors?.length){
+
+    throw new Error(
+      result.errors
+        .map(
+          error => error.message
+        )
+        .join(", ")
+    );
+
+  }
+
+
+  return result.data;
 
 }
 
 
-/* =========================
-   RENDER ORDER
-========================= */
+/* =========================================================
+   GET SHOPIFY CART
+========================================================= */
 
-function renderOrder(){
+async function getShopifyCart(
+  cartId
+){
 
-  const cart =
-    getCart();
+  const query = `
 
-  const checkoutSection =
-    document.getElementById(
-      "checkoutSection"
+    query GetCart($cartId: ID!) {
+
+      cart(id: $cartId) {
+
+        id
+
+        checkoutUrl
+
+        totalQuantity
+
+        cost {
+
+          subtotalAmount {
+            amount
+            currencyCode
+          }
+
+          totalAmount {
+            amount
+            currencyCode
+          }
+
+        }
+
+        lines(first: 100) {
+
+          nodes {
+
+            id
+
+            quantity
+
+            merchandise {
+
+              ... on ProductVariant {
+
+                id
+
+                title
+
+                price {
+                  amount
+                  currencyCode
+                }
+
+                product {
+
+                  id
+
+                  title
+
+                  handle
+
+                  featuredImage {
+                    url
+                    altText
+                  }
+
+                }
+
+              }
+
+            }
+
+          }
+
+        }
+
+      }
+
+    }
+
+  `;
+
+
+  const data =
+    await shopifyRequest(
+      query,
+      {
+        cartId
+      }
     );
 
-  const emptySection =
+
+  return data.cart;
+
+}
+
+
+/* =========================================================
+   RENDER SUMMARY
+========================================================= */
+
+function renderSummary(cart){
+
+  const summary =
     document.getElementById(
-      "emptySection"
+      "summaryProducts"
     );
 
 
-  if(cart.length === 0){
+  if(
+    !cart ||
+    !cart.lines ||
+    cart.lines.nodes.length === 0
+  ){
 
-    checkoutSection.style.display =
-      "none";
-
-    emptySection.style.display =
-      "block";
-
-    updateCounts();
+    summary.innerHTML = "";
 
     return;
 
   }
 
 
-  checkoutSection.style.display =
-    "block";
+  summary.innerHTML =
+    cart.lines.nodes
+      .map(
+        line => {
 
-  emptySection.style.display =
-    "none";
+          const variant =
+            line.merchandise;
+
+          const product =
+            variant.product;
+
+          const image =
+            product.featuredImage?.url ||
+            "assets/shopora-mark.png";
 
 
-  const summaryProducts =
-    document.getElementById(
-      "summaryProducts"
-    );
+          const lineTotal =
+            Number(
+              variant.price.amount
+            ) *
+            Number(
+              line.quantity
+            );
 
 
-  summaryProducts.innerHTML =
-    cart.map(
-      item => {
+          return `
 
-        const quantity =
-          Number(item.quantity || 1);
+            <div class="summary-product">
 
-        const lineTotal =
-          Number(item.price || 0) *
-          quantity;
+              <div class="summary-image">
 
-        return `
+                <img
+                  src="${escapeHTML(image)}"
+                  alt="${escapeHTML(
+                    product.featuredImage?.altText ||
+                    product.title
+                  )}"
+                  loading="lazy"
+                >
 
-          <div class="summary-product">
-
-            <div class="summary-image">
-
-              <img
-                src="${escapeHTML(item.image)}"
-                alt="${escapeHTML(item.name)}"
-                loading="lazy"
-              >
-
-            </div>
-
-            <div>
-
-              <div class="summary-product-name">
-                ${escapeHTML(item.name)}
               </div>
 
-              <div class="summary-product-qty">
-                Qty: ${quantity}
+
+              <div>
+
+                <div class="summary-product-name">
+                  ${escapeHTML(product.title)}
+                </div>
+
+                ${
+                  variant.title &&
+                  variant.title !== "Default Title"
+
+                  ? `
+
+                    <div class="summary-product-variant">
+                      ${escapeHTML(variant.title)}
+                    </div>
+
+                  `
+
+                  : ""
+                }
+
+                <div class="summary-product-qty">
+                  Qty: ${line.quantity}
+                </div>
+
+              </div>
+
+
+              <div class="summary-product-price">
+
+                ${formatMoney(
+                  lineTotal,
+                  variant.price.currencyCode
+                )}
+
               </div>
 
             </div>
 
-            <div class="summary-product-price">
-              ${formatPrice(lineTotal)}
-            </div>
+          `;
 
-          </div>
-
-        `;
-
-      }
-    ).join("");
-
-
-  const itemCount =
-    cart.reduce(
-      (total,item) =>
-        total +
-        Number(item.quantity || 1),
-      0
-    );
-
-
-  const subtotal =
-    calculateSubtotal(cart);
+        }
+      )
+      .join("");
 
 
   document.getElementById(
     "summaryItems"
   ).textContent =
-    itemCount;
+    cart.totalQuantity || 0;
 
 
   document.getElementById(
     "summarySubtotal"
   ).textContent =
-    formatPrice(subtotal);
+    formatMoney(
+      cart.cost.subtotalAmount.amount,
+      cart.cost.subtotalAmount.currencyCode
+    );
 
 
   document.getElementById(
     "summaryTotal"
   ).textContent =
-    formatPrice(subtotal);
+    formatMoney(
+      cart.cost.totalAmount.amount,
+      cart.cost.totalAmount.currencyCode
+    );
 
 
-  updateCounts();
+  document.getElementById(
+    "cartCount"
+  ).textContent =
+    cart.totalQuantity || 0;
 
 }
 
 
-/* =========================
-   COUNTS
-========================= */
+/* =========================================================
+   LOAD CART
+========================================================= */
 
-function updateCounts(){
+async function loadCheckoutCart(){
 
-  const cart =
-    getCart();
+  const loading =
+    document.getElementById(
+      "loading"
+    );
 
-  const wishlist =
-    getWishlist();
+  const layout =
+    document.getElementById(
+      "checkoutLayout"
+    );
 
+  const empty =
+    document.getElementById(
+      "emptySection"
+    );
 
-  const cartCount =
-    cart.reduce(
-      (total,item) =>
-        total +
-        Number(item.quantity || 1),
-      0
+  const checkout =
+    document.getElementById(
+      "checkoutSection"
+    );
+
+  const errorBox =
+    document.getElementById(
+      "errorBox"
     );
 
 
-  const cartElement =
+  errorBox.style.display =
+    "none";
+
+
+  loading.style.display =
+    "block";
+
+
+  layout.style.display =
+    "none";
+
+
+  const cartId =
+    getShopifyCartId();
+
+
+  if(!cartId){
+
+    loading.style.display =
+      "none";
+
+    checkout.style.display =
+      "none";
+
+    empty.style.display =
+      "block";
+
     document.getElementById(
       "cartCount"
-    );
+    ).textContent = "0";
 
-  const wishlistElement =
-    document.getElementById(
-      "wishlistCount"
-    );
+    return;
 
-
-  if(cartElement){
-    cartElement.textContent =
-      cartCount;
   }
 
 
-  if(wishlistElement){
-    wishlistElement.textContent =
-      wishlist.length;
+  try{
+
+    const cart =
+      await getShopifyCart(
+        cartId
+      );
+
+
+    /*
+     * If Shopify no longer has the cart,
+     * don't create a fake order.
+     */
+
+    if(!cart){
+
+      localStorage.removeItem(
+        SHOPIFY_CART_STORAGE_KEY
+      );
+
+
+      loading.style.display =
+        "none";
+
+      checkout.style.display =
+        "none";
+
+      empty.style.display =
+        "block";
+
+      return;
+
+    }
+
+
+    if(
+      !cart.lines ||
+      cart.lines.nodes.length === 0
+    ){
+
+      loading.style.display =
+        "none";
+
+      checkout.style.display =
+        "none";
+
+      empty.style.display =
+        "block";
+
+      document.getElementById(
+        "cartCount"
+      ).textContent = "0";
+
+      return;
+
+    }
+
+
+    saveShopifyCartId(
+      cart.id
+    );
+
+
+    renderSummary(cart);
+
+
+    loading.style.display =
+      "none";
+
+
+    layout.style.display =
+      "grid";
+
+
+    checkout.style.display =
+      "block";
+
+
+  }catch(error){
+
+    console.error(
+      "Checkout cart error:",
+      error
+    );
+
+
+    loading.style.display =
+      "none";
+
+
+    errorBox.textContent =
+      error.message ||
+      "Unable to load Shopify cart.";
+
+
+    errorBox.style.display =
+      "block";
+
   }
 
 }
 
 
-/* =========================
-   BUILD COMPLETE ORDER
-========================= */
+/* =========================================================
+   CUSTOMER INFORMATION
+========================================================= */
 
-function buildOrder(){
-
-  const cart =
-    getCart();
-
-
-  const firstName =
-    document.getElementById(
-      "firstName"
-    ).value.trim();
-
-
-  const lastName =
-    document.getElementById(
-      "lastName"
-    ).value.trim();
-
-
-  const email =
-    document.getElementById(
-      "email"
-    ).value.trim();
-
-
-  const phone =
-    document.getElementById(
-      "phone"
-    ).value.trim();
-
-
-  const address =
-    document.getElementById(
-      "address"
-    ).value.trim();
-
-
-  const city =
-    document.getElementById(
-      "city"
-    ).value.trim();
-
-
-  const province =
-    document.getElementById(
-      "province"
-    ).value.trim();
-
-
-  const postalCode =
-    document.getElementById(
-      "postalCode"
-    ).value.trim();
-
-
-  const country =
-    document.getElementById(
-      "country"
-    ).value.trim();
-
-
-  const paymentElement =
-    document.querySelector(
-      'input[name="payment"]:checked'
-    );
-
-
-  const paymentMethod =
-    paymentElement
-      ? paymentElement.value
-      : "";
-
-
-  const notes =
-    document.getElementById(
-      "notes"
-    ).value.trim();
-
-
-  const subtotal =
-    calculateSubtotal(cart);
-
-
-  const orderNumber =
-    generateOrderNumber();
-
-
-  const items =
-    cart.map(
-      item => {
-
-        const quantity =
-          Number(item.quantity || 1);
-
-        const unitPrice =
-          Number(item.price || 0);
-
-        return {
-
-          productId:
-            item.id || "",
-
-          sku:
-            item.sku || "",
-
-          name:
-            item.name || "",
-
-          image:
-            item.image || "",
-
-          quantity:
-            quantity,
-
-          unitPrice:
-            unitPrice,
-
-          lineTotal:
-            unitPrice * quantity,
-
-          /*
-            Supplier information is kept
-            for the secure order system.
-            It is NOT shown to customers.
-          */
-
-          supplier:
-            item.supplier || "",
-
-          supplierPrice:
-            Number(item.supplierPrice || 0),
-
-          supplierUrl:
-            item.supplierUrl || ""
-
-        };
-
-      }
-    );
-
+function getCustomerInformation(){
 
   return {
 
-    orderNumber:
+    firstName:
+      document
+        .getElementById("firstName")
+        .value
+        .trim(),
 
-      orderNumber,
+    lastName:
+      document
+        .getElementById("lastName")
+        .value
+        .trim(),
 
+    email:
+      document
+        .getElementById("email")
+        .value
+        .trim(),
 
-    createdAt:
+    phone:
+      document
+        .getElementById("phone")
+        .value
+        .trim(),
 
-      new Date().toISOString(),
+    address:
+      document
+        .getElementById("address")
+        .value
+        .trim(),
 
+    city:
+      document
+        .getElementById("city")
+        .value
+        .trim(),
 
-    currency:
+    province:
+      document
+        .getElementById("province")
+        .value
+        .trim(),
 
-      "PKR",
+    postalCode:
+      document
+        .getElementById("postalCode")
+        .value
+        .trim(),
 
+    country:
+      document
+        .getElementById("country")
+        .value
+        .trim(),
 
-    customer:{
-
-      firstName:
-        firstName,
-
-      lastName:
-        lastName,
-
-      fullName:
-        firstName + " " + lastName,
-
-      email:
-        email,
-
-      phone:
-        phone
-
-    },
-
-
-    delivery:{
-
-      address:
-        address,
-
-      city:
-        city,
-
-      province:
-        province,
-
-      postalCode:
-        postalCode,
-
-      country:
-        country
-
-    },
-
-
-    items:
-      items,
-
-
-    amounts:{
-
-      subtotal:
-        subtotal,
-
-      shipping:
-        null,
-
-      total:
-        subtotal
-
-    },
-
-
-    payment:{
-
-      method:
-        paymentMethod,
-
-      status:
-        "PENDING",
-
-      transactionId:
-        null,
-
-      reference:
-        null,
-
-      verified:
-        false,
-
-      paidAt:
-        null
-
-    },
-
-
-    orderStatus:
-
-      "NEW",
-
-
-    customerNotes:
-
-      notes,
-
-
-    supplierStatus:
-
-      "NOT_ORDERED"
+    notes:
+      document
+        .getElementById("notes")
+        .value
+        .trim()
 
   };
 
 }
 
 
-/* =========================
-   SAVE LOCAL ORDER
-========================= */
+/* =========================================================
+   CONTINUE TO REAL SHOPIFY CHECKOUT
+========================================================= */
 
-function saveLocalOrder(order){
+async function continueToShopifyCheckout(){
+
+  const button =
+    document.getElementById(
+      "submitOrder"
+    );
+
+
+  const errorBox =
+    document.getElementById(
+      "errorBox"
+    );
+
+
+  errorBox.style.display =
+    "none";
+
+
+  const cartId =
+    getShopifyCartId();
+
+
+  if(!cartId){
+
+    throw new Error(
+      "Your Shopify cart is empty."
+    );
+
+  }
+
+
+  button.disabled =
+    true;
+
+
+  button.textContent =
+    "Opening Secure Checkout...";
+
+
+  /*
+   * Re-read the cart directly from Shopify.
+   * This prevents an old/local cart from
+   * being treated as a real order.
+   */
+
+  const cart =
+    await getShopifyCart(
+      cartId
+    );
+
+
+  if(!cart){
+
+    localStorage.removeItem(
+      SHOPIFY_CART_STORAGE_KEY
+    );
+
+    throw new Error(
+      "Your Shopify cart has expired. Please add the product again."
+    );
+
+  }
+
+
+  if(
+    !cart.lines ||
+    cart.lines.nodes.length === 0
+  ){
+
+    throw new Error(
+      "Your Shopify cart is empty."
+    );
+
+  }
+
+
+  if(!cart.checkoutUrl){
+
+    throw new Error(
+      "Shopify checkout URL is unavailable."
+    );
+
+  }
+
+
+  /*
+   * Customer details are collected here for
+   * validation/user experience.
+   *
+   * Shopify Checkout remains the source of truth
+   * for the actual order and payment.
+   *
+   * We DO NOT create a local order.
+   * We DO NOT create a fake order number.
+   * We DO NOT mark anything PAID.
+   */
+
+
+  const customer =
+    getCustomerInformation();
+
+
+  /*
+   * Keep the entered details temporarily so
+   * they can remain available if the customer
+   * returns from checkout.
+   *
+   * This is NOT an order record.
+   */
 
   try{
 
-    const existing =
-      JSON.parse(
-        localStorage.getItem(
-          "shoporaOrders"
-        )
-      ) || [];
-
-
-    existing.push(order);
-
-
-    localStorage.setItem(
-      "shoporaOrders",
-      JSON.stringify(existing)
+    sessionStorage.setItem(
+      "shoporaCheckoutCustomer",
+      JSON.stringify(customer)
     );
-
-
-    return true;
 
   }catch(error){
 
-    console.error(
-      "Order storage error:",
+    console.warn(
+      "Customer session storage unavailable.",
       error
     );
 
-    return false;
-
   }
+
+
+  /*
+   * THE IMPORTANT PART:
+   *
+   * Open Shopify's REAL checkout URL.
+   */
+
+  window.location.href =
+    cart.checkoutUrl;
 
 }
 
 
-/* =========================
-   FORM SUBMISSION
-========================= */
+/* =========================================================
+   FORM
+========================================================= */
 
 document
-  .getElementById("checkoutForm")
+  .getElementById(
+    "checkoutForm"
+  )
   .addEventListener(
     "submit",
-    function(event){
+    async function(event){
 
       event.preventDefault();
 
@@ -1950,122 +2302,54 @@ document
       }
 
 
-      const cart =
-        getCart();
+      try{
 
+        await continueToShopifyCheckout();
 
-      if(cart.length === 0){
+      }catch(error){
 
-        alert(
-          "Your cart is empty."
+        console.error(
+          error
         );
 
-        return;
+
+        const errorBox =
+          document.getElementById(
+            "errorBox"
+          );
+
+
+        errorBox.textContent =
+          error.message ||
+          "Unable to open secure checkout.";
+
+
+        errorBox.style.display =
+          "block";
+
+
+        const button =
+          document.getElementById(
+            "submitOrder"
+          );
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "Continue to Secure Shopify Checkout";
 
       }
-
-
-      const payment =
-        document.querySelector(
-          'input[name="payment"]:checked'
-        );
-
-
-      if(!payment){
-
-        alert(
-          "Please select a payment method."
-        );
-
-        return;
-
-      }
-
-
-      /*
-        Build complete order.
-
-        IMPORTANT:
-        This frontend record is NOT proof
-        of payment.
-
-        payment.status remains PENDING.
-      */
-
-      const order =
-        buildOrder();
-
-
-      const saved =
-        saveLocalOrder(order);
-
-
-      if(!saved){
-
-        alert(
-          "We could not prepare your order. Please try again."
-        );
-
-        return;
-
-      }
-
-
-      /*
-        TEMPORARY FRONTEND STAGE
-
-        Do NOT mark payment as PAID here.
-
-        The real gateway/backend will later
-        verify JazzCash/Easypaisa/Card/Bank
-        and update this order.
-      */
-
-
-      document.getElementById(
-        "successOrderNumber"
-      ).textContent =
-        order.orderNumber;
-
-
-      document.getElementById(
-        "successText"
-      ).textContent =
-        "Your order information has been prepared. " +
-        "Payment verification will be completed through the secure payment system.";
-
-
-      document
-        .getElementById(
-          "checkoutSection"
-        )
-        .querySelector(
-          ".checkout-layout"
-        )
-        .style.display =
-        "none";
-
-
-      document
-        .getElementById(
-          "successMessage"
-        )
-        .style.display =
-        "block";
-
-
-      window.scrollTo({
-        top:0,
-        behavior:"smooth"
-      });
 
     }
   );
 
 
-/* =========================
+/* =========================================================
    SEARCH
-========================= */
+========================================================= */
 
 function goToSearch(){
 
@@ -2075,9 +2359,9 @@ function goToSearch(){
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE MENU
-========================= */
+========================================================= */
 
 function toggleMenu(){
 
@@ -2092,9 +2376,9 @@ function toggleMenu(){
 }
 
 
-/* =========================
+/* =========================================================
    YEAR
-========================= */
+========================================================= */
 
 document.getElementById(
   "year"
@@ -2102,68 +2386,32 @@ document.getElementById(
   new Date().getFullYear();
 
 
-/* =========================
-   REVEAL
-========================= */
+/* =========================================================
+   START
+========================================================= */
 
-const observer =
-  new IntersectionObserver(
-    entries => {
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
 
-      entries.forEach(
-        entry => {
+    loadCheckoutCart();
 
-          if(entry.isIntersecting){
-
-            entry.target.classList.add(
-              "show"
-            );
-
-            observer.unobserve(
-              entry.target
-            );
-
-          }
-
-        }
-      );
-
-    },
-    {
-      threshold:.1
-    }
-  );
-
-
-document
-  .querySelectorAll(".reveal")
-  .forEach(
-    element =>
-      observer.observe(element)
-  );
-
-
-/* =========================
-   STORAGE SYNC
-========================= */
-
-window.addEventListener(
-  "storage",
-  renderOrder
+  }
 );
 
+
+/* =========================================================
+   RETURN / PAGE SHOW
+========================================================= */
 
 window.addEventListener(
   "pageshow",
-  renderOrder
+  () => {
+
+    loadCheckoutCart();
+
+  }
 );
-
-
-/* =========================
-   START
-========================= */
-
-renderOrder();
 
 </script>
 
