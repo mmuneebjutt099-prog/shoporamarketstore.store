@@ -1,0 +1,14 @@
+{
+  "name": "shopora-agent",
+  "version": "1.0.0",
+  "description": "Shopora Market Store product automation agent",
+  "type": "module",
+  "main": "agent.js",
+  "scripts": {
+    "start": "node agent.js",
+    "add-products": "node agent.js add-products"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
