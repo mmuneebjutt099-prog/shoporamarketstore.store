@@ -4,42 +4,49 @@ import { productShipsToCountry } from "./country-shipping.js";
 export function validateProduct(product, country) {
   const errors = [];
 
-  if (!product) {
+  if (!product || typeof product !== "object") {
     return {
       valid: false,
-      errors: ["Product data is missing."]
+      errors: ["Product data is missing or invalid."]
     };
   }
 
   if (!isFashionProduct(product)) {
-    errors.push("Product is not a supported fashion product.");
+    errors.push(
+      "Product is not a supported fashion product."
+    );
   }
 
-  if (!product.title || !String(product.title).trim()) {
+  const title = String(product.title || "").trim();
+
+  if (!title) {
     errors.push("Product title is missing.");
   }
 
-  if (
-    !product.images ||
-    !Array.isArray(product.images) ||
-    product.images.length === 0
-  ) {
+  const images = Array.isArray(product.images)
+    ? product.images
+    : [];
+
+  if (images.length === 0) {
     errors.push("Product has no images.");
   }
 
-  if (
-    product.stock === undefined ||
-    product.stock === null ||
-    Number(product.stock) < 1
-  ) {
+  const stockValue =
+    product.stock ??
+    product.inventory_quantity ??
+    product.inventoryQuantity;
+
+  const stock = Number(stockValue);
+
+  if (!Number.isFinite(stock) || stock < 1) {
     errors.push("Product has no available stock.");
   }
 
-  if (
-    !product.variants ||
-    !Array.isArray(product.variants) ||
-    product.variants.length === 0
-  ) {
+  const variants = Array.isArray(product.variants)
+    ? product.variants
+    : [];
+
+  if (variants.length === 0) {
     errors.push("Product has no variants.");
   }
 
