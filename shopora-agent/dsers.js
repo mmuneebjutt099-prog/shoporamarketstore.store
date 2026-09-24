@@ -1,4 +1,3 @@
-```js
 import {
   Client
 } from "@modelcontextprotocol/sdk/client/index.js";
@@ -109,4 +108,3 @@ export async function findFashionProducts(
 
   return [];
 }
-```
