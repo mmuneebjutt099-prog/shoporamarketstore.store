@@ -1,6 +1,6 @@
 {
   "name": "shopora-agent",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Shopora Market Store product automation agent",
   "type": "module",
   "main": "agent.js",
@@ -10,5 +10,8 @@
   },
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.18.2"
   }
 }
