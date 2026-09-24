@@ -3,24 +3,38 @@ export const PRODUCT_RULES = {
 
   allowedCategories: [
     "women clothing",
+    "women's clothing",
+    "womens clothing",
     "men clothing",
+    "men's clothing",
+    "mens clothing",
+    "clothing",
+    "apparel",
     "shoes",
+    "footwear",
     "bags",
+    "handbags",
     "watches",
     "jewelry",
-    "fashion accessories"
+    "fashion jewelry",
+    "fashion accessories",
+    "accessories"
   ],
 
   excludedCategories: [
     "electronics",
     "phones",
+    "mobile phone",
     "computer",
+    "laptop",
+    "tablet",
     "gadgets",
     "makeup",
     "cosmetics",
     "supplements",
     "food",
-    "toys"
+    "toys",
+    "adult"
   ],
 
   requireImage: true,
@@ -49,7 +63,9 @@ export function isFashionProduct(product) {
   const text = [
     product.title || "",
     product.category || "",
-    product.productType || ""
+    product.productType || "",
+    product.product_type || "",
+    product.tags || ""
   ]
     .join(" ")
     .toLowerCase();
