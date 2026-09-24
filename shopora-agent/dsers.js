@@ -1,33 +1,9 @@
-const DSERS_API_BASE = "https://api.dsers.com";
+const DSERS_MCP_URL = "https://ai.dsers.com/mcp";
 
-export async function dsersRequest(path, options = {}) {
-  const apiKey = process.env.DSERS_API_KEY;
-
-  if (!apiKey) {
-    throw new Error("DSERS_API_KEY is missing.");
-  }
-
-  const response = await fetch(
-    `${DSERS_API_BASE}${path}`,
-    {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${apiKey}`,
-        ...(options.headers || {})
-      }
-    }
-  );
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      `DSers HTTP ${response.status}: ${JSON.stringify(data)}`
-    );
-  }
-
-  return data;
+export function getDsersConfig() {
+  return {
+    mcpUrl: DSERS_MCP_URL
+  };
 }
 
 export async function findFashionProducts(country, amount) {
@@ -40,10 +16,19 @@ export async function findFashionProducts(country, amount) {
   }
 
   console.log(
-    `Searching for ${amount} fashion products shipping to ${country}...`
+    `Preparing DSers product search for ${amount} product(s) shipping to ${country}...`
   );
 
-  // DSers product-search integration will be connected
-  // in the next step.
+  /*
+   * DSers product discovery is handled through the
+   * authenticated DSers MCP connection.
+   *
+   * Do NOT use DSERS_API_KEY here.
+   * Do NOT invent a REST API endpoint.
+   *
+   * The actual MCP authentication/client will be connected
+   * in the next step.
+   */
+
   return [];
 }
