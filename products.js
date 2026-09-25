@@ -102,7 +102,8 @@ async function getAllProducts(options = {}) {
 
             vendor
             productType
-
+            tags
+ 
             featuredImage {
               url
               altText
@@ -218,6 +219,7 @@ async function getProductByHandle(handle) {
 
         vendor
         productType
+        tags
 
         featuredImage {
           url
