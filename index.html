@@ -76,131 +76,130 @@
   <style>
 
     .shipping-filter{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
 
-  width:100%;
-  margin:0 0 32px;
+      width:100%;
+      margin:0 0 32px;
 
-  padding:18px 20px;
+      padding:18px 20px;
 
-  background:#111;
-  border:1px solid rgba(255,255,255,.10);
-  border-radius:16px;
+      background:#111;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
 
-  box-shadow:
-    0 12px 30px rgba(0,0,0,.08);
-}
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.08);
+    }
 
-.shipping-filter-label{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  color:#fff;
-}
+    .shipping-filter-label{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      color:#fff;
+    }
 
-.shipping-filter-icon{
-  width:38px;
-  height:38px;
+    .shipping-filter-icon{
+      width:38px;
+      height:38px;
 
-  display:flex;
-  align-items:center;
-  justify-content:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
 
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:50%;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:50%;
 
-  color:#c6a06a;
-  font-size:18px;
-}
+      color:#c6a06a;
+      font-size:18px;
+    }
 
-.shipping-filter-title{
-  display:block;
+    .shipping-filter-title{
+      display:block;
 
-  font-size:13px;
-  font-weight:700;
-  letter-spacing:.02em;
-}
+      font-size:13px;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
 
-.shipping-filter-subtitle{
-  display:block;
+    .shipping-filter-subtitle{
+      display:block;
 
-  margin-top:3px;
+      margin-top:3px;
 
-  color:rgba(255,255,255,.58);
+      color:rgba(255,255,255,.58);
 
-  font-size:11px;
-}
+      font-size:11px;
+    }
 
-.shipping-select-wrap{
-  position:relative;
-  min-width:220px;
-}
+    .shipping-select-wrap{
+      position:relative;
+      min-width:220px;
+    }
 
-.shipping-select-wrap select{
-  width:100%;
-  height:46px;
+    .shipping-select-wrap select{
+      width:100%;
+      height:46px;
 
-  padding:0 42px 0 16px;
+      padding:0 42px 0 16px;
 
-  appearance:none;
-  -webkit-appearance:none;
+      appearance:none;
+      -webkit-appearance:none;
 
-  background:#fff;
-  color:#111;
+      background:#fff;
+      color:#111;
 
-  border:0;
-  border-radius:10px;
+      border:0;
+      border-radius:10px;
 
-  font-family:inherit;
-  font-size:12px;
-  font-weight:700;
+      font-family:inherit;
+      font-size:12px;
+      font-weight:700;
 
-  outline:none;
-  cursor:pointer;
-}
+      outline:none;
+      cursor:pointer;
+    }
 
-.shipping-select-wrap select:focus{
-  box-shadow:
-    0 0 0 2px #c6a06a;
-}
+    .shipping-select-wrap select:focus{
+      box-shadow:
+        0 0 0 2px #c6a06a;
+    }
 
-.shipping-select-arrow{
-  position:absolute;
+    .shipping-select-arrow{
+      position:absolute;
 
-  right:15px;
-  top:50%;
+      right:15px;
+      top:50%;
 
-  transform:translateY(-55%);
+      transform:translateY(-55%);
 
-  pointer-events:none;
+      pointer-events:none;
 
-  color:#111;
-  font-size:18px;
-}
+      color:#111;
+      font-size:18px;
+    }
 
-.shipping-select-wrap select option{
-  background:#fff;
-  color:#111;
-}
+    .shipping-select-wrap select option{
+      background:#fff;
+      color:#111;
+    }
 
+    @media(max-width:600px){
 
-@media(max-width:600px){
+      .shipping-filter{
+        flex-direction:column;
+        align-items:stretch;
+        gap:16px;
+      }
 
-  .shipping-filter{
-    flex-direction:column;
-    align-items:stretch;
-    gap:16px;
-  }
+      .shipping-select-wrap{
+        width:100%;
+        min-width:0;
+      }
 
-  .shipping-select-wrap{
-    width:100%;
-    min-width:0;
-  }
-
-}
+    }
 
     :root{
       --black:#111111;
@@ -662,24 +661,24 @@
     }
 
     .product-title{
-  font-family:"Playfair Display",serif;
-  font-size:17px;
-  line-height:1.3;
-  margin-bottom:8px;
+      font-family:"Playfair Display",serif;
+      font-size:17px;
+      line-height:1.3;
+      margin-bottom:8px;
 
-  display:-webkit-box;
-  -webkit-line-clamp:2;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-}
+      display:-webkit-box;
+      -webkit-line-clamp:2;
+      -webkit-box-orient:vertical;
+      overflow:hidden;
+    }
 
     .product-shipping{
-  margin-top:8px;
-  color:var(--gold-dark);
-  font-size:9px;
-  font-weight:600;
-  line-height:1.4;
-}
+      margin-top:8px;
+      color:var(--gold-dark);
+      font-size:9px;
+      font-weight:600;
+      line-height:1.4;
+    }
 
     .product-description{
       color:var(--muted);
@@ -1631,51 +1630,49 @@
 
       </div>
 
+
+      <!-- SHIPPING COUNTRY FILTER -->
+
       <div class="shipping-filter">
 
-  <label for="shippingCountry">
-    Select Shipping Country
-  </label>
+        <div class="shipping-filter-label">
 
-  <div class="shipping-filter">
+          <span class="shipping-filter-icon">
+            ⌖
+          </span>
 
-  <div class="shipping-filter-label">
+          <div>
 
-    <span class="shipping-filter-icon">
-      ⌖
-    </span>
+            <span class="shipping-filter-title">
+              Shipping Country
+            </span>
 
-    <div>
+            <span class="shipping-filter-subtitle">
+              Choose your delivery destination
+            </span>
 
-      <span class="shipping-filter-title">
-        Shipping Country
-      </span>
+          </div>
 
-      <span class="shipping-filter-subtitle">
-        Choose your delivery destination
-      </span>
+        </div>
 
-    </div>
+        <div class="shipping-select-wrap">
 
-  </div>
+          <select id="shippingCountry">
 
-  <div class="shipping-select-wrap">
+            <option value="USA">
+              USA
+            </option>
 
-    <select id="shippingCountry">
+          </select>
 
-      <option value="USA">
-        USA
-      </option>
+          <span class="shipping-select-arrow">
+            ⌄
+          </span>
 
-    </select>
+        </div>
 
-    <span class="shipping-select-arrow">
-      ⌄
-    </span>
+      </div>
 
-  </div>
-
-</div>
 
       <div
         class="products-grid"
@@ -2235,96 +2232,96 @@
     "use strict";
 
     const SHOPORA_COUNTRIES = [
-  "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda",
-  "Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas",
-  "Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin",
-  "Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei",
-  "Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon",
-  "Canada","Central African Republic","Chad","Chile","China","Colombia",
-  "Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czechia",
-  "Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt",
-  "El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini",
-  "Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia",
-  "Germany","Ghana","Greece","Grenada","Guatemala","Guinea",
-  "Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland",
-  "India","Indonesia","Iraq","Ireland","Israel","Italy","Jamaica",
-  "Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan",
-  "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein",
-  "Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives",
-  "Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco",
-  "Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia",
-  "Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger",
-  "Nigeria","North Macedonia","Norway","Oman","Pakistan","Palau","Panama",
-  "Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal",
-  "Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis",
-  "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino",
-  "Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone",
-  "Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea",
-  "South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden",
-  "Switzerland","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste",
-  "Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan",
-  "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom",
-  "United States","Uruguay","Uzbekistan","Vanuatu","Vatican City",
-  "Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
-];
+      "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda",
+      "Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas",
+      "Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin",
+      "Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei",
+      "Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon",
+      "Canada","Central African Republic","Chad","Chile","China","Colombia",
+      "Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czechia",
+      "Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt",
+      "El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini",
+      "Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia",
+      "Germany","Ghana","Greece","Grenada","Guatemala","Guinea",
+      "Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland",
+      "India","Indonesia","Iraq","Ireland","Israel","Italy","Jamaica",
+      "Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan",
+      "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein",
+      "Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives",
+      "Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco",
+      "Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia",
+      "Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger",
+      "Nigeria","North Macedonia","Norway","Oman","Pakistan","Palau","Panama",
+      "Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal",
+      "Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis",
+      "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino",
+      "Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone",
+      "Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea",
+      "South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden",
+      "Switzerland","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste",
+      "Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan",
+      "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom",
+      "United States","Uruguay","Uzbekistan","Vanuatu","Vatican City",
+      "Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
+    ];
 
     function populateShippingCountries(){
 
-  const select =
-    document.getElementById("shippingCountry");
+      const select =
+        document.getElementById("shippingCountry");
 
-  if(!select)return;
+      if(!select)return;
 
-  const saved =
-    localStorage.getItem("shoporaShippingCountry")
-    || "USA";
+      const saved =
+        localStorage.getItem("shoporaShippingCountry")
+        || "USA";
 
-  select.innerHTML = "";
+      select.innerHTML = "";
 
-  SHOPORA_COUNTRIES.forEach(country => {
+      SHOPORA_COUNTRIES.forEach(country => {
 
-    let value = country;
-    let label = country;
+        let value = country;
+        let label = country;
 
-    if(country === "United States"){
-      value = "USA";
-      label = "USA";
+        if(country === "United States"){
+          value = "USA";
+          label = "USA";
+        }
+
+        if(country === "United Kingdom"){
+          value = "UK";
+          label = "UK";
+        }
+
+        if(country === "United Arab Emirates"){
+          value = "UAE";
+          label = "UAE";
+        }
+
+        const option =
+          document.createElement("option");
+
+        option.value = value;
+        option.textContent = label;
+
+        select.appendChild(option);
+
+      });
+
+      select.value = saved;
+
+      if(!select.value){
+
+        select.value = "USA";
+
+        localStorage.setItem(
+          "shoporaShippingCountry",
+          "USA"
+        );
+
+      }
+
     }
-
-    if(country === "United Kingdom"){
-      value = "UK";
-      label = "UK";
-    }
-
-    if(country === "United Arab Emirates"){
-      value = "UAE";
-      label = "UAE";
-    }
-
-    const option =
-      document.createElement("option");
-
-    option.value = value;
-    option.textContent = label;
-
-    select.appendChild(option);
-
-  });
-
-  select.value = saved;
-
-  if(!select.value){
-
-    select.value = "USA";
-
-    localStorage.setItem(
-      "shoporaShippingCountry",
-      "USA"
-    );
-
-  }
-
-}
 
     function escapeHTML(value){
       return window.ShoporaProducts.escapeHtml(value);
@@ -2777,15 +2774,15 @@
                     }
 
                     ${
-  Array.isArray(product.shippingCountries) &&
-  product.shippingCountries.length
-    ? `
-      <div class="product-shipping">
-        🚚 Ships to ${escapeHTML(product.shippingCountries.join(" · "))}
-      </div>
-    `
-    : ""
-}
+                      Array.isArray(product.shippingCountries) &&
+                      product.shippingCountries.length
+                        ? `
+                          <div class="product-shipping">
+                            🚚 Ships to ${escapeHTML(product.shippingCountries.join(" · "))}
+                          </div>
+                        `
+                        : ""
+                    }
 
                   </div>
 
@@ -2888,50 +2885,50 @@
     );
 
 
-async function loadProducts(){
+    async function loadProducts(){
 
-  const grid =
-    document.getElementById("productsGrid");
+      const grid =
+        document.getElementById("productsGrid");
 
-  if(!grid)return;
+      if(!grid)return;
 
-  try{
+      try{
 
-    grid.innerHTML =
-      `<div class="products-loading">
-        Loading products...
-      </div>`;
+        grid.innerHTML =
+          `<div class="products-loading">
+            Loading products...
+          </div>`;
 
-    const products =
-      await window.ShoporaProducts
-        .getAvailableProducts({
-          first:40
-        });
+        const products =
+          await window.ShoporaProducts
+            .getAvailableProducts({
+              first:40
+            });
 
-    console.log(
-      "Shopora products:",
-      products
-    );
+        console.log(
+          "Shopora products:",
+          products
+        );
 
-    renderProducts(products);
+        renderProducts(products);
 
-  }catch(error){
+      }catch(error){
 
-    console.error(
-      "Shopora products error:",
-      error
-    );
+        console.error(
+          "Shopora products error:",
+          error
+        );
 
-    grid.innerHTML = `
-      <div class="products-error">
-        Unable to load Shopify products.
-        Please refresh the page.
-      </div>
-    `;
+        grid.innerHTML = `
+          <div class="products-error">
+            Unable to load Shopify products.
+            Please refresh the page.
+          </div>
+        `;
 
-  }
+      }
 
-}
+    }
 
 
     function performSearch(inputId){
@@ -3003,6 +3000,7 @@ async function loadProducts(){
           document.body.classList.remove(
             "search-stuck"
           );
+
         }
 
       },
@@ -3044,7 +3042,6 @@ async function loadProducts(){
 
         await window.ShoporaProducts
           .updateShopifyCartCount();
-        
 
         await loadProducts();
 
