@@ -514,6 +514,8 @@ function getProductShippingCountries(product) {
     )
   );
 
+   }
+
 
 /* =========================================================
    SHIPPING COUNTRY CHECK
