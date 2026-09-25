@@ -2635,43 +2635,50 @@
     );
 
 
-    async function loadProducts(){
+async function loadProducts(){
 
-      const grid=
-        document.getElementById("productsGrid");
+  const grid =
+    document.getElementById("productsGrid");
 
-      if(!grid)return;
+  if(!grid)return;
 
-      try{
+  try{
 
-        grid.innerHTML=
-          `<div class="products-loading">
-            Loading products...
-          </div>`;
+    grid.innerHTML =
+      `<div class="products-loading">
+        Loading products...
+      </div>`;
 
-        const products=
-          await window.ShoporaProducts
-            .getAvailableProducts({
-              first:40
-            });
+    const products =
+      await window.ShoporaProducts
+        .getAvailableProducts({
+          first:40
+        });
 
-        renderProducts(products);
+    console.log(
+      "Shopora products:",
+      products
+    );
 
-      }catch(error){
+    renderProducts(products);
 
-        console.error(
-          "Shopora products error:",
-          error
-        );
+  }catch(error){
 
-        grid.innerHTML=`
-          <div class="products-error">
-            Unable to load Shopify products.
-            Please refresh the page.
-          </div>
-        `;
-      }
-    }
+    console.error(
+      "Shopora products error:",
+      error
+    );
+
+    grid.innerHTML = `
+      <div class="products-error">
+        Unable to load Shopify products.
+        Please refresh the page.
+      </div>
+    `;
+
+  }
+
+}
 
 
     function performSearch(inputId){
