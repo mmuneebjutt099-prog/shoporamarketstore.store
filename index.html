@@ -2503,6 +2503,17 @@
                         : ""
                     }
 
+                    ${
+  Array.isArray(product.shippingCountries) &&
+  product.shippingCountries.length
+    ? `
+      <div class="product-shipping">
+        🚚 Ships to ${escapeHTML(product.shippingCountries.join(" · "))}
+      </div>
+    `
+    : ""
+}
+
                   </div>
 
                   <button
