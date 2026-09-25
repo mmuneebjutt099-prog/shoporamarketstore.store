@@ -309,7 +309,6 @@ async function getProductByHandle(handle) {
    PRODUCT SHIPPING COUNTRIES
    ========================================================= */
 
-```js
 /* =========================================================
    PRODUCT SHIPPING COUNTRIES
    ========================================================= */
