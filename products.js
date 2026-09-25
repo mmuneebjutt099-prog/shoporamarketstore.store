@@ -387,6 +387,9 @@ function normalizeShopifyProduct(product) {
     productType:
       product?.productType || "",
 
+     shippingCountries:
+  getProductShippingCountries(product),
+
 
     /* Images */
 
