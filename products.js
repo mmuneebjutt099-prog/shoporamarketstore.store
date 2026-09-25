@@ -309,14 +309,238 @@ async function getProductByHandle(handle) {
    PRODUCT SHIPPING COUNTRIES
    ========================================================= */
 
+```js
+/* =========================================================
+   PRODUCT SHIPPING COUNTRIES
+   ========================================================= */
+
+const SHOPORA_COUNTRY_ALIASES = {
+  US: "USA",
+  USA: "USA",
+  "UNITED STATES": "USA",
+  "UNITED STATES OF AMERICA": "USA",
+
+  PK: "Pakistan",
+  PAKISTAN: "Pakistan",
+
+  GB: "UK",
+  UK: "UK",
+  "UNITED KINGDOM": "UK",
+
+  AE: "UAE",
+  UAE: "UAE",
+  "UNITED ARAB EMIRATES": "UAE",
+
+  CA: "Canada",
+  CANADA: "Canada",
+
+  AU: "Australia",
+  AUSTRALIA: "Australia",
+
+  SA: "Saudi Arabia",
+  "SAUDI ARABIA": "Saudi Arabia",
+
+  DE: "Germany",
+  GERMANY: "Germany",
+
+  FR: "France",
+  FRANCE: "France",
+
+  IT: "Italy",
+  ITALY: "Italy",
+
+  ES: "Spain",
+  SPAIN: "Spain"
+};
+
+
+function normalizeShippingCountry(value) {
+
+  if (!value) {
+    return "";
+  }
+
+  const text =
+    String(value)
+      .trim()
+      .toUpperCase();
+
+  return (
+    SHOPORA_COUNTRY_ALIASES[text] ||
+    String(value).trim()
+  );
+}
+
+
+function extractShippingCountries(value) {
+
+  if (!value) {
+    return [];
+  }
+
+  if (Array.isArray(value)) {
+
+    return value
+      .flatMap(item =>
+        extractShippingCountries(item)
+      )
+      .filter(Boolean);
+
+  }
+
+  if (typeof value === "object") {
+
+    const possibleFields = [
+      value.country,
+      value.country_name,
+      value.countryName,
+      value.ship_to_country,
+      value.shipToCountry,
+      value.destination_country,
+      value.destinationCountry,
+      value.code,
+      value.country_code,
+      value.countryCode,
+      value.name
+    ];
+
+    return possibleFields
+      .flatMap(item =>
+        extractShippingCountries(item)
+      )
+      .filter(Boolean);
+  }
+
+  const text =
+    String(value).trim();
+
+  if (!text) {
+    return [];
+  }
+
+  return text
+    .split(/[,|;/]+/)
+    .map(item =>
+      normalizeShippingCountry(item)
+    )
+    .filter(Boolean);
+}
+
+
 function getProductShippingCountries(product) {
 
   /*
-    Default:
-    Current Shopora products ship to Pakistan.
+    IMPORTANT:
+    Do NOT default every product to Pakistan.
+
+    We first try to read real shipping-country
+    information saved on the product.
   */
 
-  return ["Pakistan"];
+  const possibleSources = [
+
+    product?.shippingCountries,
+
+    product?.shipping_countries,
+
+    product?.shipToCountries,
+
+    product?.ship_to_countries,
+
+    product?.shippingCountry,
+
+    product?.shipping_country,
+
+    product?.shipping,
+
+    product?.shippingMethods,
+
+    product?.shipping_methods,
+
+    product?.shippingData,
+
+    product?.shipping_data
+
+  ];
+
+  const countries = [];
+
+  for (
+    const source of possibleSources
+  ) {
+
+    countries.push(
+      ...extractShippingCountries(
+        source
+      )
+    );
+
+  }
+
+  return Array.from(
+    new Set(
+      countries
+        .map(country =>
+          normalizeShippingCountry(country)
+        )
+        .filter(Boolean)
+    )
+  );
+}
+
+
+/* =========================================================
+   SHIPPING COUNTRY CHECK
+   ========================================================= */
+
+function productShipsToCountry(
+  product,
+  country = "USA"
+) {
+
+  const selectedCountry =
+    normalizeShippingCountry(
+      country
+    );
+
+  const countries =
+    getProductShippingCountries(
+      product
+    );
+
+  if (!selectedCountry) {
+    return false;
+  }
+
+  return countries.some(
+    shippingCountry =>
+      normalizeShippingCountry(
+        shippingCountry
+      ) === selectedCountry
+  );
+}
+
+
+/* =========================================================
+   FILTER PRODUCTS BY SHIPPING COUNTRY
+   ========================================================= */
+
+function filterProductsByShippingCountry(
+  products,
+  country = "USA"
+) {
+
+  if (!Array.isArray(products)) {
+    return [];
+  }
+
+  return products.filter(
+    product =>
+      productShipsToCountry(
+        product,
+        country
+      )
+  );
 }
 
 function normalizeShopifyProduct(product) {
