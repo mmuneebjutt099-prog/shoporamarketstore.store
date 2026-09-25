@@ -631,14 +631,19 @@ function normalizeShopifyProduct(product) {
     descriptionHtml:
       product?.descriptionHtml || "",
 
-    vendor:
+        vendor:
       product?.vendor || "",
 
     productType:
       product?.productType || "",
 
-     shippingCountries:
-  getProductShippingCountries(product),
+    tags:
+      Array.isArray(product?.tags)
+        ? product.tags
+        : [],
+
+    shippingCountries:
+      getProductShippingCountries(product),
 
 
     /* Images */
