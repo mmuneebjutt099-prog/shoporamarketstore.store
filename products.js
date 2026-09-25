@@ -311,10 +311,6 @@ async function getProductByHandle(handle) {
    PRODUCT SHIPPING COUNTRIES
    ========================================================= */
 
-/* =========================================================
-   PRODUCT SHIPPING COUNTRIES
-   ========================================================= */
-
 const SHOPORA_COUNTRY_ALIASES = {
   US: "USA",
   USA: "USA",
@@ -364,6 +360,8 @@ function normalizeShippingCountry(value) {
   const text =
     String(value)
       .trim()
+      .replace(/[_-]+/g, " ")
+      .replace(/\s+/g, " ")
       .toUpperCase();
 
   return (
@@ -410,6 +408,7 @@ function extractShippingCountries(value) {
         extractShippingCountries(item)
       )
       .filter(Boolean);
+
   }
 
   const text =
@@ -431,12 +430,9 @@ function extractShippingCountries(value) {
 function getProductShippingCountries(product) {
 
   /*
-    IMPORTANT:
-    Do NOT default every product to Pakistan.
-
-    We first try to read real shipping-country
-    information saved on the product.
-  */
+   * Do not automatically assign Pakistan
+   * or any other country.
+   */
 
   const possibleSources = [
 
@@ -466,9 +462,8 @@ function getProductShippingCountries(product) {
 
   const countries = [];
 
-    for (
-    const source of possibleSources
-  ) {
+
+  for (const source of possibleSources) {
 
     countries.push(
       ...extractShippingCountries(
@@ -479,12 +474,21 @@ function getProductShippingCountries(product) {
   }
 
 
-  /* Shopify product shipping tags */
+  /*
+   * Shopify product tags
+   *
+   * Example:
+   * ship:USA
+   * ship:Pakistan
+   * ship:UK
+   * ship:UAE
+   */
 
   const tags =
     Array.isArray(product?.tags)
       ? product.tags
       : [];
+
 
   for (const tag of tags) {
 
@@ -492,11 +496,13 @@ function getProductShippingCountries(product) {
       String(tag || "").trim();
 
     if (
-      text.toLowerCase().startsWith("ship:")
+      text
+        .toLowerCase()
+        .startsWith("ship:")
     ) {
 
       countries.push(
-        text.slice(5)
+        text.slice(5).trim()
       );
 
     }
@@ -514,7 +520,7 @@ function getProductShippingCountries(product) {
     )
   );
 
-   }
+}
 
 
 /* =========================================================
@@ -531,14 +537,14 @@ function productShipsToCountry(
       country
     );
 
+  if (!selectedCountry) {
+    return false;
+  }
+
   const countries =
     getProductShippingCountries(
       product
     );
-
-  if (!selectedCountry) {
-    return false;
-  }
 
   return countries.some(
     shippingCountry =>
@@ -546,6 +552,7 @@ function productShipsToCountry(
         shippingCountry
       ) === selectedCountry
   );
+
 }
 
 
@@ -569,6 +576,7 @@ function filterProductsByShippingCountry(
         country
       )
   );
+
 }
 
 function normalizeShopifyProduct(product) {
