@@ -466,7 +466,7 @@ function getProductShippingCountries(product) {
 
   const countries = [];
 
-  for (
+    for (
     const source of possibleSources
   ) {
 
@@ -478,6 +478,32 @@ function getProductShippingCountries(product) {
 
   }
 
+
+  /* Shopify product shipping tags */
+
+  const tags =
+    Array.isArray(product?.tags)
+      ? product.tags
+      : [];
+
+  for (const tag of tags) {
+
+    const text =
+      String(tag || "").trim();
+
+    if (
+      text.toLowerCase().startsWith("ship:")
+    ) {
+
+      countries.push(
+        text.slice(5)
+      );
+
+    }
+
+  }
+
+
   return Array.from(
     new Set(
       countries
@@ -487,7 +513,6 @@ function getProductShippingCountries(product) {
         .filter(Boolean)
     )
   );
-}
 
 
 /* =========================================================
