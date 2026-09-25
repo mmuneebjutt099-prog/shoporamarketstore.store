@@ -304,6 +304,21 @@ async function getProductByHandle(handle) {
    NORMALIZE PRODUCT
    ========================================================= */
 
+
+/* =========================================================
+   PRODUCT SHIPPING COUNTRIES
+   ========================================================= */
+
+function getProductShippingCountries(product) {
+
+  /*
+    Default:
+    Current Shopora products ship to Pakistan.
+  */
+
+  return ["Pakistan"];
+}
+
 function normalizeShopifyProduct(product) {
 
   const variants =
