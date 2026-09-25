@@ -2204,6 +2204,13 @@ window.ShoporaProducts = {
 
   goToShopifyCheckout,
 
+     /* Shipping */
+
+  getProductShippingCountries,
+  productShipsToCountry,
+  filterProductsByShippingCountry,
+
+
   /* Helpers */
 
   getProductUrl,
