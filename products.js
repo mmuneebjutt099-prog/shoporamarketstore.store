@@ -19,6 +19,15 @@ const SHOPORA_CART_STORAGE_KEY =
 const SHOPORA_COUNTRY_STORAGE_KEY =
   "shoporaShippingCountry";
 
+const SHOPORA_COUNTRY_CACHE_KEY =
+  "shoporaAvailableProductCountries";
+
+const SHOPORA_COUNTRY_CACHE_TIME_KEY =
+  "shoporaAvailableProductCountriesTime";
+
+const SHOPORA_COUNTRY_CACHE_DURATION =
+  30 * 60 * 1000;
+
 
 /* =========================================================
    SHOPIFY GRAPHQL REQUEST
@@ -29,24 +38,25 @@ async function shopifyRequest(
   variables = {}
 ) {
 
-  const response = await fetch(
-    SHOPIFY_GRAPHQL_URL,
-    {
-      method: "POST",
+  const response =
+    await fetch(
+      SHOPIFY_GRAPHQL_URL,
+      {
+        method: "POST",
 
-      headers: {
-        "Content-Type": "application/json",
+        headers: {
+          "Content-Type": "application/json",
 
-        "X-Shopify-Storefront-Access-Token":
-          SHOPIFY_STOREFRONT_PUBLIC_TOKEN
-      },
+          "X-Shopify-Storefront-Access-Token":
+            SHOPIFY_STOREFRONT_PUBLIC_TOKEN
+        },
 
-      body: JSON.stringify({
-        query,
-        variables
-      })
-    }
-  );
+        body: JSON.stringify({
+          query,
+          variables
+        })
+      }
+    );
 
 
   if (!response.ok) {
@@ -105,11 +115,19 @@ function normalizeCountryCode(
 
 function getSavedShoporaCountry() {
 
-  return normalizeCountryCode(
-    localStorage.getItem(
-      SHOPORA_COUNTRY_STORAGE_KEY
-    ) || ""
-  );
+  try {
+
+    return normalizeCountryCode(
+      localStorage.getItem(
+        SHOPORA_COUNTRY_STORAGE_KEY
+      ) || ""
+    );
+
+  } catch {
+
+    return "";
+
+  }
 
 }
 
@@ -124,183 +142,25 @@ function saveShoporaCountry(
     );
 
 
-  if (code) {
+  try {
 
-    localStorage.setItem(
-      SHOPORA_COUNTRY_STORAGE_KEY,
-      code
-    );
+    if (code) {
+
+      localStorage.setItem(
+        SHOPORA_COUNTRY_STORAGE_KEY,
+        code
+      );
+
+    }
+
+  } catch {
+
+    /* Ignore localStorage errors */
 
   }
 
 
   return code;
-
-}
-
-
-/* =========================================================
-   GET SHOPIFY AVAILABLE COUNTRIES
-   ========================================================= */
-
-async function getShopifyAvailableCountries() {
-
-  const query = `
-    query GetAvailableCountries {
-
-      localization {
-
-        availableCountries {
-
-          isoCode
-          name
-
-        }
-
-      }
-
-    }
-  `;
-
-
-  const data =
-    await shopifyRequest(
-      query
-    );
-
-
-  return (
-    data?.localization?.availableCountries ||
-    []
-  );
-
-}
-
-
-/* =========================================================
-   GET ALL SHOPORA FILTER COUNTRIES
-   ========================================================= */
-
-async function getShoporaCountryFilterOptions(
-  products = []
-) {
-
-  const countryMap =
-    new Map();
-
-
-  /*
-    First get Shopify's complete available
-    country list.
-  */
-
-  try {
-
-    const availableCountries =
-      await getShopifyAvailableCountries();
-
-
-    availableCountries.forEach(
-      country => {
-
-        const code =
-          normalizeCountryCode(
-            country?.isoCode
-          );
-
-
-        const name =
-          String(
-            country?.name || ""
-          ).trim();
-
-
-        if (!code || !name) {
-          return;
-        }
-
-
-        countryMap.set(
-          code,
-          {
-            code,
-            name
-          }
-        );
-
-      }
-    );
-
-  } catch (error) {
-
-    console.warn(
-      "Could not load Shopify countries:",
-      error
-    );
-
-  }
-
-
-  /*
-    Also add countries found directly
-    inside Shopora products.
-  */
-
-  if (Array.isArray(products)) {
-
-    products.forEach(
-      product => {
-
-        const countries =
-          getProductShippingCountries(
-            product
-          );
-
-
-        countries.forEach(
-          country => {
-
-            const info =
-              getCountryInfo(
-                country
-              );
-
-
-            if (!info) {
-              return;
-            }
-
-
-            if (
-              !countryMap.has(
-                info.code
-              )
-            ) {
-
-              countryMap.set(
-                info.code,
-                info
-              );
-
-            }
-
-          }
-        );
-
-      }
-    );
-
-  }
-
-
-  return Array.from(
-    countryMap.values()
-  ).sort(
-    (a, b) =>
-      a.name.localeCompare(
-        b.name
-      )
-  );
 
 }
 
@@ -361,6 +221,7 @@ const SHOPORA_COUNTRY_CODES = {
   UA: "Ukraine",
   PH: "Philippines",
   VN: "Vietnam"
+
 };
 
 
@@ -414,7 +275,7 @@ const SHOPORA_COUNTRY_ALIASES = {
 
   KR: "South Korea",
   "SOUTH KOREA": "South Korea",
-  "KOREA": "South Korea",
+  KOREA: "South Korea",
 
   MY: "Malaysia",
   MALAYSIA: "Malaysia",
@@ -658,7 +519,10 @@ function getCountryInfo(
 
 
     if (found) {
-      code = found[0];
+
+      code =
+        found[0];
+
     }
 
   }
@@ -697,6 +561,46 @@ function getCountryInfo(
       normalized
 
   };
+
+}
+
+
+/* =========================================================
+   GET SHOPIFY AVAILABLE COUNTRIES
+   ========================================================= */
+
+async function getShopifyAvailableCountries() {
+
+  const query = `
+
+    query GetAvailableCountries {
+
+      localization {
+
+        availableCountries {
+
+          isoCode
+          name
+
+        }
+
+      }
+
+    }
+
+  `;
+
+
+  const data =
+    await shopifyRequest(
+      query
+    );
+
+
+  return (
+    data?.localization?.availableCountries ||
+    []
+  );
 
 }
 
@@ -804,10 +708,6 @@ function getProductShippingCountries(
   const countries = [];
 
 
-  /*
-    Direct product fields
-  */
-
   const possibleSources = [
 
     product.shippingCountries,
@@ -848,10 +748,6 @@ function getProductShippingCountries(
   }
 
 
-  /*
-    Product shipping country code
-  */
-
   if (
     product.shippingCountryCode
   ) {
@@ -865,14 +761,13 @@ function getProductShippingCountries(
 
   /*
     Shopify product tags.
-    
-    Supported examples:
+
+    Examples:
 
     ship:US
     ship:USA
     ship:Pakistan
     ship:US,PK,GB
-    ship:USA|Pakistan|UK
     ships_to:US,PK
     shipping:US,PK
   */
@@ -910,24 +805,15 @@ function getProductShippingCountries(
       }
 
 
-      const countryText =
-        match[2]
-          .trim();
-
-
       countries.push(
         ...extractShippingCountries(
-          countryText
+          match[2].trim()
         )
       );
 
     }
   );
 
-
-  /*
-    Normalize + remove duplicates.
-  */
 
   const normalized =
     countries
@@ -991,36 +877,31 @@ function productShipsToCountry(
 
 
   /*
-    No shipping information means
-    we do NOT pretend the product ships
-    to a country.
+    If explicit shipping countries exist,
+    they are authoritative.
   */
 
   if (
-    productCountries.length === 0
+    productCountries.length > 0
   ) {
 
-    return false;
+    return productCountries.some(
+      item =>
+        normalizeShippingCountry(
+          item
+        ) === selected
+    );
 
   }
 
 
-  return productCountries.some(
-    item => {
+  /*
+    No explicit shipping data means
+    country availability from Shopify
+    context is used by getAllProducts().
+  */
 
-      const normalizedItem =
-        normalizeShippingCountry(
-          item
-        );
-
-
-      return (
-        normalizedItem ===
-        selected
-      );
-
-    }
-  );
+  return true;
 
 }
 
@@ -1083,6 +964,104 @@ function buildCountryDirective(
 
 
 /* =========================================================
+   PRODUCT GRAPHQL FIELDS
+   ========================================================= */
+
+const SHOPORA_PRODUCT_FIELDS = `
+
+  id
+  handle
+  title
+
+  description
+  descriptionHtml
+
+  availableForSale
+
+  vendor
+  productType
+  tags
+
+  featuredImage {
+
+    url
+    altText
+    width
+    height
+
+  }
+
+  images(
+    first: 20
+  ) {
+
+    edges {
+
+      node {
+
+        url
+        altText
+        width
+        height
+
+      }
+
+    }
+
+  }
+
+  variants(
+    first: 100
+  ) {
+
+    edges {
+
+      node {
+
+        id
+        title
+        availableForSale
+
+        price {
+
+          amount
+          currencyCode
+
+        }
+
+        compareAtPrice {
+
+          amount
+          currencyCode
+
+        }
+
+        image {
+
+          url
+          altText
+          width
+          height
+
+        }
+
+        selectedOptions {
+
+          name
+          value
+
+        }
+
+      }
+
+    }
+
+  }
+
+`;
+
+
+/* =========================================================
    GET ALL PRODUCTS
    ========================================================= */
 
@@ -1111,6 +1090,7 @@ async function getAllProducts(
 
 
   const query = `
+
     query GetProducts${countryDirective} {
 
       products(
@@ -1121,94 +1101,7 @@ async function getAllProducts(
 
           node {
 
-            id
-            handle
-            title
-
-            description
-            descriptionHtml
-
-            availableForSale
-
-            vendor
-            productType
-            tags
-
-            featuredImage {
-
-              url
-              altText
-              width
-              height
-
-            }
-
-            images(
-              first: 20
-            ) {
-
-              edges {
-
-                node {
-
-                  url
-                  altText
-                  width
-                  height
-
-                }
-
-              }
-
-            }
-
-            variants(
-              first: 100
-            ) {
-
-              edges {
-
-                node {
-
-                  id
-                  title
-                  availableForSale
-
-                  price {
-
-                    amount
-                    currencyCode
-
-                  }
-
-                  compareAtPrice {
-
-                    amount
-                    currencyCode
-
-                  }
-
-                  image {
-
-                    url
-                    altText
-                    width
-                    height
-
-                  }
-
-                  selectedOptions {
-
-                    name
-                    value
-
-                  }
-
-                }
-
-              }
-
-            }
+            ${SHOPORA_PRODUCT_FIELDS}
 
           }
 
@@ -1217,6 +1110,7 @@ async function getAllProducts(
       }
 
     }
+
   `;
 
 
@@ -1231,12 +1125,64 @@ async function getAllProducts(
     [];
 
 
-  return edges.map(
-    edge =>
-      normalizeShopifyProduct(
-        edge.node
-      )
-  );
+  const products =
+    edges.map(
+      edge =>
+        normalizeShopifyProduct(
+          edge.node
+        )
+    );
+
+
+  /*
+    If explicit shipping tags/data exist,
+    apply those filters too.
+  */
+
+  if (country) {
+
+    return products.filter(
+      product => {
+
+        const explicitCountries =
+          getProductShippingCountries(
+            product
+          );
+
+
+        /*
+          No explicit shipping information:
+          keep the product because Shopify's
+          @inContext(country) already controls
+          country-specific product availability.
+        */
+
+        if (
+          explicitCountries.length === 0
+        ) {
+
+          return true;
+
+        }
+
+
+        return explicitCountries.some(
+          item =>
+            normalizeShippingCountry(
+              item
+            ) ===
+            normalizeShippingCountry(
+              country
+            )
+        );
+
+      }
+    );
+
+  }
+
+
+  return products;
 
 }
 
@@ -1269,6 +1215,7 @@ async function getProductByHandle(
 
 
   const query = `
+
     query GetProductByHandle${countryDirective}(
       $handle: String!
     ) {
@@ -1277,98 +1224,12 @@ async function getProductByHandle(
         handle: $handle
       ) {
 
-        id
-        handle
-        title
-
-        description
-        descriptionHtml
-
-        availableForSale
-
-        vendor
-        productType
-        tags
-
-        featuredImage {
-
-          url
-          altText
-          width
-          height
-
-        }
-
-        images(
-          first: 20
-        ) {
-
-          edges {
-
-            node {
-
-              url
-              altText
-              width
-              height
-
-            }
-
-          }
-
-        }
-
-        variants(
-          first: 100
-        ) {
-
-          edges {
-
-            node {
-
-              id
-              title
-              availableForSale
-
-              price {
-
-                amount
-                currencyCode
-
-              }
-
-              compareAtPrice {
-
-                amount
-                currencyCode
-
-              }
-
-              image {
-
-                url
-                altText
-                width
-                height
-
-              }
-
-              selectedOptions {
-
-                name
-                value
-
-              }
-
-            }
-
-          }
-
-        }
+        ${SHOPORA_PRODUCT_FIELDS}
 
       }
 
     }
+
   `;
 
 
@@ -1386,9 +1247,33 @@ async function getProductByHandle(
   }
 
 
-  return normalizeShopifyProduct(
-    data.product
-  );
+  const product =
+    normalizeShopifyProduct(
+      data.product
+    );
+
+
+  /*
+    Respect explicit shipping data.
+  */
+
+  if (
+    selectedCountry &&
+    getProductShippingCountries(
+      product
+    ).length > 0 &&
+    !productShipsToCountry(
+      product,
+      selectedCountry
+    )
+  ) {
+
+    return null;
+
+  }
+
+
+  return product;
 
 }
 
@@ -1446,15 +1331,6 @@ function normalizeShopifyProduct(
     );
 
 
-  /*
-    IMPORTANT:
-    Do NOT use the selected country as
-    the product's shipping country.
-
-    Shipping countries must come from
-    actual product shipping information.
-  */
-
   const shippingCountries =
     getProductShippingCountries(
       product
@@ -1462,8 +1338,6 @@ function normalizeShopifyProduct(
 
 
   return {
-
-    /* Product identity */
 
     id:
       product?.id || "",
@@ -1474,8 +1348,6 @@ function normalizeShopifyProduct(
     handle:
       product?.handle || "",
 
-
-    /* Product information */
 
     title:
       product?.title || "",
@@ -1501,8 +1373,6 @@ function normalizeShopifyProduct(
         : [],
 
 
-    /* Country */
-
     shippingCountryCode:
       shippingCountries.length === 1
         ? (
@@ -1515,8 +1385,6 @@ function normalizeShopifyProduct(
     shippingCountries,
 
 
-    /* Images */
-
     image:
       featuredImage?.url || "",
 
@@ -1528,12 +1396,8 @@ function normalizeShopifyProduct(
     images,
 
 
-    /* Variants */
-
     variants,
 
-
-    /* Default variant */
 
     variant:
       defaultVariant,
@@ -1542,8 +1406,6 @@ function normalizeShopifyProduct(
       defaultVariant?.id ||
       null,
 
-
-    /* Price */
 
     price:
       Number(
@@ -1579,8 +1441,6 @@ function normalizeShopifyProduct(
         : null,
 
 
-    /* Availability */
-
     availableForSale:
       productAvailable &&
       Boolean(
@@ -1609,6 +1469,414 @@ function normalizeShopifyProduct(
         : 0
 
   };
+
+}
+
+
+/* =========================================================
+   COUNTRY-SPECIFIC PRODUCT CHECK
+   ========================================================= */
+
+/*
+   This is the important new part.
+
+   Shopify localization.availableCountries can contain
+   countries that are enabled in the store/market.
+
+   We do NOT automatically put all of them in the
+   Shopora country dropdown.
+
+   Instead we check products under each country's
+   Shopify @inContext(country: XX).
+
+   A country is added only if at least one product is:
+
+   - availableForSale
+   - has an available variant
+   - has a valid variant ID
+*/
+
+async function getProductsForCountry(
+  countryCode
+) {
+
+  const code =
+    normalizeCountryCode(
+      countryCode
+    );
+
+
+  if (!code) {
+    return [];
+  }
+
+
+  try {
+
+    const products =
+      await getAllProducts({
+        first: 250,
+        country: code
+      });
+
+
+    return products.filter(
+      product =>
+        product?.buyable &&
+        product?.variantId
+    );
+
+  } catch (error) {
+
+    console.warn(
+      `Could not check products for country ${code}:`,
+      error
+    );
+
+
+    return [];
+
+  }
+
+}
+
+
+/* =========================================================
+   GET COUNTRIES THAT ACTUALLY HAVE PRODUCTS
+   ========================================================= */
+
+async function getProductAvailableCountries(
+  forceRefresh = false
+) {
+
+  /*
+    Read cache first.
+  */
+
+  if (!forceRefresh) {
+
+    try {
+
+      const cached =
+        JSON.parse(
+          localStorage.getItem(
+            SHOPORA_COUNTRY_CACHE_KEY
+          ) || "[]"
+        );
+
+
+      const cachedTime =
+        Number(
+          localStorage.getItem(
+            SHOPORA_COUNTRY_CACHE_TIME_KEY
+          ) || 0
+        );
+
+
+      if (
+        Array.isArray(cached) &&
+        cached.length &&
+        Date.now() - cachedTime <
+          SHOPORA_COUNTRY_CACHE_DURATION
+      ) {
+
+        return cached;
+
+      }
+
+    } catch {
+
+      /* Ignore invalid cache */
+
+    }
+
+  }
+
+
+  /*
+    Get Shopify's enabled countries first.
+  */
+
+  let availableCountries = [];
+
+
+  try {
+
+    availableCountries =
+      await getShopifyAvailableCountries();
+
+  } catch (error) {
+
+    console.error(
+      "Could not load Shopify country list:",
+      error
+    );
+
+    return [];
+
+  }
+
+
+  const countryResults = [];
+
+
+  /*
+    Check countries in small parallel batches.
+    This avoids sending hundreds of requests at once.
+  */
+
+  const BATCH_SIZE = 6;
+
+
+  for (
+    let i = 0;
+    i < availableCountries.length;
+    i += BATCH_SIZE
+  ) {
+
+    const batch =
+      availableCountries.slice(
+        i,
+        i + BATCH_SIZE
+      );
+
+
+    const results =
+      await Promise.all(
+        batch.map(
+          async country => {
+
+            const code =
+              normalizeCountryCode(
+                country?.isoCode
+              );
+
+
+            if (!code) {
+              return null;
+            }
+
+
+            const products =
+              await getProductsForCountry(
+                code
+              );
+
+
+            if (
+              !products.length
+            ) {
+
+              return null;
+
+            }
+
+
+            return {
+
+              code,
+
+              name:
+                country?.name ||
+                SHOPORA_COUNTRY_CODES[code] ||
+                code
+
+            };
+
+          }
+        )
+      );
+
+
+    results.forEach(
+      result => {
+
+        if (result) {
+
+          countryResults.push(
+            result
+          );
+
+        }
+
+      }
+    );
+
+  }
+
+
+  /*
+    Sort alphabetically.
+  */
+
+  countryResults.sort(
+    (a, b) =>
+      String(a.name)
+        .localeCompare(
+          String(b.name)
+        )
+  );
+
+
+  /*
+    Save cache.
+  */
+
+  try {
+
+    localStorage.setItem(
+      SHOPORA_COUNTRY_CACHE_KEY,
+      JSON.stringify(
+        countryResults
+      )
+    );
+
+
+    localStorage.setItem(
+      SHOPORA_COUNTRY_CACHE_TIME_KEY,
+      String(
+        Date.now()
+      )
+    );
+
+  } catch {
+
+    /* Ignore localStorage errors */
+
+  }
+
+
+  return countryResults;
+
+}
+
+
+/* =========================================================
+   GET SHOPORA COUNTRY FILTER OPTIONS
+   ========================================================= */
+
+async function getShoporaCountryFilterOptions(
+  products = []
+) {
+
+  /*
+    IMPORTANT:
+
+    Do not return all Shopify countries.
+
+    Return only countries where Shopify has at
+    least one buyable product.
+  */
+
+  try {
+
+    const countries =
+      await getProductAvailableCountries();
+
+
+    if (
+      countries.length
+    ) {
+
+      return countries;
+
+    }
+
+  } catch (error) {
+
+    console.warn(
+      "Country product availability check failed:",
+      error
+    );
+
+  }
+
+
+  /*
+    Fallback:
+
+    If country checking fails, use explicit
+    shipping countries from already-loaded products.
+  */
+
+  const countryMap =
+    new Map();
+
+
+  if (Array.isArray(products)) {
+
+    products.forEach(
+      product => {
+
+        const countries =
+          getProductShippingCountries(
+            product
+          );
+
+
+        countries.forEach(
+          country => {
+
+            const info =
+              getCountryInfo(
+                country
+              );
+
+
+            if (
+              info?.code &&
+              info?.name
+            ) {
+
+              countryMap.set(
+                info.code,
+                info
+              );
+
+            }
+
+          }
+        );
+
+      }
+    );
+
+  }
+
+
+  return Array.from(
+    countryMap.values()
+  ).sort(
+    (a, b) =>
+      a.name.localeCompare(
+        b.name
+      )
+  );
+
+}
+
+
+/* =========================================================
+   CLEAR COUNTRY CACHE
+   ========================================================= */
+
+function clearShoporaCountryCache() {
+
+  try {
+
+    localStorage.removeItem(
+      SHOPORA_COUNTRY_CACHE_KEY
+    );
+
+    localStorage.removeItem(
+      SHOPORA_COUNTRY_CACHE_TIME_KEY
+    );
+
+  } catch {
+
+    /* Ignore localStorage errors */
+
+  }
 
 }
 
@@ -1938,9 +2206,17 @@ async function getAvailableProducts(
 
 function getShopifyCartId() {
 
-  return localStorage.getItem(
-    SHOPORA_CART_STORAGE_KEY
-  );
+  try {
+
+    return localStorage.getItem(
+      SHOPORA_CART_STORAGE_KEY
+    );
+
+  } catch {
+
+    return null;
+
+  }
 
 }
 
@@ -1954,19 +2230,35 @@ function saveShopifyCartId(
   }
 
 
-  localStorage.setItem(
-    SHOPORA_CART_STORAGE_KEY,
-    cartId
-  );
+  try {
+
+    localStorage.setItem(
+      SHOPORA_CART_STORAGE_KEY,
+      cartId
+    );
+
+  } catch {
+
+    /* Ignore localStorage errors */
+
+  }
 
 }
 
 
 function clearShopifyCartId() {
 
-  localStorage.removeItem(
-    SHOPORA_CART_STORAGE_KEY
-  );
+  try {
+
+    localStorage.removeItem(
+      SHOPORA_CART_STORAGE_KEY
+    );
+
+  } catch {
+
+    /* Ignore localStorage errors */
+
+  }
 
 }
 
@@ -2942,9 +3234,16 @@ window.ShoporaProducts = {
 
   getAvailableProducts,
 
+
+  /* Countries */
+
   getShopifyAvailableCountries,
 
   getShoporaCountryFilterOptions,
+
+  getProductAvailableCountries,
+
+  clearShoporaCountryCache,
 
 
   /* Country */
