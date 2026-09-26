@@ -1,7 +1,7 @@
 /* =========================================================
    SHOPORA MARKET STORE
    products.js
-   CENTRAL SHOPIFY PRODUCT + COUNTRY + CART SYSTEM
+   CENTRAL SHOPIFY PRODUCT + CART SYSTEM
    ========================================================= */
 
 const SHOPIFY_STORE_DOMAIN = "fsgigg-tp.myshopify.com";
@@ -16,31 +16,26 @@ const SHOPIFY_GRAPHQL_URL =
 const SHOPORA_CART_STORAGE_KEY =
   "shoporaShopifyCartId";
 
-const SHOPORA_COUNTRY_STORAGE_KEY =
-  "shoporaShippingCountry";
-
 
 /* =========================================================
-   SHOPIFY REQUEST
+   SHOPIFY GRAPHQL REQUEST
    ========================================================= */
 
 async function shopifyRequest(query, variables = {}) {
+  const response = await fetch(SHOPIFY_GRAPHQL_URL, {
+    method: "POST",
 
-  const response = await fetch(
-    SHOPIFY_GRAPHQL_URL,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Shopify-Storefront-Access-Token":
-          SHOPIFY_STOREFRONT_PUBLIC_TOKEN
-      },
-      body: JSON.stringify({
-        query,
-        variables
-      })
-    }
-  );
+    headers: {
+      "Content-Type": "application/json",
+      "X-Shopify-Storefront-Access-Token":
+        SHOPIFY_STOREFRONT_PUBLIC_TOKEN
+    },
+
+    body: JSON.stringify({
+      query,
+      variables
+    })
+  });
 
   if (!response.ok) {
     throw new Error(
@@ -67,830 +62,96 @@ async function shopifyRequest(query, variables = {}) {
 
 
 /* =========================================================
-   COUNTRY DATA
-   ========================================================= */
-
-const SHOPORA_COUNTRY_CODES = {
-
-  US: "USA",
-  PK: "Pakistan",
-  GB: "UK",
-  AE: "UAE",
-  CA: "Canada",
-  AU: "Australia",
-  SA: "Saudi Arabia",
-  DE: "Germany",
-  FR: "France",
-  IT: "Italy",
-  ES: "Spain",
-  IN: "India",
-  CN: "China",
-  JP: "Japan",
-  KR: "South Korea",
-  MY: "Malaysia",
-  SG: "Singapore",
-  ID: "Indonesia",
-  TH: "Thailand",
-  TR: "Turkey",
-  NL: "Netherlands",
-  BE: "Belgium",
-  AT: "Austria",
-  CH: "Switzerland",
-  SE: "Sweden",
-  NO: "Norway",
-  DK: "Denmark",
-  FI: "Finland",
-  IE: "Ireland",
-  NZ: "New Zealand",
-  BR: "Brazil",
-  MX: "Mexico",
-  AR: "Argentina",
-  CL: "Chile",
-  ZA: "South Africa",
-  EG: "Egypt",
-  QA: "Qatar",
-  KW: "Kuwait",
-  BH: "Bahrain",
-  OM: "Oman",
-  IL: "Israel",
-  PL: "Poland",
-  PT: "Portugal",
-  GR: "Greece",
-  CZ: "Czech Republic",
-  RO: "Romania",
-  HU: "Hungary",
-  UA: "Ukraine",
-  PH: "Philippines",
-  VN: "Vietnam"
-};
-
-
-const SHOPORA_COUNTRY_ALIASES = {
-
-  US: "USA",
-  USA: "USA",
-  "UNITED STATES": "USA",
-  "UNITED STATES OF AMERICA": "USA",
-
-  PK: "Pakistan",
-  PAKISTAN: "Pakistan",
-
-  GB: "UK",
-  UK: "UK",
-  "UNITED KINGDOM": "UK",
-
-  AE: "UAE",
-  UAE: "UAE",
-  "UNITED ARAB EMIRATES": "UAE",
-
-  CA: "Canada",
-  CANADA: "Canada",
-
-  AU: "Australia",
-  AUSTRALIA: "Australia",
-
-  SA: "Saudi Arabia",
-  "SAUDI ARABIA": "Saudi Arabia",
-
-  DE: "Germany",
-  GERMANY: "Germany",
-
-  FR: "France",
-  FRANCE: "France",
-
-  IT: "Italy",
-  ITALY: "Italy",
-
-  ES: "Spain",
-  SPAIN: "Spain",
-
-  IN: "India",
-  INDIA: "India",
-
-  CN: "China",
-  CHINA: "China",
-
-  JP: "Japan",
-  JAPAN: "Japan",
-
-  KR: "South Korea",
-  "SOUTH KOREA": "South Korea",
-  KOREA: "South Korea",
-
-  MY: "Malaysia",
-  MALAYSIA: "Malaysia",
-
-  SG: "Singapore",
-  SINGAPORE: "Singapore",
-
-  ID: "Indonesia",
-  INDONESIA: "Indonesia",
-
-  TH: "Thailand",
-  THAILAND: "Thailand",
-
-  TR: "Turkey",
-  TURKEY: "Turkey",
-
-  NL: "Netherlands",
-  NETHERLANDS: "Netherlands",
-
-  BE: "Belgium",
-  BELGIUM: "Belgium",
-
-  AT: "Austria",
-  AUSTRIA: "Austria",
-
-  CH: "Switzerland",
-  SWITZERLAND: "Switzerland",
-
-  SE: "Sweden",
-  SWEDEN: "Sweden",
-
-  NO: "Norway",
-  NORWAY: "Norway",
-
-  DK: "Denmark",
-  DENMARK: "Denmark",
-
-  FI: "Finland",
-  FINLAND: "Finland",
-
-  IE: "Ireland",
-  IRELAND: "Ireland",
-
-  NZ: "New Zealand",
-  "NEW ZEALAND": "New Zealand",
-
-  BR: "Brazil",
-  BRAZIL: "Brazil",
-
-  MX: "Mexico",
-  MEXICO: "Mexico",
-
-  AR: "Argentina",
-  ARGENTINA: "Argentina",
-
-  CL: "Chile",
-  CHILE: "Chile",
-
-  ZA: "South Africa",
-  "SOUTH AFRICA": "South Africa",
-
-  EG: "Egypt",
-  EGYPT: "Egypt",
-
-  QA: "Qatar",
-  QATAR: "Qatar",
-
-  KW: "Kuwait",
-  KUWAIT: "Kuwait",
-
-  BH: "Bahrain",
-  BAHRAIN: "Bahrain",
-
-  OM: "Oman",
-  OMAN: "Oman",
-
-  IL: "Israel",
-  ISRAEL: "Israel",
-
-  PL: "Poland",
-  POLAND: "Poland",
-
-  PT: "Portugal",
-  PORTUGAL: "Portugal",
-
-  GR: "Greece",
-  GREECE: "Greece",
-
-  CZ: "Czech Republic",
-  "CZECH REPUBLIC": "Czech Republic",
-
-  RO: "Romania",
-  ROMANIA: "Romania",
-
-  HU: "Hungary",
-  HUNGARY: "Hungary",
-
-  UA: "Ukraine",
-  UKRAINE: "Ukraine",
-
-  PH: "Philippines",
-  PHILIPPINES: "Philippines",
-
-  VN: "Vietnam",
-  VIETNAM: "Vietnam"
-};
-
-
-/* =========================================================
-   COUNTRY HELPERS
-   ========================================================= */
-
-function normalizeCountryCode(value) {
-
-  const code =
-    String(value || "")
-      .trim()
-      .toUpperCase();
-
-  return /^[A-Z]{2}$/.test(code)
-    ? code
-    : "";
-}
-
-
-function normalizeShippingCountry(value) {
-
-  if (!value) {
-    return "";
-  }
-
-  const text =
-    String(value)
-      .trim()
-      .replace(/[_-]+/g, " ")
-      .replace(/\s+/g, " ")
-      .toUpperCase();
-
-  return (
-    SHOPORA_COUNTRY_ALIASES[text] ||
-    String(value).trim()
-  );
-}
-
-
-function getCountryInfo(value) {
-
-  const raw =
-    String(value || "").trim();
-
-  if (!raw) {
-    return null;
-  }
-
-  const normalized =
-    normalizeShippingCountry(raw);
-
-  const upper =
-    raw
-      .replace(/[_-]+/g, " ")
-      .replace(/\s+/g, " ")
-      .trim()
-      .toUpperCase();
-
-  let code = "";
-
-  if (/^[A-Z]{2}$/.test(upper)) {
-
-    code = upper;
-
-  } else {
-
-    const alias =
-      Object.entries(
-        SHOPORA_COUNTRY_ALIASES
-      ).find(
-        ([codeKey, name]) =>
-          name.toUpperCase() ===
-          normalized.toUpperCase()
-      );
-
-    if (alias) {
-      code = alias[0];
-    }
-
-  }
-
-  if (!code) {
-
-    const found =
-      Object.entries(
-        SHOPORA_COUNTRY_CODES
-      ).find(
-        ([countryCode, name]) =>
-          name.toUpperCase() ===
-          normalized.toUpperCase()
-      );
-
-    if (found) {
-      code = found[0];
-    }
-  }
-
-  if (!code) {
-    return null;
-  }
-
-  return {
-    code,
-    name:
-      SHOPORA_COUNTRY_CODES[code] ||
-      normalized
-  };
-}
-
-
-function getSavedShoporaCountry() {
-
-  return normalizeCountryCode(
-    localStorage.getItem(
-      SHOPORA_COUNTRY_STORAGE_KEY
-    ) || ""
-  );
-}
-
-
-function saveShoporaCountry(country) {
-
-  const code =
-    normalizeCountryCode(country);
-
-  if (code) {
-
-    localStorage.setItem(
-      SHOPORA_COUNTRY_STORAGE_KEY,
-      code
-    );
-
-  }
-
-  return code;
-}
-
-
-/* =========================================================
-   SHOPIFY AVAILABLE COUNTRIES
-   ========================================================= */
-
-async function getShopifyAvailableCountries() {
-
-  const query = `
-    query GetAvailableCountries {
-
-      localization {
-
-        availableCountries {
-          isoCode
-          name
-        }
-
-      }
-
-    }
-  `;
-
-  const data =
-    await shopifyRequest(query);
-
-  return (
-    data?.localization?.availableCountries ||
-    []
-  );
-}
-
-
-async function getShoporaCountryFilterOptions(
-  products = []
-) {
-
-  const countryMap = new Map();
-
-  try {
-
-    const availableCountries =
-      await getShopifyAvailableCountries();
-
-    availableCountries.forEach(country => {
-
-      const code =
-        normalizeCountryCode(
-          country?.isoCode
-        );
-
-      const name =
-        String(
-          country?.name || ""
-        ).trim();
-
-      if (!code || !name) {
-        return;
-      }
-
-      countryMap.set(
-        code,
-        {
-          code,
-          name
-        }
-      );
-
-    });
-
-  } catch (error) {
-
-    console.warn(
-      "Could not load Shopify countries:",
-      error
-    );
-
-  }
-
-
-  if (Array.isArray(products)) {
-
-    products.forEach(product => {
-
-      getProductShippingCountries(product)
-        .forEach(country => {
-
-          const info =
-            getCountryInfo(country);
-
-          if (!info) {
-            return;
-          }
-
-          countryMap.set(
-            info.code,
-            info
-          );
-
-        });
-
-    });
-
-  }
-
-
-  return Array.from(
-    countryMap.values()
-  ).sort(
-    (a, b) =>
-      a.name.localeCompare(b.name)
-  );
-}
-
-
-/* =========================================================
-   EXTRACT SHIPPING COUNTRIES
-   ========================================================= */
-
-function extractShippingCountries(value) {
-
-  if (!value) {
-    return [];
-  }
-
-  if (Array.isArray(value)) {
-
-    return value
-      .flatMap(item =>
-        extractShippingCountries(item)
-      )
-      .filter(Boolean);
-
-  }
-
-  if (typeof value === "object") {
-
-    const possibleFields = [
-
-      value.country,
-      value.country_name,
-      value.countryName,
-      value.ship_to_country,
-      value.shipToCountry,
-      value.destination_country,
-      value.destinationCountry,
-      value.code,
-      value.country_code,
-      value.countryCode,
-      value.isoCode,
-      value.name
-
-    ];
-
-    return possibleFields
-      .flatMap(item =>
-        extractShippingCountries(item)
-      )
-      .filter(Boolean);
-  }
-
-  return String(value)
-    .split(/[,|;/]+/)
-    .map(item =>
-      normalizeShippingCountry(item)
-    )
-    .filter(Boolean);
-}
-
-
-/* =========================================================
-   GET PRODUCT SHIPPING COUNTRIES
-   ========================================================= */
-
-function getProductShippingCountries(product) {
-
-  if (!product) {
-    return [];
-  }
-
-  const countries = [];
-
-
-  /* Direct fields */
-
-  const possibleSources = [
-
-    product.shippingCountries,
-    product.shipping_countries,
-    product.shipToCountries,
-    product.ship_to_countries,
-    product.shippingCountry,
-    product.shipping_country,
-    product.shipping,
-    product.shippingMethods,
-    product.shipping_methods,
-    product.shippingData,
-    product.shipping_data,
-    product.shippingCountryCode
-
-  ];
-
-  possibleSources.forEach(source => {
-
-    countries.push(
-      ...extractShippingCountries(source)
-    );
-
-  });
-
-
-  /* =======================================================
-     SHOPORA SHIPPING TAGS
-
-     Examples:
-
-     ship:PK
-     ship:US
-     ship:UK
-     ship:PK,US
-     ship:Pakistan|USA|UK
-
-     ships_to:PK,US
-     shipping:PK,US
-     shipping_to:PK,US
-     ======================================================= */
-
-  const tags =
-    Array.isArray(product.tags)
-      ? product.tags
-      : [];
-
-  tags.forEach(tag => {
-
-    const text =
-      String(tag || "").trim();
-
-    if (!text) {
-      return;
-    }
-
-    const match =
-      text.match(
-        /^(ship|ships_to|shipping|shipping_to)\s*[:=]\s*(.+)$/i
-      );
-
-    if (!match) {
-      return;
-    }
-
-    countries.push(
-      ...extractShippingCountries(
-        match[2]
-      )
-    );
-
-  });
-
-
-  /* Normalize */
-
-  const normalized =
-    countries
-      .flatMap(country =>
-        extractShippingCountries(country)
-      )
-      .map(country =>
-        normalizeShippingCountry(country)
-      )
-      .filter(Boolean)
-      .map(country => country.trim());
-
-  return Array.from(
-    new Set(normalized)
-  );
-}
-
-
-/* =========================================================
-   PRODUCT SHIPPING CHECK
-   ========================================================= */
-
-function productShipsToCountry(
-  product,
-  country = ""
-) {
-
-  if (!product) {
-    return false;
-  }
-
-  const selected =
-    normalizeShippingCountry(country);
-
-  if (!selected) {
-    return true;
-  }
-
-  const productCountries =
-    getProductShippingCountries(product);
-
-  if (!productCountries.length) {
-    return false;
-  }
-
-  return productCountries.some(item => {
-
-    return (
-      normalizeShippingCountry(item) ===
-      selected
-    );
-
-  });
-}
-
-
-/* =========================================================
-   FILTER PRODUCTS BY COUNTRY
-   ========================================================= */
-
-function filterProductsByShippingCountry(
-  products,
-  country = ""
-) {
-
-  if (!Array.isArray(products)) {
-    return [];
-  }
-
-  const selected =
-    normalizeShippingCountry(country);
-
-  if (!selected) {
-    return products;
-  }
-
-  return products.filter(product =>
-    productShipsToCountry(
-      product,
-      selected
-    )
-  );
-}
-
-
-/* =========================================================
-   SHOPIFY COUNTRY CONTEXT
-   ========================================================= */
-
-function buildCountryDirective(country) {
-
-  const code =
-    normalizeCountryCode(country);
-
-  return code
-    ? ` @inContext(country: ${code})`
-    : "";
-}
-
-
-/* =========================================================
-   PRODUCT QUERY
-   ========================================================= */
-
-const PRODUCT_FIELDS = `
-
-  id
-  handle
-  title
-
-  description
-  descriptionHtml
-
-  availableForSale
-
-  vendor
-  productType
-  tags
-
-  featuredImage {
-    url
-    altText
-    width
-    height
-  }
-
-  images(first: 20) {
-
-    edges {
-
-      node {
-        url
-        altText
-        width
-        height
-      }
-
-    }
-
-  }
-
-  variants(first: 100) {
-
-    edges {
-
-      node {
-
-        id
-        title
-        availableForSale
-
-        price {
-          amount
-          currencyCode
-        }
-
-        compareAtPrice {
-          amount
-          currencyCode
-        }
-
-        image {
-          url
-          altText
-          width
-          height
-        }
-
-        selectedOptions {
-          name
-          value
-        }
-
-      }
-
-    }
-
-  }
-
-`;
-
-
-/* =========================================================
    GET ALL PRODUCTS
    ========================================================= */
 
 async function getAllProducts(options = {}) {
 
-  const first =
-    Math.min(
-      Number(options.first) || 50,
-      250
-    );
-
-  const country =
-    normalizeCountryCode(
-      options.country ||
-      getSavedShoporaCountry()
-    );
-
-  const countryDirective =
-    buildCountryDirective(country);
+  const first = Math.min(
+    Number(options.first) || 50,
+    250
+  );
 
   const query = `
-    query GetProducts${countryDirective} {
-
+    query GetProducts {
       products(first: ${first}) {
 
         edges {
 
           node {
 
-            ${PRODUCT_FIELDS}
+            id
+            handle
+            title
+
+            description
+            descriptionHtml
+
+            availableForSale
+
+            vendor
+            productType
+            tags
+
+            featuredImage {
+              url
+              altText
+              width
+              height
+            }
+
+            images(first: 20) {
+
+              edges {
+
+                node {
+                  url
+                  altText
+                  width
+                  height
+                }
+
+              }
+
+            }
+
+            variants(first: 100) {
+
+              edges {
+
+                node {
+
+                  id
+                  title
+                  availableForSale
+
+                  price {
+                    amount
+                    currencyCode
+                  }
+
+                  compareAtPrice {
+                    amount
+                    currencyCode
+                  }
+
+                  image {
+                    url
+                    altText
+                    width
+                    height
+                  }
+
+                  selectedOptions {
+                    name
+                    value
+                  }
+
+                }
+
+              }
+
+            }
 
           }
 
@@ -908,7 +169,9 @@ async function getAllProducts(options = {}) {
     data?.products?.edges || [];
 
   return edges.map(edge =>
-    normalizeShopifyProduct(edge.node)
+    normalizeShopifyProduct(
+      edge.node
+    )
   );
 }
 
@@ -917,34 +180,91 @@ async function getAllProducts(options = {}) {
    GET PRODUCT BY HANDLE
    ========================================================= */
 
-async function getProductByHandle(
-  handle,
-  country = ""
-) {
+async function getProductByHandle(handle) {
 
   if (!handle) {
     return null;
   }
 
-  const selectedCountry =
-    normalizeCountryCode(
-      country ||
-      getSavedShoporaCountry()
-    );
-
-  const countryDirective =
-    buildCountryDirective(
-      selectedCountry
-    );
-
   const query = `
-    query GetProductByHandle${countryDirective}(
+    query GetProductByHandle(
       $handle: String!
     ) {
 
       product(handle: $handle) {
 
-        ${PRODUCT_FIELDS}
+        id
+        handle
+        title
+
+        description
+        descriptionHtml
+
+        availableForSale
+
+        vendor
+        productType
+        tags
+
+        featuredImage {
+          url
+          altText
+          width
+          height
+        }
+
+        images(first: 20) {
+
+          edges {
+
+            node {
+              url
+              altText
+              width
+              height
+            }
+
+          }
+
+        }
+
+        variants(first: 100) {
+
+          edges {
+
+            node {
+
+              id
+              title
+              availableForSale
+
+              price {
+                amount
+                currencyCode
+              }
+
+              compareAtPrice {
+                amount
+                currencyCode
+              }
+
+              image {
+                url
+                altText
+                width
+                height
+              }
+
+              selectedOptions {
+                name
+                value
+              }
+
+            }
+
+          }
+
+        }
 
       }
 
@@ -954,7 +274,9 @@ async function getProductByHandle(
   const data =
     await shopifyRequest(
       query,
-      { handle }
+      {
+        handle
+      }
     );
 
   if (!data?.product) {
@@ -974,16 +296,12 @@ async function getProductByHandle(
 function normalizeShopifyProduct(product) {
 
   const variants =
-    (
-      product?.variants?.edges || []
-    )
+    (product?.variants?.edges || [])
       .map(edge => edge.node)
       .filter(Boolean);
 
   const images =
-    (
-      product?.images?.edges || []
-    )
+    (product?.images?.edges || [])
       .map(edge => edge.node)
       .filter(Boolean);
 
@@ -1004,18 +322,6 @@ function normalizeShopifyProduct(product) {
     Boolean(
       product?.availableForSale
     );
-
-  const shippingCountries =
-    getProductShippingCountries(product);
-
-  const shippingCountryCode =
-    shippingCountries.length === 1
-      ? (
-          getCountryInfo(
-            shippingCountries[0]
-          )?.code || ""
-        )
-      : "";
 
   return {
 
@@ -1051,10 +357,6 @@ function normalizeShopifyProduct(product) {
         ? product.tags
         : [],
 
-    shippingCountryCode,
-
-    shippingCountries,
-
     image:
       featuredImage?.url || "",
 
@@ -1089,7 +391,7 @@ function normalizeShopifyProduct(product) {
       formatProductPrice(
         defaultVariant?.price?.amount || 0,
         defaultVariant?.price?.currencyCode ||
-        "PKR"
+          "PKR"
       ),
 
     compareAtPrice:
@@ -1126,6 +428,7 @@ function normalizeShopifyProduct(product) {
         : 0
 
   };
+
 }
 
 
@@ -1138,7 +441,10 @@ function getVariantById(
   variantId
 ) {
 
-  if (!product || !variantId) {
+  if (
+    !product ||
+    !variantId
+  ) {
     return null;
   }
 
@@ -1149,6 +455,7 @@ function getVariantById(
     ) ||
     null
   );
+
 }
 
 
@@ -1166,6 +473,7 @@ function getDefaultVariant(product) {
     product.variants?.[0] ||
     null
   );
+
 }
 
 
@@ -1181,6 +489,7 @@ function getAvailableVariants(product) {
     variant =>
       variant.availableForSale
   );
+
 }
 
 
@@ -1209,7 +518,8 @@ function applyVariantToProduct(
     "";
 
   const amount =
-    variant.price?.amount || "0";
+    variant.price?.amount ||
+    "0";
 
   const currency =
     variant.price?.currencyCode ||
@@ -1275,11 +585,12 @@ function applyVariantToProduct(
         : 0
 
   };
+
 }
 
 
 /* =========================================================
-   PRICE
+   PRICE FORMAT
    ========================================================= */
 
 function formatProductPrice(
@@ -1299,7 +610,9 @@ function formatProductPrice(
         currency,
         maximumFractionDigits: 0
       }
-    ).format(numericAmount);
+    ).format(
+      numericAmount
+    );
 
   } catch {
 
@@ -1309,16 +622,16 @@ function formatProductPrice(
     );
 
   }
+
 }
 
 
 /* =========================================================
-   FIND PRODUCTS
+   PRODUCT LOOKUP
    ========================================================= */
 
 async function getProductById(
-  productId,
-  country = ""
+  productId
 ) {
 
   if (!productId) {
@@ -1327,23 +640,23 @@ async function getProductById(
 
   const products =
     await getAllProducts({
-      first: 250,
-      country
+      first: 250
     });
 
   return (
-    products.find(product =>
-      product.id === productId ||
-      product.shopifyId === productId
+    products.find(
+      product =>
+        product.id === productId ||
+        product.shopifyId === productId
     ) ||
     null
   );
+
 }
 
 
 async function findProduct(
-  identifier,
-  country = ""
+  identifier
 ) {
 
   if (!identifier) {
@@ -1356,36 +669,42 @@ async function findProduct(
   ) {
 
     return getProductById(
-      identifier,
-      country
+      identifier
     );
 
   }
 
   return getProductByHandle(
-    identifier,
-    country
+    identifier
   );
+
 }
 
+
+/* =========================================================
+   AVAILABLE PRODUCTS
+   ========================================================= */
 
 async function getAvailableProducts(
   options = {}
 ) {
 
   const products =
-    await getAllProducts(options);
+    await getAllProducts(
+      options
+    );
 
   return products.filter(
     product =>
       product.buyable &&
       product.variantId
   );
+
 }
 
 
 /* =========================================================
-   CART
+   CART ID
    ========================================================= */
 
 function getShopifyCartId() {
@@ -1393,10 +712,13 @@ function getShopifyCartId() {
   return localStorage.getItem(
     SHOPORA_CART_STORAGE_KEY
   );
+
 }
 
 
-function saveShopifyCartId(cartId) {
+function saveShopifyCartId(
+  cartId
+) {
 
   if (!cartId) {
     return;
@@ -1406,6 +728,7 @@ function saveShopifyCartId(cartId) {
     SHOPORA_CART_STORAGE_KEY,
     cartId
   );
+
 }
 
 
@@ -1414,15 +737,15 @@ function clearShopifyCartId() {
   localStorage.removeItem(
     SHOPORA_CART_STORAGE_KEY
   );
+
 }
 
 
 /* =========================================================
-   CART FIELDS
+   CART QUERY FIELDS
    ========================================================= */
 
 const CART_QUERY_FIELDS = `
-
   id
   checkoutUrl
   totalQuantity
@@ -1433,12 +756,6 @@ const CART_QUERY_FIELDS = `
       amount
       currencyCode
     }
-
-  }
-
-  buyerIdentity {
-
-    countryCode
 
   }
 
@@ -1465,19 +782,15 @@ const CART_QUERY_FIELDS = `
               handle
 
               featuredImage {
-
                 url
                 altText
-
               }
 
             }
 
             price {
-
               amount
               currencyCode
-
             }
 
           }
@@ -1489,18 +802,16 @@ const CART_QUERY_FIELDS = `
     }
 
   }
-
 `;
 
 
 /* =========================================================
-   CREATE CART
+   CREATE SHOPIFY CART
    ========================================================= */
 
 async function createShopifyCart(
   variantId,
-  quantity = 1,
-  country = ""
+  quantity = 1
 ) {
 
   if (!variantId) {
@@ -1511,81 +822,53 @@ async function createShopifyCart(
 
   }
 
-  const selectedCountry =
-    normalizeCountryCode(
-      country ||
-      getSavedShoporaCountry()
-    );
-
   const mutation = `
-
     mutation CreateCart(
       $lines: [CartLineInput!]
-      $buyerIdentity: CartBuyerIdentityInput
     ) {
 
       cartCreate(
-
         input: {
-
           lines: $lines
-
-          buyerIdentity: $buyerIdentity
-
         }
-
       ) {
 
         cart {
-
           ${CART_QUERY_FIELDS}
-
         }
 
         userErrors {
-
           field
           message
-
         }
 
       }
 
     }
-
   `;
-
-  const variables = {
-
-    lines: [
-
-      {
-        merchandiseId: variantId,
-        quantity: Number(quantity)
-      }
-
-    ]
-
-  };
-
-  if (selectedCountry) {
-
-    variables.buyerIdentity = {
-      countryCode: selectedCountry
-    };
-
-  }
 
   const data =
     await shopifyRequest(
       mutation,
-      variables
+      {
+        lines: [
+          {
+            merchandiseId:
+              variantId,
+
+            quantity:
+              Number(quantity)
+          }
+        ]
+      }
     );
 
   const payload =
     data?.cartCreate;
 
-  if (payload?.userErrors?.length) {
+  if (
+    payload?.userErrors?.length
+  ) {
 
     throw new Error(
       payload.userErrors[0].message
@@ -1604,104 +887,17 @@ async function createShopifyCart(
 
   }
 
-  saveShopifyCartId(cart.id);
-
-  return cart;
-}
-
-
-/* =========================================================
-   UPDATE CART COUNTRY
-   ========================================================= */
-
-async function updateShopifyCartCountry(
-  country
-) {
-
-  const cartId =
-    getShopifyCartId();
-
-  const selectedCountry =
-    normalizeCountryCode(country);
-
-  if (!cartId || !selectedCountry) {
-    return null;
-  }
-
-  saveShoporaCountry(
-    selectedCountry
+  saveShopifyCartId(
+    cart.id
   );
 
-  const mutation = `
+  return cart;
 
-    mutation UpdateCartBuyerIdentity(
-
-      $cartId: ID!
-
-      $buyerIdentity:
-        CartBuyerIdentityInput!
-
-    ) {
-
-      cartBuyerIdentityUpdate(
-
-        cartId: $cartId
-
-        buyerIdentity:
-          $buyerIdentity
-
-      ) {
-
-        cart {
-
-          ${CART_QUERY_FIELDS}
-
-        }
-
-        userErrors {
-
-          field
-          message
-
-        }
-
-      }
-
-    }
-
-  `;
-
-  const data =
-    await shopifyRequest(
-      mutation,
-      {
-        cartId,
-
-        buyerIdentity: {
-          countryCode:
-            selectedCountry
-        }
-
-      }
-    );
-
-  const payload =
-    data?.cartBuyerIdentityUpdate;
-
-  if (payload?.userErrors?.length) {
-
-    throw new Error(
-      payload.userErrors[0].message
-    );
-
-  }
-
-  return payload?.cart || null;
 }
 
 
 /* =========================================================
-   ADD TO CART
+   ADD TO EXISTING CART
    ========================================================= */
 
 async function addToShopifyCart(
@@ -1711,77 +907,70 @@ async function addToShopifyCart(
 ) {
 
   if (!cartId) {
+
     throw new Error(
       "Shopify cart ID is missing."
     );
+
   }
 
   if (!variantId) {
+
     throw new Error(
       "Shopify variant ID is missing."
     );
+
   }
 
   const mutation = `
-
     mutation AddCartLines(
-
-      $cartId: ID!
-
+      $cartId: ID!,
       $lines: [CartLineInput!]!
-
     ) {
 
       cartLinesAdd(
-
-        cartId: $cartId
-
+        cartId: $cartId,
         lines: $lines
-
       ) {
 
         cart {
-
           ${CART_QUERY_FIELDS}
-
         }
 
         userErrors {
-
           field
           message
-
         }
 
       }
 
     }
-
   `;
 
   const data =
     await shopifyRequest(
       mutation,
       {
-
         cartId,
 
         lines: [
-
           {
-            merchandiseId: variantId,
-            quantity: Number(quantity)
+            merchandiseId:
+              variantId,
+
+            quantity:
+              Number(quantity)
           }
-
         ]
-
       }
     );
 
   const payload =
     data?.cartLinesAdd;
 
-  if (payload?.userErrors?.length) {
+  if (
+    payload?.userErrors?.length
+  ) {
 
     throw new Error(
       payload.userErrors[0].message
@@ -1800,9 +989,12 @@ async function addToShopifyCart(
 
   }
 
-  saveShopifyCartId(cart.id);
+  saveShopifyCartId(
+    cart.id
+  );
 
   return cart;
+
 }
 
 
@@ -1816,10 +1008,14 @@ async function addProductToCart(
   variantId = null
 ) {
 
-  if (typeof product === "string") {
+  if (
+    typeof product === "string"
+  ) {
 
     product =
-      await getProductById(product);
+      await getProductById(
+        product
+      );
 
   }
 
@@ -1827,31 +1023,6 @@ async function addProductToCart(
 
     throw new Error(
       "Product not found."
-    );
-
-  }
-
-  const selectedCountry =
-    getSavedShoporaCountry();
-
-  /* Country protection */
-
-  if (
-    selectedCountry &&
-    !productShipsToCountry(
-      product,
-      selectedCountry
-    )
-  ) {
-
-    const info =
-      getCountryInfo(selectedCountry);
-
-    throw new Error(
-      `This product does not ship to ${
-        info?.name ||
-        selectedCountry
-      }.`
     );
 
   }
@@ -1913,33 +1084,11 @@ async function addProductToCart(
 
     try {
 
-      const cart =
-        await addToShopifyCart(
-          cartId,
-          finalVariantId,
-          finalQuantity
-        );
-
-      if (selectedCountry) {
-
-        try {
-
-          await updateShopifyCartCountry(
-            selectedCountry
-          );
-
-        } catch (countryError) {
-
-          console.warn(
-            "Could not update cart country:",
-            countryError
-          );
-
-        }
-
-      }
-
-      return cart;
+      return await addToShopifyCart(
+        cartId,
+        finalVariantId,
+        finalQuantity
+      );
 
     } catch (error) {
 
@@ -1956,14 +1105,14 @@ async function addProductToCart(
 
   return createShopifyCart(
     finalVariantId,
-    finalQuantity,
-    selectedCountry
+    finalQuantity
   );
+
 }
 
 
 /* =========================================================
-   GET CART
+   GET CURRENT SHOPIFY CART
    ========================================================= */
 
 async function getShopifyCart() {
@@ -1976,19 +1125,15 @@ async function getShopifyCart() {
   }
 
   const query = `
-
     query GetCart(
       $cartId: ID!
     ) {
 
       cart(id: $cartId) {
-
         ${CART_QUERY_FIELDS}
-
       }
 
     }
-
   `;
 
   try {
@@ -1996,7 +1141,9 @@ async function getShopifyCart() {
     const data =
       await shopifyRequest(
         query,
-        { cartId }
+        {
+          cartId
+        }
       );
 
     const cart =
@@ -2022,6 +1169,7 @@ async function getShopifyCart() {
     return null;
 
   }
+
 }
 
 
@@ -2046,11 +1194,15 @@ async function updateCartLine(
     Number(quantity);
 
   if (
-    !Number.isFinite(finalQuantity) ||
+    !Number.isFinite(
+      finalQuantity
+    ) ||
     finalQuantity < 1
   ) {
 
-    return removeCartLine(lineId);
+    return removeCartLine(
+      lineId
+    );
 
   }
 
@@ -2066,65 +1218,51 @@ async function updateCartLine(
   }
 
   const mutation = `
-
     mutation UpdateCartLines(
-
-      $cartId: ID!
-
+      $cartId: ID!,
       $lines: [CartLineUpdateInput!]!
-
     ) {
 
       cartLinesUpdate(
-
-        cartId: $cartId
-
+        cartId: $cartId,
         lines: $lines
-
       ) {
 
         cart {
-
           ${CART_QUERY_FIELDS}
-
         }
 
         userErrors {
-
           field
           message
-
         }
 
       }
 
     }
-
   `;
 
   const data =
     await shopifyRequest(
       mutation,
       {
-
         cartId,
 
         lines: [
-
           {
             id: lineId,
             quantity: finalQuantity
           }
-
         ]
-
       }
     );
 
   const payload =
     data?.cartLinesUpdate;
 
-  if (payload?.userErrors?.length) {
+  if (
+    payload?.userErrors?.length
+  ) {
 
     throw new Error(
       payload.userErrors[0].message
@@ -2143,9 +1281,12 @@ async function updateCartLine(
 
   }
 
-  saveShopifyCartId(cart.id);
+  saveShopifyCartId(
+    cart.id
+  );
 
   return cart;
+
 }
 
 
@@ -2153,7 +1294,9 @@ async function updateCartLine(
    REMOVE CART LINE
    ========================================================= */
 
-async function removeCartLine(lineId) {
+async function removeCartLine(
+  lineId
+) {
 
   if (!lineId) {
 
@@ -2175,58 +1318,48 @@ async function removeCartLine(lineId) {
   }
 
   const mutation = `
-
     mutation RemoveCartLines(
-
-      $cartId: ID!
-
+      $cartId: ID!,
       $lineIds: [ID!]!
-
     ) {
 
       cartLinesRemove(
-
-        cartId: $cartId
-
+        cartId: $cartId,
         lineIds: $lineIds
-
       ) {
 
         cart {
-
           ${CART_QUERY_FIELDS}
-
         }
 
         userErrors {
-
           field
           message
-
         }
 
       }
 
     }
-
   `;
 
   const data =
     await shopifyRequest(
       mutation,
       {
-
         cartId,
 
-        lineIds: [lineId]
-
+        lineIds: [
+          lineId
+        ]
       }
     );
 
   const payload =
     data?.cartLinesRemove;
 
-  if (payload?.userErrors?.length) {
+  if (
+    payload?.userErrors?.length
+  ) {
 
     throw new Error(
       payload.userErrors[0].message
@@ -2245,9 +1378,12 @@ async function removeCartLine(lineId) {
 
   }
 
-  saveShopifyCartId(cart.id);
+  saveShopifyCartId(
+    cart.id
+  );
 
   return cart;
+
 }
 
 
@@ -2263,6 +1399,7 @@ async function getShopifyCartCount() {
   return Number(
     cart?.totalQuantity || 0
   );
+
 }
 
 
@@ -2272,28 +1409,33 @@ async function updateShopifyCartCount() {
     await getShopifyCartCount();
 
   const selectors = [
-
     "#cartCount",
     ".cart-count",
     "[data-cart-count]",
     ".cart-badge"
-
   ];
 
-  selectors.forEach(selector => {
+  selectors.forEach(
+    selector => {
 
-    document
-      .querySelectorAll(selector)
-      .forEach(element => {
+      document
+        .querySelectorAll(
+          selector
+        )
+        .forEach(
+          element => {
 
-        element.textContent =
-          String(count);
+            element.textContent =
+              String(count);
 
-      });
+          }
+        );
 
-  });
+    }
+  );
 
   return count;
+
 }
 
 
@@ -2318,14 +1460,17 @@ async function goToShopifyCheckout() {
 
   window.location.href =
     cart.checkoutUrl;
+
 }
 
 
 /* =========================================================
-   PRODUCT HELPERS
+   PRODUCT URL
    ========================================================= */
 
-function getProductUrl(product) {
+function getProductUrl(
+  product
+) {
 
   if (!product?.handle) {
     return "#";
@@ -2337,10 +1482,17 @@ function getProductUrl(product) {
       product.handle
     )
   );
+
 }
 
 
-function getProductImage(product) {
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+function getProductImage(
+  product
+) {
 
   return (
     product?.image ||
@@ -2349,18 +1501,47 @@ function getProductImage(product) {
     product?.images?.[0]?.url ||
     ""
   );
+
 }
 
 
-function escapeHtml(value) {
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
 
-  return String(value ?? "")
+function escapeHtml(
+  value
+) {
 
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+  return String(
+    value ?? ""
+  )
+
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+
+    .replace(
+      /</g,
+      "&lt;"
+    )
+
+    .replace(
+      />/g,
+      "&gt;"
+    )
+
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+
+    .replace(
+      /'/g,
+      "&#039;"
+    );
+
 }
 
 
@@ -2373,64 +1554,61 @@ window.ShoporaProducts = {
   /* Products */
 
   getAllProducts,
+
   getProductByHandle,
+
   getProductById,
+
   findProduct,
+
   getAvailableProducts,
 
-  /* Countries */
-
-  getShopifyAvailableCountries,
-  getShoporaCountryFilterOptions,
-
-  normalizeCountryCode,
-  normalizeShippingCountry,
-  getCountryInfo,
-
-  getSavedShoporaCountry,
-  saveShoporaCountry,
-
-  /* Shipping */
-
-  getProductShippingCountries,
-  productShipsToCountry,
-  filterProductsByShippingCountry,
 
   /* Variants */
 
   getVariantById,
+
   getDefaultVariant,
+
   getAvailableVariants,
+
   applyVariantToProduct,
+
 
   /* Cart */
 
   getShopifyCartId,
+
   saveShopifyCartId,
+
   clearShopifyCartId,
 
-  createShopifyCart,
-  addToShopifyCart,
   addProductToCart,
 
   getShopifyCart,
-  updateShopifyCartCountry,
 
   getShopifyCartCount,
+
   updateShopifyCartCount,
 
   updateCartLine,
+
   removeCartLine,
+
 
   /* Checkout */
 
   goToShopifyCheckout,
 
+
   /* Helpers */
 
   getProductUrl,
+
   getProductImage,
+
   formatProductPrice,
+
   escapeHtml
 
 };
