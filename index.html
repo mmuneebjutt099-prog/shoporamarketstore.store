@@ -75,132 +75,6 @@
 
   <style>
 
-    .shipping-filter{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-
-      width:100%;
-      margin:0 0 32px;
-
-      padding:18px 20px;
-
-      background:#111;
-      border:1px solid rgba(255,255,255,.10);
-      border-radius:16px;
-
-      box-shadow:
-        0 12px 30px rgba(0,0,0,.08);
-    }
-
-    .shipping-filter-label{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      color:#fff;
-    }
-
-    .shipping-filter-icon{
-      width:38px;
-      height:38px;
-
-      display:flex;
-      align-items:center;
-      justify-content:center;
-
-      border:1px solid rgba(255,255,255,.18);
-      border-radius:50%;
-
-      color:#c6a06a;
-      font-size:18px;
-    }
-
-    .shipping-filter-title{
-      display:block;
-
-      font-size:13px;
-      font-weight:700;
-      letter-spacing:.02em;
-    }
-
-    .shipping-filter-subtitle{
-      display:block;
-
-      margin-top:3px;
-
-      color:rgba(255,255,255,.58);
-
-      font-size:11px;
-    }
-
-    .shipping-select-wrap{
-      position:relative;
-      min-width:220px;
-    }
-
-    .shipping-select-wrap select{
-      width:100%;
-      height:46px;
-
-      padding:0 42px 0 16px;
-
-      appearance:none;
-      -webkit-appearance:none;
-
-      background:#fff;
-      color:#111;
-
-      border:0;
-      border-radius:10px;
-
-      font-family:inherit;
-      font-size:12px;
-      font-weight:700;
-
-      outline:none;
-      cursor:pointer;
-    }
-
-    .shipping-select-wrap select:focus{
-      box-shadow:
-        0 0 0 2px #c6a06a;
-    }
-
-    .shipping-select-arrow{
-      position:absolute;
-
-      right:15px;
-      top:50%;
-
-      transform:translateY(-55%);
-
-      pointer-events:none;
-
-      color:#111;
-      font-size:18px;
-    }
-
-    .shipping-select-wrap select option{
-      background:#fff;
-      color:#111;
-    }
-
-    @media(max-width:600px){
-
-      .shipping-filter{
-        flex-direction:column;
-        align-items:stretch;
-        gap:16px;
-      }
-
-      .shipping-select-wrap{
-        width:100%;
-        min-width:0;
-      }
-
-    }
-
     :root{
       --black:#111111;
       --dark:#191816;
@@ -672,14 +546,6 @@
       overflow:hidden;
     }
 
-    .product-shipping{
-      margin-top:8px;
-      color:var(--gold-dark);
-      font-size:9px;
-      font-weight:600;
-      line-height:1.4;
-    }
-
     .product-description{
       color:var(--muted);
       font-size:11px;
@@ -745,6 +611,25 @@
     }
 
     .buy-btn:hover{
+      background:var(--ivory);
+      border-color:var(--gold);
+    }
+
+    .view-product-btn{
+      display:block;
+      margin-top:10px;
+      text-align:center;
+      border:1px solid var(--border);
+      background:transparent;
+      color:var(--black);
+      border-radius:30px;
+      padding:9px 15px;
+      font-size:10px;
+      font-weight:700;
+      transition:.3s ease;
+    }
+
+    .view-product-btn:hover{
       background:var(--ivory);
       border-color:var(--gold);
     }
@@ -1631,49 +1516,6 @@
       </div>
 
 
-      <!-- SHIPPING COUNTRY FILTER -->
-
-      <div class="shipping-filter">
-
-        <div class="shipping-filter-label">
-
-          <span class="shipping-filter-icon">
-            ⌖
-          </span>
-
-          <div>
-
-            <span class="shipping-filter-title">
-              Shipping Country
-            </span>
-
-            <span class="shipping-filter-subtitle">
-              Choose your delivery destination
-            </span>
-
-          </div>
-
-        </div>
-
-        <div class="shipping-select-wrap">
-
-          <select id="shippingCountry">
-
-            <option value="USA">
-              USA
-            </option>
-
-          </select>
-
-          <span class="shipping-select-arrow">
-            ⌄
-          </span>
-
-        </div>
-
-      </div>
-
-
       <div
         class="products-grid"
         id="productsGrid"
@@ -2231,194 +2073,6 @@
   <script>
     "use strict";
 
-    const SHOPORA_COUNTRIES = [
-      "Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda",
-      "Argentina","Armenia","Australia","Austria","Azerbaijan","Bahamas",
-      "Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin",
-      "Bhutan","Bolivia","Bosnia and Herzegovina","Botswana","Brazil","Brunei",
-      "Bulgaria","Burkina Faso","Burundi","Cabo Verde","Cambodia","Cameroon",
-      "Canada","Central African Republic","Chad","Chile","China","Colombia",
-      "Comoros","Congo","Costa Rica","Croatia","Cuba","Cyprus","Czechia",
-      "Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt",
-      "El Salvador","Equatorial Guinea","Eritrea","Estonia","Eswatini",
-      "Ethiopia","Fiji","Finland","France","Gabon","Gambia","Georgia",
-      "Germany","Ghana","Greece","Grenada","Guatemala","Guinea",
-      "Guinea-Bissau","Guyana","Haiti","Honduras","Hungary","Iceland",
-      "India","Indonesia","Iraq","Ireland","Israel","Italy","Jamaica",
-      "Japan","Jordan","Kazakhstan","Kenya","Kiribati","Kuwait","Kyrgyzstan",
-      "Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein",
-      "Lithuania","Luxembourg","Madagascar","Malawi","Malaysia","Maldives",
-      "Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco",
-      "Mongolia","Montenegro","Morocco","Mozambique","Myanmar","Namibia",
-      "Nauru","Nepal","Netherlands","New Zealand","Nicaragua","Niger",
-      "Nigeria","North Macedonia","Norway","Oman","Pakistan","Palau","Panama",
-      "Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal",
-      "Qatar","Romania","Russia","Rwanda","Saint Kitts and Nevis",
-      "Saint Lucia","Saint Vincent and the Grenadines","Samoa","San Marino",
-      "Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone",
-      "Singapore","Slovakia","Slovenia","Somalia","South Africa","South Korea",
-      "South Sudan","Spain","Sri Lanka","Sudan","Suriname","Sweden",
-      "Switzerland","Taiwan","Tajikistan","Tanzania","Thailand","Timor-Leste",
-      "Togo","Tonga","Trinidad and Tobago","Tunisia","Turkey","Turkmenistan",
-      "Tuvalu","Uganda","Ukraine","United Arab Emirates","United Kingdom",
-      "United States","Uruguay","Uzbekistan","Vanuatu","Vatican City",
-      "Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
-    ];
-
-    async function populateShippingCountries(){
-
-      const select =
-        document.getElementById("shippingCountry");
-
-      if(!select)return "";
-
-      let countries = [];
-
-      try{
-
-        countries =
-          await window.ShoporaProducts.getShoporaCountryFilterOptions()
-
-      }catch(error){
-
-        console.warn(
-          "Shopora country list could not be loaded from Shopify. Using fallback list.",
-          error
-        );
-
-      }
-
-      /*
-       * Shopify is the source of truth.
-       * It returns ISO country codes plus names for the
-       * countries configured for the storefront.
-       */
-      if(Array.isArray(countries) && countries.length){
-
-        select.innerHTML = countries
-          .map(country=>{
-            const code=
-              String(country?.isoCode || "")
-                .trim()
-                .toUpperCase();
-
-            const name=
-              String(country?.name || code);
-
-            if(!/^[A-Z]{2}$/.test(code))return "";
-
-            return `
-              <option value="${code}">
-                ${escapeHTML(name)}
-              </option>
-            `;
-          })
-          .join("");
-
-      }else{
-
-        /*
-         * Fallback only if Shopify localization cannot be read.
-         * Intl.DisplayNames converts common country names to ISO
-         * region codes in modern browsers.
-         */
-        const fallbackCountries =
-          Array.isArray(SHOPORA_COUNTRIES)
-            ? SHOPORA_COUNTRIES
-            : [];
-
-        const displayNames =
-          typeof Intl !== "undefined" &&
-          typeof Intl.DisplayNames === "function"
-            ? new Intl.DisplayNames(["en"],{type:"region"})
-            : null;
-
-        const aliases = {
-          "United States":"US",
-          "United Kingdom":"GB",
-          "United Arab Emirates":"AE",
-          "South Korea":"KR",
-          "Russia":"RU"
-        };
-
-        select.innerHTML = fallbackCountries
-          .map(name=>{
-            const code =
-              aliases[name] ||
-              (displayNames
-                ? (()=>{
-                    try{
-                      const regions =
-                        typeof Intl.supportedValuesOf === "function"
-                          ? Intl.supportedValuesOf("region")
-                          : [];
-                      return regions.find(
-                        region=>
-                          displayNames.of(region)===name
-                      ) || "";
-                    }catch(error){
-                      return "";
-                    }
-                  })()
-                : "");
-
-            if(!/^[A-Z]{2}$/.test(code))return "";
-
-            return `
-              <option value="${code}">
-                ${escapeHTML(name)}
-              </option>
-            `;
-          })
-          .join("");
-      }
-
-      const saved =
-        String(
-          localStorage.getItem(
-            "shoporaShippingCountry"
-          ) || ""
-        )
-          .trim()
-          .toUpperCase();
-
-      if(saved &&
-         Array.from(select.options)
-           .some(option=>option.value===saved)){
-        select.value=saved;
-      }else if(select.options.length){
-        select.selectedIndex=0;
-        localStorage.setItem(
-          "shoporaShippingCountry",
-          select.value
-        );
-      }
-
-      /*
-       * THIS IS THE IMPORTANT CONNECTION:
-       * changing the country immediately reloads the Shopify
-       * product query in that country's Storefront context.
-       */
-      select.onchange = async()=>{
-
-        const country=
-          String(select.value || "")
-            .trim()
-            .toUpperCase();
-
-        if(!country)return;
-
-        localStorage.setItem(
-          "shoporaShippingCountry",
-          country
-        );
-
-        await loadProducts(country);
-      };
-
-      return select.value || "";
-    }
-
     function escapeHTML(value){
       return window.ShoporaProducts.escapeHtml(value);
     }
@@ -2869,17 +2523,6 @@
                         : ""
                     }
 
-                    ${
-                      Array.isArray(product.shippingCountries) &&
-                      product.shippingCountries.length
-                        ? `
-                          <div class="product-shipping">
-                            🚚 Ships to ${escapeHTML(product.shippingCountries.join(" · "))}
-                          </div>
-                        `
-                        : ""
-                    }
-
                   </div>
 
                   <button
@@ -2981,25 +2624,12 @@
     );
 
 
-    async function loadProducts(countryCode=""){
+    async function loadProducts(){
 
       const grid =
         document.getElementById("productsGrid");
 
       if(!grid)return;
-
-      const select=
-        document.getElementById("shippingCountry");
-
-      const country=
-        String(
-          countryCode ||
-          select?.value ||
-          localStorage.getItem("shoporaShippingCountry") ||
-          ""
-        )
-          .trim()
-          .toUpperCase();
 
       try{
 
@@ -3011,13 +2641,11 @@
         const products =
           await window.ShoporaProducts
             .getAvailableProducts({
-              first:40,
-              country
+              first:40
             });
 
         console.log(
-          "Shopora products for country:",
-          country,
+          "Shopora products:",
           products
         );
 
@@ -3032,12 +2660,13 @@
 
         grid.innerHTML = `
           <div class="products-error">
-            Unable to load products for this country.
-            Please try another country.
+            Unable to load products.
+            Please try again later.
           </div>
         `;
       }
     }
+
 
     function performSearch(inputId){
 
@@ -3146,13 +2775,10 @@
 
         updateWishlistCount();
 
-        const selectedCountry =
-          await populateShippingCountries();
-
         await window.ShoporaProducts
           .updateShopifyCartCount();
 
-        await loadProducts(selectedCountry);
+        await loadProducts();
 
         const year=
           document.getElementById("year");
