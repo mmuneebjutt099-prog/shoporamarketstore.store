@@ -940,7 +940,7 @@
 
       <div class="container">
 
-        <h1>Shop</h1>
+        <h1 id="shopHeading">Shop</h1>
 
       </div>
 
@@ -991,7 +991,7 @@
 
         <div class="shop-meta">
 
-          <h2>All Products</h2>
+          <h2 id="shopMetaTitle">All Products</h2>
 
           <span id="resultCount">
             Loading products...
@@ -1214,7 +1214,6 @@
        ========================================================= */
 
     const WISHLIST_KEY = "shoporaWishlist";
-    const SHOPIFY_CART_KEY = "shoporaShopifyCartId";
 
 
     function getWishlist() {
@@ -1301,8 +1300,6 @@
 
     async function updateCounts() {
 
-      /* Wishlist */
-
       const wishlist =
         getWishlist();
 
@@ -1316,8 +1313,6 @@
 
       }
 
-
-      /* Shopify Cart */
 
       const cartCount =
         document.getElementById("cartCount");
@@ -1453,6 +1448,328 @@
 
 
     /* =========================================================
+       CATEGORY NORMALIZATION
+       ========================================================= */
+
+    function normalizeCategory(value) {
+
+      return String(value || "")
+        .toLowerCase()
+        .replace(/&/g, "and")
+        .replace(/[_-]+/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+
+    }
+
+
+    /* =========================================================
+       CATEGORY KEYWORDS
+       ========================================================= */
+
+    const CATEGORY_KEYWORDS = {
+
+      "Fashion": [
+        "fashion",
+        "clothing",
+        "apparel",
+        "wardrobe",
+        "wear",
+        "dress",
+        "shirt",
+        "t shirt",
+        "tshirt",
+        "top",
+        "bottom",
+        "jeans",
+        "pants",
+        "trousers",
+        "jacket",
+        "coat",
+        "hoodie",
+        "sweater",
+        "outfit",
+        "clothes"
+      ],
+
+      "Beauty": [
+        "beauty",
+        "cosmetic",
+        "cosmetics",
+        "makeup",
+        "skincare",
+        "skin care",
+        "hair care",
+        "haircare",
+        "self care",
+        "personal care",
+        "lipstick",
+        "foundation",
+        "serum",
+        "cream",
+        "lotion",
+        "perfume",
+        "fragrance"
+      ],
+
+      "Electronics": [
+        "electronics",
+        "electronic",
+        "technology",
+        "tech",
+        "gadget",
+        "gadgets",
+        "device",
+        "devices",
+        "smart",
+        "digital",
+        "headphone",
+        "headphones",
+        "earphone",
+        "earphones",
+        "earbuds",
+        "speaker",
+        "watch",
+        "smartwatch",
+        "computer",
+        "laptop",
+        "mobile",
+        "phone",
+        "charger",
+        "cable",
+        "keyboard",
+        "mouse",
+        "camera",
+        "led"
+      ],
+
+      "Home & Living": [
+        "home and living",
+        "home",
+        "living",
+        "home decor",
+        "decor",
+        "decoration",
+        "household",
+        "kitchen",
+        "dining",
+        "bedroom",
+        "bathroom",
+        "furniture",
+        "storage",
+        "organizer",
+        "organization",
+        "lamp",
+        "lighting",
+        "pillow",
+        "blanket",
+        "wall art",
+        "garden"
+      ],
+
+      "Accessories": [
+        "accessories",
+        "accessory",
+        "bag",
+        "bags",
+        "handbag",
+        "backpack",
+        "wallet",
+        "purse",
+        "jewelry",
+        "jewellery",
+        "necklace",
+        "bracelet",
+        "earring",
+        "ring",
+        "belt",
+        "sunglasses",
+        "watch",
+        "watches",
+        "keychain",
+        "key chain"
+      ],
+
+      "Lifestyle": [
+        "lifestyle",
+        "daily",
+        "everyday",
+        "fitness",
+        "sport",
+        "sports",
+        "gym",
+        "travel",
+        "outdoor",
+        "wellness",
+        "health",
+        "office",
+        "work",
+        "personal",
+        "leisure"
+      ]
+
+    };
+
+
+    /* =========================================================
+       GET PRODUCT CATEGORY TEXT
+       ========================================================= */
+
+    function getProductCategoryText(product) {
+
+      const values = [];
+
+      if (product.category) {
+        values.push(product.category);
+      }
+
+      if (product.productType) {
+        values.push(product.productType);
+      }
+
+      if (Array.isArray(product.tags)) {
+        values.push(
+          product.tags.join(" ")
+        );
+      }
+
+      if (product.title) {
+        values.push(product.title);
+      }
+
+      if (product.name) {
+        values.push(product.name);
+      }
+
+      if (product.description) {
+        values.push(product.description);
+      }
+
+      return values
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+    }
+
+
+    /* =========================================================
+       CHECK PRODUCT CATEGORY
+       ========================================================= */
+
+    function productMatchesCategory(
+      product,
+      selectedCategory
+    ) {
+
+      if (
+        !selectedCategory ||
+        selectedCategory === "all"
+      ) {
+
+        return true;
+
+      }
+
+
+      const requested =
+        normalizeCategory(
+          selectedCategory
+        );
+
+
+      const directValues = [
+
+        product.category,
+        product.productType
+
+      ]
+        .filter(Boolean)
+        .map(
+          value =>
+            normalizeCategory(value)
+        );
+
+
+      if (
+        directValues.some(
+          value =>
+            value === requested ||
+            value.includes(requested) ||
+            requested.includes(value)
+        )
+      ) {
+
+        return true;
+
+      }
+
+
+      const tags =
+        Array.isArray(product.tags)
+          ? product.tags
+          : [];
+
+
+      const normalizedTags =
+        tags.map(
+          tag =>
+            normalizeCategory(tag)
+        );
+
+
+      if (
+        normalizedTags.some(
+          tag =>
+            tag === requested ||
+            tag.includes(requested) ||
+            requested.includes(tag)
+        )
+      ) {
+
+        return true;
+
+      }
+
+
+      const keywords =
+        CATEGORY_KEYWORDS[
+          selectedCategory
+        ] || [];
+
+
+      if (!keywords.length) {
+
+        return false;
+
+      }
+
+
+      const productText =
+        getProductCategoryText(
+          product
+        );
+
+
+      return keywords.some(
+        keyword => {
+
+          const normalizedKeyword =
+            normalizeCategory(
+              keyword
+            );
+
+          return productText.includes(
+            normalizedKeyword
+          );
+
+        }
+      );
+
+    }
+
+
+    /* =========================================================
        RENDER PRODUCTS
        ========================================================= */
 
@@ -1504,11 +1821,13 @@
 
         const category =
           product.category ||
+          product.productType ||
           "Shopora";
 
 
         const name =
           product.name ||
+          product.title ||
           "Product";
 
 
@@ -1519,7 +1838,12 @@
         card.dataset.search = [
 
           product.name,
+          product.title,
           product.category,
+          product.productType,
+          Array.isArray(product.tags)
+            ? product.tags.join(" ")
+            : "",
           product.description,
           product.badge,
           product.sku,
@@ -1866,7 +2190,7 @@
 
 
     /* =========================================================
-       SEARCH + CATEGORY FILTER
+       DOM ELEMENTS
        ========================================================= */
 
     const searchInput =
@@ -1893,6 +2217,28 @@
       );
 
 
+    const shopHeading =
+      document.getElementById(
+        "shopHeading"
+      );
+
+
+    const shopMetaTitle =
+      document.getElementById(
+        "shopMetaTitle"
+      );
+
+
+    const productGrid =
+      document.getElementById(
+        "productGrid"
+      );
+
+
+    /* =========================================================
+       SEARCH + CATEGORY FILTER
+       ========================================================= */
+
     function filterProducts() {
 
       const query =
@@ -1916,7 +2262,14 @@
             const searchableText = [
 
               product.name,
+              product.title,
               product.category,
+              product.productType,
+
+              Array.isArray(product.tags)
+                ? product.tags.join(" ")
+                : "",
+
               product.description,
               product.badge,
               product.sku,
@@ -1937,8 +2290,10 @@
 
 
             const matchesCategory =
-              category === "all" ||
-              product.category === category;
+              productMatchesCategory(
+                product,
+                category
+              );
 
 
             return (
@@ -1955,6 +2310,45 @@
       );
 
 
+      /* Update heading */
+
+      if (category === "all") {
+
+        if (shopHeading) {
+
+          shopHeading.textContent =
+            "Shop";
+
+        }
+
+        if (shopMetaTitle) {
+
+          shopMetaTitle.textContent =
+            "All Products";
+
+        }
+
+      } else {
+
+        if (shopHeading) {
+
+          shopHeading.textContent =
+            category;
+
+        }
+
+        if (shopMetaTitle) {
+
+          shopMetaTitle.textContent =
+            category;
+
+        }
+
+      }
+
+
+      /* Result count */
+
       if (resultCount) {
 
         resultCount.textContent =
@@ -1966,6 +2360,8 @@
 
       }
 
+
+      /* No results */
 
       if (noResults) {
 
@@ -1997,36 +2393,47 @@
       params.get("search");
 
 
+    /* =========================================================
+       APPLY URL CATEGORY
+       ========================================================= */
+
     if (
       urlCategory &&
       categoryFilter
     ) {
 
       const decodedCategory =
-        decodeURIComponent(
-          urlCategory
-        );
+        String(urlCategory)
+          .trim();
 
 
-      const option =
+      const matchingOption =
         Array.from(
           categoryFilter.options
         ).find(
           option =>
-            option.value ===
-            decodedCategory
+            normalizeCategory(
+              option.value
+            ) ===
+            normalizeCategory(
+              decodedCategory
+            )
         );
 
 
-      if (option) {
+      if (matchingOption) {
 
         categoryFilter.value =
-          decodedCategory;
+          matchingOption.value;
 
       }
 
     }
 
+
+    /* =========================================================
+       APPLY URL SEARCH
+       ========================================================= */
 
     if (
       urlSearch &&
@@ -2034,9 +2441,7 @@
     ) {
 
       searchInput.value =
-        decodeURIComponent(
-          urlSearch
-        );
+        String(urlSearch);
 
     }
 
@@ -2111,6 +2516,13 @@
           );
 
         } else {
+
+          /*
+             IMPORTANT:
+             URL category is already selected above.
+             filterProducts() now checks:
+             category + productType + tags + title.
+          */
 
           filterProducts();
 
