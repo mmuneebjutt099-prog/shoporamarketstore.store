@@ -2265,62 +2265,159 @@
       "Venezuela","Vietnam","Yemen","Zambia","Zimbabwe"
     ];
 
-    function populateShippingCountries(){
+    async function populateShippingCountries(){
 
       const select =
         document.getElementById("shippingCountry");
 
-      if(!select)return;
+      if(!select)return "";
 
-      const saved =
-        localStorage.getItem("shoporaShippingCountry")
-        || "USA";
+      let countries = [];
 
-      select.innerHTML = "";
+      try{
 
-      SHOPORA_COUNTRIES.forEach(country => {
+        countries =
+          await window.ShoporaProducts
+            .getShopifyAvailableCountries();
 
-        let value = country;
-        let label = country;
+      }catch(error){
 
-        if(country === "United States"){
-          value = "USA";
-          label = "USA";
-        }
-
-        if(country === "United Kingdom"){
-          value = "UK";
-          label = "UK";
-        }
-
-        if(country === "United Arab Emirates"){
-          value = "UAE";
-          label = "UAE";
-        }
-
-        const option =
-          document.createElement("option");
-
-        option.value = value;
-        option.textContent = label;
-
-        select.appendChild(option);
-
-      });
-
-      select.value = saved;
-
-      if(!select.value){
-
-        select.value = "USA";
-
-        localStorage.setItem(
-          "shoporaShippingCountry",
-          "USA"
+        console.warn(
+          "Shopora country list could not be loaded from Shopify. Using fallback list.",
+          error
         );
 
       }
 
+      /*
+       * Shopify is the source of truth.
+       * It returns ISO country codes plus names for the
+       * countries configured for the storefront.
+       */
+      if(Array.isArray(countries) && countries.length){
+
+        select.innerHTML = countries
+          .map(country=>{
+            const code=
+              String(country?.isoCode || "")
+                .trim()
+                .toUpperCase();
+
+            const name=
+              String(country?.name || code);
+
+            if(!/^[A-Z]{2}$/.test(code))return "";
+
+            return `
+              <option value="${code}">
+                ${escapeHTML(name)}
+              </option>
+            `;
+          })
+          .join("");
+
+      }else{
+
+        /*
+         * Fallback only if Shopify localization cannot be read.
+         * Intl.DisplayNames converts common country names to ISO
+         * region codes in modern browsers.
+         */
+        const fallbackCountries =
+          Array.isArray(SHOPORA_COUNTRIES)
+            ? SHOPORA_COUNTRIES
+            : [];
+
+        const displayNames =
+          typeof Intl !== "undefined" &&
+          typeof Intl.DisplayNames === "function"
+            ? new Intl.DisplayNames(["en"],{type:"region"})
+            : null;
+
+        const aliases = {
+          "United States":"US",
+          "United Kingdom":"GB",
+          "United Arab Emirates":"AE",
+          "South Korea":"KR",
+          "Russia":"RU"
+        };
+
+        select.innerHTML = fallbackCountries
+          .map(name=>{
+            const code =
+              aliases[name] ||
+              (displayNames
+                ? (()=>{
+                    try{
+                      const regions =
+                        typeof Intl.supportedValuesOf === "function"
+                          ? Intl.supportedValuesOf("region")
+                          : [];
+                      return regions.find(
+                        region=>
+                          displayNames.of(region)===name
+                      ) || "";
+                    }catch(error){
+                      return "";
+                    }
+                  })()
+                : "");
+
+            if(!/^[A-Z]{2}$/.test(code))return "";
+
+            return `
+              <option value="${code}">
+                ${escapeHTML(name)}
+              </option>
+            `;
+          })
+          .join("");
+      }
+
+      const saved =
+        String(
+          localStorage.getItem(
+            "shoporaShippingCountry"
+          ) || ""
+        )
+          .trim()
+          .toUpperCase();
+
+      if(saved &&
+         Array.from(select.options)
+           .some(option=>option.value===saved)){
+        select.value=saved;
+      }else if(select.options.length){
+        select.selectedIndex=0;
+        localStorage.setItem(
+          "shoporaShippingCountry",
+          select.value
+        );
+      }
+
+      /*
+       * THIS IS THE IMPORTANT CONNECTION:
+       * changing the country immediately reloads the Shopify
+       * product query in that country's Storefront context.
+       */
+      select.onchange = async()=>{
+
+        const country=
+          String(select.value || "")
+            .trim()
+            .toUpperCase();
+
+        if(!country)return;
+
+        localStorage.setItem(
+          "shoporaShippingCountry",
+          country
+        );
+
+        await loadProducts(country);
+      };
+
+      return select.value || "";
     }
 
     function escapeHTML(value){
@@ -2885,12 +2982,25 @@
     );
 
 
-    async function loadProducts(){
+    async function loadProducts(countryCode=""){
 
       const grid =
         document.getElementById("productsGrid");
 
       if(!grid)return;
+
+      const select=
+        document.getElementById("shippingCountry");
+
+      const country=
+        String(
+          countryCode ||
+          select?.value ||
+          localStorage.getItem("shoporaShippingCountry") ||
+          ""
+        )
+          .trim()
+          .toUpperCase();
 
       try{
 
@@ -2902,11 +3012,13 @@
         const products =
           await window.ShoporaProducts
             .getAvailableProducts({
-              first:40
+              first:40,
+              country
             });
 
         console.log(
-          "Shopora products:",
+          "Shopora products for country:",
+          country,
           products
         );
 
@@ -2921,15 +3033,12 @@
 
         grid.innerHTML = `
           <div class="products-error">
-            Unable to load Shopify products.
-            Please refresh the page.
+            Unable to load products for this country.
+            Please try another country.
           </div>
         `;
-
       }
-
     }
-
 
     function performSearch(inputId){
 
@@ -3038,12 +3147,13 @@
 
         updateWishlistCount();
 
-        populateShippingCountries();
+        const selectedCountry =
+          await populateShippingCountries();
 
         await window.ShoporaProducts
           .updateShopifyCartCount();
 
-        await loadProducts();
+        await loadProducts(selectedCountry);
 
         const year=
           document.getElementById("year");
