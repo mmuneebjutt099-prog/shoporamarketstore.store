@@ -1351,7 +1351,15 @@
     ========================================================== */
 
     const WISHLIST_KEY = "shoporaWishlist";
+
+    /*
+     * TRENDING SETTINGS
+     * Products come from the central Shopify product system.
+     * A different selection is shown on each page load, while
+     * newly added Shopify products automatically enter the pool.
+     */
     const TRENDING_LIMIT = 8;
+    const TRENDING_REFRESH_KEY = "shoporaTrendingRotation";
 
 
     /* =========================================================
@@ -1574,16 +1582,57 @@
 
       try {
 
+        /*
+         * Load a large Shopify product pool so newly added products
+         * are not limited to the first 50 items.
+         */
         const products =
           await window.ShoporaProducts.getAllProducts({
-            first: 50
+            first: 250
           });
 
+        const availableProducts =
+          products.filter(product =>
+            product &&
+            product.buyable
+          );
+
+        /*
+         * Rotate the Trending selection.
+         *
+         * We use a time-based seed so the selection changes
+         * automatically instead of always showing the same first
+         * products returned by Shopify.
+         */
+        const rotationSlot =
+          Math.floor(Date.now() / (6 * 60 * 60 * 1000));
+
+        const seedString =
+          `${rotationSlot}:${availableProducts.length}`;
+
+        let seed = 0;
+
+        for (let i = 0; i < seedString.length; i++) {
+          seed =
+            ((seed << 5) - seed) +
+            seedString.charCodeAt(i);
+
+          seed |= 0;
+        }
+
+        const shuffledProducts =
+          [...availableProducts].sort(() => {
+            seed =
+              (seed * 1664525 + 1013904223) | 0;
+
+            return ((seed >>> 0) / 4294967296) - 0.5;
+          });
 
         const trending =
-          products
-            .filter(product => product && product.buyable)
-            .slice(0, TRENDING_LIMIT);
+          shuffledProducts.slice(
+            0,
+            Math.min(TRENDING_LIMIT, shuffledProducts.length)
+          );
 
 
         productGrid.innerHTML = "";
@@ -1620,16 +1669,28 @@
             "product-card";
 
 
-          card.dataset.category =
-            product.category || "";
+          const productCategory =
+            product.category ||
+            product.productType ||
+            product.type ||
+            "";
 
+          const productName =
+            product.name ||
+            product.title ||
+            "";
+
+          card.dataset.category =
+            productCategory;
 
           card.dataset.search = [
 
-            product.name,
-            product.category,
+            productName,
+            productCategory,
             product.description,
-            product.sku
+            product.sku,
+            product.handle,
+            product.vendor
 
           ]
             .filter(Boolean)
@@ -1666,14 +1727,14 @@
 
               <div class="product-category">
                 ${escapeHTML(
-                  product.category ||
+                  productCategory ||
                   "Shopora Collection"
                 )}
               </div>
 
               <h3 class="product-title">
                 ${escapeHTML(
-                  product.name ||
+                  productName ||
                   "Shopora Product"
                 )}
               </h3>
