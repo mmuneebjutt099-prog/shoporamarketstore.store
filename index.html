@@ -2608,18 +2608,67 @@
             Loading products...
           </div>`;
 
+        /*
+         * Load the full available Shopify product pool so newly
+         * added products are eligible immediately.
+         */
         const products =
           await window.ShoporaProducts
             .getAvailableProducts({
-              first:40
+              first:250
             });
 
-        console.log(
-          "Shopora products:",
+        /*
+         * Rotate the homepage product order instead of relying
+         * on Shopify's returned order. The rotation changes every
+         * 6 hours and is also based on the current product pool,
+         * so adding a new product changes the rotation seed.
+         */
+        const rotationSlot =
+          Math.floor(Date.now() / (6 * 60 * 60 * 1000));
+
+        const productSeed =
           products
+            .map(product =>
+              String(
+                product?.id ||
+                product?.handle ||
+                product?.title ||
+                ""
+              )
+            )
+            .sort()
+            .join("|");
+
+        let seed = 0;
+
+        const seedString =
+          `${rotationSlot}:${productSeed}`;
+
+        for(let i=0; i<seedString.length; i++){
+
+          seed =
+            ((seed << 5) - seed) +
+            seedString.charCodeAt(i);
+
+          seed |= 0;
+        }
+
+        const rotatedProducts =
+          [...products].sort(() => {
+
+            seed =
+              (seed * 1664525 + 1013904223) | 0;
+
+            return ((seed >>> 0) / 4294967296) - 0.5;
+          });
+
+        console.log(
+          "Shopora rotated products:",
+          rotatedProducts
         );
 
-        renderProducts(products);
+        renderProducts(rotatedProducts);
 
       }catch(error){
 
