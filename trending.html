@@ -1355,12 +1355,12 @@
     /*
      * TRENDING SETTINGS
      * Products come from the central Shopify product system.
-     * A different selection is shown on each page load, while
-     * newly added Shopify products automatically enter the pool.
+     * Up to 250 products are displayed from the central Shopify catalog.
+     * The selected set rotates automatically every 6 hours. Newly added
+     * Shopify products enter the available catalog automatically.
      */
-    const TRENDING_LIMIT = 8;
-    const TRENDING_REFRESH_KEY = "shoporaTrendingRotation";
-
+    const TRENDING_LIMIT = 250;
+    
 
     /* =========================================================
        WISHLIST STORAGE
@@ -1583,8 +1583,9 @@
       try {
 
         /*
-         * Load a large Shopify product pool so newly added products
-         * are not limited to the first 50 items.
+         * Load the central Shopify product catalog. The central products.js
+         * system controls how many Shopify products are returned; this page
+         * displays up to 250 buyable products from that catalog.
          */
         const products =
           await window.ShoporaProducts.getAllProducts({
@@ -1600,8 +1601,8 @@
         /*
          * Rotate the Trending selection.
          *
-         * We use a time-based seed so the selection changes
-         * automatically instead of always showing the same first
+         * We use a time-based seed so the 250-product Trending selection
+         * changes automatically instead of always showing the same
          * products returned by Shopify.
          */
         const rotationSlot =
