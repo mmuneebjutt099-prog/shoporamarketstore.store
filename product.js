@@ -398,8 +398,40 @@
        DOCUMENT TITLE
        ===================================================== */
 
-    document.title =
-      `${currentProduct.title} | Shopora Market Store`;
+    const pageTitle = currentProduct.title + " | Shopora Market Store";
+    document.title = pageTitle;
+
+    const rawDescription = String(
+      currentProduct.description ||
+      ("View " + currentProduct.title + " product details, price and availability at Shopora Market Store.")
+    );
+    const metaDescription = rawDescription
+      .replace(/<[^>]*>/g, " ")
+      .replace(/\\s+/g, " ")
+      .trim()
+      .slice(0, 160);
+
+    const canonicalUrl = new URL(window.location.href);
+    canonicalUrl.search = "";
+    canonicalUrl.searchParams.set("handle", currentProduct.handle || getProductHandle());
+    canonicalUrl.hash = "";
+
+    const canonical = document.getElementById("canonicalUrl");
+    if (canonical) canonical.href = canonicalUrl.href;
+
+    const robots = document.getElementById("pageRobots");
+    if (robots) robots.setAttribute("content", "index,follow");
+
+    const setMetaContent = (selector, value) => {
+      const element = document.querySelector(selector);
+      if (element) element.setAttribute("content", value);
+    };
+    setMetaContent('meta[name="description"]', metaDescription);
+    setMetaContent('meta[property="og:title"]', pageTitle);
+    setMetaContent('meta[property="og:description"]', metaDescription);
+    setMetaContent('meta[property="og:url"]', canonicalUrl.href);
+    setMetaContent('meta[name="twitter:title"]', pageTitle);
+    setMetaContent('meta[name="twitter:description"]', metaDescription);
   }
 
 
@@ -1214,6 +1246,10 @@
      ========================================================= */
 
   function showNotFound() {
+
+    document.title = "Product not found | Shopora Market Store";
+    const robots = document.getElementById("pageRobots");
+    if (robots) robots.setAttribute("content", "noindex,follow");
 
     if ($("productName")) {
 
