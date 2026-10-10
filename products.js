@@ -68,113 +68,105 @@ async function shopifyRequest(query, variables = {}) {
 async function getAllProducts(options = {}) {
 
   const first = Math.min(
-    Number(options.first) || 50,
+    Math.max(Number(options.first) || 50, 1),
     250
   );
 
-  const query = `
-    query GetProducts {
-      products(first: ${first}) {
+  const allPages = options.allPages === true;
+  const products = [];
+  let after = null;
+  let hasNextPage = true;
 
-        edges {
-
-          node {
-
-            id
-            handle
-            title
-
-            description
-            descriptionHtml
-
-            availableForSale
-
-            vendor
-            productType
-            tags
-
-            featuredImage {
-              url
-              altText
-              width
-              height
-            }
-
-            images(first: 20) {
-
-              edges {
-
-                node {
-                  url
-                  altText
-                  width
-                  height
-                }
-
+  while (hasNextPage) {
+    const query = `
+      query GetProducts($first: Int!, $after: String) {
+        products(first: $first, after: $after) {
+          pageInfo {
+            hasNextPage
+            endCursor
+          }
+          edges {
+            node {
+              id
+              handle
+              title
+              description
+              descriptionHtml
+              availableForSale
+              vendor
+              productType
+              tags
+              featuredImage {
+                url
+                altText
+                width
+                height
               }
-
-            }
-
-            variants(first: 100) {
-
-              edges {
-
-                node {
-
-                  id
-                  title
-                  availableForSale
-
-                  price {
-                    amount
-                    currencyCode
-                  }
-
-                  compareAtPrice {
-                    amount
-                    currencyCode
-                  }
-
-                  image {
+              images(first: 20) {
+                edges {
+                  node {
                     url
                     altText
                     width
                     height
                   }
-
-                  selectedOptions {
-                    name
-                    value
-                  }
-
                 }
-
               }
-
+              variants(first: 100) {
+                edges {
+                  node {
+                    id
+                    title
+                    availableForSale
+                    price {
+                      amount
+                      currencyCode
+                    }
+                    compareAtPrice {
+                      amount
+                      currencyCode
+                    }
+                    image {
+                      url
+                      altText
+                      width
+                      height
+                    }
+                    selectedOptions {
+                      name
+                      value
+                    }
+                  }
+                }
+              }
             }
-
           }
-
         }
-
       }
+    `;
 
+    const data = await shopifyRequest(query, {
+      first,
+      after
+    });
+
+    const connection = data?.products;
+    const edges = connection?.edges || [];
+
+    products.push(
+      ...edges.map(edge => normalizeShopifyProduct(edge.node))
+    );
+
+    hasNextPage = allPages && Boolean(connection?.pageInfo?.hasNextPage);
+    after = connection?.pageInfo?.endCursor || null;
+
+    if (!allPages || !hasNextPage || !after) {
+      break;
     }
-  `;
+  }
 
-  const data =
-    await shopifyRequest(query);
-
-  const edges =
-    data?.products?.edges || [];
-
-  return edges.map(edge =>
-    normalizeShopifyProduct(
-      edge.node
-    )
-  );
+  return products;
 }
-
 
 /* =========================================================
    GET PRODUCT BY HANDLE
