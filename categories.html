@@ -803,6 +803,16 @@
 
     }
 
+      .advice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px}
+    .advice-grid article{background:#fff;border:1px solid var(--border);padding:24px;border-radius:6px}
+    .advice-grid h3{font-family:"Playfair Display",serif;font-size:22px;margin:0 0 10px}
+    .advice-grid p{color:var(--muted);font-size:14px;margin:0 0 14px}
+    .advice-grid a{font-size:13px;font-weight:700;text-underline-offset:4px}
+    .contact-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--black);color:#fff;text-decoration:none;padding:13px 20px;font-weight:700;font-size:12px;letter-spacing:.08em}
+    .newsletter-note{font-size:13px;color:var(--muted);max-width:300px}
+    @media(max-width:900px){.advice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:560px){.advice-grid{grid-template-columns:1fr}}
+
   </style>
 
 </head>
@@ -854,6 +864,7 @@
         <a href="trending.html">
           Trending
         </a>
+      <a href="shopping-guides.html">Guides</a>
 
         <a href="about.html">
           About
@@ -1317,6 +1328,24 @@
 
     </section>
 
+    <!-- ORIGINAL CATEGORY BUYING ADVICE -->
+    <section class="category-guide">
+      <div class="container">
+        <div class="guide-heading">
+          <div class="eyebrow">Before you choose</div>
+          <h2>How to compare products in each category</h2>
+        </div>
+        <div class="advice-grid">
+          <article><h3>Fashion & accessories</h3><p>Compare size measurements, fabric or material details, dimensions and what is included. Use a product's written specifications rather than relying on a photo or size label alone.</p><a href="shop.html?category=Fashion">Explore fashion</a></article>
+          <article><h3>Beauty</h3><p>Check the exact shade, size or volume, ingredient information and usage directions when supplied. If a product detail or suitability question is important, confirm it before ordering.</p><a href="shop.html?category=Beauty">Explore beauty</a></article>
+          <article><h3>Electronics</h3><p>Match the model, connector, power requirements and compatibility information to the device you own. Check whether cables, adapters or other accessories are included.</p><a href="shop.html?category=Electronics">Explore electronics</a></article>
+          <article><h3>Home & living</h3><p>Measure the space where an item will be used. Review dimensions, materials, cleaning instructions, assembly needs and the quantity included in a set.</p><a href="shop.html?category=Home%20%26%20Living">Explore home & living</a></article>
+          <article><h3>Lifestyle products</h3><p>Think about the task you need the item to perform. Compare size, materials, included parts and care requirements, and avoid assuming an unlisted feature is included.</p><a href="shop.html?category=Lifestyle">Explore lifestyle</a></article>
+          <article><h3>Before checkout</h3><p>Check the current item and variant, total price, delivery information and applicable return terms. Ask support if a material detail is missing or unclear.</p><a href="shopping-guides.html">Read the complete shopping guides</a></article>
+        </div>
+      </div>
+    </section>
+
     <!-- Newsletter -->
 
     <section class="newsletter">
@@ -1326,33 +1355,19 @@
         <div>
 
           <h2>
-            Stay in the Shopora loop.
+            Questions before you order?
           </h2>
 
           <p>
-            Get new product picks, shopping inspiration and updates.
+            Ask us to clarify product specifications, variants or current order details.
           </p>
 
         </div>
 
-        <form
-          class="newsletter-form"
-          id="newsletterForm"
-        >
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Your email address"
-            aria-label="Email address"
-            required
-          >
-
-          <button type="submit">
-            Subscribe
-          </button>
-
-        </form>
+        <div class="newsletter-form">
+          <a class="contact-cta" href="contact.html">CONTACT SHOPORA</a>
+          <p class="newsletter-note">We can help clarify the information shown on a product page.</p>
+        </div>
 
       </div>
 
