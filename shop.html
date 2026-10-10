@@ -834,6 +834,21 @@
 
     }
 
+      .shop-advice{padding:64px 0;background:#f7f4ee}
+    .shop-advice-heading{max-width:720px;margin:0 auto 28px;text-align:center}
+    .shop-advice-heading h2{font-family:"Playfair Display",serif;font-size:clamp(28px,4vw,40px);line-height:1.2;margin:10px 0 12px}
+    .shop-advice-heading p{color:var(--muted);margin:0}
+    .shop-advice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .shop-advice-grid article{background:#fff;border:1px solid var(--border);padding:24px}
+    .shop-advice-grid article>span{font-size:12px;letter-spacing:.12em;color:var(--gold);font-weight:700}
+    .shop-advice-grid h3{font-family:"Playfair Display",serif;font-size:22px;margin:10px 0}
+    .shop-advice-grid p{font-size:14px;color:var(--muted);margin:0}
+    .shop-advice-link{text-align:center;margin:25px 0 0}
+    .shop-advice-link a{font-weight:700;text-underline-offset:4px}
+    .contact-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--black);color:#fff;text-decoration:none;padding:13px 20px;font-weight:700;font-size:12px;letter-spacing:.08em}
+    .newsletter-note{font-size:13px;color:var(--muted);max-width:300px}
+    @media(max-width:800px){.shop-advice-grid{grid-template-columns:1fr}.shop-advice{padding:45px 0}}
+
   </style>
 
   <!-- Structured Data -->
@@ -890,6 +905,7 @@
         <a href="categories.html">Categories</a>
 
         <a href="trending.html">Trending</a>
+      <a href="shopping-guides.html">Guides</a>
 
         <a href="about.html">About</a>
 
@@ -1074,6 +1090,23 @@
 
     </section>
 
+    <!-- PRODUCT COMPARISON CHECKLIST -->
+    <section class="shop-advice">
+      <div class="container">
+        <div class="shop-advice-heading">
+          <div class="eyebrow">Shop thoughtfully</div>
+          <h2>Three checks before adding an item to your cart</h2>
+          <p>Product listings can vary in the amount of detail they provide. Use the information available on each item page to make a more informed choice.</p>
+        </div>
+        <div class="shop-advice-grid">
+          <article><span>01</span><h3>Confirm the exact option</h3><p>Review the selected colour, size, model, quantity and product specifications. For clothing, use measurements when available; for electronics, confirm compatibility.</p></article>
+          <article><span>02</span><h3>Review the full cost</h3><p>Check the current price and any delivery or other charges displayed for your order. Availability and options may vary by product and destination.</p></article>
+          <article><span>03</span><h3>Understand the terms</h3><p>Read the <a href="return-refund.html">return and refund policy</a>. If a specification or checkout detail is unclear, <a href="contact.html">contact Shopora</a> before ordering.</p></article>
+        </div>
+        <p class="shop-advice-link"><a href="shopping-guides.html">Read the full online shopping guide →</a></p>
+      </div>
+    </section>
+
     <!-- Newsletter -->
 
     <section class="newsletter">
@@ -1083,29 +1116,19 @@
         <div>
 
           <h2>
-            Stay in the Shopora loop.
+            Questions before you order?
           </h2>
 
           <p>
-            Get new product picks, shopping inspiration and updates.
+            Ask us to clarify product specifications, variants or current order details.
           </p>
 
         </div>
 
-        <form class="newsletter-form" id="newsletterForm">
-
-          <input
-            type="email"
-            placeholder="Your email address"
-            aria-label="Email address"
-            required
-          >
-
-          <button type="submit">
-            Subscribe
-          </button>
-
-        </form>
+        <div class="newsletter-form">
+          <a class="contact-cta" href="contact.html">CONTACT SHOPORA</a>
+          <p class="newsletter-note">We can help clarify the information shown on a product page.</p>
+        </div>
 
       </div>
 
