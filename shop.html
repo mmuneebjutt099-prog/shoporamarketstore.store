@@ -1377,7 +1377,8 @@
 
       const products =
         await window.ShoporaProducts.getAllProducts({
-          first: 50
+          first: 250,
+          allPages: true
         });
 
 
@@ -2305,8 +2306,18 @@
         );
 
 
+      // Keep the default Shop landing page to a manageable 350 products.
+      // Category selections and searches show every matching product.
+      const isDefaultShopView =
+        category === "all" && !query;
+
+      const displayedProducts =
+        isDefaultShopView
+          ? filtered.slice(0, 350)
+          : filtered;
+
       renderProducts(
-        filtered
+        displayedProducts
       );
 
 
@@ -2352,11 +2363,13 @@
       if (resultCount) {
 
         resultCount.textContent =
-          `${filtered.length} product${
-            filtered.length === 1
-              ? ""
-              : "s"
-          }`;
+          isDefaultShopView && filtered.length > displayedProducts.length
+            ? `Showing ${displayedProducts.length} of ${filtered.length} products`
+            : `${displayedProducts.length} product${
+                displayedProducts.length === 1
+                  ? ""
+                  : "s"
+              }`;
 
       }
 
