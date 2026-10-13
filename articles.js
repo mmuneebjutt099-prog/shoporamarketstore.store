@@ -104,6 +104,36 @@
     "readTime": "6 min read",
     "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80",
     "imageAlt": "Everyday handbag shown in a fashion setting"
+  },
+  {
+    "url": "/articles/choosing-a-skincare-routine.html",
+    "category": "Beauty",
+    "title": "How to Compare Skincare Products for Your Routine",
+    "description": "Compare ingredients, skin needs, product size and directions carefully before choosing skincare products for everyday use.",
+    "cover": "SKINCARE, SIMPLIFIED",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Skincare products arranged for comparison"
+  },
+  {
+    "url": "/articles/home-storage-measurement-guide.html",
+    "category": "Home & living",
+    "title": "Measure First: Choosing Storage and Home Organisers",
+    "description": "Measure available space and compare dimensions, materials, capacity and assembly details before buying home storage products.",
+    "cover": "MEASURE YOUR SPACE",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Organised home interior with practical furniture"
+  },
+  {
+    "url": "/articles/electronics-cable-and-charger-compatibility.html",
+    "category": "Electronics",
+    "title": "Chargers and Cables: Check Compatibility Before Buying",
+    "description": "Match connector type, charging standards, power ratings and device requirements before choosing cables or chargers online.",
+    "cover": "CHECK BEFORE CONNECTING",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Electronic accessories and charging equipment"
   }
 ];
 
