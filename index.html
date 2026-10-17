@@ -362,7 +362,8 @@
 
     .floating-search{
       position:fixed;
-      top:18px;
+      /* Keep the floating search below the sticky navigation so it never covers Shop/Trending links. */
+      top:94px;
       left:50%;
       transform:translate(-50%,-20px);
       width:min(560px,70vw);
