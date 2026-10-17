@@ -134,6 +134,26 @@
     "readTime": "6 min read",
     "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=1400&q=85",
     "imageAlt": "Electronic accessories and charging equipment"
+  },
+  {
+    "url": "/articles/practical-seo-guide-for-online-stores.html",
+    "category": "SEO & website growth",
+    "title": "A Practical SEO Guide for Online Stores",
+    "description": "Improve search visibility with useful content, clear product pages, technical checks and a sustainable measurement routine.",
+    "cover": "BUILD SEARCH VISIBILITY",
+    "readTime": "9 min read",
+    "image": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=1200&q=80",
+    "imageAlt": "Laptop and notebook used to plan website content"
+  },
+  {
+    "url": "/articles/google-adsense-approval-checklist.html",
+    "category": "Publishing & monetization",
+    "title": "Google AdSense Approval Checklist",
+    "description": "Prepare your website with original content, clear navigation, accurate policy pages and a correctly configured ads.txt file.",
+    "cover": "PREPARE WITH CARE",
+    "readTime": "10 min read",
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    "imageAlt": "Website analytics dashboard on a laptop screen"
   }
 ];
 
