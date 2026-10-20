@@ -29,4 +29,19 @@
   <url><loc>https://shoporamarketstore.store/articles/how-to-compare-online-shopping-total-cost.html</loc><priority>0.7</priority></url>
   <url><loc>https://shoporamarketstore.store/articles/online-order-delivery-tracking-guide.html</loc><priority>0.7</priority></url>
   <url><loc>https://shoporamarketstore.store/articles/product-listing-quality-checklist.html</loc><priority>0.7</priority></url>
+  <url>
+    <loc>https://shoporamarketstore.store/articles/how-to-choose-the-right-product-size.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shoporamarketstore.store/articles/how-to-spot-incomplete-product-descriptions.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://shoporamarketstore.store/articles/online-shopping-budget-planning-guide.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
