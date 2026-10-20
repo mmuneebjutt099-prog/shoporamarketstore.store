@@ -189,7 +189,37 @@
 
   function escapeHtml(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (char) {
-      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char];
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char  {
+    "url": "/articles/how-to-choose-the-right-product-size.html",
+    "category": "Shopping basics",
+    "title": "How to Choose the Right Product Size Online",
+    "description": "Learn how to compare measurements, size charts, fit notes and return terms before choosing clothing, shoes or home products online.",
+    "cover": "CHECK THE MEASUREMENTS",
+    "readTime": "7 min read",
+    "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+    "imageAlt": "Shoppers browsing clothing in a store"
+  },
+  {
+    "url": "/articles/how-to-spot-incomplete-product-descriptions.html",
+    "category": "Shopping basics",
+    "title": "How to Spot an Incomplete Product Description",
+    "description": "Use a practical checklist to identify missing specifications, unclear photos, variant confusion and unanswered questions before checkout.",
+    "cover": "READ BEYOND THE TITLE",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+    "imageAlt": "Customer reviewing shopping information before a purchase"
+  },
+  {
+    "url": "/articles/online-shopping-budget-planning-guide.html",
+    "category": "Shopping basics",
+    "title": "A Simple Budget Plan for Online Shopping",
+    "description": "Plan an online purchase by setting a spending limit, calculating the full checkout cost, comparing value and avoiding impulse extras.",
+    "cover": "PLAN THE FULL COST",
+    "readTime": "6 min read",
+    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+    "imageAlt": "Budget notes and calculator on a desk"
+  }
+  ];
     });
   }
 
