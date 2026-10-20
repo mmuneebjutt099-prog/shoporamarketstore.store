@@ -146,6 +146,36 @@
     "imageAlt": "Laptop and notebook used to plan website content"
   },
   {
+    "url": "/articles/how-to-compare-online-shopping-total-cost.html",
+    "category": "Shopping basics",
+    "title": "How to Compare the Real Cost of an Online Purchase",
+    "description": "Compare product price, delivery, taxes, warranties and return costs before placing an online order.",
+    "cover": "COMPARE THE FULL COST",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Customer reviewing purchase information before checkout"
+  },
+  {
+    "url": "/articles/online-order-delivery-tracking-guide.html",
+    "category": "Orders & delivery",
+    "title": "Online Order Delivery and Tracking: A Step-by-Step Guide",
+    "description": "Check delivery estimates, understand tracking statuses and handle delayed or missing parcels safely.",
+    "cover": "FOLLOW YOUR ORDER",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Parcel prepared for delivery"
+  },
+  {
+    "url": "/articles/product-listing-quality-checklist.html",
+    "category": "Shopping basics",
+    "title": "How to Check a Product Listing Before You Buy",
+    "description": "Evaluate product descriptions, photos, specifications, seller information and return terms before ordering.",
+    "cover": "CHECK BEFORE YOU BUY",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Product displayed clearly for an online shopping comparison"
+  },
+  {
     "url": "/articles/google-adsense-approval-checklist.html",
     "category": "Publishing & monetization",
     "title": "Google AdSense Approval Checklist",
