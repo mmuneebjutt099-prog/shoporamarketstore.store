@@ -184,6 +184,36 @@
     "readTime": "10 min read",
     "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     "imageAlt": "Website analytics dashboard on a laptop screen"
+  },
+  {
+    "url": "/articles/how-to-compare-material-quality-and-care.html",
+    "category": "Shopping basics",
+    "title": "How to Compare Material Quality and Care Instructions",
+    "description": "Learn how to compare fabric, finishes, durability clues and care labels so you can choose products that suit your needs.",
+    "cover": "MATERIALS THAT LAST",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Clothing and fabric choices arranged for comparison"
+  },
+  {
+    "url": "/articles/how-to-plan-a-gift-purchase-online.html",
+    "category": "Shopping basics",
+    "title": "How to Plan a Gift Purchase Online",
+    "description": "A practical guide to choosing a suitable gift, checking delivery timing, packaging, recipient details and return options before checkout.",
+    "cover": "GIVE WITH CONFIDENCE",
+    "readTime": "7 min read",
+    "image": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Carefully wrapped gift ready to be given"
+  },
+  {
+    "url": "/articles/how-to-avoid-common-checkout-mistakes.html",
+    "category": "Online shopping",
+    "title": "How to Avoid Common Online Checkout Mistakes",
+    "description": "Use a step-by-step checklist to catch wrong variants, address errors, unexpected fees and payment risks before placing an online order.",
+    "cover": "PAUSE BEFORE PAYING",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Customer reviewing an online checkout before placing an order"
   }
 ];
 
