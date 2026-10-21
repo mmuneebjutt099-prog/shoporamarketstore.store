@@ -4,247 +4,247 @@
 (function () {
   "use strict";
   const SHOPORA_ARTICLES = [
-  {
-    "url": "/articles/online-shopping-checklist.html",
-    "category": "Shopping basics",
-    "title": "A Practical Online Shopping Checklist",
-    "description": "Compare the exact item, selected variant, full cost and store terms before ordering.",
-    "cover": "BUY WITH CLARITY",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Customer reviewing an online purchase"
-  },
-  {
-    "url": "/articles/fashion-size-and-material-guide.html",
-    "category": "Fashion",
-    "title": "Clothing Sizes, Fabrics and Accessories",
-    "description": "Use measurements and material details to compare fashion products more confidently.",
-    "cover": "FIT • FABRIC • DETAILS",
-    "readTime": "7 min read",
-    "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Shoppers comparing clothing in a fashion store"
-  },
-  {
-    "url": "/articles/electronics-compatibility-checklist.html",
-    "category": "Electronics",
-    "title": "Electronics Compatibility Checklist",
-    "description": "Match device models, connectors and power requirements before buying tech.",
-    "cover": "MATCH THE SPECS",
-    "readTime": "7 min read",
-    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Technology devices used for work and communication"
-  },
-  {
-    "url": "/articles/beauty-product-buying-guide.html",
-    "category": "Beauty",
-    "title": "How to Compare Beauty Products",
-    "description": "Review shade, ingredients, quantity and usage information before you choose.",
-    "cover": "READ THE DETAILS",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Beauty and skincare products arranged on a vanity"
-  },
-  {
-    "url": "/articles/home-living-measurement-guide.html",
-    "category": "Home & living",
-    "title": "Measure and Compare Home Products",
-    "description": "Check dimensions, materials, care and package contents for home products.",
-    "cover": "MEASURE FIRST",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Modern living room with carefully arranged furniture"
-  },
-  {
-    "url": "/articles/how-to-compare-product-listings.html",
-    "category": "Shopping basics",
-    "title": "How to Compare Product Listings Before You Buy",
-    "description": "Compare specifications, package contents, photos and full checkout costs before choosing between similar products.",
-    "cover": "COMPARE THE DETAILS",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Product shown clearly for comparison"
-  },
-  {
-    "url": "/articles/online-shopping-safety-and-privacy.html",
-    "category": "Online shopping",
-    "title": "Online Shopping Safety: Accounts, Payments and Personal Information",
-    "description": "Practical checks for account security, genuine checkout pages and protecting personal information while shopping online.",
-    "cover": "SHOP WITH CARE",
-    "readTime": "7 min read",
-    "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Secure online shopping and payment concept"
-  },
-  {
-    "url": "/articles/understanding-shipping-delivery-and-returns.html",
-    "category": "Orders & delivery",
-    "title": "Shipping, Delivery and Returns: What to Check Before Ordering",
-    "description": "Review delivery estimates, shipping charges, address accuracy, tracking and return conditions before checkout.",
-    "cover": "PLAN THE DELIVERY",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Parcel prepared for shipping and delivery"
-  },
-  {
-    "url": "/articles/how-to-read-product-reviews.html",
-    "category": "Shopping basics",
-    "title": "How to Read Product Reviews and Make a Balanced Choice",
-    "description": "Evaluate review details, recurring themes, dates and product fit without treating star ratings as guarantees.",
-    "cover": "READ BEYOND STARS",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Customer considering product information before purchase"
-  },
-  {
-    "url": "/articles/choosing-everyday-bags-and-accessories.html",
-    "category": "Fashion & accessories",
-    "title": "Choosing Everyday Bags and Accessories: Size, Material and Use",
-    "description": "Compare dimensions, capacity, closures, materials and care instructions before choosing everyday accessories.",
-    "cover": "DETAILS THAT FIT",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Everyday handbag shown in a fashion setting"
-  },
-  {
-    "url": "/articles/choosing-a-skincare-routine.html",
-    "category": "Beauty",
-    "title": "How to Compare Skincare Products for Your Routine",
-    "description": "Compare ingredients, skin needs, product size and directions carefully before choosing skincare products for everyday use.",
-    "cover": "SKINCARE, SIMPLIFIED",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Skincare products arranged for comparison"
-  },
-  {
-    "url": "/articles/home-storage-measurement-guide.html",
-    "category": "Home & living",
-    "title": "Measure First: Choosing Storage and Home Organisers",
-    "description": "Measure available space and compare dimensions, materials, capacity and assembly details before buying home storage products.",
-    "cover": "MEASURE YOUR SPACE",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Organised home interior with practical furniture"
-  },
-  {
-    "url": "/articles/electronics-cable-and-charger-compatibility.html",
-    "category": "Electronics",
-    "title": "Chargers and Cables: Check Compatibility Before Buying",
-    "description": "Match connector type, charging standards, power ratings and device requirements before choosing cables or chargers online.",
-    "cover": "CHECK BEFORE CONNECTING",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Electronic accessories and charging equipment"
-  },
-  {
-    "url": "/articles/practical-seo-guide-for-online-stores.html",
-    "category": "SEO & website growth",
-    "title": "A Practical SEO Guide for Online Stores",
-    "description": "Improve search visibility with useful content, clear product pages, technical checks and a sustainable measurement routine.",
-    "cover": "BUILD SEARCH VISIBILITY",
-    "readTime": "9 min read",
-    "image": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Laptop and notebook used to plan website content"
-  },
-  {
-    "url": "/articles/how-to-compare-online-shopping-total-cost.html",
-    "category": "Shopping basics",
-    "title": "How to Compare the Real Cost of an Online Purchase",
-    "description": "Compare product price, delivery, taxes, warranties and return costs before placing an online order.",
-    "cover": "COMPARE THE FULL COST",
-    "readTime": "8 min read",
-    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Customer reviewing purchase information before checkout"
-  },
-  {
-    "url": "/articles/online-order-delivery-tracking-guide.html",
-    "category": "Orders & delivery",
-    "title": "Online Order Delivery and Tracking: A Step-by-Step Guide",
-    "description": "Check delivery estimates, understand tracking statuses and handle delayed or missing parcels safely.",
-    "cover": "FOLLOW YOUR ORDER",
-    "readTime": "8 min read",
-    "image": "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Parcel prepared for delivery"
-  },
-  {
-    "url": "/articles/product-listing-quality-checklist.html",
-    "category": "Shopping basics",
-    "title": "How to Check a Product Listing Before You Buy",
-    "description": "Evaluate product descriptions, photos, specifications, seller information and return terms before ordering.",
-    "cover": "CHECK BEFORE YOU BUY",
-    "readTime": "8 min read",
-    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Product displayed clearly for an online shopping comparison"
-  },
-  {
-    "url": "/articles/google-adsense-approval-checklist.html",
-    "category": "Publishing & monetization",
-    "title": "Google AdSense Approval Checklist",
-    "description": "Prepare your website with original content, clear navigation, accurate policy pages and a correctly configured ads.txt file.",
-    "cover": "PREPARE WITH CARE",
-    "readTime": "10 min read",
-    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Website analytics dashboard on a laptop screen"
-  },
-  {
-    "url": "/articles/how-to-compare-material-quality-and-care.html",
-    "category": "Shopping basics",
-    "title": "How to Compare Material Quality and Care Instructions",
-    "description": "Learn how to compare fabric, finishes, durability clues and care labels so you can choose products that suit your needs.",
-    "cover": "MATERIALS THAT LAST",
-    "readTime": "8 min read",
-    "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Clothing and fabric choices arranged for comparison"
-  },
-  {
-    "url": "/articles/how-to-plan-a-gift-purchase-online.html",
-    "category": "Shopping basics",
-    "title": "How to Plan a Gift Purchase Online",
-    "description": "A practical guide to choosing a suitable gift, checking delivery timing, packaging, recipient details and return options before checkout.",
-    "cover": "GIVE WITH CONFIDENCE",
-    "readTime": "7 min read",
-    "image": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Carefully wrapped gift ready to be given"
-  },
-  {
-    "url": "/articles/how-to-avoid-common-checkout-mistakes.html",
-    "category": "Online shopping",
-    "title": "How to Avoid Common Online Checkout Mistakes",
-    "description": "Use a step-by-step checklist to catch wrong variants, address errors, unexpected fees and payment risks before placing an online order.",
-    "cover": "PAUSE BEFORE PAYING",
-    "readTime": "8 min read",
-    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=85",
-    "imageAlt": "Customer reviewing an online checkout before placing an order"
-  },
-  {
-    "url": "/articles/how-to-choose-the-right-product-size.html",
-    "category": "Shopping basics",
-    "title": "How to Choose the Right Product Size Online",
-    "description": "Learn how to compare measurements, size charts, fit notes and return terms before choosing clothing, shoes or home products online.",
-    "cover": "CHECK THE MEASUREMENTS",
-    "readTime": "7 min read",
-    "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Shoppers browsing clothing in a store"
-  },
-  {
-    "url": "/articles/how-to-spot-incomplete-product-descriptions.html",
-    "category": "Shopping basics",
-    "title": "How to Spot an Incomplete Product Description",
-    "description": "Use a practical checklist to identify missing specifications, unclear photos, variant confusion and unanswered questions before checkout.",
-    "cover": "READ BEYOND THE TITLE",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Customer reviewing shopping information before a purchase"
-  },
-  {
-    "url": "/articles/online-shopping-budget-planning-guide.html",
-    "category": "Shopping basics",
-    "title": "A Simple Budget Plan for Online Shopping",
-    "description": "Plan an online purchase by setting a spending limit, calculating the full checkout cost, comparing value and avoiding impulse extras.",
-    "cover": "PLAN THE FULL COST",
-    "readTime": "6 min read",
-    "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
-    "imageAlt": "Budget notes and calculator on a desk"
-  }
-];
+    {
+      "url": "/articles/online-shopping-checklist.html",
+      "category": "Shopping basics",
+      "title": "A Practical Online Shopping Checklist",
+      "description": "Compare the exact item, selected variant, full cost and store terms before ordering.",
+      "cover": "BUY WITH CLARITY",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Customer reviewing an online purchase"
+    },
+    {
+      "url": "/articles/fashion-size-and-material-guide.html",
+      "category": "Fashion",
+      "title": "Clothing Sizes, Fabrics and Accessories",
+      "description": "Use measurements and material details to compare fashion products more confidently.",
+      "cover": "FIT • FABRIC • DETAILS",
+      "readTime": "7 min read",
+      "image": "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Shoppers comparing clothing in a fashion store"
+    },
+    {
+      "url": "/articles/electronics-compatibility-checklist.html",
+      "category": "Electronics",
+      "title": "Electronics Compatibility Checklist",
+      "description": "Match device models, connectors and power requirements before buying tech.",
+      "cover": "MATCH THE SPECS",
+      "readTime": "7 min read",
+      "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Technology devices used for work and communication"
+    },
+    {
+      "url": "/articles/beauty-product-buying-guide.html",
+      "category": "Beauty",
+      "title": "How to Compare Beauty Products",
+      "description": "Review shade, ingredients, quantity and usage information before you choose.",
+      "cover": "READ THE DETAILS",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Beauty and skincare products arranged on a vanity"
+    },
+    {
+      "url": "/articles/home-living-measurement-guide.html",
+      "category": "Home & living",
+      "title": "Measure and Compare Home Products",
+      "description": "Check dimensions, materials, care and package contents for home products.",
+      "cover": "MEASURE FIRST",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Modern living room with carefully arranged furniture"
+    },
+    {
+      "url": "/articles/how-to-compare-product-listings.html",
+      "category": "Shopping basics",
+      "title": "How to Compare Product Listings Before You Buy",
+      "description": "Compare specifications, package contents, photos and full checkout costs before choosing between similar products.",
+      "cover": "COMPARE THE DETAILS",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Product shown clearly for comparison"
+    },
+    {
+      "url": "/articles/online-shopping-safety-and-privacy.html",
+      "category": "Online shopping",
+      "title": "Online Shopping Safety: Accounts, Payments and Personal Information",
+      "description": "Practical checks for account security, genuine checkout pages and protecting personal information while shopping online.",
+      "cover": "SHOP WITH CARE",
+      "readTime": "7 min read",
+      "image": "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Secure online shopping and payment concept"
+    },
+    {
+      "url": "/articles/understanding-shipping-delivery-and-returns.html",
+      "category": "Orders & delivery",
+      "title": "Shipping, Delivery and Returns: What to Check Before Ordering",
+      "description": "Review delivery estimates, shipping charges, address accuracy, tracking and return conditions before checkout.",
+      "cover": "PLAN THE DELIVERY",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1580674285054-bed31e145f59?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Parcel prepared for shipping and delivery"
+    },
+    {
+      "url": "/articles/how-to-read-product-reviews.html",
+      "category": "Shopping basics",
+      "title": "How to Read Product Reviews and Make a Balanced Choice",
+      "description": "Evaluate review details, recurring themes, dates and product fit without treating star ratings as guarantees.",
+      "cover": "READ BEYOND STARS",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Customer considering product information before purchase"
+    },
+    {
+      "url": "/articles/choosing-everyday-bags-and-accessories.html",
+      "category": "Fashion & accessories",
+      "title": "Choosing Everyday Bags and Accessories: Size, Material and Use",
+      "description": "Compare dimensions, capacity, closures, materials and care instructions before choosing everyday accessories.",
+      "cover": "DETAILS THAT FIT",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Everyday handbag shown in a fashion setting"
+    },
+    {
+      "url": "/articles/choosing-a-skincare-routine.html",
+      "category": "Beauty",
+      "title": "How to Compare Skincare Products for Your Routine",
+      "description": "Compare ingredients, skin needs, product size and directions carefully before choosing skincare products for everyday use.",
+      "cover": "SKINCARE, SIMPLIFIED",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Skincare products arranged for comparison"
+    },
+    {
+      "url": "/articles/home-storage-measurement-guide.html",
+      "category": "Home & living",
+      "title": "Measure First: Choosing Storage and Home Organisers",
+      "description": "Measure available space and compare dimensions, materials, capacity and assembly details before buying home storage products.",
+      "cover": "MEASURE YOUR SPACE",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Organised home interior with practical furniture"
+    },
+    {
+      "url": "/articles/electronics-cable-and-charger-compatibility.html",
+      "category": "Electronics",
+      "title": "Chargers and Cables: Check Compatibility Before Buying",
+      "description": "Match connector type, charging standards, power ratings and device requirements before choosing cables or chargers online.",
+      "cover": "CHECK BEFORE CONNECTING",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Electronic accessories and charging equipment"
+    },
+    {
+      "url": "/articles/practical-seo-guide-for-online-stores.html",
+      "category": "SEO & website growth",
+      "title": "A Practical SEO Guide for Online Stores",
+      "description": "Improve search visibility with useful content, clear product pages, technical checks and a sustainable measurement routine.",
+      "cover": "BUILD SEARCH VISIBILITY",
+      "readTime": "9 min read",
+      "image": "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Laptop and notebook used to plan website content"
+    },
+    {
+      "url": "/articles/how-to-compare-online-shopping-total-cost.html",
+      "category": "Shopping basics",
+      "title": "How to Compare the Real Cost of an Online Purchase",
+      "description": "Compare product price, delivery, taxes, warranties and return costs before placing an online order.",
+      "cover": "COMPARE THE FULL COST",
+      "readTime": "8 min read",
+      "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Wristwatch displayed as a product detail example"
+    },
+    {
+      "url": "/articles/online-order-delivery-tracking-guide.html",
+      "category": "Orders & delivery",
+      "title": "Online Order Delivery and Tracking: A Step-by-Step Guide",
+      "description": "Check delivery estimates, understand tracking statuses and handle delayed or missing parcels safely.",
+      "cover": "FOLLOW YOUR ORDER",
+      "readTime": "8 min read",
+      "image": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Parcel and delivery supplies arranged on a desk"
+    },
+    {
+      "url": "/articles/product-listing-quality-checklist.html",
+      "category": "Shopping basics",
+      "title": "How to Check a Product Listing Before You Buy",
+      "description": "Evaluate product descriptions, photos, specifications, seller information and return terms before ordering.",
+      "cover": "CHECK BEFORE YOU BUY",
+      "readTime": "8 min read",
+      "image": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Camera product shown clearly for listing checks"
+    },
+    {
+      "url": "/articles/google-adsense-approval-checklist.html",
+      "category": "Publishing & monetization",
+      "title": "Google AdSense Approval Checklist",
+      "description": "Prepare your website with original content, clear navigation, accurate policy pages and a correctly configured ads.txt file.",
+      "cover": "PREPARE WITH CARE",
+      "readTime": "10 min read",
+      "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Website analytics dashboard on a laptop screen"
+    },
+    {
+      "url": "/articles/how-to-compare-material-quality-and-care.html",
+      "category": "Shopping basics",
+      "title": "How to Compare Material Quality and Care Instructions",
+      "description": "Learn how to compare fabric, finishes, durability clues and care labels so you can choose products that suit your needs.",
+      "cover": "MATERIALS THAT LAST",
+      "readTime": "8 min read",
+      "image": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Clothing and fabric choices arranged for comparison"
+    },
+    {
+      "url": "/articles/how-to-plan-a-gift-purchase-online.html",
+      "category": "Shopping basics",
+      "title": "How to Plan a Gift Purchase Online",
+      "description": "A practical guide to choosing a suitable gift, checking delivery timing, packaging, recipient details and return options before checkout.",
+      "cover": "GIVE WITH CONFIDENCE",
+      "readTime": "7 min read",
+      "image": "https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Carefully wrapped gift ready to be given"
+    },
+    {
+      "url": "/articles/how-to-avoid-common-checkout-mistakes.html",
+      "category": "Online shopping",
+      "title": "How to Avoid Common Online Checkout Mistakes",
+      "description": "Use a step-by-step checklist to catch wrong variants, address errors, unexpected fees and payment risks before placing an online order.",
+      "cover": "PAUSE BEFORE PAYING",
+      "readTime": "8 min read",
+      "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Laptop used to review an online checkout"
+    },
+    {
+      "url": "/articles/how-to-choose-the-right-product-size.html",
+      "category": "Shopping basics",
+      "title": "How to Choose the Right Product Size Online",
+      "description": "Learn how to compare measurements, size charts, fit notes and return terms before choosing clothing, shoes or home products online.",
+      "cover": "CHECK THE MEASUREMENTS",
+      "readTime": "7 min read",
+      "image": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Fashion outfit shown for size and style comparison"
+    },
+    {
+      "url": "/articles/how-to-spot-incomplete-product-descriptions.html",
+      "category": "Shopping basics",
+      "title": "How to Spot an Incomplete Product Description",
+      "description": "Use a practical checklist to identify missing specifications, unclear photos, variant confusion and unanswered questions before checkout.",
+      "cover": "READ BEYOND THE TITLE",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=85",
+      "imageAlt": "Fashion products displayed for listing detail review"
+    },
+    {
+      "url": "/articles/online-shopping-budget-planning-guide.html",
+      "category": "Shopping basics",
+      "title": "A Simple Budget Plan for Online Shopping",
+      "description": "Plan an online purchase by setting a spending limit, calculating the full checkout cost, comparing value and avoiding impulse extras.",
+      "cover": "PLAN THE FULL COST",
+      "readTime": "6 min read",
+      "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
+      "imageAlt": "Budget notes and calculator on a desk"
+    }
+  ];
 
   function escapeHtml(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (char) {
