@@ -1,6 +1,5 @@
 /* Shopora central editorial index.
-   To publish a new article: create its HTML page under /articles/, then add one metadata object to SHOPORA_ARTICLES below.
-   Article cards on Home, Shop, Categories, Trending and Shopping Guides read from this single list.
+   Article cards across the site read from this single list.
 */
 (function () {
   "use strict";
@@ -214,12 +213,8 @@
     "readTime": "8 min read",
     "image": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1400&q=85",
     "imageAlt": "Customer reviewing an online checkout before placing an order"
-  }
-];
-
-  function escapeHtml(value) {
-    return String(value == null ? "" : value).replace(/[&<>"']/g, function (char) {
-      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char  {
+  },
+  {
     "url": "/articles/how-to-choose-the-right-product-size.html",
     "category": "Shopping basics",
     "title": "How to Choose the Right Product Size Online",
@@ -249,7 +244,11 @@
     "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
     "imageAlt": "Budget notes and calculator on a desk"
   }
-  ];
+];
+
+  function escapeHtml(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, function (char) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char];
     });
   }
 
