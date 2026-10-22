@@ -243,7 +243,37 @@
       "readTime": "6 min read",
       "image": "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1200&q=80",
       "imageAlt": "Budget notes and calculator on a desk"
-    }
+    },
+  {
+    "url": "/articles/how-to-compare-refurbished-open-box-and-new-products.html",
+    "category": "Shopping basics",
+    "title": "How to Compare Refurbished, Open-Box and New Products",
+    "description": "Compare product condition, testing, included accessories, warranty terms and total cost before choosing refurbished, open-box or new items.",
+    "cover": "CHECK CONDITION, NOT JUST PRICE",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Laptop displayed on a desk for a product condition comparison"
+  },
+  {
+    "url": "/articles/how-to-compare-energy-use-and-running-costs.html",
+    "category": "Smart buying",
+    "title": "How to Compare Energy Use and Lifetime Running Costs",
+    "description": "Compare energy labels, power ratings, usage patterns and maintenance costs to estimate what an appliance or electronic product may cost over time.",
+    "cover": "LOOK BEYOND THE PRICE",
+    "readTime": "8 min read",
+    "image": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Wind turbines generating electricity across an open landscape"
+  },
+  {
+    "url": "/articles/how-to-compare-assembly-requirements-before-buying.html",
+    "category": "Home & living",
+    "title": "How to Compare Assembly Requirements Before Buying",
+    "description": "Check tools, setup time, instructions, space and replacement parts before ordering furniture or other products that need assembly.",
+    "cover": "PLAN BEFORE YOU BUILD",
+    "readTime": "7 min read",
+    "image": "https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=1400&q=85",
+    "imageAlt": "Hand tools arranged for a home assembly project"
+  }
   ];
 
   function escapeHtml(value) {
