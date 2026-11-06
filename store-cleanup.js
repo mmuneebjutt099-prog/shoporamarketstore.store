@@ -1,6 +1,6 @@
 /* Shopora storefront removal: keeps the visual identity, removes commerce UI. */
 (() => {
-  const storePages = new Set(["shop.html","trending.html","categories.html","cart.html","wishlist.html","product.html","checkout.html"]);
+  const storePages = new Set(["shop.html","trending.html","categories.html","cart.html","wishlist.html","product.html","checkout.html","return-refund.html"]);
   const path = location.pathname.split("/").pop() || "index.html";
   const css = document.createElement("style");
   css.textContent = `
